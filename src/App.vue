@@ -1,10 +1,18 @@
 <template>
-  <MainLayout/>
+  <div>
+    <NavBar/>
+    <router-view class="app-router-view m-3" />
+  </div>
 </template>
 <script>
-import MainLayout from './components/MainLayout'
+import NavBar from './components/NavBar'
+import router from './plugins/Router'
 
 export default {
-  components: { MainLayout }
+  router,
+  components: { NavBar },
+  mounted () {
+    this.$router.replace('/')
+  }
 }
 </script>

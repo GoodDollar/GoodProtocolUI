@@ -4,6 +4,11 @@ import App from './App.vue'
 
 import './theme/theme.scss'
 
+Vue.config.productionTip = false
+Vue.config.devtools = false
+
 Vue.use(Buefy)
 
-new Vue(App).$mount('#app')
+window.app = new Vue({
+  render: h => h(App)
+}).$mount('#app')
