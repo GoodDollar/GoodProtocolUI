@@ -23,6 +23,10 @@
             <a @click="$wallet.disconnect()">Disconnect</a>
           </div>
         </div>
+        <div class="media-right is-flex is-flex-direction-column">
+          <a @click="contractIsWhitelisted" class="button is-info">Identity.isWhitelisted</a>
+          <a @click="contractClaim" class="button is-success">UBI.claim</a>
+        </div>
       </div>
     </article>
     <div v-if="!isConnected" class="notification is-info px-4 py-2">
@@ -31,11 +35,13 @@
         <a v-show="canConnect" @click="$wallet.connect()" class="level-right button is-success">Connect</a>
       </div>
     </div>
+    <pre v-if="dump" v-html="dump"></pre>
   </div>
 </template>
 
 <script>
 import { WalletState } from '../../plugins/Wallet'
+import GoodChain from '../../modules/GoodChain'
 
 export default {
   name: 'WalletDetails',
@@ -45,6 +51,8 @@ export default {
       providerName: null,
       providerLogo: null,
       canConnect: true,
+      dump: '',
+      gch: new GoodChain({ network: GoodChain.Network.PROD })
     }
   },
 
@@ -66,10 +74,37 @@ export default {
         this.providerLogo = info.logo
       }
     },
+
+    async contractIsWhitelisted () {
+      this.dump = 'Starting'
+      try {
+        const identity = this.gch.getIdentityContract(this.$wallet.eth)
+        const reply = await identity.isWhitelisted(this.account.address)
+        this.dump = 'Fulfilled\n' + reply
+      } catch (e) {
+        this.dump = 'Rejected\n' + e.toString()
+      }
+    },
+
+    async contractClaim () {
+      this.dump = 'Starting'
+      try {
+        const ubi = this.gch.getUbiContract(this.$wallet.getSigner())
+        window.ubi = ubi
+        let reply = await ubi.claim()
+        window.ubiReply = reply
+        this.dump = 'Fulfilled\n' + reply
+      } catch (e) {
+        this.dump = 'Rejected\n' + (e.message || e.toString())
+      }
+    }
   }
 }
 </script>
 
 <style scoped>
-
+pre {
+  white-space: break-spaces;
+  word-break: break-word;
+}
 </style>
