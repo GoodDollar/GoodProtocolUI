@@ -1,5 +1,6 @@
 <template>
-  <section>
+  <section style="width: 80%">
+    <div class="title" v-if="title">{{ title }}</div>
     <p>
       <b-skeleton width="50%"></b-skeleton>
       <b-skeleton height="80px"></b-skeleton>
@@ -9,7 +10,10 @@
 
 <script>
 export default {
-  name: 'Stub'
+  name: 'Stub',
+  props: {
+    title: { default: null }
+  }
 }
 </script>
 

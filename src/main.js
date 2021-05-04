@@ -1,9 +1,16 @@
 import Vue from 'vue'
 import Buefy from 'buefy'
 import App from './App.vue'
+import walletGate from './plugins/Wallet'
 
 import './theme/theme.scss'
 
-Vue.use(Buefy)
+Vue.config.productionTip = false
+Vue.config.devtools = false
 
-new Vue(App).$mount('#app')
+Vue.use(Buefy)
+Vue.use(walletGate)
+
+window.app = new Vue({
+  render: h => h(App)
+}).$mount('#app')
