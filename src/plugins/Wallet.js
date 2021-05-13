@@ -4,6 +4,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { WalletAccount } from '../modules/WalletAccount'
 import { getChainById, isAllowedChain } from '../modules/EthChains'
+import UxEvents, { UxEventCategory } from '../modules/UxEvents'
 
 Vue.use(Vuex)
 
@@ -270,6 +271,7 @@ class Wallet {
     chainId = parseInt(chainId)
     if (false === isAllowedChain(chainId)) {
       this.store.commit(WalletStoreActions.SET_STATE, WalletState.ERR_WRONG_CHAIN)
+      UxEvents.raise(UxEventCategory.ETH_WRONG_CHAIN, chainId)
       throw new Error('ChainId not allowed: ' + chainId)
     }
     this.store.commit(WalletStoreActions.SET_CHAIN, chainId)
