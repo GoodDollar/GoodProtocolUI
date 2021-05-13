@@ -20,7 +20,7 @@ module.exports = {
   configureWebpack: {
     optimization: {
       // disable minification to resolve issue with ES6 + terser
-      minimize: false,
+      //minimize: false,
     }
   }
 }
