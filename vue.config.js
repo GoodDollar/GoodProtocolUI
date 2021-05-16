@@ -16,5 +16,11 @@ module.exports = {
       args[0].title = title
       return args
     })
+  },
+  configureWebpack: {
+    optimization: {
+      // disable minification to resolve issue with ES6 + terser
+      minimize: false,
+    }
   }
 }
