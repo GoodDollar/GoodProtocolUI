@@ -8,9 +8,11 @@
     "test": "vue-cli-service lint"
   },
   "dependencies": {
+    "anylogger": "^1.0.11",
     "buefy": "^0.9.7",
     "core-js": "^3.6.5",
     "ethers": "^5.1.4",
+    "ulog": "^2.0.0-beta.18",
     "vue": "^2.6.12",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2",
