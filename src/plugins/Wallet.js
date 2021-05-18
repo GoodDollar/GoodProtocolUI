@@ -240,7 +240,7 @@ class Wallet {
   /**
    * According to https://eips.ethereum.org/EIPS/eip-1193
    */
-  bindProviderEvents (unbind = false) {
+  bindProviderEvents () {
 
     this.provider.on('connect', (connectInfo) => {
       console.info('eth: Connect')
@@ -248,7 +248,7 @@ class Wallet {
     })
 
     this.provider.on('disconnect', (error) => {
-      console.info('eth: Disconnect')
+      console.info('eth: Disconnect', error)
       this.store.commit(WalletStoreActions.SET_STATE, WalletState.ERR_GENERAL)
     })
 
