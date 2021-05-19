@@ -4,6 +4,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { WalletAccount } from '../modules/WalletAccount'
 import { getChainById, isAllowedChain } from '../modules/EthChains'
+import UxEvents, { UxEventCategory } from '../modules/UxEvents'
+import Logger from './Logger'
 
 Vue.use(Vuex)
 
@@ -198,15 +200,20 @@ class Wallet {
    *
    * @returns {Promise<void>}
    */
-  async updateAccounts (payload) {
-    console.log('Accounts update', payload)
+  async updateAccounts (payload, reason) {
+    Logger.info('Accounts update caused by', reason, payload)
     // set state
     this.store.commit(WalletStoreActions.SET_STATE, WalletState.UPDATING)
 
     // get chain
     const network = await this.eth.detectNetwork()
     // check & set chain
-    this._setChain(network.chainId)
+    try {
+      this._setChain(network.chainId)
+    } catch (e) {
+      Logger.warn(e)
+      return
+    }
 
     // get accounts
     const accountInfo = []
@@ -239,30 +246,30 @@ class Wallet {
   /**
    * According to https://eips.ethereum.org/EIPS/eip-1193
    */
-  bindProviderEvents (unbind = false) {
+  bindProviderEvents () {
 
     this.provider.on('connect', (connectInfo) => {
-      console.info('eth: Connect')
-      this._setChain(connectInfo.chainId)
+      Logger.debug('eth: Connect')
+      try {
+        this._setChain(connectInfo.chainId)
+      } catch (e) {
+        Logger.warn(e)
+      }
     })
 
     this.provider.on('disconnect', (error) => {
-      console.info('eth: Disconnect')
+      Logger.debug('eth: Disconnect', error)
       this.store.commit(WalletStoreActions.SET_STATE, WalletState.ERR_GENERAL)
     })
 
     this.provider.on('accountsChanged', (accounts) => {
-      console.info('eth: Changed')
-      this.updateAccounts(accounts)
+      Logger.debug('eth: Changed')
+      this.updateAccounts(accounts, 'eth accounts changed')
     })
 
     this.provider.on('chainChanged', (chainId) => {
-      console.info('eth: Chain changed', chainId)
-      this.updateAccounts(null)
-    })
-
-    this.provider.on('message', (message) => {
-      console.info('eth: Provider message', message)
+      Logger.debug('eth: Chain changed', chainId)
+      this.updateAccounts(null, 'eth chain changed')
     })
   }
 
@@ -270,6 +277,7 @@ class Wallet {
     chainId = parseInt(chainId)
     if (false === isAllowedChain(chainId)) {
       this.store.commit(WalletStoreActions.SET_STATE, WalletState.ERR_WRONG_CHAIN)
+      UxEvents.raise(UxEventCategory.ETH_WRONG_CHAIN, chainId)
       throw new Error('ChainId not allowed: ' + chainId)
     }
     this.store.commit(WalletStoreActions.SET_CHAIN, chainId)
@@ -277,7 +285,6 @@ class Wallet {
 
   async _connectProvider () {
     this.store.commit(WalletStoreActions.SET_STATE, WalletState.CONNECTING)
-    console.log('Connecting wallet', this.web3modal)
 
     try {
       this.provider = await this.web3modal.connect()
@@ -286,10 +293,10 @@ class Wallet {
       // see https://github.com/ethers-io/ethers.js/issues/866
       this.eth = new ethers.providers.Web3Provider(this.provider, 'any')
       // and force update
-      await this.updateAccounts(false)
+      await this.updateAccounts(null, 'provider connected')
     } catch (e) {
       this.store.commit(WalletStoreActions.SET_STATE, WalletState.IDLE)
-      console.log('Wallet connect failure', e)
+      Logger.warn('Wallet connection failed.', e)
     }
   }
 

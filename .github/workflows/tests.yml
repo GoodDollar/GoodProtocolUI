@@ -1,0 +1,29 @@
+name: Tests
+
+on: push
+
+jobs:
+  test:
+    name: Pass tests and build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Load node v15
+        uses: actions/setup-node@v1
+        with:
+          node-version: '15'
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install deps
+        run: yarn install
+      # Basics: test & build
+      - name: Run tests
+        run: yarn test
+      - name: Build app
+        run: yarn build
+      # Keep an eye on bundle size
+      - name: (bundlemon) run
+        run: yarn bundlemon
+        env:
+          BUNDLEMON_PROJECT_ID: ${{ secrets.BUNDLEMON_PROJECT_ID }}
+          BUNDLEMON_PROJECT_APIKEY: ${{ secrets.BUNDLEMON_PROJECT_APIKEY }}
+          BUNDLEMON_GITHUB_TOKEN: ${{ secrets.BUNDLEMON_GITHUB_TOKEN }}
