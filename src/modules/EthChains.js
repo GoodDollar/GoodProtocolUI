@@ -8,6 +8,8 @@ export const chains = [
     chainId: 122,
     label: 'Fuse Mainnet',
     allowed: true,
+    canClaim: true,
+    gdBalance: true,
   }
 ]
 

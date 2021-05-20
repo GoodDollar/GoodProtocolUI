@@ -8,18 +8,17 @@
     "test": "vue-cli-service lint"
   },
   "dependencies": {
+    "@gooddollar/goodcontracts": "^2.6.0",
     "anylogger": "^1.0.11",
     "buefy": "^0.9.7",
     "core-js": "^3.6.5",
+    "date-fns": "^2.21.2",
     "ethers": "^5.1.4",
     "ulog": "^2.0.0-beta.18",
     "vue": "^2.6.12",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2",
     "web3modal": "^1.9.0"
-  },
-  "resolutions": {
-    "acorn": "npm:acorn-with-stage3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

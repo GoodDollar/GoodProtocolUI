@@ -167,6 +167,10 @@ class Wallet {
     return getProviderInfo(this.provider)
   }
 
+  getSigner () {
+    return this.eth.getSigner()
+  }
+
   /**
    * Initialize web3modal
    */
