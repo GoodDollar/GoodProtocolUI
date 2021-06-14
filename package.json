@@ -1,8 +1,8 @@
 {
-    "name": "@sushiswap/interface",
-    "description": "SushiSwap Interface",
-    "homepage": "https://app.sushi.com",
-    "private": true,
+    "name": "@gooddollar/goodprotocolui",
+    "description": "GoodProtocol Interface",
+    "homepage": "https://gooddollar.org",
+    "version": "0.0.9",
     "lint-staged": {
         "*.{js,jsx,ts,tsx}": [
             "eslint --cache --fix",
