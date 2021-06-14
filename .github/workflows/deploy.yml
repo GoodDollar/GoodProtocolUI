@@ -24,7 +24,7 @@ jobs:
               uses: mathieudutour/github-tag-action@v5.5
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
-                  release_branches: release.*,master
+                  # release_branches: release.*,master
 
     deploy:
         name: Deploy Release
