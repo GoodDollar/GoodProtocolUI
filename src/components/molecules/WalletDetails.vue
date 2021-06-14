@@ -51,7 +51,10 @@ export default {
   computed: {
     isConnected () {
       this.updateProviderInfo()
-      this.canConnect = this.$wallet.getState() === WalletState.IDLE
+      this.$nextTick(() => {
+        // temporary workaround for vue/no-side-effects-in-computed-properties
+        this.canConnect = this.$wallet.getState() === WalletState.IDLE
+      })
       return this.$wallet.isConnected()
     },
     account () { return this.$wallet.getAccount() },
