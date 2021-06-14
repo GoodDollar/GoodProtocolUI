@@ -2,7 +2,7 @@
     "name": "@gooddollar/goodprotocolui",
     "description": "GoodProtocol Interface",
     "homepage": "https://gooddollar.org",
-    "version": "0.0.9",
+    "version": "0.1.0",
     "lint-staged": {
         "*.{js,jsx,ts,tsx}": [
             "eslint --cache --fix",
