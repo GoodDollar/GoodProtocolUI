@@ -64,8 +64,9 @@ jobs:
             #       echo "RECORD_NAME=_dnslink" >> $GITHUB_ENV
             #       echo "subdomain=" >> $GITHUB_ENV     
             #       sed -i 's/REACT_APP_NETWORK=development/REACT_APP_NETWORK=production/' .env
-            - run: echo "subdomain=fi-qa" >> $GITHUB_ENV
-            - run: echo "deploy_addr=${{ env.subdomain }}.${{ secrets.CLOUDFLARE_DOMAIN }}" >> $GITHUB_ENV
+              run: |
+                  echo "subdomain=fi-qa" >> $GITHUB_ENV
+                  echo "deploy_addr=${{ env.subdomain }}.${{ secrets.CLOUDFLARE_DOMAIN }}" >> $GITHUB_ENV
             # - run: echo "deploy_tag=${{ needs.bump_version.outputs.new_tag }}" >> $GITHUB_ENV
             - name: Load node v14
               uses: actions/setup-node@v1
@@ -128,7 +129,7 @@ jobs:
                   cid: ${{ steps.web3.outputs.cid }}
           
             - name: Show deployment address
-            - run: echo ${{ needs.bump_version.outputs.new_tag }} Deployed at ${{ env.deploy_addr }}
+              run: echo ${{ needs.bump_version.outputs.new_tag }} Deployed at ${{ env.deploy_addr }}
 
             # GitHub release with links
             # - name: Create GitHub Release with tag ${{ needs.bump_version.outputs.new_tag }}
