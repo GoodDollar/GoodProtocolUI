@@ -20,8 +20,7 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v2
-              with:
-                  fetch-depth: '0'
+  
             - name: Bump version and push tag
               id: github_tag_action
               uses: mathieudutour/github-tag-action@v5.5
