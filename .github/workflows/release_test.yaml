@@ -26,7 +26,7 @@ jobs:
               id: github_tag_action
               uses: mathieudutour/github-tag-action@v5.5
               with:
-                  github_token: ${{ secrets.BUNDLEMON_GITHUB_TOKEN }}
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
                   # release_branches: production, staging
                   release_branches: .*
                   # pre_release_branches: main
@@ -35,7 +35,7 @@ jobs:
             # - name: 'Automated Version Bump'
             #   uses: 'phips28/gh-action-bump-version@master'
             #   env:
-            #       GITHUB_TOKEN: ${{ secrets.BUNDLEMON_GITHUB_TOKEN }}
+            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             #   with:
             #       target-branch: 'main'
             #       default: 'patch'
@@ -46,41 +46,31 @@ jobs:
         needs: bump_version
         if: ${{ needs.bump_version.outputs.new_tag != null }}
         steps:
-            # Basic env setup and app build
-            # Result: built app in /dist
             - name: Checkout
               uses: actions/checkout@v2
 
-            # - run: echo "RECORD_NAME=_dnslink.dev" >> $GITHUB_ENV
-            # - run: echo "subdomain=dev" >> $GITHUB_ENV
+            - name: Set network env(s)
+              run: |
+                  echo "RECORD_NAME=fi-qa" >> $GITHUB_ENV
+                  echo "subdomain=fi-qa" >> $GITHUB_ENV
+                  echo "deploy_addr=${{ env.subdomain }}.${{ secrets.CLOUDFLARE_DOMAIN }}" >> $GITHUB_ENV
 
-            # - run: |
-            #       echo "${{ secrets.DOTENV }}" >> .env
-            #       cat .env
-            #       ls -la
-
-            # - name: 'set network env'
-            #   if: ${{ contains(github.ref,'production') }}
-            #   run: |
-            #       echo "RECORD_NAME=_dnslink" >> $GITHUB_ENV
-            #       echo "subdomain=" >> $GITHUB_ENV     
-            #       sed -i 's/REACT_APP_NETWORK=development/REACT_APP_NETWORK=production/' .env
-            # - run: echo "deploy_addr=${{ env.subdomain }}.${{ secrets.CLOUDFLARE_DOMAIN }}" >> $GITHUB_ENV
-            # - run: echo "deploy_tag=${{ needs.bump_version.outputs.new_tag }}" >> $GITHUB_ENV
             - name: Load node v14
               uses: actions/setup-node@v1
               with:
                   node-version: '14'
-            - name: Install deps
+
+            - name: Install dependencies
               uses: bahmutov/npm-install@v1
               with:
                   useYarn: true
+
             - name: Build app
               run: yarn build
 
             # Pinning
             # Result: CIDv0 hash
-            - name: Pin via Pinata
+            - name: Pin via web3 storage (Upload to web3 storage)
               id: web3
               uses: web3-storage/add-to-web3@v1
               with:
@@ -91,40 +81,21 @@ jobs:
             - name: Display pin address
               run: |
                   echo published as ${{ steps.web3.outputs.url }}
-                  echo cid ${{ steps.convert_cidv0.outputs.cid }}
-
-            # Pinning
-            # Result: CIDv0 hash
-            # - name: Pin via Pinata
-            #   id: upload
-            #   uses: aquiladev/ipfs-action@v0.1.5
-            #   with:
-            #       path: ./build
-            #       service: pinata
-            #       pinataKey: ${{ secrets.PINATA_API_KEY }}
-            #       pinataSecret: ${{ secrets.PINATA_API_SECRET }}
-            #       pinataPinName: ${{ github.repository }} on ipfs
-
-            # - name: Convert CIDv0 to CIDv1
-            #   id: convert_cidv0
-            #   uses: uniswap/convert-cidv0-cidv1@v1.0.0
-            #   with:
-            #       cidv0: ${{ steps.upload.outputs.hash }}
+                  echo cid ${{ steps.web3.outputs.cid }}
 
             # DNS
-            # - name: Display pin address
-            #   run: |
-            #       echo published as https://gateway.pinata.cloud/ipfs/${{ steps.upload.outputs.hash }}/
-            #       echo cidv1 ${{ steps.convert_cidv0.outputs.cidv1 }}/
-            # - name: Update DNS with new IPFS hash
-            #   env:
-            #       CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
-            #       CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
-            #       RECORD_DOMAIN: ${{ secrets.CLOUDFLARE_DOMAIN }}
-            #       # RECORD_NAME: ${{ env.RECORD_NAME }}
-            #   uses: textileio/cloudflare-update-dnslink@master
-            #   with:
-            #       cid: ${{ steps.upload.outputs.hash }}
+            - name: Update DNS with new IPFS hash
+              env:
+                  CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+                  CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+                  RECORD_DOMAIN: ${{ secrets.CLOUDFLARE_DOMAIN }}
+                  RECORD_NAME: ${{ env.RECORD_NAME }}
+              uses: textileio/cloudflare-update-dnslink@master
+              with:
+                  cid: ${{ steps.web3.outputs.cid }}
+          
+            - name: Show deployment address
+              run: echo ${{ needs.bump_version.outputs.new_tag }} Deployed at ${{ env.deploy_addr }}
 
             # GitHub release with links
             # - name: Create GitHub Release with tag ${{ needs.bump_version.outputs.new_tag }}
@@ -132,11 +103,11 @@ jobs:
             #   id: create_release
             #   uses: ncipollo/release-action@v1.8.4
             #   env:
-            #       GITHUB_TOKEN: ${{ secrets.BUNDLEMON_GITHUB_TOKEN }}
+            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             #   with:
             #       tag: ${{ needs.bump_version.outputs.new_tag }}
             #       name: ${{ needs.bump_version.outputs.new_tag }}
-            #       token: ${{ secrets.BUNDLEMON_GITHUB_TOKEN }}
+            #       token: ${{ secrets.GITHUB_TOKEN }}
             #       body: |
             #           IPFS hash of the deployment:
             #           - CIDv0: `${{ steps.upload.outputs.hash }}`
