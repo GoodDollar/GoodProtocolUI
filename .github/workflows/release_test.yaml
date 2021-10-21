@@ -51,7 +51,7 @@ jobs:
 
             - name: Set network env(s)
               run: |
-                  echo "RECORD_NAME=_dnslink.dev" >> $GITHUB_ENV
+                  echo "RECORD_NAME=fi-qa" >> $GITHUB_ENV
                   echo "subdomain=fi-qa" >> $GITHUB_ENV
                   echo "deploy_addr=${{ env.subdomain }}.${{ secrets.CLOUDFLARE_DOMAIN }}" >> $GITHUB_ENV
 
