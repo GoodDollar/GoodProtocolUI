@@ -177,7 +177,7 @@ ReactDOM.render(
                                 <ThemeProvider>
                                     <GlobalStyle />
                                     <KashiProvider>
-                                        <Router>
+                                        <Router basename="/">
                                             <CustomApp />
                                         </Router>
                                     </KashiProvider>
