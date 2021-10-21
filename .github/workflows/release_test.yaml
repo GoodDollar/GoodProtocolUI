@@ -51,7 +51,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v2
 
-            - run: echo "RECORD_NAME=_dnslink.fi-dev" >> $GITHUB_ENV
+            - run: echo "RECORD_NAME=_dnslink.fi-qa" >> $GITHUB_ENV
 
             # - run: |
             #       echo "${{ secrets.DOTENV }}" >> .env
@@ -65,7 +65,7 @@ jobs:
             #       echo "subdomain=" >> $GITHUB_ENV     
             #       sed -i 's/REACT_APP_NETWORK=development/REACT_APP_NETWORK=production/' .env
               run: |
-                  echo "subdomain=fi-dev" >> $GITHUB_ENV
+                  echo "subdomain=fi-qa" >> $GITHUB_ENV
                   echo "deploy_addr=${{ env.subdomain }}.${{ secrets.CLOUDFLARE_DOMAIN }}" >> $GITHUB_ENV
             # - run: echo "deploy_tag=${{ needs.bump_version.outputs.new_tag }}" >> $GITHUB_ENV
             - name: Load node v14
