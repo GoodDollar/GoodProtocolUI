@@ -74,9 +74,9 @@ jobs:
               id: web3
               uses: web3-storage/add-to-web3@v1
               with:
-                # web3_token: ${{ secrets.WEB3_STORAGE_TOKEN }}
-                web3_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweEU2RDQ4YjBiNjcyYTE3OUMzM2EwYjI3OTI1ZEI3NUNkMDc5OTNhRDEiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2MzQ2OTU0Mzg0NTcsIm5hbWUiOiJ0ZXN0IGdkIn0.DYLTIBAo500MqBEDp9pDYCJoOeOriTLsUwSvYu65XWM'
-                path_to_add: './build'
+                  # web3_token: ${{ secrets.WEB3_STORAGE_TOKEN }}
+                  web3_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweEU2RDQ4YjBiNjcyYTE3OUMzM2EwYjI3OTI1ZEI3NUNkMDc5OTNhRDEiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2MzQ2OTU0Mzg0NTcsIm5hbWUiOiJ0ZXN0IGdkIn0.DYLTIBAo500MqBEDp9pDYCJoOeOriTLsUwSvYu65XWM'
+                  path_to_add: './build'
 
             - name: Display pin address
               run: |
@@ -84,19 +84,30 @@ jobs:
                   echo cid ${{ steps.web3.outputs.cid }}
 
             # DNS
+            # - name: Update DNS with new IPFS hash
+            #   env:
+            #       CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+            #       CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+            #       RECORD_DOMAIN: ${{ secrets.CLOUDFLARE_DOMAIN }}
+            #       RECORD_NAME: ${{ env.RECORD_NAME }}
+            #   uses: textileio/cloudflare-update-dnslink@master
+            #   with:
+            #       cid: ${{ steps.web3.outputs.cid }}
+
             - name: Update DNS with new IPFS hash
               env:
-                  CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
-                  CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
-                  RECORD_DOMAIN: ${{ secrets.CLOUDFLARE_DOMAIN }}
-                  RECORD_NAME: ${{ env.RECORD_NAME }}
-              uses: textileio/cloudflare-update-dnslink@master
-              with:
-                  cid: ${{ steps.web3.outputs.cid }}
-          
+                  RECORD_ID: 'b92767ac95078f1ed897b639585cb5b6'
+              run: |
+                  curl \
+                  -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_TOKEN }}" \
+                  -H "Content-Type: application/json" \
+                  -X PUT \
+                  --data "{\"type\":\"TXT\",\"name\":\"${{ env.RECORD_NAME }}.${{ secrets.CLOUDFLARE_DOMAIN }}\",\"content\":\"dnslink=/ipfs/${{ steps.web3.outputs.cid }}\"}" \
+                  -s "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/dns_records/${{ env.RECORD_ID }}"
+
             - name: Show deployment address
               run: echo ${{ needs.bump_version.outputs.new_tag }} Deployed at ${{ env.deploy_addr }}
-
+            
             # GitHub release with links
             # - name: Create GitHub Release with tag ${{ needs.bump_version.outputs.new_tag }}
             #   if: ${{ contains(github.ref,'production') }}
