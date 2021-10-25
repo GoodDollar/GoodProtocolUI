@@ -32,8 +32,7 @@ jobs:
               id: web3
               uses: web3-storage/add-to-web3@v1
               with:
-                  # web3_token: ${{ secrets.WEB3_STORAGE }} # to be swapped with actual token
-                  web3_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweEU2RDQ4YjBiNjcyYTE3OUMzM2EwYjI3OTI1ZEI3NUNkMDc5OTNhRDEiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2MzQ2OTU0Mzg0NTcsIm5hbWUiOiJ0ZXN0IGdkIn0.DYLTIBAo500MqBEDp9pDYCJoOeOriTLsUwSvYu65XWM'
+                  web3_token: ${{ secrets.WEB3_STORAGE }}
                   path_to_add: './build'
 
             - name: Display pin address
