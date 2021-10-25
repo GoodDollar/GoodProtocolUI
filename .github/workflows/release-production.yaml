@@ -4,8 +4,6 @@ on:
     push:
         branches:
             - master
-            - feature/GoodProtocolUI-32 # to be removed after testing
-    # allow manual run
     workflow_dispatch:
 
 jobs:
@@ -57,7 +55,6 @@ jobs:
               id: web3
               uses: web3-storage/add-to-web3@v1
               with:
-                  # web3_token: ${{ secrets.WEB3_STORAGE }} # to be swapped with actual token
                   web3_token: ${{ secrets.WEB3_STORAGE }}
                   path_to_add: './build'
 
@@ -80,7 +77,7 @@ jobs:
 
             # GitHub release with links
             - name: Create GitHub Release with tag ${{ needs.bump_version.outputs.new_tag }}
-              if: ${{ contains(github.ref, 'master') || contains(github.ref, 'feature/GoodProtocolUI-32') }}
+              if: ${{ contains(github.ref, 'master') }}
               id: create_release
               uses: ncipollo/release-action@v1.8.4
               env:
