@@ -20,10 +20,11 @@ jobs:
                   fetch-depth: '0'
             - name: Bump version and push tag
               id: github_tag_action
-              uses: mathieudutour/github-tag-action@v5.5
+              uses: mathieudutour/github-tag-action@v5.5              
               with:
+                  default_bump: patch
                   github_token: ${{ secrets.GITHUB_TOKEN }}
-                  release_branches: .*
+                  release_branches: production
 
     deploy:
         name: Deploy Release
