@@ -22,7 +22,7 @@ jobs:
               id: github_tag_action
               uses: mathieudutour/github-tag-action@v5.5              
               with:
-                  default_bump: patch
+                  default_bump: minor
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   release_branches: production
 
