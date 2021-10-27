@@ -109,7 +109,7 @@ function CustomApp() {
                     <Wrapper>
                         <Image src={LogoImg} alt="logo" width="100px" />
                         <Text>
-                            Enter password to continue to <b>GoodDollar.</b>
+                            Enter password to continue to <b>GoodDollar</b>
                         </Text>
                         <Input
                             type="password"
