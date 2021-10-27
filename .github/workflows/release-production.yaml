@@ -43,7 +43,7 @@ jobs:
 
             - name: Set network env(s)
               run: |
-                  if [[ $BRANCH == 'production' ]]; then
+                  if [[ $BRANCH == 'production' || $BRANCH == 'dev-mukul' ]]; then
                       echo "NETWORK=production" >> $GITHUB_ENV
                       echo "CLOUDFLARE_RECORD_NAME=_dnslink.fi" >> "$GITHUB_ENV"
                       echo "SUBDOMAIN=fi" >> "$GITHUB_ENV"
