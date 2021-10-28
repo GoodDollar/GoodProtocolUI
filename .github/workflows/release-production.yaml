@@ -1,4 +1,4 @@
-name: Production Release
+name: Test Release dev-mukul
 
 on:
     push:
@@ -6,7 +6,6 @@ on:
             - master
             - production
             - staging
-            - dev-mukul
     workflow_dispatch:
 
 jobs:
@@ -43,15 +42,14 @@ jobs:
 
             - name: Set network env(s)
               run: |
-                  if [[ $BRANCH == 'production' || $BRANCH == 'dev-mukul' ]]; then
-                      echo "NETWORK=production" >> $GITHUB_ENV
+                  echo "NETWORK=${{ env.BRANCH }}" >> $GITHUB_ENV
+                  if [[ $BRANCH == 'production' ]]; then
                       echo "CLOUDFLARE_RECORD_NAME=_dnslink.fi" >> "$GITHUB_ENV"
                       echo "SUBDOMAIN=fi" >> "$GITHUB_ENV"
                   else
                       echo "CLOUDFLARE_RECORD_NAME=_dnslink.fi-qa" >> "$GITHUB_ENV"
                       echo "SUBDOMAIN=fi-qa" >> "$GITHUB_ENV"
                   fi
-
             - name: Load node v14
               uses: actions/setup-node@v1
               with:
@@ -75,7 +73,6 @@ jobs:
               run: |
                   echo published as ${{ steps.web3.outputs.url }}
                   echo cid ${{ steps.web3.outputs.cid }}
-
             # DNS
             - name: Update DNS with new IPFS hash
               env:
@@ -90,7 +87,7 @@ jobs:
 
             # GitHub release with links
             - name: Create GitHub Release with tag ${{ needs.bump_version.outputs.new_tag }}
-              if: ${{ contains(github.ref,'production') }}
+              if: ${{ contains(github.ref, 'production') }}
               id: create_release
               uses: ncipollo/release-action@v1.8.4
               env:
