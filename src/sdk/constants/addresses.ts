@@ -24,6 +24,9 @@ export function G$ContractAddresses<T = ObjectLike>(chainId: SupportedChainId, n
         case SupportedChainId.KOVAN:
             deploymentName = 'kovan-mainnet'
             break
+        case SupportedChainId.ROPSTEN:
+            deploymentName = 'staging-mainnet'
+            break
         case SupportedChainId.FUSE:
             deploymentName = CURRENT_NETWORK
             break
