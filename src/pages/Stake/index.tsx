@@ -213,3 +213,5 @@ export default function Stakes(): JSX.Element | null {
         </Layout>
     )
 }
+
+
