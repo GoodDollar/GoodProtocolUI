@@ -82,7 +82,6 @@
   "Click here to switch to Polygon using Metamask": "点击这里，使用Metamask切换到Polygon。",
   "Click on a pool below, input the amount you wish to migrate or select max, and click\nmigrate": "点击下面的一个池子，输入您想迁移的数量或选择最大，然后点击/nmigrate",
   "Click this button to Claim your Daily UBI in": "单击此按钮可供您在每日UBI",
-  "Click this button to Claim your Daily UBI in G$": "单击此按钮可介绍每日UBI以$",
   "Close": "关闭",
   "Collateral": "抵押品",
   "Common bases": "共同的基础",
@@ -101,7 +100,7 @@
   "Connect to a wallet to view your liquidity": "连接钱包以查看您的流动性",
   "Connect wallet": "",
   "Connected with": "与",
-  "Copied": "已复制",
+  "Copied": "",
   "Copy address": "复制地址",
   "Create Pool & Supply": "创建池和供应",
   "Create a Pair": "创建池",
@@ -510,5 +509,6 @@
   "{0} Deposited": "{0}存入的",
   "{0} Strategy": "{0}策略",
   "{0} per {1}": "{0}每{1}",
-  "• Added by user": "•由用户添加"
+  "• Added by user": "•由用户添加",
+  "Dashboard": "Dashboard"
 }
