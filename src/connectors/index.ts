@@ -47,7 +47,8 @@ export const injected = new InjectedConnector({
 // mainnet only
 export const walletconnect = new WalletConnectConnector({
     rpc: {
-        // [ChainId.MAINNET]: RPC[ChainId.MAINNET],
+        [ChainId.MAINNET]: RPC[ChainId.MAINNET],
+        [ChainId.ROPSTEN]: RPC[ChainId.ROPSTEN],
         [ChainId.KOVAN]: RPC[ChainId.KOVAN],
         [122]: RPC[122]
     },

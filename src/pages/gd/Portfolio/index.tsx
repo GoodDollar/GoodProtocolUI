@@ -24,8 +24,8 @@ const Portfolio = () => {
     const { i18n } = useLingui()
     const web3 = useWeb3()
     const { chainId, account } = useActiveWeb3React()
-    const [mainnetWeb3, mainnetChainId] = useEnvWeb3(SupportedChainId.MAINNET, web3)
-    const [fuseWeb3, fuseChainId] = useEnvWeb3(SupportedChainId.FUSE, web3)
+    const [mainnetWeb3, mainnetChainId] = useEnvWeb3(DAO_NETWORK.MAINNET)
+    const [fuseWeb3, fuseChainId] = useEnvWeb3(DAO_NETWORK.FUSE)
 
     const [data, , , update] = usePromise(async () => {
         const list = account && mainnetWeb3 && fuseWeb3 ? await getMyList(mainnetWeb3, fuseWeb3, account) : []
@@ -169,7 +169,7 @@ const Portfolio = () => {
                     </div>
                 </PortfolioAnalyticSC>
             </Card>
-            <PortfolioTitleSC className="mb-3 pl-2">Ethereum</PortfolioTitleSC>
+            <PortfolioTitleSC className="mb-3 pl-2">{i18n._(`Positions`)}</PortfolioTitleSC>
             <Card contentWrapped={false}>
                 <Table
                     header={

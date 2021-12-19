@@ -204,7 +204,7 @@ export default function Stakes(): JSX.Element | null {
     const { chainId, account } = useActiveWeb3React()
     const governanceStaking = useGovernanceStaking()
     const web3 = useWeb3()
-    const [mainnetWeb3, mainnetChainId] = useEnvWeb3(SupportedChainId.MAINNET, web3)
+    const [mainnetWeb3, mainnetChainId] = useEnvWeb3(DAO_NETWORK.MAINNET)
     const [stakes = [], loading, error, refetch] = usePromise(async () => {
         const [stakes] = await Promise.all([
             web3 && mainnetWeb3 ? getStakes(mainnetWeb3) : Promise.resolve([]),

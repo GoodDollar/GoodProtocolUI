@@ -1,12 +1,8 @@
-import { ethers } from 'ethers'
-import { useCallback, useEffect, useState, useMemo } from 'react'
-import ALCX_REWARDER_ABI from 'constants/abis/alcx-rewarder.json'
+import { useEffect, useState, useMemo } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
-import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { getContract } from 'sdk/utils/getContract'
 import GovernanceStaking from '@gooddollar/goodprotocol/artifacts/contracts/governance/GovarnanceStaking.sol/GovernanceStaking.json'
-import { SupportedChainId } from 'sdk/constants/chains'
-import { Contract } from '@ethersproject/contracts'
+import { DAO_NETWORK, SupportedChainId } from 'sdk/constants/chains'
 import { getReserveRatio, Stake, getReserveSocialAPY } from 'sdk/staking'
 import { G$, GDAO } from 'sdk/constants/tokens'
 import useWeb3 from 'hooks/useWeb3'
@@ -17,7 +13,7 @@ import { getChainId } from 'sdk/utils/web3'
 
 type Stats = { [key: string]: BigNumber }
 export const useGovernanceStaking = (): Array<Stake> => {
-    const [mainnetWeb3, mainnetChainId] = useEnvWeb3(SupportedChainId.MAINNET)
+    const [mainnetWeb3, mainnetChainId] = useEnvWeb3(DAO_NETWORK.MAINNET)
     const [stakes, setStakes] = useState<Array<Stake>>([])
     const stakingContract = useMemo(
         () => getContract(SupportedChainId.FUSE, 'GovernanceStaking', GovernanceStaking.abi),
