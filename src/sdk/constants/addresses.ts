@@ -18,26 +18,25 @@ export function G$ContractAddresses<T = ObjectLike>(chainId: SupportedChainId, n
     let deploymentName: string
 
     switch (chainId) {
-        case SupportedChainId.MAINNET:
-            deploymentName = 'production-mainnet'
-            break
         case SupportedChainId.KOVAN:
             deploymentName = 'kovan-mainnet'
             break
+        case SupportedChainId.MAINNET:
         case SupportedChainId.ROPSTEN:
-            deploymentName = 'staging-mainnet'
+            deploymentName = CURRENT_NETWORK + '-mainnet'
             break
         case SupportedChainId.FUSE:
             deploymentName = CURRENT_NETWORK
             break
     }
 
+    console.log('G$Contracts request:', chainId, deploymentName, name)
     if (!contractsAddresses[deploymentName]) {
-        throw new Error('Unsupported chain ID')
+        console.warn(`tokens: Unsupported chain ID ${deploymentName}`, CURRENT_NETWORK)
+        deploymentName = deploymentName.includes('mainnet') ? CURRENT_NETWORK + '-mainnet' : CURRENT_NETWORK
     }
-
     if (!contractsAddresses[deploymentName][name]) {
-        throw new Error(`Inappropriate contract name ${name}`)
+        throw new Error(`Inappropriate contract name ${name} in ${deploymentName} ${chainId}`)
     }
 
     return (contractsAddresses[deploymentName][name] as unknown) as T
