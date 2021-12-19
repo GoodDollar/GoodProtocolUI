@@ -101,7 +101,7 @@ export default function AddressInputPanel({
                 <InputContainer>
                     <AutoColumn gap="md">
                         <RowBetween>
-                            <TYPE.black color={theme.text2} fontWeight={500} fontSize={14}>
+                            <TYPE.black color={theme?.text2} fontWeight={500} fontSize={14}>
                                 {i18n._(t`Recipient`)}
                             </TYPE.black>
                             {address && chainId && (
