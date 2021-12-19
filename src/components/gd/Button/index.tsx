@@ -11,7 +11,7 @@ export const ButtonAction = styled.button<{
     align-items: center;
     justify-content: center;
     height: ${({ size }) => (size === 'sm' ? '32px' : '71px')};
-    width: ${({ width = '100%' }) => width};
+    min-width: ${({ width = '100%' }) => width};
     border-radius: ${({ borderRadius = '20px' }) => borderRadius};
     color: ${({ theme }) => theme.color.main};
     background: ${({ theme }) => theme.color.text2};
@@ -23,7 +23,7 @@ export const ButtonAction = styled.button<{
     font-size: ${({ size }) => (size === 'sm' ? '14px' : '20px')};
     line-height: 16px;
     text-align: center;
-
+    text-transform: capitalize;
     user-select: none;
 
     :disabled {
