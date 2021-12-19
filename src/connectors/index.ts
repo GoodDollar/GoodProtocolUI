@@ -55,3 +55,8 @@ export const walletconnect = new WalletConnectConnector({
     qrcode: true,
     pollingInterval: 15000
 })
+
+export const Fortmatic = {}
+export const fortmatic = {}
+export const Portis = {}
+export const portis = {}

@@ -65,9 +65,8 @@ function AppBar(): JSX.Element {
     const { account, chainId, library } = useActiveWeb3React()
     const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
     const [G$Price] = usePromise(async () => {
-        if (!chainId) return undefined
         try {
-            const data = await g$Price(chainId)
+            const data = await g$Price()
             return data.DAI
         } catch {
             return undefined
