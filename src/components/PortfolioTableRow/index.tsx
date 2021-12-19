@@ -5,7 +5,7 @@ import { MyStake } from '../../sdk/staking'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { LIQUIDITY_PROTOCOL } from 'sdk/constants/protocols'
-import { SupportedChainId } from 'sdk/constants/chains'
+import { DAO_NETWORK, SupportedChainId } from 'sdk/constants/chains'
 import { ActionOrSwitchButton } from 'components/gd/Button/ActionOrSwitchButton'
 
 interface PortfolioTableRowProps {
@@ -73,10 +73,10 @@ function PortfolioTableRow({ stake, onWithdraw }: PortfolioTableRowProps) {
                     <div className="flex justify-end">
                         <ActionOrSwitchButton
                             size="sm"
-                            width="99px"
+                            width="100%"
                             borderRadius="6px"
                             noShadow={true}
-                            requireChainId={stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ? SupportedChainId.FUSE : SupportedChainId.MAINNET}
+                            requireNetwork={stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ? DAO_NETWORK.FUSE : DAO_NETWORK.MAINNET}
                             onClick={handleWithdrawOpen}
                         >
                             {i18n._(t`Withdraw`)}
@@ -88,10 +88,10 @@ function PortfolioTableRow({ stake, onWithdraw }: PortfolioTableRowProps) {
                 <td colSpan={8}>
                     <ActionOrSwitchButton
                         size="sm"
-                        width="99px"
+                        width="100%"
                         borderRadius="6px"
                         noShadow={true}
-                        requireChainId={stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ? SupportedChainId.FUSE : SupportedChainId.MAINNET}
+                        requireNetwork={stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ? DAO_NETWORK.FUSE : DAO_NETWORK.MAINNET}
                         onClick={handleWithdrawOpen}
                     >
                         {i18n._(t`Withdraw`)}

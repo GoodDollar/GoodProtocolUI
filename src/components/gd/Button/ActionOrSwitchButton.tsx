@@ -5,17 +5,17 @@ import React from 'react'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { ButtonAction } from './index'
 import { useLingui } from '@lingui/react'
-import { NETWORK_LABELS } from 'sdk/constants/chains'
+import { DAO_NETWORK, SupportedChainId } from 'sdk/constants/chains'
 import { useNetworkModalToggle } from 'state/application/hooks'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const ActionOrSwitchButton = ({ requireChainId, children, ButtonEl = ButtonAction, ...props }: {
+export const ActionOrSwitchButton = ({ requireNetwork, children, ButtonEl = ButtonAction, ...props }: {
     width?: string
     borderRadius?: string
     error?: boolean
     size?: 'default' | 'sm'
     noShadow?: boolean
-    requireChainId: number,
+    requireNetwork: DAO_NETWORK,
     children: any,
     onClick?: any,
     ButtonEl?: any
@@ -24,9 +24,9 @@ export const ActionOrSwitchButton = ({ requireChainId, children, ButtonEl = Butt
     const { i18n } = useLingui()
     const { chainId, account } = useActiveWeb3React()
     // useEffect(() => { }, [chainId, account])
-    if (chainId === requireChainId)
+    if (chainId === SupportedChainId.FUSE as number && requireNetwork === DAO_NETWORK.FUSE || chainId !== SupportedChainId.FUSE as number && requireNetwork === DAO_NETWORK.MAINNET)
         return <ButtonEl {...props} >{children}</ButtonEl >
 
-    return <ButtonEl {...props} width={'100%'} onClick={toggleNetworkModal}>{i18n._(`Switch network to {network}`, { network: NETWORK_LABELS[requireChainId] })}</ButtonEl >
+    return <ButtonEl {...props} onClick={toggleNetworkModal}>{i18n._(`Switch to {network}`, { network: requireNetwork })}</ButtonEl >
 
 }

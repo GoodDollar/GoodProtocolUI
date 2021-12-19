@@ -22,7 +22,7 @@ import { compoundPrice } from './methods/compoundPrice'
 import { v2TradeExactIn } from './methods/v2TradeExactIn'
 import { cDaiPrice } from './methods/cDaiPrice'
 import { TransactionDetails } from './constants/transactions'
-import { SupportedChainId } from './constants/chains'
+import { DAO_NETWORK, SupportedChainId } from './constants/chains'
 
 export type Stake = {
     APY?: Fraction
@@ -47,6 +47,7 @@ export type MyStake = {
     }
     stake: { amount: CurrencyAmount<Currency>; amount$: CurrencyAmount<Currency> }
     tokens: { A: Token; B: Token }
+    network: DAO_NETWORK
 }
 
 /**
@@ -241,7 +242,8 @@ async function metaMyStake(web3: Web3, address: string, account: string): Promis
             GDAO: rewardGDAO
         },
         stake: { amount, amount$ },
-        tokens: { A: token, B: iToken }
+        tokens: { A: token, B: iToken },
+        network: DAO_NETWORK.MAINNET
     }
 
     debug('Reward $ claimed', result.rewards.reward$.claimed.toSignificant(6))
@@ -301,7 +303,8 @@ async function metaMyGovStake(web3: Web3, account: string): Promise<MyStake | nu
             GDAO: rewardGDAO
         },
         stake: { amount, amount$ },
-        tokens: { A: G$Token, B: G$Token }
+        tokens: { A: G$Token, B: G$Token },
+        network: DAO_NETWORK.FUSE
     }
     return result
 }
@@ -755,10 +758,10 @@ export async function stakeGov(
     inInterestToken = false, //unused - only for compatability with the stake method
     onSent?: (transactionHash: string) => void
 ): Promise<TransactionDetails> {
-    const contract = await governanceStakingContract(web3, address)
+    const contract = governanceStakingContract(web3, address)
     const account = await getAccount(web3)
 
-    let tokenAmount = amount.toBigNumber(token.decimals)
+    const tokenAmount = amount.toBigNumber(token.decimals)
     const req = contract.methods.stake(tokenAmount).send({ from: account })
 
     if (onSent) req.on('transactionHash', onSent)
@@ -834,7 +837,32 @@ export async function withdraw(
 }
 
 /**
- * Claim rewards from staking.
+ * Claim GOOD rewards from staking.
+ * @param {Web3} web3 Web3 instance.
+ * @param {function} [onSent] calls when transactions sent to a blockchain
+ */
+export async function claimGood(
+    web3: Web3,
+    onSent?: (firstTransactionHash: string) => void
+): Promise<TransactionDetails[]> {
+    const chainId = await getChainId(web3)
+    const account = await getAccount(web3)
+
+    let tx
+    if (chainId === SupportedChainId.FUSE) {
+        const contract = governanceStakingContract(web3)
+        tx = contract.methods.withdrawRewards().send({ from: account })
+    } else {
+        const stakersDistribution = await stakersDistributionContract(web3)
+        const simpleStakingAddresses = await getSimpleStakingContractAddresses(web3)
+        tx = stakersDistribution.methods.claimReputation(account, simpleStakingAddresses).send({ from: account })
+    }
+    tx.on('transactionHash', onSent)
+    return [tx]
+}
+
+/**
+ * Claim G$ rewards from staking.
  * @param {Web3} web3 Web3 instance.
  * @param {function} [onSent] calls when transactions sent to a blockchain
  */
@@ -847,7 +875,6 @@ export async function claim(
 
     const simpleStakingAddresses = await getSimpleStakingContractAddresses(web3)
 
-    let totalRewardGDAO = CurrencyAmount.fromRawAmount(GDAO[chainId], 0) as CurrencyAmount<Currency>
     const transactions: any[] = []
     for (const address of simpleStakingAddresses) {
         const [rewardG$, rewardGDAO] = await Promise.all([
@@ -855,21 +882,10 @@ export async function claim(
             getRewardGDAO(web3, address, account)
         ])
 
-        if (!rewardGDAO.unclaimed.equalTo(0)) {
-            totalRewardGDAO = totalRewardGDAO.add(rewardGDAO.unclaimed)
-        }
-
         if (!rewardG$.unclaimed.equalTo(0)) {
             const simpleStaking = simpleStakingContract(web3, address)
             transactions.push(simpleStaking.methods.withdrawRewards().send({ from: account }))
         }
-    }
-
-    if (!totalRewardGDAO.equalTo(0)) {
-        const stakersDistribution = await stakersDistributionContract(web3)
-        transactions.push(
-            stakersDistribution.methods.claimReputation(account, simpleStakingAddresses).send({ from: account })
-        )
     }
 
     if (onSent) {

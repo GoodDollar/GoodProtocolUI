@@ -21,10 +21,10 @@ import usePromise from 'hooks/usePromise'
 import { QuestionHelper } from 'components'
 import { useGovernanceStaking } from 'sdk/hooks/gov/useGovernanceStaking'
 import { useEnvWeb3 } from 'sdk/hooks/useEnvWeb3'
-import { SupportedChainId } from 'sdk/constants/chains'
+import { DAO_NETWORK, SupportedChainId } from 'sdk/constants/chains'
 import { LIQUIDITY_PROTOCOL } from 'sdk/constants/protocols'
 
-const StakeTable = ({ list, error, loading, hasAPY = true, rewardsSortKey = 'rewards.G$', chainId, setActiveStake }: { list: any, error: Error | undefined, loading: boolean, hasAPY?: boolean, rewardsSortKey?: string, chainId: number, setActiveStake: any }) => {
+const StakeTable = ({ list, error, loading, hasAPY = true, rewardsSortKey = 'rewards.G$', network, setActiveStake }: { list: any, error: Error | undefined, loading: boolean, hasAPY?: boolean, rewardsSortKey?: string, network: DAO_NETWORK, setActiveStake: any }) => {
     const { i18n } = useLingui()
 
     return (
@@ -126,7 +126,7 @@ const StakeTable = ({ list, error, loading, hasAPY = true, rewardsSortKey = 'rew
                                         <div style={{ width: 48 }}>
                                             <AsyncTokenIcon
                                                 address={stake.tokens.A.address}
-                                                chainId={chainId}
+                                                chainId={SupportedChainId.MAINNET as number}
                                                 className="block w-5 h-5 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-lg"
                                             />
                                         </div>
@@ -171,7 +171,7 @@ const StakeTable = ({ list, error, loading, hasAPY = true, rewardsSortKey = 'rew
                                             width="78px"
                                             borderRadius="6px"
                                             noShadow={true}
-                                            requireChainId={chainId}
+                                            requireNetwork={network}
                                             onClick={() => setActiveStake(stake)}
                                         >
                                             {i18n._(t`Stake`)}
@@ -184,7 +184,7 @@ const StakeTable = ({ list, error, loading, hasAPY = true, rewardsSortKey = 'rew
                                             size="sm"
                                             borderRadius="6px"
                                             noShadow={true}
-                                            requireChainId={chainId}
+                                            requireNetwork={network}
                                             onClick={() => setActiveStake(stake)}
                                         >
                                             {i18n._(t`Stake`)}
@@ -211,7 +211,7 @@ export default function Stakes(): JSX.Element | null {
             new Promise(resolve => setTimeout(resolve, 1000))
         ])
         return stakes
-    }, [chainId, account, mainnetWeb3])
+    }, [web3, mainnetWeb3])
     const sorted = useSearchAndSort(
         stakes,
         { keys: ['tokens.A.symbol', 'tokens.B.symbol', 'tokens.A.name', 'tokens.B.name'], threshold: 0.1 },
@@ -228,10 +228,10 @@ export default function Stakes(): JSX.Element | null {
     return (
         <Layout>
             <MarketHeader title={i18n._(t`GoodStakes`)} lists={sorted} noSearch={stakes.length < 2} />
-            <StakeTable list={sorted} error={error} loading={loading} chainId={mainnetChainId} setActiveStake={setActiveStake} />
+            <StakeTable list={sorted} error={error} loading={loading} network={DAO_NETWORK.MAINNET} setActiveStake={setActiveStake} />
             <div className="mt-12" />
             <MarketHeader title={i18n._(t`GoodDAO Staking`)} lists={sorted} noSearch={govsorted.items?.length < 2} />
-            <StakeTable list={govsorted} error={error} loading={loading} chainId={SupportedChainId.FUSE} hasAPY={false} rewardsSortKey={'rewards.GDAO'} setActiveStake={setActiveStake} />
+            <StakeTable list={govsorted} error={error} loading={loading} network={DAO_NETWORK.FUSE} hasAPY={false} rewardsSortKey={'rewards.GDAO'} setActiveStake={setActiveStake} />
 
             <Modal isOpen={!!activeStake} showClose onDismiss={() => setActiveStake(undefined)}>
                 {activeStake && (

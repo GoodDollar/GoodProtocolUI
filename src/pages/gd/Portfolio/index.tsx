@@ -12,7 +12,7 @@ import { getMyList } from 'sdk/staking'
 import useWeb3 from 'hooks/useWeb3'
 import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { portfolioSupportedAt, SupportedChainId } from 'sdk/constants/chains'
+import { DAO_NETWORK, portfolioSupportedAt, SupportedChainId } from 'sdk/constants/chains'
 import Placeholder from 'components/gd/Placeholder'
 import { QuestionHelper } from 'components'
 import { t } from '@lingui/macro'
@@ -118,7 +118,7 @@ const Portfolio = () => {
                 </PortfolioAnalyticSC>
             </Card>
             <Card className="mb-4">
-                <PortfolioAnalyticSC className="flex">
+                <PortfolioAnalyticSC style={{ height: 'auto' }} className="flex">
                     <div className="flex flex-col justify-center ">
                         <PortfolioTitleSC className="claimable-rewards">
                             {i18n._(t`Claimable`)} <br /> {i18n._(t`rewards`)}
@@ -143,18 +143,29 @@ const Portfolio = () => {
                         </PortfolioValueSC>
                     </div>
                     <div className="flex flex-col justify-center items-end">
-                        <WithdrawRewards
-                            onClaim={update}
-                            trigger={<ActionOrSwitchButton
-                                width="156px"
-                                noShadow={true}
-                                requireChainId={SupportedChainId.MAINNET}
-                                ButtonEl={ButtonDefault}
-                            >
-                                {i18n._(t`Claim rewards`)}
-                            </ActionOrSwitchButton>}
-                        // trigger={<ButtonDefault width={'156px'}>{i18n._(t`Claim rewards`)}</ButtonDefault>}
-                        />
+                        <div>
+                            <WithdrawRewards
+                                onClaim={update}
+                                type='G$'
+                                trigger={<ActionOrSwitchButton
+                                    width="156px"
+                                    // noShadow={true}
+                                    requireNetwork={DAO_NETWORK.MAINNET}
+                                    ButtonEl={ButtonDefault}
+                                >
+                                    {i18n._(t`Claim G$ rewards`)}
+                                </ActionOrSwitchButton>}
+                            // trigger={<ButtonDefault width={'156px'}>{i18n._(t`Claim rewards`)}</ButtonDefault>}
+                            />
+                        </div>
+                        <div>
+                            <WithdrawRewards
+                                onClaim={update}
+                                type='GOOD'
+                                trigger={<ButtonDefault className='mt-1' width={'156px'}>{i18n._(t`Claim GOOD rewards`)}</ButtonDefault>}
+                            // trigger={<ButtonDefault width={'156px'}>{i18n._(t`Claim rewards`)}</ButtonDefault>}
+                            />
+                        </div>
                     </div>
                 </PortfolioAnalyticSC>
             </Card>

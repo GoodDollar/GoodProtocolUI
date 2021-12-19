@@ -12,6 +12,7 @@ export const ButtonAction = styled.button<{
     justify-content: center;
     height: ${({ size }) => (size === 'sm' ? '32px' : '71px')};
     min-width: ${({ width = '100%' }) => width};
+    padding:5px;
     border-radius: ${({ borderRadius = '20px' }) => borderRadius};
     color: ${({ theme }) => theme.color.main};
     background: ${({ theme }) => theme.color.text2};
@@ -43,6 +44,7 @@ export const ButtonDefault = styled.button<{
     justify-content: center;
     height: ${({ size }) => (size === 'sm' ? '32px' : '42px')};
     width: ${({ width = '100%' }) => width};
+    padding:5px;
     border-radius: ${({ borderRadius = '12px' }) => borderRadius};
     color: ${({ theme }) => theme.color.main};
 
