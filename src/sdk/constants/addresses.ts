@@ -32,7 +32,6 @@ export function G$ContractAddresses<T = ObjectLike>(chainId: SupportedChainId, n
             break
     }
 
-    console.log('G$Contracts request:', chainId, deploymentName, name)
     if (!contractsAddresses[deploymentName]) {
         console.warn(`tokens: Unsupported chain ID ${deploymentName}`, CURRENT_NETWORK)
         deploymentName = deploymentName.includes('mainnet') ? CURRENT_NETWORK + '-mainnet' : CURRENT_NETWORK

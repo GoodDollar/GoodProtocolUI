@@ -154,7 +154,6 @@ export class NetworkConnector extends AbstractConnector {
             accumulator[Number(chainId)] = new MiniRpcProvider(Number(chainId), urls[Number(chainId)])
             return accumulator
         }, {})
-        console.log(Object.keys(this.providers))
     }
 
     public get provider(): MiniRpcProvider {
