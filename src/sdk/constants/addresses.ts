@@ -4,7 +4,9 @@ import contractsAddresses, { ObjectLike } from '@gooddollar/goodprotocol/release
 import { constructSameAddressMap } from '../utils/constructSameAddressMap'
 import { SupportedChainId } from './chains'
 
-const CURRENT_NETWORK = process.env.NETWORK || 'staging'
+export const getNetworkEnv = () => {
+    return localStorage.getItem('GD_NETWORK') || process.env.REACT_APP_NETWORK || 'staging'
+}
 
 type AddressMap = { [chainId: number]: string }
 
@@ -16,7 +18,7 @@ type AddressMap = { [chainId: number]: string }
  */
 export function G$ContractAddresses<T = ObjectLike>(chainId: SupportedChainId, name: string): T {
     let deploymentName: string
-
+    const CURRENT_NETWORK = getNetworkEnv()
     switch (chainId) {
         case SupportedChainId.KOVAN:
             deploymentName = 'kovan-mainnet'

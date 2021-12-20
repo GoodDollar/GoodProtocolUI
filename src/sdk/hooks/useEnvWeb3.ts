@@ -4,21 +4,20 @@ import Web3 from 'web3'
 import { SupportedChainId, NETWORK_LABELS, DAO_NETWORK } from 'sdk/constants/chains'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useWeb3 from 'hooks/useWeb3'
+import { getNetworkEnv } from 'sdk/constants/addresses'
 const RPC = {
     [SupportedChainId.MAINNET]:
-        process.env.MAINNET_RPC ||
+        process.env.REACT_APP_MAINNET_RPC ||
         (ethers.getDefaultProvider('mainnet') as any).providerConfigs[0].provider.connection.url,
     [SupportedChainId.ROPSTEN]:
-        process.env.ROPSTEN_RPC ||
+        process.env.REACT_APP_ROPSTEN_RPC ||
         (ethers.getDefaultProvider('ropsten') as any).providerConfigs[0].provider.connection.url,
     [SupportedChainId.KOVAN]:
-        process.env.KOVAN_RPC || (ethers.getDefaultProvider('kovan') as any).providerConfigs[0].provider.connection.url,
-    [SupportedChainId.FUSE]: process.env.FUSE_RPC || 'https://rpc.fuse.io'
+        process.env.REACT_APP_KOVAN_RPC ||
+        (ethers.getDefaultProvider('kovan') as any).providerConfigs[0].provider.connection.url,
+    [SupportedChainId.FUSE]: process.env.REACT_APP_FUSE_RPC || 'https://rpc.fuse.io'
 }
-
-const getEnv = () => {
-    return localStorage.getItem('GD_NETWORK') || process.env.NETWORK || 'staging'
-}
+console.log('env', process.env)
 /**
  * Returns provider for chain.
  * @param {number | string} chainId Chain ID.
@@ -30,13 +29,13 @@ export const useEnvWeb3 = (dao: DAO_NETWORK): [Web3 | null, SupportedChainId] =>
 
     useEffect(() => {
         const getProvider = async () => {
-            const networkEnv = getEnv()
+            const networkEnv = getNetworkEnv()
             let provider,
                 selectedChainId = SupportedChainId.MAINNET
             if (dao === DAO_NETWORK.FUSE) {
                 if (account && (activeChainId as number) === SupportedChainId.FUSE) {
                     return setWeb3([activeWeb3, activeChainId as number])
-                } else provider = new Web3.providers.HttpProvider(process.env.FUSE_RPC || 'https://rpc.fuse.io/')
+                } else provider = new Web3.providers.HttpProvider(RPC[SupportedChainId.FUSE])
             } else {
                 //"mainnet" contracts can be on different blockchains depending on env
                 switch (networkEnv) {
