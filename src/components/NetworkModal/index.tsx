@@ -1,17 +1,17 @@
 import { NETWORK_ICON, NETWORK_LABEL } from '../../constants/networks'
 import { useModalOpen, useNetworkModalToggle } from '../../state/application/hooks'
-
 import { ApplicationModal } from '../../state/application/types'
 import { ChainId } from '@sushiswap/sdk'
 import Modal from '../Modal'
 import ModalHeader from '../ModalHeader'
-import React from 'react'
-import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
+import React, { useMemo } from 'react'
 import Option from '../WalletModal/Option'
 import styled from 'styled-components'
 import { AdditionalChainId } from '../../constants'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
+import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
 
 const PARAMS: {
     [chainId in ChainId | AdditionalChainId]?: {
@@ -161,20 +161,47 @@ const TextWrapper = styled.div`
 
 export default function NetworkModal(): JSX.Element | null {
     const { i18n } = useLingui()
-    const { chainId, library, account } = useActiveWeb3React()
+    const { account, chainId, error } = useWeb3React()
+    const { library } = useActiveWeb3React()
     const networkModalOpen = useModalOpen(ApplicationModal.NETWORK)
     const toggleNetworkModal = useNetworkModalToggle()
-    const allowedNetworks = [ChainId.KOVAN, AdditionalChainId.FUSE, ChainId.ROPSTEN, ChainId.MAINNET]
 
-    if (!chainId) return null
+    const { ethereum } = window
+    const networkLabel: string | null = (NETWORK_LABEL as any)[chainId || (ethereum as any).networkVersion] || null
+    const network = process.env.NETWORK || 'staging'
+
+    const allowedNetworks = useMemo(() => {
+        switch (true) {
+            case network === 'production' && !error:
+                return [ChainId.MAINNET, AdditionalChainId.FUSE]
+
+            case network === 'production' && error instanceof UnsupportedChainIdError:
+                return [ChainId.MAINNET]
+
+            case network === 'staging' && !error:
+                return [ChainId.KOVAN, AdditionalChainId.FUSE, ChainId.ROPSTEN]
+
+            case network === 'staging' && error instanceof UnsupportedChainIdError:
+                return [ChainId.KOVAN, ChainId.ROPSTEN]
+
+            default:
+                return [ChainId.KOVAN, AdditionalChainId.FUSE, ChainId.ROPSTEN, ChainId.MAINNET]
+        }
+    }, [error, network])
+
+    const isMetaMask = window.ethereum && window.ethereum.isMetaMask
 
     return (
         <Modal isOpen={networkModalOpen} onDismiss={toggleNetworkModal}>
             <ModalHeader className="mb-1" onClose={toggleNetworkModal} title="Select network" />
             <TextWrapper>
                 {i18n._(t`You are currently browsing`)} <span className="site">GOOD DOLLAR</span>
-                <br /> {i18n._(t`on the`)} <span className="network">{(NETWORK_LABEL as any)[chainId]}</span>{' '}
-                {i18n._(t`network`)}
+                <br />{' '}
+                {networkLabel && (
+                    <>
+                        {i18n._(t`on the`)} <span className="network">{networkLabel}</span> {i18n._(t`network`)}
+                    </>
+                )}
             </TextWrapper>
 
             <div className="flex flex-col space-y-5 overflow-y-auto mt-3">
@@ -201,9 +228,25 @@ export default function NetworkModal(): JSX.Element | null {
                                     ].includes(key as any)
                                 ) {
                                     console.log(key.toString(16))
-                                    library?.send('wallet_switchEthereumChain', [{ chainId: `0x${key.toString(16)}` }])
+                                    if (isMetaMask) {
+                                        ;(ethereum as any).request({
+                                            method: 'wallet_switchEthereumChain',
+                                            params: [{ chainId: `0x${key.toString(16)}` }]
+                                        })
+                                    } else {
+                                        library?.send('wallet_switchEthereumChain', [
+                                            { chainId: `0x${key.toString(16)}` }
+                                        ])
+                                    }
                                 } else {
-                                    library?.send('wallet_addEthereumChain', [params, account])
+                                    if (isMetaMask) {
+                                        ;(ethereum as any).request({
+                                            method: 'wallet_addEthereumChain',
+                                            params: [params, account]
+                                        })
+                                    } else {
+                                        library?.send('wallet_addEthereumChain', [params, account])
+                                    }
                                 }
                             }}
                         />
