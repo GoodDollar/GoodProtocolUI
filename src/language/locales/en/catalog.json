@@ -533,5 +533,6 @@
   "Total amount on value staked.": "Total amount on value staked.",
   "How much value your stake has accumulated so far.": "How much value your stake has accumulated so far.",
   "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can claim more G$ every day!": "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can claim more G$ every day!",
-  "How many GOOD tokens you are accumulating by this stake position.": "How many GOOD tokens you are accumulating by this stake position."
+  "How many GOOD tokens you are accumulating by this stake position.": "How many GOOD tokens you are accumulating by this stake position.",
+  "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers.": "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers."
 }

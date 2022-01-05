@@ -535,5 +535,6 @@
   "Total amount on value staked.": "Importo totale sul valore puntato.",
   "How much value your stake has accumulated so far.": "Quanto valore è accumulato il tuo gioco finora.",
   "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can claim more G$ every day!": "A partire da 1,0, il tuo moltiplicatore aumenterà fino a 2.0 dopo un mese di picchettio per la fiducia, a quel punto puoi rivendicare più G $ tutti i giorni!",
-  "How many GOOD tokens you are accumulating by this stake position.": "Quanti buoni token stai accumulando con questa posizione di palo."
+  "How many GOOD tokens you are accumulating by this stake position.": "Quanti buoni token stai accumulando con questa posizione di palo.",
+  "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers.": "Scambiare G $ contro Goodreserve non ha commissioni di terze parti se si scambia da / per CDAI poiché è il nostro token di riserva. Swapping G $ s da / per altre attività implica uno 0,3% della commissione che va a fornitori di liquidità AMM di terze parti."
 }
