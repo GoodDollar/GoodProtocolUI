@@ -537,5 +537,6 @@
   "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can claim more G$ every day!": "A partire da 1,0, il tuo moltiplicatore aumenterà fino a 2.0 dopo un mese di picchettio per la fiducia, a quel punto puoi rivendicare più G $ tutti i giorni!",
   "How many GOOD tokens you are accumulating by this stake position.": "Quanti buoni token stai accumulando con questa posizione di palo.",
   "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded.": "Hai appena inscatolato il tuo G $ S verso il nostro Gooddao, questa azione ti ricompensa con buoni token di governance, che non sono trasferibili, quindi non può essere scambiato.",
-  "Go to Portfolio": "Vai al portfolio."
+  "Go to Portfolio": "Vai al portfolio.",
+  "Switch to {network}": "Passa a {network}"
 }

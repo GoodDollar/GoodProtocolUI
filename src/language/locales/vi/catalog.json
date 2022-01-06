@@ -536,5 +536,6 @@
   "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can claim more G$ every day!": "Bắt đầu từ 1.0, hệ số nhân của bạn sẽ tăng lên 2.0 sau một tháng tập tin vào sự tin tưởng, tại thời điểm nào bạn có thể yêu cầu thêm G $ mỗi ngày!",
   "How many GOOD tokens you are accumulating by this stake position.": "Có bao nhiêu mã thông báo tốt bạn đang tích lũy bởi vị trí cổ phần này.",
   "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded.": "Bạn vừa đặt G $ S về hướng Gooddao của chúng tôi, hành động này sẽ thưởng cho bạn những thông báo quản trị tốt, không thể chuyển nhượng được để không thể giao dịch.",
-  "Go to Portfolio": "Đi đến danh mục đầu tư"
+  "Go to Portfolio": "Đi đến danh mục đầu tư",
+  "Switch to {network}": "Chuyển sang {network}"
 }
