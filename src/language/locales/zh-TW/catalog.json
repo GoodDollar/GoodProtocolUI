@@ -536,5 +536,6 @@
   "How much value your stake has accumulated so far.": "到目前為止，您的股權累計有多大價值。",
   "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can claim more G$ every day!": "從1.0開始，您的乘數將在一個月的綁定到信任之後將增加到2.0，此時您可以每天申請更多G $！",
   "How many GOOD tokens you are accumulating by this stake position.": "您通過此樁位置累積了多少個好令牌。",
-  "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers.": "如果您從/ To CDAI轉換為我們的儲備令牌，則交換G $兌換GoodReserve沒有第三方費用。 從/往其他資產交換至其他資產意味著第三方AMM流動資金提供商的0.3％的費用。"
+  "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers.": "如果您從/ To CDAI轉換為我們的儲備令牌，則交換G $兌換GoodReserve沒有第三方費用。 從/往其他資產交換至其他資產意味著第三方AMM流動資金提供商的0.3％的費用。",
+  "Switch to {network}": "切換到 {network}"
 }
