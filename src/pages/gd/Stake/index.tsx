@@ -43,7 +43,7 @@ const StakeTable = ({
     setActiveTableName: () => any
 }) => {
     const { i18n } = useLingui()
-
+    
     return (
         <Wrapper>
             <Table
@@ -145,7 +145,7 @@ const StakeTable = ({
                                         <div style={{ width: 48 }}>
                                             <AsyncTokenIcon
                                                 address={stake.tokens.A.address}
-                                                chainId={SupportedChainId.MAINNET as number}
+                                                chainId={stake.tokens.A.chainId as number}
                                                 className="block w-5 h-5 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-lg"
                                             />
                                         </div>
