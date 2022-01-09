@@ -187,20 +187,13 @@ function Swap() {
                 : (meta as SellInfo)?.contribution?.toSignificant(6, { groupSeparator: ',' }),
         price:
             meta &&
-            `${buying
-                ? meta.outputAmount.greaterThan(0)
-                    ? meta.inputAmount
-                        .divide(meta.outputAmount.asFraction)
-                        .multiply(meta.outputAmount.decimalScale)
-                        .toSignificant(6, { groupSeparator: ',' })
-                    : '0'
-                : meta.inputAmount.greaterThan(0)
-                    ? meta.outputAmount
-                        .multiply(meta.inputAmount.decimalScale)
-                        .divide(meta.inputAmount.asFraction)
-                        .toSignificant(6, { groupSeparator: ',' })
-                    : '0'
-            } ${inputSymbol} PER ${outputSymbol} `
+            `${meta.inputAmount.greaterThan(0)
+                ? meta.outputAmount
+                    .multiply(meta.inputAmount.decimalScale)
+                    .divide(meta.inputAmount.asFraction)
+                    .toSignificant(6, { groupSeparator: ',' })
+                : '0'
+            } ${outputSymbol} PER ${inputSymbol} `
     }
 
     const pair: [
