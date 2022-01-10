@@ -31,7 +31,8 @@ const StakeTable = ({
     hasAPY = true,
     rewardsSortKey = 'rewards.G$',
     network,
-    setActiveStake
+    setActiveStake,
+    setActiveTableName
 }: {
     list: any
     error: Error | undefined
@@ -40,6 +41,7 @@ const StakeTable = ({
     rewardsSortKey?: string
     network: DAO_NETWORK
     setActiveStake: any
+    setActiveTableName: () => any
 }) => {
     const { i18n } = useLingui()
 
@@ -144,7 +146,7 @@ const StakeTable = ({
                                         <div style={{ width: 48 }}>
                                             <AsyncTokenIcon
                                                 address={stake.tokens.A.address}
-                                                chainId={SupportedChainId.MAINNET as number}
+                                                chainId={stake.tokens.A.chainId as number}
                                                 className="block w-5 h-5 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-lg"
                                             />
                                         </div>
@@ -195,7 +197,10 @@ const StakeTable = ({
                                             borderRadius="6px"
                                             noShadow={true}
                                             requireNetwork={network}
-                                            onClick={() => setActiveStake(stake)}
+                                            onClick={() => {
+                                                setActiveStake(stake)
+                                                setActiveTableName()
+                                            }}
                                         >
                                             {i18n._(t`Stake`)}
                                         </ActionOrSwitchButton>
@@ -208,7 +213,10 @@ const StakeTable = ({
                                             borderRadius="6px"
                                             noShadow={true}
                                             requireNetwork={network}
-                                            onClick={() => setActiveStake(stake)}
+                                            onClick={() => {
+                                                setActiveStake(stake)
+                                                setActiveTableName()
+                                            }}
                                         >
                                             {i18n._(t`Stake`)}
                                         </ActionOrSwitchButton>
@@ -224,10 +232,9 @@ const StakeTable = ({
 
 export default function Stakes(): JSX.Element | null {
     const { i18n } = useLingui()
-    const { chainId, account } = useActiveWeb3React()
     const governanceStaking = useGovernanceStaking()
     const web3 = useWeb3()
-    const [mainnetWeb3, mainnetChainId] = useEnvWeb3(DAO_NETWORK.MAINNET)
+    const [mainnetWeb3] = useEnvWeb3(DAO_NETWORK.MAINNET)
     const [stakes = [], loading, error, refetch] = usePromise(async () => {
         const [stakes] = await Promise.all([
             web3 && mainnetWeb3 ? getStakes(mainnetWeb3) : Promise.resolve([]),
@@ -247,6 +254,7 @@ export default function Stakes(): JSX.Element | null {
     )
 
     const [activeStake, setActiveStake] = useState<Stake>()
+    const [activeTableName, setActiveTableName] = useState<string>('')
 
     useCallbackOnFocus(refetch)
 
@@ -259,6 +267,7 @@ export default function Stakes(): JSX.Element | null {
                 loading={loading}
                 network={DAO_NETWORK.MAINNET}
                 setActiveStake={setActiveStake}
+                setActiveTableName={() => setActiveTableName('GoodStakes')}
             />
             <div className="mt-12" />
             <MarketHeader title={i18n._(t`GoodDAO Staking`)} lists={sorted} noSearch={govsorted.items?.length < 2} />
@@ -270,11 +279,17 @@ export default function Stakes(): JSX.Element | null {
                 hasAPY={false}
                 rewardsSortKey={'rewards.GDAO'}
                 setActiveStake={setActiveStake}
+                setActiveTableName={() => setActiveTableName('GoodDAO Staking')}
             />
 
             <Modal isOpen={!!activeStake} showClose onDismiss={() => setActiveStake(undefined)}>
                 {activeStake && (
-                    <StakeDeposit stake={activeStake} onDeposit={refetch} onClose={() => setActiveStake(undefined)} />
+                    <StakeDeposit
+                        stake={activeStake}
+                        onDeposit={refetch}
+                        onClose={() => setActiveStake(undefined)}
+                        activeTableName={activeTableName}
+                    />
                 )}
             </Modal>
         </Layout>

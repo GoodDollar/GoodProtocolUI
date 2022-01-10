@@ -165,9 +165,13 @@ const map: Record<string, string | undefined> = {
     '0xe22da380ee6B445bb8273C81944ADEB6E8450422':
         'https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg',
     '0x46183b8822BB7Cbf27E10A1acc95DfB3b5f0ec79':
-        'https://raw.githubusercontent.com/mul53/token-assets/main/assets/etheruem/0x67c5870b4a41d4ebef24d2456547a03f1f3e094b/logo.png'
+        'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
+    '0xEf0c1e6f98e433d81AE3e6611944bc06e533A47B':
+        'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png',
+    '0xBE4fe98C9C4c0A8f3681c34C94cE2e462da5FC89':
+        'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gdx-logo.png'
 }
 
-export const getKovanTokenLogoURL = (address: string) =>
+export const getKovanTokenLogoURL = (address: string): string =>
     map[address] ??
     `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`

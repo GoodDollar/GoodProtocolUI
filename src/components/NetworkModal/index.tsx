@@ -168,7 +168,7 @@ export default function NetworkModal(): JSX.Element | null {
 
     const { ethereum } = window
     const networkLabel: string | null = (NETWORK_LABEL as any)[chainId || (ethereum as any)?.networkVersion] || null
-    const network = process.env.NETWORK || 'staging'
+    const network = process.env.REACT_APP_NETWORK || 'staging'
 
     const allowedNetworks = useMemo(() => {
         switch (true) {

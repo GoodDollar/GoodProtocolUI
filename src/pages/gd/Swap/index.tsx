@@ -13,12 +13,7 @@ import { useCurrencyBalance } from 'state/wallet/hooks'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useG$ from 'hooks/useG$'
 import useWeb3 from 'hooks/useWeb3'
-import {
-    approve as approveBuy,
-    BuyInfo,
-    getMeta as getBuyMeta,
-    getMetaReverse as getBuyMetaReverse
-} from 'sdk/buy'
+import { approve as approveBuy, BuyInfo, getMeta as getBuyMeta, getMetaReverse as getBuyMetaReverse } from 'sdk/buy'
 import {
     approve as approveSell,
     getMeta as getSellMeta,
@@ -74,8 +69,8 @@ function Swap() {
                 ? getBuyMeta
                 : getBuyMetaReverse
             : field === 'internal'
-                ? getSellMeta
-                : getSellMetaReverse
+            ? getSellMeta
+            : getSellMetaReverse
         const value = field === 'external' ? swapPair.value : swapValue
         const symbol = swapPair.token.getSymbol()
         const setOtherValue = field === 'external' ? setSwapValue : handleSetPairValue
@@ -100,8 +95,8 @@ function Swap() {
                         ? meta.outputAmount.toExact()
                         : meta.inputAmount.toExact()
                     : field === 'external'
-                        ? meta.inputAmount.toExact()
-                        : meta.outputAmount.toExact()
+                    ? meta.inputAmount.toExact()
+                    : meta.outputAmount.toExact()
             )
             setMeta(meta)
         }, 400))
@@ -164,16 +159,16 @@ function Swap() {
                     ? 'FUSE'
                     : meta.inputAmount.currency.symbol
                 : meta.inputAmount.currency.symbol === 'WETH9'
-                    ? 'ETH'
-                    : meta.inputAmount.currency.symbol
+                ? 'ETH'
+                : meta.inputAmount.currency.symbol
         outputSymbol =
             SupportedChainId[Number(chainId)] === 'FUSE'
                 ? meta.outputAmount.currency.symbol === 'WETH9'
                     ? 'FUSE'
                     : meta.outputAmount.currency.symbol
                 : meta.outputAmount.currency.symbol === 'WETH9'
-                    ? 'ETH'
-                    : meta.outputAmount.currency.symbol
+                ? 'ETH'
+                : meta.outputAmount.currency.symbol
     }
 
     const swapFields = {
@@ -181,7 +176,8 @@ function Swap() {
             meta && `${meta.minimumOutputAmount.toSignificant(4, { groupSeparator: ',' })} ${outputSymbol}`,
         priceImpact: meta && `${meta.priceImpact.toFixed(2, { groupSeparator: ',' })}%`,
         liquidityFee:
-            meta && `${meta.liquidityFee.toSignificant(6, { groupSeparator: ',' })} ${swapPair.token.getSymbol()}`,
+            meta &&
+            `${meta.liquidityFee.toSignificant(6, { groupSeparator: ',' })} ${meta.liquidityFee.currency.symbol}`,
         route: route,
         GDX:
             (chainId as any) === SupportedChainId.FUSE
@@ -193,20 +189,14 @@ function Swap() {
                 : (meta as SellInfo)?.contribution?.toSignificant(6, { groupSeparator: ',' }),
         price:
             meta &&
-            `${buying
-                ? meta.outputAmount.greaterThan(0)
-                    ? meta.inputAmount
-                        .divide(meta.outputAmount.asFraction)
-                        .multiply(meta.outputAmount.decimalScale)
-                        .toSignificant(6, { groupSeparator: ',' })
-                    : '0'
-                : meta.inputAmount.greaterThan(0)
+            `${
+                meta.inputAmount.greaterThan(0)
                     ? meta.outputAmount
-                        .multiply(meta.inputAmount.decimalScale)
-                        .divide(meta.inputAmount.asFraction)
-                        .toSignificant(6, { groupSeparator: ',' })
+                          .multiply(meta.inputAmount.decimalScale)
+                          .divide(meta.inputAmount.asFraction)
+                          .toSignificant(6, { groupSeparator: ',' })
                     : '0'
-            } ${inputSymbol} PER ${outputSymbol} `
+            } ${outputSymbol} PER ${inputSymbol} `
     }
 
     const pair: [
@@ -219,15 +209,15 @@ function Swap() {
             token?: Currency
         }
     ] = [
-            {
-                token: swapPair.token,
-                value: swapPair.value
-            },
-            {
-                token: G$,
-                value: swapValue
-            }
-        ]
+        {
+            token: swapPair.token,
+            value: swapPair.value
+        },
+        {
+            token: G$,
+            value: swapValue
+        }
+    ]
 
     if (!buying) pair.reverse()
 
@@ -292,8 +282,9 @@ function Swap() {
                         <div style={{ marginTop: 14, padding: '0 4px' }}>
                             <SwapInfo
                                 title={i18n._(t`Slippage Tolerance`)}
-                                value={`${slippageTolerance.value || '0'}${slippageTolerance.value.endsWith('%') ? '' : '%'
-                                    }`}
+                                value={`${slippageTolerance.value || '0'}${
+                                    slippageTolerance.value.endsWith('%') ? '' : '%'
+                                }`}
                             />
                             {meta && <SwapInfo title="Price" value={swapFields.price} />}
                         </div>
@@ -324,8 +315,8 @@ function Swap() {
                                         {approving
                                             ? i18n._(t`Approving`)
                                             : approved
-                                                ? i18n._(t`Approved`)
-                                                : i18n._(t`Approve`)}
+                                            ? i18n._(t`Approved`)
+                                            : i18n._(t`Approve`)}
                                     </ButtonAction>
                                 )}
                                 <ButtonAction
@@ -345,7 +336,11 @@ function Swap() {
                         )}
                     </SwapContentWrapperSC>
                 </SwapWrapperSC>
-                <SwapDetails open={Boolean(meta)} {...swapFields} />
+                <SwapDetails
+                    open={Boolean(meta)}
+                    buying={buying && [ETHER, FUSE].includes(swapPair.token)}
+                    {...swapFields}
+                />
                 <SwapDescriptions gdx={!!swapFields.GDX} exitContribution={!!swapFields.exitContribution} />
             </SwapCardSC>
             <SwapConfirmModal
