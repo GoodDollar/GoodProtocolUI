@@ -1,4 +1,4 @@
-import React, { CSSProperties, memo, ReactNode, useEffect, useReducer, useState } from 'react'
+import React, { CSSProperties, memo, ReactNode, useEffect, useReducer, useState, useRef } from 'react'
 import { SwapConfirmModalSC } from './styled'
 import Modal from 'components/Modal'
 import Title from 'components/gd/Title'
@@ -65,28 +65,67 @@ function SwapConfirmModal({
     const web3 = useWeb3()
     const [status, setStatus] = useState<'PREVIEW' | 'CONFIRM' | 'SENT'>('SENT')
     const [hash, setHash] = useState('')
+    const [sender, setSender] = useState('')
+
+    const senderRef = useRef(sender)
+
+    useEffect(() => {
+      senderRef.current = sender
+    }, [sender])
 
     const handleSwap = async () => {
         setStatus('CONFIRM')
+
+        const prepareTx = (from: string) => {
+          setSender(from)
+        }
+        
         const onSent = (hash: string) => {
             setStatus('SENT')
             setHash(hash)
+            const inputSig = meta?.inputAmount.toSignificant(5)
+            const minimumOutputSig = meta?.minimumOutputAmount.toSignificant(5)
+
+            const tradeInfo = {
+              input: {
+                decimals: meta?.inputAmount.currency.decimals,
+                symbol: meta?.inputAmount.currency.symbol
+              },
+              output: {
+                decimals: meta?.outputAmount.currency.decimals,
+                symbol: meta?.outputAmount.currency.symbol
+              }
+            }
+            const summary = 'Swapping ' + inputSig + ' ' 
+                            + meta?.inputAmount.currency.symbol + 
+                            ' to a minimum of ' + minimumOutputSig + ' ' +
+                            meta?.outputAmount.currency.symbol
+            globalDispatch(
+              addTransaction({
+                chainId: chainId!,
+                hash: hash,
+                from: senderRef.current,
+                summary: summary,
+                tradeInfo: tradeInfo,
+              })
+            )
             if (onConfirm) onConfirm()
         }
-        try {
-            let transactionDetails = buying ? await buy(web3!, meta!, onSent) : await sell(web3!, meta!, onSent)
-            globalDispatch(
-                addTransaction({
-                    chainId: chainId!,
-                    hash: transactionDetails.transactionHash,
-                    from: transactionDetails.from
-                })
-            )
+        try { 
+            buying ? await buy(web3!, meta!, prepareTx, onSent) : await sell(web3!, meta!, prepareTx, onSent)
+            // let transactionDetails = buying ? await buy(web3!, meta!, prepareTx, onSent) : await sell(web3!, meta!, prepareTx, onSent)
+            // globalDispatch(
+            //     addTransaction({
+            //         chainId: chainId!,
+            //         hash: transactionDetails.transactionHash,
+            //         from: transactionDetails.from
+            //     })
+            // )
         } catch (e) {
             console.error(e)
             setStatus('PREVIEW')
         }
-    }
+    } 
 
     useEffect(() => {
         if (open) {
@@ -101,8 +140,8 @@ function SwapConfirmModal({
         case 'PREVIEW':
             content = (
                 <>
-                    <Title className="text-center mb-6">{i18n._(t`Confirm swap`)}</Title>
-                    <div className="diagram mb-6">
+                    <Title className="mb-6 text-center">{i18n._(t`Confirm swap`)}</Title>
+                    <div className="mb-6 diagram">
                         <div className="icon">
                             <CurrencyLogo currency={from?.token} size={'54px'} />
                         </div>
@@ -185,18 +224,18 @@ function SwapConfirmModal({
         case 'CONFIRM':
             content = (
                 <>
-                    <Title className="text-center mt-6 mb-6">{i18n._(t`Waiting for Confirmation`)}</Title>
+                    <Title className="mt-6 mb-6 text-center">{i18n._(t`Waiting for Confirmation`)}</Title>
                     <div className="text-center">
                         {i18n._(t`Swapping`)} {price}
                     </div>
-                    <div className="description text-center">{i18n._(t`Confirm this transaction in your wallet`)}</div>
+                    <div className="text-center description">{i18n._(t`Confirm this transaction in your wallet`)}</div>
                 </>
             )
             break
         case 'SENT':
             content = (
                 <>
-                    <Title className="text-center mb-6 mb-6">{i18n._(t`Transaction Submitted`)}</Title>
+                    <Title className="mb-6 text-center">{i18n._(t`Transaction Submitted`)}</Title>
                     {chainId && (
                         <div className="text-center">
                             <a

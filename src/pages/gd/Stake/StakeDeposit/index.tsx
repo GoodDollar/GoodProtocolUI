@@ -297,7 +297,8 @@ const StakeDeposit = ({ stake, onDeposit, onClose, activeTableName }: StakeDepos
                             )
                         ) : (
                             <>
-                                {i18n._(t`Did you just create UBI for thousands of people around the world?`)}{' '}
+                            {/* Change text according to pending/confirmed! */}
+                                {i18n._(t`Your staking transaction for generating UBI for thousands of people around the world has just been broadcasted to the network`)}{' '}
                                 <a
                                     href={
                                         state.transactionHash &&

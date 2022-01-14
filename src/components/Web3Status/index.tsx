@@ -117,7 +117,7 @@ function Web3StatusInner() {
 
     const pending = sortedRecentTransactions.filter(tx => !tx.receipt).map(tx => tx.hash)
 
-    const hasPendingTransactions = false
+    const hasPendingTransactions = !!pending.length
 
     const toggleWalletModal = useWalletModalToggle()
 
@@ -133,7 +133,7 @@ function Web3StatusInner() {
                         <div className="pr-2">
                             {pending?.length} {i18n._(t`Pending`)}
                         </div>{' '}
-                        <Loader stroke="white" />
+                        <Loader stroke="#173046" />
                     </div>
                 ) : (
                     <div className="mr-2">{ENSName || shortenAddress(account)}</div>
@@ -173,6 +173,9 @@ export default function Web3Status() {
         return txs.filter(isTransactionRecent).sort(newTransactionsFirst)
     }, [allTransactions])
 
+    const pending = sortedRecentTransactions.filter((tx) => !tx.receipt).map((tx) => tx.hash)
+    const confirmed = sortedRecentTransactions.filter((tx) => tx.receipt).map((tx) => tx.hash)
+    
     if (!contextNetwork.active && !active) {
         return null
     }
@@ -182,8 +185,8 @@ export default function Web3Status() {
             <Web3StatusInner />
             <WalletModal
                 ENSName={ENSName ?? undefined}
-                pendingTransactions={[]}
-                confirmedTransactions={sortedRecentTransactions.map(tx => tx.hash)}
+                pendingTransactions={pending}
+                confirmedTransactions={confirmed}
             />
         </>
     )

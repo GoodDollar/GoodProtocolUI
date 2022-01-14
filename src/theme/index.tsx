@@ -77,6 +77,8 @@ export function colors(darkMode: boolean) {
         yellow1: '#FFE270',
         yellow2: '#F3841E',
         blue1: '#0094ec',
+        blue2: '#80d8ff',
+        blue4: darkMode ? '#153d6f70' : '#C4D9F8',
 
         borderRadius: '10px'
 

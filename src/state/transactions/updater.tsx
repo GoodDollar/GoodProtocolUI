@@ -4,6 +4,7 @@ import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { useAddPopup, useBlockNumber } from '../application/hooks'
 import { AppDispatch, AppState } from '../index'
 import { checkedTransaction, finalizeTransaction } from './actions'
+import { utils, FixedNumber } from 'ethers'
 
 export function shouldCheck(
     lastBlockNumber: number,
@@ -41,14 +42,46 @@ export default function Updater(): null {
 
     useEffect(() => {
         if (!chainId || !library || !lastBlockNumber) return
-
         Object.keys(transactions)
             .filter(hash => shouldCheck(lastBlockNumber, transactions[hash]))
             .forEach(hash => {
                 library
                     .getTransactionReceipt(hash)
                     .then(receipt => {
+                      let confirmedSummary;
                         if (receipt) {
+                          if (transactions[hash]?.summary) {
+                            const receiptData = receipt.logs[receipt.logs.length - 1].data
+                            const txInput = transactions[hash]?.tradeInfo?.input
+                            const txOutput = transactions[hash]?.tradeInfo?.output
+                            if (txInput?.symbol !== 'G$'){
+                              // Buying G$
+
+                              const dataDecodeBuy = utils.defaultAbiCoder.decode(['uint256', 'uint256'], receiptData)
+                              const inputAmount = utils.formatUnits(
+                                  dataDecodeBuy[0], txInput?.decimals 
+                              )
+                              const fixedInput = FixedNumber.fromString(inputAmount).round(5)
+                              const actualReturnAmount = utils.commify(utils.formatUnits(dataDecodeBuy[1], 2))
+                              confirmedSummary = 'Swapped ' + fixedInput + ' ' 
+                              + txInput?.symbol + 
+                              ' to ' + actualReturnAmount + ' ' +
+                              txOutput?.symbol
+                            } else {
+                              // Selling G$
+                              const dataDecodeSell = utils.defaultAbiCoder.decode(['uint256', 'uint256', 'uint256'], receiptData)
+                              const inputAmount = utils.commify(utils.formatUnits(
+                                dataDecodeSell[0], txInput?.decimals
+                              ))
+                              const actualReturnAmount = utils.formatUnits(dataDecodeSell[2], txOutput?.decimals)
+                              const fixedReturn = FixedNumber.fromString(actualReturnAmount).round(5)
+                              console.log({fixedReturn}) 
+                              confirmedSummary = 'Swapped ' + inputAmount + ' '
+                              + txInput?.symbol + 
+                              ' to ' + fixedReturn + ' ' +
+                              txOutput?.symbol
+                            }
+                          }
                             dispatch(
                                 finalizeTransaction({
                                     chainId,
@@ -62,7 +95,8 @@ export default function Updater(): null {
                                         to: receipt.to,
                                         transactionHash: receipt.transactionHash,
                                         transactionIndex: receipt.transactionIndex
-                                    }
+                                    },
+                                    summary: confirmedSummary 
                                 })
                             )
 
@@ -71,7 +105,7 @@ export default function Updater(): null {
                                     txn: {
                                         hash,
                                         success: receipt.status === 1,
-                                        summary: transactions[hash]?.summary
+                                        summary: confirmedSummary
                                     }
                                 },
                                 hash
