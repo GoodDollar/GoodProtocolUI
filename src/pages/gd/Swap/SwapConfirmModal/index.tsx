@@ -1,4 +1,4 @@
-import React, { CSSProperties, memo, ReactNode, useEffect, useReducer, useState, useRef } from 'react'
+import React, { CSSProperties, memo, ReactNode, useEffect, useReducer, useState } from 'react'
 import { SwapConfirmModalSC } from './styled'
 import Modal from 'components/Modal'
 import Title from 'components/gd/Title'
@@ -65,24 +65,14 @@ function SwapConfirmModal({
     const web3 = useWeb3()
     const [status, setStatus] = useState<'PREVIEW' | 'CONFIRM' | 'SENT'>('SENT')
     const [hash, setHash] = useState('')
-    const [sender, setSender] = useState('')
-
-    const senderRef = useRef(sender)
-
-    useEffect(() => {
-      senderRef.current = sender
-    }, [sender])
 
     const handleSwap = async () => {
         setStatus('CONFIRM')
 
-        const prepareTx = (from: string) => {
-          setSender(from)
-        }
-        
-        const onSent = (hash: string) => {
+        const onSent = (hash: string, from: string) => {
             setStatus('SENT')
             setHash(hash)
+            
             const inputSig = meta?.inputAmount.toSignificant(5)
             const minimumOutputSig = meta?.minimumOutputAmount.toSignificant(5)
 
@@ -96,23 +86,22 @@ function SwapConfirmModal({
                 symbol: meta?.outputAmount.currency.symbol
               }
             }
-            const summary = 'Swapping ' + inputSig + ' ' 
-                            + meta?.inputAmount.currency.symbol + 
-                            ' to a minimum of ' + minimumOutputSig + ' ' +
-                            meta?.outputAmount.currency.symbol
+            const summary = i18n._(t`Swapping ${inputSig} ${meta?.inputAmount.currency.symbol} 
+                              to a minimum of ${minimumOutputSig} ${meta?.outputAmount.currency.symbol}`)
+
             globalDispatch(
               addTransaction({
                 chainId: chainId!,
                 hash: hash,
-                from: senderRef.current,
+                from: from,
                 summary: summary,
-                tradeInfo: tradeInfo,
+                tradeInfo: tradeInfo, 
               })
             )
             if (onConfirm) onConfirm()
         }
         try { 
-            buying ? await buy(web3!, meta!, prepareTx, onSent) : await sell(web3!, meta!, prepareTx, onSent)
+            buying ? await buy(web3!, meta!, onSent) : await sell(web3!, meta!, onSent) 
             // let transactionDetails = buying ? await buy(web3!, meta!, prepareTx, onSent) : await sell(web3!, meta!, prepareTx, onSent)
             // globalDispatch(
             //     addTransaction({

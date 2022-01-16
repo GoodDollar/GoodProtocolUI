@@ -5,6 +5,8 @@ import { useAddPopup, useBlockNumber } from '../application/hooks'
 import { AppDispatch, AppState } from '../index'
 import { checkedTransaction, finalizeTransaction } from './actions'
 import { utils, FixedNumber } from 'ethers'
+import { useLingui } from '@lingui/react'
+import { t } from '@lingui/macro'
 
 export function shouldCheck(
     lastBlockNumber: number,
@@ -28,6 +30,7 @@ export function shouldCheck(
 }
 
 export default function Updater(): null {
+    const { i18n } = useLingui()
     const { chainId, library } = useActiveWeb3React()
 
     const lastBlockNumber = useBlockNumber()
@@ -48,68 +51,60 @@ export default function Updater(): null {
                 library
                     .getTransactionReceipt(hash)
                     .then(receipt => {
-                      let confirmedSummary;
+                      let confirmedSummary
                         if (receipt) {
                           if (transactions[hash]?.summary) {
                             const receiptData = receipt.logs[receipt.logs.length - 1].data
                             const txInput = transactions[hash]?.tradeInfo?.input
                             const txOutput = transactions[hash]?.tradeInfo?.output
-                            if (txInput?.symbol !== 'G$'){
-                              // Buying G$
 
-                              const dataDecodeBuy = utils.defaultAbiCoder.decode(['uint256', 'uint256'], receiptData)
-                              const inputAmount = utils.formatUnits(
-                                  dataDecodeBuy[0], txInput?.decimals 
-                              )
-                              const fixedInput = FixedNumber.fromString(inputAmount).round(5)
-                              const actualReturnAmount = utils.commify(utils.formatUnits(dataDecodeBuy[1], 2))
-                              confirmedSummary = 'Swapped ' + fixedInput + ' ' 
-                              + txInput?.symbol + 
-                              ' to ' + actualReturnAmount + ' ' +
-                              txOutput?.symbol
+                            let decoded
+                            const symbol = txInput?.symbol !== 'G$'
+                            if (symbol){
+                              // Buying G$
+                              decoded = utils.defaultAbiCoder.decode(['uint256', 'uint256'], receiptData)
                             } else {
                               // Selling G$
-                              const dataDecodeSell = utils.defaultAbiCoder.decode(['uint256', 'uint256', 'uint256'], receiptData)
-                              const inputAmount = utils.commify(utils.formatUnits(
-                                dataDecodeSell[0], txInput?.decimals
-                              ))
-                              const actualReturnAmount = utils.formatUnits(dataDecodeSell[2], txOutput?.decimals)
-                              const fixedReturn = FixedNumber.fromString(actualReturnAmount).round(5)
-                              console.log({fixedReturn}) 
-                              confirmedSummary = 'Swapped ' + inputAmount + ' '
-                              + txInput?.symbol + 
-                              ' to ' + fixedReturn + ' ' +
-                              txOutput?.symbol
+                              decoded = utils.defaultAbiCoder.decode(['uint256', 'uint256', 'uint256'], receiptData)
                             }
-                          }
-                            dispatch(
-                                finalizeTransaction({
-                                    chainId,
-                                    hash,
-                                    receipt: {
-                                        blockHash: receipt.blockHash,
-                                        blockNumber: receipt.blockNumber,
-                                        contractAddress: receipt.contractAddress,
-                                        from: receipt.from,
-                                        status: receipt.status,
-                                        to: receipt.to,
-                                        transactionHash: receipt.transactionHash,
-                                        transactionIndex: receipt.transactionIndex
-                                    },
-                                    summary: confirmedSummary 
-                                })
-                            )
 
-                            addPopup(
-                                {
-                                    txn: {
-                                        hash,
-                                        success: receipt.status === 1,
-                                        summary: confirmedSummary
-                                    }
-                                },
-                                hash
-                            )
+                            const format = FixedNumber.fromString(utils.formatUnits(
+                              decoded[symbol ? 0 : 2], symbol ? txInput?.decimals : txOutput?.decimals)).round(5).toString()
+
+                            const commify = utils.commify(utils.formatUnits(
+                              decoded[symbol ? 1 : 0], symbol ? txOutput?.decimals : txInput?.decimals))
+
+                            confirmedSummary = i18n._(t`Swapped  ${symbol ? format : commify} ${txInput?.symbol}
+                                                        to ${symbol ? commify : format} ${txOutput?.symbol}`) 
+                          }
+                          dispatch(
+                              finalizeTransaction({
+                                  chainId,
+                                  hash,
+                                  receipt: {
+                                      blockHash: receipt.blockHash,
+                                      blockNumber: receipt.blockNumber,
+                                      contractAddress: receipt.contractAddress,
+                                      from: receipt.from,
+                                      status: receipt.status,
+                                      to: receipt.to,
+                                      transactionHash: receipt.transactionHash,
+                                      transactionIndex: receipt.transactionIndex
+                                  },
+                                  summary: confirmedSummary 
+                              })
+                          )
+
+                          addPopup(
+                              {
+                                  txn: {
+                                      hash,
+                                      success: receipt.status === 1,
+                                      summary: confirmedSummary
+                                  }
+                              },
+                              hash
+                          )
                         } else {
                             dispatch(checkedTransaction({ chainId, hash, blockNumber: lastBlockNumber }))
                         }
