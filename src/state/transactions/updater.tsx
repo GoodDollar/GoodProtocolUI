@@ -59,8 +59,8 @@ export default function Updater(): null {
                             const txOutput = transactions[hash]?.tradeInfo?.output
 
                             let decoded
-                            const symbol = txInput?.symbol !== 'G$'
-                            if (symbol){
+                            const buying = txInput?.symbol !== 'G$'
+                            if (buying){
                               // Buying G$
                               decoded = utils.defaultAbiCoder.decode(['uint256', 'uint256'], receiptData)
                             } else {
@@ -69,13 +69,13 @@ export default function Updater(): null {
                             }
 
                             const format = FixedNumber.fromString(utils.formatUnits(
-                              decoded[symbol ? 0 : 2], symbol ? txInput?.decimals : txOutput?.decimals)).round(5).toString()
+                              decoded[buying ? 0 : 2], buying ? txInput?.decimals : txOutput?.decimals)).round(5).toString()
 
                             const commify = utils.commify(utils.formatUnits(
-                              decoded[symbol ? 1 : 0], symbol ? txOutput?.decimals : txInput?.decimals))
+                              decoded[buying ? 1 : 0], buying ? txOutput?.decimals : txInput?.decimals))
 
-                            confirmedSummary = i18n._(t`Swapped  ${symbol ? format : commify} ${txInput?.symbol}
-                                                        to ${symbol ? commify : format} ${txOutput?.symbol}`) 
+                            confirmedSummary = i18n._(t`Swapped  ${buying ? format : commify} ${txInput?.symbol}
+                                                        to ${buying ? commify : format} ${txOutput?.symbol}`) 
                           }
                           dispatch(
                               finalizeTransaction({
