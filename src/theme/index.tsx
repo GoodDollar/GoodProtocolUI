@@ -101,6 +101,7 @@ export function theme(darkMode: boolean) {
             border5: darkMode ? '#8F9BB3' : '#8F9BB3',
             text1: darkMode ? '#FFFFFF' : '#0D182D',
             text2: darkMode ? '#00B0FF' : '#00B0FF',
+            text2hover: darkMode ? '#0387c3' : '#0387c3',
             text3: darkMode ? '#A5A5A5' : '#A5A5A5',
             text4: darkMode ? '#FFFFFF' : '#42454A',
             text5: darkMode ? '#8F9BB3' : '#8f9bb3',

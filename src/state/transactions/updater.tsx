@@ -51,14 +51,14 @@ export default function Updater(): null {
                 library
                     .getTransactionReceipt(hash)
                     .then(receipt => {
-                      let confirmedSummary
+                      let confirmedSummary = transactions[hash]?.summary
                         if (receipt) {
-                          if (transactions[hash]?.summary) {
+                          if (transactions[hash]?.tradeInfo) {
                             const receiptData = receipt.logs[receipt.logs.length - 1].data
                             const txInput = transactions[hash]?.tradeInfo?.input
                             const txOutput = transactions[hash]?.tradeInfo?.output
 
-                            let decoded
+                            let decoded 
                             const buying = txInput?.symbol !== 'G$'
                             if (buying){
                               // Buying G$

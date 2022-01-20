@@ -52,17 +52,18 @@ function Withdraw({ token, protocol, open, setOpen, onWithdraw, stake, ...rest }
         if (!web3) return
         try {
             setStatus('pending')
-            const transactionDetails = await withdraw(web3, stake, percentage, transactionHash => {
+            await withdraw(web3, stake, percentage, (transactionHash: string, from: string) => {
                 setTransactionHash(transactionHash)
                 setStatus('success')
+                dispatch(
+                  addTransaction({
+                      chainId: chainId!,
+                      hash: transactionHash,
+                      from: from,
+                      summary: i18n._(t`Withdrew funds from ${stake.protocol} `)
+                  })
+                )
             })
-            dispatch(
-                addTransaction({
-                    chainId: chainId!,
-                    hash: transactionDetails.transactionHash,
-                    from: transactionDetails.from
-                })
-            )
             onWithdraw()
         } catch (e) {
             console.error(e)

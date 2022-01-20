@@ -65,10 +65,13 @@ const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
     padding-left: 17px;
     padding-right: 17px;
     height: 42px;
+    transition: background 0.25s;
 
     &:hover,
     &:focus {
         border: none;
+        background-color: ${({ theme }) => theme.color.text2hover};
+        transition: background 0.25s;
     }
 `
 
