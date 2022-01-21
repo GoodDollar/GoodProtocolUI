@@ -9,6 +9,7 @@ const map: Record<string, string | undefined> = {
     '0xeE724540706296ebad65aeA2515Efe0949F97Ae6': 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
     '0x100b8fd10ff8DC43fda45E636B4BB1eE6088270a': 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
     '0x495d133B938596C9984d462F007B676bDc57eCEC': 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
+    '0xe39236a9Cf13f65DB8adD06BD4b834C65c523d2b': 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
     '0x0Fce4a964F2b69a6cD82c3FB40C101863091A5a7': 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png',
     '0xf4467Ad0c9D7D0446B379fE6217111a4690066D1': 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png',
     '0x3A9299BE789ac3730e4E4c49d6d2Ad1b8BC34DFf': 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png'

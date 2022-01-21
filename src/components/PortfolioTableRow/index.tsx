@@ -49,6 +49,7 @@ function PortfolioTableRow({ stake, onWithdraw }: PortfolioTableRowProps) {
                     {stake.rewards.reward && stake.rewards.reward.claimed.currency.symbol} <br />~
                     {stake.rewards.reward$ && stake.rewards.reward$.claimed
                         .add(stake.rewards.reward$.unclaimed)
+                        .multiply(100)
                         .toFixed(2, { groupSeparator: ',' })}
                     $
                 </td>) : <td className="text-center"> - </td>}
