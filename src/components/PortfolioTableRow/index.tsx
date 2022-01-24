@@ -32,7 +32,6 @@ function PortfolioTableRow({ stake, onWithdraw }: PortfolioTableRowProps) {
                 <td>{stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ? "Governance" : "UBI"}</td>
                 <td>
                     {stake.tokens.A.symbol}{stake.tokens.A.address !== stake.tokens.B.address ?? `/ ${stake.tokens.B.symbol}`}
-
                 </td>
                 <td>{stake.protocol}</td>
                 <td>
@@ -49,7 +48,6 @@ function PortfolioTableRow({ stake, onWithdraw }: PortfolioTableRowProps) {
                     {stake.rewards.reward && stake.rewards.reward.claimed.currency.symbol} <br />~
                     {stake.rewards.reward$ && stake.rewards.reward$.claimed
                         .add(stake.rewards.reward$.unclaimed)
-                        .multiply(100)
                         .toFixed(2, { groupSeparator: ',' })}
                     $
                 </td>) : <td className="text-center"> - </td>}

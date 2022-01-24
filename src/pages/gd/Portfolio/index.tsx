@@ -94,7 +94,7 @@ const Portfolio = () => {
                             {data?.aggregated?.rewardsG$.currency.symbol}
                             <br />
                             <small>
-                                ~{data?.aggregated?.rewardsG$$.multiply(100).toFixed(2, { groupSeparator: ',' }) ?? '0.00'}$
+                                ~{data?.aggregated?.rewardsG$$.toFixed(2, { groupSeparator: ',' }) ?? '0.00'}$
                             </small>
                         </PortfolioValueSC>
                     </div>
@@ -134,7 +134,7 @@ const Portfolio = () => {
                             {data?.aggregated?.rewardsG$Unclaimed.currency.symbol}
                             <br />
                             <small>
-                                ~{data?.aggregated?.rewardsG$Unclaimed$.multiply(100).toFixed(2, { groupSeparator: ',' }) ?? '0.00'}$
+                                ~{data?.aggregated?.rewardsG$Unclaimed$.toFixed(2, { groupSeparator: ',' }) ?? '0.00'}$
                             </small>
                         </PortfolioValueSC>
                     </div>
