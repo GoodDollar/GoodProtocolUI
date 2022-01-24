@@ -47,7 +47,8 @@ jobs:
                       echo "CLOUDFLARE_RECORD_NAME=_dnslink.fi" >> "$GITHUB_ENV"
                       echo "SUBDOMAIN=fi" >> "$GITHUB_ENV"
                   fi
-                  if [[ $BRANCH == 'dev' ]]; then
+                  if [[ $BRANCH == 'master' ]]; then
+
                       echo "NETWORK=dev" >> $GITHUB_ENV
                       echo "CLOUDFLARE_RECORD_NAME=_dnslink.fi-dev" >> "$GITHUB_ENV"
                       echo "SUBDOMAIN=fi-dev" >> "$GITHUB_ENV"
