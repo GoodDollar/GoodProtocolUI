@@ -24,39 +24,46 @@ interface WithdrawRewardsProps {
     onClaim: () => void
 }
 
-type WithdrawRewardsState = 'none' | 'pending' | 'success'
+type WithdrawRewardsState = 'none' | 'pending' | 'send' | 'success'
 
 function WithdrawRewards({ trigger, type, onClaim, ...rest }: WithdrawRewardsProps) {
     const { i18n } = useLingui()
     const [status, setStatus] = useState<WithdrawRewardsState>('none')
-    // const { chainId } = useActiveWeb3React() // possibly remove if not used. Method claim could return different chainId's, or array (ref > comment:117)
     const [error, setError] = useState<Error>()
     const web3 = useWeb3()
-    // const [transactionHash, setTransactionHash] = useState<string>() // or array (ref > comment:117)
     const dispatch = useDispatch()
+
+    const [transactionList, setTransactionHash] = useState<any[]>([])
+
     const handleClaim = useCallback(async () => {
-        if (!web3) return
+        if (!web3) return 
         try {
             setStatus('pending')
-            const claimMethod = type === 'GOOD' ? claimGood : claim;
-              await claimMethod(web3, (transactionHash: string, from: string, chainId: number) => {
-                // setTransactionHash(transactionHash)
-                setStatus('success')
-                dispatch(
-                  addTransaction({
-                    chainId: chainId!,
-                    hash: transactionHash,
-                    from: from,
-                    summary: chainId === SupportedChainId.FUSE ?
-                      i18n._(t`Claimed GOOD Rewards`) :
-                      i18n._(t`Claimed G$ Rewards`)
-                  })
-                )
+            const claimMethod = type === 'GOOD' ? claimGood : claim; 
+            const transactions = await claimMethod(web3, (txHash: string, from: string, chainId: number) => {
+              setTransactionHash(transactionHash => [...transactionHash, [{hash: txHash, chainId: chainId}]])
+              setStatus('send') 
+              dispatch(
+                addTransaction({ 
+                  chainId: chainId!,
+                  hash: txHash,
+                  from: from,
+                  summary: type === 'GOOD' ?
+                    i18n._(t`Claimed GOOD Rewards`) :
+                    i18n._(t`Claimed G$ Rewards`) 
+                })
+              )
+            }, () => {
+              setStatus('success')
+            }, (e) => { // for TX errors
+              setStatus('none')
+              setError(e as Error) 
             })
+
             onClaim()
-        } catch (e) {
-            setStatus('none')
-            setError(e as Error)
+        } catch (e) {  // keep for now? for errors I have not seen yet -lewis
+          setStatus('none') 
+          setError(e as Error)
         }
     }, [setStatus, onClaim, type])
 
@@ -69,7 +76,7 @@ function WithdrawRewards({ trigger, type, onClaim, ...rest }: WithdrawRewardsPro
         if (isModalOpen && status !== 'none') {
             setStatus('none')
             setError(undefined)
-            // setTransactionHash(undefined)
+            setTransactionHash([undefined])
         }
     }, [isModalOpen])
 
@@ -109,25 +116,24 @@ function WithdrawRewards({ trigger, type, onClaim, ...rest }: WithdrawRewardsPro
                     ) : (
                         <>
                             <Title className="flex flex-grow justify-center pt-3">
-                              {status !== 'success' ? i18n._(t`Success!`) : i18n._(t`Congratulations!`)}
+                              {status === 'send' ? i18n._(t`Success!`) : i18n._(t`Congratulations!`)}
                             </Title>
                             <div className="flex justify-center items-center gap-2 pt-7 pb-7">
-                                { status !== 'success' ?
+                                { status === 'send' ?
                                   i18n._(t`Transaction was sent to the blockchain `) :
-                                  i18n._(t`You have successfully claimed your rewards `)}
-                                  {/* Either we show here (also if multiple) all links to explorer, 
-                                      or should it be clear that recent transactions
-                                      can be seen in the AccountDetails recent transaction list? */}
-
-                                {/* {transactionHash && (
-                                    <a href={chainId && getExplorerLink(chainId, transactionHash, 'transaction')}>
-                                        <LinkSVG className="cursor-pointer" />
-                                    </a>
-                                )} */}
+                                  i18n._(t`You have successfully claimed your rewards `) } 
+                         
+                                  {transactionList && (transactionList.map((tx, i) => (
+                                      <a target='_blank' 
+                                        rel='noreferrer' 
+                                        key={i} href={tx[i].chainId && getExplorerLink(tx[i].chainId, tx[i].hash, 'transaction')}> 
+                                        <LinkSVG className="cursor-pointer" />  
+                                      </a> 
+                                  )))}
                             </div>
                             <div className="flex justify-center">
-                                { status !== 'success' ?
-                                  <Loader stroke="#173046" size="32px" /> :
+                                { status === 'send' ?
+                                  <Loader stroke="#173046" size="32px" /> : 
                                   <Button className="back-to-portfolio" onClick={handleClose}>
                                     {i18n._(t`Back to portfolio`)}
                                   </Button> }

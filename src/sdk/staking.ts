@@ -863,7 +863,9 @@ export async function withdraw(
     web3: Web3,
     stake: MyStake,
     percentage: string,
-    onSent?: (transactionHash: string, from: string) => void
+    onSent?: (transactionHash: string, from: string) => void,
+    onReceipt?: () => void,
+    onError?: (e:any) => void
 ): Promise<TransactionDetails> {
     const contract =
         stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO
@@ -883,6 +885,8 @@ export async function withdraw(
     else req = contract.methods.withdrawStake(toWithdraw, false).send({ from: account })
 
     if (onSent) req.on('transactionHash', (hash: string) => onSent(hash, account))
+    if (onReceipt) req.on('receipt', onReceipt)
+    if (onError) req.on('error', onError)
 
     return req
 }
@@ -894,7 +898,9 @@ export async function withdraw(
  */
 export async function claimGood(
     web3: Web3,
-    onSent?: (firstTransactionHash: string, from: string, chainId: number) => void
+    onSent?: (firstTransactionHash: string, from: string, chainId: number) => void,
+    onReceipt?: () => void,
+    onError?: (e:any) => void
 ): Promise<TransactionDetails[]> {
     const chainId = await getChainId(web3)
     const account = await getAccount(web3)
@@ -908,8 +914,10 @@ export async function claimGood(
         const simpleStakingAddresses = await getSimpleStakingContractAddresses(web3)
         tx = stakersDistribution.methods.claimReputation(account, simpleStakingAddresses).send({ from: account })
     }
-    
+     
     if (onSent) tx.on('transactionHash', (hash: string) => onSent(hash, account, chainId))
+    if (onReceipt) tx.on('receipt', onReceipt)
+    if (onError) tx.on('error', onError)
     return [tx]
 }
 
@@ -920,7 +928,8 @@ export async function claimGood(
  */
 export async function claim(
     web3: Web3,
-    onSent?: (firstTransactionHash: string, from: string, chainId: number) => void
+    onSent?: (firstTransactionHash: string, from: string, chainId: number) => void,
+    onReceipt?: () => void
 ): Promise<TransactionDetails[]> {
     const chainId = await getChainId(web3)
     const account = await getAccount(web3)
@@ -946,9 +955,10 @@ export async function claim(
                 transaction =>
                     new Promise<string>((resolve, reject) => {
                         transaction.on('transactionHash', (hash: string) => onSent(hash, account, chainId))
-                        transaction.on('receipt', resolve)
+                        transaction.on('receipt', onReceipt)
                         transaction.on('error', reject)
-                    })
+                        resolve('done')
+                    }) 
             )
         )
     }
