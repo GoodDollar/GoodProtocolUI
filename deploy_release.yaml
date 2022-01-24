@@ -54,7 +54,9 @@ jobs:
                       echo "CLOUDFLARE_RECORD_NAME=_dnslink.fi-dev" >> "$GITHUB_ENV"
                       echo "SUBDOMAIN=fi-dev" >> "$GITHUB_ENV"
                   else
+                      echo "NETWORK=staging" >> $GITHUB_ENV
                       echo "CLOUDFLARE_RECORD_NAME=_dnslink.fi-qa" >> "$GITHUB_ENV"
+
                       echo "SUBDOMAIN=fi-qa" >> "$GITHUB_ENV"
                   fi
             # - name: Set network env(s)
