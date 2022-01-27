@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import MetamaskIcon from '../../assets/images/metamask.png'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { injected } from '../../connectors'
-import { SUPPORTED_WALLETS } from '../../constants'
+import { SUPPORTED_WALLETS, WalletInfo } from '../../constants'
 import usePrevious from '../../hooks/usePrevious'
 import { ApplicationModal } from '../../state/application/types'
 import { useModalOpen, useNetworkModalToggle, useWalletModalToggle } from '../../state/application/hooks'
@@ -141,7 +141,7 @@ const ModalContent = (props: any) => {
         if (networkType === 'staging') {
             toggleNetworkModal()
         } else if (networkType === 'production') {
-            ;(ethereum as any)?.request({
+            ; (ethereum as any)?.request({
                 method: 'wallet_switchEthereumChain',
                 params: [{ chainId: `0x${ChainId.MAINNET.toString(16)}` }]
             })
@@ -150,7 +150,7 @@ const ModalContent = (props: any) => {
     }, [ethereum, toggleNetworkModal, toggleWalletModal])
 
     const handleFuseNetworkSwitch = useCallback(() => {
-        ;(ethereum as any)?.request({
+        ; (ethereum as any)?.request({
             method: 'wallet_addEthereumChain',
             params: [
                 {
@@ -171,18 +171,18 @@ const ModalContent = (props: any) => {
     }, [account, ethereum, toggleWalletModal])
 
     function getOptions() {
-        const isMetamask = window.ethereum && window.ethereum.isMetaMask 
+        const isMetamask = window.ethereum && window.ethereum.isMetaMask
+        const hasInjected = !isMetamask || window.ethereum?.providers?.length > 1
 
         return Object.keys(SUPPORTED_WALLETS).map(key => {
             const option = SUPPORTED_WALLETS[key]
- 
             // check for mobile options 
             if (isMobile) {
                 if (!window.web3 && !window.ethereum && option.mobile) {
                     return (
                         <Option
                             onClick={() => {
-                                option.connector !== connector && !option.href && tryActivation(option.connector)
+                                option.connector !== connector && !option.href && tryActivation(option)
                             }}
                             id={`connect-${key}`}
                             key={key}
@@ -217,32 +217,36 @@ const ModalContent = (props: any) => {
                         return null //dont want to return install twice
                     }
                 }
-                // don't return metamask if injected provider isn't metamask
+                // // don't return metamask if injected provider isn't metamask
                 else if (option.name === 'MetaMask' && !isMetamask) {
                     return null
                 }
+                else if (option.name === 'Injected' && !hasInjected) {
+                    return null
+                }
+                //TODO: fix option active test by name and not by connector
                 // likewise for generic
-                else if (option.name === 'Injected' && isMetamask) {
-                  return null
-                  // below adds alternative extension (ie. Coinbase for now)
-                  // TODO: add icon(s) if decided if Coinbase is only one supported for now
-                    // return ( 
-                    //   <Option
-                    //     id={`connect-${key}`}
-                    //     onClick={() => {
-                    //         option.connector === connector
-                    //             ? setWalletView(WALLET_VIEWS.ACCOUNT)
-                    //             : !option.href && tryActivation(option.connector, true)
-                    //     }}
-                    //     key={key}
-                    //     active={option.connector === connector}
-                    //     color={option.color}
-                    //     link={option.href}
-                    //     header={option.name}
-                    //     subheader={null} //use option.descriptio to bring back multi-line
-                    //     icon={require('../../assets/images/' + option.iconName).default}
-                    //   />
-                    // )
+                else if (option.connector === injected) {
+                    //   return null
+                    // below adds alternative extension (ie. Coinbase for now)
+                    // TODO: add icon(s) if decided if Coinbase is only one supported for now
+                    return (
+                        <Option
+                            id={`connect-${key}`}
+                            onClick={() => {
+                                option.connector === connector
+                                    ? setWalletView(WALLET_VIEWS.ACCOUNT)
+                                    : !option.href && tryActivation(option, true)
+                            }}
+                            key={key}
+                            active={option.connector === connector}
+                            color={option.color}
+                            link={option.href}
+                            header={option.name}
+                            subheader={null} //use option.descriptio to bring back multi-line
+                            icon={require('../../assets/images/' + option.iconName).default}
+                        />
+                    )
                 }
             }
             // return rest of options
@@ -254,7 +258,7 @@ const ModalContent = (props: any) => {
                         onClick={() => {
                             option.connector === connector
                                 ? setWalletView(WALLET_VIEWS.ACCOUNT)
-                                : !option.href && tryActivation(option.connector)
+                                : !option.href && tryActivation(option)
                         }}
                         key={key}
                         active={option.connector === connector}
@@ -403,15 +407,10 @@ export default function WalletModal({
         }
     }, [setWalletView, active, error, connector, walletModalOpen, activePrevious, connectorPrevious])
 
-    const tryActivation = async (connector: AbstractConnector | undefined) => {
-        let name = ''
+    const tryActivation = async (selected: WalletInfo | undefined) => {
+        const name = selected?.name
+        const connector = selected?.connector
 
-        Object.keys(SUPPORTED_WALLETS).map(key => {
-            if (connector === SUPPORTED_WALLETS[key].connector) {
-                return (name = SUPPORTED_WALLETS[key].name)
-            }
-            return true
-        })
         // log selected wallet
 
         setPendingWallet(connector) // set wallet for pending view
@@ -423,11 +422,13 @@ export default function WalletModal({
         }
 
         // set selectedProvider manually to prevent multiple pop-ups
+        //TODO: if connector is injected then based on selected.name choose metamask or other provider
         if (window.ethereum) {
-          const isMultiple = window.ethereum.providers?.length > 1 
-          const  provider = !isMultiple ? window.ethereum :  
-                            window.ethereum.providers.find((isMetaMask: any) => isMetaMask.isMetaMask)
-          window.ethereum.selectedProvider = provider
+            const isMultiple = window.ethereum.providers?.length > 1
+            let provider = !isMultiple ? window.ethereum :
+                window.ethereum.providers.find((provider: any) => name === 'Injected' ? provider.isMetaMask !== true : provider.isMetaMask)
+            provider = provider | window.ethereum.providers[0]
+            window.ethereum.selectedProvider = provider
         }
 
         connector &&

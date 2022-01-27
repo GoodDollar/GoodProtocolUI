@@ -46,21 +46,21 @@ export function useInactiveListener(suppress = false) {
         const { ethereum } = window
 
         if (window.ethereum) {
-          let provider:any
-          const isMultiple = window.ethereum?.providers?.length > 1
-          !isMultiple ?  provider = ethereum : 
-                         provider = window.ethereum?.providers.find((isMetaMask: any) => isMetaMask.isMetaMask) 
-          window.ethereum.selectedProvider = provider  
+            let provider: any
+            const isMultiple = window.ethereum?.providers?.length > 1
+            !isMultiple
+                ? (provider = ethereum)
+                : (provider = window.ethereum?.providers.find((isMetaMask: any) => isMetaMask.isMetaMask))
+            window.ethereum.selectedProvider = provider
         }
-
-        if (ethereum && ethereum.on && !active && !error && !suppress) {
+        if (ethereum && ethereum.selectedProvider.on && !active && !error && !suppress) {
             const handleChainChanged = () => {
                 // eat errors
                 activate(injected, undefined, true)
-                // .then(() => window.location.reload()) // suggested by MetaMask Docs
-                .catch(error => {
-                    console.error('Failed to activate after chain changed', error)
-                })
+                    // .then(() => window.location.reload()) // suggested by MetaMask Docs
+                    .catch(error => {
+                        console.error('Failed to activate after chain changed', error)
+                    })
             }
 
             const handleAccountsChanged = (accounts: string[]) => {
@@ -70,20 +70,18 @@ export function useInactiveListener(suppress = false) {
                         console.error('Failed to activate after accounts changed', error)
                     })
                 } else {
-                  deactivate() 
+                    deactivate()
                 }
             }
-            
-            ethereum.selectedProvider.on('chainChanged', handleChainChanged) 
+            ethereum.selectedProvider.on('chainChanged', handleChainChanged)
             ethereum.selectedProvider.on('accountsChanged', handleAccountsChanged)
 
-
             return () => {
-              // Not sure why, but the actual listener exists here
-              // .on has to be set through the selectedProvider to work??
-                if (ethereum.removeListener) {
-                    ethereum.removeListener('chainChanged', handleChainChanged)
-                    ethereum.removeListener('accountsChanged', handleAccountsChanged)
+                // Not sure why, but the actual listener exists here
+                // .on has to be set through the selectedProvider to work??
+                if (ethereum.selectedProvider.removeListener) {
+                    ethereum.selectedProvider.removeListener('chainChanged', handleChainChanged)
+                    ethereum.selectedProvider.removeListener('accountsChanged', handleAccountsChanged)
                 }
             }
         }
