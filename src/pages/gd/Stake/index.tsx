@@ -192,6 +192,7 @@ const StakeTable = ({
                                     </td>
                                     <td>
                                         <ActionOrSwitchButton
+                                            disabled={process.env.REACT_APP_NETWORK === 'production' && stake.protocol === LIQUIDITY_PROTOCOL.AAVE}
                                             size="sm"
                                             width="78px"
                                             borderRadius="6px"
@@ -236,10 +237,8 @@ export default function Stakes(): JSX.Element | null {
     const web3 = useWeb3()
     const [mainnetWeb3] = useEnvWeb3(DAO_NETWORK.MAINNET)
     const [stakes = [], loading, error, refetch] = usePromise(async () => {
-        const [stakes] = await Promise.all([
-            web3 && mainnetWeb3 ? getStakes(mainnetWeb3) : Promise.resolve([]),
-            new Promise(resolve => setTimeout(resolve, 1000))
-        ])
+        const stakes = await (web3 && mainnetWeb3 ? getStakes(mainnetWeb3) : Promise.resolve([]))
+
         return stakes
     }, [web3, mainnetWeb3])
     const sorted = useSearchAndSort(

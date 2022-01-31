@@ -1,6 +1,15 @@
 import Web3 from 'web3'
 import { BigNumber, ethers } from 'ethers'
-import { Currency, CurrencyAmount, Ether, Fraction, Percent, Token, TradeType } from '@uniswap/sdk-core'
+import {
+    Currency,
+    CurrencyAmount,
+    Ether,
+    Fraction,
+    Percent,
+    Token,
+    TradeType,
+    computePriceImpact
+} from '@uniswap/sdk-core'
 import { Trade } from '@uniswap/v2-sdk'
 import { MaxUint256 } from '@ethersproject/constants'
 import { getToken } from './methods/tokenLists'
@@ -261,29 +270,6 @@ export async function cDaiToG$(
 }
 
 /**
- * Tries to convert token cDAI into G$.
- * @param {Web3} web3 Web3 instance.
- * @param {SupportedChainId} chainId chain to get data from
- * @param {CurrencyAmount<Currency>} cDAI CDAI value of input token amount.
- * @param {CurrencyAmount<Currency>} G$ G$ token expected output amount.
- * @return {Promise<Fraction>}
- */
-async function getPriceImpact(
-    web3: Web3,
-    chainId: SupportedChainId,
-    cDAIInput: CurrencyAmount<Currency>,
-    G$Output: CurrencyAmount<Currency>
-): Promise<Percent> {
-    const { cDAI: price } = await g$ReservePrice(web3, chainId)
-    const spotAmount = price.quote(cDAIInput)
-
-    const priceImpact = spotAmount.subtract(G$Output).divide(spotAmount)
-    debug('Price impact', priceImpact.toSignificant(6))
-
-    return new Percent(priceImpact.numerator, priceImpact.denominator)
-}
-
-/**
  * Calculates liquidity fee.
  * @param {Trade<Currency, Currency, TradeType>} trade Currency amount.
  * @returns {Fraction}
@@ -426,7 +412,8 @@ export async function getMeta(
             trade = g$trade.trade
         }
 
-        priceImpact = await getPriceImpact(web3, chainId, inputCDAIValue, outputAmount)
+        const { cDAI: price } = await g$ReservePrice(web3, chainId)
+        priceImpact = computePriceImpact(price, inputCDAIValue, outputAmount)
     }
 
     debugGroupEnd(`Get meta ${amount} ${fromSymbol} to G$`)
@@ -580,7 +567,7 @@ export async function approve(web3: Web3, meta: BuyInfo): Promise<void> {
  * @param {BuyInfo} meta Result of the method getMeta() execution.
  * @param {Function} onSent On sent event listener.
  */
-export async function buy(web3: Web3, meta: BuyInfo, onSent?: (transactionHash: string) => void): Promise<any> {
+export async function buy(web3: Web3, meta: BuyInfo, onSent?: (transactionHash: string, from: string) => void): Promise<any> {
     const chainId = await getChainId(web3)
     const account = await getAccount(web3)
 
@@ -613,8 +600,8 @@ export async function buy(web3: Web3, meta: BuyInfo, onSent?: (transactionHash: 
                 from: account,
                 value: route[0] === ethers.constants.AddressZero ? input : undefined
             })
-
-        if (onSent) req.on('transactionHash', onSent)
+            
+        if (onSent) req.on('transactionHash', (hash: string) => onSent(hash, account))
         return req
     }
 }
