@@ -168,7 +168,7 @@ const map: Record<string, string | undefined> = {
     '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984':
         'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png',
     '0xd0A1E359811322d97991E03f863a0C30C2cF029C':
-        'https://cdn.furucombo.app/assets/img/token/WETH.svg',
+        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
     '0xd3A691C852CDB01E281545A27064741F0B7f6825':
         'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png',
     '0x46183b8822BB7Cbf27E10A1acc95DfB3b5f0ec79':
