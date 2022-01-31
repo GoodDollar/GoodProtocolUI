@@ -15,8 +15,10 @@ const map: Record<string, string | undefined> = {
         'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png',
     '0x9d527F4509f5d80bb23611B69b28a3809D04ecd4':
         'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png',
-    '0xD50604E530fF36B2747aE8574b37B21B9f779d37': 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png',
-    '0x2e975e7711088aAfb38119454fF7fb99bAA9142F': 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png'  
+    '0xD50604E530fF36B2747aE8574b37B21B9f779d37':
+        'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png',
+    '0x2e975e7711088aAfb38119454fF7fb99bAA9142F':
+        'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png'
 }
 
 export const getRopstenTokenLogoURL = (address: string): string =>
