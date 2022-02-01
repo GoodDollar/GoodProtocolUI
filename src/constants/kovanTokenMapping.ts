@@ -1,3 +1,5 @@
+import contractsAddresses from '@gooddollar/goodprotocol/releases/deployment.json'
+
 const map: Record<string, string | undefined> = {
     '0xE41d2489571d322189246DaFA5ebDe1F4699F498':
         'https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_ZRX.svg',
@@ -171,13 +173,20 @@ const map: Record<string, string | undefined> = {
         'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
     '0xd3A691C852CDB01E281545A27064741F0B7f6825':
         'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png',
-    '0x46183b8822BB7Cbf27E10A1acc95DfB3b5f0ec79':
-        'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
-    '0xEf0c1e6f98e433d81AE3e6611944bc06e533A47B':
-        'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png',
     '0xBE4fe98C9C4c0A8f3681c34C94cE2e462da5FC89':
         'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gdx-logo.png'
 }
+
+Object.values(contractsAddresses).forEach(
+    _ =>
+        (map[_['GoodDollar'] as string] =
+            'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png')
+)
+Object.values(contractsAddresses).forEach(
+    _ =>
+        (map[_['GReputation'] as string] =
+            'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png')
+)
 
 export const getKovanTokenLogoURL = (address: string): string =>
     map[address] ??

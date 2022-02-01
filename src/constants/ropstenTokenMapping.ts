@@ -1,3 +1,5 @@
+import contractsAddresses from '@gooddollar/goodprotocol/releases/deployment.json'
+
 const map: Record<string, string | undefined> = {
     '0xaD6D458402F60fD3Bd25163575031ACDce07538D':
         'https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_DAI.svg',
@@ -20,6 +22,17 @@ const map: Record<string, string | undefined> = {
     '0x2e975e7711088aAfb38119454fF7fb99bAA9142F':
         'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png'
 }
+
+Object.values(contractsAddresses).forEach(
+    _ =>
+        (map[_['GoodDollar'] as string] =
+            'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png')
+)
+Object.values(contractsAddresses).forEach(
+    _ =>
+        (map[_['GReputation'] as string] =
+            'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png')
+)
 
 export const getRopstenTokenLogoURL = (address: string): string =>
     map[address] ??
