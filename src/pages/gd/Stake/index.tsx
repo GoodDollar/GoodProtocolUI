@@ -202,14 +202,16 @@ const StakeTable = ({
                                                 setActiveStake(stake)
                                                 setActiveTableName()
                                             }}
-                                        >
-                                            {i18n._(t`Stake`)}
+                                        > { process.env.REACT_APP_NETWORK === 'production' && stake.protocol === LIQUIDITY_PROTOCOL.AAVE ?
+                                            i18n._(t`Temporarily unavailable`) :
+                                            i18n._(t`Stake`)} 
                                         </ActionOrSwitchButton>
                                     </td>
                                 </tr>
                                 <tr className="mobile">
                                     <td colSpan={8}>
                                         <ActionOrSwitchButton
+                                            disabled={process.env.REACT_APP_NETWORK === 'production' && stake.protocol === LIQUIDITY_PROTOCOL.AAVE}
                                             size="sm"
                                             borderRadius="6px"
                                             noShadow={true}
@@ -218,8 +220,9 @@ const StakeTable = ({
                                                 setActiveStake(stake)
                                                 setActiveTableName()
                                             }}
-                                        >
-                                            {i18n._(t`Stake`)}
+                                        > { process.env.REACT_APP_NETWORK === 'production' && stake.protocol === LIQUIDITY_PROTOCOL.AAVE ?
+                                        i18n._(t`Temporarily unavailable`) :
+                                        i18n._(t`Stake`)} 
                                         </ActionOrSwitchButton>
                                     </td>
                                 </tr>
