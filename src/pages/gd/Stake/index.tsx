@@ -215,7 +215,7 @@ const StakeTable = ({
                                 <tr className="mobile">
                                     <td colSpan={8}>
                                         <ActionOrSwitchButton
-                                            disabled={!stake?.isV2 || stake.protocol !== LIQUIDITY_PROTOCOL.GOODDAO }
+                                            disabled={!stake.isV2 && (stake.protocol !== LIQUIDITY_PROTOCOL.GOODDAO && hasAPY)}
                                             size="sm"
                                             borderRadius="6px"
                                             noShadow={true}
