@@ -2697,17 +2697,10 @@
     truffle-plugin-verify "^0.3.11"
     truffle-safe-hdwallet-provider "0.0.7"
 
-<<<<<<< HEAD
 "@gooddollar/goodprotocol@^1.0.7-beta.1":
   version "1.0.7-beta.1"
   resolved "https://registry.yarnpkg.com/@gooddollar/goodprotocol/-/goodprotocol-1.0.7-beta.1.tgz#35ed846c93348b62c808456bba2e8cc00d1ff1c5"
   integrity sha512-ElRvI7+ltjAddx8YlhjKnSg1KFzri4W9a9LR42YoThagCO4NAeE9qGKZSTFXtooBwUinQyFStjhVHrIgiId/VQ==
-=======
-"@gooddollar/goodprotocol@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@gooddollar/goodprotocol/-/goodprotocol-1.0.3.tgz#12e48c7bef328c7ccfd75576da087f9efed473f4"
-  integrity sha512-KeBMBQeVQbWpCs6z8zrcHZm30VO35RU80faQPg7kMkKwhzEeLffOzgp9jV1MkcKqln0f/w4QnIEHuFFfSJIbfw==
->>>>>>> 9c707baf (fix: updating yarn.lock)
   dependencies:
     "@gooddollar/goodcontracts" "^2.6.2"
     "@jsier/retrier" "^1.2.4"
