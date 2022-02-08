@@ -318,3 +318,13 @@ export const TOKEN_LISTS: { [chainId: number]: string[] } = {
         'https://raw.githubusercontent.com/fuseio/fuseswap-default-token-list/master/build/fuseswap-default.tokenlist.json'
     ]
 }
+
+export const TokenMaps = {
+  USDC,
+  G$,
+  UNI,
+  GDX,
+  GDAO,
+  DAI,
+  CDAI
+}
