@@ -205,9 +205,9 @@ const StakeTable = ({
                                                 setActiveStake(stake)
                                                 setActiveTableName()
                                             }}
-                                        > { stake.isV2 || stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ?
-                                          i18n._(t`Stake`) :
-                                          i18n._(t`Discontinued`)
+                                        > {!stake.isV2 && (stake.protocol !== LIQUIDITY_PROTOCOL.GOODDAO && hasAPY) ?
+                                          i18n._(t`Discontinued`) :
+                                          i18n._(t`Stake`)
                                         }
                                         </ActionOrSwitchButton>
                                     </td>
@@ -224,9 +224,9 @@ const StakeTable = ({
                                                 setActiveStake(stake)
                                                 setActiveTableName()
                                             }}
-                                        > { stake.isV2 || stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ?
-                                            i18n._(t`Stake`) :
-                                            i18n._(t`Discontinued`)
+                                        > { !stake.isV2 && (stake.protocol !== LIQUIDITY_PROTOCOL.GOODDAO && hasAPY) ?
+                                            i18n._(t`Discontinued`) :
+                                            i18n._(t`Stake`)
                                           }
                                             
                                         </ActionOrSwitchButton>

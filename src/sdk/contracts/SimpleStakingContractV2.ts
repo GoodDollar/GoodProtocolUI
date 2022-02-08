@@ -2,11 +2,12 @@ import Web3 from 'web3'
 import { AbiItem } from 'web3-utils'
 import SimpleStakingV2 from '@gooddollar/goodprotocol/artifacts/contracts/staking/SimpleStakingV2.sol/SimpleStakingV2.json'
 import contractsAddresses from '@gooddollar/goodprotocol/releases/deploy-settings.json'
-// import { SupportedChainId } from '../constants/chains'
+import { SupportedChainId } from '../constants/chains'
 
 import { G$ContractAddresses, getNetworkEnv } from '../constants/addresses'
 import { getChainId } from '../utils/web3'
 import { LIQUIDITY_PROTOCOL } from 'sdk/constants/protocols'
+
 
 /**
  * Returns instance of SimpleStaking contract.
@@ -44,30 +45,28 @@ export async function getSimpleStakingContractAddressesV2(web3: Web3): Promise<s
  * @param {Web3} web3 Web3 instance.
  * @returns {string}
  */
+
 // TODO: Add function description
-export function getUsdOracle(protocol: LIQUIDITY_PROTOCOL, web3: Web3): string {
-  let usdOracle: string // ,deploymentName: string  
-  // const chainId = web3.givenProvider.networkVersion
+export function getUsdOracle(protocol: LIQUIDITY_PROTOCOL, web3: Web3) {
+  let usdOracle: string, deploymentName: string
 
-  // const CURRENT_NETWORK = getNetworkEnv()
-  // switch (chainId) {
-  //     case SupportedChainId.KOVAN:
-  //         deploymentName = 'kovan-mainnet'
-  //         break
-  //     case SupportedChainId.MAINNET:
-  //     case SupportedChainId.ROPSTEN:
-  //         deploymentName = CURRENT_NETWORK + '-mainnet'
-  //         break
-  //     case SupportedChainId.FUSE:
-  //         deploymentName = CURRENT_NETWORK
-  //         break
-  // }
+  let chainId = web3.givenProvider.networkVersion as SupportedChainId
+  const CURRENT_NETWORK = getNetworkEnv()
 
-  if (protocol === LIQUIDITY_PROTOCOL.COMPOUND){
-    // TODO: when contracts are released on testnet use deploymentName here
-    usdOracle = contractsAddresses['production-mainnet'].compound.daiUsdOracle
+  if (chainId == SupportedChainId.MAINNET || 
+      chainId == SupportedChainId.FUSE || 
+      chainId == SupportedChainId.ROPSTEN) {
+      deploymentName = CURRENT_NETWORK +'-mainnet'
+  } else if (chainId === SupportedChainId.KOVAN) {
+      deploymentName = 'kovan-mainnet'
   } else {
-    usdOracle = contractsAddresses['production-mainnet'].aave.usdcUsdOracle
+      deploymentName = 'production-mainnet'
+  }
+  
+  if (protocol === LIQUIDITY_PROTOCOL.COMPOUND){
+    usdOracle = contractsAddresses[deploymentName].compound.daiUsdOracle
+  } else {
+    usdOracle = contractsAddresses[deploymentName].aave.usdcUsdOracle
   }
 
   return usdOracle
