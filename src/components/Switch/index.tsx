@@ -14,7 +14,7 @@ export default function Switch({ onChange, defaultChecked, checked, ...rest }: S
         [onChange]
     )
     return (
-        <StyledSwitch>
+        <StyledSwitch checked={checked}>
             <div className='area' />
             <input
                 type='checkbox'
