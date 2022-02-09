@@ -539,5 +539,6 @@
   "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers.": "Подключение G $ против GoodReserve не имеет сторонних сборов, если вы поменяете от / до CDAI, так как наш резервный токен. Подключение G $ S от / на другие активы подразумевает 0,3% от оплаты на 3-я сторонних поставщиков ликвидности AMM.",
   "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded.": "Вы только что поставили свои G $ в нашу Gooddao, это действие вознаграждает вас хорошим управлением токенами, которые не передаются, поэтому не могут быть проданы.",
   "Go to Portfolio": "Перейти к портфолио",
-  "Switch to {network}": "Переключить на {network}"
+  "Switch to {network}": "Переключить на {network}",
+  "Withdraw into interest token?": "Вывести в interest token?"
 }

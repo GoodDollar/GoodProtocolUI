@@ -47,44 +47,6 @@ function Withdraw({ token, protocol, open, setOpen, onWithdraw, stake, ...rest }
     const [percentage, setPercentage] = useState<string>('50')
     const [withdrawAmount, setWithdrawAmount] = useState<number>(totalStake * (Number(percentage) / 100))
     const { chainId } = useActiveWeb3React()
-    if (web3 && chainId) {
-        const c = simpleStakingContract(web3, stake.address)
-        // console.log(stake.tokens)
-    console.log(c.methods)
-        console.log(
-            c.methods
-                .iToken()
-                .call()
-                .then((address: string) => {
-                    console.log(address)
-                    console.log(getTokenByAddress(web3, address))
-                })
-        )
-        console.log(
-            c.methods
-                .iTokenWorthInToken(1)
-                .call()
-                .then((value: string) => {
-                    console.log(CurrencyAmount.fromRawAmount(TokenMaps.CDAI[chainId], value).toExact(), 'Stas')
-                })
-        )
-        console.log(
-            c.methods
-                .iTokenWorthInToken(1)
-                .call()
-                .then((value: string) => {
-                    console.log(stake.tokens.B.name?.toUpperCase() as keyof typeof TokenMaps)
-                    console.log(
-                        CurrencyAmount.fromRawAmount(
-                            TokenMaps[stake.tokens.B.symbol?.toUpperCase() as keyof typeof TokenMaps][
-                                chainId
-                            ] as Currency,
-                            value
-                        ).toExact()
-                    )
-                })
-        )
-    }
     useEffect(() => {
         setWithdrawAmount(totalStake * (Number(percentage) / 100))
     }, [percentage])
@@ -152,9 +114,12 @@ function Withdraw({ token, protocol, open, setOpen, onWithdraw, stake, ...rest }
                             <div>{`${formatNumber(totalStake)} ${token}`}</div>
                         </div>
 
-                        <div>{String(withdrawInInterestToken)}</div>
                         <div className='horizontal mt-4 mb-2' />
-                        <Switch checked={withdrawInInterestToken} onChange={setWithdrawInInterestToken} />
+
+                        <div className='details-row flex justify-between mb-2'>
+                            <div>{i18n._(t`Withdraw into interest token?`)}</div>
+                            <Switch checked={withdrawInInterestToken} onChange={setWithdrawInInterestToken} />
+                        </div>
                         <PercentInputControls
                             value={percentage}
                             onPercentChange={setPercentage}
