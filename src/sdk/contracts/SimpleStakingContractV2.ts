@@ -53,11 +53,13 @@ export function getUsdOracle(protocol: LIQUIDITY_PROTOCOL, web3: Web3) {
   let chainId = web3.givenProvider.networkVersion as SupportedChainId
   const CURRENT_NETWORK = getNetworkEnv()
 
-  if (chainId == SupportedChainId.MAINNET || 
-      chainId == SupportedChainId.FUSE || 
-      chainId == SupportedChainId.ROPSTEN) {
-      deploymentName = CURRENT_NETWORK +'-mainnet'
-  } else if (chainId === SupportedChainId.KOVAN) {
+  if (chainId == SupportedChainId.MAINNET) {
+    deploymentName = 'production-mainnet'    
+  } else if (chainId == SupportedChainId.ROPSTEN && CURRENT_NETWORK == 'fuse') {
+    deploymentName = 'fuse-mainnet'
+  } else if (chainId == SupportedChainId.ROPSTEN && CURRENT_NETWORK == 'staging') {
+    deploymentName = 'staging-mainnet'
+  } else if (chainId == SupportedChainId.KOVAN) {
       deploymentName = 'kovan-mainnet'
   } else {
       deploymentName = 'production-mainnet'
