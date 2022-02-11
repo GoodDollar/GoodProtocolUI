@@ -102,32 +102,32 @@ function Withdraw({ token, protocol, open, setOpen, onWithdraw, stake, ...rest }
             setTransactionHash(undefined)
         }
     }, [open])
-    console.log(withdrawInInterestToken)
+
     return (
         <Modal isOpen={open} noPadding onDismiss={handleClose}>
             <WithdrawStyled {...rest}>
-                <div className='flex flex-grow justify-end'>
-                    <CrossSVG className='cursor-pointer' onClick={handleClose} />
+                <div className="flex justify-end flex-grow">
+                    <CrossSVG className="cursor-pointer" onClick={handleClose} />
                 </div>
                 {status === 'none' || status === 'pending' ? (
                     <>
-                        <Title className='flex flex-grow justify-center pt-3 pb-3'>{i18n._(t`Withdraw`)}</Title>
-                        <div className='details-row flex justify-between'>
+                        <Title className="flex justify-center flex-grow pt-3 pb-3">{i18n._(t`Withdraw`)}</Title>
+                        <div className="flex justify-between details-row">
                             <div>{i18n._(t`Token`)}</div>
                             <div>{token}</div>
                         </div>
-                        <div className='details-row flex justify-between'>
+                        <div className="flex justify-between details-row">
                             <div>{i18n._(t`Protocol`)}</div>
                             <div>{protocol}</div>
                         </div>
-                        <div className='details-row flex justify-between'>
+                        <div className="flex justify-between details-row">
                             <div>{i18n._(t`Total stake`)}</div>
                             <div>{`${formatNumber(totalStake)} ${token}`}</div>
                         </div>
 
-                        <div className='horizontal mt-4 mb-2' />
+                        <div className="mt-4 mb-2 horizontal" />
 
-                        <div className='details-row flex justify-between mb-2'>
+                        <div className="flex justify-between mb-2 details-row">
                             <div>{i18n._(t`Withdraw into interest token?`)}</div>
                             <Switch checked={withdrawInInterestToken} onChange={setWithdrawInInterestToken} />
                         </div>
@@ -137,25 +137,25 @@ function Withdraw({ token, protocol, open, setOpen, onWithdraw, stake, ...rest }
                             disabled={status === 'pending'}
                         />
 
-                        <div className='flex flex-col items-center gap-1 relative mt-7'>
-                            <p className='warning mb-5'>{error ? error.message : ''}</p>
-                            <p className='warning text-center mb-2 text-red'>
+                        <div className="relative flex flex-col items-center gap-1 mt-7">
+                            <p className="mb-5 warning">{error ? error.message : ''}</p>
+                            <p className="mb-2 text-center warning text-red">
                                 {i18n._(t`Withdrawing your stake will reset your multiplier.`)}
                             </p>
-                            <ButtonAction className='withdraw' disabled={status === 'pending'} onClick={handleWithdraw}>
+                            <ButtonAction className="withdraw" disabled={status === 'pending'} onClick={handleWithdraw}>
                                 {status === 'pending'
                                     ? i18n._(t`PENDING SIGN...`)
                                     : `${i18n._(t`WITHDRAW`)} ${formatNumber(withdrawAmount)} ${token.toUpperCase()}`}
                             </ButtonAction>
                             {status === 'pending' && (
-                                <p className='pending-hint'>You need to sign the transaction in your wallet</p>
+                                <p className="pending-hint">You need to sign the transaction in your wallet</p>
                             )}
                         </div>
                     </>
                 ) : (
                     <>
-                        <Title className='flex flex-grow justify-center pt-3'>{i18n._(t`Success!`)}</Title>
-                        <div className='flex justify-center items-center gap-2 pt-7 pb-7'>
+                        <Title className="flex justify-center flex-grow pt-3">{i18n._(t`Success!`)}</Title>
+                        <div className="flex items-center justify-center gap-2 pt-7 pb-7">
                             {status === 'send'
                                 ? i18n._(t`Transaction was sent to the blockchain `)
                                 : i18n._(t`You have successfully claimed your rewards `)}
@@ -165,17 +165,17 @@ function Withdraw({ token, protocol, open, setOpen, onWithdraw, stake, ...rest }
                                     chainId &&
                                     getExplorerLink(chainId, transactionHash, 'transaction')
                                 }
-                                target='_blank'
-                                rel='noreferrer'
+                                target="_blank"
+                                rel="noreferrer"
                             >
-                                <LinkSVG className='cursor-pointer' />
+                                <LinkSVG className="cursor-pointer" />
                             </a>
                         </div>
-                        <div className='flex justify-center'>
+                        <div className="flex justify-center">
                             {status === 'send' ? (
-                                <Loader stroke='#173046' size='32px' />
+                                <Loader stroke="#173046" size="32px" />
                             ) : (
-                                <Button className='back-to-portfolio' onClick={handleClose}>
+                                <Button className="back-to-portfolio" onClick={handleClose}>
                                     {i18n._(t`Back to portfolio`)}
                                 </Button>
                             )}
