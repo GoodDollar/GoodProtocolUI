@@ -28,10 +28,8 @@ const Portfolio = () => {
     const [mainnetWeb3, mainnetChainId] = useEnvWeb3(DAO_NETWORK.MAINNET)
     const [fuseWeb3, fuseChainId] = useEnvWeb3(DAO_NETWORK.FUSE)
 
-    const address = '' // address here for multiple stakes
-
     const [data, , , update] = usePromise(async () => {
-        const list = account && mainnetWeb3 && fuseWeb3 ? await getMyList(mainnetWeb3, fuseWeb3, address) : []
+        const list = account && mainnetWeb3 && fuseWeb3 ? await getMyList(mainnetWeb3, fuseWeb3, account) : []
         return {
             list,
             aggregated: list.reduce(
