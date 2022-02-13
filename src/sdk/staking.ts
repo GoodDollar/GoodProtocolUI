@@ -272,6 +272,7 @@ async function metaMyGovStake(web3: Web3, account: string): Promise<MyStake | nu
     const govStaking = governanceStakingContract(web3)
 
     const G$Token = G$[SupportedChainId.FUSE] //gov is always on fuse
+    const usdcToken = USDC[SupportedChainId.MAINNET]
     const users = await govStaking.methods.users(account).call()
     if (!users || parseInt(users.amount.toString()) === 0) {
         return null
@@ -284,7 +285,7 @@ async function metaMyGovStake(web3: Web3, account: string): Promise<MyStake | nu
     let amount$ = CurrencyAmount.fromRawAmount(G$Token, 0)
     if (tokenPrice) {
         const value = tokenPrice.DAI.multiply(users.amount.toString())
-        amount$ = CurrencyAmount.fromFractionalAmount(G$Token, value.numerator, value.denominator)
+        amount$ = CurrencyAmount.fromFractionalAmount(usdcToken, value.numerator, value.denominator)
     }
 
     const unclaimed = await govStaking.methods.getUserPendingReward(account).call()
