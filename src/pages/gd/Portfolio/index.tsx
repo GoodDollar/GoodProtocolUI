@@ -32,14 +32,10 @@ const Portfolio = () => {
 
     const [data, , , update] = usePromise(async () => {
         const list = account && mainnetWeb3 && fuseWeb3 ? await getMyList(mainnetWeb3, fuseWeb3, address) : []
-        console.log('stakeList -->', list)
         return {
             list,
             aggregated: list.reduce(
                 (acc, stake) => {
-                    console.log('acc.myStake -->', acc?.myStake)
-                    console.log('stake.stake.amount$ -->', stake.stake.amount$)
-                    console.log('myStake.add(amount -->', acc?.myStake.add(stake.stake.amount$)) // test calculations
                     return !acc
                         ? {
                               myStake: stake.stake.amount$,
