@@ -197,9 +197,9 @@ async function metaMyStake(web3: Web3, address: string, account: string, isV2: b
     let amount$: CurrencyAmount<Currency>
     if (tokenPrice) {
         const _amountUSDC = amount.multiply(tokenPrice).divide(10 ** token.decimals)
-        amount$ = CurrencyAmount.fromFractionalAmount(USDC[chainId], _amountUSDC.numerator, _amountUSDC.denominator)
+        amount$ = CurrencyAmount.fromFractionalAmount(USDC[SupportedChainId.MAINNET], _amountUSDC.numerator, _amountUSDC.denominator)
     } else {
-        amount$ = CurrencyAmount.fromRawAmount(USDC[chainId], 0)
+        amount$ = CurrencyAmount.fromRawAmount(USDC[SupportedChainId.MAINNET], 0)
     }
 
     debug('Amount', amount.toSignificant(6))
