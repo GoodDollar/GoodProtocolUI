@@ -216,12 +216,10 @@ async function metaMyStake(web3: Web3, address: string, account: string, isV2: b
     const rewardUSDC = {
         claimed: rewardG$.claimed
             .multiply(cDAI)
-            .multiply(ratio)
-            .divide(1),
+            .multiply(ratio),
         unclaimed: rewardG$.unclaimed
             .multiply(cDAI)
-            .multiply(ratio)
-            .divide(1)
+            .multiply(ratio),
     }
 
     // const DAI = (await getToken(SupportedChainId.MAINNET, 'DAI')) as Token
