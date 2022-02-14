@@ -464,12 +464,6 @@ export const getTokenPriceInUSDC = memoize<
             }
         }
 
-        const usdcT = USDC[SupportedChainId.MAINNET]
-        if (!usdcT) {
-            debug('Price', null)
-            debugGroupEnd(name)
-            return null
-        }
 
         debug('Protocol', protocol)
         debug('Token', token)
@@ -482,7 +476,9 @@ export const getTokenPriceInUSDC = memoize<
         }
 
         let price = null
+
         if (protocol === LIQUIDITY_PROTOCOL.COMPOUND) {
+            const usdcT = USDC[SupportedChainId.MAINNET]       
             const trade = await v2TradeExactIn(amount, usdcT, { chainId, maxHops: 2 })
             debug('Trade', trade)
 
