@@ -187,7 +187,7 @@
   "Historical Total Locked: Fetching Total": "Historische Gesamtsumme gesperrt: Gesamtsumme abrufen",
   "Historical Total Locked: {0} SUSHI": "Historische Summe gesperrt {0}",
   "Holding": "Holding",
-  "How many GOOD tokens you are accumulating by this stake position.": "",
+  "How many GOOD tokens you are accumulating by this stake position.": "How many GOOD tokens you are accumulating by this stake position.",
   "How much value your stake has accumulated so far.": "Wie viel Wert hat sich bisher angesammelt?",
   "How much would you like to deposit?": "Wie viel möchten Sie einlädigen?",
   "How much would you like to withdraw?": "Wie viel möchten Sie zurückziehen?",
@@ -368,7 +368,7 @@
   "Stakes": "Pfosten",
   "Staking": "Stak",
   "Staking APR": "Abstecken APR",
-  "Staking could be of two types: UBI for funds staked on the GoodDollar trust for the generation of new G$ for universal income distribution, or Governance (to be enabled) for staking G$s for GOOD Rewards.": "",
+  "Staking could be of two types: UBI for funds staked on the GoodDollar trust for the generation of new G$ for universal income distribution, or Governance (to be enabled) for staking G$s for GOOD Rewards.": "Staking could be of two types: UBI for funds staked on the GoodDollar trust for the generation of new G$ for universal income distribution, or Governance (to be enabled) for staking G$s for GOOD Rewards.",
   "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can be rewarded with more G$ every day!": "Ab 1.0 steigt Ihr Multiplikator nach einem Monat nach einem Monat zum Vertrauen auf 2.0, an diesem Punkt, an dem Sie jeden Tag mit mehr G $ belohnt werden können!",
   "Submit Tool": "Tool senden",
   "Success!": "Erfolg!",
@@ -500,7 +500,7 @@
   "You can leave the bar and exchange your {0} for {1} (as well as collect any earned interest) at any time. However, there are more ways to use {2} to maximize your yield potential!": "Sie können die Bar verlassen und Ihre {0} für {1} tauschen (sowie ein beliebiges Zinsen) jederzeit. Es gibt jedoch mehr Möglichkeiten, {2} zu verwenden, um Ihr Ertragspotenzial zu maximieren!",
   "You don’t have liquidity in this pool yet": "Sie haben noch keine Liquidität in diesem Pool",
   "You have just staked your G$s towards our GoodDAO, \nthis action is gonna reward you with GOOD governance tokens, \nwhich are non-transferable so can't be traded.": "",
-  "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded.": "",
+  "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded.": "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded.",
   "You have successfully claimed your rewards": "Sie haben Ihre Belohnungen erfolgreich beansprucht",
   "You need to first approve LP tokens and then migrate it": "Sie müssen zuerst LP-Token genehmigen und dann migrieren",
   "You need to sign the transaction in your wallet": "Sie müssen die Transaktion in Ihrer Brieftasche unterschreiben",
@@ -561,5 +561,6 @@
   "{0} Strategy": "{0} Strategie",
   "{0} per {1}": "{0} pro {1}",
   "{label}": "",
-  "• Added by user": "• vom Benutzer hinzugefügt"
+  "• Added by user": "• vom Benutzer hinzugefügt",
+  "Withdraw into interest token?": "Withdraw into interest token?"
 }
