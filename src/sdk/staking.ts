@@ -236,12 +236,12 @@ async function metaMyStake(web3: Web3, address: string, account: string, isV2: b
                   G$MainNet,
                     rewardUSDC.claimed.numerator,
                     rewardUSDC.claimed.denominator
-                ) as CurrencyAmount<Currency>,
+                ),
                 unclaimed: CurrencyAmount.fromFractionalAmount(
                     G$MainNet,
                     rewardUSDC.unclaimed.numerator,
                     rewardUSDC.unclaimed.denominator
-                )  as CurrencyAmount<Currency>
+                )
             },
             GDAO: rewardGDAO
         },
@@ -281,7 +281,7 @@ async function metaMyGovStake(web3: Web3, account: string): Promise<MyStake | nu
 
     const tokenPrice = await g$Price()
 
-    let amount$ = CurrencyAmount.fromRawAmount(G$Token, 0) as CurrencyAmount<Currency>
+    let amount$ = CurrencyAmount.fromRawAmount(G$Token, 0)
     if (tokenPrice) {
       const value = amount.multiply(tokenPrice.DAI).multiply(1e4)
       amount$ = CurrencyAmount.fromFractionalAmount(usdcToken, value.numerator, value.denominator)
@@ -306,8 +306,8 @@ async function metaMyGovStake(web3: Web3, account: string): Promise<MyStake | nu
                 unclaimed: CurrencyAmount.fromRawAmount(G$MainToken, 0)
             },
             reward$: {
-                claimed: CurrencyAmount.fromRawAmount(G$MainToken, 0) as CurrencyAmount<Currency>,
-                unclaimed: CurrencyAmount.fromRawAmount(G$MainToken, 0) as CurrencyAmount<Currency>
+                claimed: CurrencyAmount.fromRawAmount(G$MainToken, 0),
+                unclaimed: CurrencyAmount.fromRawAmount(G$MainToken, 0)
             },
             GDAO: rewardGDAO
         },
@@ -464,9 +464,8 @@ export const getTokenPriceInUSDC = memoize<
             }
         }
 
-        const USDC = await getToken(chainId, 'USDC')
-        const token1 = new Token(1, '0x0000000000000000000000000000000000000001', 6)
-        if (!token1) {
+        const usdcT = USDC[SupportedChainId.MAINNET]
+        if (!usdcT) {
             debug('Price', null)
             debugGroupEnd(name)
             return null
@@ -484,7 +483,7 @@ export const getTokenPriceInUSDC = memoize<
 
         let price = null
         if (protocol === LIQUIDITY_PROTOCOL.COMPOUND) {
-            const trade = await v2TradeExactIn(amount, USDC, { chainId, maxHops: 2 })
+            const trade = await v2TradeExactIn(amount, usdcT, { chainId, maxHops: 2 })
             debug('Trade', trade)
 
             if (trade) {
