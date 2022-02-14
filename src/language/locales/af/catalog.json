@@ -187,7 +187,7 @@
   "Historical Total Locked: Fetching Total": "Historiese Totale Geslote: Haal Totaal",
   "Historical Total Locked: {0} SUSHI": "Historiese totale gesluit: {0} SUSHI",
   "Holding": "Holding",
-  "How many GOOD tokens you are accumulating by this stake position.": "",
+  "How many GOOD tokens you are accumulating by this stake position.": "How many GOOD tokens you are accumulating by this stake position.",
   "How much value your stake has accumulated so far.": "Hoeveel waarde u belang tot dusver opgehoop het.",
   "How much would you like to deposit?": "Hoeveel wil jy deponeer?",
   "How much would you like to withdraw?": "Hoeveel wil jy onttrek?",
@@ -368,7 +368,7 @@
   "Stakes": "Stakes",
   "Staking": "Staking",
   "Staking APR": "Staking April",
-  "Staking could be of two types: UBI for funds staked on the GoodDollar trust for the generation of new G$ for universal income distribution, or Governance (to be enabled) for staking G$s for GOOD Rewards.": "",
+  "Staking could be of two types: UBI for funds staked on the GoodDollar trust for the generation of new G$ for universal income distribution, or Governance (to be enabled) for staking G$s for GOOD Rewards.": "Staking could be of two types: UBI for funds staked on the GoodDollar trust for the generation of new G$ for universal income distribution, or Governance (to be enabled) for staking G$s for GOOD Rewards.",
   "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can be rewarded with more G$ every day!": "Vanaf 1.0 sal u vermenigvuldiger toeneem tot 2.0 na een maand van staking by die Trust, op watter punt u elke dag met meer G $ beloon kan word!",
   "Submit Tool": "Dien Tool in",
   "Success!": "Sukses!",
@@ -500,7 +500,7 @@
   "You can leave the bar and exchange your {0} for {1} (as well as collect any earned interest) at any time. However, there are more ways to use {2} to maximize your yield potential!": "U kan die kroeg verlaat en u {0} vir {1} ruil (sowel as enige verdiende rente insamel) te eniger tyd. Daar is egter meer maniere om {2} te gebruik om jou opbrengspotensiaal te maksimeer!",
   "You don’t have liquidity in this pool yet": "Jy het nog nie likiditeit in hierdie poel nie",
   "You have just staked your G$s towards our GoodDAO, \nthis action is gonna reward you with GOOD governance tokens, \nwhich are non-transferable so can't be traded.": "",
-  "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded.": "",
+  "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded.": "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded.",
   "You have successfully claimed your rewards": "U het u belonings suksesvol geëis",
   "You need to first approve LP tokens and then migrate it": "U moet eers LP-tokens goedkeur en dit dan migreer",
   "You need to sign the transaction in your wallet": "U moet die transaksie in u beursie onderteken",
@@ -561,5 +561,6 @@
   "{0} Strategy": "{0} Strategie",
   "{0} per {1}": "{0} per {1}",
   "{label}": "",
-  "• Added by user": "• Bygevoeg deur gebruiker"
+  "• Added by user": "• Bygevoeg deur gebruiker",
+  "Withdraw into interest token?": "Withdraw into interest token?"
 }
