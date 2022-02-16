@@ -480,6 +480,7 @@
   "What's an exit contribution?": "ما هي مساهمة الخروج؟",
   "When creating a pair you are the first liquidity provider. The ratio of tokens you add will set the price of this pool. Once you are happy with the rate, click supply to review": "عند إنشاء زوج، فأنت أول مزود للسيولة. ستحدد نسبة الرموز المميزة التي تضيفها سعر هذا التجمع. بمجرد أن تكون راضيًا عن السعر، انقر فوق العرض للمراجعة",
   "Withdraw": "سحب",
+  "Withdraw as {0}?": "Withdraw as {0}?",
   "Withdraw {assetSymbol}": "سحب {assetSymbol}",
   "Withdrawing your stake will reset your multiplier.": "",
   "Withdrew funds from {0}": "الأموال التي تم سحبها من {0}",
@@ -561,6 +562,5 @@
   "{0} Strategy": "{0} استراتيجية",
   "{0} per {1}": "{0} لكل {1}",
   "{label}": "",
-  "• Added by user": "• تمت إضافته من قبل المستخدم",
-  "Withdraw into interest token?": "Withdraw into interest token?"
+  "• Added by user": "• تمت إضافته من قبل المستخدم"
 }
