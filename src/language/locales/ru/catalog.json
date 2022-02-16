@@ -573,5 +573,5 @@
   "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded.": "Вы только что поставили свои G $ в нашу Gooddao, это действие вознаграждает вас хорошим управлением токенами, которые не передаются, поэтому не могут быть проданы.",
   "Go to Portfolio": "Перейти к портфолио",
   "Switch to {network}": "Переключить на {network}",
-  "Withdraw into interest token?": "Вывести в interest token?"
+  "Withdraw as {0}?": "Вывести в {0}?"
 }
