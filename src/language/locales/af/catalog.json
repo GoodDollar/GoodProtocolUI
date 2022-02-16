@@ -480,6 +480,7 @@
   "What's an exit contribution?": "Wat is 'n uittree-bydrae?",
   "When creating a pair you are the first liquidity provider. The ratio of tokens you add will set the price of this pool. Once you are happy with the rate, click supply to review": "Wanneer jy 'n paar skep, is jy die eerste likiditeitsverskaffer. Die verhouding van tekens wat jy byvoeg, sal die prys van hierdie swembad stel. Sodra jy tevrede is met die koers, klik aanbod om te hersien",
   "Withdraw": "Onttrek",
+  "Withdraw as {0}?": "Withdraw as {0}?",
   "Withdraw {assetSymbol}": "Onttrek {assetSymbol}",
   "Withdrawing your stake will reset your multiplier.": "",
   "Withdrew funds from {0}": "Onttrek fondse uit {0}",
@@ -561,6 +562,5 @@
   "{0} Strategy": "{0} Strategie",
   "{0} per {1}": "{0} per {1}",
   "{label}": "",
-  "• Added by user": "• Bygevoeg deur gebruiker",
-  "Withdraw into interest token?": "Withdraw into interest token?"
+  "• Added by user": "• Bygevoeg deur gebruiker"
 }
