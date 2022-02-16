@@ -480,6 +480,7 @@
   "What's an exit contribution?": "Какой вклад выхода?",
   "When creating a pair you are the first liquidity provider. The ratio of tokens you add will set the price of this pool. Once you are happy with the rate, click supply to review": "Создавая пару, вы являетесь первым поставщиком ликвидности. Соотношение добавляемых токенов будет определять цену этого пула. Как только вы будете довольны оценкой, нажмите кнопку питания, чтобы просмотреть",
   "Withdraw": "Отзывать",
+  "Withdraw as {0}?": "Withdraw as {0}?",
   "Withdraw {assetSymbol}": "{assetSymbol}",
   "Withdrawing your stake will reset your multiplier.": "",
   "Withdrew funds from {0}": "Вышли средства из {0}",
@@ -561,6 +562,5 @@
   "{0} Strategy": "{0} Стратегия",
   "{0} per {1}": "{0} за {1}",
   "{label}": "",
-  "• Added by user": "• Добавлено пользователем",
-  "Withdraw into interest token?": "Withdraw into interest token?"
+  "• Added by user": "• Добавлено пользователем"
 }
