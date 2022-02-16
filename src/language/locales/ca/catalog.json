@@ -480,6 +480,7 @@
   "What's an exit contribution?": "What's an exit contribution?",
   "When creating a pair you are the first liquidity provider. The ratio of tokens you add will set the price of this pool. Once you are happy with the rate, click supply to review": "When creating a pair you are the first liquidity provider. The ratio of tokens you add will set the price of this pool. Once you are happy with the rate, click supply to review",
   "Withdraw": "Withdraw",
+  "Withdraw as {0}?": "Withdraw as {0}?",
   "Withdraw {assetSymbol}": "Withdraw {assetSymbol}",
   "Withdrawing your stake will reset your multiplier.": "",
   "Withdrew funds from {0}": "Withdrew funds from {0}",
@@ -561,6 +562,5 @@
   "{0} Strategy": "{0} Strategy",
   "{0} per {1}": "{0} per {1}",
   "{label}": "",
-  "• Added by user": "• Added by user",
-  "Withdraw into interest token?": "Withdraw into interest token?"
+  "• Added by user": "• Added by user"
 }
