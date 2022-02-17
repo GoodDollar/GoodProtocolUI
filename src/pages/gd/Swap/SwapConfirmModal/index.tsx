@@ -17,6 +17,7 @@ import { Action } from 'pages/gd/Stake/StakeDeposit'
 import { getExplorerLink } from 'utils'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
+import confirmPriceImpactWithoutFee from 'components/swap/confirmPriceImpactWithoutFee'
 
 export interface SwapConfirmModalProps extends SwapDetailsFields {
     className?: string
@@ -67,6 +68,11 @@ function SwapConfirmModal({
     const [hash, setHash] = useState('')
 
     const handleSwap = async () => {
+      
+        if (meta && meta.priceImpact && !confirmPriceImpactWithoutFee(meta.priceImpactPCT)) {
+          return
+        }
+
         setStatus('CONFIRM')
 
         const onSent = (hash: string, from: string) => {

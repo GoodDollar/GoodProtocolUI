@@ -10,6 +10,7 @@ import {
     Token,
     TradeType
 } from '@uniswap/sdk-core'
+import { Percent as pctSushi } from '@sushiswap/sdk'
 import { Trade } from '@uniswap/v2-sdk'
 import { MaxUint256 } from '@ethersproject/constants'
 import { getToken } from './methods/tokenLists'
@@ -380,6 +381,8 @@ export async function getMeta(
         GDXBalance = await tokenBalance(web3, 'GDX', account)
     }
 
+    const priceImpactPCT = priceImpact as unknown as pctSushi
+    
     debugGroupEnd(`Get meta ${amount} G$ to ${toSymbol}`)
 
     return {
@@ -392,6 +395,7 @@ export async function getMeta(
         GDXAmount: inputAmount.lessThan(GDXBalance) ? inputAmount : GDXBalance,
 
         priceImpact,
+        priceImpactPCT,
         slippageTolerance: slippageTolerancePercent,
         contribution,
 
