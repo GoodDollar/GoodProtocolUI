@@ -10,7 +10,6 @@ import {
     TradeType,
     computePriceImpact
 } from '@uniswap/sdk-core'
-import { Percent as pctSushi } from '@sushiswap/sdk' 
 import { Trade } from '@uniswap/v2-sdk'
 import { MaxUint256 } from '@ethersproject/constants'
 import { getToken } from './methods/tokenLists'
@@ -47,7 +46,6 @@ export type BuyInfo = {
     GDXAmount: CurrencyAmount<Currency> | Fraction
 
     priceImpact: Fraction
-    priceImpactPCT:  pctSushi
     slippageTolerance: Percent
 
     liquidityFee: CurrencyAmount<Currency>
@@ -418,8 +416,6 @@ export async function getMeta(
         priceImpact = computePriceImpact(price, inputCDAIValue, minimumOutputAmount)
     }
 
-    const priceImpactPCT = priceImpact as unknown as pctSushi
-
     debugGroupEnd(`Get meta ${amount} ${fromSymbol} to G$`)
     debug('Route', route)
 
@@ -433,7 +429,6 @@ export async function getMeta(
         GDXAmount: outputAmount,
 
         priceImpact,
-        priceImpactPCT,
         slippageTolerance: slippageTolerancePercent,
 
         liquidityFee,
