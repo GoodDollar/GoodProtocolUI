@@ -2,8 +2,11 @@
 
 # dependencies
 /node_modules
+
+#cache
 /.yarn/cache
 /.yarn/install-state.gz
+/.yalc/
 
 # testing
 /coverage
