@@ -11,7 +11,7 @@ const ClaimButton = () => {
 	const [refresh, setRefresh] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [showModal, setShowModal] = useState(false);
-	// TODO: merge only useGetContract wix and check!!!
+	// TODO: merge only after useGetContract fix and check!!!
 	const { isWhitelisted, claimAmount, claimTime, claimCall } = useClaim(refresh ? "everyBlock" : "never");
 
 	const handleClaim = useCallback(async () => {
