@@ -220,7 +220,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean, cl
     const balances:Balances = {
       G$: useTokenBalance(account, data?.g$),
       GDX: useTokenBalance(account, data?.gdx),
-      GOOD: useTokenBalance(account, data?.gdao), 
+      GOOD: useTokenBalance(account, data?.gdao),
     }
 
     const importToMetamask = async () => {
@@ -318,7 +318,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean, cl
                             </defs>
                         </svg>
                     </div>
-                      <div className="flex flex-col details">                  
+                      <div className="flex flex-col details">
                         <WalletBalance balances={balances} chainId={chainId} />
                         <br />
                         {localStorage.getItem(`${chainId}_metamask_import_status`) !== 'true' && (
@@ -334,6 +334,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean, cl
                   <NavLink to={'/swap'} onClick={mobile ? closeSidebar : null }>{i18n._(t`Swap`)}</NavLink>
                   <NavLink to={'/stakes'} onClick={mobile ?  closeSidebar : null }>{i18n._(t`Stake`)}</NavLink>
                   <NavLink to={'/portfolio'} onClick={mobile ? closeSidebar : null }>{i18n._(t`Portfolio`)}</NavLink>
+                  <NavLink to={'/claim'} onClick={mobile ? closeSidebar : null }>{i18n._(t`Claim`)}</NavLink>
                   <ExternalLink label={i18n._(t`Wallet`)} url="https://wallet.gooddollar.org/" />
                   <ExternalLink label={i18n._(t`Fuse Bridge`)} url="https://app.fuse.fi/#/bridge" />
                   <ExternalLink label={i18n._(t`Docs`)} url="https://docs.gooddollar.org" />
