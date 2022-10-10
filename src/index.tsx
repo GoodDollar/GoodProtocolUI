@@ -15,7 +15,7 @@ import ApplicationUpdater from './state/application/updater'
 import ListsUpdater from './state/lists/updater'
 import MulticallUpdater from './state/multicall/updater'
 import UserUpdater from './state/user/updater'
-import ThemeProvider, { NativeBaseThemeProvider } from './theme'
+import ThemeProvider from './theme'
 import LanguageProvider from 'language'
 import { createGlobalStyle } from 'styled-components'
 import { Web3ContextProvider } from './hooks/useWeb3'
@@ -88,12 +88,10 @@ ReactDOM.render(
                     <Blocklist>
                         <Updaters />
                         <ThemeProvider>
-                            <NativeBaseThemeProvider>
-                                <GlobalStyle />
-                                <Router>
-                                    <App />
-                                </Router>
-                            </NativeBaseThemeProvider>
+                            <GlobalStyle />
+                            <Router>
+                                <App />
+                            </Router>
                         </ThemeProvider>
                     </Blocklist>
                 </LanguageProvider>

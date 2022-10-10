@@ -4,14 +4,14 @@ import styled, { ThemeProvider as StyledComponentsThemeProvider, createGlobalSty
 import { useApplicationTheme } from '../state/application/hooks'
 
 export * from './components'
-export { NativeBaseThemeProvider } from './nativeTheme'
+// export { NativeBaseThemeProvider } from './nativeTheme'
 
 const MEDIA_WIDTHS = {
     upToExtra2Small: 320,
     upToExtraSmall: 500,
     upToSmall: 720,
     upToMedium: 960,
-    upToLarge: 1280
+    upToLarge: 1280,
 }
 
 const mediaWidthTemplates: { [width in keyof typeof MEDIA_WIDTHS]: typeof css } = Object.keys(MEDIA_WIDTHS).reduce(
@@ -81,7 +81,7 @@ export function colors(darkMode: boolean) {
         blue2: '#80d8ff',
         blue4: darkMode ? '#153d6f70' : '#C4D9F8',
 
-        borderRadius: '10px'
+        borderRadius: '10px',
 
         // dont wanna forget these blue yet
         // blue4: darkMode ? '#153d6f70' : '#C4D9F8',
@@ -118,7 +118,7 @@ export function theme(darkMode: boolean) {
             bgBody: darkMode ? '#1a1f38' : 'white',
             switch: darkMode ? '#1FC2AF' : '#1FC2AF',
             hover: darkMode ? 'rgba(31, 194, 175, 0.3)' : 'rgba(31,194,175,0.1)',
-            rangeTrack: darkMode ? '#8F9BB3' : '#F5F5F5'
+            rangeTrack: darkMode ? '#8F9BB3' : '#F5F5F5',
         },
         shadow: {
             header: '0px 0px 16px rgba(206, 211, 218, 0.33815)',
@@ -126,24 +126,25 @@ export function theme(darkMode: boolean) {
             settings: darkMode ? 'none' : '0px 1px 0px #DAE1ED;',
             swapFooter: darkMode ? 'none' : '-1px 2px 0px #DAE1ED',
             button: '3px 3px 10px -1px rgba(11, 27, 102, 0.304824)',
-            swapCard: darkMode ? 'none': '12px 8px 44px -12px rgba(27, 58, 146, 0.16)'
+            swapCard: darkMode ? 'none' : '12px 8px 44px -12px rgba(27, 58, 146, 0.16)',
         },
         font: {
             primary: `Roboto, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'`,
-            secondary: `'Roboto Slab', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'`
+            secondary: `'Roboto Slab', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'`,
         },
         media: {
-            md: 'screen and (max-width: 975px)'
+            md: 'screen and (max-width: 975px)',
         },
         grids: {
             sm: 8,
             md: 12,
-            lg: 24
+            lg: 24,
         },
 
         //gradients
         gradient: {
-          loadingGradient: 'linear-gradient(to left, rgba(251,251,251, .05), rgba(251,251,251, .3), rgba(251,251,251, .6), rgba(251,251,251, .3),rgba(251,251,251, .05));',
+            loadingGradient:
+                'linear-gradient(to left, rgba(251,251,251, .05), rgba(251,251,251, .3), rgba(251,251,251, .6), rgba(251,251,251, .3),rgba(251,251,251, .05));',
         },
 
         //shadows
@@ -160,7 +161,7 @@ export function theme(darkMode: boolean) {
         flexRowNoWrap: css`
             display: flex;
             flex-flow: row nowrap;
-        ` as any
+        ` as any,
     }
 }
 
@@ -212,5 +213,5 @@ export const TYPE = {
     },
     error({ error, ...props }: { error: boolean } & TextProps) {
         return <TextWrapper fontWeight={500} color={error ? 'red1' : 'text2'} {...props} />
-    }
+    },
 }
