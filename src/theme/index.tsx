@@ -4,7 +4,6 @@ import styled, { ThemeProvider as StyledComponentsThemeProvider, createGlobalSty
 import { useApplicationTheme } from '../state/application/hooks'
 
 export * from './components'
-// export { NativeBaseThemeProvider } from './nativeTheme'
 
 const MEDIA_WIDTHS = {
     upToExtra2Small: 320,

@@ -1,25 +1,32 @@
 import React, { memo } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-// import { ClaimButton } from '@gooddollar/good-design'
-import { NativeBaseProvider } from 'native-base'
-import { ClaimButton, theme } from '@gooddollar/good-design'
+// TODO: check when good-design will be merged
+import { ClaimButton, Layout, Title } from '@gooddollar/good-design'
+import { StyleSheet } from "react-native";
+import { View } from "native-base";
 
 const Claim = () => {
-    const { i18n } = useLingui()
-    return (
-        <NativeBaseProvider theme={theme}>
-            <ClaimButton firstName={'lewis'} method={'redirect'} text={'claimButton'} />
-        </NativeBaseProvider>
-        // <View style={styles.layout}>
-        // 	<Text color={theme.color.text4}>
-        // 		{i18n._(t`Claim`)}
-        // 	</Text>
-        // 	<View style={styles.content}>
-        // 		{/*<ClaimButton />*/}
-        // 	</View>
-        // </View>
-    )
+  const {i18n} = useLingui()
+
+  return (
+    <Layout>
+      <Title>
+        {i18n._(t`Claim`)}
+      </Title>
+      <View style={styles.content}>
+        <ClaimButton  firstName={'Test'} method={'popup'}/>
+      </View>
+    </Layout>
+  )
 }
 
 export default memo(Claim)
+
+const styles = StyleSheet.create({
+  content: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+  },
+})
