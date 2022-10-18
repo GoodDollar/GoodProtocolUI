@@ -7,7 +7,7 @@ import { StyleSheet } from "react-native";
 import { View } from "native-base";
 
 const Claim = () => {
-  const {i18n} = useLingui()
+  const { i18n } = useLingui()
 
   return (
     <Layout>
@@ -15,7 +15,7 @@ const Claim = () => {
         {i18n._(t`Claim`)}
       </Title>
       <View style={styles.content}>
-        <ClaimButton  firstName={'Test'} method={'popup'}/>
+        <ClaimButton  firstName={'Test'} method={'redirect'}/>
       </View>
     </Layout>
   )
