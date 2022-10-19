@@ -11,6 +11,7 @@ import isEqual from 'lodash/isEqual'
 import SideBar from '../components/SideBar'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
+import { useFaucet}  from "@gooddollar/web3sdk-v2";
 import { useLingui } from '@lingui/react'
 import TransactionUpdater from '../state/transactions/updater'
 
@@ -56,6 +57,8 @@ function App(): JSX.Element {
 
     const dispatch = useDispatch<AppDispatch>()
     const [preservedSource, setPreservedSource] = useState('')
+
+    useFaucet()
 
     useEffect(() => {
         const parsed = parse(location.search, { parseArrays: false, ignoreQueryPrefix: true })
