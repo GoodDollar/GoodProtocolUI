@@ -19,7 +19,7 @@ import ThemeProvider from './theme'
 import LanguageProvider from 'language'
 import { createGlobalStyle } from 'styled-components'
 import { Web3ContextProvider } from './hooks/useWeb3'
-import { NativeBaseProvider } from 'native-base'
+import { NativeBaseProvider, useTheme } from 'native-base'
 import { theme } from '@gooddollar/good-design'
 
 if (!!window.ethereum) {
@@ -82,9 +82,24 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+const AppRouter = () => {
+  const theme = useTheme()
+
+  useEffect(() => {
+    //TODO: debug other stuff here
+    console.log('from context', theme)
+  }, [theme])
+
+  return (
+    <Router>
+      <App />
+    </Router>
+  )
+}
+
 const Root = () => {
   useEffect(() => {
-    console.log(theme)
+    console.log('from import', theme)
   }, [])
 
   return (
@@ -97,9 +112,7 @@ const Root = () => {
                         <Updaters />
                         <ThemeProvider>
                           <GlobalStyle />
-                          <Router>
-                            <App />
-                          </Router>
+                          <AppRouter />
                         </ThemeProvider>
                     </Blocklist>
                 </LanguageProvider>
