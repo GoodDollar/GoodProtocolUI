@@ -3,7 +3,7 @@ import '@fontsource/dm-sans/index.css'
 import 'react-tabs/style/react-tabs.css'
 import './bootstrap'
 
-import React, { StrictMode } from 'react'
+import React, { StrictMode, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
 import { Provider } from 'react-redux'
@@ -69,7 +69,7 @@ const GlobalStyle = createGlobalStyle`
     // --onboard-font-size-6: 1.05rem;
     // --onboard-gray-700: #999EA8;
 
-  
+
   }
   onboard-v2::part(sidebar-heading-img) {
     max-width: 100%;
@@ -82,25 +82,32 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-ReactDOM.render(
+const Root = () => {
+  useEffect(() => {
+    console.log(theme)
+  }, [])
+
+  return (
     <StrictMode>
+      <NativeBaseProvider theme={theme}>
         <Web3ContextProvider>
             <Provider store={store}>
                 <LanguageProvider>
                     <Blocklist>
                         <Updaters />
                         <ThemeProvider>
-                            <NativeBaseProvider theme={theme}>
-                                <GlobalStyle />
-                                <Router>
-                                    <App />
-                                </Router>
-                            </NativeBaseProvider>
+                          <GlobalStyle />
+                          <Router>
+                            <App />
+                          </Router>
                         </ThemeProvider>
                     </Blocklist>
                 </LanguageProvider>
             </Provider>
         </Web3ContextProvider>
-    </StrictMode>,
-    document.getElementById('root')
-)
+      </NativeBaseProvider>
+    </StrictMode>
+  )
+}
+
+ReactDOM.render(<Root />, document.getElementById('root'))
