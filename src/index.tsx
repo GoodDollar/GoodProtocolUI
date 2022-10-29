@@ -3,7 +3,7 @@ import '@fontsource/dm-sans/index.css'
 import 'react-tabs/style/react-tabs.css'
 import './bootstrap'
 
-import React, { StrictMode, useEffect } from 'react'
+import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 
 import { Provider } from 'react-redux'
@@ -19,7 +19,7 @@ import ThemeProvider from './theme'
 import LanguageProvider from 'language'
 import { createGlobalStyle } from 'styled-components'
 import { Web3ContextProvider } from './hooks/useWeb3'
-import { NativeBaseProvider, useTheme } from 'native-base'
+import { NativeBaseProvider } from 'native-base'
 import { theme } from '@gooddollar/good-design'
 
 if (!!window.ethereum) {
@@ -69,7 +69,7 @@ const GlobalStyle = createGlobalStyle`
     // --onboard-font-size-6: 1.05rem;
     // --onboard-gray-700: #999EA8;
 
-
+  
   }
   onboard-v2::part(sidebar-heading-img) {
     max-width: 100%;
@@ -82,45 +82,25 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const AppRouter = () => {
-  const theme = useTheme()
-
-  useEffect(() => {
-    //TODO: debug other stuff here
-    console.log('from context', theme)
-  }, [theme])
-
-  return (
-    <Router>
-      <App />
-    </Router>
-  )
-}
-
-const Root = () => {
-  useEffect(() => {
-    console.log('from import', theme)
-  }, [])
-
-  return (
+ReactDOM.render(
     <StrictMode>
-      <NativeBaseProvider theme={theme}>
         <Web3ContextProvider>
             <Provider store={store}>
                 <LanguageProvider>
                     <Blocklist>
                         <Updaters />
                         <ThemeProvider>
-                          <GlobalStyle />
-                          <AppRouter />
+                            <NativeBaseProvider theme={theme}>
+                                <GlobalStyle />
+                                <Router>
+                                    <App />
+                                </Router>
+                            </NativeBaseProvider>
                         </ThemeProvider>
                     </Blocklist>
                 </LanguageProvider>
             </Provider>
         </Web3ContextProvider>
-      </NativeBaseProvider>
-    </StrictMode>
-  )
-}
-
-ReactDOM.render(<Root />, document.getElementById('root'))
+    </StrictMode>,
+    document.getElementById('root')
+)

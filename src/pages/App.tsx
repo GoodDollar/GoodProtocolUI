@@ -11,7 +11,7 @@ import isEqual from 'lodash/isEqual'
 import SideBar from '../components/SideBar'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
-import { useFaucet}  from "@gooddollar/web3sdk-v2";
+import { useFaucet } from '@gooddollar/web3sdk-v2'
 import { useLingui } from '@lingui/react'
 import TransactionUpdater from '../state/transactions/updater'
 
@@ -38,14 +38,14 @@ const Wrapper = styled.div`
 `
 
 const MainBody = styled.div<{ $page?: string }>`
-  ${({ $page }) =>
-      $page === '/dashboard' &&
-      `
+    ${({ $page }) =>
+        $page === '/dashboard' &&
+        `
     width: 80%;
     height: 100%;
     padding: 50px 20px 50px 20px;
   `}
-  background-color: ${({ theme }) => theme.color.bgBody};
+    background-color: ${({ theme }) => theme.color.bgBody};
 `
 
 function App(): JSX.Element {
@@ -57,7 +57,7 @@ function App(): JSX.Element {
 
     const dispatch = useDispatch<AppDispatch>()
     const [preservedSource, setPreservedSource] = useState('')
-
+    // todo: remove log in faucet hook
     useFaucet()
 
     useEffect(() => {
@@ -72,7 +72,7 @@ function App(): JSX.Element {
                 ...location,
                 search: location.search
                     ? location.search + '&utm_source=' + preservedSource
-                    : location.search + '?utm_source=' + preservedSource
+                    : location.search + '?utm_source=' + preservedSource,
             })
         }
     }, [preservedSource, location, replace])
@@ -89,7 +89,7 @@ function App(): JSX.Element {
 
         const parsed = parse(search, {
             parseArrays: false,
-            ignoreQueryPrefix: true
+            ignoreQueryPrefix: true,
         })
 
         const theme = parsed.theme
