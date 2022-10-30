@@ -4,8 +4,8 @@ import Title from 'components/gd/Title'
 import { QuestionHelper } from 'components'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
-import { SupportedChainId, G$ } from '@gooddollar/web3sdk'
-import { useSavingsStats } from '@gooddollar/web3sdk-v2'
+import { SupportedChainId } from '@gooddollar/web3sdk'
+import { useSavingsStats, G$, useGetEnvChainId } from '@gooddollar/web3sdk-v2'
 import SavingsModal from 'components/Savings/SavingsModal'
 import { Wrapper } from '../styled'
 import styled from 'styled-components'
@@ -30,7 +30,8 @@ export const Savings = (): JSX.Element => {
     const toggleModal = useCallback(() => setIsOpen(!isOpen), [setIsOpen, isOpen])
     const { width } = useWindowSize()
     const isMobile = width ? width <= 768 : undefined
-    const g$ = G$[chainId]
+    const { defaultEnv } = useGetEnvChainId()
+    const g$ = G$(chainId, defaultEnv)
     const getData = sendGa
 
     useEffect(() => {
@@ -73,7 +74,7 @@ export const Savings = (): JSX.Element => {
     return (
         <SavingsDeposit>
             <div className="mt-12"></div>
-            {chainId === (SupportedChainId.FUSE as number) && account && (
+            {chainId === (SupportedChainId.CELO as number) && account && (
                 <SavingsModal type="deposit" toggle={toggleModal} isOpen={isOpen} />
             )}
             <Title className={`md:pl-4`}>{i18n._(t`Savings`)}</Title>
@@ -133,7 +134,7 @@ export const Savings = (): JSX.Element => {
                                     width="130px"
                                     borderRadius="6px"
                                     noShadow={true}
-                                    requireChain={'FUSE'}
+                                    requireChain={'CELO'}
                                     onClick={() => {
                                         getData({ event: 'savings', action: 'savingsStart' })
                                         toggleModal()

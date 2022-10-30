@@ -81,13 +81,13 @@ const SavingsModal = ({
     isOpen: boolean
 }): JSX.Element => {
     const { i18n } = useLingui()
-    const { account } = useActiveWeb3React()
+    const { account, chainId } = useActiveWeb3React()
     const [balance, setBalance] = useState<string>('0')
     const [txStatus, setTxStatus] = useState<TransactionStatus>({ status: 'None' })
     const reduxDispatch = useDispatch()
     const getData = sendGa
 
-    const { g$Balance, savingsBalance } = useSavingsBalance(10, SupportedV2Networks.FUSE)
+    const { g$Balance, savingsBalance } = useSavingsBalance(10, SupportedV2Networks.CELO)
 
     const [percentage, setPercentage] = useState<string>('50')
     const [withdrawAmount, setWithdrawAmount] = useState<number>(parseInt(balance) * (Number(percentage) / 100))
@@ -110,7 +110,7 @@ const SavingsModal = ({
         dispatch({ type: 'DONE', payload: tx.transactionHash })
         reduxDispatch(
             addTransaction({
-                chainId: 122, // todo: move back to chainId
+                chainId: chainId,
                 hash: tx.transactionHash,
                 from: tx.from,
                 summary: i18n._(t`${amount} ${TransactionCopy[type].transaction.summary}`),

@@ -38,7 +38,7 @@ const HeaderRow = styled.div`
     ${({ theme }) => theme.flexRowNoWrap};
     padding: 1rem 1rem;
     font-weight: 500;
-    color: ${props => (props.color === 'blue' ? ({ theme }) => theme.primary1 : 'inherit')};
+    color: ${(props) => (props.color === 'blue' ? ({ theme }) => theme.primary1 : 'inherit')};
     ${({ theme }) => theme.mediaWidth.upToMedium`
     padding: 1rem;
   `};
@@ -46,7 +46,7 @@ const HeaderRow = styled.div`
 
 const ContentWrapper = styled.div`
     // background-color: ${({ theme }) => theme.bg2};
-     padding: 0 1rem;
+    padding: 0 1rem;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 
@@ -104,7 +104,7 @@ const WALLET_VIEWS = {
     OPTIONS: 'options',
     OPTIONS_SECONDARY: 'options_secondary',
     ACCOUNT: 'account',
-    PENDING: 'pending'
+    PENDING: 'pending',
 }
 
 const ModalContent = (props: any) => {
@@ -121,19 +121,19 @@ const ModalContent = (props: any) => {
     } = props
 
     const toggleNetworkModal = useNetworkModalToggle()
-    const [ {chains, connectedChain, settingChain}, setChain] = useSetChain()
+    const [{ chains, connectedChain, settingChain }, setChain] = useSetChain()
     const handleEthereumNetworkSwitch = useCallback(async () => {
         const networkType = process.env.REACT_APP_NETWORK || 'staging'
         if (networkType === 'staging') {
             toggleNetworkModal()
         } else if (networkType === 'production') {
-            setChain({chainId: '0x1'})
+            setChain({ chainId: '0x1' })
             toggleWalletModal()
         }
     }, [toggleNetworkModal, toggleWalletModal, setChain])
 
     const handleFuseNetworkSwitch = useCallback(async () => {
-        setChain({chainId: '0x7a'})
+        setChain({ chainId: '0x7a' })
         toggleWalletModal()
     }, [toggleWalletModal, setChain])
 
@@ -150,25 +150,25 @@ const ModalContent = (props: any) => {
                     {error instanceof UnsupportedChainId ? (
                         <>
                             <h5 className="text-center">{i18n._(t`Please connect to the appropriate network.`)}</h5>
-                            {/* Todo: Need to test how this will be handled with upcoming supported wallets*/} 
-                                <div className="flex flex-row justify-around pt-2 mt-5 align-center">
-                                    <ButtonAction
-                                        size="sm"
-                                        width="40%"
-                                        onClick={handleEthereumNetworkSwitch}
-                                        borderRadius="6px"
-                                    >
-                                        {i18n._(t`ETHEREUM`)}
-                                    </ButtonAction>
-                                    <ButtonAction
-                                        size="sm"
-                                        width="40%"
-                                        onClick={handleFuseNetworkSwitch}
-                                        borderRadius="6px"
-                                    >
-                                        {i18n._(t`FUSE`)}
-                                    </ButtonAction>
-                                </div>
+                            {/* Todo: Need to test how this will be handled with upcoming supported wallets*/}
+                            <div className="flex flex-row justify-around pt-2 mt-5 align-center">
+                                <ButtonAction
+                                    size="sm"
+                                    width="40%"
+                                    onClick={handleEthereumNetworkSwitch}
+                                    borderRadius="6px"
+                                >
+                                    {i18n._(t`ETHEREUM`)}
+                                </ButtonAction>
+                                <ButtonAction
+                                    size="sm"
+                                    width="40%"
+                                    onClick={handleFuseNetworkSwitch}
+                                    borderRadius="6px"
+                                >
+                                    {i18n._(t`FUSE`)}
+                                </ButtonAction>
+                            </div>
                         </>
                     ) : (
                         i18n._(t`Error connecting. Try refreshing the page.`)
@@ -188,15 +188,13 @@ const ModalContent = (props: any) => {
             />
         )
     }
-    return (
-      <></>
-    )
+    return <></>
 }
 
 export default function WalletModal({
     pendingTransactions,
     confirmedTransactions,
-    ENSName
+    ENSName,
 }: {
     pendingTransactions: string[] // hashes of pending
     confirmedTransactions: string[] // hashes of confirmed
@@ -224,10 +222,9 @@ export default function WalletModal({
     // always reset to account view
     useEffect(() => {
         if (walletModalOpen) {
-          setWalletView(WALLET_VIEWS.ACCOUNT)
+            setWalletView(WALLET_VIEWS.ACCOUNT)
         }
     }, [walletModalOpen])
-
 
     return (
         <>

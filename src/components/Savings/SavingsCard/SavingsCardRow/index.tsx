@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useStakerInfo, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
+import { useStakerInfo } from '@gooddollar/web3sdk-v2'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
 import { ActionOrSwitchButton } from 'components/gd/Button/ActionOrSwitchButton'
@@ -70,7 +70,7 @@ export const SavingsCardRow = ({
                             width="130px"
                             size="sm"
                             borderRadius="6px"
-                            requireChain={'FUSE'}
+                            requireChain={'CELO'}
                             noShadow={true}
                             onClick={() => {
                                 getData({ event: 'savings', action: 'startWithdraw' })
@@ -86,7 +86,7 @@ export const SavingsCardRow = ({
                             size="sm"
                             noShadow={true}
                             borderRadius="6px"
-                            requireChain={'FUSE'}
+                            requireChain={'CELO'}
                             onClick={() => {
                                 getData({ event: 'savings', action: 'startClaim' })
                                 toggleModal('claim')

@@ -39,10 +39,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
 
     const web3 = useMemo(() => (eipProvider ? new Web3(eipProvider as any) : mainnetWeb3), [eipProvider, mainnetWeb3])
     const webprovider = useMemo(
-        () =>
-            eipProvider
-                ? new ethers.providers.Web3Provider(eipProvider as ExternalProvider, 'any')
-                : new ethers.providers.JsonRpcProvider(rpcs.FUSE_RPC),
+        () => (eipProvider ? new ethers.providers.Web3Provider(eipProvider as ExternalProvider, 'any') : undefined),
         [eipProvider, rpcs.FUSE_RPC]
     )
 
