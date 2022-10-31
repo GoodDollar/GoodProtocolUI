@@ -10,6 +10,7 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 const Claim = () => {
     const { i18n } = useLingui()
     const { account } = useActiveWeb3React()
+
     return (
         <Layout>
             <Title>{i18n._(t`Claim`)}</Title>
