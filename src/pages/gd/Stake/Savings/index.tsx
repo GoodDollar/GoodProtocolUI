@@ -5,7 +5,7 @@ import { QuestionHelper } from 'components'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
 import { SupportedChainId } from '@gooddollar/web3sdk'
-import { useSavingsStats, G$, useGetEnvChainId } from '@gooddollar/web3sdk-v2'
+import { useSavingsStats, G$, useGetEnvChainId, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import SavingsModal from 'components/Savings/SavingsModal'
 import { Wrapper } from '../styled'
 import styled from 'styled-components'
@@ -22,23 +22,26 @@ const SavingsDeposit = styled.div`
     margin-top: 10px;
 `
 
-export const Savings = (): JSX.Element => {
+export const Savings = ({ requiredChain }: { requiredChain: number }): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false)
     const { account, chainId } = useActiveWeb3React()
-    const { stats, error } = useSavingsStats(10)
+    const { stats, error } = useSavingsStats(requiredChain, 10)
     const { i18n } = useLingui()
-    const toggleModal = useCallback(() => setIsOpen(!isOpen), [setIsOpen, isOpen])
     const { width } = useWindowSize()
     const isMobile = width ? width <= 768 : undefined
     const { defaultEnv } = useGetEnvChainId()
-    const g$ = G$(chainId, defaultEnv)
-    const getData = sendGa
+    const g$ = G$(requiredChain, defaultEnv)
 
     useEffect(() => {
         if (error) {
             console.error('Unable to fetch global stats:', { error })
         }
     }, [error])
+
+    const toggleModal = useCallback(() => {
+        sendGa({ event: 'savings', action: 'savingsStart' })
+        setIsOpen(!isOpen)
+    }, [setIsOpen, isOpen])
 
     const headings: HeadingCopy = [
         {
@@ -74,13 +77,13 @@ export const Savings = (): JSX.Element => {
     return (
         <SavingsDeposit>
             <div className="mt-12"></div>
-            {chainId === (SupportedChainId.CELO as number) && account && (
+            {Object.values(SupportedV2Networks).includes(chainId as number) && account && (
                 <SavingsModal type="deposit" toggle={toggleModal} isOpen={isOpen} />
             )}
             <Title className={`md:pl-4`}>{i18n._(t`Savings`)}</Title>
             <div className="mt-4"></div>
             {isMobile ? (
-                <SavingsDepositMobile headings={headings} toggleModal={toggleModal} />
+                <SavingsDepositMobile requiredChain={requiredChain} headings={headings} toggleModal={toggleModal} />
             ) : (
                 <Wrapper>
                     <Table
@@ -134,11 +137,10 @@ export const Savings = (): JSX.Element => {
                                     width="130px"
                                     borderRadius="6px"
                                     noShadow={true}
-                                    requireChain={'CELO'}
-                                    onClick={() => {
-                                        getData({ event: 'savings', action: 'savingsStart' })
-                                        toggleModal()
-                                    }}
+                                    requireChain={
+                                        SupportedV2Networks[requiredChain] as keyof typeof SupportedV2Networks
+                                    }
+                                    onClick={() => toggleModal()}
                                 >
                                     {' '}
                                     Deposit G${' '}

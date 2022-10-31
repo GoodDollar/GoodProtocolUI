@@ -32,7 +32,7 @@ import {
 import sendGa from 'functions/sendGa'
 import { useWindowSize } from 'hooks/useWindowSize'
 import styled from 'styled-components'
-import { SupportedChains } from '@gooddollar/web3sdk-v2'
+import { SupportedChains, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 const StakeTable = ({
     list,
     error,
@@ -499,7 +499,20 @@ export default function Stakes(): JSX.Element | null {
                     )}
                 </Modal>
             </StakesSC>
-            {network !== 'production' ? <Savings /> : <></>}
+            <>
+                {network !== 'production' &&
+                    (
+                        Object.keys(SupportedV2Networks).filter((v) =>
+                            isNaN(Number(v))
+                        ) as (keyof typeof SupportedV2Networks)[]
+                    ).map((key) => {
+                        return (
+                            <Fragment key={SupportedV2Networks[key]}>
+                                <Savings requiredChain={SupportedV2Networks[key]} />
+                            </Fragment>
+                        )
+                    })}
+            </>
         </Layout>
     )
 }

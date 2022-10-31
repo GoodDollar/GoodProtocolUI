@@ -8,7 +8,7 @@ import { CellSC } from '../styled'
 
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
-import { useSavingsStats } from '@gooddollar/web3sdk-v2'
+import { useSavingsStats, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import sendGa from 'functions/sendGa'
 import { ActionOrSwitchButton } from 'components/gd/Button/ActionOrSwitchButton'
 import { ModalType } from 'components/Savings/SavingsModal'
@@ -17,9 +17,11 @@ import type { HeadingCopy } from 'components/Savings/SavingsCard'
 
 export const SavingsDepositMobile = ({
     headings,
+    requiredChain,
     toggleModal,
 }: {
     headings: HeadingCopy
+    requiredChain: number
     toggleModal: (type?: ModalType) => void
 }): JSX.Element => {
     const { stats, error } = useSavingsStats(10)
@@ -77,12 +79,9 @@ export const SavingsDepositMobile = ({
                         width="130px"
                         borderRadius="6px"
                         noShadow={true}
-                        requireChain={'FUSE'}
+                        requireChain={SupportedV2Networks[requiredChain] as keyof typeof SupportedV2Networks}
                         ButtonEl={ButtonOutlined}
-                        onClick={() => {
-                            getData({ event: 'savings', action: 'savingsStart' })
-                            toggleModal()
-                        }}
+                        onClick={() => toggleModal()}
                     >
                         {' '}
                         Deposit G${' '}

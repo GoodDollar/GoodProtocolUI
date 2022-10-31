@@ -3,20 +3,10 @@ import { ChainId, TokenAmount } from '@sushiswap/sdk'
 import { Fragment, useEffect, useState } from 'react'
 import { LoadingPlaceHolder } from 'theme/components'
 import { AdditionalChainId } from '../../constants'
-
-export interface Balances {
-    G$: TokenAmount | undefined
-    GDX: TokenAmount | undefined
-    GOOD: TokenAmount | undefined
-}
-
-export interface BalancesV2 {
-    G$: any
-    GOOD: any
-}
+import { G$Balances } from '@gooddollar/web3sdk-v2'
 
 export type WalletBalanceProps = {
-    balances: BalancesV2
+    balances: G$Balances
     chainId: ChainId
 }
 

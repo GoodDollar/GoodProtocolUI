@@ -72,7 +72,7 @@ export function onboardContext(wstate: WalletState[]): ActiveOnboardInterface {
     const { isSupported, chainId } = IsSupportedChain(chainIdHex)
     const error = !isSupported ? new UnsupportedChainId(chainIdHex) : undefined
 
-    const newContext = {
+    return {
         active: true,
         accounts: accounts,
         chainId: parseInt(chainId),
@@ -82,15 +82,13 @@ export function onboardContext(wstate: WalletState[]): ActiveOnboardInterface {
         library: web3provider,
         error: error,
     }
-    return newContext
 }
 
 export function useActiveOnboard<T = any>(): ActiveOnboardInterface<T> {
     const connectedWallets = useWallets()
     const context = useMemo<ActiveOnboardInterface<Web3Provider>>(() => {
         if (connectedWallets.length > 0) {
-            const newContext = onboardContext(connectedWallets)
-            return newContext
+            return onboardContext(connectedWallets)
         } else {
             return { active: false, chainId: 42220 }
         }

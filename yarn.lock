@@ -3097,9 +3097,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fgoodprotocol-ui%40workspace%3A.":
-  version: 0.0.4
-  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=d68e1d&locator=%40gooddollar%2Fgoodprotocol-ui%40workspace%3A."
+"@gooddollar/good-design@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "@gooddollar/good-design@npm:0.0.5"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -3126,7 +3126,7 @@ __metadata:
   peerDependencies:
     react-native: 0.67.2
     react-native-web: ^0.18.1
-  checksum: c77677cf0f5528b743dd2a1460d9e56aa4b2699d1d1e34f8300257a2c57ec84ad36506792b0a9de3d7ff9fe11987238e42cb45dce79366c9d4a8a78c9d3dd68a
+  checksum: 803e1425d44e57dd43146caa779f001d6badfa7f65eea7042b15d4449f991ba0777d32ac74f5ffaab7bc0f51921a15bde079338b1a521e687663b06d96e87335
   languageName: node
   linkType: hard
 
@@ -3154,7 +3154,7 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
+    "@gooddollar/good-design": ^0.0.5
     "@gooddollar/goodprotocol": ^1.0.29-beta.4
     "@gooddollar/web3sdk": "file:.yalc/@gooddollar/web3sdk"
     "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2"
@@ -3207,7 +3207,6 @@ __metadata:
     "@types/wcag-contrast": ^3.0.0
     "@typescript-eslint/eslint-plugin": ^4.20.0
     "@typescript-eslint/parser": ^4.20.0
-    "@ubeswap/default-token-list": ^4.1.57
     "@uniswap/governance": ^1.0.2
     "@uniswap/liquidity-staker": ^1.0.2
     "@uniswap/merkle-distributor": 1.0.1
@@ -3343,7 +3342,7 @@ __metadata:
 
 "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fgoodprotocol-ui%40workspace%3A.":
   version: 0.1.34
-  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=d2b1a3&locator=%40gooddollar%2Fgoodprotocol-ui%40workspace%3A."
+  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=42c936&locator=%40gooddollar%2Fgoodprotocol-ui%40workspace%3A."
   dependencies:
     "@gooddollar/goodprotocol": ^1.0.29-beta.4
     "@types/react-native": ^0.70.4
@@ -3356,7 +3355,7 @@ __metadata:
     ethers: 5.*
     react-native: 0.67.4
     react-native-web: ^0.18.1
-  checksum: 96a97a3635ed30e875987e917989321b85cfdc62da8ef64cce3c0bfe982c10a50ea6fe1aa61ff43031dca8b86217609259eac07aa7d3f638630bc04d5af99e10
+  checksum: 0edd1a2cb8172d79baf7049e26313630277927ea7f9de8a9e5f056c57de25802fec492ba5bec2e6f439b8e33208d775781c315a4d4646a714bffdc510eecc704
   languageName: node
   linkType: hard
 
@@ -6318,13 +6317,6 @@ __metadata:
     "@typescript-eslint/types": 4.33.0
     eslint-visitor-keys: ^2.0.0
   checksum: 59953e474ad4610c1aa23b2b1a964445e2c6201521da6367752f37939d854352bbfced5c04ea539274065e012b1337ba3ffa49c2647a240a4e87155378ba9873
-  languageName: node
-  linkType: hard
-
-"@ubeswap/default-token-list@npm:^4.1.57":
-  version: 4.1.57
-  resolution: "@ubeswap/default-token-list@npm:4.1.57"
-  checksum: a6e27eb1d541b2403923778a2dc06fbaa041f21260a9bd55863828e63446ff397913f234080e2064199bfb663e84d8c10455017d9ed3748dd1bf7d17bdb0aca4
   languageName: node
   linkType: hard
 

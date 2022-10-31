@@ -4,7 +4,13 @@ import { SavingsCard } from 'components/Savings/SavingsCard'
 import { useLingui } from '@lingui/react'
 import { PortfolioTitleSC } from '../styled'
 
-export const SavingsAccount = ({ account }: { account: string | null | undefined }): JSX.Element => {
+export const SavingsAccount = ({
+    account,
+    requiredChain,
+}: {
+    account: string | null | undefined
+    requiredChain: number
+}): JSX.Element => {
     const [hasBalance, setHasBalance] = useState<boolean | undefined>(true)
     const { i18n } = useLingui()
     const { chainId, defaultEnv } = useGetEnvChainId()
@@ -23,7 +29,7 @@ export const SavingsAccount = ({ account }: { account: string | null | undefined
     return (
         <>
             <PortfolioTitleSC className="mt-4 mb-3 md:pl-2">{i18n._(`Savings`)}</PortfolioTitleSC>
-            {account && <SavingsCard account={account} hasBalance={hasBalance} />}
+            {account && <SavingsCard requiredChain={requiredChain} account={account} hasBalance={hasBalance} />}
         </>
     )
 }

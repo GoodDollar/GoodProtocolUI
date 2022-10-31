@@ -148,7 +148,7 @@ function AppBar(): JSX.Element {
     }, [chainId])
     const [sidebarOpen, setSidebarOpen] = useState(false)
 
-    const closeSideBar = useCallback(() => {
+    const toggleSideBar = useCallback(() => {
         setSidebarOpen(!sidebarOpen)
     }, [sidebarOpen])
 
@@ -179,9 +179,7 @@ function AppBar(): JSX.Element {
                                 </div>
                                 {chainId && <Web3Faucet />}
                                 <button
-                                    onClick={() => {
-                                        setSidebarOpen(!sidebarOpen)
-                                    }}
+                                    onClick={() => toggleSideBar()}
                                     className="inline-flex items-center justify-center p-2 rounded-md mobile-menu-button focus:outline-none"
                                 >
                                     <span className="sr-only">{i18n._(t`Open main menu`)}</span>
@@ -201,7 +199,7 @@ function AppBar(): JSX.Element {
                                         <DivOutlined className="pr-1">
                                             <div className="w-auto flex items-center rounded p-0.5 whitespace-nowrap   cursor-pointer select-none pointer-events-auto">
                                                 <div className="px-3 py-2 bold">
-                                                    {nativeBalance}
+                                                    {parseFloat(nativeBalance).toFixed(4)}
                                                     {'  '} {Currency.getNativeCurrencySymbol(chainId)}
                                                 </div>
                                                 <Web3Status />
@@ -220,11 +218,11 @@ function AppBar(): JSX.Element {
                 </div>
 
                 <SidebarContainer $mobile={isMobile} className={`lg:hidden ${sidebarOpen ? ' open ' : ''}`}>
-                    <SideBar mobile={isMobile} closeSidebar={closeSideBar} />
+                    <SideBar mobile={isMobile} closeSidebar={toggleSideBar} />
                 </SidebarContainer>
                 <SidebarOverlay
                     id="overlay"
-                    onClick={closeSideBar}
+                    onClick={toggleSideBar}
                     className={`fixed lg:hidden w-full ${sidebarOpen ? ' open ' : ''}`}
                 ></SidebarOverlay>
             </>

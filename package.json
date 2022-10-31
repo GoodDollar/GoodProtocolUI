@@ -77,7 +77,6 @@
         "@types/wcag-contrast": "^3.0.0",
         "@typescript-eslint/eslint-plugin": "^4.20.0",
         "@typescript-eslint/parser": "^4.20.0",
-        "@ubeswap/default-token-list": "^4.1.57",
         "@uniswap/governance": "^1.0.2",
         "@uniswap/liquidity-staker": "^1.0.2",
         "@uniswap/merkle-distributor": "1.0.1",
@@ -193,7 +192,7 @@
         "@web3-onboard/core@^2.8.5": "patch:@web3-onboard/core@npm%3A2.8.5#./.yarn/patches/@web3-onboard-core-npm-2.8.5-10c73a002c.patch"
     },
     "dependencies": {
-        "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design",
+        "@gooddollar/good-design": "^0.0.5",
         "@gooddollar/goodprotocol": "^1.0.29-beta.4",
         "@gooddollar/web3sdk": "file:.yalc/@gooddollar/web3sdk",
         "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2",

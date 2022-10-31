@@ -7,8 +7,8 @@ import TelegramLogo from '../assets/images/telegram.png'
 import TwitterLogo from '../assets/images/twitter.png'
 import useActiveWeb3React from '../hooks/useActiveWeb3React'
 import { NavLink } from './Link'
-import { useG$Balance } from '@gooddollar/web3sdk-v2'
-import WalletBalance, { BalancesV2 } from 'components/WalletBalance'
+import { useG$Balance, G$Balances } from '@gooddollar/web3sdk-v2'
+import WalletBalance from 'components/WalletBalance'
 import useMetaMask from '../hooks/useMetaMask'
 import { useApplicationTheme } from '../state/application/hooks'
 import LanguageSwitch from './LanguageSwitch'
@@ -194,7 +194,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     // const metaMaskInfo = useMetaMask()
     const { g$balance, goodBalance } = useG$Balance(10)
 
-    const balances: BalancesV2 = {
+    const balances: G$Balances = {
         G$: g$balance,
         // GDX: undefined,
         GOOD: goodBalance,

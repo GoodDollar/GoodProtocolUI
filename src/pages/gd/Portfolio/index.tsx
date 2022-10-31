@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState, useMemo } from 'react'
+import React, { memo, useCallback, useState, useMemo, Fragment } from 'react'
 import { Layout } from 'components/gd/sushi'
 import { PortfolioAnalyticSC, PortfolioSC, PortfolioTitleSC, PortfolioValueSC } from './styled'
 import Title from 'components/gd/Title'
@@ -21,7 +21,7 @@ import { useWindowSize } from 'hooks/useWindowSize'
 import Withdraw from 'components/Withdraw'
 import AsyncTokenIcon from 'components/gd/sushi/AsyncTokenIcon'
 import { getNetworkEnv, useEnvWeb3, getMyList, MyStake, DAO_NETWORK, LIQUIDITY_PROTOCOL } from '@gooddollar/web3sdk'
-import { SupportedChains } from '@gooddollar/web3sdk-v2'
+import { SupportedChains, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import styled from 'styled-components'
 import ClaimRewards from 'components/ClaimRewards'
 import { SavingsAccount } from './SavingsAccount'
@@ -447,7 +447,18 @@ const Portfolio = () => {
                     </Table>
                 </Card>
             )}
-            {network !== 'production' && <SavingsAccount account={account} />}
+            {network !== 'production' &&
+                (
+                    Object.keys(SupportedV2Networks).filter((v) =>
+                        isNaN(Number(v))
+                    ) as (keyof typeof SupportedV2Networks)[]
+                ).map((key) => {
+                    return (
+                        <Fragment key={key}>
+                            <SavingsAccount requiredChain={SupportedV2Networks[key]} account={account} />
+                        </Fragment>
+                    )
+                })}
         </>
     )
 

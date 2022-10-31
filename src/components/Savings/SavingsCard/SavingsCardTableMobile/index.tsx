@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { CellSC } from 'pages/gd/Portfolio/styled'
 import Card from 'components/gd/Card'
 import Title from 'components/gd/Title'
@@ -14,18 +14,28 @@ import sendGa from 'functions/sendGa'
 
 export const SavingsCardTableMobile = ({
     account,
+    requiredChain,
     hasBalance,
     headings,
     toggleModal,
 }: {
     account: string
+    requiredChain: number
     hasBalance: boolean | undefined
     headings: HeadingCopy
     toggleModal: (type?: ModalType) => void
 }): JSX.Element => {
     const { i18n } = useLingui()
-    const { stats, error } = useStakerInfo(10, account)
+    const { stats, error } = useStakerInfo(42220, 10, account)
     const getData = sendGa
+
+    const toggleSavingsModal = useCallback(
+        (type: ModalType) => {
+            sendGa({ event: 'savings', action: 'start' + type })
+            toggleModal(type)
+        },
+        [toggleModal]
+    )
 
     return (
         <Card className="mb-6 md:mb-4 card">
@@ -84,12 +94,11 @@ export const SavingsCardTableMobile = ({
                                     width="130px"
                                     size="m"
                                     borderRadius="6px"
-                                    requireChain={'FUSE'}
+                                    requireChain={
+                                        SupportedV2Networks[requiredChain] as keyof typeof SupportedV2Networks
+                                    }
                                     noShadow={true}
-                                    onClick={() => {
-                                        getData({ event: 'savings', action: 'startWithdraw' })
-                                        toggleModal('withdraw')
-                                    }}
+                                    onClick={() => toggleSavingsModal('withdraw')}
                                 >
                                     {' '}
                                     {i18n._(t`Withdraw G$`)}{' '}
@@ -100,11 +109,10 @@ export const SavingsCardTableMobile = ({
                                     size="m"
                                     noShadow={true}
                                     borderRadius="6px"
-                                    requireChain={'FUSE'}
-                                    onClick={() => {
-                                        getData({ event: 'savings', action: 'startClaim' })
-                                        toggleModal('claim')
-                                    }}
+                                    requireChain={
+                                        SupportedV2Networks[requiredChain] as keyof typeof SupportedV2Networks
+                                    }
+                                    onClick={() => toggleSavingsModal('claim')}
                                 >
                                     {' '}
                                     {i18n._(t`Claim Rewards`)}{' '}
