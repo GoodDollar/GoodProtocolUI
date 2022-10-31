@@ -179,7 +179,7 @@ function AppBar(): JSX.Element {
                                 </div>
                                 {chainId && <Web3Faucet />}
                                 <button
-                                    onClick={() => toggleSideBar()}
+                                    onClick={toggleSideBar}
                                     className="inline-flex items-center justify-center p-2 rounded-md mobile-menu-button focus:outline-none"
                                 >
                                     <span className="sr-only">{i18n._(t`Open main menu`)}</span>
