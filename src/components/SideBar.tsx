@@ -7,7 +7,7 @@ import TelegramLogo from '../assets/images/telegram.png'
 import TwitterLogo from '../assets/images/twitter.png'
 import useActiveWeb3React from '../hooks/useActiveWeb3React'
 import { NavLink } from './Link'
-import { useG$Balance, G$Balances } from '@gooddollar/web3sdk-v2'
+import { useG$Balance, useG$Tokens, SupportedChains } from '@gooddollar/web3sdk-v2'
 import WalletBalance from 'components/WalletBalance'
 import useMetaMask from '../hooks/useMetaMask'
 import { useApplicationTheme } from '../state/application/hooks'
@@ -191,68 +191,68 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const { i18n } = useLingui()
     const { ethereum } = window
     const { chainId, account } = useActiveWeb3React()
-    // const metaMaskInfo = useMetaMask()
+    const metaMaskInfo = useMetaMask()
     const balances = useG$Balance(10)
+    const { g$, good, gdx } = useG$Tokens()
 
-    // const importToMetamask = async () => {
-    //     const allTokens = []
+    const importToMetamask = async () => {
+        const allTokens = []
+        if (g$)
+            allTokens.push({
+                type: 'ERC20',
+                options: {
+                    address: g$.address,
+                    symbol: g$.ticker,
+                    decimals: g$.decimals,
+                    image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
+                },
+            })
 
-    //     if (data?.g$)
-    //         allTokens.push({
-    //             type: 'ERC20',
-    //             options: {
-    //                 address: data?.g$?.address,
-    //                 symbol: data?.g$?.symbol,
-    //                 decimals: data?.g$?.decimals,
-    //                 image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
-    //             },
-    //         })
+        if (good)
+            allTokens.push({
+                type: 'ERC20',
+                options: {
+                    address: good.address,
+                    symbol: good.ticker,
+                    decimals: good.decimals,
+                    image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png',
+                },
+            })
 
-    //     if (data?.gdao)
-    //         allTokens.push({
-    //             type: 'ERC20',
-    //             options: {
-    //                 address: data?.gdao?.address,
-    //                 symbol: data?.gdao?.symbol,
-    //                 decimals: data?.gdao?.decimals,
-    //                 image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png',
-    //             },
-    //         })
+        if ((chainId as any) !== SupportedChains.FUSE && gdx)
+            allTokens.push({
+                type: 'ERC20',
+                options: {
+                    address: gdx.address,
+                    symbol: gdx.ticker,
+                    decimals: gdx.decimals,
+                    image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gdx-logo.png',
+                },
+            })
 
-    //     if ((chainId as any) !== AdditionalChainId.FUSE && data?.gdx)
-    //         allTokens.push({
-    //             type: 'ERC20',
-    //             options: {
-    //                 address: data?.gdx?.address,
-    //                 symbol: data?.gdx?.symbol,
-    //                 decimals: data?.gdx?.decimals,
-    //                 image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gdx-logo.png',
-    //             },
-    //         })
-
-    //     Promise.all(
-    //         allTokens.map((token) =>
-    //             metaMaskInfo.isMultiple
-    //                 ? ethereum?.selectedProvider?.request &&
-    //                   ethereum.selectedProvider.request({
-    //                       method: 'wallet_watchAsset',
-    //                       params: token,
-    //                   })
-    //                 : ethereum?.request &&
-    //                   ethereum.request({
-    //                       method: 'wallet_watchAsset',
-    //                       params: token,
-    //                   })
-    //         )
-    //     )
-    //         .then((results) => {
-    //             // console.log(results)
-    //             localStorage.setItem(`${chainId}_metamask_import_status`, 'true')
-    //         })
-    //         .catch((errors) => {
-    //             // console.log(errors)
-    //         })
-    // }
+        Promise.all(
+            allTokens.map((token) =>
+                metaMaskInfo.isMultiple
+                    ? ethereum?.selectedProvider?.request &&
+                      ethereum.selectedProvider.request({
+                          method: 'wallet_watchAsset',
+                          params: token,
+                      })
+                    : ethereum?.request &&
+                      ethereum.request({
+                          method: 'wallet_watchAsset',
+                          params: token,
+                      })
+            )
+        )
+            .then((results) => {
+                // console.log(results)
+                localStorage.setItem(`${chainId}_metamask_import_status`, 'true')
+            })
+            .catch((errors) => {
+                // console.log(errors)
+            })
+    }
 
     return (
         <SideBarSC className="flex flex-col justify-between" $mobile={mobile}>
@@ -293,11 +293,11 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                         <div className="flex flex-col details">
                             {account && <WalletBalance balances={balances} chainId={chainId} />}
                             <br />
-                            {/* {localStorage.getItem(`${chainId}_metamask_import_status`) !== 'true' && (
+                            {localStorage.getItem(`${chainId}_metamask_import_status`) !== 'true' && (
                                 <div className="importToMetamaskLink" onClick={importToMetamask}>
                                     Import to Metamask
                                 </div>
-                            )} */}
+                            )}
                         </div>
                     </div>
                 )}
