@@ -4,12 +4,10 @@ import Title from 'components/gd/Title'
 import { QuestionHelper } from 'components'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
-import { SupportedChainId } from '@gooddollar/web3sdk'
 import { useSavingsStats, G$, useGetEnvChainId, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import SavingsModal from 'components/Savings/SavingsModal'
 import { Wrapper } from '../styled'
 import styled from 'styled-components'
-import { ActionOrSwitchButton } from 'components/gd/Button/ActionOrSwitchButton'
 import AsyncTokenIcon from 'components/gd/sushi/AsyncTokenIcon'
 import { LoadingPlaceHolder } from 'theme/components'
 import sendGa from 'functions/sendGa'
@@ -17,6 +15,7 @@ import { useWindowSize } from 'hooks/useWindowSize'
 import { SavingsDepositMobile } from './SavingsDepositMobile'
 import { HeadingCopy } from 'components/Savings/SavingsCard'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
+import { ModalButton } from 'components/Savings/SavingsModal/ModalButton'
 
 const SavingsDeposit = styled.div`
     margin-top: 10px;
@@ -132,19 +131,12 @@ export const Savings = ({ requiredChain }: { requiredChain: number }): JSX.Eleme
                                 )}
                             </td>
                             <td>
-                                <ActionOrSwitchButton
-                                    size="sm"
-                                    width="130px"
-                                    borderRadius="6px"
-                                    noShadow={true}
-                                    requireChain={
-                                        SupportedV2Networks[requiredChain] as keyof typeof SupportedV2Networks
-                                    }
-                                    onClick={() => toggleModal()}
-                                >
-                                    {' '}
-                                    Deposit G${' '}
-                                </ActionOrSwitchButton>
+                                <ModalButton
+                                    type={'deposit'}
+                                    title={i18n._(t`Deposit G$`)}
+                                    chain={requiredChain}
+                                    toggleModal={toggleModal}
+                                />
                             </td>
                         </tr>
                     </Table>

@@ -13,18 +13,17 @@ export const SavingsAccount = ({
 }): JSX.Element => {
     const [hasBalance, setHasBalance] = useState<boolean | undefined>(true)
     const { i18n } = useLingui()
-    const { chainId, defaultEnv } = useGetEnvChainId()
-    const provider = useReadOnlyProvider(chainId)
+    const { defaultEnv } = useGetEnvChainId(requiredChain)
+    const provider = useReadOnlyProvider(requiredChain)
 
     useEffect(() => {
         if (account && provider) {
             const sdk = new SavingsSDK(provider, defaultEnv)
-
             sdk.hasBalance(account).then((res) => {
                 setHasBalance(res)
             })
         }
-    }, [account, setHasBalance, defaultEnv, provider])
+    }, [account, setHasBalance, provider, defaultEnv])
 
     return (
         <>

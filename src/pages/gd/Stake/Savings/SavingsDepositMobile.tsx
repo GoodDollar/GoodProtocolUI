@@ -3,15 +3,14 @@ import React from 'react'
 import Title from 'components/gd/Title'
 import { QuestionHelper } from 'components'
 import { LoadingPlaceHolder } from 'theme/components'
-import { ButtonOutlined } from 'components/gd/Button'
 import { CellSC } from '../styled'
 
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
-import { useSavingsStats, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
+import { useSavingsStats } from '@gooddollar/web3sdk-v2'
 import sendGa from 'functions/sendGa'
-import { ActionOrSwitchButton } from 'components/gd/Button/ActionOrSwitchButton'
 import { ModalType } from 'components/Savings/SavingsModal'
+import { ModalButton } from 'components/Savings/SavingsModal/ModalButton'
 
 import type { HeadingCopy } from 'components/Savings/SavingsCard'
 
@@ -26,7 +25,6 @@ export const SavingsDepositMobile = ({
 }): JSX.Element => {
     const { stats, error } = useSavingsStats(10)
     const { i18n } = useLingui()
-    const getData = sendGa
 
     return (
         <>
@@ -74,18 +72,12 @@ export const SavingsDepositMobile = ({
                         )
                 )}
                 <div className="savingdeposit">
-                    <ActionOrSwitchButton
-                        size="sm"
-                        width="130px"
-                        borderRadius="6px"
-                        noShadow={true}
-                        requireChain={SupportedV2Networks[requiredChain] as keyof typeof SupportedV2Networks}
-                        ButtonEl={ButtonOutlined}
-                        onClick={() => toggleModal()}
-                    >
-                        {' '}
-                        Deposit G${' '}
-                    </ActionOrSwitchButton>
+                    <ModalButton
+                        type={'deposit'}
+                        title={i18n._(t`Deposit G$`)}
+                        chain={requiredChain}
+                        toggleModal={toggleModal}
+                    />
                 </div>
             </CellSC>
         </>

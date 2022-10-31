@@ -452,13 +452,11 @@ const Portfolio = () => {
                     Object.keys(SupportedV2Networks).filter((v) =>
                         isNaN(Number(v))
                     ) as (keyof typeof SupportedV2Networks)[]
-                ).map((key) => {
-                    return (
-                        <Fragment key={key}>
-                            <SavingsAccount requiredChain={SupportedV2Networks[key]} account={account} />
-                        </Fragment>
-                    )
-                })}
+                ).map((key) => (
+                    <Fragment key={key}>
+                        <SavingsAccount requiredChain={SupportedV2Networks[key]} account={account} />
+                    </Fragment>
+                ))}
         </>
     )
 

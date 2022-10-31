@@ -505,13 +505,11 @@ export default function Stakes(): JSX.Element | null {
                         Object.keys(SupportedV2Networks).filter((v) =>
                             isNaN(Number(v))
                         ) as (keyof typeof SupportedV2Networks)[]
-                    ).map((key) => {
-                        return (
-                            <Fragment key={SupportedV2Networks[key]}>
-                                <Savings requiredChain={SupportedV2Networks[key]} />
-                            </Fragment>
-                        )
-                    })}
+                    ).map((key) => (
+                        <Fragment key={SupportedV2Networks[key]}>
+                            <Savings requiredChain={SupportedV2Networks[key]} />
+                        </Fragment>
+                    ))}
             </>
         </Layout>
     )

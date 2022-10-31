@@ -192,13 +192,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const { ethereum } = window
     const { chainId, account } = useActiveWeb3React()
     // const metaMaskInfo = useMetaMask()
-    const { g$balance, goodBalance } = useG$Balance(10)
-
-    const balances: G$Balances = {
-        G$: g$balance,
-        // GDX: undefined,
-        GOOD: goodBalance,
-    }
+    const balances = useG$Balance(10)
 
     // const importToMetamask = async () => {
     //     const allTokens = []
