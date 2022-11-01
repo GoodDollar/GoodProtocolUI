@@ -1,17 +1,18 @@
+import { SupportedChains, useG$Balance, useG$Tokens, AsyncStorage } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
+import WalletBalance from 'components/WalletBalance'
 import React from 'react'
 import styled, { css } from 'styled-components'
 import DiscordLogo from '../assets/images/discord-logo-new.png'
 import TelegramLogo from '../assets/images/telegram.png'
 import TwitterLogo from '../assets/images/twitter.png'
 import useActiveWeb3React from '../hooks/useActiveWeb3React'
-import { NavLink } from './Link'
-import { useG$Balance, useG$Tokens, SupportedChains } from '@gooddollar/web3sdk-v2'
-import WalletBalance from 'components/WalletBalance'
 import useMetaMask from '../hooks/useMetaMask'
 import { useApplicationTheme } from '../state/application/hooks'
 import LanguageSwitch from './LanguageSwitch'
+import { NavLink } from './Link'
+import usePromise from '../hooks/usePromise'
 
 const SideBarSC = styled.aside<{ $mobile?: boolean }>`
     width: ${({ $mobile }) => ($mobile ? '90%' : '268px')};
@@ -247,12 +248,14 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
         )
             .then((results) => {
                 // console.log(results)
-                localStorage.setItem(`${chainId}_metamask_import_status`, 'true')
+                return AsyncStorage.setItem(`${chainId}_metamask_import_status`, true)
             })
             .catch((errors) => {
                 // console.log(errors)
             })
     }
+
+    const [status, loading] = usePromise(async () => AsyncStorage.getItem(`${chainId}_metamask_import_status`), [chainId])
 
     return (
         <SideBarSC className="flex flex-col justify-between" $mobile={mobile}>
@@ -293,7 +296,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                         <div className="flex flex-col details">
                             {account && <WalletBalance balances={balances} chainId={chainId} />}
                             <br />
-                            {localStorage.getItem(`${chainId}_metamask_import_status`) !== 'true' && (
+                            {!loading && status !== true && (
                                 <div className="importToMetamaskLink" onClick={importToMetamask}>
                                     Import to Metamask
                                 </div>

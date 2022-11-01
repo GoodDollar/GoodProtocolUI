@@ -1,12 +1,12 @@
-import useActiveWeb3React from './useActiveWeb3React'
-import React, { ReactNode, ReactNodeArray, useMemo } from 'react'
-import Web3 from 'web3'
-import { ethers } from 'ethers'
 import { ExternalProvider } from '@ethersproject/providers'
+import { ethers } from 'ethers'
+import { ReactNode, ReactNodeArray, useEffect, useMemo } from 'react'
+import Web3 from 'web3'
+import useActiveWeb3React from './useActiveWeb3React'
 
-import { useEnvWeb3, GdSdkContext, DAO_NETWORK, getNetworkEnv } from '@gooddollar/web3sdk'
+import { DAO_NETWORK, GdSdkContext, getNetworkEnv, useEnvWeb3 } from '@gooddollar/web3sdk'
 
-import { Web3Provider } from '@gooddollar/web3sdk-v2'
+import { Web3Provider, AsyncStorage } from '@gooddollar/web3sdk-v2'
 
 type NetworkSettings = {
     currentNetwork: string
@@ -18,15 +18,20 @@ type NetworkSettings = {
 }
 
 export function useNetwork(): NetworkSettings {
-    const currentNetwork = process.env.REACT_APP_NETWORK || 'fuse'
-    const rpcs = {
-        MAINNET_RPC:
-            process.env.REACT_APP_MAINNET_RPC ||
-            (ethers.getDefaultProvider('mainnet') as any).providerConfigs[0].provider.connection.url,
-        FUSE_RPC: process.env.REACT_APP_FUSE_RPC || 'https://rpc.fuse.io',
-        CELO_RPC: process.env.REACT_APP_CELO_RPC || 'https://forno.celo.org',
-    }
-    localStorage.setItem('GD_RPCS', JSON.stringify(rpcs)) //this is required for sdk v1
+    const [currentNetwork, rpcs] = useMemo(() => [
+        process.env.REACT_APP_NETWORK || 'fuse',
+        {
+            MAINNET_RPC:
+                process.env.REACT_APP_MAINNET_RPC ||
+                (ethers.getDefaultProvider('mainnet') as any).providerConfigs[0].provider.connection.url,
+            FUSE_RPC: process.env.REACT_APP_FUSE_RPC || 'https://rpc.fuse.io',
+            CELO_RPC: process.env.REACT_APP_CELO_RPC || 'https://forno.celo.org',
+        }
+    ], [])
+
+    useEffect(() => {
+        AsyncStorage.safeSet('GD_RPCS', rpcs) //this is required for sdk v1
+    }, [])
 
     return { currentNetwork, rpcs }
 }

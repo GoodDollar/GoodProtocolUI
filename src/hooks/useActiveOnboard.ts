@@ -1,11 +1,14 @@
-import { EIP1193Provider } from '@web3-onboard/common'
-import React, { useState, useEffect, useMemo } from 'react'
 import { Web3Provider } from '@ethersproject/providers'
+import { AsyncStorage, useAppRestart } from '@gooddollar/web3sdk-v2'
 import { ChainId } from '@sushiswap/sdk'
+import { EIP1193Provider } from '@web3-onboard/common'
 import { WalletState } from '@web3-onboard/core'
 import type { Account } from '@web3-onboard/core/dist/types'
 import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
+import { isEmpty, noop } from 'lodash'
+import { useEffect, useMemo, useState } from 'react'
 import web3Utils from 'web3-utils'
+import usePromise from './usePromise'
 
 import { SupportedChainId, UnsupportedChainId } from '@gooddollar/web3sdk'
 
@@ -103,21 +106,23 @@ export function useActiveOnboard<T = any>(): ActiveOnboardInterface<T> {
  * @returns void
  */
 export function StoreOnboardState(wallets: WalletState[], activeChainId: string | undefined): void {
-    if (wallets.length === 0) {
-        localStorage.removeItem('currentConnectWallet')
-    } else {
-        const walletLabel = wallets.map(({ label }) => label)
-        const connectedAccount = wallets.map(({ accounts }) => accounts[0])
-        const connectedChain = activeChainId
-        const connected = [
-            {
-                accounts: connectedAccount,
-                chains: connectedChain,
-                label: walletLabel,
-            },
-        ]
-        localStorage.setItem('currentConnectWallet', JSON.stringify(connected))
+    if (isEmpty(wallets)) {
+        AsyncStorage.removeItem('currentConnectWallet')
+        return
     }
+
+    const walletLabel = wallets.map(({ label }) => label)
+    const connectedAccount = wallets.map(({ accounts }) => accounts[0])
+    const connectedChain = activeChainId
+    const connected = [
+        {
+            accounts: connectedAccount,
+            chains: connectedChain,
+            label: walletLabel,
+        },
+    ]
+
+    AsyncStorage.safeSet('currentConnectWallet', connected)
 }
 
 // TODO: Seperate current connected wallet && ALL connected wallets
@@ -130,11 +135,16 @@ export function StoreOnboardState(wallets: WalletState[], activeChainId: string 
 export function useOnboardConnect(): OnboardConnectProps {
     const [tried, setTried] = useState<boolean>(false)
     const [activated, setActivated] = useState<boolean>(false)
-    const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
-    const [{ chains, connectedChain, settingChain }, setChain] = useSetChain()
+    const [, connect] = useConnectWallet()
+    const [{ connectedChain }, setChain] = useSetChain()
     const connectedWallets = useWallets()
+    const restartApp = useAppRestart()
 
-    const previouslyConnected: any = JSON.parse(localStorage.getItem('currentConnectWallet') ?? '[]')
+    const [previouslyConnected, loading]: readonly [any, boolean, any, any] = usePromise(async () => AsyncStorage
+        .getItem('currentConnectWallet')
+        .then((value: any): any => value ?? {}),
+        []
+    )
 
     const updateStorage = (newChainId: string, currentWallet: WalletState[]) => {
         const { chainId } = IsSupportedChain(newChainId)
@@ -146,9 +156,10 @@ export function useOnboardConnect(): OnboardConnectProps {
     const connectOnboard = async () => {
         // Coinbase reloads instead of sending accountsChanged event, so empty storage if no active address can be found
         if (previouslyConnected[0].label[0] === 'Coinbase Wallet') {
-            const isStillActive = localStorage.getItem('-walletlink:https://www.walletlink.org:Addresses')
+            const isStillActive = await AsyncStorage.getItem('-walletlink:https://www.walletlink.org:Addresses')
+
             if (!isStillActive) {
-                localStorage.removeItem('currentConnectWallet')
+                AsyncStorage.safeRemove('currentConnectWallet')
                 setTried(true)
                 return
             }
@@ -160,16 +171,26 @@ export function useOnboardConnect(): OnboardConnectProps {
 
     // eager connect
     useEffect(() => {
+        // ignore effect until usePromise loaded
+        if (loading) {
+            return
+        }
+
         if (previouslyConnected.length && !tried) {
             connectOnboard()
             setTried(true)
         } else if (activated || !previouslyConnected[0]) {
             setTried(true)
         }
-    }, [activated, tried, connect, previouslyConnected])
+    }, [activated, tried, connect, previouslyConnected, loading])
 
     useEffect(() => {
         const isConnected = connectedWallets.length > 0
+
+        // ignore effect until usePromise loaded
+        if (loading) {
+            return
+        }
 
         if (isConnected && connectedChain) {
             updateStorage(connectedChain.id, connectedWallets)
@@ -178,22 +199,32 @@ export function useOnboardConnect(): OnboardConnectProps {
         // disconnect
         if (!isConnected && previouslyConnected.length && (tried || activated)) {
             const toReload = WalletLabels.includes(previouslyConnected[0].label[0])
+
             StoreOnboardState(connectedWallets, '0x1')
             setActivated(false)
 
-            if (previouslyConnected[0].label[0] === 'Coinbase Wallet' && activated) {
-                for (let i = 0; i < WalletLinkKeys.length; i++) {
-                    localStorage.removeItem(WalletLinkKeys[i])
-                    window.location.reload()
-                }
+            if (!activated) {
+                return
             }
 
-            if (toReload && activated) {
-                localStorage.removeItem('walletconnect')
-                window.location.reload() // temporarily necessary, as there is a irrecoverable error/bug when not reloading
+            const promises = []
+            const cleanup = async (key: string) => AsyncStorage.removeItem(key).catch(noop)
+
+            if (previouslyConnected[0].label[0] === 'Coinbase Wallet') {
+                promises.push(...WalletLinkKeys.map(cleanup))
             }
+
+            if (toReload) {
+                promises.push(cleanup('walletconnect'))
+            }
+
+            if (isEmpty(promises)) {
+                return
+            }
+
+            Promise.all(promises).then(() => restartApp()) // temporarily necessary, as there is a irrecoverable error/bug when not reloading
         }
-    }, [connectedWallets, tried])
+    }, [connectedWallets, tried, loading])
 
     return { tried, activated }
 }
