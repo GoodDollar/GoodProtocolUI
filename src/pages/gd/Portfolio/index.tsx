@@ -21,12 +21,13 @@ import { useWindowSize } from 'hooks/useWindowSize'
 import Withdraw from 'components/Withdraw'
 import AsyncTokenIcon from 'components/gd/sushi/AsyncTokenIcon'
 import { getNetworkEnv, useEnvWeb3, getMyList, MyStake, DAO_NETWORK, LIQUIDITY_PROTOCOL } from '@gooddollar/web3sdk'
-import { SupportedChains, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
+import { SupportedChains } from '@gooddollar/web3sdk-v2'
 import styled from 'styled-components'
 import ClaimRewards from 'components/ClaimRewards'
 import { SavingsAccount } from './SavingsAccount'
 import { CellSC } from './styled'
 import { disableTestnetMain } from 'constants/index'
+import Web3SupportedNetworks from 'components/Web3SupportedNetworks'
 
 const MobileTableSC = styled.div``
 
@@ -447,16 +448,9 @@ const Portfolio = () => {
                     </Table>
                 </Card>
             )}
-            {network !== 'production' &&
-                (
-                    Object.keys(SupportedV2Networks).filter((v) =>
-                        isNaN(Number(v))
-                    ) as (keyof typeof SupportedV2Networks)[]
-                ).map((key) => (
-                    <Fragment key={key}>
-                        <SavingsAccount requiredChain={SupportedV2Networks[key]} account={account} />
-                    </Fragment>
-                ))}
+            <Web3SupportedNetworks onItem={({ chain }) => (
+                <SavingsAccount requiredChain={chain} account={account} />
+            )} />
         </>
     )
 

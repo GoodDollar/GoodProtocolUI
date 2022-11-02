@@ -36,18 +36,20 @@ export type ActiveOnboard<T = any> = Omit<
     'activate' | 'deactivate' | 'setError' | 'connector'
 >
 
+export interface ISelectedProvider {
+    isMetaMask: boolean
+    on(...args: any[]): void
+    off(...args: any[]): void
+    removeListener(...args: any[]): void
+    removeAllListeners(...args: any[]): void
+    autoRefreshOnNetworkChange: boolean
+    request(args: { method: string; params?: unknown[] | object }): Promise<unknown>
+}
+
 export interface EIP1193ProviderExtended extends EIP1193Provider {
     providers?: any
     isMetamask?: boolean
-    selectedProvider: {
-        isMetaMask?: boolean
-        on?: (...args: any[]) => void
-        off?: (...args: any[]) => void
-        removeListener?: (...args: any[]) => void
-        removeAllListeners?: (...args: any[]) => void
-        autoRefreshOnNetworkChange?: boolean
-        request?: (args: { method: string; params?: unknown[] | object }) => Promise<unknown>
-    } | null
+    selectedProvider?: Partial<ISelectedProvider>
 }
 
 export interface ActiveOnboardInterface<T = any> extends ActiveOnboard<Web3Provider> {

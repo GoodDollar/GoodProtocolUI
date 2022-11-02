@@ -39,8 +39,8 @@ export const Savings = ({ requiredChain }: { requiredChain: number }): JSX.Eleme
 
     const toggleModal = useCallback(() => {
         sendGa({ event: 'savings', action: 'savingsStart' })
-        setIsOpen(!isOpen)
-    }, [setIsOpen, isOpen])
+        setIsOpen(isOpen => !isOpen)
+    }, [setIsOpen])
 
     const headings: HeadingCopy = [
         {
