@@ -10,7 +10,7 @@ import type { HeadingCopy } from '..'
 import { useStakerInfo, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import { LoadingPlaceHolder } from 'theme/components'
 import { ActionOrSwitchButton } from 'components/gd/Button/ActionOrSwitchButton'
-import sendGa from 'functions/sendGa'
+import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 
 export const SavingsCardTableMobile = ({
     account,
@@ -25,7 +25,7 @@ export const SavingsCardTableMobile = ({
 }): JSX.Element => {
     const { i18n } = useLingui()
     const { stats, error } = useStakerInfo(10, account)
-    const getData = sendGa
+    const sendData = useSendAnalyticsData()
 
     return (
         <Card className="mb-6 md:mb-4 card">
@@ -87,7 +87,7 @@ export const SavingsCardTableMobile = ({
                                     requireChain={'FUSE'}
                                     noShadow={true}
                                     onClick={() => {
-                                        getData({ event: 'savings', action: 'startWithdraw' })
+                                        sendData({ event: 'savings', action: 'startWithdraw' })
                                         toggleModal('withdraw')
                                     }}
                                 >
@@ -102,7 +102,7 @@ export const SavingsCardTableMobile = ({
                                     borderRadius="6px"
                                     requireChain={'FUSE'}
                                     onClick={() => {
-                                        getData({ event: 'savings', action: 'startClaim' })
+                                        sendData({ event: 'savings', action: 'startClaim' })
                                         toggleModal('claim')
                                     }}
                                 >

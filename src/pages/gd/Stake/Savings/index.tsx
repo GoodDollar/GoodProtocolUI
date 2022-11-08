@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import { ActionOrSwitchButton } from 'components/gd/Button/ActionOrSwitchButton'
 import AsyncTokenIcon from 'components/gd/sushi/AsyncTokenIcon'
 import { LoadingPlaceHolder } from 'theme/components'
-import sendGa from 'functions/sendGa'
+import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { SavingsDepositMobile } from './SavingsDepositMobile'
 import { HeadingCopy } from 'components/Savings/SavingsCard'
@@ -31,7 +31,7 @@ export const Savings = (): JSX.Element => {
     const { width } = useWindowSize()
     const isMobile = width ? width <= 768 : undefined
     const g$ = G$[chainId]
-    const getData = sendGa
+    const sendData = useSendAnalyticsData()
 
     useEffect(() => {
         if (error) {
@@ -135,7 +135,7 @@ export const Savings = (): JSX.Element => {
                                     noShadow={true}
                                     requireChain={'FUSE'}
                                     onClick={() => {
-                                        getData({ event: 'savings', action: 'savingsStart' })
+                                        sendData({ event: 'savings', action: 'savingsStart' })
                                         toggleModal()
                                     }}
                                 >

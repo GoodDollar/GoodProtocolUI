@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { useStakerInfo, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
+import { useStakerInfo } from '@gooddollar/web3sdk-v2'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
 import { ActionOrSwitchButton } from 'components/gd/Button/ActionOrSwitchButton'
 import { ModalType } from 'components/Savings/SavingsModal'
 import { LoadingPlaceHolder } from 'theme/components'
-import sendGa from 'functions/sendGa'
+import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 
 export const SavingsCardRow = ({
     account,
@@ -16,7 +16,7 @@ export const SavingsCardRow = ({
 }): JSX.Element => {
     const { i18n } = useLingui()
     const { stats, error } = useStakerInfo(10, account)
-    const getData = sendGa
+    const sendData = useSendAnalyticsData()
 
     useEffect(() => {
         if (error) {
@@ -73,7 +73,7 @@ export const SavingsCardRow = ({
                             requireChain={'FUSE'}
                             noShadow={true}
                             onClick={() => {
-                                getData({ event: 'savings', action: 'startWithdraw' })
+                                sendData({ event: 'savings', action: 'startWithdraw' })
                                 toggleModal('withdraw')
                             }}
                         >
@@ -88,7 +88,7 @@ export const SavingsCardRow = ({
                             borderRadius="6px"
                             requireChain={'FUSE'}
                             onClick={() => {
-                                getData({ event: 'savings', action: 'startClaim' })
+                                sendData({ event: 'savings', action: 'startClaim' })
                                 toggleModal('claim')
                             }}
                         >

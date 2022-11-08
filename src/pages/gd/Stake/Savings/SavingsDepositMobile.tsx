@@ -9,7 +9,7 @@ import { CellSC } from '../styled'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
 import { useSavingsStats } from '@gooddollar/web3sdk-v2'
-import sendGa from 'functions/sendGa'
+import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { ActionOrSwitchButton } from 'components/gd/Button/ActionOrSwitchButton'
 import { ModalType } from 'components/Savings/SavingsModal'
 
@@ -24,7 +24,7 @@ export const SavingsDepositMobile = ({
 }): JSX.Element => {
     const { stats, error } = useSavingsStats(10)
     const { i18n } = useLingui()
-    const getData = sendGa
+    const sendData = useSendAnalyticsData()
 
     return (
         <>
@@ -80,7 +80,7 @@ export const SavingsDepositMobile = ({
                         requireChain={'FUSE'}
                         ButtonEl={ButtonOutlined}
                         onClick={() => {
-                            getData({ event: 'savings', action: 'savingsStart' })
+                            sendData({ event: 'savings', action: 'savingsStart' })
                             toggleModal()
                         }}
                     >
