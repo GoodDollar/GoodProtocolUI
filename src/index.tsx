@@ -19,6 +19,8 @@ import ThemeProvider from './theme'
 import LanguageProvider from 'language'
 import { createGlobalStyle } from 'styled-components'
 import { Web3ContextProvider } from './hooks/useWeb3'
+import { NativeBaseProvider } from 'native-base'
+import { theme } from '@gooddollar/good-design'
 
 if (!!window.ethereum) {
     window.ethereum.autoRefreshOnNetworkChange = false
@@ -67,7 +69,7 @@ const GlobalStyle = createGlobalStyle`
     // --onboard-font-size-6: 1.05rem;
     // --onboard-gray-700: #999EA8;
 
-  
+
   }
   onboard-v2::part(sidebar-heading-img) {
     max-width: 100%;
@@ -88,10 +90,12 @@ ReactDOM.render(
                   <Blocklist>
                       <Updaters />
                       <ThemeProvider>
+                        <NativeBaseProvider theme={theme}>
                           <GlobalStyle />
                           <Router>
-                              <App />
+                            <App />
                           </Router>
+                        </NativeBaseProvider>
                       </ThemeProvider>
                   </Blocklist>
               </LanguageProvider>
