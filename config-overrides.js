@@ -1,26 +1,26 @@
 const {
-  addWebpackAlias,
-  fixBabelImports,
-  addBabelPlugins,
-  addPostcssPlugins,
-  override,
-  addBabelPresets,
+    addWebpackAlias,
+    fixBabelImports,
+    addBabelPlugins,
+    addPostcssPlugins,
+    override,
+    addBabelPresets,
 } = require('customize-cra')
 const path = require('path')
 
 module.exports = override(
-  addPostcssPlugins([require('tailwindcss'), require('postcss-preset-env')({ stage: 1 })]),
-  ...addBabelPlugins(
-      'babel-plugin-react-native-web'
-      // '@babel/plugin-proposal-class-properties',
-  ),
-  ...addBabelPresets('@babel/preset-flow', '@babel/preset-react', '@babel/preset-typescript'),
-  addWebpackAlias({
-      '@react-native-community/async-storage': 'react-native-web/dist/exports/AsyncStorage/index.js',
-  }),
-  fixBabelImports('module-resolver', {
-      alias: {
-          '^react-native$': 'react-native-web',
-      },
-  })
+    addPostcssPlugins([require('tailwindcss'), require('postcss-preset-env')({ stage: 1 })]),
+    ...addBabelPlugins(
+        'babel-plugin-react-native-web'
+        // '@babel/plugin-proposal-class-properties',
+    ),
+    ...addBabelPresets('@babel/preset-flow', '@babel/preset-react', '@babel/preset-typescript'),
+    addWebpackAlias({
+        '@react-native-community/async-storage': 'react-native-web/dist/exports/AsyncStorage/index.js',
+    }),
+    fixBabelImports('module-resolver', {
+        alias: {
+            '^react-native$': 'react-native-web',
+        },
+    })
 )

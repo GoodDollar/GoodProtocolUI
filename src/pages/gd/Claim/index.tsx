@@ -1,30 +1,29 @@
 import React, { memo } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-// TODO: check when good-design will be merged
 import { ClaimButton, Layout, Title } from '@gooddollar/good-design'
 import { StyleSheet } from 'react-native'
 import { View, Text } from 'native-base'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 
 const styles = StyleSheet.create({
-  content: {
-      width: '100%',
-      height: '100%',
-      alignItems: 'center',
-  },
-  notice: {
-      width: '100%',
-      textAlign: 'center',
-      borderRadius: 5,
-      font: {},
-      fontStyle: 'normal',
-      fontWeight: 'bold',
-      fontSize: 14,
-      letterSpacing: 0.35,
-      backgroundColor: '#0d263d66',
-      padding: '40px',
-  },
+    content: {
+        width: '100%',
+        height: '100%',
+        alignItems: 'center',
+    },
+    notice: {
+        width: '100%',
+        textAlign: 'center',
+        borderRadius: 5,
+        font: {},
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: 14,
+        letterSpacing: 0.35,
+        backgroundColor: '#0d263d66',
+        padding: '40px',
+    },
 })
 
 const Claim = () => {
@@ -48,4 +47,3 @@ const Claim = () => {
 }
 
 export default memo(Claim)
-

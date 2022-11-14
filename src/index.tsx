@@ -85,21 +85,21 @@ const GlobalStyle = createGlobalStyle`
 ReactDOM.render(
     <StrictMode>
         <Web3ContextProvider>
-          <Provider store={store}>
-              <LanguageProvider>
-                  <Blocklist>
-                      <Updaters />
-                      <ThemeProvider>
-                        <NativeBaseProvider theme={theme}>
-                          <GlobalStyle />
-                          <Router>
-                            <App />
-                          </Router>
-                        </NativeBaseProvider>
-                      </ThemeProvider>
-                  </Blocklist>
-              </LanguageProvider>
-          </Provider>
+            <Provider store={store}>
+                <LanguageProvider>
+                    <Blocklist>
+                        <Updaters />
+                        <ThemeProvider>
+                            <NativeBaseProvider theme={theme}>
+                                <GlobalStyle />
+                                <Router>
+                                    <App />
+                                </Router>
+                            </NativeBaseProvider>
+                        </ThemeProvider>
+                    </Blocklist>
+                </LanguageProvider>
+            </Provider>
         </Web3ContextProvider>
     </StrictMode>,
     document.getElementById('root')
