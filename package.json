@@ -193,7 +193,7 @@
     },
     "dependencies": {
         "@gooddollar/good-design": "^0.0.5",
-        "@gooddollar/goodprotocol": "^1.0.29-beta.4",
+        "@gooddollar/goodprotocol": "1.0.29-beta.5",
         "@gooddollar/web3sdk": "file:.yalc/@gooddollar/web3sdk",
         "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2",
         "@headlessui/react": "1.5.0",
