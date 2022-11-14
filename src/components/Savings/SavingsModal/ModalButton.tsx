@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import sendGa from 'functions/sendGa'
 import { ModalType } from '.'
 import { ActionOrSwitchButton } from 'components/gd/Button/ActionOrSwitchButton'
-import { SupportedChain, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
+import { SupportedV2Network, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 
 export interface ModalButtonProps {
     chain: number
@@ -16,7 +16,7 @@ export const ModalButton = ({ chain, type, title, toggleModal, ...props }: Modal
         toggleModal(type)
     }, [toggleModal, type])
 
-    const requireChain = SupportedV2Networks[chain] as SupportedChain
+    const requireChain = SupportedV2Networks[chain] as SupportedV2Network
 
     return (
         <ActionOrSwitchButton

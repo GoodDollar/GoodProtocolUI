@@ -1,6 +1,6 @@
 import { ExternalProvider } from '@ethersproject/providers'
 import { ethers } from 'ethers'
-import { ReactNode, ReactNodeArray, useEffect, useMemo } from 'react'
+import React, { ReactNode, ReactNodeArray, useEffect, useMemo } from 'react'
 import Web3 from 'web3'
 import useActiveWeb3React from './useActiveWeb3React'
 
@@ -18,16 +18,19 @@ type NetworkSettings = {
 }
 
 export function useNetwork(): NetworkSettings {
-    const [currentNetwork, rpcs] = useMemo(() => [
-        process.env.REACT_APP_NETWORK || 'fuse',
-        {
-            MAINNET_RPC:
-                process.env.REACT_APP_MAINNET_RPC ||
-                (ethers.getDefaultProvider('mainnet') as any).providerConfigs[0].provider.connection.url,
-            FUSE_RPC: process.env.REACT_APP_FUSE_RPC || 'https://rpc.fuse.io',
-            CELO_RPC: process.env.REACT_APP_CELO_RPC || 'https://forno.celo.org',
-        }
-    ], [])
+    const [currentNetwork, rpcs] = useMemo(
+        () => [
+            process.env.REACT_APP_NETWORK || 'fuse',
+            {
+                MAINNET_RPC:
+                    process.env.REACT_APP_MAINNET_RPC ||
+                    (ethers.getDefaultProvider('mainnet') as any).providerConfigs[0].provider.connection.url,
+                FUSE_RPC: process.env.REACT_APP_FUSE_RPC || 'https://rpc.fuse.io',
+                CELO_RPC: process.env.REACT_APP_CELO_RPC || 'https://forno.celo.org',
+            },
+        ],
+        []
+    )
 
     useEffect(() => {
         AsyncStorage.safeSet('GD_RPCS', rpcs) //this is required for sdk v1
@@ -44,8 +47,8 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
 
     const web3 = useMemo(() => (eipProvider ? new Web3(eipProvider as any) : mainnetWeb3), [eipProvider, mainnetWeb3])
     const webprovider = useMemo(
-        () => (eipProvider ? new ethers.providers.Web3Provider(eipProvider as ExternalProvider, 'any') : undefined),
-        [eipProvider, rpcs.FUSE_RPC]
+        () => eipProvider && new ethers.providers.Web3Provider(eipProvider as ExternalProvider, 'any'),
+        [eipProvider]
     )
 
     const contractsEnv = getNetworkEnv()
