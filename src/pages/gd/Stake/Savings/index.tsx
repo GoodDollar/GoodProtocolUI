@@ -39,7 +39,7 @@ export const Savings = ({ requiredChain }: { requiredChain: number }): JSX.Eleme
 
     const toggleModal = useCallback(() => {
         sendGa({ event: 'savings', action: 'savingsStart' })
-        setIsOpen(isOpen => !isOpen)
+        setIsOpen((isOpen) => !isOpen)
     }, [setIsOpen])
 
     const headings: HeadingCopy = [
@@ -77,7 +77,7 @@ export const Savings = ({ requiredChain }: { requiredChain: number }): JSX.Eleme
         <SavingsDeposit>
             <div className="mt-12"></div>
             {Object.values(SupportedV2Networks).includes(chainId as number) && account && (
-                <SavingsModal type="deposit" toggle={toggleModal} isOpen={isOpen} />
+                <SavingsModal type="deposit" toggle={toggleModal} isOpen={isOpen} requiredChain={requiredChain} />
             )}
             <Title className={`md:pl-4`}>{i18n._(t`Savings`)}</Title>
             <div className="mt-4"></div>

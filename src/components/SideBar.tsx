@@ -255,7 +255,10 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             })
     }
 
-    const [status, loading] = usePromise(async () => AsyncStorage.getItem(`${chainId}_metamask_import_status`), [chainId])
+    const [status, loading] = usePromise(
+        async () => AsyncStorage.getItem(`${chainId}_metamask_import_status`),
+        [chainId]
+    )
 
     return (
         <SideBarSC className="flex flex-col justify-between" $mobile={mobile}>

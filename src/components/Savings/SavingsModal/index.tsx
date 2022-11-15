@@ -75,10 +75,12 @@ const SavingsModal = ({
     type,
     toggle,
     isOpen,
+    requiredChain,
 }: {
     type: ModalType
     toggle: () => void
     isOpen: boolean
+    requiredChain: number
 }): JSX.Element => {
     const { i18n } = useLingui()
     const { account, chainId } = useActiveWeb3React()
@@ -87,11 +89,16 @@ const SavingsModal = ({
     const reduxDispatch = useDispatch()
     const getData = sendGa
 
-    const { g$Balance, savingsBalance } = useSavingsBalance(10, SupportedV2Networks.CELO)
+    const { g$Balance, savingsBalance } = useSavingsBalance(10, requiredChain)
 
     const [percentage, setPercentage] = useState<string>('50')
     const [withdrawAmount, setWithdrawAmount] = useState<number>(parseInt(balance) * (Number(percentage) / 100))
 
+    useEffect(() => {
+        if (type === 'deposit') {
+            console.log({ balance })
+        }
+    }, [balance, type])
     useEffect(() => {
         const balance =
             type === 'withdraw'

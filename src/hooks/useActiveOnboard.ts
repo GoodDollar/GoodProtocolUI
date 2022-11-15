@@ -81,7 +81,7 @@ export function onboardContext(wstate: WalletState[]): ActiveOnboardInterface {
         active: true,
         accounts: accounts,
         chainId: parseInt(chainId),
-        account: web3Utils.toChecksumAddress(accounts[0].address),
+        account: web3Utils.toChecksumAddress(accounts[0]?.address),
         label: label,
         eipProvider: provider as EIP1193ProviderExtended,
         library: web3provider,
@@ -142,9 +142,8 @@ export function useOnboardConnect(): OnboardConnectProps {
     const connectedWallets = useWallets()
     const restartApp = useAppRestart()
 
-    const [previouslyConnected, loading]: readonly [any, boolean, any, any] = usePromise(async () => AsyncStorage
-        .getItem('currentConnectWallet')
-        .then((value: any): any => value ?? {}),
+    const [previouslyConnected, loading]: readonly [any, boolean, any, any] = usePromise(
+        async () => AsyncStorage.getItem('currentConnectWallet').then((value: any): any => value ?? {}),
         []
     )
 
