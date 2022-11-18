@@ -1,8 +1,15 @@
-import { SupportedChains, useG$Balance, useG$Tokens, AsyncStorage } from '@gooddollar/web3sdk-v2'
+import {
+    SupportedChains,
+    useG$Balance,
+    useG$Tokens,
+    AsyncStorage,
+    SupportedV2Networks,
+    SupportedV2Network,
+} from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import WalletBalance from 'components/WalletBalance'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { css } from 'styled-components'
 import DiscordLogo from '../assets/images/discord-logo-new.png'
 import TelegramLogo from '../assets/images/telegram.png'
@@ -195,8 +202,10 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const metaMaskInfo = useMetaMask()
     const balances = useG$Balance(10)
     const { g$, good, gdx } = useG$Tokens()
+    const [imported, setImported] = useState<boolean>()
 
     const importToMetamask = async () => {
+        console.log('import to metamask called')
         const allTokens = []
         if (g$)
             allTokens.push({
@@ -220,7 +229,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 },
             })
 
-        if ((chainId as any) !== SupportedChains.FUSE && gdx)
+        if (!SupportedV2Networks[chainId] && gdx)
             allTokens.push({
                 type: 'ERC20',
                 options: {
@@ -232,33 +241,41 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             })
 
         Promise.all(
-            allTokens.map((token) =>
+            allTokens.map(async (token) => {
+                // todo: fix multiple requests bug after succesfully adding all assets.
+                //IE. wallet_watchAsset auto triggered when switching chain
                 metaMaskInfo.isMultiple
                     ? ethereum?.selectedProvider?.request &&
-                      ethereum.selectedProvider.request({
+                      (await ethereum.selectedProvider.request({
                           method: 'wallet_watchAsset',
                           params: token,
-                      })
+                      }))
                     : ethereum?.request &&
-                      ethereum.request({
+                      (await ethereum.request({
                           method: 'wallet_watchAsset',
                           params: token,
-                      })
-            )
+                      }))
+            })
         )
-            .then((results) => {
-                // console.log(results)
-                return AsyncStorage.setItem(`${chainId}_metamask_import_status`, true)
+            .then(async (results) => {
+                console.log('setAsyncStorage')
+                setImported(true)
+                await AsyncStorage.setItem(`${chainId}_metamask_import_status`, true)
             })
             .catch((errors) => {
                 // console.log(errors)
             })
     }
 
-    const [status, loading] = usePromise(
-        async () => AsyncStorage.getItem(`${chainId}_metamask_import_status`),
-        [chainId]
-    )
+    const [loading] = usePromise(async () => {
+        const imported = await AsyncStorage.getItem(`${chainId}_metamask_import_status`)
+        setImported(imported)
+        return imported
+    }, [chainId])
+
+    // useEffect(() => {
+    //     console.log('AsyncStorageCalled')
+    // }, [importToMetamask])
 
     return (
         <SideBarSC className="flex flex-col justify-between" $mobile={mobile}>
@@ -299,7 +316,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                         <div className="flex flex-col details">
                             {account && <WalletBalance balances={balances} chainId={chainId} />}
                             <br />
-                            {!loading && status !== true && (
+                            {!loading && !imported && (
                                 <div className="importToMetamaskLink" onClick={importToMetamask}>
                                     Import to Metamask
                                 </div>
