@@ -1,11 +1,4 @@
-import {
-    SupportedChains,
-    useG$Balance,
-    useG$Tokens,
-    AsyncStorage,
-    SupportedV2Networks,
-    SupportedV2Network,
-} from '@gooddollar/web3sdk-v2'
+import { useG$Balance, useG$Tokens, AsyncStorage, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import WalletBalance from 'components/WalletBalance'
@@ -205,7 +198,6 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const [imported, setImported] = useState<boolean>()
 
     const importToMetamask = async () => {
-        console.log('import to metamask called')
         const allTokens = []
         if (g$)
             allTokens.push({
@@ -258,7 +250,6 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             })
         )
             .then(async (results) => {
-                console.log('setAsyncStorage')
                 setImported(true)
                 await AsyncStorage.setItem(`${chainId}_metamask_import_status`, true)
             })
@@ -272,10 +263,6 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
         setImported(imported)
         return imported
     }, [chainId])
-
-    // useEffect(() => {
-    //     console.log('AsyncStorageCalled')
-    // }, [importToMetamask])
 
     return (
         <SideBarSC className="flex flex-col justify-between" $mobile={mobile}>
