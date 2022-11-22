@@ -195,7 +195,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const metaMaskInfo = useMetaMask()
     const balances = useG$Balance(10)
     const { g$, good, gdx } = useG$Tokens()
-    const [imported, setImported] = useState<boolean>()
+    const [imported, setImported] = useState<boolean>(false)
 
     const importToMetamask = async () => {
         const allTokens = []
