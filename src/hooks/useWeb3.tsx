@@ -1,12 +1,12 @@
 import { ExternalProvider } from '@ethersproject/providers'
+import { DAO_NETWORK, GdSdkContext, getNetworkEnv, useEnvWeb3 } from '@gooddollar/web3sdk'
+import { Goerli, Mainnet } from '@usedapp/core'
 import { ethers } from 'ethers'
-import React, { ReactNode, ReactNodeArray, useEffect, useMemo } from 'react'
+import React, { ReactNode, ReactNodeArray, useMemo } from 'react'
 import Web3 from 'web3'
 import useActiveWeb3React from './useActiveWeb3React'
 
-import { DAO_NETWORK, GdSdkContext, getNetworkEnv, useEnvWeb3 } from '@gooddollar/web3sdk'
-
-import { Web3Provider, AsyncStorage } from '@gooddollar/web3sdk-v2'
+import { Celo, Fuse, Web3Provider } from '@gooddollar/web3sdk-v2'
 
 type NetworkSettings = {
     currentNetwork: string
@@ -18,23 +18,15 @@ type NetworkSettings = {
 }
 
 export function useNetwork(): NetworkSettings {
-    const [currentNetwork, rpcs] = useMemo(
-        () => [
-            process.env.REACT_APP_NETWORK || 'fuse',
-            {
-                MAINNET_RPC:
-                    process.env.REACT_APP_MAINNET_RPC ||
-                    (ethers.getDefaultProvider('mainnet') as any).providerConfigs[0].provider.connection.url,
-                FUSE_RPC: process.env.REACT_APP_FUSE_RPC || 'https://rpc.fuse.io',
-                CELO_RPC: process.env.REACT_APP_CELO_RPC || 'https://forno.celo.org',
-            },
-        ],
-        []
-    )
-
-    useEffect(() => {
-        AsyncStorage.safeSet('GD_RPCS', rpcs) //this is required for sdk v1
-    }, [])
+    const currentNetwork = process.env.REACT_APP_NETWORK || 'fuse'
+    const rpcs = {
+        MAINNET_RPC:
+            process.env.REACT_APP_MAINNET_RPC ||
+            (ethers.getDefaultProvider('mainnet') as any).providerConfigs[0].provider.connection.url,
+        FUSE_RPC: process.env.REACT_APP_FUSE_RPC || 'https://rpc.fuse.io',
+        CELO_RPC: process.env.REACT_APP_CELO_RPC || 'https://forno.celo.org',
+    }
+    localStorage.setItem('GD_RPCS', JSON.stringify(rpcs)) //this is required for sdk v1
 
     return { currentNetwork, rpcs }
 }
@@ -47,8 +39,11 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
 
     const web3 = useMemo(() => (eipProvider ? new Web3(eipProvider as any) : mainnetWeb3), [eipProvider, mainnetWeb3])
     const webprovider = useMemo(
-        () => eipProvider && new ethers.providers.Web3Provider(eipProvider as ExternalProvider, 'any'),
-        [eipProvider]
+        () =>
+            eipProvider
+                ? new ethers.providers.Web3Provider(eipProvider as ExternalProvider, 'any')
+                : new ethers.providers.JsonRpcProvider(rpcs.FUSE_RPC),
+        [eipProvider, rpcs.FUSE_RPC]
     )
 
     const contractsEnv = getNetworkEnv()
@@ -65,11 +60,12 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                 web3Provider={webprovider}
                 env={contractsEnv}
                 config={{
-                    refresh: 100,
-                    pollingInterval: 20000,
-                    networks: [],
+                    networks: [Goerli, Mainnet, Fuse, Celo],
+                    readOnlyChainId: undefined,
                     readOnlyUrls: {
+                        1: 'https://rpc.ankr.com/eth',
                         122: 'https://rpc.fuse.io',
+                        42220: 'https://forno.celo.org',
                     },
                 }}
                 // config={{ multicallVersion: 1, networks: [Fuse, Mainnet, Ropsten, Kovan], readOnlyUrls: {
