@@ -24,17 +24,18 @@ import QuestionHelper from 'components/QuestionHelper'
 import VoltageLogo from 'assets/images/voltage-logo.png'
 import GoodReserveLogo from 'assets/images/goodreserve-logo.png'
 import sendGa from 'functions/sendGa'
+import { UbeSwap } from './SwapCelo'
 
 import {
-  approve,
-  SwapInfo as BuyInfo, 
-  getBuyMeta, 
-  getBuyMetaReverse,
-  getSellMeta,
-  getSellMetaReverse,
-  SellInfo,
-  SupportedChainId,
-  useGdContextProvider,
+    approve,
+    SwapInfo as BuyInfo,
+    getBuyMeta,
+    getBuyMetaReverse,
+    getSellMeta,
+    getSellMetaReverse,
+    SellInfo,
+    SupportedChainId,
+    useGdContextProvider,
 } from '@gooddollar/web3sdk'
 
 function Swap() {
@@ -42,28 +43,28 @@ function Swap() {
     const [buying, setBuying] = useState(true)
     const [slippageTolerance, setSlippageTolerance] = useState({
         custom: false,
-        value: '0.1'
+        value: '0.1',
     })
     // console.log('slippageTollerance -->', {slippageTolerance})
     const { account, chainId } = useActiveWeb3React()
     const network = SupportedChainId[chainId]
     const [swapPair, setSwapPair] = useState<SwapVariant>({
         token: network === 'FUSE' ? FUSE : ETHER,
-        value: ''
+        value: '',
     })
 
     useEffect(() => {
         setSwapPair({
             token: network === 'FUSE' ? FUSE : ETHER,
-            value: ''
+            value: '',
         })
     }, [chainId]) // on first render chainId is undefined
 
     const handleSetPair = useCallback(
         (value: Partial<SwapVariant>) =>
-            setSwapPair(current => ({
+            setSwapPair((current) => ({
                 ...current,
-                ...value
+                ...value,
             })),
         []
     )
@@ -75,7 +76,7 @@ function Swap() {
     const [meta, setMeta] = useState<undefined | null | BuyInfo | SellInfo>()
     const pairBalance = useCurrencyBalance(account ?? undefined, swapPair.token)
     const swapBalance = useCurrencyBalance(account ?? undefined, G$)
-    const {web3} = useGdContextProvider()
+    const { web3 } = useGdContextProvider()
 
     const [lastEdited, setLastEdited] = useState<{ field: 'external' | 'internal' }>()
 
@@ -106,28 +107,26 @@ function Swap() {
         }
 
         const timer = (metaTimer.current = setTimeout(async () => {
+            buying && field === 'external' ? setCalcExternal(true) : setCalcInternal(true)
 
-          buying && field === 'external' ? setCalcExternal(true) : setCalcInternal(true)
+            const meta = await getMeta(web3, symbol, value, parseFloat(slippageTolerance.value)).catch((e) => {
+                console.error(e)
+                return null
+            })
+            if (metaTimer.current !== timer) return
+            if (!meta) return setMeta(null)
+            setOtherValue(
+                buying
+                    ? field === 'external'
+                        ? meta.outputAmount.toExact()
+                        : meta.inputAmount.toExact()
+                    : field === 'external'
+                    ? meta.inputAmount.toExact()
+                    : meta.outputAmount.toExact()
+            )
+            setMeta(meta)
 
-          const meta = await getMeta(web3, symbol, value, parseFloat(slippageTolerance.value)).catch(e => {
-              console.error(e)
-              return null
-          })
-          if (metaTimer.current !== timer) return
-          if (!meta) return setMeta(null)
-          setOtherValue(
-              buying
-                  ? field === 'external'
-                      ? meta.outputAmount.toExact()
-                      : meta.inputAmount.toExact()
-                  : field === 'external'
-                  ? meta.inputAmount.toExact()
-                  : meta.outputAmount.toExact()
-          )
-          setMeta(meta)
-
-          buying && field === 'external' ? setCalcExternal(false) : setCalcInternal(false)
-            
+            buying && field === 'external' ? setCalcExternal(false) : setCalcInternal(false)
         }, 400))
     }, [account, chainId, lastEdited, buying, web3, slippageTolerance.value]) // eslint-disable-line react-hooks/exhaustive-deps
     const [approving, setApproving] = useState(false)
@@ -139,8 +138,7 @@ function Swap() {
         if (!meta || !web3) return
         const type = buying ? 'buy' : 'sell'
         try {
-          getData({event: 'swap', action: 'approveSwap', 
-                   type: type, network: network})
+            getData({ event: 'swap', action: 'approveSwap', type: type, network: network })
             setApproving(true)
             await approve(web3, meta, type)
             setApproved(true)
@@ -160,7 +158,7 @@ function Swap() {
 
     const route = useMemo(() => {
         const route = meta?.route
-            .map(token => {
+            .map((token) => {
                 return token.symbol === 'WETH9'
                     ? SupportedChainId[Number(chainId)] === 'FUSE'
                         ? 'FUSE'
@@ -220,7 +218,7 @@ function Swap() {
                           .divide(meta.inputAmount.asFraction)
                           .toSignificant(6, { groupSeparator: ',' })
                     : '0'
-            } ${outputSymbol} PER ${inputSymbol} `
+            } ${outputSymbol} PER ${inputSymbol} `,
     }
 
     const pair: [
@@ -235,12 +233,12 @@ function Swap() {
     ] = [
         {
             token: swapPair.token,
-            value: swapPair.value
+            value: swapPair.value,
         },
         {
             token: G$,
-            value: swapValue
-        }
+            value: swapValue,
+        },
     ]
 
     if (!buying) pair.reverse()
@@ -258,7 +256,9 @@ function Swap() {
                 Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio.`
           )
 
-    return (
+    return (chainId as any) === SupportedChainId.CELO ? (
+        <UbeSwap />
+    ) : (
         <SwapContext.Provider
             value={{
                 slippageTolerance,
@@ -268,7 +268,7 @@ function Swap() {
                 swapPair,
                 setSwapPair: handleSetPair,
                 buying,
-                setBuying
+                setBuying,
             }}
         >
             <SwapCardSC open={Boolean(meta)}>
@@ -282,10 +282,10 @@ function Swap() {
                                     style={
                                         isFuse
                                             ? {
-                                                  height: '40px'
+                                                  height: '40px',
                                               }
                                             : {
-                                                  height: '39px'
+                                                  height: '39px',
                                               }
                                     }
                                 />
@@ -306,11 +306,11 @@ function Swap() {
                             style={{ marginBottom: buying ? 13 : 0, marginTop: buying ? 0 : 13, order: buying ? 1 : 3 }}
                             token={swapPair.token}
                             value={swapPair.value}
-                            onValueChange={value => {
+                            onValueChange={(value) => {
                                 handleSetPairValue(value)
                                 setLastEdited({ field: 'external' })
                             }}
-                            onTokenChange={token => {
+                            onTokenChange={(token) => {
                                 handleSetPair({ token, value: '' })
                                 setSwapValue('')
                                 setMeta(undefined)
@@ -320,7 +320,7 @@ function Swap() {
                         />
                         <div className="switch">
                             {cloneElement(SwitchSVG, {
-                                onClick: () => setBuying(value => !value)
+                                onClick: () => setBuying((value) => !value),
                             })}
                         </div>
                         <SwapRow
@@ -331,7 +331,7 @@ function Swap() {
                             token={G$}
                             alternativeSymbol="G$"
                             value={swapValue}
-                            onValueChange={value => {
+                            onValueChange={(value) => {
                                 setSwapValue(value)
                                 setLastEdited({ field: 'internal' })
                             }}
@@ -389,9 +389,15 @@ function Swap() {
                                         (buying && [ETHER, FUSE].includes(swapPair.token) ? false : !approved)
                                     }
                                     onClick={() => {
-                                      getData({event: 'swap', action: 'startSwap', type: buying ? 'buy' : 'sell', network: network})
-                                      setShowConfirm(true)
-                                    }}>
+                                        getData({
+                                            event: 'swap',
+                                            action: 'startSwap',
+                                            type: buying ? 'buy' : 'sell',
+                                            network: network,
+                                        })
+                                        setShowConfirm(true)
+                                    }}
+                                >
                                     {i18n._(t`Swap`)}
                                 </ButtonAction>
                             </div>
@@ -404,8 +410,8 @@ function Swap() {
                 {...swapFields}
                 open={showConfirm}
                 onClose={() => setShowConfirm(false)}
-                setOpen={(value: boolean) => setShowConfirm(value)} 
-                pair={pair} 
+                setOpen={(value: boolean) => setShowConfirm(value)}
+                pair={pair}
                 meta={meta}
                 buying={buying}
                 onConfirm={async () => {

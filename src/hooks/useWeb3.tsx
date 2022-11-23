@@ -1,12 +1,12 @@
 import { ExternalProvider } from '@ethersproject/providers'
+import { DAO_NETWORK, GdSdkContext, getNetworkEnv, useEnvWeb3 } from '@gooddollar/web3sdk'
+import { Goerli, Mainnet } from '@usedapp/core'
 import { ethers } from 'ethers'
-import React, { ReactNode, ReactNodeArray, useEffect, useMemo } from 'react'
+import React, { ReactNode, ReactNodeArray, useMemo, useEffect } from 'react'
 import Web3 from 'web3'
 import useActiveWeb3React from './useActiveWeb3React'
 
-import { DAO_NETWORK, GdSdkContext, getNetworkEnv, useEnvWeb3 } from '@gooddollar/web3sdk'
-
-import { Web3Provider, AsyncStorage } from '@gooddollar/web3sdk-v2'
+import { Celo, Fuse, Web3Provider, AsyncStorage } from '@gooddollar/web3sdk-v2'
 
 type NetworkSettings = {
     currentNetwork: string
@@ -65,11 +65,12 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                 web3Provider={webprovider}
                 env={contractsEnv}
                 config={{
-                    refresh: 100,
-                    pollingInterval: 20000,
-                    networks: [],
+                    networks: [Goerli, Mainnet, Fuse, Celo],
+                    readOnlyChainId: undefined,
                     readOnlyUrls: {
+                        1: 'https://rpc.ankr.com/eth',
                         122: 'https://rpc.fuse.io',
+                        42220: 'https://forno.celo.org',
                     },
                 }}
                 // config={{ multicallVersion: 1, networks: [Fuse, Mainnet, Ropsten, Kovan], readOnlyUrls: {
