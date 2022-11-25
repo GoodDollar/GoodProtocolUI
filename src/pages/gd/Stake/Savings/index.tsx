@@ -4,12 +4,10 @@ import Title from 'components/gd/Title'
 import { QuestionHelper } from 'components'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
-import { SupportedChainId, G$ } from '@gooddollar/web3sdk'
-import { useSavingsStats } from '@gooddollar/web3sdk-v2'
+import { useSavingsStats, G$, useGetEnvChainId, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import SavingsModal from 'components/Savings/SavingsModal'
 import { Wrapper } from '../styled'
 import styled from 'styled-components'
-import { ActionOrSwitchButton } from 'components/gd/Button/ActionOrSwitchButton'
 import AsyncTokenIcon from 'components/gd/sushi/AsyncTokenIcon'
 import { LoadingPlaceHolder } from 'theme/components'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
@@ -17,27 +15,33 @@ import { useWindowSize } from 'hooks/useWindowSize'
 import { SavingsDepositMobile } from './SavingsDepositMobile'
 import { HeadingCopy } from 'components/Savings/SavingsCard'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
+import { ModalButton } from 'components/Savings/SavingsModal/ModalButton'
 
 const SavingsDeposit = styled.div`
     margin-top: 10px;
 `
 
-export const Savings = (): JSX.Element => {
+export const Savings = ({ requiredChain }: { requiredChain: number }): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false)
     const { account, chainId } = useActiveWeb3React()
-    const { stats, error } = useSavingsStats(10)
+    const { stats, error } = useSavingsStats(requiredChain, 10)
     const { i18n } = useLingui()
-    const toggleModal = useCallback(() => setIsOpen(!isOpen), [setIsOpen, isOpen])
     const { width } = useWindowSize()
     const isMobile = width ? width <= 768 : undefined
-    const g$ = G$[chainId]
     const sendData = useSendAnalyticsData()
+    const { defaultEnv } = useGetEnvChainId()
+    const g$ = G$(requiredChain, defaultEnv)
 
     useEffect(() => {
         if (error) {
             console.error('Unable to fetch global stats:', { error })
         }
     }, [error])
+
+    const toggleModal = useCallback(() => {
+        sendData({ event: 'savings', action: 'savingsStart' })
+        setIsOpen((isOpen) => !isOpen)
+    }, [setIsOpen])
 
     const headings: HeadingCopy = [
         {
@@ -54,11 +58,7 @@ export const Savings = (): JSX.Element => {
             title: i18n._(t`Fixed Apy`),
             questionText: i18n._(t`The fixed annual interest.`),
             statsKey: 'apy',
-        },
-        // {
-        //   title: i18n._(t`G$'s to withdraw`),
-        //   questionText: i18n._(t`How much G$'s you have earned with your savings account`),
-        // },
+        },       
         {
             title: i18n._(t`Total Staked`),
             questionText: i18n._(t`Total currently saved.`),
@@ -73,13 +73,13 @@ export const Savings = (): JSX.Element => {
     return (
         <SavingsDeposit>
             <div className="mt-12"></div>
-            {chainId === (SupportedChainId.FUSE as number) && account && (
-                <SavingsModal type="deposit" toggle={toggleModal} isOpen={isOpen} />
+            {Object.values(SupportedV2Networks).includes(chainId as number) && account && (
+                <SavingsModal type="deposit" toggle={toggleModal} isOpen={isOpen} requiredChain={requiredChain} />
             )}
             <Title className={`md:pl-4`}>{i18n._(t`Savings`)}</Title>
             <div className="mt-4"></div>
             {isMobile ? (
-                <SavingsDepositMobile headings={headings} toggleModal={toggleModal} />
+                <SavingsDepositMobile requiredChain={requiredChain} headings={headings} toggleModal={toggleModal} />
             ) : (
                 <Wrapper>
                     <Table
@@ -128,20 +128,12 @@ export const Savings = (): JSX.Element => {
                                 )}
                             </td>
                             <td>
-                                <ActionOrSwitchButton
-                                    size="sm"
-                                    width="130px"
-                                    borderRadius="6px"
-                                    noShadow={true}
-                                    requireChain={'FUSE'}
-                                    onClick={() => {
-                                        sendData({ event: 'savings', action: 'savingsStart' })
-                                        toggleModal()
-                                    }}
-                                >
-                                    {' '}
-                                    Deposit G${' '}
-                                </ActionOrSwitchButton>
+                                <ModalButton
+                                    type={'deposit'}
+                                    title={i18n._(t`Deposit G$`)}
+                                    chain={requiredChain}
+                                    toggleModal={toggleModal}
+                                />
                             </td>
                         </tr>
                     </Table>
