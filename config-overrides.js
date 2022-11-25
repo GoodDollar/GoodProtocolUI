@@ -1,11 +1,4 @@
-const {
-    addWebpackAlias,
-    fixBabelImports,
-    addBabelPlugins,
-    addPostcssPlugins,
-    override,
-    addBabelPresets,
-} = require('customize-cra')
+const { fixBabelImports, addBabelPlugins, addPostcssPlugins, override, addBabelPresets } = require('customize-cra')
 const path = require('path')
 
 module.exports = override(
@@ -15,12 +8,10 @@ module.exports = override(
         // '@babel/plugin-proposal-class-properties',
     ),
     ...addBabelPresets('@babel/preset-flow', '@babel/preset-react', '@babel/preset-typescript'),
-    addWebpackAlias({
-        '@react-native-community/async-storage': 'react-native-web/dist/exports/AsyncStorage/index.js',
-    }),
     fixBabelImports('module-resolver', {
         alias: {
             '^react-native$': 'react-native-web',
+            '@react-native-async-storage/async-storage': 'react-native-web/dist/exports/AsyncStorage/index.js',
         },
     })
 )
