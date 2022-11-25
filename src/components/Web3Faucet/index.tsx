@@ -6,7 +6,7 @@ import { MouseoverTooltip } from '../Tooltip'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import sendGa from 'functions/sendGa'
+import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 
 import { SupportedChainId, check, claim, isWhitelisted, useGdContextProvider } from '@gooddollar/web3sdk'
 
@@ -42,14 +42,17 @@ const getTimer = () => {
 
     function tick() {
         const now = new Date() as any
+
         if (now > start) {
             start.setDate(start.getDate() + 1)
         }
+
         const remain = (start - now) / 1000
         const hh = pad((remain / 60 / 60) % 60)
         const mm = pad((remain / 60) % 60)
         const ss = pad(remain % 60)
         const timeLeft = hh + ':' + mm + ':' + ss
+        
         return timeLeft
     }
 
@@ -61,7 +64,7 @@ function Web3Faucet(): JSX.Element | null {
     const { chainId, account } = useActiveWeb3React()
     const network = SupportedChainId[chainId]
     const { web3 } = useGdContextProvider()
-    const getData = sendGa
+    const sendData = useSendAnalyticsData()
 
     const [claimed, setIsClaimed] = useState(false)
     const [tillClaim, setTillClaim] = useState('')
@@ -103,18 +106,19 @@ function Web3Faucet(): JSX.Element | null {
 
     const handleClaim = useCallback(async () => {
         if (account && web3) {
-            getData({ event: 'claim', action: 'claimStart', network })
-            const startClaim = await claim(web3, account).catch((e) => {
-                refetch()
-                return false
+            sendData({event: 'claim', action: 'claimStart', network })
+            
+            const startClaim = await claim(web3, account).catch(e => {
+              refetch()
+              return false
             })
 
             if (startClaim) {
-                getData({ event: 'claim', action: 'claimSuccess', network })
-                refetch()
+              sendData({event: 'claim', action: 'claimSuccess', network })
+              refetch()
             }
         }
-    }, [web3, account, network, refetch, getData])
+    }, [web3, account, refetch, sendData])
 
     const claimActive = (chainId as any) === SupportedChainId.FUSE && claimable === true
 
