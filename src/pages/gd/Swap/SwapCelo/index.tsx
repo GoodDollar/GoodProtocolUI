@@ -4,8 +4,11 @@ import Swap from 'ubeswap-swap-dev'
 export const UbeSwap = (): JSX.Element => {
     return (
         <div
-            className="flex flex-col items-center justify-center"
-            style={{ border: '1px solid rgba(128,0,128,0.2)', borderRadius: '20px', width: '50%', padding: '50px 5px' }}
+            className="flex flex-col items-center justify-center w-5/6 h-5/6 rounded-3xl"
+            style={{
+                backgroundColor: 'rgba(229, 247, 255, 0.52)',
+                padding: '50px 5px',
+            }}
         >
             <Swap
                 defaultSwapToken={{
@@ -16,17 +19,7 @@ export const UbeSwap = (): JSX.Element => {
                     decimals: 18,
                 }}
             />
-            <span
-                className="flex flex-row items-center justify-center"
-                style={{
-                    fontWeight: 'bold',
-                    fontStyle: 'italic',
-                    width: '100%',
-                    height: '10px',
-                    marginTop: '-50px',
-                    color: 'grey',
-                }}
-            >
+            <span className="flex flex-row items-center justify-center w-full h-2 mt-1 italic font-bold text-gray-400">
                 Powered by UbeSwap
             </span>
         </div>

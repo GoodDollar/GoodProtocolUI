@@ -18,7 +18,7 @@ import { addTransaction } from '../../state/transactions/actions'
 import { getExplorerLink } from '../../utils'
 
 import { LIQUIDITY_PROTOCOL, MyStake, SupportedChainId, useGdContextProvider, withdraw } from '@gooddollar/web3sdk'
-import sendGa from 'functions/sendGa'
+import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 
 function formatNumber(value: number) {
     return Intl.NumberFormat('en-US', { style: 'decimal', maximumFractionDigits: 4 }).format(value)
@@ -35,7 +35,7 @@ interface WithdrawProps {
 
 type WithdrawState = 'none' | 'pending' | 'send' | 'success'
 
-function Withdraw({ token, protocol, open, setOpen, onWithdraw, stake, ...rest }: WithdrawProps) {
+const Withdraw = memo(({ token, protocol, open, setOpen, onWithdraw, stake, ...rest }: WithdrawProps) => {
     const { i18n } = useLingui()
     const [status, setStatus] = useState<WithdrawState>('none')
     const totalStake = useMemo(() => parseFloat(stake.stake.amount.toExact()), [stake])
@@ -46,7 +46,7 @@ function Withdraw({ token, protocol, open, setOpen, onWithdraw, stake, ...rest }
     const { chainId } = useActiveWeb3React()
     const network = SupportedChainId[chainId]
     const [error, setError] = useState<Error>()
-    const getData = sendGa
+    const sendData = useSendAnalyticsData()
 
     const isGovStake = protocol === LIQUIDITY_PROTOCOL.GOODDAO
 
@@ -59,7 +59,7 @@ function Withdraw({ token, protocol, open, setOpen, onWithdraw, stake, ...rest }
         if (!web3) return
         try {
             setStatus('pending')
-            getData({
+            sendData({
                 event: 'stake',
                 action: 'withdrawApprove',
                 amount: withdrawAmount,
@@ -74,7 +74,7 @@ function Withdraw({ token, protocol, open, setOpen, onWithdraw, stake, ...rest }
                 (transactionHash: string, from: string) => {
                     setTransactionHash(transactionHash)
                     setStatus('send')
-                    getData({
+                    sendData({
                         event: 'stake',
                         action: 'withdrawSuccess',
                         amount: withdrawAmount,
@@ -205,6 +205,6 @@ function Withdraw({ token, protocol, open, setOpen, onWithdraw, stake, ...rest }
             </WithdrawStyled>
         </Modal>
     )
-}
+});
 
-export default memo(Withdraw)
+export default Withdraw;

@@ -23,22 +23,22 @@ import QuestionHelper from 'components/QuestionHelper'
 
 import VoltageLogo from 'assets/images/voltage-logo.png'
 import GoodReserveLogo from 'assets/images/goodreserve-logo.png'
-import sendGa from 'functions/sendGa'
+import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { UbeSwap } from './SwapCelo'
 
 import {
-    approve,
-    SwapInfo as BuyInfo,
-    getBuyMeta,
-    getBuyMetaReverse,
-    getSellMeta,
-    getSellMetaReverse,
-    SellInfo,
-    SupportedChainId,
-    useGdContextProvider,
+  approve,
+  SwapInfo as BuyInfo,
+  getBuyMeta,
+  getBuyMetaReverse,
+  getSellMeta,
+  getSellMetaReverse,
+  SellInfo,
+  SupportedChainId,
+  useGdContextProvider,
 } from '@gooddollar/web3sdk'
 
-function Swap() {
+const Swap = memo(() => {
     const { i18n } = useLingui()
     const [buying, setBuying] = useState(true)
     const [slippageTolerance, setSlippageTolerance] = useState({
@@ -125,20 +125,21 @@ function Swap() {
                     : meta.outputAmount.toExact()
             )
             setMeta(meta)
+          buying && field === 'external' ? setCalcExternal(false) : setCalcInternal(false)
 
-            buying && field === 'external' ? setCalcExternal(false) : setCalcInternal(false)
         }, 400))
     }, [account, chainId, lastEdited, buying, web3, slippageTolerance.value]) // eslint-disable-line react-hooks/exhaustive-deps
     const [approving, setApproving] = useState(false)
     const [showConfirm, setShowConfirm] = useState(false)
     const [approved, setApproved] = useState(false)
-    const getData = sendGa
+    const sendData = useSendAnalyticsData()
 
     const handleApprove = async () => {
         if (!meta || !web3) return
         const type = buying ? 'buy' : 'sell'
         try {
-            getData({ event: 'swap', action: 'approveSwap', type: type, network: network })
+          sendData({event: 'swap', action: 'approveSwap',
+                   type: type, network: network})
             setApproving(true)
             await approve(web3, meta, type)
             setApproved(true)
@@ -245,14 +246,14 @@ function Swap() {
 
     const swapHelperText = isFuse
         ? i18n._(
-              t`Voltage is an UNI-V2 Automated Market Maker (AMM) 
-                that operates on Fuse Network where G$ is paired to other market tokens such as FUSE or USDC. 
-                The liquidity relies on Liquidity Providers that aggregate paired tokens to a pool. 
+              t`Voltage is an UNI-V2 Automated Market Maker (AMM)
+                that operates on Fuse Network where G$ is paired to other market tokens such as FUSE or USDC.
+                The liquidity relies on Liquidity Providers that aggregate paired tokens to a pool.
                 Price impact might be too high when the swapping volume of one transaction is relatively high to the total liquidity in the pool.`
           )
         : i18n._(
-              t`The GoodReserve is a Bancor-V1 Automated Market Maker (AMM) that operates on Ethereum. 
-                This contract is able to mint and burn G$s according to the increase or decrease of it's demand. 
+              t`The GoodReserve is a Bancor-V1 Automated Market Maker (AMM) that operates on Ethereum.
+                This contract is able to mint and burn G$s according to the increase or decrease of it's demand.
                 Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio.`
           )
 
@@ -389,15 +390,9 @@ function Swap() {
                                         (buying && [ETHER, FUSE].includes(swapPair.token) ? false : !approved)
                                     }
                                     onClick={() => {
-                                        getData({
-                                            event: 'swap',
-                                            action: 'startSwap',
-                                            type: buying ? 'buy' : 'sell',
-                                            network: network,
-                                        })
-                                        setShowConfirm(true)
-                                    }}
-                                >
+                                      sendData({event: 'swap', action: 'startSwap', type: buying ? 'buy' : 'sell', network: network})
+                                      setShowConfirm(true)
+                                    }}>
                                     {i18n._(t`Swap`)}
                                 </ButtonAction>
                             </div>
@@ -422,6 +417,6 @@ function Swap() {
             />
         </SwapContext.Provider>
     )
-}
+});
 
-export default memo(Swap)
+export default Swap;
