@@ -324,6 +324,9 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                     <NavLink to={'/portfolio'} onClick={mobile ? closeSidebar : null}>
                         {i18n._(t`Portfolio`)}
                     </NavLink>
+                    <NavLink to={'/claim'} onClick={mobile ? closeSidebar : null}>
+                        {i18n._(t`Claim`)}
+                    </NavLink>
                     <NavLink to={'/microbridge'} onClick={mobile ? closeSidebar : null}>
                         {i18n._(t`Micro Bridge`)}
                     </NavLink>

@@ -5,9 +5,9 @@ import './bootstrap'
 
 import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
-
 import { Provider } from 'react-redux'
 import { HashRouter as Router } from 'react-router-dom'
+import { AnalyticsProvider } from '@gooddollar/web3sdk-v2/dist/sdk/analytics'
 import Blocklist from './components/Blocklist'
 import App from './pages/App'
 import store from './state'
@@ -19,22 +19,12 @@ import ThemeProvider from './theme'
 import LanguageProvider from 'language'
 import { createGlobalStyle } from 'styled-components'
 import { Web3ContextProvider } from './hooks/useWeb3'
-import { theme } from '@gooddollar/good-design'
 import { NativeBaseProvider } from 'native-base'
+import { theme } from '@gooddollar/good-design'
+import { analyticsConfig, appInfo } from 'hooks/useSendAnalyticsData'
 
 if (!!window.ethereum) {
     window.ethereum.autoRefreshOnNetworkChange = false
-}
-
-function Updaters() {
-    return (
-        <>
-            <ListsUpdater />
-            <UserUpdater />
-            <ApplicationUpdater />
-            <MulticallUpdater />
-        </>
-    )
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -69,7 +59,7 @@ const GlobalStyle = createGlobalStyle`
     // --onboard-font-size-6: 1.05rem;
     // --onboard-gray-700: #999EA8;
 
-  
+
   }
   onboard-v2::part(sidebar-heading-img) {
     max-width: 100%;
@@ -87,17 +77,22 @@ ReactDOM.render(
         <Web3ContextProvider>
             <Provider store={store}>
                 <LanguageProvider>
-                    <Blocklist>
-                        <Updaters />
-                        <ThemeProvider>
-                            <NativeBaseProvider theme={theme}>
-                                <GlobalStyle />
-                                <Router>
-                                    <App />
-                                </Router>
-                            </NativeBaseProvider>
-                        </ThemeProvider>
-                    </Blocklist>
+                    <AnalyticsProvider config={analyticsConfig} appProps={appInfo}>
+                        <Blocklist>
+                            <ListsUpdater />
+                            <UserUpdater />
+                            <ApplicationUpdater />
+                            <MulticallUpdater />
+                            <ThemeProvider>
+                                <NativeBaseProvider theme={theme}>
+                                    <GlobalStyle />
+                                    <Router>
+                                        <App />
+                                    </Router>
+                                </NativeBaseProvider>
+                            </ThemeProvider>
+                        </Blocklist>
+                    </AnalyticsProvider>
                 </LanguageProvider>
             </Provider>
         </Web3ContextProvider>
