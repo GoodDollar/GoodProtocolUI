@@ -19,6 +19,8 @@ import ThemeProvider from './theme'
 import LanguageProvider from 'language'
 import { createGlobalStyle } from 'styled-components'
 import { Web3ContextProvider } from './hooks/useWeb3'
+import { theme } from '@gooddollar/good-design'
+import { NativeBaseProvider } from 'native-base'
 
 if (!!window.ethereum) {
     window.ethereum.autoRefreshOnNetworkChange = false
@@ -83,19 +85,21 @@ const GlobalStyle = createGlobalStyle`
 ReactDOM.render(
     <StrictMode>
         <Web3ContextProvider>
-          <Provider store={store}>
-              <LanguageProvider>
-                  <Blocklist>
-                      <Updaters />
-                      <ThemeProvider>
-                          <GlobalStyle />
-                          <Router>
-                              <App />
-                          </Router>
-                      </ThemeProvider>
-                  </Blocklist>
-              </LanguageProvider>
-          </Provider>
+            <Provider store={store}>
+                <LanguageProvider>
+                    <Blocklist>
+                        <Updaters />
+                        <ThemeProvider>
+                            <NativeBaseProvider theme={theme}>
+                                <GlobalStyle />
+                                <Router>
+                                    <App />
+                                </Router>
+                            </NativeBaseProvider>
+                        </ThemeProvider>
+                    </Blocklist>
+                </LanguageProvider>
+            </Provider>
         </Web3ContextProvider>
     </StrictMode>,
     document.getElementById('root')
