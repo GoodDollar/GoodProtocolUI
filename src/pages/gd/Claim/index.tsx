@@ -9,8 +9,11 @@ const Claim = memo(() => {
     const { account } = useActiveWeb3React()
 
     return (
-        <Layout>
-            <Title>{i18n._(t`Claim`)}</Title>
+        <div className="flex flex-col flex-grow w-full">
+            <Title>{i18n._(t`Claim UBI`)}</Title>
+
+            <span>UBI is your fair share of G$ tokens, which you can claim daily on CELO.</span>
+
             <div className="flex items-center">
                 {account ? (
                     <ClaimButton firstName="Test" method="redirect" />
@@ -22,8 +25,8 @@ const Claim = memo(() => {
                     </div>
                 )}
             </div>
-        </Layout>
+        </div>
     )
-});
+})
 
-export default Claim;
+export default Claim
