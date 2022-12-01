@@ -5,6 +5,7 @@ import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { AppDispatch, AppState } from '../index'
 import { addPopup, removePopup, setOpenModal, setTheme as setThemeAction } from './actions'
 import { ApplicationModal, PopupContent, ApplicationState } from './types'
+import { useColorMode } from 'native-base'
 
 export function useBlockNumber(): number | undefined {
     const { chainId } = useActiveWeb3React()
@@ -95,7 +96,7 @@ export function useRemovePopup(): (key: string) => void {
 // get the list of active popups
 export function useActivePopups(): AppState['application']['popupList'] {
     const list = useSelector((state: AppState) => state.application.popupList)
-    return useMemo(() => list.filter(item => item.show), [list])
+    return useMemo(() => list.filter((item) => item.show), [list])
 }
 
 export function useKashiApprovalPending(): string {
@@ -103,9 +104,17 @@ export function useKashiApprovalPending(): string {
 }
 
 export function useApplicationTheme() {
+    const { setColorMode } = useColorMode()
     const dispatch = useDispatch()
     const theme = useSelector((state: AppState) => state.application.theme)
-    const setTheme = useCallback((theme: ApplicationState['theme']) => dispatch(setThemeAction(theme)), [])
+
+    const setTheme = useCallback(
+        (theme: ApplicationState['theme']) => {
+            dispatch(setThemeAction(theme))
+            setColorMode(theme)
+        },
+        [dispatch, setColorMode]
+    )
 
     useEffect(() => {
         AsyncStorage.getItem('application.theme').then(setTheme)
