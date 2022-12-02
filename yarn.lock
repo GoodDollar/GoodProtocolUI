@@ -3689,7 +3689,6 @@ __metadata:
     "@lingui/loader": ^3.9.0
     "@lingui/macro": ^3.12.1
     "@lingui/react": ^3.12.1
-    "@lufycz/sushi-data": ^2.0.0-canary-21
     "@popperjs/core": ^2.4.4
     "@reach/dialog": ^0.10.3
     "@reach/portal": ^0.10.3
@@ -4750,21 +4749,6 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
   checksum: 2990ec67f6820a3fd30f6b4275bcbab33c1929269b9ef3357ff88389883f458805968e1152ed6c266509fcb3c89e53b86124f102d2cabefec339f406dcdbc41b
-  languageName: node
-  linkType: hard
-
-"@lufycz/sushi-data@npm:^2.0.0-canary-21":
-  version: 2.0.11
-  resolution: "@lufycz/sushi-data@npm:2.0.11"
-  dependencies:
-    date-fns: ^2.17.0
-    graph-results-pager: "LufyCZ/graph-results-pager#types"
-    graphql: 14.5.8
-    graphql-request: ^3.4.0
-    isomorphic-ws: ^4.0.1
-    subscriptions-transport-ws: 0.9.16
-    ws: ^7.4.4
-  checksum: 0f59cf247faafccacb91720a210b3c80d91003da9fab26d02222cf1cef0b4152711319f04f9af087e9dc6bcecde702c11125d42cedcba463cdb0287d4ca928cb
   languageName: node
   linkType: hard
 
@@ -9028,7 +9012,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@web3-onboard/core@npm:^2.10.1":
+"@web3-onboard/core@npm:2.10.1":
   version: 2.10.1
   resolution: "@web3-onboard/core@npm:2.10.1"
   dependencies:
@@ -9046,6 +9030,27 @@ __metadata:
     svelte: ^3.49.0
     svelte-i18n: ^3.3.13
   checksum: 16b54c224b112930753351c4c8c3e900e1ae3a543bd76b6d38fb46126233753e07f2bfe37d9ea6c34febdba7bd92091edff67a492be7743c2b28b9b2376b73f8
+  languageName: node
+  linkType: hard
+
+"@web3-onboard/core@patch:@web3-onboard/core@npm%3A2.10.1#./.yarn/patches/@web3-onboard-core-npm-2.10.1-4839a0878b.patch::locator=%40gooddollar%2Fprotocol-interface%40workspace%3A.":
+  version: 2.10.1
+  resolution: "@web3-onboard/core@patch:@web3-onboard/core@npm%3A2.10.1#./.yarn/patches/@web3-onboard-core-npm-2.10.1-4839a0878b.patch::version=2.10.1&hash=f8aba4&locator=%40gooddollar%2Fprotocol-interface%40workspace%3A."
+  dependencies:
+    "@web3-onboard/common": ^2.2.3
+    bignumber.js: ^9.0.0
+    bnc-sdk: ^4.4.1
+    bowser: ^2.11.0
+    ethers: 5.5.3
+    eventemitter3: ^4.0.7
+    joi: ^17.6.1
+    lodash.merge: ^4.6.2
+    lodash.partition: ^4.6.0
+    nanoid: ^4.0.0
+    rxjs: ^7.5.5
+    svelte: ^3.49.0
+    svelte-i18n: ^3.3.13
+  checksum: 2c9969061f4a79622036d50f55caee6f793d953fcce9fb1b67eb4bafaa41354eb3d6fb8464d1b0a40c87f22f540012119f17b3327974a9bc746800c38d360773
   languageName: node
   linkType: hard
 
@@ -17424,15 +17429,6 @@ __metadata:
   version: 4.2.10
   resolution: "graceful-fs@npm:4.2.10"
   checksum: 3f109d70ae123951905d85032ebeae3c2a5a7a997430df00ea30df0e3a6c60cf6689b109654d6fdacd28810a053348c4d14642da1d075049e6be1ba5216218da
-  languageName: node
-  linkType: hard
-
-"graph-results-pager@LufyCZ/graph-results-pager#types":
-  version: 1.0.3
-  resolution: "graph-results-pager@https://github.com/LufyCZ/graph-results-pager.git#commit=d8667ea547e338b09026acef3e5b25da3e7208b7"
-  dependencies:
-    node-fetch: 2.6.1
-  checksum: 976079b4a90a99a924ae15c23119546ef1a7f173a2061df9b10302b0bb5ffc997d60032b5521c8b6b2165941fd40214c66f900b8e7a5d09412b9f3f7e7e7bcb4
   languageName: node
   linkType: hard
 
@@ -33648,7 +33644,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^7, ws@npm:^7.4.0, ws@npm:^7.4.4, ws@npm:^7.4.5, ws@npm:^7.4.6, ws@npm:^7.5.1":
+"ws@npm:^7, ws@npm:^7.4.0, ws@npm:^7.4.5, ws@npm:^7.4.6, ws@npm:^7.5.1":
   version: 7.5.9
   resolution: "ws@npm:7.5.9"
   peerDependencies:
