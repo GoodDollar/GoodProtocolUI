@@ -27,15 +27,15 @@ import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { UbeSwap } from './SwapCelo'
 
 import {
-  approve,
-  SwapInfo as BuyInfo,
-  getBuyMeta,
-  getBuyMetaReverse,
-  getSellMeta,
-  getSellMetaReverse,
-  SellInfo,
-  SupportedChainId,
-  useGdContextProvider,
+    approve,
+    SwapInfo as BuyInfo,
+    getBuyMeta,
+    getBuyMetaReverse,
+    getSellMeta,
+    getSellMetaReverse,
+    SellInfo,
+    SupportedChainId,
+    useGdContextProvider,
 } from '@gooddollar/web3sdk'
 
 const Swap = memo(() => {
@@ -69,6 +69,7 @@ const Swap = memo(() => {
         []
     )
     const handleSetPairValue = useCallback((value: string) => handleSetPair({ value }), [])
+    const handleBuyingValue = useCallback((value) => setBuying(!value), [])
 
     const tokenList = useTokens()
     const G$ = useG$()
@@ -125,8 +126,7 @@ const Swap = memo(() => {
                     : meta.outputAmount.toExact()
             )
             setMeta(meta)
-          buying && field === 'external' ? setCalcExternal(false) : setCalcInternal(false)
-
+            buying && field === 'external' ? setCalcExternal(false) : setCalcInternal(false)
         }, 400))
     }, [account, chainId, lastEdited, buying, web3, slippageTolerance.value]) // eslint-disable-line react-hooks/exhaustive-deps
     const [approving, setApproving] = useState(false)
@@ -138,8 +138,7 @@ const Swap = memo(() => {
         if (!meta || !web3) return
         const type = buying ? 'buy' : 'sell'
         try {
-          sendData({event: 'swap', action: 'approveSwap',
-                   type: type, network: network})
+            sendData({ event: 'swap', action: 'approveSwap', type: type, network: network })
             setApproving(true)
             await approve(web3, meta, type)
             setApproved(true)
@@ -321,7 +320,7 @@ const Swap = memo(() => {
                         />
                         <div className="switch">
                             {cloneElement(SwitchSVG, {
-                                onClick: () => setBuying((value) => !value),
+                                onClick: () => handleBuyingValue((value: boolean) => !value),
                             })}
                         </div>
                         <SwapRow
@@ -390,9 +389,15 @@ const Swap = memo(() => {
                                         (buying && [ETHER, FUSE].includes(swapPair.token) ? false : !approved)
                                     }
                                     onClick={() => {
-                                      sendData({event: 'swap', action: 'startSwap', type: buying ? 'buy' : 'sell', network: network})
-                                      setShowConfirm(true)
-                                    }}>
+                                        sendData({
+                                            event: 'swap',
+                                            action: 'startSwap',
+                                            type: buying ? 'buy' : 'sell',
+                                            network: network,
+                                        })
+                                        setShowConfirm(true)
+                                    }}
+                                >
                                     {i18n._(t`Swap`)}
                                 </ButtonAction>
                             </div>
@@ -417,6 +422,6 @@ const Swap = memo(() => {
             />
         </SwapContext.Provider>
     )
-});
+})
 
-export default Swap;
+export default Swap
