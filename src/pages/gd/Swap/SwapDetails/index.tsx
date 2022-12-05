@@ -20,7 +20,7 @@ export interface SwapDetailsProps extends SwapDetailsFields {
     buying?: boolean
 }
 
-function SwapDetails({
+const SwapDetails = memo(({
     className,
     style,
     open,
@@ -31,7 +31,7 @@ function SwapDetails({
     GDX,
     exitContribution,
     buying
-}: SwapDetailsProps) {
+}: SwapDetailsProps) => {
     const { i18n } = useLingui()
 
     return (
@@ -40,7 +40,7 @@ function SwapDetails({
                 title={i18n._(t`Minimum received`)}
                 value={minimumReceived}
                 tip={i18n._(
-                    t`Your transaction will revert if there is a large, unfavorable price movement before it is confirmed.`
+                    t`The minimum amount of tokens to receive.`
                 )}
             />
             <SwapInfo
@@ -78,6 +78,6 @@ function SwapDetails({
             }
         </SwapDetailsSC>
     )
-}
+});
 
-export default memo(SwapDetails)
+export default SwapDetails;

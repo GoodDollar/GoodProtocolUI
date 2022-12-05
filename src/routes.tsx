@@ -5,6 +5,8 @@ import DatastudioDashboard from 'pages/gd/DatastudioDashboard'
 import Swap from 'pages/gd/Swap'
 import { RedirectHashRoutes, RedirectPathToSwapOnly } from 'pages/routes/redirects'
 import Portfolio from 'pages/gd/Portfolio'
+import MicroBridge from 'pages/gd/MicroBridge'
+import Claim from 'pages/gd/Claim'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 
 function Routes(): JSX.Element {
@@ -16,6 +18,8 @@ function Routes(): JSX.Element {
             <Route exact strict path="/swap" component={Swap} key={chainId} />
             <Route exact strict path="/stakes" component={Stakes} />
             <Route exact strict path="/portfolio" component={Portfolio} />
+            <Route exact strict path="/claim" component={Claim} />
+            <Route exact strict path="/microbridge" component={MicroBridge} />
             <Route exact strict path="/" component={RedirectHashRoutes} />
             <Route component={RedirectPathToSwapOnly} />
         </Switch>

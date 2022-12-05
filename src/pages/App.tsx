@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
-import { AppBar, Polling, Popups } from '../components'
+import { AppBar, Popups } from '../components'
 import Web3ReactManager from '../components/Web3ReactManager'
 import Routes from '../routes'
 import { useDispatch } from 'react-redux'
@@ -12,6 +12,7 @@ import SideBar from '../components/SideBar'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
+import { useFaucet } from '@gooddollar/web3sdk-v2'
 import TransactionUpdater from '../state/transactions/updater'
 
 export const Beta = styled.div`
@@ -36,13 +37,15 @@ const Wrapper = styled.div`
     }
 `
 
-const MainBody = styled.div<{$page?: string}>`
-  ${({$page}) => $page === "/dashboard" && (`
+const MainBody = styled.div<{ $page?: string }>`
+    ${({ $page }) =>
+        $page === '/dashboard' &&
+        `
     width: 80%;
     height: 100%;
     padding: 50px 20px 50px 20px;
-  `)}
-  background-color: ${({theme}) => theme.color.bgBody};
+  `}
+    background-color: ${({ theme }) => theme.color.bgBody};
 `
 
 function App(): JSX.Element {
@@ -54,6 +57,8 @@ function App(): JSX.Element {
 
     const dispatch = useDispatch<AppDispatch>()
     const [preservedSource, setPreservedSource] = useState('')
+
+    useFaucet()
 
     useEffect(() => {
         const parsed = parse(location.search, { parseArrays: false, ignoreQueryPrefix: true })
@@ -67,7 +72,7 @@ function App(): JSX.Element {
                 ...location,
                 search: location.search
                     ? location.search + '&utm_source=' + preservedSource
-                    : location.search + '?utm_source=' + preservedSource
+                    : location.search + '?utm_source=' + preservedSource,
             })
         }
     }, [preservedSource, location, replace])
@@ -84,7 +89,7 @@ function App(): JSX.Element {
 
         const parsed = parse(search, {
             parseArrays: false,
-            ignoreQueryPrefix: true
+            ignoreQueryPrefix: true,
         })
 
         const theme = parsed.theme
@@ -108,15 +113,17 @@ function App(): JSX.Element {
                     <SideBar />
                     <MainBody
                         ref={bodyRef}
-                        className="flex flex-col items-center justify-between flex-grow h-full overflow-y-auto overflow-x-hidden z-0 pt-4 sm:pt-8 px-4 md:pt-10 pb-4"
+                        className="z-0 flex flex-col items-center justify-between flex-grow h-full px-4 pt-4 pb-4 overflow-x-hidden overflow-y-auto sm:pt-8 md:pt-10"
                         $page={location.pathname}
                     >
                         <Popups />
                         {/*<Polling />*/}
                         <Web3ReactManager>
-                            <div className={`flex flex-col flex-glow w-full items-center justify-start
-                             ${location.pathname === '/dashboard' ? "md:auto" : "md:h-screen"} 
-                             md:justify-center xl:-mt-8`}>
+                            <div
+                                className={`flex flex-col flex-glow w-full items-center justify-start
+                             ${location.pathname === '/dashboard' ? 'md:auto' : 'md:h-screen'}
+                             md:justify-center xl:-mt-8`}
+                            >
                                 <Routes />
                                 <TransactionUpdater />
                             </div>

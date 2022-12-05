@@ -16,6 +16,7 @@ import Rinkeby from '../assets/networks/rinkeby-network.jpg'
 import Ropsten from '../assets/networks/ropsten-network.jpg'
 import xDai from '../assets/networks/xdai-network.jpg'
 import Fuse from '../assets/networks/fuse-network.png'
+import Celo from '../assets/networks/celo-network.png'
 import { AdditionalChainId } from './index'
 
 export const NETWORK_ICON = {
@@ -41,15 +42,14 @@ export const NETWORK_ICON = {
     [ChainId.HARMONY_TESTNET]: Harmony,
     [ChainId.OKEX]: OKEx,
     [ChainId.OKEX_TESTNET]: OKEx,
-    [AdditionalChainId.FUSE]: Fuse
+    [AdditionalChainId.FUSE]: Fuse,
+    [AdditionalChainId.CELO]: Celo,
 }
 
 export const NETWORK_LABEL: { [chainId in ChainId | AdditionalChainId]?: string } = {
     [ChainId.MAINNET]: 'Ethereum',
     [ChainId.RINKEBY]: 'Rinkeby',
-    [ChainId.ROPSTEN]: 'Ropsten',
     [ChainId.GÖRLI]: 'Görli',
-    [ChainId.KOVAN]: 'Kovan',
     [ChainId.FANTOM]: 'Fantom',
     [ChainId.FANTOM_TESTNET]: 'Fantom Testnet',
     [ChainId.MATIC]: 'Polygon (Matic)',
@@ -66,5 +66,6 @@ export const NETWORK_LABEL: { [chainId in ChainId | AdditionalChainId]?: string 
     [ChainId.HARMONY_TESTNET]: 'Harmony Testnet',
     [ChainId.OKEX]: 'OKExChain',
     [ChainId.OKEX_TESTNET]: 'OKExChain',
-    [AdditionalChainId.FUSE]: 'FUSE'
+    [AdditionalChainId.FUSE]: 'FUSE',
+    [AdditionalChainId.CELO]: 'CELO',
 }
