@@ -103,7 +103,7 @@ export function useKashiApprovalPending(): string {
     return useSelector((state: AppState) => state.application.kashiApprovalPending)
 }
 
-export function useApplicationTheme() {
+export function useApplicationTheme(): readonly ['light' | 'dark', (theme: ApplicationState['theme']) => void] {
     const { setColorMode } = useColorMode()
     const dispatch = useDispatch()
     const theme = useSelector((state: AppState) => state.application.theme)

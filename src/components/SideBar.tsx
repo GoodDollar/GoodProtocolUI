@@ -187,7 +187,7 @@ const ExternalLink: React.FC<{ label: string; url: string }> = ({ label, url }) 
     </a>
 )
 
-export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; closeSidebar?: any }) {
+export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; closeSidebar?: any }): JSX.Element {
     const [theme, setTheme] = useApplicationTheme()
     const { i18n } = useLingui()
     const { ethereum } = window
