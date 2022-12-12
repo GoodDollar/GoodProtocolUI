@@ -72,15 +72,15 @@ const Claim = memo(() => {
         <>
             {!!tillClaim && (
                 <View
-                    py="4px"
+                    py="1"
                     bg="main"
                     position="absolute"
-                    top="76px"
-                    left={isSmallScreen ? '0' : '268px'}
+                    top="19"
+                    left={isSmallScreen ? '0' : '67'}
                     right="0"
                     alignItems="center"
                 >
-                    <Text fontWeight="600" fontSize="14px" color="white">
+                    <Text fontWeight="semibold" fontSize="3.5" color="white">
                         Your next claim will be in {tillClaim}
                     </Text>
                 </View>
@@ -98,7 +98,7 @@ const Claim = memo(() => {
                     )
                 ) : (
                     <>
-                        <Title pb="8px">{i18n._(t`Claim UBI`)}</Title>
+                        <Title pb="2">{i18n._(t`Claim UBI`)}</Title>
 
                         <span>
                             {i18n._(t`UBI is your fair share of G$ tokens, which you can claim daily on CELO.`)}
@@ -108,7 +108,7 @@ const Claim = memo(() => {
                             {account ? (
                                 <ClaimButton firstName="Test" method="redirect" claim={handleClaim} />
                             ) : (
-                                <Text w="full" textAlign="center" p={40} fontWeight="700" fontSize="23px">
+                                <Text w="full" textAlign="center" p={40} fontWeight="bold" fontSize="2xl">
                                     {i18n._(t`CONNECT A WALLET TO CLAIM YOUR GOODDOLLARS`)}
                                 </Text>
                             )}
