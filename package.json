@@ -15,7 +15,6 @@
         "build:sourcemap": "GENERATE_SOURCEMAP=true react-app-rewired build",
         "eject": "react-app-rewired eject",
         "test": "react-app-rewired test --env=jsdom",
-        "prepare": "husky install",
         "lingui": "lingui extract && lingui compile",
         "postinstall": "husky install",
         "prepack": "pinst --disable",
