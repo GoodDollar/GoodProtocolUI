@@ -3698,8 +3698,8 @@ __metadata:
     "@types/styled-components": ^5.1.0
     "@types/text-mask-addons": ^3.8.1
     "@types/wcag-contrast": ^3.0.0
-    "@typescript-eslint/eslint-plugin": ^5.46.1
-    "@typescript-eslint/parser": ^5.46.1
+    "@typescript-eslint/eslint-plugin": ^5.45.1
+    "@typescript-eslint/parser": ^5.45.1
     "@uniswap/governance": ^1.0.2
     "@uniswap/liquidity-staker": ^1.0.2
     "@uniswap/merkle-distributor": 1.0.1
@@ -3735,7 +3735,6 @@ __metadata:
     customize-cra: ^1.0.0
     date-fns: ^2.20.0
     decimal.js: ^10.3.1
-    eslint: ^7.23.0
     eslint-config-prettier: ^8.5.0
     eslint-config-react-app: ^6.0.0
     eslint-plugin-flowtype: ^6.1.0
@@ -8310,7 +8309,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^5.46.1":
+"@typescript-eslint/eslint-plugin@npm:^5.45.1":
   version: 5.46.1
   resolution: "@typescript-eslint/eslint-plugin@npm:5.46.1"
   dependencies:
@@ -8381,7 +8380,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^5.46.1":
+"@typescript-eslint/parser@npm:^5.45.1":
   version: 5.46.1
   resolution: "@typescript-eslint/parser@npm:5.46.1"
   dependencies:
@@ -11051,7 +11050,7 @@ __metadata:
     create-hash: ^1.1.0
     pbkdf2: ^3.0.9
     randombytes: ^2.0.1
-  checksum: e66debe9ca19f14b46b4f8189019540034db63e5304299eb8cf5747f67c8747e0b349af8464ff6abaa66fc4bdb70ce6d7fdee5d32b55b45938ff69453587f221
+  checksum: 444efc9a61b4ffa4a4166b995e64eaf92bffd02b1aa927e1f757318970ce0247fe75f24fc2778fc96f2d74757e40d8487ebb7be568d7b66acf2fe387f829cc0f
   languageName: node
   linkType: hard
 

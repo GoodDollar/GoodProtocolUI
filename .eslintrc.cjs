@@ -16,7 +16,14 @@ module.exports = {
         tsconfigRootDir: __dirname,
         project: ['./tsconfig.json'],
     },
-    ignorePatterns: ['node_modules/**/*', '.eslintrc.js', 'types/*/*d.ts', '*.config.js', 'build/**/*.js', '*.js'],
+    ignorePatterns: [
+        'node_modules/**/*', 
+        '.*rc.[mc]js', 
+        'types/*/*d.ts', 
+        '*.config.js', 
+        'build/**/*.js', 
+        '*.js'
+    ],
     rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
