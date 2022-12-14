@@ -1,13 +1,14 @@
-import React, { memo } from 'react'
+import React, { memo, useMemo } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { BalanceGD, ClaimButton, ClaimCarousel, IClaimCard, Title } from '@gooddollar/good-design'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { useG$Balance } from '@gooddollar/web3sdk-v2'
+import { useClaim } from '@gooddollar/web3sdk-v2'
 import { Text, useMediaQuery, View } from 'native-base'
 import { useClaiming } from 'hooks/useClaiming'
 import usePromise from 'hooks/usePromise'
 import { g$Price } from '@gooddollar/web3sdk'
+import { isToday, format } from 'date-fns'
 
 const mockedCards: Array<IClaimCard> = [
     {
@@ -52,9 +53,9 @@ const mockedCards: Array<IClaimCard> = [
 const Claim = memo(() => {
     const { i18n } = useLingui()
     const { account, chainId } = useActiveWeb3React()
-    const { G$ } = useG$Balance(10)
-    const { amount } = G$ || {}
-    const { claimed, tillClaim, handleClaim } = useClaiming()
+    const { claimed, handleClaim } = useClaiming()
+    const { claimTime } = useClaim('everyBlock')
+
     const [G$Price] = usePromise(async () => {
         try {
             const data = await g$Price()
@@ -64,38 +65,35 @@ const Claim = memo(() => {
         }
     }, [chainId])
 
+    const formattedTime = useMemo(
+        () => claimed && (isToday(claimTime) ? 'today' : 'tomorrow') + ' ' + format(claimTime, 'hh a'),
+        [claimed, claimTime]
+    )
+
     const [isSmallScreen] = useMediaQuery({
         maxWidth: 975,
     })
 
     return (
         <>
-            {!!tillClaim && (
+            {claimed && (
                 <View
                     py="1"
                     bg="main"
                     position="absolute"
-                    top="19"
-                    left={isSmallScreen ? '0' : '67'}
+                    top="76"
+                    left={isSmallScreen ? '0' : '268'}
                     right="0"
                     alignItems="center"
                 >
-                    <Text fontWeight="semibold" fontSize="3.5" color="white">
-                        Your next claim will be in {tillClaim}
+                    <Text fontWeight="semibold" fontSize="sm" color="white">
+                        Your next claim will be at {formattedTime}
                     </Text>
                 </View>
             )}
             <div className="flex flex-col flex-grow w-full">
                 {claimed ? (
-                    amount &&
-                    G$Price && (
-                        <BalanceGD
-                            goodDollarBalance={amount?.format({ suffix: '', prefix: amount.currency.ticker + ' ' })}
-                            dollarBalance={G$Price?.multiply(
-                                Number(amount?.format({ suffix: '', thousandSeparator: '' }))
-                            ).toFixed(2)}
-                        />
-                    )
+                    <BalanceGD gdPrice={G$Price} />
                 ) : (
                     <>
                         <Title pb="2">{i18n._(t`Claim UBI`)}</Title>
@@ -103,18 +101,18 @@ const Claim = memo(() => {
                         <span>
                             {i18n._(t`UBI is your fair share of G$ tokens, which you can claim daily on CELO.`)}
                         </span>
-
-                        <div className="flex items-center">
-                            {account ? (
-                                <ClaimButton firstName="Test" method="redirect" claim={handleClaim} />
-                            ) : (
-                                <Text w="full" textAlign="center" p={40} fontWeight="bold" fontSize="2xl">
-                                    {i18n._(t`CONNECT A WALLET TO CLAIM YOUR GOODDOLLARS`)}
-                                </Text>
-                            )}
-                        </div>
                     </>
                 )}
+
+                <div className="flex items-center">
+                    {account ? (
+                        <ClaimButton firstName="Test" method="redirect" claim={handleClaim} claimed={claimed} />
+                    ) : (
+                        <Text w="full" textAlign="center" p={40} fontWeight="bold" fontSize="2xl">
+                            {i18n._(t`CONNECT A WALLET TO CLAIM YOUR GOODDOLLARS`)}
+                        </Text>
+                    )}
+                </div>
 
                 <ClaimCarousel cards={mockedCards} />
             </div>

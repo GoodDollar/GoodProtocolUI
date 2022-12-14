@@ -5,7 +5,7 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@amplitude/analytics-browser@npm:^1.6.3":
+"@amplitude/analytics-browser@npm:^1.6.4":
   version: 1.6.6
   resolution: "@amplitude/analytics-browser@npm:1.6.6"
   dependencies:
@@ -15,18 +15,6 @@ __metadata:
     "@amplitude/ua-parser-js": ^0.7.31
     tslib: ^2.3.1
   checksum: a43eb0dab51b77ef2529f4be6eee90e90a43d3e7d1d54da4edf33cea476889328f22aa238590420a8568a913174b1cab55b3d6a1a76d3c4e6aebe25a0e8c02b8
-  languageName: node
-  linkType: hard
-
-"@amplitude/analytics-client-common@npm:^0.4.1":
-  version: 0.4.1
-  resolution: "@amplitude/analytics-client-common@npm:0.4.1"
-  dependencies:
-    "@amplitude/analytics-connector": ^1.4.5
-    "@amplitude/analytics-core": ^0.10.1
-    "@amplitude/analytics-types": ^0.13.0
-    tslib: ^2.3.1
-  checksum: 55cd64562046b627e99f8c1e188346e67fc99f6db5ae864db0abb71cdbdd4fcbffc8200ddc14ae756376b490943561ef812d38158a679c504bc2029f9574bda6
   languageName: node
   linkType: hard
 
@@ -51,16 +39,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@amplitude/analytics-core@npm:^0.10.1":
-  version: 0.10.1
-  resolution: "@amplitude/analytics-core@npm:0.10.1"
-  dependencies:
-    "@amplitude/analytics-types": ^0.13.0
-    tslib: ^2.3.1
-  checksum: 72fc246beb6d7135471637255e3debb34ba4d9c90e866f5eb61848c23bc355bc413b69e46b47f954a3643a1f1ab421543cf3972d46599add8fa28f6c6efb42d0
-  languageName: node
-  linkType: hard
-
 "@amplitude/analytics-core@npm:^0.11.0":
   version: 0.11.0
   resolution: "@amplitude/analytics-core@npm:0.11.0"
@@ -71,27 +49,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@amplitude/analytics-react-native@npm:^0.6.1":
-  version: 0.6.1
-  resolution: "@amplitude/analytics-react-native@npm:0.6.1"
+"@amplitude/analytics-react-native@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "@amplitude/analytics-react-native@npm:0.7.0"
   dependencies:
-    "@amplitude/analytics-client-common": ^0.4.1
-    "@amplitude/analytics-core": ^0.10.1
-    "@amplitude/analytics-types": ^0.13.0
+    "@amplitude/analytics-client-common": ^0.5.0
+    "@amplitude/analytics-core": ^0.11.0
+    "@amplitude/analytics-types": ^0.14.0
     "@amplitude/ua-parser-js": ^0.7.31
     "@react-native-async-storage/async-storage": ^1.17.7
     tslib: ^2.3.1
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: d5be9d010950b94ce0fe8dba6e7cd187123879973fe496ce6c6894d213fc55a88efee0f137b77bcbced7713bd20445857ed40430dde804de6a71b23f34561e5f
-  languageName: node
-  linkType: hard
-
-"@amplitude/analytics-types@npm:^0.13.0":
-  version: 0.13.0
-  resolution: "@amplitude/analytics-types@npm:0.13.0"
-  checksum: 1815648fb637af8e47585befe61b0f1d1fe8320744760aacf972c79360aa67bb5db5707dbf71266063a22d0615fd3fe84dde36f956678e872ce8c55d70ccf6e7
+  checksum: 0fffe79ccf0559ab63bcb87f2c10fb7678fe8e9f1954d1da74929f7b68eb6cf2132dafba7a906a8d7dad5d6df50f2e6c5c2ad36830d9c24be924a5eae73ad5d9
   languageName: node
   linkType: hard
 
@@ -3597,15 +3568,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.0.15":
-  version: 0.0.15
-  resolution: "@gooddollar/good-design@npm:0.0.15"
+"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 0.0.16
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=a17975&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
-    "@gooddollar/goodprotocol": 1.0.29-beta.4
+    "@gooddollar/goodprotocol": 1.0.29-beta.5
     "@lingui/macro": ^3.14.0
     "@lingui/react": ^3.14.0
+    "@uniswap/sdk-core": ^3.1.0
     buffer: ^6.0.3
     css-loader: ^6.7.1
     metro-react-native-babel-preset: ^0.72.0
@@ -3627,7 +3599,7 @@ __metadata:
     typescript: 4.7.4
   peerDependencies:
     "@usedapp/core": 1.*
-  checksum: 4c0676a41e33b28f890f7cc903ca016f8d893512bdf3e10e6dadcc503b8f540ae36f6e13bf87ff1ecd3deff5387a09a5ed62bf02e5e7f1fa90d05954fb09b5a5
+  checksum: e7f20480c2f33a710374fbfac0e9f1d06fa1e28db29dc63034228781315d6d8fa65dbce972648a878dae9091c956b0246f21dbb3bdf6fa6918cada40eaea7fb7
   languageName: node
   linkType: hard
 
@@ -3678,10 +3650,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.0.15
+    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
     "@gooddollar/goodprotocol": 1.0.29-beta.5
     "@gooddollar/web3sdk": ^0.1.12
-    "@gooddollar/web3sdk-v2": ^0.1.52
+    "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2"
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^3.12.1
@@ -3762,7 +3734,7 @@ __metadata:
     copy-to-clipboard: ^3.2.0
     cross-env: ^7.0.2
     customize-cra: ^1.0.0
-    date-fns: ^2.20.0
+    date-fns: ^2.29.3
     decimal.js: ^10.3.1
     eslint: ^7.23.0
     eslint-config-prettier: ^8.1.0
@@ -3850,12 +3822,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.1.52":
-  version: 0.1.52
-  resolution: "@gooddollar/web3sdk-v2@npm:0.1.52"
+"@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 0.1.53
+  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=bed058&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
-    "@amplitude/analytics-browser": ^1.6.3
-    "@amplitude/analytics-react-native": ^0.6.1
+    "@amplitude/analytics-browser": ^1.6.4
+    "@amplitude/analytics-react-native": ^0.7.0
     "@gooddollar/bridge-app": ^1.2.2
     "@gooddollar/bridge-contracts": ^1.0.10
     "@gooddollar/goodprotocol": beta
@@ -3874,7 +3846,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 1dae366c39c7f7af22f15595825db52aaad1b03e8dabd988e1f680b8db939559110e34e59ad95e92d205fcea0721d82ced213fa946b46463fdcedd6b8c179294
+  checksum: 6a35c3a31f8459a9a2af1ea701e1759ed875bc192044fc12ca94e30b87690ce6d424ff6bb8f0fcd99977916a6a41930c9d824698d3ed8762ac11bbc65c551c23
   languageName: node
   linkType: hard
 
@@ -8533,7 +8505,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniswap/sdk-core@npm:^3.0.0, @uniswap/sdk-core@npm:^3.0.0-alpha.3":
+"@uniswap/sdk-core@npm:^3.0.0, @uniswap/sdk-core@npm:^3.0.0-alpha.3, @uniswap/sdk-core@npm:^3.1.0":
   version: 3.1.0
   resolution: "@uniswap/sdk-core@npm:3.1.0"
   dependencies:
@@ -13614,7 +13586,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.16.1, date-fns@npm:^2.20.0":
+"date-fns@npm:^2.16.1, date-fns@npm:^2.29.3":
   version: 2.29.3
   resolution: "date-fns@npm:2.29.3"
   checksum: e01cf5b62af04e05dfff921bb9c9933310ed0e1ae9a81eb8653452e64dc841acf7f6e01e1a5ae5644d0337e9a7f936175fd2cb6819dc122fdd9c5e86c56be484

@@ -34,7 +34,7 @@ const getTimer = () => {
 interface UseClaimReturn {
     claimable?: boolean | Error
     tillClaim: string
-    handleClaim: () => Promise<void>
+    handleClaim: () => Promise<boolean>
     isFuse: boolean
     claimActive: boolean
     claimed: boolean
@@ -85,19 +85,24 @@ export const useClaiming = (): UseClaimReturn => {
     }, [chainId, web3, account])
 
     const handleClaim = useCallback(async () => {
-        if (account && web3) {
-            sendData({ event: 'claim', action: 'claimStart', network })
-
-            const startClaim = await claim(web3, account).catch((e) => {
-                refetch()
-                return false
-            })
-
-            if (startClaim) {
-                sendData({ event: 'claim', action: 'claimSuccess', network })
-                refetch()
-            }
+        if (!account || !web3) {
+            return false
         }
+
+        sendData({ event: 'claim', action: 'claimStart', network })
+
+        const startClaim = await claim(web3, account).catch((e) => {
+            refetch()
+            return false
+        })
+
+        if (!startClaim) {
+            return false
+        }
+
+        sendData({ event: 'claim', action: 'claimSuccess', network })
+        refetch()
+        return true
     }, [account, web3, sendData, network, refetch])
 
     const isFuse = (chainId as any) === SupportedChainId.FUSE
