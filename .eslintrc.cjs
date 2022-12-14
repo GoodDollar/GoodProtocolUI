@@ -6,7 +6,11 @@ module.exports = {
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'prettier',
     ],
-    plugins: ['@typescript-eslint', 'prettier', 'eslint-plugin-import'],
+    plugins: [
+        '@typescript-eslint', 
+        'prettier', 
+        'eslint-plugin-import'
+    ],
     parserOptions: {
         ecmaVersion: 2020,
         ecmaFeatures: {
@@ -17,12 +21,10 @@ module.exports = {
         project: ['./tsconfig.json'],
     },
     ignorePatterns: [
-        '/build/**/*.*', 
+        '/build/**/*', 
         '/types/*/*d.ts',
-        '/src/**/*.test.[jt]s*', 
-        '/*.config.js', 
-        '/.*rc*', 
-        '/*.js'
+        '/src/**/*.test.ts*', 
+        '/**/*.js'        
     ],
     rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
@@ -49,7 +51,6 @@ module.exports = {
                 allowCallExpression: false,
             },
         ],
-        'import/no-cycle': 'error',
         'no-extend-native': 'off',
         'react/prop-types': 'off',
         'react/display-name': 'off',

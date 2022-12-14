@@ -24,7 +24,6 @@ import {
     useEnvWeb3,
     getList as getStakes,
     Stake,
-    getNetworkEnv,
     useGdContextProvider,
     useGovernanceStaking,
 } from '@gooddollar/web3sdk'
