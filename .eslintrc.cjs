@@ -17,12 +17,12 @@ module.exports = {
         project: ['./tsconfig.json'],
     },
     ignorePatterns: [
-        'node_modules/**/*', 
-        '.*rc.[mc]js', 
-        'types/*/*d.ts', 
-        '*.config.js', 
-        'build/**/*.js', 
-        '*.js'
+        '/build/**/*.*', 
+        '/types/*/*d.ts',
+        '/src/**/*.test.[jt]s*', 
+        '/*.config.js', 
+        '/.*rc*', 
+        '/*.js'
     ],
     rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',

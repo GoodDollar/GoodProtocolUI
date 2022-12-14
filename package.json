@@ -106,6 +106,7 @@
         "customize-cra": "^1.0.0",
         "date-fns": "^2.20.0",
         "decimal.js": "^10.3.1",
+        "eslint": "^8.29.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-config-react-app": "^6.0.0",
         "eslint-plugin-flowtype": "^6.1.0",
