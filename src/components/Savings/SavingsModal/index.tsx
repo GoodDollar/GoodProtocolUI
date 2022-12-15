@@ -74,12 +74,12 @@ export type ModalType = 'deposit' | 'withdraw' | 'claim'
 const SavingsModal = memo(
     ({
         type,
-        toggle,
+        onDismiss,
         isOpen,
         requiredChain,
     }: {
         type: ModalType
-        toggle: () => void
+        onDismiss: () => void
         isOpen: boolean
         requiredChain: number
     }): JSX.Element => {
@@ -262,7 +262,7 @@ const SavingsModal = memo(
                 isOpen={isOpen}
                 onDismiss={() => {
                     dispatch({ type: 'TOGGLE_INIT' })
-                    toggle()
+                    onDismiss()
                 }}
             >
                 <StakeDepositSC
