@@ -6,11 +6,7 @@ module.exports = {
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'prettier',
     ],
-    plugins: [
-        '@typescript-eslint', 
-        'prettier', 
-        'eslint-plugin-import'
-    ],
+    plugins: ['@typescript-eslint', 'prettier', 'eslint-plugin-import'],
     parserOptions: {
         ecmaVersion: 2020,
         ecmaFeatures: {
@@ -20,12 +16,7 @@ module.exports = {
         tsconfigRootDir: __dirname,
         project: ['./tsconfig.json'],
     },
-    ignorePatterns: [
-        '/build/**/*', 
-        '/types/*/*d.ts',
-        '/src/**/*.test.ts*', 
-        '/**/*.js'        
-    ],
+    ignorePatterns: ['/build/**/*', '/types/*/*d.ts', '/src/**/*.test.ts*', '/**/*.*js'],
     rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
