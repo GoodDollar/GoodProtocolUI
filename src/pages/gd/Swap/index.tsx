@@ -14,7 +14,6 @@ import useG$ from 'hooks/useG$'
 
 import SwapConfirmModal from './SwapConfirmModal'
 import { FUSE } from 'constants/index'
-import { useDispatch } from 'react-redux'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 
@@ -101,7 +100,7 @@ const Swap = memo(() => {
         const setOtherValue = field === 'external' ? setSwapValue : handleSetPairValue
 
         if (!symbol) return
-        if (!value.match(/[^0.]/)) {
+        if (!/[^0.]/.exec(value)) {
             setOtherValue('')
             setMeta(undefined)
             return
@@ -126,9 +125,10 @@ const Swap = memo(() => {
                     : meta.outputAmount.toExact()
             )
             setMeta(meta)
+
             buying && field === 'external' ? setCalcExternal(false) : setCalcInternal(false)
         }, 400))
-    }, [account, chainId, lastEdited, buying, web3, slippageTolerance.value]) // eslint-disable-line react-hooks/exhaustive-deps
+    }, [account, chainId, lastEdited, buying, web3, slippageTolerance.value])
     const [approving, setApproving] = useState(false)
     const [showConfirm, setShowConfirm] = useState(false)
     const [approved, setApproved] = useState(false)
@@ -176,7 +176,6 @@ const Swap = memo(() => {
             return route.startsWith('cDAI') ? `${G$?.symbol} > ${route}` : `${G$?.symbol} > cDAI > ${route}`
         }
     }, [meta?.route, buying, chainId])
-    const dispatch = useDispatch()
 
     const isFuse = SupportedChainId[Number(chainId)] === 'FUSE'
 
@@ -256,25 +255,34 @@ const Swap = memo(() => {
                 Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio.`
           )
 
-    const onModalClosed = useCallback(() => setShowConfirm(false), [setShowConfirm]);
-    
-    const onFromChange = useCallback((value: any) => {
-        handleSetPairValue(value)
-        setLastEdited({ field: 'external' })
-    }, [handleSetPairValue, setLastEdited]);
+    const onModalClosed = useCallback(() => setShowConfirm(false), [setShowConfirm])
 
-    const onToChange=useCallback((value: any) => {
-        setSwapValue(value)
-        setLastEdited({ field: 'internal' })
-    }, [setSwapValue, setLastEdited]);
+    const onFromChange = useCallback(
+        (value: any) => {
+            handleSetPairValue(value)
+            setLastEdited({ field: 'external' })
+        },
+        [handleSetPairValue, setLastEdited]
+    )
 
-    const onTokenChange = useCallback((token: any) => {
-        handleSetPair({ token, value: '' })
-        setSwapValue('')
-        setMeta(undefined)
-    }, [handleSetPair, setSwapValue, setMeta]);
+    const onToChange = useCallback(
+        (value: any) => {
+            setSwapValue(value)
+            setLastEdited({ field: 'internal' })
+        },
+        [setSwapValue, setLastEdited]
+    )
 
-    const onSwitch = useCallback(() => handleBuyingValue((value: boolean) => !value), [handleBuyingValue]);
+    const onTokenChange = useCallback(
+        (token: any) => {
+            handleSetPair({ token, value: '' })
+            setSwapValue('')
+            setMeta(undefined)
+        },
+        [handleSetPair, setSwapValue, setMeta]
+    )
+
+    const onSwitch = useCallback(() => handleBuyingValue((value: boolean) => !value), [handleBuyingValue])
 
     const onSwap = useCallback(() => {
         sendData({
@@ -284,13 +292,13 @@ const Swap = memo(() => {
             network: network,
         })
         setShowConfirm(true)
-    }, [sendData, setShowConfirm]);
+    }, [sendData, setShowConfirm])
 
     const onSwapConfirmed = useCallback(async () => {
         handleSetPairValue('')
         setSwapValue('')
         setMeta(undefined)
-    }, [handleSetPairValue, setSwapValue, setMeta]);
+    }, [handleSetPairValue, setSwapValue, setMeta])
 
     return (chainId as any) === SupportedChainId.CELO ? (
         <UbeSwap />
@@ -347,9 +355,7 @@ const Swap = memo(() => {
                             tokenList={tokenList ?? []}
                             isCalculating={calcInternal}
                         />
-                        <div className="switch">
-                            {cloneElement(SwitchSVG, { onClick: onSwitch, })}
-                        </div>
+                        <div className="switch">{cloneElement(SwitchSVG, { onClick: onSwitch })}</div>
                         <SwapRow
                             title={buying ? i18n._(t`Swap to`) : i18n._(t`Swap from`)}
                             autoMax={!buying}

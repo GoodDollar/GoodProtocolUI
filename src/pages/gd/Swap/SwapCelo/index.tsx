@@ -3,7 +3,7 @@ import { useApplicationTheme } from 'state/application/hooks'
 import Swap from 'ubeswap-swap-dev'
 
 export const UbeSwap = (): JSX.Element => {
-    const [theme, setTheme] = useApplicationTheme()
+    const [theme] = useApplicationTheme()
     return (
         <div
             className="flex flex-col items-center justify-center w-5/6 h-5/6 rounded-3xl"
