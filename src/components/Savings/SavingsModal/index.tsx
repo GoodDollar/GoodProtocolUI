@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect, memo, useCallback } from 'react'
+import React, { useState, useReducer, useEffect, memo, useCallback, useMemo } from 'react'
 
 import Modal from 'components/Modal/'
 import { StakeDepositSC } from 'pages/gd/Stake/StakeDeposit/styled'
@@ -17,9 +17,9 @@ import Loader from 'components/Loader'
 import { ButtonAction } from 'components/gd/Button'
 
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { useSavingsBalance, useSavingsFunctions } from '@gooddollar/web3sdk-v2'
+import { G$, useGetEnvChainId, useSavingsBalance, useSavingsFunctions } from '@gooddollar/web3sdk-v2'
 import { TransactionReceipt } from '@ethersproject/providers'
-import { TransactionStatus } from '@usedapp/core'
+import { CurrencyValue, TransactionStatus } from '@usedapp/core'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 
 // TODO: Change to savings specific state
@@ -103,8 +103,8 @@ const SavingsModal = memo(
         useEffect(() => {
             const balance =
                 type === 'withdraw'
-                    ? parseFloat((parseInt(savingsBalance.value) / 1e2).toString()).toFixed(2)
-                    : parseFloat((parseInt(g$Balance.value) / 1e2).toString()).toFixed(2)
+                    ? (parseInt(savingsBalance.value) / 1e2).toFixed(2)
+                    : (parseInt(g$Balance.value) / 1e2).toFixed(2)
             setBalance(balance)
             if (type === 'withdraw') {
                 setWithdrawAmount(parseFloat(balance) * (Number(percentage) / 100))
@@ -112,6 +112,19 @@ const SavingsModal = memo(
         }, [g$Balance, savingsBalance, type, percentage])
 
         const { transfer, withdraw, claim, transferState, withdrawState, claimState } = useSavingsFunctions()
+
+        const { defaultEnv } = useGetEnvChainId()
+        const formattedBalance = useMemo(
+            () =>
+                CurrencyValue.fromString(
+                    G$(chainId, defaultEnv),
+                    String(type === 'withdraw' ? savingsBalance.value : g$Balance.value)
+                ).format({
+                    fixedPrecisionDigits: 2,
+                    useFixedPrecision: true,
+                }),
+            [balance, type]
+        )
 
         const addSavingsTransaction = async (tx: TransactionReceipt, amount?: string) => {
             // getData({event: 'savings', action: [type]+'Success'})
@@ -289,7 +302,9 @@ const SavingsModal = memo(
                             <Loader stroke="#173046" size="32px" />
                         </div>
                     ) : state.done ? (
-                        <div id="SuccessScreen">{i18n._(t`Your ${type} transaction has been confirmed!`)}</div>
+                        <div id="SuccessScreen" className="text-center">
+                            {i18n._(t`Your ${type} transaction has been confirmed!`)}
+                        </div>
                     ) : (
                         <div>
                             {type !== 'claim' && (
@@ -298,7 +313,7 @@ const SavingsModal = memo(
                                         <>
                                             <span>How much would you like to {type}</span>
                                             <SwapInput
-                                                balance={balance}
+                                                balance={formattedBalance}
                                                 autoMax
                                                 disabled={state.loading}
                                                 value={state.value}
