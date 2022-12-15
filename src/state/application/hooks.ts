@@ -117,7 +117,7 @@ export function useApplicationTheme(): readonly ['light' | 'dark', (theme: Appli
     )
 
     useEffect(() => {
-        AsyncStorage.getItem('application.theme').then(setTheme)
+        void AsyncStorage.getItem('application.theme').then(setTheme)
     }, [setTheme])
 
     return [theme, setTheme] as const
