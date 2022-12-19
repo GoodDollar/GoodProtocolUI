@@ -3,33 +3,8 @@ import { useCallback, useEffect, useState } from 'react'
 import usePromise from './usePromise'
 import useActiveWeb3React from './useActiveWeb3React'
 import useSendAnalyticsData from './useSendAnalyticsData'
-
-const getTimer = () => {
-    const start = new Date() as any
-    start.setUTCHours(12, 0, 0)
-
-    function pad(num: any) {
-        return ('0' + parseInt(num)).substr(-2)
-    }
-
-    function tick() {
-        const now = new Date() as any
-
-        if (now > start) {
-            start.setDate(start.getDate() + 1)
-        }
-
-        const remain = (start - now) / 1000
-        const hh = pad((remain / 60 / 60) % 60)
-        const mm = pad((remain / 60) % 60)
-        const ss = pad(remain % 60)
-        const timeLeft = hh + ':' + mm + ':' + ss
-
-        return timeLeft
-    }
-
-    return tick()
-}
+import { useTimer } from '@gooddollar/good-design'
+import { useClaim } from '@gooddollar/web3sdk-v2'
 
 interface UseClaimReturn {
     claimable?: boolean | Error
@@ -45,22 +20,12 @@ export const useClaiming = (): UseClaimReturn => {
     const network = SupportedChainId[chainId]
     const { web3 } = useGdContextProvider()
     const sendData = useSendAnalyticsData()
+    const { claimTime } = useClaim()
 
     const [claimed, setIsClaimed] = useState(false)
-    const [tillClaim, setTillClaim] = useState('')
+    const [nextClaim, , setClaimTime] = useTimer(claimTime)
 
-    const fetchTimer = useCallback(() => {
-        const timer = getTimer()
-        setTillClaim(timer)
-    }, [])
-
-    useEffect(() => {
-        if (!claimed) return
-        else {
-            const interval = setInterval(fetchTimer, 1000)
-            return () => clearInterval(interval)
-        }
-    }, [fetchTimer, claimed])
+    useEffect(() => setClaimTime(claimTime), [claimTime.toString()])
 
     const [claimable, , , refetch] = usePromise(async () => {
         if (!account || !web3 || (chainId as any) !== SupportedChainId.FUSE) return false
@@ -91,7 +56,7 @@ export const useClaiming = (): UseClaimReturn => {
 
         sendData({ event: 'claim', action: 'claimStart', network })
 
-        const startClaim = await claim(web3, account).catch((e) => {
+        const startClaim = await claim(web3, account).catch(() => {
             refetch()
             return false
         })
@@ -107,5 +72,5 @@ export const useClaiming = (): UseClaimReturn => {
 
     const isFuse = (chainId as any) === SupportedChainId.FUSE
 
-    return { claimed, claimable, tillClaim, isFuse, claimActive: isFuse && claimable === true, handleClaim }
+    return { claimed, claimable, tillClaim: nextClaim, isFuse, claimActive: isFuse && claimable === true, handleClaim }
 }

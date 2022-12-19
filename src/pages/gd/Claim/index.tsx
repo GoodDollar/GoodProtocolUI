@@ -66,7 +66,7 @@ const Claim = memo(() => {
     }, [chainId])
 
     const formattedTime = useMemo(
-        () => claimed && (isToday(claimTime) ? 'today' : 'tomorrow') + ' ' + format(claimTime, 'hh a'),
+        () => claimed && (isToday(claimTime) ? 'today' : 'tomorrow') + ' ' + format(claimTime, 'hh aaa'),
         [claimed, claimTime]
     )
 
@@ -108,7 +108,7 @@ const Claim = memo(() => {
                     {account ? (
                         <ClaimButton firstName="Test" method="redirect" claim={handleClaim} claimed={claimed} />
                     ) : (
-                        <Text w="full" textAlign="center" p={40} fontWeight="bold" fontSize="2xl">
+                        <Text w="full" textAlign="center" px="2.5" py="40" fontWeight="bold" fontSize="2xl">
                             {i18n._(t`CONNECT A WALLET TO CLAIM YOUR GOODDOLLARS`)}
                         </Text>
                     )}

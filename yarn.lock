@@ -3569,18 +3569,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.0.15":
-  version: 0.0.15
-  resolution: "@gooddollar/good-design@npm:0.0.15"
+"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 0.0.16
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=1e9a9e&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
-    "@gooddollar/goodprotocol": 1.0.29-beta.4
+    "@gooddollar/goodprotocol": 1.0.29-beta.5
     "@lingui/macro": ^3.14.0
     "@lingui/react": ^3.14.0
+    "@types/moment-duration-format": ^2.2.3
+    "@uniswap/sdk-core": ^3.1.0
     buffer: ^6.0.3
     css-loader: ^6.7.1
     metro-react-native-babel-preset: ^0.72.0
+    moment: ^2.29.4
+    moment-duration-format: ^2.3.2
     prop-types: ^15.8.1
     react: 17.0.2
     react-dom: 17.0.2
@@ -3599,7 +3603,7 @@ __metadata:
     typescript: 4.7.4
   peerDependencies:
     "@usedapp/core": 1.*
-  checksum: 4c0676a41e33b28f890f7cc903ca016f8d893512bdf3e10e6dadcc503b8f540ae36f6e13bf87ff1ecd3deff5387a09a5ed62bf02e5e7f1fa90d05954fb09b5a5
+  checksum: 0d82af25cdd650c610c4af5b25ffef59f0f4c2c7a078f1cb292d7b86f294a73008dc2c65509fcea9698a3a7f69639e73e744fc1a909ec25a5990fb373dfdc709
   languageName: node
   linkType: hard
 
@@ -3649,10 +3653,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.0.15
+    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
     "@gooddollar/goodprotocol": 1.0.29-beta.5
     "@gooddollar/web3sdk": ^0.1.12
-    "@gooddollar/web3sdk-v2": ^0.1.52
+    "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2"
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^3.12.1
@@ -3822,15 +3826,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.1.52":
-  version: 0.1.54
-  resolution: "@gooddollar/web3sdk-v2@npm:0.1.54"
+"@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 0.1.53
+  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=bd6e49&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
     "@gooddollar/bridge-app": ^1.2.2
     "@gooddollar/bridge-contracts": ^1.0.10
-    "@gooddollar/goodprotocol": beta
+    "@gooddollar/goodprotocol": 1.0.29-beta.5
     "@react-native-firebase/analytics": ^16.4.6
     "@sentry/browser": 7.16.0
     "@sentry/react-native": ^4.8.0
@@ -3846,7 +3850,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 8420a65cee8e84bc0b4d28148ab072eab1c4d196563dce554eea8f2cadbffd5aeece2972d41b4d65961379b5389c5d7c4824922635a7cc3c4bb728fe045d5520
+  checksum: 1bf43b7347a3acb691bf02aaf594046576a3c6447961273d7ddf6a510c4c5ca42469c9447d3d012d0597c9808d84e11fb8bef9ff248c2c7b29fe6aca9c5a00bf
   languageName: node
   linkType: hard
 
@@ -7821,6 +7825,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/moment-duration-format@npm:^2.2.3":
+  version: 2.2.3
+  resolution: "@types/moment-duration-format@npm:2.2.3"
+  dependencies:
+    moment: ">=2.14.0"
+  checksum: 84fe8cf1582fb51f588ce46edaf876bbe92523062bb2750d7b8a60a853a5fd59cc8edcd6b2ca7db6c91e3d0479e36e86b52997adc472e3156ca51011be46a260
+  languageName: node
+  linkType: hard
+
 "@types/ms@npm:*":
   version: 0.7.31
   resolution: "@types/ms@npm:0.7.31"
@@ -8632,7 +8645,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniswap/sdk-core@npm:^3.0.0, @uniswap/sdk-core@npm:^3.0.0-alpha.3":
+"@uniswap/sdk-core@npm:^3.0.0, @uniswap/sdk-core@npm:^3.0.0-alpha.3, @uniswap/sdk-core@npm:^3.1.0":
   version: 3.1.0
   resolution: "@uniswap/sdk-core@npm:3.1.0"
   dependencies:
@@ -22835,6 +22848,20 @@ __metadata:
   version: 1.1.0
   resolution: "modern-normalize@npm:1.1.0"
   checksum: edfd40650bd7250eb4761651886a02ca3c524effca41b9832932eab9ccf9f2cfa7e5da8491c7c8bc2d58e1696e5e765adebeaf90cd9d3376444bd6bc0b0f2c99
+  languageName: node
+  linkType: hard
+
+"moment-duration-format@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "moment-duration-format@npm:2.3.2"
+  checksum: 84bdb479b2d0d6fd4684ea4a5a8e3955024afa7a0df2369cd327fe35af020aa613283f71c7002d2c4af68015860137801e7d5cc8a6997289d005d697f2b88943
+  languageName: node
+  linkType: hard
+
+"moment@npm:>=2.14.0, moment@npm:^2.29.4":
+  version: 2.29.4
+  resolution: "moment@npm:2.29.4"
+  checksum: 0ec3f9c2bcba38dc2451b1daed5daded747f17610b92427bebe1d08d48d8b7bdd8d9197500b072d14e326dd0ccf3e326b9e3d07c5895d3d49e39b6803b76e80e
   languageName: node
   linkType: hard
 
