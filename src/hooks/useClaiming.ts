@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react'
 import usePromise from './usePromise'
 import useActiveWeb3React from './useActiveWeb3React'
 import useSendAnalyticsData from './useSendAnalyticsData'
-import { useClaim } from '@gooddollar/web3sdk-v2'
+import { useClaim, useTimer } from '@gooddollar/web3sdk-v2'
 
 interface UseClaimReturn {
     claimable?: boolean | Error
