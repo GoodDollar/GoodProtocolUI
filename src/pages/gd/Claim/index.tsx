@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { BalanceGD, ClaimButton, ClaimCarousel, IClaimCard, Title } from '@gooddollar/good-design'
+import { BalanceGD, ClaimButton, ClaimCarousel, IClaimCard, Title, useScreenSize } from '@gooddollar/good-design'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useClaim } from '@gooddollar/web3sdk-v2'
 import { Text, useMediaQuery, View } from 'native-base'
@@ -70,9 +70,7 @@ const Claim = memo(() => {
         [claimed, claimTime]
     )
 
-    const [isSmallScreen] = useMediaQuery({
-        maxWidth: 975,
-    })
+    const { isSmallScreen } = useScreenSize()
 
     return (
         <>
