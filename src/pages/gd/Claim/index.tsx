@@ -4,7 +4,7 @@ import { useLingui } from '@lingui/react'
 import { BalanceGD, ClaimButton, ClaimCarousel, IClaimCard, Title, useScreenSize } from '@gooddollar/good-design'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useClaim } from '@gooddollar/web3sdk-v2'
-import { Text, useMediaQuery, View } from 'native-base'
+import { Text, View } from 'native-base'
 import { useClaiming } from 'hooks/useClaiming'
 import usePromise from 'hooks/usePromise'
 import { g$Price } from '@gooddollar/web3sdk'
@@ -84,7 +84,7 @@ const Claim = memo(() => {
                     right="0"
                     alignItems="center"
                 >
-                    <Text fontWeight="semibold" fontSize="sm" color="white">
+                    <Text fontFamily="subheading" style={{ fontWeight: '500' }} fontSize="sm" color="white">
                         Your next claim will be at {formattedTime}
                     </Text>
                 </View>
@@ -94,11 +94,15 @@ const Claim = memo(() => {
                     <BalanceGD gdPrice={G$Price} />
                 ) : (
                     <>
-                        <Title pb="2">{i18n._(t`Claim UBI`)}</Title>
+                        {/* //todo-fix: bold prop is not being applied, IE. underline works..
+                            //ref: https://docs.nativebase.io/text */}
+                        <Title bold style={{ fontWeight: 'bold' }} pb="2">
+                            {i18n._(t`Claim UBI`)}
+                        </Title>
 
-                        <span>
+                        <Text fontFamily="subheading" color="lightGrey" fontSize="md">
                             {i18n._(t`UBI is your fair share of G$ tokens, which you can claim daily on CELO.`)}
-                        </span>
+                        </Text>
                     </>
                 )}
 
@@ -106,7 +110,7 @@ const Claim = memo(() => {
                     {account ? (
                         <ClaimButton firstName="Test" method="redirect" claim={handleClaim} claimed={claimed} />
                     ) : (
-                        <Text w="full" textAlign="center" px="2.5" py="40" fontWeight="bold" fontSize="2xl">
+                        <Text w="full" textAlign="center" px="2.5" py="40" bold fontSize="lg">
                             {i18n._(t`CONNECT A WALLET TO CLAIM YOUR GOODDOLLARS`)}
                         </Text>
                     )}
