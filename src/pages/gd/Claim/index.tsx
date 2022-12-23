@@ -50,6 +50,20 @@ const mockedCards: Array<IClaimCard> = [
     },
 ]
 
+const NextClaim = ({ time }: { time: string }) => {
+    const { isSmallScreen } = useScreenSize()
+    return (
+        <Text
+            fontFamily="subheading"
+            style={{ fontWeight: '500' }}
+            fontSize="sm"
+            color={isSmallScreen ? 'white' : 'main'}
+        >
+            Your next claim will be at {time}
+        </Text>
+    )
+}
+
 const Claim = memo(() => {
     const { i18n } = useLingui()
     const { account, chainId } = useActiveWeb3React()
@@ -74,7 +88,7 @@ const Claim = memo(() => {
 
     return (
         <>
-            {claimed && (
+            {claimed && isSmallScreen && (
                 <View
                     py="1"
                     bg="main"
@@ -83,40 +97,47 @@ const Claim = memo(() => {
                     left={isSmallScreen ? '0' : '268'}
                     right="0"
                     alignItems="center"
+                    zIndex={100}
                 >
-                    <Text fontFamily="subheading" style={{ fontWeight: '500' }} fontSize="sm" color="white">
-                        Your next claim will be at {formattedTime}
-                    </Text>
+                    <NextClaim time={formattedTime || ''} />
                 </View>
             )}
-            <div className="flex flex-col flex-grow w-full">
-                {claimed ? (
-                    <BalanceGD gdPrice={G$Price} />
-                ) : (
-                    <>
-                        {/* //todo-fix: bold prop is not being applied, IE. underline works..
-                            //ref: https://docs.nativebase.io/text */}
-                        <Title bold style={{ fontWeight: 'bold' }} pb="2">
-                            {i18n._(t`Claim UBI`)}
-                        </Title>
-
-                        <Text fontFamily="subheading" color="lightGrey" fontSize="md">
-                            {i18n._(t`UBI is your fair share of G$ tokens, which you can claim daily on CELO.`)}
-                        </Text>
-                    </>
-                )}
-
-                <div className="flex items-center">
-                    {account ? (
-                        <ClaimButton firstName="Test" method="redirect" claim={handleClaim} claimed={claimed} />
+            <div className="flex flex-col items-center justify-center flex-grow w-full lg2:flex-row lg:px-10 lg2:px-20 xl:px-40">
+                <div className="flex flex-col lg:w-1/3 lg:px-4">
+                    {claimed ? (
+                        <>
+                            <BalanceGD gdPrice={G$Price} />
+                            {!isSmallScreen && (
+                                <View backgroundColor="main:alpha.20" borderRadius="md" p="1" textAlign="center">
+                                    <NextClaim time={formattedTime || ''} />
+                                </View>
+                            )}
+                        </>
                     ) : (
-                        <Text w="full" textAlign="center" px="2.5" py="40" bold fontSize="lg">
-                            {i18n._(t`CONNECT A WALLET TO CLAIM YOUR GOODDOLLARS`)}
-                        </Text>
-                    )}
-                </div>
+                        <>
+                            <Title fontFamily="heading" fontWeight="700" pb="2">
+                                {i18n._(t`Claim UBI`)}
+                            </Title>
 
-                <ClaimCarousel cards={mockedCards} />
+                            <Text fontFamily="subheading" fontWeight="400" color="lightGrey" fontSize="md">
+                                {i18n._(t`UBI is your fair share of G$ tokens, which you can claim daily on CELO.`)}
+                            </Text>
+                        </>
+                    )}
+
+                    <div className="flex items-center">
+                        {account ? (
+                            <ClaimButton firstName="Test" method="redirect" claim={handleClaim} claimed={claimed} />
+                        ) : (
+                            <Text w="full" textAlign="center" px="2.5" py="40" bold fontSize="lg">
+                                {i18n._(t`CONNECT A WALLET TO CLAIM YOUR GOODDOLLARS`)}
+                            </Text>
+                        )}
+                    </div>
+                </div>
+                <div className="lg:flex lg:flex-col lg:w-4/5 lg2:w-2/5 xl:w-80">
+                    <ClaimCarousel cards={mockedCards} />
+                </div>
             </div>
         </>
     )
