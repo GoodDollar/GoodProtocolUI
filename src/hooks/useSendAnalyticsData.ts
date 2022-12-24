@@ -9,10 +9,11 @@ import { version } from '../../package.json'
 declare type IAnalyticsConfig = typeof import('@gooddollar/web3sdk-v2/dist/sdk/analytics')
 declare type IAppProps = typeof import('@gooddollar/web3sdk-v2/dist/sdk/analytics')
 
+const indicativeKey = process.env.REACT_APP_INDICATIVE_KEY
+
 export const analyticsConfig: IAnalyticsConfig = {
     google: { enabled: true },
-    amplitude: { apiKey: process.env.REACT_APP_AMPLITUDE_KEY, enabled: !!process.env.REACT_APP_AMPLITUDE_KEY },
-    indicative: { apiKey: process.env.REACT_APP_INDICATIVE_KEY, enabled: !!process.env.REACT_APP_INDICATIVE_KEY },
+    indicative: { apiKey: indicativeKey, enabled: !!indicativeKey },
 }
 
 export const appInfo: IAppProps = {

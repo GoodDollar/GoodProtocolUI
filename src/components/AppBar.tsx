@@ -6,7 +6,6 @@ import LogoMobile from '../assets/images/logo-mobile.png'
 import { useActiveWeb3React } from '../hooks/useActiveWeb3React'
 import Web3Network from './Web3Network'
 import Web3Status from './Web3Status'
-import Web3Faucet from './Web3Faucet'
 import { useLingui } from '@lingui/react'
 import styled, { css } from 'styled-components'
 import { useApplicationTheme } from '../state/application/hooks'
@@ -134,6 +133,7 @@ const SidebarOverlay = styled.div`
 `
 
 function AppBar(): JSX.Element {
+    //eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [theme, setTheme] = useApplicationTheme()
     const { i18n } = useLingui()
     const { account, chainId } = useActiveWeb3React()
@@ -177,7 +177,6 @@ function AppBar(): JSX.Element {
                                 <div className="ml-10 text-sm whitespace-nowrap lg:text-base">
                                     {G$Price ? `1,000G$ = ${G$Price.multiply(1000).toFixed(3)}USD` : ''}
                                 </div>
-                                {chainId && <Web3Faucet />}
                                 <button
                                     onClick={toggleSideBar}
                                     className="inline-flex items-center justify-center p-2 rounded-md mobile-menu-button focus:outline-none"
