@@ -85,7 +85,6 @@ const SavingsModal = memo(
     }): JSX.Element => {
         const { i18n } = useLingui()
         const { account, chainId } = useActiveWeb3React()
-        const [balance, setBalance] = useState<string>('0')
         const [txStatus, setTxStatus] = useState<TransactionStatus>({ status: 'None' })
         const reduxDispatch = useDispatch()
         const sendData = useSendAnalyticsData()
@@ -93,23 +92,22 @@ const SavingsModal = memo(
         const { g$Balance, savingsBalance } = useSavingsBalance(10, requiredChain)
 
         const [percentage, setPercentage] = useState<string>('50')
-        const [withdrawAmount, setWithdrawAmount] = useState<number>(parseInt(balance) * (Number(percentage) / 100))
+
+        const { balance, withdrawAmount } = useMemo(() => {
+            const balance =
+                type === 'withdraw'
+                    ? parseFloat((parseInt(savingsBalance.value) / 1e2).toString()).toFixed(2)
+                    : parseFloat((parseInt(g$Balance.value) / 1e2).toString()).toFixed(2)
+            const withdrawAmount = parseFloat(balance) * (Number(percentage) / 100)
+
+            return { balance, withdrawAmount }
+        }, [g$Balance, savingsBalance, type, percentage])
 
         useEffect(() => {
             if (type === 'deposit') {
                 console.log({ balance })
             }
         }, [balance, type])
-        useEffect(() => {
-            const balance =
-                type === 'withdraw'
-                    ? (parseInt(savingsBalance.value) / 1e2).toFixed(2)
-                    : (parseInt(g$Balance.value) / 1e2).toFixed(2)
-            setBalance(balance)
-            if (type === 'withdraw') {
-                setWithdrawAmount(parseFloat(balance) * (Number(percentage) / 100))
-            }
-        }, [g$Balance, savingsBalance, type, percentage])
 
         const { transfer, withdraw, claim, transferState, withdrawState, claimState } = useSavingsFunctions()
 

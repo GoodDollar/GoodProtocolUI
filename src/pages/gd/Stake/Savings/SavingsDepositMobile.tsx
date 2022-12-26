@@ -1,10 +1,10 @@
-import React, { useCallback } from 'react'
+import React, { FC, useCallback } from 'react'
 import { QuestionHelper } from 'components'
 import Title from 'components/gd/Title'
 import { LoadingPlaceHolder } from 'theme/components'
 import { CellSC } from '../styled'
 
-import { useSavingsStats } from '@gooddollar/web3sdk-v2'
+import { SavingsStats, useSavingsStats } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { ModalButton } from 'components/Savings/SavingsModal/ModalButton'
@@ -13,15 +13,51 @@ import type { HeadingCopy } from 'components/Savings/SavingsCard'
 import { NETWORK_LABEL } from 'constants/networks'
 import { ChainId } from '@sushiswap/sdk'
 
-export const SavingsDepositMobile = ({
-    headings,
-    requiredChain,
-    showModal,
-}: {
+interface SavingsDepositMobileProps {
     headings: HeadingCopy
     requiredChain: ChainId
     showModal: (chain: ChainId) => void
-}): JSX.Element => {
+}
+
+interface SavingsMobileStatProps {
+    stats?: SavingsStats
+    statsKey: string
+    requiredChain: ChainId
+}
+
+const SavingsMobileStat: FC<SavingsMobileStatProps> = ({ stats, statsKey, requiredChain }) => {
+    const { i18n } = useLingui()
+
+    if (!stats) {
+        return null
+    }
+
+    switch (statsKey) {
+        case 'token':
+            return <div>{i18n._(t`G$`)}</div>
+        case 'protocol':
+            return <div>{i18n._(t`GoodDollar`)}</div>
+        case 'network':
+            return <>{NETWORK_LABEL[requiredChain]}</>
+        case 'apy':
+            return <div>{stats?.apy?.toFixed(0)} %</div>
+        case 'totalStaked':
+            return (
+                <>
+                    {stats?.totalStaked?.format({
+                        useFixedPrecision: true,
+                        fixedPrecisionDigits: 2,
+                    })}
+                </>
+            )
+        case 'totalRewardsPaid':
+            return <>{stats?.totalRewardsPaid?.format()} </>
+        default:
+            return null
+    }
+}
+
+export const SavingsDepositMobile: FC<SavingsDepositMobileProps> = ({ headings, requiredChain, showModal }) => {
     const { stats, error } = useSavingsStats(10)
     const { i18n } = useLingui()
 
@@ -42,32 +78,11 @@ export const SavingsDepositMobile = ({
                                 {error ? (
                                     <LoadingPlaceHolder />
                                 ) : (
-                                    stats &&
-                                    (() => {
-                                        switch (item.statsKey) {
-                                            case 'token':
-                                                return <div>{i18n._(t`G$`)}</div>
-                                            case 'protocol':
-                                                return <div>{i18n._(t`GoodDollar`)}</div>
-                                            case 'network':
-                                                return NETWORK_LABEL[requiredChain]
-                                            case 'apy':
-                                                return <div>{stats?.apy?.toFixed(0)} %</div>
-                                            case 'totalStaked':
-                                                return (
-                                                    <>
-                                                        {stats?.totalStaked?.format({
-                                                            useFixedPrecision: true,
-                                                            fixedPrecisionDigits: 2,
-                                                        })}
-                                                    </>
-                                                )
-                                            case 'totalRewardsPaid':
-                                                return <>{stats?.totalRewardsPaid?.format()} </>
-                                            default:
-                                                return
-                                        }
-                                    })()
+                                    <SavingsMobileStat
+                                        statsKey={item.statsKey}
+                                        stats={stats}
+                                        requiredChain={requiredChain}
+                                    />
                                 )}
                             </div>
                         </div>
