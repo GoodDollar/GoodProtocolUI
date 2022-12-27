@@ -9,22 +9,26 @@ import SavingsModal from 'components/Savings/SavingsModal'
 import { Wrapper } from '../styled'
 import styled from 'styled-components'
 import AsyncTokenIcon from 'components/gd/sushi/AsyncTokenIcon'
-import { LoadingPlaceHolder } from 'theme/components'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { useWindowSize } from 'hooks/useWindowSize'
-import { SavingsDepositMobile } from './SavingsDepositMobile'
+import { SavingsDepositMobile, SavingsMobileStat } from './SavingsDepositMobile'
 import { HeadingCopy } from 'components/Savings/SavingsCard'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { ModalButton } from 'components/Savings/SavingsModal/ModalButton'
 import { ChainId } from '@sushiswap/sdk'
-import { NETWORK_LABEL } from 'constants/networks'
 import Web3SupportedNetworks from 'components/Web3SupportedNetworks'
 
 const SavingsDeposit = styled.div`
     margin-top: 10px;
 `
 
-const SavingRow: FC<{ chainId: ChainId; showModal: (chain: ChainId) => void }> = ({ chainId, showModal }) => {
+interface SavingRowProps {
+    chainId: ChainId
+    headings: HeadingCopy
+    showModal: (chain: ChainId) => void
+}
+
+const SavingRow: FC<SavingRowProps> = ({ chainId, headings, showModal }) => {
     const { stats, error } = useSavingsStats(chainId, 10)
     const { defaultEnv } = useGetEnvChainId()
     const g$ = G$(chainId, defaultEnv)
@@ -48,30 +52,13 @@ const SavingRow: FC<{ chainId: ChainId; showModal: (chain: ChainId) => void }> =
                         className={'block w-5 h-5 mr-2 rounded-lg md:w-10 md:h-10 lg:w-12 lg:h-12'}
                     />
                 </td>
-                <td>{i18n._(t`G$`)}</td>
-                <td>{i18n._(t`GoodDollar`)}</td>
-                <td>{NETWORK_LABEL[chainId]}</td>
-                <td>{error || !stats?.apy ? <LoadingPlaceHolder /> : <>{stats?.apy.toFixed(0)} %</>}</td>
-                <td>
-                    {error || !stats?.totalStaked ? (
-                        <LoadingPlaceHolder />
-                    ) : (
-                        <>
-                            {' '}
-                            {stats?.totalStaked.format({
-                                useFixedPrecision: true,
-                                fixedPrecisionDigits: 2,
-                            })}
-                        </>
-                    )}
-                </td>
-                <td>
-                    {error || !stats?.totalRewardsPaid ? (
-                        <LoadingPlaceHolder />
-                    ) : (
-                        <>{stats?.totalRewardsPaid.format()} </>
-                    )}
-                </td>
+
+                {headings.map((item, index) => (
+                    <td key={index}>
+                        <SavingsMobileStat stats={stats} statsKey={item.statsKey} requiredChain={chainId} />
+                    </td>
+                ))}
+
                 <td>
                     <ModalButton
                         type={'deposit'}
@@ -182,7 +169,9 @@ export const Savings: FC = () => {
                         }
                     >
                         <Web3SupportedNetworks
-                            onItem={({ chain }) => <SavingRow chainId={chain} showModal={showModal} />}
+                            onItem={({ chain }) => (
+                                <SavingRow chainId={chain} headings={headings} showModal={showModal} />
+                            )}
                         />
                     </Table>
                 </Wrapper>

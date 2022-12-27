@@ -21,11 +21,12 @@ interface SavingsDepositMobileProps {
 
 interface SavingsMobileStatProps {
     stats?: SavingsStats
+    statsError?: any[]
     statsKey: string
     requiredChain: ChainId
 }
 
-const SavingsMobileStat: FC<SavingsMobileStatProps> = ({ stats, statsKey, requiredChain }) => {
+export const SavingsMobileStat: FC<SavingsMobileStatProps> = ({ stats, statsKey, statsError, requiredChain }) => {
     const { i18n } = useLingui()
 
     if (!stats) {
@@ -40,18 +41,24 @@ const SavingsMobileStat: FC<SavingsMobileStatProps> = ({ stats, statsKey, requir
         case 'network':
             return <>{NETWORK_LABEL[requiredChain]}</>
         case 'apy':
-            return <div>{stats?.apy?.toFixed(0)} %</div>
+            return <div>{statsError || !stats?.apy ? <LoadingPlaceHolder /> : `${stats.apy.toFixed(0)} %`}</div>
         case 'totalStaked':
-            return (
+            return statsError || !stats?.totalStaked ? (
+                <LoadingPlaceHolder />
+            ) : (
                 <>
-                    {stats?.totalStaked?.format({
+                    {stats.totalStaked.format({
                         useFixedPrecision: true,
                         fixedPrecisionDigits: 2,
                     })}
                 </>
             )
         case 'totalRewardsPaid':
-            return <>{stats?.totalRewardsPaid?.format()} </>
+            return statsError || !stats?.totalRewardsPaid ? (
+                <LoadingPlaceHolder />
+            ) : (
+                <>{stats.totalRewardsPaid.format()} </>
+            )
         default:
             return null
     }
