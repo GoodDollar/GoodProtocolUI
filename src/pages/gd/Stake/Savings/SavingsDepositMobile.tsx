@@ -1,67 +1,21 @@
-import React, { FC, useCallback } from 'react'
 import { QuestionHelper } from 'components'
 import Title from 'components/gd/Title'
-import { LoadingPlaceHolder } from 'theme/components'
+import { FC, useCallback } from 'react'
 import { CellSC } from '../styled'
 
-import { SavingsStats, useSavingsStats } from '@gooddollar/web3sdk-v2'
+import { useSavingsStats } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { ModalButton } from 'components/Savings/SavingsModal/ModalButton'
 
-import type { HeadingCopy } from 'components/Savings/SavingsCard'
-import { NETWORK_LABEL } from 'constants/networks'
 import { ChainId } from '@sushiswap/sdk'
+import type { HeadingCopy } from 'components/Savings/SavingsCard'
+import { SavingsMobileStat } from './SavingsMobileStat'
 
 interface SavingsDepositMobileProps {
     headings: HeadingCopy
     requiredChain: ChainId
     showModal: (chain: ChainId) => void
-}
-
-interface SavingsMobileStatProps {
-    stats?: SavingsStats
-    statsError?: any[]
-    statsKey: string
-    requiredChain: ChainId
-}
-
-export const SavingsMobileStat: FC<SavingsMobileStatProps> = ({ stats, statsKey, statsError, requiredChain }) => {
-    const { i18n } = useLingui()
-
-    if (!stats) {
-        return null
-    }
-
-    switch (statsKey) {
-        case 'token':
-            return <div>{i18n._(t`G$`)}</div>
-        case 'protocol':
-            return <div>{i18n._(t`GoodDollar`)}</div>
-        case 'network':
-            return <>{NETWORK_LABEL[requiredChain]}</>
-        case 'apy':
-            return <div>{statsError || !stats?.apy ? <LoadingPlaceHolder /> : `${stats.apy.toFixed(0)} %`}</div>
-        case 'totalStaked':
-            return statsError || !stats?.totalStaked ? (
-                <LoadingPlaceHolder />
-            ) : (
-                <>
-                    {stats.totalStaked.format({
-                        useFixedPrecision: true,
-                        fixedPrecisionDigits: 2,
-                    })}
-                </>
-            )
-        case 'totalRewardsPaid':
-            return statsError || !stats?.totalRewardsPaid ? (
-                <LoadingPlaceHolder />
-            ) : (
-                <>{stats.totalRewardsPaid.format()} </>
-            )
-        default:
-            return null
-    }
 }
 
 export const SavingsDepositMobile: FC<SavingsDepositMobileProps> = ({ headings, requiredChain, showModal }) => {
@@ -82,16 +36,12 @@ export const SavingsDepositMobile: FC<SavingsDepositMobileProps> = ({ headings, 
                                 </Title>
                             </div>
                             <div className="font-bold value">
-                                {error ? (
-                                    <LoadingPlaceHolder />
-                                ) : (
-                                    <SavingsMobileStat
-                                        statsKey={item.statsKey}
-                                        stats={stats}
-                                        requiredChain={requiredChain}
-                                        statsError={error}
-                                    />
-                                )}
+                                <SavingsMobileStat
+                                    statsKey={item.statsKey}
+                                    stats={stats}
+                                    requiredChain={requiredChain}
+                                    statsError={error}
+                                />
                             </div>
                         </div>
                     )
