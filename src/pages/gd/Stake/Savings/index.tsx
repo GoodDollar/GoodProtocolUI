@@ -55,7 +55,12 @@ const SavingRow: FC<SavingRowProps> = ({ chainId, headings, showModal }) => {
 
                 {headings.map((item, index) => (
                     <td key={index}>
-                        <SavingsMobileStat stats={stats} statsKey={item.statsKey} requiredChain={chainId} />
+                        <SavingsMobileStat
+                            stats={stats}
+                            statsKey={item.statsKey}
+                            requiredChain={chainId}
+                            statsError={error}
+                        />
                     </td>
                 ))}
 

@@ -89,6 +89,7 @@ export const SavingsDepositMobile: FC<SavingsDepositMobileProps> = ({ headings, 
                                         statsKey={item.statsKey}
                                         stats={stats}
                                         requiredChain={requiredChain}
+                                        statsError={error}
                                     />
                                 )}
                             </div>
