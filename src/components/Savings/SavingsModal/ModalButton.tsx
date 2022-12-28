@@ -13,7 +13,7 @@ export interface ModalButtonProps extends Omit<ActionOrSwitchButtonProps, 'requi
 export const ModalButton: FC<ModalButtonProps> = ({ chain, type, title, toggleModal, ...props }) => {
     const sendData = useSendAnalyticsData()
     const onClick = useCallback(() => {
-        sendData({ event: 'savings', action: 'start' + type })
+        sendData({ event: 'savings', action: 'savings_start' + type })
         toggleModal(type)
     }, [toggleModal, type, sendData])
 

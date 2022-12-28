@@ -100,14 +100,14 @@ export const Savings: FC = () => {
 
     const showModal = useCallback(
         (chain: ChainId) => {
-            sendData({ event: 'savings', action: 'savingsStart' })
+            sendData({ event: 'savings', action: 'savings_start' })
             setModalData(chain)
         },
         [sendData, setModalData]
     )
 
     const hideModal = useCallback(() => {
-        sendData({ event: 'savings', action: 'savingsStart' })
+        sendData({ event: 'savings', action: 'savings_start' })
         setModalData(undefined)
     }, [sendData, setModalData])
 

@@ -30,7 +30,7 @@ const PortfolioTableRow = memo(({ stake, onUpdate }: PortfolioTableRowProps) => 
     const sendData = useSendAnalyticsData()
     const network = stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ? 'fuse' : 'mainnet'
     const handleWithdrawOpen = useCallback(() => {
-        sendData({ event: 'stake', action: 'withdrawStart', network: network })
+        sendData({ event: 'stake', action: 'savings_withdraw_rewards_claim_start', network: network })
         setWithdrawOpen(true)
     }, [sendData, network])
 

@@ -138,7 +138,7 @@ const Swap = memo(() => {
         if (!meta || !web3) return
         const type = buying ? 'buy' : 'sell'
         try {
-            sendData({ event: 'swap', action: 'approveSwap', type: type, network: network })
+            sendData({ event: 'swap', action: 'swap_confirm', type: type, network: network })
             setApproving(true)
             await approve(web3, meta, type)
             setApproved(true)
@@ -287,7 +287,7 @@ const Swap = memo(() => {
     const onSwap = useCallback(() => {
         sendData({
             event: 'swap',
-            action: 'startSwap',
+            action: 'swap_start',
             type: buying ? 'buy' : 'sell',
             network: network,
         })

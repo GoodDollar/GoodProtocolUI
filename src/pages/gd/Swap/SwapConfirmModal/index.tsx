@@ -109,14 +109,14 @@ const SwapConfirmModal = memo(
                         tradeInfo: tradeInfo,
                     })
                 )
-                sendData({ event: 'swap', action: 'submittedSwap', network: network })
+                sendData({ event: 'swap', action: 'swap_start', network: network })
                 if (onConfirm) onConfirm()
             }
 
             try {
                 sendData({
                     event: 'swap',
-                    action: 'confirmSwap',
+                    action: 'swap_confirm',
                     amount: buying ? minimumOutputSig : inputSig,
                     tokens: [inputSymbol, outputSymbol],
                     type: buying ? 'buy' : 'sell',
