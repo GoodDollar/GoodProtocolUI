@@ -28,7 +28,6 @@ jobs:
                   fetch_all_tags: true
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   release_branches: production, staging
-                  dry_run: true
 
     deploy:
         name: Deploy Release
