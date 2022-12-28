@@ -2,7 +2,7 @@ import { useG$Balance, useG$Tokens, AsyncStorage, SupportedV2Networks } from '@g
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import WalletBalance from 'components/WalletBalance'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import DiscordLogo from '../assets/images/discord-logo-new.png'
 import TelegramLogo from '../assets/images/telegram.png'
@@ -187,7 +187,7 @@ const ExternalLink: React.FC<{ label: string; url: string }> = ({ label, url }) 
     </a>
 )
 
-export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; closeSidebar?: any }) {
+export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; closeSidebar?: any }): JSX.Element {
     const [theme, setTheme] = useApplicationTheme()
     const { i18n } = useLingui()
     const { ethereum } = window
@@ -232,7 +232,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 },
             })
 
-        Promise.all(
+        void Promise.all(
             allTokens.map(async (token) => {
                 // todo: fix multiple requests bug after succesfully adding all assets.
                 //IE. wallet_watchAsset auto triggered when switching chain
@@ -248,14 +248,10 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                           params: token,
                       }))
             })
-        )
-            .then(async (results) => {
-                setImported(true)
-                await AsyncStorage.setItem(`${chainId}_metamask_import_status`, true)
-            })
-            .catch((errors) => {
-                // console.log(errors)
-            })
+        ).then(async () => {
+            setImported(true)
+            await AsyncStorage.setItem(`${chainId}_metamask_import_status`, true)
+        })
     }
 
     const [loading] = usePromise(async () => {
@@ -312,6 +308,9 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                     </div>
                 )}
                 <nav className="mt-5">
+                    <NavLink to={'/claim'} onClick={mobile ? closeSidebar : null}>
+                        {i18n._(t`Claim`)}
+                    </NavLink>
                     <NavLink to={'/dashboard'} onClick={mobile ? closeSidebar : null}>
                         {i18n._(t`Dashboard`)}
                     </NavLink>
@@ -324,9 +323,6 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                     <NavLink to={'/portfolio'} onClick={mobile ? closeSidebar : null}>
                         {i18n._(t`Portfolio`)}
                     </NavLink>
-                    <NavLink to={'/claim'} onClick={mobile ? closeSidebar : null}>
-                        {i18n._(t`Claim`)}
-                    </NavLink>
                     <NavLink to={'/microbridge'} onClick={mobile ? closeSidebar : null}>
                         {i18n._(t`Micro Bridge`)}
                     </NavLink>
@@ -334,6 +330,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                     <ExternalLink label={i18n._(t`Wallet`)} url="https://wallet.gooddollar.org/" />
                     <ExternalLink label={i18n._(t`Fuse Bridge`)} url="https://app.fuse.fi/#/bridge" />
                     <ExternalLink label={i18n._(t`Docs`)} url="https://docs.gooddollar.org" />
+                    <ExternalLink label={i18n._(t`Good Airdrop`)} url="https://airdrop.gooddollar.org" />
                 </nav>
 
                 <div className="flex items-center justify-between social">
