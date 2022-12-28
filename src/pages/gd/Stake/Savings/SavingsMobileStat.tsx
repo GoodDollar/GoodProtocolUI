@@ -1,4 +1,4 @@
-import { FC, memo, useMemo } from 'react'
+import React, { FC, memo, useMemo } from 'react'
 import { LoadingPlaceHolder } from 'theme/components'
 
 import { SavingsStats } from '@gooddollar/web3sdk-v2'

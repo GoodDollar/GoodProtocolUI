@@ -1,6 +1,6 @@
 import { QuestionHelper } from 'components'
 import Title from 'components/gd/Title'
-import { FC, useCallback } from 'react'
+import React, { FC, useCallback } from 'react'
 import { CellSC } from '../styled'
 
 import { useSavingsStats } from '@gooddollar/web3sdk-v2'
