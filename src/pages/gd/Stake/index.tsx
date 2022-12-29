@@ -205,7 +205,7 @@ const StakeTable = ({
                                         action: 'stake_start',
                                         token: stake.tokens.A.symbol,
                                         type: stake.protocol,
-                                        network: network,
+                                        network,
                                     })
                                     setActiveStake(stake)
                                     setActiveTableName()
@@ -359,7 +359,7 @@ const StakeTable = ({
                                                     action: 'stake_start',
                                                     token: stake.tokens.A.symbol,
                                                     type: stake.protocol,
-                                                    network: network,
+                                                    network,
                                                 })
                                                 setActiveStake(stake)
                                                 setActiveTableName()
@@ -383,7 +383,7 @@ const StakeTable = ({
                                                     action: 'stakeStart',
                                                     token: stake.tokens.A.symbol,
                                                     type: stake.protocol,
-                                                    network: network,
+                                                    network,
                                                 })
                                                 setActiveStake(stake)
                                                 setActiveTableName()
