@@ -14,6 +14,7 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useSetChain } from '@web3-onboard/react'
 
 import { getNetworkEnv, UnsupportedChainId } from '@gooddollar/web3sdk'
+import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 
 const TextWrapper = styled.div`
     font-style: normal;
@@ -36,6 +37,7 @@ const TextWrapper = styled.div`
 export default function NetworkModal(): JSX.Element | null {
     const { i18n } = useLingui()
     const { chainId, error } = useActiveWeb3React()
+    const sendData = useSendAnalyticsData()
 
     const [, setChain] = useSetChain()
     const networkModalOpen = useModalOpen(ApplicationModal.NETWORK)
@@ -67,6 +69,8 @@ export default function NetworkModal(): JSX.Element | null {
             } else {
                 void setChain({ chainId: ChainIdHex[key] })
             }
+
+            sendData({ event: 'network_switch', action: 'network_switch_success', network: ChainId[key] })
         },
         [setChain]
     )

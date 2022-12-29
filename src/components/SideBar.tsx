@@ -13,6 +13,7 @@ import { useApplicationTheme } from '../state/application/hooks'
 import LanguageSwitch from './LanguageSwitch'
 import { NavLink } from './Link'
 import usePromise from '../hooks/usePromise'
+import useSendAnalyticsData from '../hooks/useSendAnalyticsData'
 
 const SideBarSC = styled.aside<{ $mobile?: boolean }>`
     width: ${({ $mobile }) => ($mobile ? '90%' : '268px')};
@@ -196,6 +197,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const balances = useG$Balance(10)
     const { g$, good, gdx } = useG$Tokens()
     const [imported, setImported] = useState<boolean>(false)
+    const sendData = useSendAnalyticsData()
 
     const importToMetamask = async () => {
         const allTokens = []
@@ -260,6 +262,12 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
         return imported
     }, [chainId])
 
+    const onTabClick = (e: any) => {
+        const key = e.target.getAttribute('data-key')
+        mobile && closeSidebar()
+        sendData({ event: 'goto_page', action: `goto_${key}` })
+    }
+
     return (
         <SideBarSC className="flex flex-col justify-between" $mobile={mobile}>
             <div className="sidebar-inner-container">
@@ -308,22 +316,22 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                     </div>
                 )}
                 <nav className="mt-5">
-                    <NavLink to={'/claim'} onClick={mobile ? closeSidebar : null}>
+                    <NavLink to={'/claim'} data-key="claim" onClick={onTabClick}>
                         {i18n._(t`Claim`)}
                     </NavLink>
-                    <NavLink to={'/dashboard'} onClick={mobile ? closeSidebar : null}>
+                    <NavLink to={'/dashboard'} data-key="dashboard" onClick={onTabClick}>
                         {i18n._(t`Dashboard`)}
                     </NavLink>
-                    <NavLink to={'/swap'} onClick={mobile ? closeSidebar : null}>
+                    <NavLink to={'/swap'} data-key="swap" onClick={onTabClick}>
                         {i18n._(t`Swap`)}
                     </NavLink>
-                    <NavLink to={'/stakes'} onClick={mobile ? closeSidebar : null}>
+                    <NavLink to={'/stakes'} data-key="stakes" onClick={onTabClick}>
                         {i18n._(t`Stake`)}
                     </NavLink>
-                    <NavLink to={'/portfolio'} onClick={mobile ? closeSidebar : null}>
+                    <NavLink to={'/portfolio'} data-key="portfolio" onClick={onTabClick}>
                         {i18n._(t`Portfolio`)}
                     </NavLink>
-                    <NavLink to={'/microbridge'} onClick={mobile ? closeSidebar : null}>
+                    <NavLink to={'/microbridge'} data-key="micro_bridge" onClick={onTabClick}>
                         {i18n._(t`Micro Bridge`)}
                     </NavLink>
                     {/* <NavLink to={'/savings'} onClick={mobile ? closeSidebar : null}>{i18n._(t`Savings`)}</NavLink> -- v2 */}
