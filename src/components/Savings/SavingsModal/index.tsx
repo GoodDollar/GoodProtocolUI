@@ -70,6 +70,10 @@ const TransactionCopy = {
 }
 
 export type ModalType = 'deposit' | 'withdraw' | 'claim'
+export interface ModalStatus {
+    type: ModalType | undefined
+    isOpen: boolean
+}
 
 const SavingsModal = memo(
     ({
@@ -90,6 +94,7 @@ const SavingsModal = memo(
         const sendData = useSendAnalyticsData()
 
         const { g$Balance, savingsBalance } = useSavingsBalance(10, requiredChain)
+        const { defaultEnv } = useGetEnvChainId(requiredChain)
 
         const [percentage, setPercentage] = useState<string>('50')
 
@@ -103,15 +108,8 @@ const SavingsModal = memo(
             return { balance, withdrawAmount }
         }, [g$Balance, savingsBalance, type, percentage])
 
-        useEffect(() => {
-            if (type === 'deposit') {
-                console.log({ balance })
-            }
-        }, [balance, type])
-
         const { transfer, withdraw, claim, transferState, withdrawState, claimState } = useSavingsFunctions()
 
-        const { defaultEnv } = useGetEnvChainId()
         const formattedBalance = useMemo(
             () =>
                 CurrencyValue.fromString(
@@ -121,7 +119,7 @@ const SavingsModal = memo(
                     fixedPrecisionDigits: 2,
                     useFixedPrecision: true,
                 }),
-            [balance, type]
+            [balance, type, savingsBalance, g$Balance]
         )
 
         const addSavingsTransaction = async (tx: TransactionReceipt, amount?: string) => {

@@ -11,22 +11,18 @@ import { useWindowSize } from 'hooks/useWindowSize'
 
 import { SavingsCardRow } from 'components/Savings/SavingsCard/SavingsCardRow'
 import { SavingsCardTableMobile } from './SavingsCardTableMobile'
+import Web3SupportedNetworks from 'components/Web3SupportedNetworks'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
+
 export type HeadingCopy = {
     title: string
     questionText: string
     statsKey: string // key to use for mobile 'tables'
 }[]
 
-export const SavingsCard = ({
-    account,
-    requiredChain,
-    hasBalance,
-}: {
-    account: string
-    requiredChain: number
-    hasBalance: boolean | undefined
-}): JSX.Element => {
+export const SavingsCard = ({ account }: { account: string }): JSX.Element => {
     const { i18n } = useLingui()
+    const { chainId } = useActiveWeb3React()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [type, setType] = useState<ModalType>()
     const { width } = useWindowSize()
@@ -61,6 +57,11 @@ export const SavingsCard = ({
             statsKey: 'protocol',
         },
         {
+            title: i18n._(t`NETWORK`),
+            questionText: i18n._(t`The network this savings account belongs to`),
+            statsKey: 'network',
+        },
+        {
             title: i18n._(t`DEPOSIT`),
             questionText: i18n._(t`The total of your deposits which accumulates the rewards.`),
             statsKey: 'principle',
@@ -78,24 +79,20 @@ export const SavingsCard = ({
 
     return (
         <>
-            {
+            {type && (
                 //TODO: fix when no account connected
-                type && hasBalance && (
-                    <SavingsModal
-                        type={type}
-                        onDismiss={toggleModal}
-                        isOpen={isModalOpen}
-                        requiredChain={requiredChain}
-                    />
-                )
-            }
+                <SavingsModal type={type} onDismiss={toggleModal} isOpen={isModalOpen} requiredChain={chainId} />
+            )}
             {isMobile ? (
-                <SavingsCardTableMobile
-                    account={account}
-                    requiredChain={requiredChain}
-                    hasBalance={hasBalance}
-                    headings={headings}
-                    toggleModal={toggleModal}
+                <Web3SupportedNetworks
+                    onItem={({ chain }) => (
+                        <SavingsCardTableMobile
+                            account={account}
+                            requiredChain={chain}
+                            headings={headings}
+                            toggleModal={toggleModal}
+                        />
+                    )}
                 />
             ) : (
                 <Card className="sm:mb-6 md:mb-4 card" contentWrapped={false} style={{ position: 'relative' }}>
@@ -112,9 +109,11 @@ export const SavingsCard = ({
                             </tr>
                         }
                     >
-                        {hasBalance && (
-                            <SavingsCardRow requiredChain={requiredChain} account={account} toggleModal={toggleModal} />
-                        )}
+                        <Web3SupportedNetworks
+                            onItem={({ chain }) => (
+                                <SavingsCardRow requiredChain={chain} account={account} toggleModal={toggleModal} />
+                            )}
+                        />
                     </Table>
                 </Card>
             )}

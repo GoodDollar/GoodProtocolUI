@@ -1,10 +1,13 @@
-import { useStakerInfo } from '@gooddollar/web3sdk-v2'
+import { useStakerInfo, useGetEnvChainId, useReadOnlyProvider } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { ModalType } from 'components/Savings/SavingsModal'
 import { ModalButton } from 'components/Savings/SavingsModal/ModalButton'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { LoadingPlaceHolder } from 'theme/components'
+import { NETWORK_LABEL } from 'constants/networks'
+import { ChainId } from '@sushiswap/sdk'
+import { hasSavingsBalance } from 'functions'
 
 export const SavingsCardRow = ({
     account,
@@ -12,11 +15,23 @@ export const SavingsCardRow = ({
     toggleModal,
 }: {
     account: string
-    requiredChain: number
+    requiredChain: ChainId
     toggleModal: (type?: ModalType) => void
 }): JSX.Element => {
     const { i18n } = useLingui()
     const { stats, error } = useStakerInfo(requiredChain, 10, account)
+
+    const [hasBalance, setHasBalance] = useState<boolean | undefined>()
+    const { defaultEnv } = useGetEnvChainId(requiredChain)
+    const provider = useReadOnlyProvider(requiredChain)
+
+    useEffect(() => {
+        if (account && provider) {
+            void hasSavingsBalance({ account, provider, defaultEnv }).then((res) => {
+                setHasBalance(res)
+            })
+        }
+    }, [account, setHasBalance, provider, defaultEnv, requiredChain])
 
     useEffect(() => {
         if (error) {
@@ -25,57 +40,62 @@ export const SavingsCardRow = ({
     }, [error])
 
     return (
-        <tr>
-            <td>{i18n._(t`Savings`)}</td>
-            <td>{i18n._(t`G$`)}</td>
-            <td>{i18n._(t`GoodDAO`)}</td>
-            <td>
-                <div className="flex flex-col segment">
-                    {stats?.principle ? (
-                        <>{stats.principle.format({ useFixedPrecision: true, fixedPrecisionDigits: 2 })}</>
-                    ) : (
-                        <LoadingPlaceHolder />
-                    )}
-                </div>
-            </td>
-            <td>
-                <div className="flex flex-col segment">
-                    {stats?.claimable ? (
-                        <>
-                            <div>{stats.claimable.g$Reward.format()}</div>
-                            <div>{stats.claimable.goodReward.format()}</div>
-                        </>
-                    ) : (
-                        <div className="flex flex-col">
-                            <div style={{ width: '200px', marginBottom: '10px' }} className="flex flex-row">
+        <>
+            {hasBalance && (
+                <tr>
+                    <td>{i18n._(t`Savings`)}</td>
+                    <td>{i18n._(t`G$`)}</td>
+                    <td>{i18n._(t`GoodDAO`)}</td>
+                    <td>{NETWORK_LABEL[requiredChain]}</td>
+                    <td>
+                        <div className="flex flex-col segment">
+                            {stats?.principle ? (
+                                <>{stats.principle.format({ useFixedPrecision: true, fixedPrecisionDigits: 2 })}</>
+                            ) : (
                                 <LoadingPlaceHolder />
-                            </div>
-                            <div style={{ width: '200px' }}>
-                                <LoadingPlaceHolder />
+                            )}
+                        </div>
+                    </td>
+                    <td>
+                        <div className="flex flex-col segment">
+                            {stats?.claimable ? (
+                                <>
+                                    <div>{stats.claimable.g$Reward.format()}</div>
+                                    <div>{stats.claimable.goodReward.format()}</div>
+                                </>
+                            ) : (
+                                <div className="flex flex-col">
+                                    <div style={{ width: '200px', marginBottom: '10px' }} className="flex flex-row">
+                                        <LoadingPlaceHolder />
+                                    </div>
+                                    <div style={{ width: '200px' }}>
+                                        <LoadingPlaceHolder />
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </td>
+                    <td className="flex content-center justify-center">
+                        <div className="flex items-end justify-center md:flex-col segment withdraw-buttons">
+                            <div className="h-full withdraw-button md:h-auto">
+                                <ModalButton
+                                    type={'withdraw'}
+                                    title={i18n._(t`Withdraw G$`)}
+                                    chain={requiredChain}
+                                    toggleModal={toggleModal}
+                                />
+                                <div className={'mb-1'}></div>
+                                <ModalButton
+                                    type={'claim'}
+                                    title={i18n._(t`Claim Rewards`)}
+                                    chain={requiredChain}
+                                    toggleModal={toggleModal}
+                                />
                             </div>
                         </div>
-                    )}
-                </div>
-            </td>
-            <td className="flex content-center justify-center">
-                <div className="flex items-end justify-center md:flex-col segment withdraw-buttons">
-                    <div className="h-full withdraw-button md:h-auto">
-                        <ModalButton
-                            type={'withdraw'}
-                            title={i18n._(t`Withdraw G$`)}
-                            chain={requiredChain}
-                            toggleModal={toggleModal}
-                        />
-                        <div className={'mb-1'}></div>
-                        <ModalButton
-                            type={'claim'}
-                            title={i18n._(t`Claim Rewards`)}
-                            chain={requiredChain}
-                            toggleModal={toggleModal}
-                        />
-                    </div>
-                </div>
-            </td>
-        </tr>
+                    </td>
+                </tr>
+            )}
+        </>
     )
 }

@@ -27,9 +27,10 @@ interface SavingRowProps {
     chainId: ChainId
     headings: HeadingCopy
     showModal: (chain: ChainId) => void
+    isMobile: boolean | undefined
 }
 
-const SavingRow: FC<SavingRowProps> = ({ chainId, headings, showModal }) => {
+const SavingRow: FC<SavingRowProps> = ({ chainId, headings, showModal, isMobile }) => {
     const { stats, error } = useSavingsStats(chainId, 10)
     const { defaultEnv } = useGetEnvChainId()
     const g$ = G$(chainId, defaultEnv)
@@ -45,46 +46,49 @@ const SavingRow: FC<SavingRowProps> = ({ chainId, headings, showModal }) => {
 
     return (
         <>
-            <tr>
-                <td>
-                    <AsyncTokenIcon
-                        address={g$.address}
-                        chainId={g$.chainId}
-                        className={'block w-5 h-5 mr-2 rounded-lg md:w-10 md:h-10 lg:w-12 lg:h-12'}
-                    />
-                </td>
-
-                {headings.map((item, index) => (
-                    <td key={index}>
-                        <SavingsMobileStat
-                            stats={stats}
-                            statsKey={item.statsKey}
-                            requiredChain={chainId}
-                            statsError={error}
+            {isMobile ? (
+                <tr className="mobile">
+                    <td colSpan={8}>
+                        <ModalButton
+                            type={'deposit'}
+                            title={i18n._(t`Deposit G$`)}
+                            chain={chainId}
+                            toggleModal={onModalButtonPress}
+                            width={undefined}
                         />
                     </td>
-                ))}
+                </tr>
+            ) : (
+                <tr>
+                    <td>
+                        <AsyncTokenIcon
+                            address={g$.address}
+                            chainId={g$.chainId}
+                            className={'block w-5 h-5 mr-2 rounded-lg md:w-10 md:h-10 lg:w-12 lg:h-12'}
+                        />
+                    </td>
 
-                <td>
-                    <ModalButton
-                        type={'deposit'}
-                        title={i18n._(t`Deposit G$`)}
-                        chain={chainId}
-                        toggleModal={onModalButtonPress}
-                    />
-                </td>
-            </tr>
-            <tr className="mobile">
-                <td colSpan={8}>
-                    <ModalButton
-                        type={'deposit'}
-                        title={i18n._(t`Deposit G$`)}
-                        chain={chainId}
-                        toggleModal={onModalButtonPress}
-                        width={undefined}
-                    />
-                </td>
-            </tr>
+                    {headings.map((item, index) => (
+                        <td key={index}>
+                            <SavingsMobileStat
+                                stats={stats}
+                                statsKey={item.statsKey}
+                                requiredChain={chainId}
+                                statsError={error}
+                            />
+                        </td>
+                    ))}
+
+                    <td>
+                        <ModalButton
+                            type={'deposit'}
+                            title={i18n._(t`Deposit G$`)}
+                            chain={chainId}
+                            toggleModal={onModalButtonPress}
+                        />
+                    </td>
+                </tr>
+            )}
         </>
     )
 }
@@ -176,7 +180,12 @@ export const Savings: FC = () => {
                     >
                         <Web3SupportedNetworks
                             onItem={({ chain }) => (
-                                <SavingRow chainId={chain} headings={headings} showModal={showModal} />
+                                <SavingRow
+                                    chainId={chain}
+                                    headings={headings}
+                                    showModal={showModal}
+                                    isMobile={isMobile}
+                                />
                             )}
                         />
                     </Table>
