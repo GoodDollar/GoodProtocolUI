@@ -44,6 +44,7 @@ function useSendAnalyticsData(): (data: IAnalyticsData) => void {
             }
 
             send(event, trackData)
+            window.dataLayer = []
         },
         [send]
     )
