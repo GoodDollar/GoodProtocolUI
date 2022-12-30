@@ -109,7 +109,7 @@ const SwapConfirmModal = memo(
                         tradeInfo: tradeInfo,
                     })
                 )
-                sendData({ event: 'swap', action: 'swap_start', network })
+                sendData({ event: 'swap', action: 'swap_confirm', network })
                 if (onConfirm) onConfirm()
             }
 

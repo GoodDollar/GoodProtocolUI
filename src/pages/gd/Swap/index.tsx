@@ -138,7 +138,7 @@ const Swap = memo(() => {
         if (!meta || !web3) return
         const type = buying ? 'buy' : 'sell'
         try {
-            sendData({ event: 'swap', action: 'swap_confirm', type, network })
+            sendData({ event: 'swap', action: 'swap_approve', type, network })
             setApproving(true)
             await approve(web3, meta, type)
             setApproved(true)
@@ -298,6 +298,7 @@ const Swap = memo(() => {
         handleSetPairValue('')
         setSwapValue('')
         setMeta(undefined)
+        sendData({ event: 'swap', action: 'swap_success', type: buying ? 'buy' : 'sell', network })
     }, [handleSetPairValue, setSwapValue, setMeta])
 
     return (chainId as any) === SupportedChainId.CELO ? (

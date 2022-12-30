@@ -62,7 +62,7 @@ const Withdraw = memo(({ token, protocol, open, setOpen, onWithdraw, stake, ...r
             setStatus('pending')
             sendData({
                 event: 'stake',
-                action: 'savings_withdraw_rewards_claim_confirm',
+                action: 'stake_withdraw_confirm',
                 amount: withdrawAmount,
                 type: protocol,
                 network,
@@ -77,7 +77,7 @@ const Withdraw = memo(({ token, protocol, open, setOpen, onWithdraw, stake, ...r
                     setStatus('send')
                     sendData({
                         event: 'stake',
-                        action: 'savings_withdraw_rewards_claim_success',
+                        action: 'stake_withdraw_success',
                         amount: withdrawAmount,
                         type: protocol,
                         network,
