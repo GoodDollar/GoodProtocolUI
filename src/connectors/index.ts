@@ -7,8 +7,9 @@ import LogoSmall from '../assets/images/logosmall.png'
 import injectedModule from '@web3-onboard/injected-wallets'
 import walletConnectModule from '@web3-onboard/walletconnect'
 import { init } from '@web3-onboard/react'
-import zenGoModule from './Zengo/'
+import customWcModule from './modules/CustomWc'
 import coinbaseWalletModule from '@web3-onboard/coinbase'
+import torus from './modules/Torus/torus'
 // ** blockNative update **//
 
 export enum AdditionalChainIds {
@@ -103,7 +104,8 @@ const walletConnectBN = walletConnectModule({
 
 const coinbaseWalletSdk = coinbaseWalletModule()
 
-const zenGoBN = zenGoModule({
+const zenGoBN = customWcModule({
+    customLabelFor: 'zengo',
     bridge: 'https://bridge.walletconnect.org',
     qrcodeModalOptions: {
         desktopLinks: ['zengo', 'metamask'],
@@ -111,8 +113,15 @@ const zenGoBN = zenGoModule({
     },
 })
 
+const gdBn = customWcModule({
+    customLabelFor: 'gooddollar',
+    bridge: 'https://bridge.walletconnect.org',
+})
+
+const torusBN = torus({})
+
 export const onboard = init({
-    wallets: [injectedBN, walletConnectBN, zenGoBN, coinbaseWalletSdk],
+    wallets: [torusBN, gdBn, injectedBN, walletConnectBN, coinbaseWalletSdk, zenGoBN],
     chains: [
         {
             id: '0xa4ec',
