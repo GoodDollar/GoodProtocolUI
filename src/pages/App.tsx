@@ -14,6 +14,7 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useFaucet } from '@gooddollar/web3sdk-v2'
 import TransactionUpdater from '../state/transactions/updater'
+import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 
 export const Beta = styled.div`
     font-style: normal;
@@ -58,11 +59,13 @@ function App(): JSX.Element {
 
     const dispatch = useDispatch<AppDispatch>()
     const [preservedSource, setPreservedSource] = useState('')
+    const sendData = useSendAnalyticsData()
 
     void useFaucet()
 
     useEffect(() => {
         const parsed = parse(location.search, { parseArrays: false, ignoreQueryPrefix: true })
+        sendData({ event: 'goto_page', action: `goto_${location.pathname}` })
 
         if (!isEqual(parsed['utm_source'], preservedSource)) {
             setPreservedSource(parsed['utm_source'] as string)

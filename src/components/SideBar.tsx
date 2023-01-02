@@ -174,10 +174,30 @@ const SocialsLink: React.FC<{ network: string; logo: string; url: string }> = ({
     </a>
 )
 
-const ExternalLink: React.FC<{ label: string; url: string }> = ({ label, url }) => (
-    <a className="p-2 line md:p-1 xl:p-3 whitespace-nowrap" href={url} target="_blank" rel="noreferrer">
-        <span>{label}</span>
-        <svg className="ml-2" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+const ExternalLink: React.FC<{ label: string; url: string; dataAttr: string; onClick: (e: any) => void }> = ({
+    label,
+    url,
+    dataAttr,
+    onClick,
+}) => (
+    <a
+        className="p-2 line md:p-1 xl:p-3 whitespace-nowrap"
+        href={url}
+        target="_blank"
+        rel="noreferrer"
+        onClick={onClick}
+        data-key={dataAttr}
+    >
+        <span data-key={dataAttr}>{label}</span>
+        <svg
+            data-key={dataAttr}
+            className="ml-2"
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
             <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -262,9 +282,12 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
         return imported
     }, [chainId])
 
-    const onTabClick = (e: any) => {
-        const key = e.target.getAttribute('data-key')
+    const onTabClick = () => {
         mobile && closeSidebar()
+    }
+
+    const onExternalClick = (e: any) => {
+        const key = e.target.getAttribute('data-key')
         sendData({ event: 'goto_page', action: `goto_${key}` })
     }
 
@@ -316,29 +339,49 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                     </div>
                 )}
                 <nav className="mt-5">
-                    <NavLink to={'/claim'} data-key="claim" onClick={onTabClick}>
+                    <NavLink to={'/claim'} onClick={onTabClick}>
                         {i18n._(t`Claim`)}
                     </NavLink>
-                    <NavLink to={'/dashboard'} data-key="dashboard" onClick={onTabClick}>
+                    <NavLink to={'/dashboard'} onClick={onTabClick}>
                         {i18n._(t`Dashboard`)}
                     </NavLink>
-                    <NavLink to={'/swap'} data-key="swap" onClick={onTabClick}>
+                    <NavLink to={'/swap'} onClick={onTabClick}>
                         {i18n._(t`Swap`)}
                     </NavLink>
-                    <NavLink to={'/stakes'} data-key="stakes" onClick={onTabClick}>
+                    <NavLink to={'/stakes'} onClick={onTabClick}>
                         {i18n._(t`Stake`)}
                     </NavLink>
-                    <NavLink to={'/portfolio'} data-key="portfolio" onClick={onTabClick}>
+                    <NavLink to={'/portfolio'} onClick={onTabClick}>
                         {i18n._(t`Portfolio`)}
                     </NavLink>
-                    <NavLink to={'/microbridge'} data-key="micro_bridge" onClick={onTabClick}>
+                    <NavLink to={'/microbridge'} onClick={onTabClick}>
                         {i18n._(t`Micro Bridge`)}
                     </NavLink>
                     {/* <NavLink to={'/savings'} onClick={mobile ? closeSidebar : null}>{i18n._(t`Savings`)}</NavLink> -- v2 */}
-                    <ExternalLink label={i18n._(t`Wallet`)} url="https://wallet.gooddollar.org/" />
-                    <ExternalLink label={i18n._(t`Fuse Bridge`)} url="https://app.fuse.fi/#/bridge" />
-                    <ExternalLink label={i18n._(t`Docs`)} url="https://docs.gooddollar.org" />
-                    <ExternalLink label={i18n._(t`Good Airdrop`)} url="https://airdrop.gooddollar.org" />
+                    <ExternalLink
+                        onClick={onExternalClick}
+                        label={i18n._(t`Wallet`)}
+                        url="https://wallet.gooddollar.org/"
+                        dataAttr="wallet"
+                    />
+                    <ExternalLink
+                        onClick={onExternalClick}
+                        label={i18n._(t`Fuse Bridge`)}
+                        url="https://app.fuse.fi/#/bridge"
+                        dataAttr="bridge"
+                    />
+                    <ExternalLink
+                        onClick={onExternalClick}
+                        label={i18n._(t`Docs`)}
+                        url="https://docs.gooddollar.org"
+                        dataAttr="docs"
+                    />
+                    <ExternalLink
+                        onClick={onExternalClick}
+                        label={i18n._(t`Good Airdrop`)}
+                        url="https://airdrop.gooddollar.org"
+                        dataAttr="airdrop"
+                    />
                 </nav>
 
                 <div className="flex items-center justify-between social">
