@@ -3,14 +3,12 @@ import { NetworkConnector } from './NetworkConnector'
 import { Web3Provider } from '@ethersproject/providers'
 import LogoSmall from '../assets/images/logosmall.png'
 
-// ** blocknative update ** //
 import injectedModule from '@web3-onboard/injected-wallets'
 import walletConnectModule from '@web3-onboard/walletconnect'
 import { init } from '@web3-onboard/react'
 import customWcModule from './modules/CustomWc'
 import coinbaseWalletModule from '@web3-onboard/coinbase'
-import torus from './modules/Torus/torus'
-// ** blockNative update **//
+import { default as torusModule } from './modules/Torus/torus'
 
 export enum AdditionalChainIds {
     FUSE = 122,
@@ -61,8 +59,7 @@ export const fortmatic = {}
 export const Portis = {}
 export const portis = {}
 
-// ** blocknative update ** //
-const injectedBN = injectedModule({
+const injected = injectedModule({
     filter: {
         ['Binance Smart Wallet']: false,
         ['MetaMask']: true,
@@ -94,7 +91,7 @@ const injectedBN = injectedModule({
     },
 })
 
-const walletConnectBN = walletConnectModule({
+const defaultWc = walletConnectModule({
     bridge: 'https://bridge.walletconnect.org',
     qrcodeModalOptions: {
         mobileLinks: ['rainbow', 'metamask', 'argent', 'trust', 'imtoken', 'pillar'],
@@ -104,7 +101,7 @@ const walletConnectBN = walletConnectModule({
 
 const coinbaseWalletSdk = coinbaseWalletModule()
 
-const zenGoBN = customWcModule({
+const zenGoWc = customWcModule({
     customLabelFor: 'zengo',
     bridge: 'https://bridge.walletconnect.org',
     qrcodeModalOptions: {
@@ -113,15 +110,17 @@ const zenGoBN = customWcModule({
     },
 })
 
-const gdBn = customWcModule({
+const gdWc = customWcModule({
     customLabelFor: 'gooddollar',
     bridge: 'https://bridge.walletconnect.org',
 })
 
-const torusBN = torus({})
+const torus = torusModule({
+    buildEnv: 'testing',
+})
 
 export const onboard = init({
-    wallets: [torusBN, gdBn, injectedBN, walletConnectBN, coinbaseWalletSdk, zenGoBN],
+    wallets: [torus, gdWc, injected, defaultWc, coinbaseWalletSdk, zenGoWc],
     chains: [
         {
             id: '0xa4ec',
@@ -284,4 +283,3 @@ export const onboard = init({
 })
 
 // TODO: Add localization
-// ** blocknative update **//

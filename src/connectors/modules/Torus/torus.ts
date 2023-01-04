@@ -19,7 +19,7 @@ function torus(options?: TorusOptions): WalletInit {
 
     return () => {
         return {
-            label: 'Google (Powered by Torus)',
+            label: 'Google (Powered by Web3Auth)',
             getIcon: async () => (await import('./helpers/icon.js')).default,
             getInterface: async ({ chains }) => {
                 const { default: Torus } = await import('@toruslabs/torus-embed')
@@ -29,6 +29,7 @@ function torus(options?: TorusOptions): WalletInit {
                 )
 
                 const [chain] = chains
+                console.log('torus chains', { chains })
 
                 const instance = new Torus({
                     buttonPosition,
@@ -58,6 +59,7 @@ function torus(options?: TorusOptions): WalletInit {
                 torusProvider.on = (event, listener) => {
                     on(event, (val) => {
                         if (event === 'chainChanged') {
+                            console.log('chainChanged -- torus')
                             listener(`0x${(val as number).toString(16)}`)
                             return
                         }
