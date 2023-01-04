@@ -4,7 +4,7 @@ import { ApplicationModal } from '../../state/application/types'
 import { ChainId } from '@sushiswap/sdk'
 import Modal from '../Modal'
 import ModalHeader from '../ModalHeader'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import Option from '../WalletModal/Option'
 import styled from 'styled-components'
 import { AdditionalChainId, ChainIdHex } from '../../constants'
@@ -61,6 +61,7 @@ export default function NetworkModal(): JSX.Element | null {
     const sendData = useSendAnalyticsData()
 
     const [{ connectedChain }, setChain] = useSetChain()
+    const [currentChain, setCurrentChain] = useState<number>(chainId)
     const networkModalOpen = useModalOpen(ApplicationModal.NETWORK)
     const toggleNetworkModal = useNetworkModalToggle()
 
@@ -95,10 +96,10 @@ export default function NetworkModal(): JSX.Element | null {
     )
 
     useUpdateEffect(() => {
-        const chainId = connectedChain?.id
-
-        if (chainId) {
-            sendData({ event: 'network_switch', action: 'network_switch_success', network: chainId })
+        const newChain = ChainIdHex[connectedChain?.id as keyof typeof ChainIdHex]
+        if (newChain && currentChain !== newChain) {
+            sendData({ event: 'network_switch', action: 'network_switch_success', network: ChainId[chainId] })
+            setCurrentChain(chainId)
         }
     }, [connectedChain])
 
