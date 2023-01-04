@@ -15,6 +15,7 @@ import { useSetChain } from '@web3-onboard/react'
 
 import { getNetworkEnv, UnsupportedChainId } from '@gooddollar/web3sdk'
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
+import { useUpdateEffect } from '@gooddollar/web3sdk-v2'
 
 const TextWrapper = styled.div`
     font-style: normal;
@@ -34,12 +35,32 @@ const TextWrapper = styled.div`
     }
 `
 
+const ChainOption = ({ chainId, key, toggleNetworkModal, switchChain, labels, icons }: any) => {
+    const onOptionClick = useCallback(() => {
+        toggleNetworkModal()
+        switchChain(key)
+    }, [switchChain, toggleNetworkModal, key])
+
+    return (
+        <Option
+            clickable={chainId !== key}
+            active={chainId === key}
+            header={labels[key]}
+            subheader={null}
+            icon={icons[key]}
+            id={String(key)}
+            key={key}
+            onClick={onOptionClick}
+        />
+    )
+}
+
 export default function NetworkModal(): JSX.Element | null {
     const { i18n } = useLingui()
     const { chainId, error } = useActiveWeb3React()
     const sendData = useSendAnalyticsData()
 
-    const [, setChain] = useSetChain()
+    const [{ connectedChain }, setChain] = useSetChain()
     const networkModalOpen = useModalOpen(ApplicationModal.NETWORK)
     const toggleNetworkModal = useNetworkModalToggle()
 
@@ -69,11 +90,17 @@ export default function NetworkModal(): JSX.Element | null {
             } else {
                 void setChain({ chainId: ChainIdHex[key] })
             }
-
-            sendData({ event: 'network_switch', action: 'network_switch_success', network: ChainId[key] })
         },
         [setChain]
     )
+
+    useUpdateEffect(() => {
+        const chainId = connectedChain?.id
+
+        if (chainId) {
+            sendData({ event: 'network_switch', action: 'network_switch_success', network: chainId })
+        }
+    }, [connectedChain])
 
     return (
         <Modal isOpen={networkModalOpen} onDismiss={toggleNetworkModal}>
@@ -89,23 +116,16 @@ export default function NetworkModal(): JSX.Element | null {
             </TextWrapper>
 
             <div className="flex flex-col mt-3 space-y-5 overflow-y-auto">
-                {allowedNetworks.map((key: ChainId | AdditionalChainId) => {
-                    return (
-                        <Option
-                            clickable={chainId !== key}
-                            active={chainId === key}
-                            header={NETWORK_LABEL[key]}
-                            subheader={null}
-                            icon={NETWORK_ICON[key]}
-                            id={String(key)}
-                            key={key}
-                            onClick={() => {
-                                toggleNetworkModal()
-                                switchChain(key)
-                            }}
-                        />
-                    )
-                })}
+                {allowedNetworks.map((key: ChainId | AdditionalChainId) => (
+                    <ChainOption
+                        key={key}
+                        chainId={chainId}
+                        labels={NETWORK_LABEL}
+                        icons={NETWORK_ICON}
+                        toggleNetworkModal={toggleNetworkModal}
+                        switchChain={switchChain}
+                    />
+                ))}
             </div>
         </Modal>
     )

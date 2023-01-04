@@ -147,6 +147,7 @@ const SavingsModal = memo(
         const depositOrWithdraw = async (amount: string) => {
             if (account) {
                 sendData({ event: 'savings', action: 'savings_' + type + '_confirm', amount: amount, network })
+
                 const parsedAmount = (parseFloat(withdrawAmount.toFixed(0)) * 1e2).toString()
                 const tx =
                     type === 'withdraw'
@@ -154,9 +155,8 @@ const SavingsModal = memo(
                         : await transfer((parseFloat(amount) * 1e2).toString())
 
                 if (tx) {
-                    sendData({ event: 'savings', action: 'savings_' + type + '_success', amount: amount, network })
                     await addSavingsTransaction(tx, amount)
-                    return
+                    sendData({ event: 'savings', action: 'savings_' + type + '_success', amount: amount, network })
                 }
             }
         }
@@ -164,22 +164,25 @@ const SavingsModal = memo(
         const claimRewards = async () => {
             if (account) {
                 sendData({ event: 'savings', action: 'savings_claim_rewards_confirm', network })
-                await claim().then((tx) => {
-                    if (tx) {
-                        sendData({ event: 'savings', action: 'savings_claim_rewards_succes', network })
-                        void addSavingsTransaction(tx)
-                    }
-                })
+
+                const tx = await claim()
+
+                if (tx) {
+                    await addSavingsTransaction(tx)
+                    sendData({ event: 'savings', action: 'savings_claim_rewards_success', network })
+                }
             }
         }
 
         const withdrawAll = async () => {
             if (account) {
                 sendData({ event: 'savings', action: 'savings_withdraw_all_send', network })
+
                 const tx = await withdraw(balance, account)
+
                 if (tx) {
+                    await addSavingsTransaction(tx, balance)
                     sendData({ event: 'savings', action: 'savings_withdraw_all_success', network })
-                    void addSavingsTransaction(tx, balance)
                 }
             }
         }

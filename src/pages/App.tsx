@@ -64,22 +64,23 @@ function App(): JSX.Element {
     void useFaucet()
 
     useEffect(() => {
-        const parsed = parse(location.search, { parseArrays: false, ignoreQueryPrefix: true })
-        sendData({ event: 'goto_page', action: `goto_${location.pathname}` })
+        sendData({ event: 'goto_page', action: `goto_${pathname}` })
+    }, [pathname])
+
+    useEffect(() => {
+        const parsed = parse(search, { parseArrays: false, ignoreQueryPrefix: true })
 
         if (!isEqual(parsed['utm_source'], preservedSource)) {
             setPreservedSource(parsed['utm_source'] as string)
         }
 
-        if (preservedSource && !location.search.includes('utm_source')) {
+        if (preservedSource && !search.includes('utm_source')) {
             replace({
                 ...location,
-                search: location.search
-                    ? location.search + '&utm_source=' + preservedSource
-                    : location.search + '?utm_source=' + preservedSource,
+                search: search ? search + '&utm_source=' + preservedSource : search + '?utm_source=' + preservedSource,
             })
         }
-    }, [preservedSource, location, replace])
+    }, [preservedSource, location, replace, search])
 
     useEffect(() => {
         if (bodyRef.current) {
