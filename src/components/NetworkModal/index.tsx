@@ -60,13 +60,14 @@ export default function NetworkModal(): JSX.Element | null {
     const { chainId, error } = useActiveWeb3React()
     const sendData = useSendAnalyticsData()
 
-    const [{ connectedChain }, setChain] = useSetChain()
-    const [currentChain, setCurrentChain] = useState<number>(chainId)
+    const [{ connectedChain }, setChain] = useSetChain()    
     const networkModalOpen = useModalOpen(ApplicationModal.NETWORK)
     const toggleNetworkModal = useNetworkModalToggle()
 
     const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[chainId]
     const network = getNetworkEnv()
+    const currentChain = connectedChain ? ChainIdHex[connectedChain?.id as keyof typeof ChainIdHex] : null
+    const connectedChainRef = useRef(connectedChain)
 
     const allowedNetworks = useMemo(() => {
         switch (true) {
@@ -94,14 +95,16 @@ export default function NetworkModal(): JSX.Element | null {
         },
         [setChain]
     )
+    
+    useEffect(() => void (connectedChainRef.current = connectedChain), [connectedChain]);
 
-    useUpdateEffect(() => {
-        const newChain = ChainIdHex[connectedChain?.id as keyof typeof ChainIdHex]
-        if (newChain && currentChain !== newChain) {
-            sendData({ event: 'network_switch', action: 'network_switch_success', network: ChainId[chainId] })
-            setCurrentChain(chainId)
+    useUpdateEffect(() => {        
+        const { current: connectedChain } = connectedChainRef
+        
+        if (currentChain && connectedChain) {
+            sendData({ event: 'network_switch', action: 'network_switch_success', network: ChainId[connectedChain?.id] })
         }
-    }, [connectedChain])
+    }, [currentChain])
 
     return (
         <Modal isOpen={networkModalOpen} onDismiss={toggleNetworkModal}>
