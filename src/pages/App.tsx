@@ -122,7 +122,6 @@ function App(): JSX.Element {
                         $page={location.pathname}
                     >
                         <Popups />
-                        {/*<Polling />*/}
                         <Web3ReactManager>
                             <div
                                 className={`flex flex-col flex-glow w-full items-center justify-start

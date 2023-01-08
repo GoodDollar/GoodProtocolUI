@@ -4,7 +4,7 @@ import { ApplicationModal } from '../../state/application/types'
 import { ChainId } from '@sushiswap/sdk'
 import Modal from '../Modal'
 import ModalHeader from '../ModalHeader'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import Option from '../WalletModal/Option'
 import styled from 'styled-components'
 import { AdditionalChainId, ChainIdHex } from '../../constants'
@@ -15,7 +15,6 @@ import { useSetChain } from '@web3-onboard/react'
 
 import { getNetworkEnv, UnsupportedChainId } from '@gooddollar/web3sdk'
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
-import { useUpdateEffect } from '@gooddollar/web3sdk-v2'
 
 const TextWrapper = styled.div`
     font-style: normal;
@@ -35,21 +34,20 @@ const TextWrapper = styled.div`
     }
 `
 
-const ChainOption = ({ chainId, key, toggleNetworkModal, switchChain, labels, icons }: any) => {
+const ChainOption = ({ chainId, chain, toggleNetworkModal, switchChain, labels, icons }: any) => {
     const onOptionClick = useCallback(() => {
         toggleNetworkModal()
-        switchChain(key)
-    }, [switchChain, toggleNetworkModal, key])
+        switchChain(chain)
+    }, [switchChain, toggleNetworkModal, chain])
 
     return (
         <Option
-            clickable={chainId !== key}
-            active={chainId === key}
-            header={labels[key]}
+            clickable={chainId !== chain}
+            active={chainId === chain}
+            header={labels[chain]}
             subheader={null}
-            icon={icons[key]}
-            id={String(key)}
-            key={key}
+            icon={icons[chain]}
+            id={String(chain)}
             onClick={onOptionClick}
         />
     )
@@ -60,14 +58,12 @@ export default function NetworkModal(): JSX.Element | null {
     const { chainId, error } = useActiveWeb3React()
     const sendData = useSendAnalyticsData()
 
-    const [{ connectedChain }, setChain] = useSetChain()    
+    const [, setChain] = useSetChain()
     const networkModalOpen = useModalOpen(ApplicationModal.NETWORK)
     const toggleNetworkModal = useNetworkModalToggle()
 
     const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[chainId]
     const network = getNetworkEnv()
-    const currentChain = connectedChain ? ChainIdHex[connectedChain?.id as keyof typeof ChainIdHex] : null
-    const connectedChainRef = useRef(connectedChain)
 
     const allowedNetworks = useMemo(() => {
         switch (true) {
@@ -86,25 +82,23 @@ export default function NetworkModal(): JSX.Element | null {
     }, [error, network])
 
     const switchChain = useCallback(
-        (key: ChainId | AdditionalChainId) => {
-            if ([ChainId.MAINNET, ChainId.RINKEBY, ChainId.GÖRLI].includes(key as any)) {
-                void setChain({ chainId: `0x${key.toString(16)}` })
-            } else {
-                void setChain({ chainId: ChainIdHex[key] })
+        async (chain: ChainId | AdditionalChainId) => {
+            const chainId = [ChainId.MAINNET, ChainId.RINKEBY, ChainId.GÖRLI].includes(chain as any)
+                ? `0x${chain.toString(16)}`
+                : ChainIdHex[chain]
+
+            const success = await setChain({ chainId })
+
+            if (success) {
+                sendData({
+                    event: 'network_switch',
+                    action: 'network_switch_success',
+                    network: ChainId[chain],
+                })
             }
         },
         [setChain]
     )
-    
-    useEffect(() => void (connectedChainRef.current = connectedChain), [connectedChain]);
-
-    useUpdateEffect(() => {        
-        const { current: connectedChain } = connectedChainRef
-        
-        if (currentChain && connectedChain) {
-            sendData({ event: 'network_switch', action: 'network_switch_success', network: ChainId[connectedChain?.id] })
-        }
-    }, [currentChain])
 
     return (
         <Modal isOpen={networkModalOpen} onDismiss={toggleNetworkModal}>
@@ -120,10 +114,11 @@ export default function NetworkModal(): JSX.Element | null {
             </TextWrapper>
 
             <div className="flex flex-col mt-3 space-y-5 overflow-y-auto">
-                {allowedNetworks.map((key: ChainId | AdditionalChainId) => (
+                {allowedNetworks.map((chain: ChainId | AdditionalChainId) => (
                     <ChainOption
-                        key={key}
+                        key={chain}
                         chainId={chainId}
+                        chain={chain}
                         labels={NETWORK_LABEL}
                         icons={NETWORK_ICON}
                         toggleNetworkModal={toggleNetworkModal}
