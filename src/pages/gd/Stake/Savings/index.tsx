@@ -4,7 +4,7 @@ import Title from 'components/gd/Title'
 import { QuestionHelper } from 'components'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
-import { useSavingsStats, G$, useGetEnvChainId, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
+import { useSavingsStats, SupportedV2Networks, useG$Tokens } from '@gooddollar/web3sdk-v2'
 import SavingsModal from 'components/Savings/SavingsModal'
 import { Wrapper } from '../styled'
 import styled from 'styled-components'
@@ -32,8 +32,7 @@ interface SavingRowProps {
 
 const SavingRow: FC<SavingRowProps> = ({ chainId, headings, showModal, isMobile }) => {
     const { stats, error } = useSavingsStats(chainId, 10)
-    const { defaultEnv } = useGetEnvChainId()
-    const g$ = G$(chainId, defaultEnv)
+    const [G$] = useG$Tokens()
     const { i18n } = useLingui()
 
     const onModalButtonPress = useCallback(() => showModal(chainId), [chainId, showModal])
@@ -62,8 +61,8 @@ const SavingRow: FC<SavingRowProps> = ({ chainId, headings, showModal, isMobile 
                 <tr>
                     <td>
                         <AsyncTokenIcon
-                            address={g$.address}
-                            chainId={g$.chainId}
+                            address={G$.address}
+                            chainId={G$.chainId}
                             className={'block w-5 h-5 mr-2 rounded-lg md:w-10 md:h-10 lg:w-12 lg:h-12'}
                         />
                     </td>

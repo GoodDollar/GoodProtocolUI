@@ -17,9 +17,9 @@ import Loader from 'components/Loader'
 import { ButtonAction } from 'components/gd/Button'
 
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { G$, useGetEnvChainId, useSavingsBalance, useSavingsFunctions } from '@gooddollar/web3sdk-v2'
+import { useSavingsBalance, useSavingsFunctions } from '@gooddollar/web3sdk-v2'
 import { TransactionReceipt } from '@ethersproject/providers'
-import { CurrencyValue, TransactionStatus } from '@usedapp/core'
+import { TransactionStatus } from '@usedapp/core'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 
 // TODO: Change to savings specific state
@@ -94,33 +94,27 @@ const SavingsModal = memo(
         const sendData = useSendAnalyticsData()
 
         const { g$Balance, savingsBalance } = useSavingsBalance(10, requiredChain)
-        const { defaultEnv } = useGetEnvChainId(requiredChain)
 
         const [percentage, setPercentage] = useState<string>('50')
 
         const { balance, withdrawAmount } = useMemo(() => {
             const balance =
                 type === 'withdraw'
-                    ? parseFloat((parseInt(savingsBalance.value) / 1e2).toString()).toFixed(2)
-                    : parseFloat((parseInt(g$Balance.value) / 1e2).toString()).toFixed(2)
-            const withdrawAmount = parseFloat(balance) * (Number(percentage) / 100)
+                    ? savingsBalance.format({ useFixedPrecision: true })
+                    : g$Balance.format({ useFixedPrecision: true })
+
+            const withdrawBalance = savingsBalance.format({
+                thousandSeparator: '',
+                useFixedPrecision: false,
+                suffix: undefined,
+            })
+
+            const withdrawAmount = withdrawBalance ? parseFloat(withdrawBalance) * (Number(percentage) / 100) : 0
 
             return { balance, withdrawAmount }
         }, [g$Balance, savingsBalance, type, percentage])
 
         const { transfer, withdraw, claim, transferState, withdrawState, claimState } = useSavingsFunctions()
-
-        const formattedBalance = useMemo(
-            () =>
-                CurrencyValue.fromString(
-                    G$(chainId, defaultEnv),
-                    String(type === 'withdraw' ? savingsBalance.value : g$Balance.value)
-                ).format({
-                    fixedPrecisionDigits: 2,
-                    useFixedPrecision: true,
-                }),
-            [balance, type, savingsBalance, g$Balance]
-        )
 
         const addSavingsTransaction = async (tx: TransactionReceipt, amount?: string) => {
             // getData({event: 'savings', action: [type]+'Success'})
@@ -274,15 +268,7 @@ const SavingsModal = memo(
                     onDismiss()
                 }}
             >
-                <StakeDepositSC
-                    style={
-                        {
-                            // display: 'flex',
-                            // justifyContent: 'center',
-                            // flexDirection: 'column'
-                        }
-                    }
-                >
+                <StakeDepositSC>
                     <Title className="flex items-center justify-center mb-2 space-x-2" style={{ fontSize: '24px' }}>
                         {state.loading && !state.done
                             ? i18n._(t`${TransactionCopy[type].title.loading}`)
@@ -309,7 +295,7 @@ const SavingsModal = memo(
                                         <>
                                             <span>How much would you like to {type}</span>
                                             <SwapInput
-                                                balance={formattedBalance}
+                                                balance={balance}
                                                 autoMax
                                                 disabled={state.loading}
                                                 value={state.value}
@@ -342,7 +328,7 @@ const SavingsModal = memo(
                                     }}
                                     onClick={onConfirmTx}
                                 >
-                                    {type} {type === 'withdraw' ? withdrawAmount.toFixed(2) + ' G$ ' : ''}
+                                    {type} {type === 'withdraw' ? withdrawAmount + ' G$ ' : ''}
                                 </ButtonAction>
                             </div>
                         </div>
