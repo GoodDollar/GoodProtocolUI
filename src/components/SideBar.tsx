@@ -294,7 +294,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                             </svg>
                         </div>
                         <div className="flex flex-col details">
-                            {account && <WalletBalance balances={balances} />}
+                            {account && <WalletBalance balances={balances} chainId={chainId} />}
                             <br />
                             {!loading && !imported && (
                                 <div className="importToMetamaskLink" onClick={importToMetamask}>

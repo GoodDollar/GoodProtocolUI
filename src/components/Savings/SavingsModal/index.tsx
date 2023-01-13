@@ -100,10 +100,10 @@ const SavingsModal = memo(
         const { balance, withdrawAmount } = useMemo(() => {
             const balance =
                 type === 'withdraw'
-                    ? savingsBalance.format({ useFixedPrecision: true })
-                    : g$Balance.format({ useFixedPrecision: true })
+                    ? savingsBalance?.format({ useFixedPrecision: true })
+                    : g$Balance?.format({ useFixedPrecision: true })
 
-            const withdrawBalance = savingsBalance.format({
+            const withdrawBalance = savingsBalance?.format({
                 thousandSeparator: '',
                 useFixedPrecision: false,
                 suffix: undefined,
@@ -159,7 +159,7 @@ const SavingsModal = memo(
         }
 
         const withdrawAll = async () => {
-            if (account) {
+            if (account && balance) {
                 sendData({ event: 'savings', action: 'withdrawAllSend' })
                 const tx = await withdraw(balance, account)
                 if (tx) {
