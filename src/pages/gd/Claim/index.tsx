@@ -22,11 +22,12 @@ const mockedCards: Array<IClaimCard> = [
         ],
     },
     {
-        title: 'Claimed today? Time to use your G$. 👀',
+        title: `Claimed 
+today? 
+Time to use your G$. 👀`,
         content: [
             {
-                description: `You can use your GoodDollars
-        to buy products, book services, and use DeFi to better your life and the live of others.`,
+                description: `You can use your GoodDollars to buy products, book services, and use DeFi to better your life and the live of others.`,
             },
             {
                 link: {
@@ -66,7 +67,7 @@ const NextClaim = ({ time }: { time: string }) => {
 
 const Claim = memo(() => {
     const { i18n } = useLingui()
-    const { account, chainId } = useActiveWeb3React()
+    const { chainId } = useActiveWeb3React()
     const { claimed, handleClaim } = useClaiming()
     const { claimTime } = useClaim('everyBlock')
 
@@ -103,7 +104,7 @@ const Claim = memo(() => {
                 </View>
             )}
             <div className="flex flex-col items-center justify-center flex-grow w-full lg2:flex-row lg:px-10 lg2:px-20 xl:px-40">
-                <div className="flex flex-col lg:w-1/3 lg:px-4">
+                <div className="flex flex-col pt-10 text-center lg:w-1/3 lg:px-4 lg:pt-0">
                     {claimed ? (
                         <>
                             <BalanceGD gdPrice={G$Price} />
@@ -115,24 +116,18 @@ const Claim = memo(() => {
                         </>
                     ) : (
                         <>
-                            <Title fontFamily="heading" fontWeight="700" pb="2">
-                                {i18n._(t`Claim UBI`)}
+                            <Title fontFamily="heading" fontSize="2xl" fontWeight="800" pb="2">
+                                {i18n._(t`Claim G$`)}
                             </Title>
 
-                            <Text fontFamily="subheading" fontWeight="400" color="lightGrey" fontSize="md">
+                            <Text fontFamily="subheading" fontWeight="400" color="goodGrey.500" fontSize="sm">
                                 {i18n._(t`UBI is your fair share of G$ tokens, which you can claim daily on CELO.`)}
                             </Text>
                         </>
                     )}
 
                     <div className="flex items-center">
-                        {account ? (
-                            <ClaimButton firstName="Test" method="redirect" claim={handleClaim} claimed={claimed} />
-                        ) : (
-                            <Text w="full" textAlign="center" px="2.5" py="40" bold fontSize="lg">
-                                {i18n._(t`CONNECT A WALLET TO CLAIM YOUR GOODDOLLARS`)}
-                            </Text>
-                        )}
+                        <ClaimButton firstName="Test" method="redirect" claim={handleClaim} claimed={claimed} />
                     </div>
                 </div>
                 <div className="lg:flex lg:flex-col lg:w-4/5 lg2:w-2/5 xl:w-80">

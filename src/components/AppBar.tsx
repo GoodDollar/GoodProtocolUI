@@ -136,7 +136,7 @@ function AppBar(): JSX.Element {
     //eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [theme, setTheme] = useApplicationTheme()
     const { i18n } = useLingui()
-    const { account, chainId } = useActiveWeb3React()
+    const { account, chainId, active } = useActiveWeb3React()
     const nativeBalance = useNativeBalance()
     const [G$Price] = usePromise(async () => {
         try {
@@ -179,7 +179,7 @@ function AppBar(): JSX.Element {
                                 </div>
                                 <button
                                     onClick={toggleSideBar}
-                                    className="inline-flex items-center justify-center p-2 rounded-md mobile-menu-button focus:outline-none"
+                                    className="inline-flex items-center justify-center rounded-md mobile-menu-button focus:outline-none"
                                 >
                                     <span className="sr-only">{i18n._(t`Open main menu`)}</span>
                                     {sidebarOpen ? (
@@ -189,11 +189,13 @@ function AppBar(): JSX.Element {
                                     )}
                                 </button>
                             </div>
-                            <div className="fixed bottom-0 left-0 flex flex-row items-center justify-center w-full p-4 lg:w-auto lg:relative lg:p-0 actions-wrapper ">
+                            <div className="fixed bottom-0 left-0 flex flex-row items-center justify-center w-full lg:w-auto lg:relative lg:p-0 actions-wrapper ">
                                 <div className="flex items-center justify-center w-full space-x-2 sm:justify-center">
-                                    <div className="hidden xs:inline-block">
-                                        <Web3Network />
-                                    </div>
+                                    {active && (
+                                        <div className="hidden xs:inline-block">
+                                            <Web3Network />
+                                        </div>
+                                    )}
                                     {account && chainId && nativeBalance ? (
                                         <DivOutlined className="pr-1">
                                             <div className="w-auto flex items-center rounded p-0.5 whitespace-nowrap   cursor-pointer select-none pointer-events-auto">
@@ -205,7 +207,7 @@ function AppBar(): JSX.Element {
                                             </div>
                                         </DivOutlined>
                                     ) : (
-                                        <div className="pr-1">
+                                        <div className="w-full">
                                             <Web3Status />
                                         </div>
                                     )}

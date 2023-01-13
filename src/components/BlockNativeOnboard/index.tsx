@@ -5,6 +5,7 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 import { noop } from 'lodash'
+import { Text } from 'native-base'
 
 const OnboardButton = styled.button`
     ${({ theme }) => theme.flexRowNoWrap}
@@ -12,15 +13,18 @@ const OnboardButton = styled.button`
     border: none;
     border-radius: 6px;
 
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    height: 75px;
+    align-items: center;
+
     color: ${({ theme }) => theme.color.main};
     padding-left: 17px;
     padding-right: 17px;
     padding-top: 10px;
-    height: 42px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
     transition: background 0.25s;
 
     &:hover,
@@ -52,5 +56,11 @@ export function OnboardConnectButton(): JSX.Element {
         return <></>
     }
 
-    return <OnboardButton onClick={onWalletConnect}>{i18n._(t`Connect to a wallet`)}</OnboardButton>
+    return (
+        <OnboardButton onClick={onWalletConnect}>
+            <Text fontSize="md" fontFamily="subheading" color="white" fontWeight="500" lineHeight="25">
+                {i18n._(t`Connect to a wallet`)}
+            </Text>
+        </OnboardButton>
+    )
 }
