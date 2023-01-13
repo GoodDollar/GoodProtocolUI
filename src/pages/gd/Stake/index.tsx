@@ -202,10 +202,10 @@ const StakeTable = ({
                                 onClick={() => {
                                     sendData({
                                         event: 'stake',
-                                        action: 'stakeStart',
+                                        action: 'stake_start',
                                         token: stake.tokens.A.symbol,
                                         type: stake.protocol,
-                                        network: network,
+                                        network,
                                     })
                                     setActiveStake(stake)
                                     setActiveTableName()
@@ -306,7 +306,7 @@ const StakeTable = ({
                                                 onClick={() => {
                                                     sendData({
                                                         event: 'stake',
-                                                        action: 'stakeStart',
+                                                        action: 'stake_start',
                                                         token: stake.tokens.A.symbol,
                                                         type: stake.protocol,
                                                         network: network,
@@ -384,7 +384,7 @@ const StakeTable = ({
                                                 onClick={() => {
                                                     sendData({
                                                         event: 'stake',
-                                                        action: 'stakeStart',
+                                                        action: 'stake_start',
                                                         token: stake.tokens.A.symbol,
                                                         type: stake.protocol,
                                                         network: network,
