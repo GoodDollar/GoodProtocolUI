@@ -1,14 +1,16 @@
-import React, { memo, useMemo } from 'react'
+import React, { memo, useMemo, useCallback } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { BalanceGD, ClaimButton, ClaimCarousel, IClaimCard, Title, useScreenSize } from '@gooddollar/good-design'
+import { BalanceGD, ClaimButton, ClaimCarousel, IClaimCard, Title, ArrowButton } from '@gooddollar/good-design'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { useClaim } from '@gooddollar/web3sdk-v2'
-import { Text, View } from 'native-base'
+import { SupportedChains, useClaim } from '@gooddollar/web3sdk-v2'
+import { Text, View, Box } from 'native-base'
 import { useClaiming } from 'hooks/useClaiming'
 import usePromise from 'hooks/usePromise'
 import { g$Price } from '@gooddollar/web3sdk'
 import { isToday, format } from 'date-fns'
+import { useSetChain } from '@web3-onboard/react'
+import { ChainIdHex } from '../../../constants'
 
 const mockedCards: Array<IClaimCard> = [
     {
@@ -32,7 +34,7 @@ Time to use your G$. 👀`,
             {
                 link: {
                     linkText: 'Buy using G$',
-                    linkUrl: 'https://google.com',
+                    linkUrl: 'https://goodmarkets.xyz/',
                 },
             },
         ],
@@ -52,22 +54,29 @@ Time to use your G$. 👀`,
 ]
 
 const NextClaim = ({ time }: { time: string }) => {
-    const { isSmallScreen } = useScreenSize()
     return (
-        <Text
-            fontFamily="subheading"
-            style={{ fontWeight: '500' }}
-            fontSize="sm"
-            color={isSmallScreen ? 'white' : 'main'}
-        >
-            Your next claim will be at {time}
+        <Text fontFamily="subheading" fontWeight="normal" fontSize="xs" color="main">
+            Claim cycle restart every day at {time}
         </Text>
+    )
+}
+
+const ClaimTimer = () => {
+    const timer = '21:00:00'
+    return (
+        <Box height="50" justifyContent="center" flexDirection="column" my="4">
+            <Text fontFamily="subheading" fontSize="md" color="main">
+                Your next claim
+            </Text>
+            <Text>{timer}</Text>
+        </Box>
     )
 }
 
 const Claim = memo(() => {
     const { i18n } = useLingui()
     const { chainId } = useActiveWeb3React()
+    const [{ connectedChain }, setChain] = useSetChain()
     const { claimed, handleClaim } = useClaiming()
     const { claimTime } = useClaim('everyBlock')
 
@@ -85,42 +94,66 @@ const Claim = memo(() => {
         [claimed, claimTime]
     )
 
-    const { isSmallScreen } = useScreenSize()
+    const network = useMemo(
+        () => (connectedChain && connectedChain.id === '0x7a' ? SupportedChains[42220] : SupportedChains[122]),
+        [connectedChain]
+    )
+
+    const switchChain = useCallback(() => {
+        const chain = ChainIdHex[SupportedChains[network as keyof typeof SupportedChains]]
+        void setChain({ chainId: chain })
+    }, [setChain])
 
     return (
         <>
-            {claimed && isSmallScreen && (
-                <View
-                    py="1"
-                    bg="main"
-                    position="absolute"
-                    top="76"
-                    left={isSmallScreen ? '0' : '268'}
-                    right="0"
-                    alignItems="center"
-                    zIndex={100}
-                >
-                    <NextClaim time={formattedTime || ''} />
-                </View>
-            )}
-            <div className="flex flex-col items-center justify-center flex-grow w-full lg2:flex-row lg:px-10 lg2:px-20 xl:px-40">
-                <div className="flex flex-col pt-10 text-center lg:w-1/3 lg:px-4 lg:pt-0">
+            <div className="flex flex-col items-center justify-center flex-grow w-full mb-8 lg2:flex-row lg:px-10 lg2:px-20 xl:px-40">
+                <div className="flex flex-col w-full pt-4 text-center lg:w-1/3 lg:px-4 lg:pt-0">
                     {claimed ? (
-                        <>
-                            <BalanceGD gdPrice={G$Price} />
-                            {!isSmallScreen && (
-                                <View backgroundColor="main:alpha.20" borderRadius="md" p="1" textAlign="center">
-                                    <NextClaim time={formattedTime || ''} />
-                                </View>
-                            )}
-                        </>
+                        <View
+                            textAlign="center"
+                            display="flex"
+                            justifyContent="center"
+                            flexDirection="column"
+                            w="full"
+                            mb="4"
+                        >
+                            <Box
+                                backgroundColor="goodWhite.100"
+                                borderRadius="15"
+                                p="1"
+                                w="full"
+                                h="34"
+                                justifyContent="center"
+                            >
+                                <NextClaim time={formattedTime || ''} />
+                            </Box>
+
+                            <ClaimTimer />
+                            <Box borderWidth="1" borderColor="borderGrey" width="90%" alignSelf="center" my="2" />
+                            <Box>
+                                <BalanceGD gdPrice={G$Price} />
+                            </Box>
+                            <Box alignItems="center">
+                                <ArrowButton
+                                    borderWidth="1"
+                                    borderColor="borderBlue"
+                                    px="6px"
+                                    width="200"
+                                    text={`Claim on ${network}`}
+                                    onPress={switchChain}
+                                    innerText={{
+                                        fontSize: 'sm',
+                                    }}
+                                />
+                            </Box>
+                        </View>
                     ) : (
                         <>
-                            <Title fontFamily="heading" fontSize="2xl" fontWeight="800" pb="2">
+                            <Title fontFamily="heading" fontSize="2xl" fontWeight="extrabold" pb="2">
                                 {i18n._(t`Claim G$`)}
                             </Title>
 
-                            <Text fontFamily="subheading" fontWeight="400" color="goodGrey.500" fontSize="sm">
+                            <Text fontFamily="subheading" fontWeight="normal" color="goodGrey.500" fontSize="sm">
                                 {i18n._(t`UBI is your fair share of G$ tokens, which you can claim daily on CELO.`)}
                             </Text>
                         </>
