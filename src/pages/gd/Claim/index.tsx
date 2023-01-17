@@ -1,16 +1,15 @@
-import React, { memo, useMemo, useCallback } from 'react'
+import React, { memo, useMemo } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { BalanceGD, ClaimButton, ClaimCarousel, IClaimCard, Title, ArrowButton } from '@gooddollar/good-design'
+import { ClaimButton, ClaimCarousel, IClaimCard, Title } from '@gooddollar/good-design'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { SupportedChains, useClaim } from '@gooddollar/web3sdk-v2'
-import { Text, View, Box } from 'native-base'
+import { useClaim } from '@gooddollar/web3sdk-v2'
+import { Text } from 'native-base'
 import { useClaiming } from 'hooks/useClaiming'
 import usePromise from 'hooks/usePromise'
 import { g$Price } from '@gooddollar/web3sdk'
 import { isToday, format } from 'date-fns'
-import { useSetChain } from '@web3-onboard/react'
-import { ChainIdHex } from '../../../constants'
+import { ClaimBalance } from './ClaimBalance'
 
 const mockedCards: Array<IClaimCard> = [
     {
@@ -53,30 +52,9 @@ Time to use your G$. 👀`,
     },
 ]
 
-const NextClaim = ({ time }: { time: string }) => {
-    return (
-        <Text fontFamily="subheading" fontWeight="normal" fontSize="xs" color="main">
-            Claim cycle restart every day at {time}
-        </Text>
-    )
-}
-
-const ClaimTimer = () => {
-    const timer = '21:00:00'
-    return (
-        <Box height="50" justifyContent="center" flexDirection="column" my="4">
-            <Text fontFamily="subheading" fontSize="md" color="main">
-                Your next claim
-            </Text>
-            <Text>{timer}</Text>
-        </Box>
-    )
-}
-
 const Claim = memo(() => {
     const { i18n } = useLingui()
     const { chainId } = useActiveWeb3React()
-    const [{ connectedChain }, setChain] = useSetChain()
     const { claimed, handleClaim } = useClaiming()
     const { claimTime } = useClaim('everyBlock')
 
@@ -94,59 +72,12 @@ const Claim = memo(() => {
         [claimed, claimTime]
     )
 
-    const network = useMemo(
-        () => (connectedChain && connectedChain.id === '0x7a' ? SupportedChains[42220] : SupportedChains[122]),
-        [connectedChain]
-    )
-
-    const switchChain = useCallback(() => {
-        const chain = ChainIdHex[SupportedChains[network as keyof typeof SupportedChains]]
-        void setChain({ chainId: chain })
-    }, [setChain])
-
     return (
         <>
             <div className="flex flex-col items-center justify-center flex-grow w-full mb-8 lg2:flex-row lg:px-10 lg2:px-20 xl:px-40">
                 <div className="flex flex-col w-full pt-4 text-center lg:w-1/3 lg:px-4 lg:pt-0">
                     {claimed ? (
-                        <View
-                            textAlign="center"
-                            display="flex"
-                            justifyContent="center"
-                            flexDirection="column"
-                            w="full"
-                            mb="4"
-                        >
-                            <Box
-                                backgroundColor="goodWhite.100"
-                                borderRadius="15"
-                                p="1"
-                                w="full"
-                                h="34"
-                                justifyContent="center"
-                            >
-                                <NextClaim time={formattedTime || ''} />
-                            </Box>
-
-                            <ClaimTimer />
-                            <Box borderWidth="1" borderColor="borderGrey" width="90%" alignSelf="center" my="2" />
-                            <Box>
-                                <BalanceGD gdPrice={G$Price} />
-                            </Box>
-                            <Box alignItems="center">
-                                <ArrowButton
-                                    borderWidth="1"
-                                    borderColor="borderBlue"
-                                    px="6px"
-                                    width="200"
-                                    text={`Claim on ${network}`}
-                                    onPress={switchChain}
-                                    innerText={{
-                                        fontSize: 'sm',
-                                    }}
-                                />
-                            </Box>
-                        </View>
+                        <ClaimBalance time={formattedTime} price={G$Price} />
                     ) : (
                         <>
                             <Title fontFamily="heading" fontSize="2xl" fontWeight="extrabold" pb="2">
