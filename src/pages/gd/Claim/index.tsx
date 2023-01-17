@@ -1,14 +1,9 @@
-import React, { memo, useMemo } from 'react'
+import React, { memo } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { ClaimButton, ClaimCarousel, IClaimCard, Title } from '@gooddollar/good-design'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { useClaim } from '@gooddollar/web3sdk-v2'
 import { Text } from 'native-base'
 import { useClaiming } from 'hooks/useClaiming'
-import usePromise from 'hooks/usePromise'
-import { g$Price } from '@gooddollar/web3sdk'
-import { isToday, format } from 'date-fns'
 import { ClaimBalance } from './ClaimBalance'
 
 const mockedCards: Array<IClaimCard> = [
@@ -54,30 +49,14 @@ Time to use your G$. 👀`,
 
 const Claim = memo(() => {
     const { i18n } = useLingui()
-    const { chainId } = useActiveWeb3React()
     const { claimed, handleClaim } = useClaiming()
-    const { claimTime } = useClaim('everyBlock')
-
-    const [G$Price] = usePromise(async () => {
-        try {
-            const data = await g$Price()
-            return data.DAI
-        } catch {
-            return undefined
-        }
-    }, [chainId])
-
-    const formattedTime = useMemo(
-        () => claimed && (isToday(claimTime) ? 'today' : 'tomorrow') + ' ' + format(claimTime, 'hh aaa'),
-        [claimed, claimTime]
-    )
 
     return (
         <>
             <div className="flex flex-col items-center justify-center flex-grow w-full mb-8 lg2:flex-row lg:px-10 lg2:px-20 xl:px-40">
                 <div className="flex flex-col w-full pt-4 text-center lg:w-1/3 lg:px-4 lg:pt-0">
                     {claimed ? (
-                        <ClaimBalance time={formattedTime} price={G$Price} />
+                        <ClaimBalance />
                     ) : (
                         <>
                             <Title fontFamily="heading" fontSize="2xl" fontWeight="extrabold" pb="2">
