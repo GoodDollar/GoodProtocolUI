@@ -27,9 +27,7 @@ export const SavingsCardRow = ({
 
     useEffect(() => {
         if (account && provider) {
-            void hasSavingsBalance({ account, provider, defaultEnv }).then((res) => {
-                setHasBalance(res)
-            })
+            hasSavingsBalance({ account, provider, defaultEnv }).then(setHasBalance)
         }
     }, [account, setHasBalance, provider, defaultEnv, requiredChain])
 
