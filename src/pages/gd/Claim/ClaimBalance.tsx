@@ -11,16 +11,15 @@ import { isToday, format } from 'date-fns'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useClaiming } from 'hooks/useClaiming'
 
-const NextClaim = ({ time }: { time: string }) => {
-    return (
-        <Text fontFamily="subheading" fontWeight="normal" fontSize="xs" color="main">
-            Claim cycle restart every day at {time}
-        </Text>
-    )
-}
+const NextClaim = ({ time }: { time: string }) => (
+    <Text fontFamily="subheading" fontWeight="normal" fontSize="xs" color="main">
+        Claim cycle restart every day at {time}
+    </Text>
+)
 
 const ClaimTimer = () => {
     const { tillClaim } = useClaiming()
+
     return (
         <Box height="50" justifyContent="center" flexDirection="column" my="4">
             <Text fontFamily="subheading" fontSize="md" color="main">
@@ -34,14 +33,7 @@ const ClaimTimer = () => {
 export const ClaimBalance = () => {
     const { claimTime } = useClaim('everyBlock')
     const { chainId } = useActiveWeb3React()
-    const [G$Price] = usePromise(async () => {
-        try {
-            const data = await g$Price()
-            return data.DAI
-        } catch {
-            return undefined
-        }
-    }, [chainId])
+    const [G$Price] = usePromise(() => g$Price().then(({ DAI }) => DAI).catch(noop), [chainId])
 
     const formattedTime = useMemo(
         () => (isToday(claimTime) ? 'today' : 'tomorrow') + ' ' + format(claimTime, 'hh aaa'),
@@ -55,8 +47,9 @@ export const ClaimBalance = () => {
     )
 
     const switchChain = useCallback(() => {
-        const chain = ChainIdHex[SupportedChains[network as keyof typeof SupportedChains]]
-        void setChain({ chainId: chain })
+        const chainId = ChainIdHex[SupportedChains[network as keyof typeof SupportedChains]]
+        
+        setChain({ chainId })
     }, [setChain])
 
     return (
