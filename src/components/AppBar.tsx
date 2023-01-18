@@ -19,7 +19,7 @@ import { useNativeBalance } from '@gooddollar/web3sdk-v2'
 import NetworkModal from './NetworkModal'
 import AppNotice from './AppNotice'
 import { isMobile } from 'react-device-detect'
-import { Text, useBreakpointValue } from 'native-base'
+import { Text, useBreakpointValue, ITextProps } from 'native-base'
 
 const AppBarWrapper = styled.header`
     background: ${({ theme }) => theme.color.secondaryBg};
@@ -149,23 +149,22 @@ const TopBar = styled.div<{ $mobile: boolean }>`
 const G$Balance = ({
     price,
     color,
-    padding = '2',
     display = 'block',
+    ...props
 }: {
     price: Fraction | undefined
     color: string
-    padding?: string
     display?: string
-}) => (
+} & ITextProps) => (
     <Text
         display={display}
         fontFamily="subheading"
         fontWeight="400"
         color={color}
         fontSize="xs"
-        padding={padding}
         justifyContent="flex-start"
         alignSelf="flex-start"
+        {...props}
     >
         {price ? `1,000G$ = ${price.multiply(1000).toFixed(3)}USD` : ''}
     </Text>
@@ -217,7 +216,7 @@ function AppBar(): JSX.Element {
                                     className="w-auto site-logo lg:block"
                                 />
                             </LogoWrapper>
-                            <G$Balance price={G$Price} display={showBalance} color={fontColor} />
+                            <G$Balance price={G$Price} display={showBalance} color={fontColor} pl="0" p="2" />
                         </div>
 
                         <div className="flex flex-row space-x-2">

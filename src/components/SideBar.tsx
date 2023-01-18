@@ -46,7 +46,7 @@ const SideBarSC = styled.aside<{ $mobile?: boolean }>`
     }
     @media screen and (min-height: 901px) {
         .balance {
-            padding: 17px 7px 5px 22px;
+            padding: 0px 7px 5px 22px;
         }
 
         nav a {
