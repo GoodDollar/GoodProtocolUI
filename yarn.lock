@@ -3606,9 +3606,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+"@gooddollar/good-design@npm:^0.0.24":
   version: 0.0.24
-  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=e2144d&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  resolution: "@gooddollar/good-design@npm:0.0.24"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -3641,7 +3641,7 @@ __metadata:
     typescript: 4.7.4
   peerDependencies:
     "@usedapp/core": 1.*
-  checksum: 5a0124f8d2264f29a079f445c461fda7853e3d058478cf31c158dcc220ef51315ac0634fc9fcd54083c96cc55c6d4f200fa2ec3f3f0a534458aa0939b4f5d39b
+  checksum: ada06e12c5a74c7f9440543e0c3a2cb64c4f19c7be2da4ae16f92b46205965db737b1208ddd4a90c2a761bc8ff590d8320545f3660250474de77885965d10244
   languageName: node
   linkType: hard
 
@@ -3691,10 +3691,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
+    "@gooddollar/good-design": ^0.0.24
     "@gooddollar/goodprotocol": 1.0.29-beta.5
     "@gooddollar/web3sdk": ^0.1.12
-    "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2"
+    "@gooddollar/web3sdk-v2": ^0.1.59
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^3.12.1
@@ -3864,15 +3864,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
-  version: 0.1.58
-  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=ffb1d8&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+"@gooddollar/web3sdk-v2@npm:^0.1.59":
+  version: 0.1.59
+  resolution: "@gooddollar/web3sdk-v2@npm:0.1.59"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
     "@gooddollar/bridge-app": ^1.2.2
     "@gooddollar/bridge-contracts": ^1.0.10
-    "@gooddollar/goodprotocol": 1.0.29-beta.5
+    "@gooddollar/goodprotocol": 1.0.30-beta.3
     "@react-native-firebase/analytics": ^16.4.6
     "@sentry/browser": 7.16.0
     "@sentry/react-native": ^4.8.0
@@ -3893,7 +3893,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 641224788ab4dab017c2ddfcd36d2824a8ea2b0983a869e12a8f61f9c1c4517cb894bbf4551dff9bb313a804baa0a313dcbd84da31fc5b1d56ce2397f2d91154
+  checksum: 6476ee9c6e0f493fb857cce25438ad1757402f83da4976ab936e7eedcf35cac8d8e1d7d03f15838644a54640558e26e7d1132ba87bcf3b16b2bcc80b906aee69
   languageName: node
   linkType: hard
 

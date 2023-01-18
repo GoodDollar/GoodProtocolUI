@@ -2,12 +2,13 @@ import { useStakerInfo, useGetEnvChainId, useReadOnlyProvider } from '@gooddolla
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { ModalType } from 'components/Savings/SavingsModal'
-import { ModalButton } from 'components/Savings/SavingsModal/ModalButton'
+import { ModalButton } from 'components/Savings/SavingsModal/SavingsModalButtons'
 import React, { useEffect, useState } from 'react'
 import { LoadingPlaceHolder } from 'theme/components'
 import { NETWORK_LABEL } from 'constants/networks'
 import { ChainId } from '@sushiswap/sdk'
 import { hasSavingsBalance } from 'functions'
+import { noop } from 'lodash'
 
 export const SavingsCardRow = ({
     account,
@@ -27,7 +28,7 @@ export const SavingsCardRow = ({
 
     useEffect(() => {
         if (account && provider) {
-            hasSavingsBalance({ account, provider, defaultEnv }).then(setHasBalance)
+            hasSavingsBalance({ account, provider, defaultEnv }).then(setHasBalance).catch(noop)
         }
     }, [account, setHasBalance, provider, defaultEnv, requiredChain])
 

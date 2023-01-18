@@ -20,6 +20,7 @@ export type HeadingCopy = {
     statsKey: string // key to use for mobile 'tables'
 }[]
 
+//todo: SavingsCard can be merged into 1 component together with Savings
 export const SavingsCard = ({ account }: { account: string }): JSX.Element => {
     const { i18n } = useLingui()
     const { chainId } = useActiveWeb3React()

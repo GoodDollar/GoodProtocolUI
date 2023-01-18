@@ -6,7 +6,7 @@ export type SavingsBalance = {
     defaultEnv: string
 }
 
-export const hasSavingsBalance = ({ account, provider, defaultEnv }: SavingsBalance): Promise<boolean> => {
+export const hasSavingsBalance = ({ account, provider, defaultEnv }: SavingsBalance): Promise<boolean | undefined> => {
     const sdk = new SavingsSDK(provider, defaultEnv)
 
     return sdk.hasBalance(account).catch(() => false)
