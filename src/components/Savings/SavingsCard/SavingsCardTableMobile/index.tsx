@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { useStakerInfo, useGetEnvChainId, useReadOnlyProvider } from '@gooddollar/web3sdk-v2'
+import React from 'react'
+import { useStakerInfo } from '@gooddollar/web3sdk-v2'
 
 import Card from 'components/gd/Card'
 import { ModalType } from 'components/Savings/SavingsModal'
 
 import type { HeadingCopy } from '..'
 import { ChainId } from '@sushiswap/sdk'
-import { hasSavingsBalance } from 'functions'
 import { SavingsCellsMobile } from './SavingsCellsMobile'
+import useHasBalance from 'hooks/useHasBalance'
 
 export const SavingsCardTableMobile = ({
     account,
@@ -21,17 +21,7 @@ export const SavingsCardTableMobile = ({
     toggleModal: (type?: ModalType) => void
 }): JSX.Element => {
     const { stats, error } = useStakerInfo(requiredChain, 10, account)
-    const [hasBalance, setHasBalance] = useState<boolean | undefined>(false)
-    const { defaultEnv } = useGetEnvChainId(requiredChain)
-    const provider = useReadOnlyProvider(requiredChain)
-
-    useEffect(() => {
-        if (account && provider) {
-            void hasSavingsBalance({ account, provider, defaultEnv }).then((res) => {
-                setHasBalance(res)
-            })
-        }
-    }, [account, setHasBalance, provider, defaultEnv, requiredChain])
+    const hasBalance = useHasBalance(account, requiredChain)
 
     return (
         <>

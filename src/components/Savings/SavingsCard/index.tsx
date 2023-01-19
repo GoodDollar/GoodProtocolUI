@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useMemo } from 'react'
 import Card from 'components/gd/Card'
 import Title from 'components/gd/Title'
 import { t } from '@lingui/macro'
@@ -11,7 +11,7 @@ import { useWindowSize } from 'hooks/useWindowSize'
 
 import { SavingsCardRow } from 'components/Savings/SavingsCard/SavingsCardRow'
 import { SavingsCardTableMobile } from './SavingsCardTableMobile'
-import Web3SupportedNetworks from 'components/Web3SupportedNetworks'
+import Web3SupportedNetworks, { IWeb3SupportedNetworksProps } from 'components/Web3SupportedNetworks'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 
 export type HeadingCopy = {
@@ -41,7 +41,7 @@ export const SavingsCard = ({ account }: { account: string }): JSX.Element => {
         [setIsModalOpen, isModalOpen]
     )
 
-    const headings: HeadingCopy = [
+    const headings: HeadingCopy = useMemo(() => [
         {
             title: i18n._(t`TYPE`),
             questionText: i18n._(t``),
@@ -72,11 +72,12 @@ export const SavingsCard = ({ account }: { account: string }): JSX.Element => {
             questionText: i18n._(t`How much tokens your deposits have accumulated so far.`),
             statsKey: 'claimable',
         },
-        // {
-        //   title: `${i18n._(t`REWARDS EARNED`)}`,
-        //   questionText: i18n._(t`How many rewards have you earned and withdrawn.`) // to be added for V2
-        // },
-    ]
+    ], [i18n])
+
+    const [MobileCardRow, CardRow] = useMemo<IWeb3SupportedNetworksProps["onItem"][]>(() => [
+        ({ chain }) => <SavingsCardTableMobile account={account} requiredChain={chain} headings={headings} toggleModal={toggleModal} />,
+        ({ chain }) => <SavingsCardRow requiredChain={chain} account={account} toggleModal={toggleModal} />,
+    ], [account, toggleModal, headings])
 
     return (
         <>
@@ -85,16 +86,7 @@ export const SavingsCard = ({ account }: { account: string }): JSX.Element => {
                 <SavingsModal type={type} onDismiss={toggleModal} isOpen={isModalOpen} requiredChain={chainId} />
             )}
             {isMobile ? (
-                <Web3SupportedNetworks
-                    onItem={({ chain }) => (
-                        <SavingsCardTableMobile
-                            account={account}
-                            requiredChain={chain}
-                            headings={headings}
-                            toggleModal={toggleModal}
-                        />
-                    )}
-                />
+                <Web3SupportedNetworks onItem={MobileCardRow} />
             ) : (
                 <Card className="sm:mb-6 md:mb-4 card" contentWrapped={false} style={{ position: 'relative' }}>
                     <Table
@@ -110,11 +102,7 @@ export const SavingsCard = ({ account }: { account: string }): JSX.Element => {
                             </tr>
                         }
                     >
-                        <Web3SupportedNetworks
-                            onItem={({ chain }) => (
-                                <SavingsCardRow requiredChain={chain} account={account} toggleModal={toggleModal} />
-                            )}
-                        />
+                        <Web3SupportedNetworks onItem={CardRow} />
                     </Table>
                 </Card>
             )}

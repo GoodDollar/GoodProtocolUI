@@ -1,14 +1,13 @@
-import { useStakerInfo, useGetEnvChainId, useReadOnlyProvider } from '@gooddollar/web3sdk-v2'
+import React, { useEffect } from 'react'
+import { useStakerInfo } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
+import { ChainId } from '@sushiswap/sdk'
 import { ModalType } from 'components/Savings/SavingsModal'
 import { ModalButton } from 'components/Savings/SavingsModal/SavingsModalButtons'
-import React, { useEffect, useState } from 'react'
-import { LoadingPlaceHolder } from 'theme/components'
 import { NETWORK_LABEL } from 'constants/networks'
-import { ChainId } from '@sushiswap/sdk'
-import { hasSavingsBalance } from 'functions'
-import { noop } from 'lodash'
+import useHasBalance from 'hooks/useHasBalance'
+import { LoadingPlaceHolder } from 'theme/components'
 
 export const SavingsCardRow = ({
     account,
@@ -22,16 +21,8 @@ export const SavingsCardRow = ({
     const { i18n } = useLingui()
     const { stats, error } = useStakerInfo(requiredChain, 10, account)
 
-    const [hasBalance, setHasBalance] = useState<boolean | undefined>()
-    const { defaultEnv } = useGetEnvChainId(requiredChain)
-    const provider = useReadOnlyProvider(requiredChain)
-
-    useEffect(() => {
-        if (account && provider) {
-            hasSavingsBalance({ account, provider, defaultEnv }).then(setHasBalance).catch(noop)
-        }
-    }, [account, setHasBalance, provider, defaultEnv, requiredChain])
-
+    const hasBalance = useHasBalance(account, requiredChain)
+    
     useEffect(() => {
         if (error) {
             console.error('Unable to fetch staker info:', { error })

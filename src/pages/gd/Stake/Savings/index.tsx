@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect, FC } from 'react'
+import React, { useCallback, useState, useEffect, FC, useMemo } from 'react'
 import Table from 'components/gd/Table'
 import Title from 'components/gd/Title'
 import { QuestionHelper } from 'components'
@@ -17,7 +17,7 @@ import { HeadingCopy } from 'components/Savings/SavingsCard'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { ModalButton } from 'components/Savings/SavingsModal/SavingsModalButtons'
 import { ChainId } from '@sushiswap/sdk'
-import Web3SupportedNetworks from 'components/Web3SupportedNetworks'
+import Web3SupportedNetworks, { IWeb3SupportedNetworksProps } from 'components/Web3SupportedNetworks'
 
 const SavingsDeposit = styled.div`
     margin-top: 10px;
@@ -111,7 +111,7 @@ export const Savings: FC = () => {
         setModalData(undefined)
     }, [sendData, setModalData])
 
-    const headings: HeadingCopy = [
+    const headings: HeadingCopy = useMemo(() => [
         {
             title: i18n._(t`Token`),
             questionText: i18n._(t`This is the token that you can deposit into the savings contract.`),
@@ -142,7 +142,13 @@ export const Savings: FC = () => {
             questionText: i18n._(t`Total rewards claimed.`),
             statsKey: 'totalRewardsPaid',
         },
-    ]
+    ], [i18n])
+
+    const [MobileRow, Row] = useMemo<IWeb3SupportedNetworksProps["onItem"][]>(() => [
+        ({ chain }) => <SavingsDepositMobile requiredChain={chain} headings={headings} showModal={showModal} />,
+        ({ chain }) => <SavingRow chainId={chain} headings={headings} showModal={showModal} />,
+    ], [headings, showModal])
+    
     return (
         <SavingsDeposit>
             <div className="mt-12"></div>
@@ -153,11 +159,7 @@ export const Savings: FC = () => {
             <div className="mt-4"></div>
 
             {isMobile ? (
-                <Web3SupportedNetworks
-                    onItem={({ chain }) => (
-                        <SavingsDepositMobile requiredChain={chain} headings={headings} showModal={showModal} />
-                    )}
-                />
+                <Web3SupportedNetworks onItem={MobileRow} />
             ) : (
                 <Wrapper>
                     <Table
@@ -174,11 +176,7 @@ export const Savings: FC = () => {
                             </tr>
                         }
                     >
-                        <Web3SupportedNetworks
-                            onItem={({ chain }) => (
-                                <SavingRow chainId={chain} headings={headings} showModal={showModal} />
-                            )}
-                        />
+                        <Web3SupportedNetworks onItem={Row} />
                     </Table>
                 </Wrapper>
             )}
