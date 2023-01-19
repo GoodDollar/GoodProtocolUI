@@ -7,9 +7,10 @@ import { ChainIdHex } from '../../../constants'
 import { useClaim } from '@gooddollar/web3sdk-v2'
 import usePromise from 'hooks/usePromise'
 import { g$Price } from '@gooddollar/web3sdk'
-import { isToday, format } from 'date-fns'
+import { format } from 'date-fns'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useClaiming } from 'hooks/useClaiming'
+import { noop } from 'lodash'
 
 const NextClaim = ({ time }: { time: string }) => (
     <Text fontFamily="subheading" fontWeight="normal" fontSize="xs" color="main">
@@ -33,12 +34,15 @@ const ClaimTimer = () => {
 export const ClaimBalance = () => {
     const { claimTime } = useClaim('everyBlock')
     const { chainId } = useActiveWeb3React()
-    const [G$Price] = usePromise(() => g$Price().then(({ DAI }) => DAI).catch(noop), [chainId])
-
-    const formattedTime = useMemo(
-        () => (isToday(claimTime) ? 'today' : 'tomorrow') + ' ' + format(claimTime, 'hh aaa'),
-        [claimTime]
+    const [G$Price] = usePromise(
+        () =>
+            g$Price()
+                .then(({ DAI }) => DAI)
+                .catch(() => undefined),
+        [chainId]
     )
+
+    const formattedTime = useMemo(() => format(claimTime, 'hh aaa'), [claimTime])
     const [{ connectedChain }, setChain] = useSetChain()
 
     const network = useMemo(
@@ -48,8 +52,8 @@ export const ClaimBalance = () => {
 
     const switchChain = useCallback(() => {
         const chainId = ChainIdHex[SupportedChains[network as keyof typeof SupportedChains]]
-        
-        setChain({ chainId })
+
+        setChain({ chainId }).catch(noop)
     }, [setChain])
 
     return (

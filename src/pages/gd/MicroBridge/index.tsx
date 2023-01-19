@@ -10,6 +10,7 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 
 const mockedCards: Array<IClaimCard> = [
     {
+        id: 'attention',
         title: {
             text: 'Attention!',
             color: 'primary',
@@ -17,15 +18,28 @@ const mockedCards: Array<IClaimCard> = [
         content: [
             {
                 list: [
-                    { key: '⚠️ Microbridge fee is', value: '0.1%' },
-                    { key: '⚠️ Minimum fee is', value: '1 G$' },
-                    { key: '⚠️ Maximum fee is', value: '10 G$' },
+                    {
+                        id: 'bridge-fee',
+                        key: '⚠️ Microbridge fee is',
+                        value: '0.1%',
+                    },
+                    {
+                        id: 'min-fee',
+                        key: '⚠️ Minimum fee is',
+                        value: '1 G$',
+                    },
+                    {
+                        id: 'max-fee',
+                        key: '⚠️ Maximum fee is',
+                        value: '10 G$',
+                    },
                 ],
             },
         ],
         bgColor: 'goodWhite.100',
     },
     {
+        id: 'watch-vid',
         title: {
             text: 'Watch this video to learn more about bridging',
             color: 'white',
@@ -45,6 +59,7 @@ const mockedCards: Array<IClaimCard> = [
         bgColor: 'primary',
     },
     {
+        id: 'need-to-bridge',
         title: {
             text: 'Need to bridge larger amounts?',
             color: 'primary',

@@ -34,6 +34,7 @@ const Claim = memo(() => {
     })
     const mockedCards: Array<IClaimCard> = [
         {
+            id: 'how-to-claim',
             title: {
                 text: 'How to claim G$',
                 color: 'primary',
@@ -54,6 +55,7 @@ const Claim = memo(() => {
             hide: claimed,
         },
         {
+            id: 'already-claimed',
             title: {
                 text: `Claimed today? Time to use your G$. 👀`,
                 color: 'white',
@@ -75,6 +77,7 @@ const Claim = memo(() => {
             bgColor: 'primary',
         },
         {
+            id: 'gd-by-numbers',
             title: {
                 text: 'GoodDollar by numbers',
                 color: 'primary',
@@ -82,9 +85,21 @@ const Claim = memo(() => {
             content: [
                 {
                     list: [
-                        { key: '🪂 Total UBI Distributed', value: '$327.5k' },
-                        { key: '💰 Unique UBI Claimers', value: '$475k' },
-                        { key: '🚢  Market Capitalization', value: '$876k' },
+                        {
+                            id: 'total-distributed',
+                            key: '🪂 Total UBI Distributed',
+                            value: '$327.5k',
+                        },
+                        {
+                            id: 'unique-claimers',
+                            key: '💰 Unique UBI Claimers',
+                            value: '$475k',
+                        },
+                        {
+                            id: 'market-capitalization',
+                            key: '🚢  Market Capitalization',
+                            value: '$876k',
+                        },
                     ],
                 },
             ],
