@@ -22,7 +22,7 @@ export const SavingsCardRow = ({
     const { stats, error } = useStakerInfo(requiredChain, 10, account)
 
     const hasBalance = useHasBalance(account, requiredChain)
-    
+
     useEffect(() => {
         if (error) {
             console.error('Unable to fetch staker info:', { error })

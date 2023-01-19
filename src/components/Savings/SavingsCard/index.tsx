@@ -41,43 +41,56 @@ export const SavingsCard = ({ account }: { account: string }): JSX.Element => {
         [setIsModalOpen, isModalOpen]
     )
 
-    const headings: HeadingCopy = useMemo(() => [
-        {
-            title: i18n._(t`TYPE`),
-            questionText: i18n._(t``),
-            statsKey: '',
-        },
-        {
-            title: i18n._(t`TOKEN`),
-            questionText: i18n._(t`This is the token that is currently being staked.`),
-            statsKey: 'token',
-        },
-        {
-            title: i18n._(t`PROTOCOL`),
-            questionText: i18n._(t`This is the protocol that the token is staked to.`),
-            statsKey: 'protocol',
-        },
-        {
-            title: i18n._(t`NETWORK`),
-            questionText: i18n._(t`The network this savings account belongs to`),
-            statsKey: 'network',
-        },
-        {
-            title: i18n._(t`DEPOSIT`),
-            questionText: i18n._(t`The total of your deposits which accumulates the rewards.`),
-            statsKey: 'principle',
-        },
-        {
-            title: `${i18n._(t`CLAIMABLE REWARDS`)}`,
-            questionText: i18n._(t`How much tokens your deposits have accumulated so far.`),
-            statsKey: 'claimable',
-        },
-    ], [i18n])
+    const headings: HeadingCopy = useMemo(
+        () => [
+            {
+                title: i18n._(t`TYPE`),
+                questionText: i18n._(t``),
+                statsKey: '',
+            },
+            {
+                title: i18n._(t`TOKEN`),
+                questionText: i18n._(t`This is the token that is currently being staked.`),
+                statsKey: 'token',
+            },
+            {
+                title: i18n._(t`PROTOCOL`),
+                questionText: i18n._(t`This is the protocol that the token is staked to.`),
+                statsKey: 'protocol',
+            },
+            {
+                title: i18n._(t`NETWORK`),
+                questionText: i18n._(t`The network this savings account belongs to`),
+                statsKey: 'network',
+            },
+            {
+                title: i18n._(t`DEPOSIT`),
+                questionText: i18n._(t`The total of your deposits which accumulates the rewards.`),
+                statsKey: 'principle',
+            },
+            {
+                title: `${i18n._(t`CLAIMABLE REWARDS`)}`,
+                questionText: i18n._(t`How much tokens your deposits have accumulated so far.`),
+                statsKey: 'claimable',
+            },
+        ],
+        [i18n]
+    )
 
-    const [MobileCardRow, CardRow] = useMemo<IWeb3SupportedNetworksProps["onItem"][]>(() => [
-        ({ chain }) => <SavingsCardTableMobile account={account} requiredChain={chain} headings={headings} toggleModal={toggleModal} />,
-        ({ chain }) => <SavingsCardRow requiredChain={chain} account={account} toggleModal={toggleModal} />,
-    ], [account, toggleModal, headings])
+    const [MobileCardRow, CardRow] = useMemo<IWeb3SupportedNetworksProps['onItem'][]>(
+        () => [
+            ({ chain }) => (
+                <SavingsCardTableMobile
+                    account={account}
+                    requiredChain={chain}
+                    headings={headings}
+                    toggleModal={toggleModal}
+                />
+            ),
+            ({ chain }) => <SavingsCardRow requiredChain={chain} account={account} toggleModal={toggleModal} />,
+        ],
+        [account, toggleModal, headings]
+    )
 
     return (
         <>
