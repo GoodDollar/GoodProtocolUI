@@ -211,7 +211,9 @@ export const ExternalLink: React.FC<{
 
     return (
         <a
-            className={`${withDefaultStyles && 'hover:underline'} p-2 line md:p-1 xl:p-3 whitespace-nowrap`}
+            className={`${
+                withDefaultStyles && 'hover:underline'
+            } py-2 pr-2 line md:p-1 xl:py-3 xl:pr-3 whitespace-nowrap flex flex-row items-center`}
             href={url}
             target="_blank"
             rel="noreferrer"

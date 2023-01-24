@@ -206,7 +206,7 @@ function AppBar(): JSX.Element {
         >
             <AppNotice text={i18n._(t``)} link={['']} show={false}></AppNotice>
             <>
-                <div className="lg:px-8 lg:py-4">
+                <div className="lg:px-8 lg:pt-4 lg:pb-2">
                     <TopBar $mobile={isMobile} className="flex justify-between">
                         <div className="flex flex-col items-center">
                             <LogoWrapper $mobile={isMobile} className="flex-shrink-0">
@@ -265,7 +265,7 @@ function AppBar(): JSX.Element {
                     </div>
                 </div>
 
-                <SidebarContainer $mobile={isMobile} className={`lg:hidden ${sidebarOpen ? ' open ' : ''}`}>
+                <SidebarContainer $mobile={isMobile} className={`${sidebarOpen ? ' open ' : ''} w-64`}>
                     <SideBar mobile={isMobile} closeSidebar={toggleSideBar} />
                 </SidebarContainer>
                 <SidebarOverlay
