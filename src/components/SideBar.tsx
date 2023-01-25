@@ -223,7 +223,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                     {internalLinks
                         .filter((internal) => internal.show)
                         .map(({ route, text }) => (
-                            <NavLink to={route} onPress={onTabClick}>
+                            <NavLink key={route} to={route} onPress={onTabClick}>
                                 <Text>{text}</Text>
                             </NavLink>
                         ))}
