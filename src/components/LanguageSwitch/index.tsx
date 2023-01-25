@@ -60,8 +60,8 @@ const MenuItemFlag = styled.img`
 `
 
 const MenuButtonFlag = styled.img`
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     vertical-align: middle;
 `
 

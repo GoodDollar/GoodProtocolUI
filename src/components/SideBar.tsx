@@ -2,7 +2,7 @@ import { useG$Balance, useG$Tokens, AsyncStorage, SupportedV2Networks } from '@g
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import WalletBalance from 'components/WalletBalance'
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { ReactComponent as WalletBalanceIcon } from '../assets/images/walletBalanceIcon.svg'
 import DiscordLogo from '../assets/images/discord-logo-new.png'
 import TelegramLogo from '../assets/images/telegram.png'
@@ -14,11 +14,11 @@ import LanguageSwitch from './LanguageSwitch'
 import { NavLink } from './Link'
 import usePromise from '../hooks/usePromise'
 import { ExternalLink } from 'theme'
-import { Text, Box, View, useBreakpointValue } from 'native-base'
+import { Text, Box, View, useBreakpointValue, HStack, useColorModeValue } from 'native-base'
 
 const SocialsLink: React.FC<{ network: string; logo: string; url: string }> = ({ network, logo, url }) => (
     <a href={url} target="_blank" className="flex items-center space-x-2" rel="noreferrer">
-        <img src={logo} alt={`${network} logo`} width="22" height="22" />
+        <img src={logo} alt={`${network} logo`} width="20" height="20" />
     </a>
 )
 
@@ -31,8 +31,10 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const balances = useG$Balance(10)
     const [G$, GOOD, GDX] = useG$Tokens()
     const [imported, setImported] = useState<boolean>(false)
-    // todo: add darktheme values
-    // todo: add hover effects nav links
+
+    const bgContainer = useColorModeValue('goodWhite.100', '#151A30')
+    const bgWalletBalance = useColorModeValue('white', '#1a1f38')
+    const textColor = useColorModeValue('goodGrey.700', 'goodGrey.300')
     const containerStyles = useBreakpointValue({
         base: {
             width: '90%',
@@ -114,91 +116,131 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
         }
     }
 
+    const externalLinks = useMemo(
+        () => [
+            {
+                label: i18n._(t`Multichain Bridge`),
+                url: 'https://app.multichain.org',
+                dataAttr: 'multichain',
+                withIcon: true,
+                show: process.env.REACT_APP_CELO_PHASE_1,
+            },
+            {
+                label: i18n._(t`Wallet`),
+                url: 'https://wallet.gooddollar.org',
+                dataAttr: 'wallet',
+                withIcon: true,
+                show: true,
+            },
+            {
+                label: i18n._(t`Fuse Bridge`),
+                url: 'https://app.fuse.fi/#/bridge',
+                dataAttr: 'bridge',
+                withIcon: true,
+                show: true,
+            },
+            {
+                label: i18n._(t`Docs`),
+                url: 'https://docs.gooddollar.org',
+                dataAttr: 'docs',
+                withIcon: true,
+                show: true,
+            },
+            {
+                label: i18n._(t`Good Airdrop`),
+                url: 'https://airdrop.gooddollar.org',
+                dataAttr: 'airdrop',
+                withIcon: true,
+                show: true,
+            },
+        ],
+        [i18n, process.env]
+    )
+
+    const internalLinks = useMemo(
+        () => [
+            {
+                route: '/claim',
+                text: 'Claim',
+                show: true,
+            },
+            {
+                route: '/swap',
+                text: 'Swap',
+                show: true,
+            },
+            {
+                route: '/stakes',
+                text: 'Stake',
+                show: true,
+            },
+            {
+                route: '/portfolio',
+                text: 'Portfolio',
+                show: true,
+            },
+            {
+                route: '/microbridge',
+                text: 'Micro Bridge',
+                show: process.env.REACT_APP_CELO_PHASE_3,
+            },
+            {
+                route: '/dashboard',
+                text: 'Dashboard',
+                show: true,
+            },
+        ],
+        [i18n, process.env]
+    )
+
     return (
         <View
             flexDirection="column"
-            backgroundColor="goodWhite.100"
+            backgroundColor={bgContainer}
             justifyContent="space-between"
             style={containerStyles}
         >
-            <Box display="flex" justifyContent="center" flexDirection="column" px="6" py="4">
+            <Box display="flex" justifyContent="center" flexDirection="column" px="6" py="4" bg={bgContainer}>
                 {account && (
-                    <div className="px-4 pt-2 bg-white balance rounded-xl">
+                    <Box px={4} pt={2} bg={bgWalletBalance} borderRadius={4}>
                         <div className="flex items-center gap-2">
                             <WalletBalanceIcon />
-                            <Text fontFamily="subheading" fontSize="sm" fontWeight="normal" color="goodGrey.700">
+                            <Text fontFamily="subheading" fontSize="sm" fontWeight="normal" color={textColor}>
                                 {i18n._(t`Wallet balance`)}
                             </Text>
                         </div>
-                        <div className="flex flex-col pl-8">
+                        <Box display="flex" flexDir="col" pl={8}>
                             {account && <WalletBalance balances={balances} chainId={chainId} />}
                             {!loading && !imported && (
                                 <Text fontFamily="subheading" fontSize="xs" onPress={importToMetamask} color="primary">
                                     Import to Metamask
                                 </Text>
                             )}
-                        </div>
-                    </div>
+                        </Box>
+                    </Box>
                 )}
                 <nav className="flex flex-col">
-                    {process.env.REACT_APP_CELO_PHASE_2 && (
-                        <NavLink to={'/claim'} onClick={onTabClick}>
-                            {i18n._(t`Claim`)}
-                        </NavLink>
-                    )}
-                    <NavLink to={'/dashboard'} onClick={onTabClick}>
-                        {i18n._(t`Dashboard`)}
-                    </NavLink>
-                    <NavLink to={'/swap'} onClick={onTabClick}>
-                        {i18n._(t`Swap`)}
-                    </NavLink>
-                    <NavLink to={'/stakes'} onClick={onTabClick}>
-                        {i18n._(t`Stake`)}
-                    </NavLink>
-                    <NavLink to={'/portfolio'} onClick={onTabClick}>
-                        {i18n._(t`Portfolio`)}
-                    </NavLink>
-                    {process.env.REACT_APP_CELO_PHASE_3 && (
-                        <NavLink to={'/microbridge'} onClick={onTabClick}>
-                            {i18n._(t`Micro Bridge`)}
-                        </NavLink>
-                    )}
-                    <ExternalLink
-                        label={i18n._(t`Wallet`)}
-                        url="https://wallet.gooddollar.org/"
-                        dataAttr="wallet"
-                        withIcon
-                    />
-                    <ExternalLink
-                        label={i18n._(t`Fuse Bridge`)}
-                        url="https://app.fuse.fi/#/bridge"
-                        dataAttr="bridge"
-                        withIcon
-                    />
-                    {process.env.REACT_APP_CELO_PHASE_1 && (
-                        <ExternalLink
-                            label={i18n._(t`Multichain Bridge`)}
-                            url="https://app.multichain.org"
-                            dataAttr="multichain"
-                            withIcon
-                        />
-                    )}
-                    <ExternalLink label={i18n._(t`Docs`)} url="https://docs.gooddollar.org" dataAttr="docs" withIcon />
-                    <ExternalLink
-                        label={i18n._(t`Good Airdrop`)}
-                        url="https://airdrop.gooddollar.org"
-                        dataAttr="airdrop"
-                        withIcon
-                    />
+                    {internalLinks
+                        .filter((internal) => internal.show)
+                        .map(({ route, text }) => (
+                            <NavLink to={route} onPress={onTabClick}>
+                                <Text>{text}</Text>
+                            </NavLink>
+                        ))}
+
+                    {externalLinks
+                        .filter((external) => external.show)
+                        .map(({ label, url, dataAttr, withIcon }) => (
+                            <ExternalLink key={label} label={label} url={url} dataAttr={dataAttr} withIcon={withIcon} />
+                        ))}
                 </nav>
 
-                <div className="flex flex-col justify-center h-20 gap-6">
+                <div className="flex flex-col justify-center h-20 gap-3 mt-2.5">
                     <div className="flex flex-row h-6 gap-10">
-                        <LanguageSwitch />
                         <div className="flex items-center justify-center">
                             <svg
-                                width="22"
-                                height="22"
+                                width="24"
+                                height="24"
                                 viewBox="0 0 29 29"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -218,12 +260,24 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                                 )}
                             </svg>
                         </div>
+                        <LanguageSwitch />
                     </div>
-                    <div className="flex flex-row items-center justify-start h-6 gap-10 pl-1">
-                        <SocialsLink network="twitter" logo={TwitterLogo} url="https://twitter.com/gooddollarorg" />
-                        <SocialsLink network="telegram" logo={TelegramLogo} url="https://t.me/GoodDollarX" />
-                        <SocialsLink network="discord" logo={DiscordLogo} url="https://discord.gg/RKVHwdQtme" />
-                    </div>
+                    <Box
+                        display="flex"
+                        flexDir="row"
+                        alignItems="center"
+                        justifyContent="justify-start"
+                        borderTopWidth={1}
+                        borderTopColor="borderGrey"
+                        pt={4}
+                        pl={1}
+                    >
+                        <HStack space={10}>
+                            <SocialsLink network="twitter" logo={TwitterLogo} url="https://twitter.com/gooddollarorg" />
+                            <SocialsLink network="telegram" logo={TelegramLogo} url="https://t.me/GoodDollarX" />
+                            <SocialsLink network="discord" logo={DiscordLogo} url="https://discord.gg/RKVHwdQtme" />
+                        </HStack>
+                    </Box>
                 </div>
             </Box>
         </View>

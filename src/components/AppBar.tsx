@@ -264,15 +264,18 @@ function AppBar(): JSX.Element {
                         <G$Balance price={G$Price} color={fontColor} padding="0" />
                     </div>
                 </div>
-
-                <SidebarContainer $mobile={isMobile} className={`${sidebarOpen ? ' open ' : ''} w-64`}>
-                    <SideBar mobile={isMobile} closeSidebar={toggleSideBar} />
-                </SidebarContainer>
-                <SidebarOverlay
-                    id="overlay"
-                    onClick={toggleSideBar}
-                    className={`fixed lg:hidden w-full ${sidebarOpen ? ' open ' : ''}`}
-                ></SidebarOverlay>
+                {isMobile && (
+                    <>
+                        <SidebarContainer $mobile={isMobile} className={`${sidebarOpen ? ' open ' : ''} w-64`}>
+                            <SideBar mobile={isMobile} closeSidebar={toggleSideBar} />
+                        </SidebarContainer>
+                        <SidebarOverlay
+                            id="overlay"
+                            onClick={toggleSideBar}
+                            className={`fixed lg:hidden w-full ${sidebarOpen ? ' open ' : ''}`}
+                        ></SidebarOverlay>
+                    </>
+                )}
             </>
         </AppBarWrapper>
     )

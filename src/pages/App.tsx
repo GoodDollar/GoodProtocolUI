@@ -8,12 +8,14 @@ import { AppDispatch } from '../state'
 import { updateUserDarkMode } from '../state/user/actions'
 import { parse } from 'qs'
 import isEqual from 'lodash/isEqual'
+import SideBar from '../components/SideBar'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useFaucet } from '@gooddollar/web3sdk-v2'
 import TransactionUpdater from '../state/transactions/updater'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
+import { isMobile } from 'react-device-detect'
 
 export const Beta = styled.div`
     font-style: normal;
@@ -114,6 +116,7 @@ function App(): JSX.Element {
             <div className="flex flex-col h-screen overflow-hidden">
                 <AppBar />
                 <Wrapper className="flex flex-grow overflow-hidden">
+                    {!isMobile && <SideBar />}
                     <MainBody
                         ref={bodyRef}
                         className="z-0 flex flex-col items-center justify-between flex-grow h-full px-4 pt-4 pb-4 overflow-x-hidden overflow-y-auto sm:pt-8 md:pt-10"
