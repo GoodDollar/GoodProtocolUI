@@ -18,14 +18,15 @@ const WalletBalance = memo(({ balances, chainId }: WalletBalanceProps): JSX.Elem
     return (
         <div className="flex flex-col">
             {balances &&
-                Object.entries(balances).map((balance, index) => {
+                Object.entries(balances).map((balance) => {
+                    const ticker = balance[0]
                     const amount = balance[1]
 
                     if (balance[0] === 'GDX' && chains.includes(chainId as any)) {
-                        return <div key={index}></div>
+                        return <div key={ticker}></div>
                     }
                     return (
-                        <Fragment key={balance[0]}>
+                        <Fragment key={ticker}>
                             <span className="flex">
                                 {!amount ? (
                                     <LoadingPlaceHolder />

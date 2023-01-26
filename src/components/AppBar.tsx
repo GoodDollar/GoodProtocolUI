@@ -19,7 +19,8 @@ import { useNativeBalance } from '@gooddollar/web3sdk-v2'
 import NetworkModal from './NetworkModal'
 import AppNotice from './AppNotice'
 import { isMobile } from 'react-device-detect'
-import { Text, useBreakpointValue, ITextProps } from 'native-base'
+import { Text, useBreakpointValue, ITextProps, Pressable, HStack } from 'native-base'
+import { useWalletModalToggle } from '../state/application/hooks'
 
 const AppBarWrapper = styled.header`
     background: ${({ theme }) => theme.color.secondaryBg};
@@ -185,6 +186,7 @@ function AppBar(): JSX.Element {
         }
     }, [chainId])
     const [sidebarOpen, setSidebarOpen] = useState(false)
+    const toggleWalletModal = useWalletModalToggle()
 
     const toggleSideBar = useCallback(() => {
         setSidebarOpen(!sidebarOpen)
@@ -234,29 +236,43 @@ function AppBar(): JSX.Element {
                                 </button>
                             </div>
                             <div className="fixed bottom-0 left-0 flex flex-row items-center justify-center w-full lg:w-auto lg:relative lg:p-0 actions-wrapper lg:h-12 ">
-                                <div className="flex items-center justify-center w-full space-x-2 sm:justify-center">
-                                    {active && (
-                                        <div className="hidden xs:inline-block">
-                                            <Web3Network />
-                                        </div>
-                                    )}
+                                {active && (
+                                    <div className="hidden xs:inline-block">
+                                        <Web3Network />
+                                    </div>
+                                )}
+                                <Pressable
+                                    onPress={toggleWalletModal}
+                                    h={10}
+                                    display="flex"
+                                    alignItems="center"
+                                    px={3}
+                                    py={2}
+                                    ml={2}
+                                    borderWidth="1"
+                                    borderRadius="12px"
+                                    borderColor="borderBlue"
+                                >
                                     {account && chainId && nativeBalance ? (
-                                        <DivOutlined className="pr-1">
-                                            <div className="w-auto flex items-center rounded p-0.5 whitespace-nowrap cursor-pointer select-none pointer-events-auto">
-                                                <div className="px-3 py-2 bold">
-                                                    {parseFloat(nativeBalance).toFixed(4)}
-                                                    {'  '} {Currency.getNativeCurrencySymbol(chainId)}
-                                                </div>
-                                                <Web3Status />
-                                            </div>
-                                        </DivOutlined>
+                                        <HStack space={8} flexDirection="row">
+                                            <Text
+                                                fontSize="sm"
+                                                fontFamily="subheading"
+                                                fontWeight="normal"
+                                                color="primary"
+                                            >
+                                                {parseFloat(nativeBalance).toFixed(4)}{' '}
+                                                {Currency.getNativeCurrencySymbol(chainId)}
+                                            </Text>
+                                            <Web3Status />
+                                        </HStack>
                                     ) : (
                                         <div className="w-full">
                                             <Web3Status />
                                         </div>
                                     )}
-                                    <NetworkModal />
-                                </div>
+                                </Pressable>
+                                <NetworkModal />
                             </div>
                         </div>
                     </TopBar>
