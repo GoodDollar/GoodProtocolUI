@@ -15,6 +15,7 @@ const chains = Object.values(AdditionalChainId)
 
 const WalletBalance = memo(({ balances, chainId }: WalletBalanceProps): JSX.Element | null => {
     const textColor = useColorModeValue('goodGrey.700', 'goodGrey.300')
+    
     return (
         <div className="flex flex-col">
             {balances &&
