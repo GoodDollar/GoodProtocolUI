@@ -3775,7 +3775,7 @@ __metadata:
     "@fullhuman/postcss-purgecss": ^4.0.3
     "@gooddollar/good-design": ^0.0.27
     "@gooddollar/goodprotocol": 1.0.30-beta.3
-    "@gooddollar/web3sdk": ^0.1.15
+    "@gooddollar/web3sdk": ^0.1.16
     "@gooddollar/web3sdk-v2": ^0.1.59
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
@@ -3979,9 +3979,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/web3sdk@npm:^0.1.15":
-  version: 0.1.15
-  resolution: "@gooddollar/web3sdk@npm:0.1.15"
+"@gooddollar/web3sdk@npm:^0.1.16":
+  version: 0.1.16
+  resolution: "@gooddollar/web3sdk@npm:0.1.16"
   dependencies:
     "@apollo/client": ^3.2.0
     "@gooddollar/goodprotocol": 1.0.30-beta.3
@@ -4003,7 +4003,7 @@ __metadata:
     web3-eth: ^1.7.5
     web3-eth-contract: ^1.7.5
     web3-utils: ^1.7.5
-  checksum: 8b34d735792804195a6e3b54882f92f5042448f9a238001c269237de056bfc09ee1e1079692bc22c93a0f300fd19c0e04ca668e7a4b2dc5564e05dc8f755ae12
+  checksum: 2c670892a7d745b5df6d07b9479a2bbda866d6cf70e1286d8eec7db375ad699b531a948d52c28b9651dda469e3bbf1e1e6f6c997edb77bae81290b5d586110a8
   languageName: node
   linkType: hard
 
