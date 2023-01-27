@@ -1,13 +1,13 @@
 import { Currency } from '@sushiswap/sdk'
+import { Fraction } from '@uniswap/sdk-core'
 import React, { useState, useCallback } from 'react'
 import Logo from '../assets/images/logo.png'
 import LogoDark from '../assets/images/logo-dark.png'
-import LogoMobile from '../assets/images/logo-mobile.png'
 import { useActiveWeb3React } from '../hooks/useActiveWeb3React'
 import Web3Network from './Web3Network'
 import Web3Status from './Web3Status'
 import { useLingui } from '@lingui/react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { useApplicationTheme } from '../state/application/hooks'
 import { ReactComponent as Burger } from '../assets/images/burger.svg'
 import { ReactComponent as X } from '../assets/images/x.svg'
@@ -19,30 +19,27 @@ import { useNativeBalance } from '@gooddollar/web3sdk-v2'
 import NetworkModal from './NetworkModal'
 import AppNotice from './AppNotice'
 import { isMobile } from 'react-device-detect'
+import { Text, useBreakpointValue, ITextProps, Pressable, HStack } from 'native-base'
+import { useWalletModalToggle } from '../state/application/hooks'
 
 const AppBarWrapper = styled.header`
-    background: ${({ theme }) => theme.color.main};
-
-    ${({ theme }) =>
-        theme.darkMode
-            ? css`
-                  border-bottom: 1px solid rgba(208, 217, 228, 0.483146);
-              `
-            : css`
-                  box-shadow: ${theme.shadow.header};
-              `}
+    background: ${({ theme }) => theme.color.secondaryBg};
     .site-logo {
         height: 29px;
     }
+    height: 87px;
 
     .mobile-menu-button {
         display: none;
+    }
+    @media ${({ theme }) => theme.media.lg} {
+        box-shadow: ${({ theme }) => theme.shadow.headerNew};
     }
 
     @media ${({ theme }) => theme.media.md} {
         .actions-wrapper {
             background: ${({ theme }) => theme.color.main};
-            box-shadow: ${({ theme }) => (theme.darkMode ? 'none' : theme.shadow.header)};
+            box-shadow: ${({ theme }) => (theme.darkMode ? 'none' : theme.shadow.headerNew)};
             border-top: ${({ theme }) => (theme.darkMode ? '1px solid rgba(208, 217, 228, 0.483146)' : 'none')};
             margin: 0 !important;
         }
@@ -52,7 +49,8 @@ const AppBarWrapper = styled.header`
         }
 
         .site-logo {
-            height: 39px;
+            width: 131px;
+            height: 18.4px;
         }
     }
 `
@@ -69,6 +67,10 @@ export const LogoWrapper = styled.div<{ $mobile: boolean }>`
       display: flex;
       justify-content: center;
       align-items: center;
+      img {
+        width: 131px;
+        height: 18.4px;
+      }
     `}
 `
 
@@ -131,12 +133,49 @@ const SidebarOverlay = styled.div`
         height: 100%;
     }
 `
+// will be moved to native base soon
+const TopBar = styled.div<{ $mobile: boolean }>`
+    ${({ theme, $mobile }) =>
+        $mobile &&
+        `
+    box-shadow: ${theme.shadow.headerNew};
+    background: white;
+    height: 48px;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+  }`}
+`
+
+const G$Balance = ({
+    price,
+    color,
+    display = 'block',
+    ...props
+}: {
+    price: Fraction | undefined
+    color: string
+    display?: string
+} & ITextProps) => (
+    <Text
+        display={display}
+        fontFamily="subheading"
+        fontWeight="400"
+        color={color}
+        fontSize="xs"
+        justifyContent="flex-start"
+        alignSelf="flex-start"
+        {...props}
+    >
+        {price ? `1,000G$ = ${price.multiply(1000).toFixed(3)}USD` : ''}
+    </Text>
+)
 
 function AppBar(): JSX.Element {
     //eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [theme, setTheme] = useApplicationTheme()
     const { i18n } = useLingui()
-    const { account, chainId } = useActiveWeb3React()
+    const { account, chainId, active } = useActiveWeb3React()
     const nativeBalance = useNativeBalance()
     const [G$Price] = usePromise(async () => {
         try {
@@ -147,39 +186,46 @@ function AppBar(): JSX.Element {
         }
     }, [chainId])
     const [sidebarOpen, setSidebarOpen] = useState(false)
+    const toggleWalletModal = useWalletModalToggle()
 
     const toggleSideBar = useCallback(() => {
         setSidebarOpen(!sidebarOpen)
     }, [sidebarOpen])
 
+    const fontColor = useBreakpointValue({
+        base: 'goodGrey.400',
+        lg: 'lightGrey',
+    })
+    const showBalance = useBreakpointValue({
+        base: 'none',
+        lg: 'block',
+    })
+
     return (
         <AppBarWrapper
-            className="relative z-10 flex flex-row justify-between w-screen flex-nowrap"
+            className="relative z-10 flex flex-row justify-between w-screen flex-nowrap background"
             style={{ flexDirection: 'column' }}
         >
             <AppNotice text={i18n._(t``)} link={['']} show={false}></AppNotice>
             <>
-                <div className="md:px-4 pl-2.5 pr-1 py-1.5">
-                    <div className="flex items-center justify-between h-16">
-                        <div className="flex items-center">
+                <div className="lg:px-8 lg:pt-4 lg:pb-2">
+                    <TopBar $mobile={isMobile} className="flex justify-between">
+                        <div className="flex flex-col items-center">
                             <LogoWrapper $mobile={isMobile} className="flex-shrink-0">
                                 <img
                                     src={theme === 'dark' ? LogoDark : Logo}
                                     alt="GoodDollar"
-                                    className="hidden w-auto site-logo lg:block"
+                                    className="w-auto site-logo lg:block"
                                 />
-                                <img src={LogoMobile} alt="GoodDollar" className="w-auto h-7 lg:hidden" />
                             </LogoWrapper>
+                            <G$Balance price={G$Price} display={showBalance} color={fontColor} pl="0" p="2" />
                         </div>
 
                         <div className="flex flex-row space-x-2">
                             <div className="flex flex-row items-center space-x-2">
-                                <div className="ml-10 text-sm whitespace-nowrap lg:text-base">
-                                    {G$Price ? `1,000G$ = ${G$Price.multiply(1000).toFixed(3)}USD` : ''}
-                                </div>
                                 <button
                                     onClick={toggleSideBar}
-                                    className="inline-flex items-center justify-center p-2 rounded-md mobile-menu-button focus:outline-none"
+                                    className="inline-flex items-center justify-center rounded-md mobile-menu-button focus:outline-none"
                                 >
                                     <span className="sr-only">{i18n._(t`Open main menu`)}</span>
                                     {sidebarOpen ? (
@@ -189,41 +235,63 @@ function AppBar(): JSX.Element {
                                     )}
                                 </button>
                             </div>
-                            <div className="fixed bottom-0 left-0 flex flex-row items-center justify-center w-full p-4 lg:w-auto lg:relative lg:p-0 actions-wrapper ">
-                                <div className="flex items-center justify-center w-full space-x-2 sm:justify-center">
+                            <div className="fixed bottom-0 left-0 flex flex-row items-center justify-center w-full lg:w-auto lg:relative lg:p-0 actions-wrapper lg:h-12 ">
+                                {active && (
                                     <div className="hidden xs:inline-block">
                                         <Web3Network />
                                     </div>
+                                )}
+                                <Pressable
+                                    onPress={toggleWalletModal}
+                                    h={10}
+                                    display="flex"
+                                    alignItems="center"
+                                    px={3}
+                                    py={2}
+                                    ml={2}
+                                    borderWidth="1"
+                                    borderRadius="12px"
+                                    borderColor="borderBlue"
+                                >
                                     {account && chainId && nativeBalance ? (
-                                        <DivOutlined className="pr-1">
-                                            <div className="w-auto flex items-center rounded p-0.5 whitespace-nowrap   cursor-pointer select-none pointer-events-auto">
-                                                <div className="px-3 py-2 bold">
-                                                    {parseFloat(nativeBalance).toFixed(4)}
-                                                    {'  '} {Currency.getNativeCurrencySymbol(chainId)}
-                                                </div>
-                                                <Web3Status />
-                                            </div>
-                                        </DivOutlined>
+                                        <HStack space={8} flexDirection="row">
+                                            <Text
+                                                fontSize="sm"
+                                                fontFamily="subheading"
+                                                fontWeight="normal"
+                                                color="primary"
+                                            >
+                                                {parseFloat(nativeBalance).toFixed(4)}{' '}
+                                                {Currency.getNativeCurrencySymbol(chainId)}
+                                            </Text>
+                                            <Web3Status />
+                                        </HStack>
                                     ) : (
-                                        <div className="pr-1">
+                                        <div className="w-full">
                                             <Web3Status />
                                         </div>
                                     )}
-                                    <NetworkModal />
-                                </div>
+                                </Pressable>
+                                <NetworkModal />
                             </div>
                         </div>
+                    </TopBar>
+                    <div className="px-4 py-2 lg:hidden">
+                        <G$Balance price={G$Price} color={fontColor} padding="0" />
                     </div>
                 </div>
-
-                <SidebarContainer $mobile={isMobile} className={`lg:hidden ${sidebarOpen ? ' open ' : ''}`}>
-                    <SideBar mobile={isMobile} closeSidebar={toggleSideBar} />
-                </SidebarContainer>
-                <SidebarOverlay
-                    id="overlay"
-                    onClick={toggleSideBar}
-                    className={`fixed lg:hidden w-full ${sidebarOpen ? ' open ' : ''}`}
-                ></SidebarOverlay>
+                {isMobile && (
+                    <>
+                        <SidebarContainer $mobile={isMobile} className={`${sidebarOpen ? ' open ' : ''} w-64`}>
+                            <SideBar mobile={isMobile} closeSidebar={toggleSideBar} />
+                        </SidebarContainer>
+                        <SidebarOverlay
+                            id="overlay"
+                            onClick={toggleSideBar}
+                            className={`fixed lg:hidden w-full ${sidebarOpen ? ' open ' : ''}`}
+                        ></SidebarOverlay>
+                    </>
+                )}
             </>
         </AppBarWrapper>
     )

@@ -13,7 +13,8 @@ import { useLingui } from '@lingui/react'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useSetChain } from '@web3-onboard/react'
 
-import { getNetworkEnv, UnsupportedChainId } from '@gooddollar/web3sdk'
+import { getNetworkEnv } from '@gooddollar/web3sdk'
+import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 
 const TextWrapper = styled.div`
     font-style: normal;
@@ -33,9 +34,29 @@ const TextWrapper = styled.div`
     }
 `
 
+const ChainOption = ({ chainId, chain, toggleNetworkModal, switchChain, labels, icons }: any) => {
+    const onOptionClick = useCallback(() => {
+        toggleNetworkModal()
+        switchChain(chain)
+    }, [switchChain, toggleNetworkModal, chain])
+
+    return (
+        <Option
+            clickable={chainId !== chain}
+            active={chainId === chain}
+            header={labels[chain]}
+            subheader={null}
+            icon={icons[chain]}
+            id={String(chain)}
+            onClick={onOptionClick}
+        />
+    )
+}
+
 export default function NetworkModal(): JSX.Element | null {
     const { i18n } = useLingui()
     const { chainId, error } = useActiveWeb3React()
+    const sendData = useSendAnalyticsData()
 
     const [, setChain] = useSetChain()
     const networkModalOpen = useModalOpen(ApplicationModal.NETWORK)
@@ -43,29 +64,34 @@ export default function NetworkModal(): JSX.Element | null {
 
     const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[chainId]
     const network = getNetworkEnv()
+    const prodNetworks = process.env.REACT_APP_CELO_PHASE_1
+        ? [AdditionalChainId.CELO, ChainId.MAINNET, AdditionalChainId.FUSE]
+        : [ChainId.MAINNET, AdditionalChainId.FUSE]
 
     const allowedNetworks = useMemo(() => {
         switch (true) {
-            case network === 'production' && !error:
-                return [ChainId.MAINNET, AdditionalChainId.FUSE]
-
-            case network === 'production' && error instanceof UnsupportedChainId:
-                return [ChainId.MAINNET]
-
-            case network === 'staging' && !error:
-                return [AdditionalChainId.FUSE, AdditionalChainId.CELO]
-
+            case network === 'staging':
+            case network === 'fuse':
+                return [AdditionalChainId.CELO, AdditionalChainId.FUSE]
             default:
-                return [AdditionalChainId.FUSE, ChainId.MAINNET, AdditionalChainId.CELO]
+                return prodNetworks
         }
     }, [error, network])
 
     const switchChain = useCallback(
-        (key: ChainId | AdditionalChainId) => {
-            if ([ChainId.MAINNET, ChainId.RINKEBY, ChainId.GÖRLI].includes(key as any)) {
-                void setChain({ chainId: `0x${key.toString(16)}` })
-            } else {
-                void setChain({ chainId: ChainIdHex[key] })
+        async (chain: ChainId | AdditionalChainId) => {
+            const chainId = [ChainId.MAINNET, ChainId.RINKEBY, ChainId.GÖRLI].includes(chain as any)
+                ? `0x${chain.toString(16)}`
+                : ChainIdHex[chain]
+
+            const success = await setChain({ chainId })
+
+            if (success) {
+                sendData({
+                    event: 'network_switch',
+                    action: 'network_switch_success',
+                    network: ChainId[chain],
+                })
             }
         },
         [setChain]
@@ -85,23 +111,17 @@ export default function NetworkModal(): JSX.Element | null {
             </TextWrapper>
 
             <div className="flex flex-col mt-3 space-y-5 overflow-y-auto">
-                {allowedNetworks.map((key: ChainId | AdditionalChainId) => {
-                    return (
-                        <Option
-                            clickable={chainId !== key}
-                            active={chainId === key}
-                            header={NETWORK_LABEL[key]}
-                            subheader={null}
-                            icon={NETWORK_ICON[key]}
-                            id={String(key)}
-                            key={key}
-                            onClick={() => {
-                                toggleNetworkModal()
-                                switchChain(key)
-                            }}
-                        />
-                    )
-                })}
+                {allowedNetworks.map((chain: ChainId | AdditionalChainId) => (
+                    <ChainOption
+                        key={chain}
+                        chainId={chainId}
+                        chain={chain}
+                        labels={NETWORK_LABEL}
+                        icons={NETWORK_ICON}
+                        toggleNetworkModal={toggleNetworkModal}
+                        switchChain={switchChain}
+                    />
+                ))}
             </div>
         </Modal>
     )

@@ -2,8 +2,9 @@ import React, { memo } from 'react'
 import { ChainId } from '@sushiswap/sdk'
 import { Fragment } from 'react'
 import { LoadingPlaceHolder } from 'theme/components'
-import { AdditionalChainId } from '../../constants'
 import { G$Balances } from '@gooddollar/web3sdk-v2'
+import { AdditionalChainId } from '../../constants'
+import { Text, useColorModeValue } from 'native-base'
 
 export type WalletBalanceProps = {
     balances: G$Balances
@@ -12,30 +13,35 @@ export type WalletBalanceProps = {
 
 const chains = Object.values(AdditionalChainId)
 
-const WalletBalance = memo(({ balances, chainId }: WalletBalanceProps): JSX.Element | null => (
-    <div className="flex flex-col">
-        {balances &&
-            Object.entries(balances).map((balance) => {
-                const [token, data] = balance || []
-                const { amount } = data || {}
+const WalletBalance = memo(({ balances, chainId }: WalletBalanceProps): JSX.Element | null => {
+    const textColor = useColorModeValue('goodGrey.700', 'goodGrey.300')
 
-                if (token === 'GDX' && chains.includes(chainId as any)) {
-                    return <div key={token}></div>
-                }
+    return (
+        <div className="flex flex-col">
+            {balances &&
+                Object.entries(balances).map((balance) => {
+                    const ticker = balance[0]
+                    const amount = balance[1]
 
-                return (
-                    <Fragment key={token}>
-                        <span className="flex">
-                            {!amount ? (
-                                <LoadingPlaceHolder />
-                            ) : (
-                                amount.format({ suffix: '', prefix: amount.currency.ticker + ' - ' })
-                            )}
-                        </span>
-                    </Fragment>
-                )
-            })}
-    </div>
-))
+                    if (balance[0] === 'GDX' && chains.includes(chainId as any)) {
+                        return <div key={ticker}></div>
+                    }
+                    return (
+                        <Fragment key={ticker}>
+                            <span className="flex">
+                                {!amount ? (
+                                    <LoadingPlaceHolder />
+                                ) : (
+                                    <Text fontFamily="subheading" color={textColor} fontSize="sm">
+                                        {amount?.format({ suffix: '', prefix: amount.currency?.ticker + ' - ' })}
+                                    </Text>
+                                )}
+                            </span>
+                        </Fragment>
+                    )
+                })}
+        </div>
+    )
+})
 
 export default WalletBalance
