@@ -420,6 +420,7 @@
   "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers.": "Trocar G $ por GoodReserve não tem taxas de terceiros se você trocar de/para cDAI, pois é nosso token de reserva. Trocar G$s de/para outros ativos implica uma taxa de 0,3% para provedores de liquidez AMM terceirizados.",
   "Swapping {inputSig} {0} \nto a minimum of {minimumOutputSig} {1}": "Trocou {inputSig} {0} \npara um mínimo de {minimumOutputSig} {1}",
   "Switch to {network}": "Trocar para {network}",
+  "Switch to {requireChain}": "",
   "Switch your network to {0} to work with Portfolio": "Mude sua rede para {0} para trabalhar com o Portfólio",
   "Switch your network to {0} to work with Stakes": "Mude sua rede para {0} para trabalhar com o travamento",
   "TOKEN": "TOKEN",
