@@ -1,6 +1,5 @@
 import { ChainId } from '@sushiswap/sdk'
 import { NetworkConnector } from './NetworkConnector'
-import { Web3Provider } from '@ethersproject/providers'
 
 import LogoSmall from '../assets/images/logosmall.png'
 
@@ -11,7 +10,8 @@ export enum AdditionalChainIds {
 }
 
 const RPC = {
-    [ChainId.MAINNET]: process.env.REACT_APP_MAINNET_RPC ?? 'https://eth-mainnet.alchemyapi.io/v2/2kSbx330Sc8S3QRwD9nutr9XST_DfeJh',
+    [ChainId.MAINNET]:
+        process.env.REACT_APP_MAINNET_RPC ?? 'https://eth-mainnet.alchemyapi.io/v2/2kSbx330Sc8S3QRwD9nutr9XST_DfeJh',
     [AdditionalChainIds.FUSE]: process.env.REACT_APP_FUSE_RPC ?? 'https://rpc.fuse.io',
     [AdditionalChainIds.CELO]: process.env.REACT_APP_CELO_RPC ?? 'https://rpc.ankr.com/celo',
     [ChainId.ROPSTEN]: 'https://eth-ropsten.alchemyapi.io/v2/cidKix2Xr-snU3f6f6Zjq_rYdalKKHmW',
@@ -202,15 +202,6 @@ export const network = new NetworkConnector({
     defaultChainId: 42,
     urls: RPC,
 })
-
-let networkLibrary: Web3Provider | undefined
-
-// @L03TJ3 How does this works ? how library initializes ? It seems <ListUpdater /> is broken
-export function getNetworkLibrary(): Web3Provider | undefined {
-    // const [{ provider }] = onboard.state.get().wallets
-
-    return networkLibrary // ?? new Web3Provider(provider as any))
-}
 
 export const Fortmatic = {}
 export const fortmatic = {}

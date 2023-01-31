@@ -3802,7 +3802,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/bridge-app@npm:^1.2.2":
+"@gooddollar/bridge-app@npm:^1.2.9":
   version: 1.2.9
   resolution: "@gooddollar/bridge-app@npm:1.2.9"
   dependencies:
@@ -3818,7 +3818,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/bridge-contracts@npm:^1.0.10":
+"@gooddollar/bridge-contracts@npm:^1.0.13":
   version: 1.0.13
   resolution: "@gooddollar/bridge-contracts@npm:1.0.13"
   dependencies:
@@ -3923,7 +3923,7 @@ __metadata:
     "@gooddollar/good-design": ^0.0.27
     "@gooddollar/goodprotocol": 2.0.1
     "@gooddollar/web3sdk": ^0.1.17
-    "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2"
+    "@gooddollar/web3sdk-v2": ^0.1.61
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": 3.15.0
@@ -4093,14 +4093,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
-  version: 0.1.59
-  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=5c5c04&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+"@gooddollar/web3sdk-v2@npm:^0.1.61":
+  version: 0.1.61
+  resolution: "@gooddollar/web3sdk-v2@npm:0.1.61"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
-    "@gooddollar/bridge-app": ^1.2.2
-    "@gooddollar/bridge-contracts": ^1.0.10
+    "@gooddollar/bridge-app": ^1.2.9
+    "@gooddollar/bridge-contracts": ^1.0.13
     "@gooddollar/goodprotocol": 1.0.30-beta.3
     "@react-native-firebase/analytics": ^16.4.6
     "@sentry/browser": 7.16.0
@@ -4113,7 +4113,6 @@ __metadata:
     "@web3auth/openlogin-adapter": ^4.1.0
     "@web3auth/torus-wallet-connector-plugin": ^4.0.0
     eventemitter3: ^4.0.7
-    react-native: ^0.70.2
     react-native-indicative: ^0.2.1
     react-native-restart: ^0.0.24
     react-use-promise: ^0.5.0
@@ -4123,7 +4122,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 7a362f8af8868a0bc03873ca2cff19d0237758dd5b96337384ddbfdc1c10ea29d4b30ae0729d9e94e5f0ae03b484615eae99bad7a9956d6f7c7433b03f6f0383
+  checksum: e41c7847124f6ad8076bebb044c8a6c41b3ed3c14067e3a7391e0c3dc57b54260df55c919fbae3a64e4d5dde16cd3f013511b93a6fa960a34f8db38646fa4f77
   languageName: node
   linkType: hard
 
@@ -30381,7 +30380,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native@npm:^0.70.2, react-native@npm:^0.70.4":
+"react-native@npm:^0.70.4":
   version: 0.70.6
   resolution: "react-native@npm:0.70.6"
   dependencies:
