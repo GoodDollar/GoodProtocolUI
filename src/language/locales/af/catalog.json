@@ -420,6 +420,7 @@
   "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers.": "Om G $ uit te ruil teen GoodReserve het geen derdepartyfooie as u van/na cDAI ruil nie, want dit is ons reserwe-teken. Om G$s van/na ander bates te ruil, impliseer 'n fooi van 0.3% van die fooi wat aan AMM-likiditeitsverskaffers van derdepartye gaan.",
   "Swapping {inputSig} {0} \nto a minimum of {minimumOutputSig} {1}": "Ruil {inputSig} {0} \ntot 'n minimum van {minimumOutputSig} {1}",
   "Switch to {network}": "Skakel oor na {network}",
+  "Switch to {requireChain}": "",
   "Switch your network to {0} to work with Portfolio": "Skakel jou netwerk na {0} om met Portefeulje te werk",
   "Switch your network to {0} to work with Stakes": "Skakel jou netwerk na {0} om met Stakes te werk",
   "TOKEN": "TEKEN",
