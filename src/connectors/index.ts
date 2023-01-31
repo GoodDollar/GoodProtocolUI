@@ -98,7 +98,7 @@ const walletConnectBN = walletConnectModule({
     qrcodeModalOptions: {
         mobileLinks: ['rainbow', 'metamask', 'argent', 'trust', 'imtoken', 'pillar'],
     },
-    // connectFirstChainId: true,
+    connectFirstChainId: true,
 })
 
 const coinbaseWalletSdk = coinbaseWalletModule()

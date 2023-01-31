@@ -19,7 +19,7 @@ const NextClaim = ({ time }: { time: string }) => (
 )
 
 const ClaimTimer = () => {
-    const { tillClaim } = useClaiming()
+    const { tillClaim } = useClaiming() // todo: update to timer from sdk-v2
 
     return (
         <Box height="50" justifyContent="center" flexDirection="column" my="4">

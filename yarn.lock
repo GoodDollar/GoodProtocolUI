@@ -1727,16 +1727,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.17.2, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.19.0, @babel/runtime@npm:^7.19.4, @babel/runtime@npm:^7.20.6, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.4.4, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.2, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
-  version: 7.20.7
-  resolution: "@babel/runtime@npm:7.20.7"
-  dependencies:
-    regenerator-runtime: ^0.13.11
-  checksum: 4629ce5c46f06cca9cfb9b7fc00d48003335a809888e2b91ec2069a2dcfbfef738480cff32ba81e0b7c290f8918e5c22ddcf2b710001464ee84ba62c7e32a3a3
-  languageName: node
-  linkType: hard
-
-"@babel/runtime@npm:^7.18.9":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.17.2, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.19.0, @babel/runtime@npm:^7.19.4, @babel/runtime@npm:^7.20.6, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.4.4, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.2, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.20.13
   resolution: "@babel/runtime@npm:7.20.13"
   dependencies:
@@ -3687,13 +3678,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.0.27":
+"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.0.27
-  resolution: "@gooddollar/good-design@npm:0.0.27"
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=c96cb2&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
-    "@gooddollar/goodprotocol": 1.0.30-beta.3
+    "@gooddollar/goodprotocol": ^2.0.1
     "@lingui/macro": ^3.14.0
     "@lingui/react": ^3.14.0
     "@types/moment-duration-format": ^2.2.3
@@ -3722,7 +3713,7 @@ __metadata:
     typescript: 4.7.4
   peerDependencies:
     "@usedapp/core": 1.*
-  checksum: 0ffb2798e83cf5f19f055bc5da7cdb3d920eccfd31a3341d048a8ae9763ade9be4b80d960f5fda6e5ba5e21ee9c43f2b49b7e5703f62f1a700ed5d281d7745d3
+  checksum: f3b2f91454b2cbc904f255f7881e0913ad607f6671e80069f6f1c6b550f58a701d73074d5cbb5599523f4d4c226e9fa4a84a5ac5a891dc6ce7eb2a78a4079129
   languageName: node
   linkType: hard
 
@@ -3736,9 +3727,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/goodprotocol@npm:1.0.30-beta.3":
-  version: 1.0.30-beta.3
-  resolution: "@gooddollar/goodprotocol@npm:1.0.30-beta.3"
+"@gooddollar/goodprotocol@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@gooddollar/goodprotocol@npm:2.0.1"
   dependencies:
     "@gooddollar/goodcontracts": ^2.6.6
     "@jsier/retrier": ^1.2.4
@@ -3753,7 +3744,7 @@ __metadata:
     press-any-key: ^0.1.1
     truffle-plugin-verify: ^0.6.1
     truffle-source-verify: ^0.0.6
-  checksum: 8f1f31c2d30d36e1c747dba53d6d0c8edb71d76795bdf694f15713cc8e6a2c9bd8598070c284f2ddb1e34e1749f8ff1772f88021763cd6abc859ef818da2c691
+  checksum: d27825498a70c98b1cdb9afa8f29a527348352b1ba9a2bb8f47ccd34ed0c78e218ae51973e4d84f25d156987f1ce486fe898056f1aa57162f92e341078466af2
   languageName: node
   linkType: hard
 
@@ -3773,10 +3764,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.0.27
-    "@gooddollar/goodprotocol": 1.0.30-beta.3
+    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
+    "@gooddollar/goodprotocol": ^2.0.1
     "@gooddollar/web3sdk": ^0.1.17
-    "@gooddollar/web3sdk-v2": ^0.1.59
+    "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2"
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^3.12.1
@@ -3946,15 +3937,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.1.59":
+"@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.1.59
-  resolution: "@gooddollar/web3sdk-v2@npm:0.1.59"
+  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=adca9d&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
     "@gooddollar/bridge-app": ^1.2.2
     "@gooddollar/bridge-contracts": ^1.0.10
-    "@gooddollar/goodprotocol": 1.0.30-beta.3
+    "@gooddollar/goodprotocol": ^2.0.1
     "@react-native-firebase/analytics": ^16.4.6
     "@sentry/browser": 7.16.0
     "@sentry/react-native": ^4.8.0
@@ -3975,7 +3966,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 6476ee9c6e0f493fb857cce25438ad1757402f83da4976ab936e7eedcf35cac8d8e1d7d03f15838644a54640558e26e7d1132ba87bcf3b16b2bcc80b906aee69
+  checksum: e13276a4ba23ffdc62cfc74b315f9f1765ddca6afd25d6882d01bc4c6b81f18cfce2ae8fef58dd01d36377558c381ec973ee6d37cbd3c37a16944abc120ce73f
   languageName: node
   linkType: hard
 
@@ -4778,7 +4769,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/conf@npm:3.16.1":
+"@lingui/conf@npm:3.16.1, @lingui/conf@npm:^3.15.0":
   version: 3.16.1
   resolution: "@lingui/conf@npm:3.16.1"
   dependencies:
@@ -4789,20 +4780,6 @@ __metadata:
     jest-validate: ^26.5.2
     lodash.get: ^4.4.2
   checksum: c68eff62c0fd145fe8e01a483aecd73f7a0c3c8f22e0491cb79e0dc1a2e6b5c71753a2916315ac1cd94bb51b005e1bc0ad569e28ddd6e53dff16cc4c7c771915
-  languageName: node
-  linkType: hard
-
-"@lingui/conf@npm:^3.15.0":
-  version: 3.15.0
-  resolution: "@lingui/conf@npm:3.15.0"
-  dependencies:
-    "@babel/runtime": ^7.11.2
-    chalk: ^4.1.0
-    cosmiconfig: ^7.0.0
-    cosmiconfig-typescript-loader: ^2.0.1
-    jest-validate: ^26.5.2
-    lodash.get: ^4.4.2
-  checksum: d059454aa0ab51d2aa96099456e4c09ec211b815e03a9ea76cc333e939449fdb8434434897e7976af22cb4db9bcf8ad58236e979ee7a8d67664912cd107afd51
   languageName: node
   linkType: hard
 
@@ -4838,22 +4815,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/macro@npm:^3.12.1":
-  version: 3.15.0
-  resolution: "@lingui/macro@npm:3.15.0"
-  dependencies:
-    "@babel/runtime": ^7.11.2
-    "@lingui/conf": ^3.15.0
-    ramda: ^0.27.1
-  peerDependencies:
-    "@lingui/core": ^3.13.0
-    "@lingui/react": ^3.13.0
-    babel-plugin-macros: 2 || 3
-  checksum: 2db278f5a2449ea4040dfdd70ba3b771e5dcad319750cfe2f9ce0375b0e7ef8924ae6123ac6ef422d724551b48515f372450bd8f0fafbc8cf90c68b7ff8b35fb
-  languageName: node
-  linkType: hard
-
-"@lingui/macro@npm:^3.14.0":
+"@lingui/macro@npm:^3.12.1, @lingui/macro@npm:^3.14.0":
   version: 3.16.1
   resolution: "@lingui/macro@npm:3.16.1"
   dependencies:
@@ -14143,14 +14105,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.0.0, core-js@npm:^3.6.5":
-  version: 3.27.1
-  resolution: "core-js@npm:3.27.1"
-  checksum: d50b5f88aea4302512ad9446c18e90f4d35dea1e6d8d3f87337690677061565ff11a670f1e0c87de57aa6074375fbb25ed5784076c040d3c4de8b4bce7d2ebeb
-  languageName: node
-  linkType: hard
-
-"core-js@npm:^3.1.3":
+"core-js@npm:^3.0.0, core-js@npm:^3.1.3, core-js@npm:^3.6.5":
   version: 3.27.2
   resolution: "core-js@npm:3.27.2"
   checksum: 718debd426f55a6b97cf9b757c936be258afd6d4f7052f89d0f96c982d7013e9000b0b006df42831a0cf32adad298e34d6a19052dce9ae1c7ab87162c0c665e0
