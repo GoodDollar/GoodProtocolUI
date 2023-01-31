@@ -8,15 +8,17 @@ import { WalletLabels } from '../../hooks/useActiveOnboard'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { AppDispatch } from '../../state'
 import { clearAllTransactions } from '../../state/transactions/actions'
-import { ExternalLink } from '../../theme'
+import { ExternalLink } from 'theme'
 import { getExplorerLink, shortenAddress } from '../../utils'
 import { ButtonOutlined } from '../gd/Button'
 import Title from '../gd/Title'
 import { AutoRow } from '../Row'
 import Copy from './Copy'
 import Transaction from './Transaction'
+import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 
 import { useConnectWallet } from '@web3-onboard/react'
+import { getNetworkEnv } from '@gooddollar/web3sdk'
 
 const UpperSection = styled.div`
     position: relative;
@@ -124,8 +126,15 @@ const AccountControl = styled.div`
     line-height: 28px;
     color: ${({ theme }) => theme.color.text7};
 
-    a:hover {
-        text-decoration: underline;
+    a {
+        margin-left: 1rem;
+        display: flex;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        text-decoration-line: underline;
+        color: ${({ theme }) => theme.color.text2};
     }
 
     p {
@@ -139,18 +148,7 @@ const AccountControl = styled.div`
     @media screen and (max-width: 384px) {
         justify-content: center;
     }
-`
 
-const AddressLink = styled(ExternalLink)<{ hasENS: boolean; isENS: boolean }>`
-    margin-left: 1rem;
-    display: flex;
-
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    text-decoration-line: underline;
-    color: ${({ theme }) => theme.color.text2};
     span {
         @media screen and (max-width: 384px) {
             width: 120px;
@@ -211,8 +209,10 @@ export default function AccountDetails({
     const { i18n } = useLingui()
     const { chainId, account } = useActiveWeb3React()
     const dispatch = useDispatch<AppDispatch>()
+    const network = getNetworkEnv()
     //eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
+    const sendData = useSendAnalyticsData()
 
     function formatConnectorName() {
         return `${i18n._(t`Connected with`)} ${wallet?.label}`
@@ -226,6 +226,7 @@ export default function AccountDetails({
     const disconnectWallet = useCallback(async () => {
         if (wallet) {
             toggleWalletModal()
+            sendData({ event: 'account', action: 'address_disconnect_success', network: network })
             await disconnect({ label: wallet.label })
             await connect()
         }
@@ -270,73 +271,28 @@ export default function AccountDetails({
                             </AccountGroupingRow>
                             <AccountGroupingRow id="web3-account-identifier-row">
                                 <AccountControl>
-                                    {ENSName ? (
-                                        <>
-                                            <div className="justify-center text-center">
-                                                <p> {ENSName}</p>
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <div className="justify-center text-center">
-                                                <p> {account && shortenAddress(account)}</p>
-                                            </div>
-                                        </>
-                                    )}
+                                    <div className="justify-center text-center">
+                                        <p> {ENSName ?? shortenAddress(account ?? '')}</p>
+                                    </div>
                                 </AccountControl>
                             </AccountGroupingRow>
                             <AccountGroupingRow className="mt-4">
-                                {ENSName ? (
-                                    <>
-                                        <AccountControl>
-                                            <div>
-                                                {account && (
-                                                    <Copy toCopy={account}>
-                                                        <span style={{ marginLeft: '4px' }}>
-                                                            {i18n._(t`Copy address`)}
-                                                        </span>
-                                                    </Copy>
-                                                )}
-                                                {chainId && account && (
-                                                    <AddressLink
-                                                        hasENS={!!ENSName}
-                                                        isENS={true}
-                                                        href={chainId && getExplorerLink(chainId, ENSName, 'address')}
-                                                    >
-                                                        <span style={{ marginLeft: '4px' }}>
-                                                            {i18n._(t`View on explorer`)}
-                                                        </span>
-                                                    </AddressLink>
-                                                )}
-                                            </div>
-                                        </AccountControl>
-                                    </>
-                                ) : (
-                                    <>
-                                        <AccountControl>
-                                            <div>
-                                                {account && (
-                                                    <Copy toCopy={account}>
-                                                        <span style={{ marginLeft: '4px' }}>
-                                                            {i18n._(t`Copy address`)}
-                                                        </span>
-                                                    </Copy>
-                                                )}
-                                                {chainId && account && (
-                                                    <AddressLink
-                                                        hasENS={!!ENSName}
-                                                        isENS={false}
-                                                        href={getExplorerLink(chainId, account, 'address')}
-                                                    >
-                                                        <span style={{ marginLeft: '4px' }}>
-                                                            {i18n._(t`View on explorer`)}
-                                                        </span>
-                                                    </AddressLink>
-                                                )}
-                                            </div>
-                                        </AccountControl>
-                                    </>
-                                )}
+                                <AccountControl>
+                                    <div>
+                                        {account && (
+                                            <Copy toCopy={account}>
+                                                <span style={{ marginLeft: '4px' }}>{i18n._(t`Copy address`)}</span>
+                                            </Copy>
+                                        )}
+                                        {chainId && account && (
+                                            <ExternalLink
+                                                url={getExplorerLink(chainId, account, 'address')}
+                                                label={i18n._(t`View on explorer`)}
+                                                dataAttr="external_explorer"
+                                            />
+                                        )}
+                                    </div>
+                                </AccountControl>
                             </AccountGroupingRow>
                         </InfoCard>
                     </YourAccount>
