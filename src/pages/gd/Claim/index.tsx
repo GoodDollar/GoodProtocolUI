@@ -154,6 +154,7 @@ const Claim = memo(() => {
                             claim={handleClaim}
                             claimed={claimed}
                             handleConnect={connect}
+                            redirectUrl={document.location.href}
                         />
                     </Box>
                 </div>

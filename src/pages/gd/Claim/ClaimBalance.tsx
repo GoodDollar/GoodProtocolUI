@@ -42,7 +42,12 @@ export const ClaimBalance = () => {
         [chainId]
     )
 
-    const formattedTime = useMemo(() => format(claimTime, 'hh aaa'), [claimTime])
+    const formattedTime = useMemo(() => {
+        if (isNaN(claimTime.getTime())) {
+            return
+        }
+        return format(claimTime, 'hh aaa')
+    }, [claimTime])
     const [{ connectedChain }, setChain] = useSetChain()
 
     const network = useMemo(

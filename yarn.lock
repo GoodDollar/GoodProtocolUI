@@ -3680,7 +3680,7 @@ __metadata:
 
 "@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.0.27
-  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=c96cb2&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=04a6d6&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -3713,7 +3713,7 @@ __metadata:
     typescript: 4.7.4
   peerDependencies:
     "@usedapp/core": 1.*
-  checksum: f3b2f91454b2cbc904f255f7881e0913ad607f6671e80069f6f1c6b550f58a701d73074d5cbb5599523f4d4c226e9fa4a84a5ac5a891dc6ce7eb2a78a4079129
+  checksum: c401e526e6ffdd906421751e286e39dd1e35699449da1cd2421599f70e4edbfb26658c9f5a9958ccc1013ecc5539cb4231c738df6c97456290316851007a8e2a
   languageName: node
   linkType: hard
 
@@ -3939,7 +3939,7 @@ __metadata:
 
 "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.1.59
-  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=adca9d&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=422651&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -3966,7 +3966,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: e13276a4ba23ffdc62cfc74b315f9f1765ddca6afd25d6882d01bc4c6b81f18cfce2ae8fef58dd01d36377558c381ec973ee6d37cbd3c37a16944abc120ce73f
+  checksum: 8d5e22efc34d13b69de0047db2840e3f53a4dde758f10b2e4b3f307565374363c80df592a1db9872680442750cca8475c6ead3daadedb207ab3657b5dd01a2ab
   languageName: node
   linkType: hard
 
