@@ -25,7 +25,13 @@ type OnboardConnectProps = {
     tried: boolean
 }
 
-export const WalletLabels: Readonly<string[]> = ['WalletConnect', 'ZenGo', 'Coinbase Wallet']
+export const WalletLabels: Readonly<string[]> = [
+    'WalletConnect',
+    'ZenGo',
+    'Coinbase Wallet',
+    'Google (Powered by Web3Auth)',
+    'GoodDollar Wallet',
+]
 export const WalletLinkKeys: Readonly<string[]> = [
     '-walletlink:https://www.walletlink.org:Addresses',
     '-walletlink:https://www.walletlink.org:session:secret',
@@ -96,7 +102,7 @@ export function useActiveOnboard<T = any>(): ActiveOnboardInterface<T> {
         if (connectedWallets.length > 0) {
             return onboardContext(connectedWallets)
         } else {
-            return { active: false, chainId: 42220 }
+            return { active: false, chainId: 1 }
         }
     }, [connectedWallets])
 
