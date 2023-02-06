@@ -230,7 +230,7 @@
         "rxjs": "^7.5.6",
         "text-mask-addons": "^3.8.0",
         "ubeswap-swap-dev": "^1.4.2",
-        "web3": "1.8.1"
+        "web3": "1.8.2"
     },
     "packageManager": "yarn@3.2.1"
 }
