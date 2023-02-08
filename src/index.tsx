@@ -3,6 +3,9 @@ import '@fontsource/dm-sans/index.css'
 import 'react-tabs/style/react-tabs.css'
 import './bootstrap'
 
+// THIS COMMINT  MEANS NOTHING, JUST TO TEST PREVIEW DEPLOY
+// THIS PR WILL BE JUST CLOSED WITHOUT MERGE AFTER SOME TESTING
+
 import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
