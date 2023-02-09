@@ -40,13 +40,17 @@ export const ClaimBalance = () => {
                 .catch(() => undefined),
         [chainId]
     )
-    const formattedTime = useMemo(() => format(claimTime, 'hh aaa'), [claimTime])
+    const formattedTime = useMemo(() => claimTime && format(claimTime, 'hh aaa'), [claimTime])
     const { switchNetwork } = useEthers()
 
-    const network = useMemo(() => SupportedChains[chainId], [chainId])
+    const network = useMemo(
+        () => (chainId === (SupportedChains.FUSE as number) ? SupportedChains[42220] : SupportedChains[122]),
+        [chainId]
+    )
 
     const switchChain = useCallback(() => {
-        switchNetwork(chainId).catch(noop)
+        const toChain = chainId === (SupportedChains.FUSE as number) ? 42220 : 122
+        switchNetwork(toChain).catch(noop)
     }, [switchNetwork])
 
     return (

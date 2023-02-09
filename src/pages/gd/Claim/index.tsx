@@ -18,8 +18,10 @@ const Claim = memo(() => {
 
     useEffect(() => {
         //todo: add event analytics on transaction status
-        if (claimAmount && claimAmount.isZero()) {
+        if (claimAmount?.isZero() || state.status === 'Success') {
             setClaimed(true)
+        } else {
+            setClaimed(false)
         }
     }, [claimAmount, state, send])
 
@@ -27,6 +29,7 @@ const Claim = memo(() => {
         const claim = await send()
         if (claim) {
             // todo: add event analytics on transaction receipt
+            setClaimed(true)
             return true
         }
         return false
