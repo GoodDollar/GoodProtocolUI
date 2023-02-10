@@ -6,7 +6,6 @@
 #cache
 /.yarn/cache
 /.yarn/install-state.gz
-/.yalc/
 
 # testing
 /coverage
@@ -51,4 +50,3 @@ deploy.sh
 /playground
 
 .certs
-yalc.lock

@@ -1,0 +1,1 @@
+{"version":3,"file":"sdk.d.ts","sourceRoot":"","sources":["../../../../../src/sdk/onboard/modules/customwalletconnect/sdk.ts"],"names":[],"mappings":"AAIA,OAAO,EAA2D,UAAU,EAAgB,MAAM,sBAAsB,CAAA;AAKxH,OAAO,EAAgB,gBAAgB,EAAE,MAAM,SAAS,CAAA;AAExD,iBAAS,cAAc,CAAC,OAAO,EAAE,gBAAgB,GAAG,UAAU,CA0F7D;AAED,eAAe,cAAc,CAAA"}

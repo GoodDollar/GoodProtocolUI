@@ -1,0 +1,18 @@
+{
+  "version": "v1",
+  "packages": {
+    "@gooddollar/web3sdk": {
+      "signature": "74c59f336e358525c788136c4d9b580b",
+      "file": true,
+      "replaced": "^0.1.17"
+    },
+    "@gooddollar/good-design": {
+      "signature": "27ac248902695ec9c319914b057e7170",
+      "file": true
+    },
+    "@gooddollar/web3sdk-v2": {
+      "signature": "9bef89d94aee67f980fcba2fe58d76e3",
+      "file": true
+    }
+  }
+}

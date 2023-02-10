@@ -1,0 +1,52 @@
+{
+  "name": "@gooddollar/web3sdk-v2",
+  "repository": "https://github.com/GoodDollar/GoodWeb3-mono/packages/sdk-v2",
+  "version": "0.1.61",
+  "description": "ethers and react hooks based on usedapp sdk for GoodDollar protocol",
+  "scripts": {
+    "build": "yarn dev:clean && ctix c && tsc",
+    "build:release": "yarn dev:clean && ctix c && tsc -p tsconfig.release.json",
+    "dev:clean": "rm -fr dist types tsconfig.tsbuildinfo tsconfig.release.tsbuildinfo",
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "author": "sirpy",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types",
+    "src"
+  ],
+  "dependencies": {
+    "@amplitude/analytics-browser": "^1.6.4",
+    "@amplitude/analytics-react-native": "^0.7.0",
+    "@gooddollar/bridge-app": "^1.2.9",
+    "@gooddollar/bridge-contracts": "^1.0.13",
+    "@gooddollar/goodprotocol": "^2.0.1",
+    "@react-native-firebase/analytics": "^16.4.6",
+    "@sentry/browser": "7.16.0",
+    "@sentry/react-native": "^4.8.0",
+    "@solana/web3.js": "^1.72.0",
+    "@usedapp/core": "1.*",
+    "@web3-onboard/torus": "^2.2.1",
+    "@web3auth/base": "^4.0.0",
+    "@web3auth/core": "^4.0.0",
+    "@web3auth/openlogin-adapter": "^4.1.0",
+    "@web3auth/torus-wallet-connector-plugin": "^4.0.0",
+    "eventemitter3": "^4.0.7",
+    "react-native-indicative": "^0.2.1",
+    "react-native-restart": "^0.0.24",
+    "react-use-promise": "^0.5.0"
+  },
+  "peerDependencies": {
+    "@react-native-async-storage/async-storage": "1.17.10",
+    "ethers": "5.*",
+    "react": "*",
+    "react-native": "*",
+    "react-native-web": "*"
+  },
+  "yalcSig": "9bef89d94aee67f980fcba2fe58d76e3"
+}

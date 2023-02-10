@@ -1,0 +1,1 @@
+{"version":3,"file":"types.d.ts","sourceRoot":"","sources":["../../../../src/sdk/analytics/amplitude/types.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,UAAU,CAAC;AAE3C,MAAM,WAAW,gBAAiB,SAAQ,eAAe;IACvD,MAAM,CAAC,EAAE,MAAM,CAAC;IAChB,UAAU,CAAC,EAAE,MAAM,CAAC;CACrB"}

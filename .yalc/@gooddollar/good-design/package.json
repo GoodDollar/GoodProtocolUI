@@ -1,0 +1,58 @@
+{
+  "name": "@gooddollar/good-design",
+  "repository": "https://github.com/GoodDollar/GoodWeb3-mono/packages/good-design",
+  "version": "0.0.28",
+  "scripts": {
+    "build": "yarn dev:clean && tsc && yarn copy:assets",
+    "dev:clean": "rm -fr dist types",
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "copy:assets": "cpx 'src/assets/**' 'dist/assets'"
+  },
+  "author": "lewisB",
+  "licence": "MIT",
+  "main": "dist/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types",
+    "src"
+  ],
+  "peerDependencies": {
+    "@usedapp/core": "1.*"
+  },
+  "packageManager": "yarn@3.2.1",
+  "dependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/runtime": "^7.18.9",
+    "@gooddollar/goodprotocol": "^2.0.1",
+    "@lingui/macro": "^3.14.0",
+    "@lingui/react": "^3.14.0",
+    "@types/moment-duration-format": "^2.2.3",
+    "@uniswap/sdk-core": "^3.1.0",
+    "buffer": "^6.0.3",
+    "css-loader": "^6.7.1",
+    "metro-react-native-babel-preset": "^0.72.0",
+    "moment": "^2.29.4",
+    "moment-duration-format": "^2.3.2",
+    "prop-types": "^15.8.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-native": "0.70.4",
+    "react-native-mask-input": "^1.2.2",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-svg": "^12.1.1",
+    "react-native-svg-web": "^1.0.9",
+    "react-native-web": "0.17.7",
+    "react-number-format": "^5.1.1",
+    "react-use-promise": "^0.5.0",
+    "require-from-string": "^2.0.2",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.3.1",
+    "typescript": "4.7.4"
+  },
+  "yalcSig": "27ac248902695ec9c319914b057e7170"
+}

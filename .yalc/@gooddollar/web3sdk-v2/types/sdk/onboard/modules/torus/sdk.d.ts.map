@@ -1,0 +1,1 @@
+{"version":3,"file":"sdk.d.ts","sourceRoot":"","sources":["../../../../../src/sdk/onboard/modules/torus/sdk.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,UAAU,EAAgB,MAAM,sBAAsB,CAAA;AAE/D,OAAO,EAAE,aAAa,EAAE,WAAW,EAAE,MAAM,wBAAwB,CAAA;AAGnE,KAAK,YAAY,GAAG,aAAa,GAAG,WAAW,CAAA;AAW/C,iBAAS,KAAK,CAAC,OAAO,CAAC,EAAE,YAAY,GAAG,UAAU,CAUjD;AAED,eAAe,KAAK,CAAA"}

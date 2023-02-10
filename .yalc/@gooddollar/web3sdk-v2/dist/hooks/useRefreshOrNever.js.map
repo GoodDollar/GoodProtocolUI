@@ -1,0 +1,1 @@
+{"version":3,"file":"useRefreshOrNever.js","sourceRoot":"","sources":["../../src/hooks/useRefreshOrNever.tsx"],"names":[],"mappings":";;;;;AACA,gEAAwC;AAExC,MAAM,iBAAiB,GAAG,CAAC,OAA+B,EAAE,EAAE;IAC5D,MAAM,EAAE,MAAM,EAAE,GAAG,IAAA,qBAAW,GAAE,CAAC;IAEjC,OAAO,MAAM,CAAC,CAAC,CAAC,OAAO,CAAC,CAAC,CAAC,OAAO,CAAC;AACpC,CAAC,CAAC;AAEF,kBAAe,iBAAiB,CAAC"}

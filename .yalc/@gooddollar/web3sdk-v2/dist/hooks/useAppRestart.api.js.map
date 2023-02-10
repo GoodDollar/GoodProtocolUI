@@ -1,0 +1,1 @@
+{"version":3,"file":"useAppRestart.api.js","sourceRoot":"","sources":["../../src/hooks/useAppRestart.api.ts"],"names":[],"mappings":";;;AAAO,MAAM,OAAO,GAAG,CAAC,IAAa,EAAQ,EAAE;IAC7C,MAAM,EAAE,QAAQ,EAAE,GAAG,MAAM,CAAA;IAE3B,IAAI,CAAC,IAAI,EAAE;QACT,QAAQ,CAAC,MAAM,EAAE,CAAA;QACjB,OAAM;KACP;IAED,QAAQ,CAAC,OAAO,CAAC,IAAI,CAAC,CAAA;AACxB,CAAC,CAAA;AATY,QAAA,OAAO,WASnB"}

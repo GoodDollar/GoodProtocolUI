@@ -1,0 +1,1 @@
+var O;!function(O){O.COMPOUND="COMPOUND",O.AAVE="AAVE",O.UNKNOWN="UNKNOWN",O.G$="GOODDOLLAR",O.GOODDAO="GoodDAO"}(O||(O={}));export{O as L};

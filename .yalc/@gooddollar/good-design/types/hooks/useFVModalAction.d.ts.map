@@ -1,0 +1,1 @@
+{"version":3,"file":"useFVModalAction.d.ts","sourceRoot":"","sources":["../../src/hooks/useFVModalAction.ts"],"names":[],"mappings":"AAGA,OAAO,EAAE,WAAW,EAAE,MAAM,SAAS,CAAC;AAEtC,UAAU,kBAAmB,SAAQ,IAAI,CAAC,WAAW,EAAE,QAAQ,GAAG,WAAW,CAAC;IAC5E,OAAO,EAAE,MAAM,IAAI,CAAC;IACpB,WAAW,CAAC,EAAE,MAAM,CAAC;CACtB;AAED,eAAO,MAAM,gBAAgB,gDAAwD,kBAAkB;;;CAyCtG,CAAC"}

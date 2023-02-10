@@ -1,0 +1,1 @@
+import{_ as o,x as n}from"./tokens.js";var e=1,s=console.log;function a(){for(var e=[],s=0;s<arguments.length;s++)e[s]=arguments[s];console.group.apply(console,o([],n(e),!1)),console.time("".concat(e[0]," time"))}function t(){for(var o=[],n=0;n<arguments.length;n++)o[n]=arguments[n];console.timeEnd("".concat(o[0]," time")),console.groupEnd()}export{e as D,a,t as b,s as d};
