@@ -11,7 +11,7 @@
         "startS": "cross-env HTTPS=true SSL_CRT_FILE= SSL_KEY_FILE= PORT=443 react-app-rewired start",
         "start": "cross-env PORT=3000 react-app-rewired start",
         "dev": "cross-env PORT=3000 react-app-rewired start",
-        "build": "cross-env CI= GENERATE_SOURCEMAP=false react-app-rewired build",
+        "build": "./yalcinstall.sh && cross-env CI= GENERATE_SOURCEMAP=false react-app-rewired build",
         "build:sourcemap": "GENERATE_SOURCEMAP=true react-app-rewired build",
         "eject": "react-app-rewired eject",
         "test": "react-app-rewired test --env=jsdom",
