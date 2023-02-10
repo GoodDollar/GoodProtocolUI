@@ -1,1 +1,0 @@
-import{S as a}from"./tokens.js";var o,s="https://api.thegraph.com/subgraphs/name/gooddollar/goodsubgraphs",p=((o={})[a.MAINNET]="https://api.thegraph.com/subgraphs/name/aave/protocol-v2",o);export{p as A,s as G};

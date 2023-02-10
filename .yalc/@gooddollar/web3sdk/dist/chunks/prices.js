@@ -1,1 +1,0 @@
-import{P as t,J as n}from"./tokens.js";var r=new t(n.BigInt(30),n.BigInt(1e4)),e=new t(n.BigInt(1e4),n.BigInt(1e4)),a=e.subtract(r);function i(n){var r=e.subtract(n.route.pairs.reduce((function(t){return t.multiply(a)}),e));return new t(r.numerator,r.denominator)}export{i as c};
