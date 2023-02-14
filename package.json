@@ -203,10 +203,10 @@
         "@web3-onboard/core@^2.14.1": "patch:@web3-onboard/core@npm%3A2.14.1#./.yarn/patches/@web3-onboard-core-npm-2.14.1-ef89b069ac.patch"
     },
     "dependencies": {
-        "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design",
+        "@gooddollar/good-design": "https://github.com/GoodDollar/GoodWeb3-Mono#head=243-test&workspace=@gooddollar/good-design",
         "@gooddollar/goodprotocol": "2.0.1",
         "@gooddollar/web3sdk": "^0.1.17",
-        "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2",
+        "@gooddollar/web3sdk-v2": "https://github.com/GoodDollar/GoodWeb3-Mono#head=243-test&workspace=@gooddollar/web3sdk-v2",
         "@headlessui/react": "1.5.0",
         "@types/react-text-mask": "^5.4.8",
         "@types/text-mask-addons": "^3.8.1",
