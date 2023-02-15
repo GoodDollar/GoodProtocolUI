@@ -36,7 +36,8 @@ const findPkg = async name => {
     return
   }
 
-  // 1. Find remote versions by hash idf
+  console.log("1. Find remote versions by hash id")
+
   const sdkv2ver = await findPkg('@gooddollar/web3sdk-v2')
   const designver = await findPkg('@gooddollar/good-design')
 
@@ -46,14 +47,20 @@ const findPkg = async name => {
   }
 
 
-  // 2. Update package.json
+  console.log("2. Update package.json")
+  
   pkg.dependencies['@gooddollar/web3sdk-v2'] = sdkv2ver
   pkg.dependencies['@gooddollar/good-design'] = designver
   await writePkg()
   await run('yarn install')
 
-  // 3. Commit changes & release to Vercel
+  console.log("3. Commit changes & release to Vercel")
+
+  const msg = `Dev version ${hash} released`
+  
   await run('git add .')
-  await run(`git commit -m 'Dev version ${hash} released' -n`)
+  await run(`git commit -m '${msg}' -n`)
   await run('git push')
+  
+  console.log(msg)
 })()
