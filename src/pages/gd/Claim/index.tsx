@@ -6,6 +6,7 @@ import { Text, useBreakpointValue, Box, View } from 'native-base'
 import { ClaimBalance } from './ClaimBalance'
 import { useClaim } from '@gooddollar/web3sdk-v2'
 import { useConnectWallet } from '@web3-onboard/react'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
 
 const Claim = memo(() => {
     const { i18n } = useLingui()
@@ -15,6 +16,11 @@ const Claim = memo(() => {
     } = useClaim()
     const [claimed, setClaimed] = useState(false)
     const [, connect] = useConnectWallet()
+    const { chainId } = useActiveWeb3React()
+
+    useEffect(() => {
+        console.log('claimbutton chainId -->', { chainId })
+    }, [chainId])
 
     useEffect(() => {
         //todo: add event analytics on transaction status
@@ -157,6 +163,7 @@ const Claim = memo(() => {
                             claim={handleClaim}
                             claimed={claimed}
                             handleConnect={connect}
+                            chainId={chainId}
                         />
                     </Box>
                 </div>
