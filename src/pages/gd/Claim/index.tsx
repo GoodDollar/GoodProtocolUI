@@ -58,12 +58,14 @@ const Claim = memo(() => {
             justifyContent: 'justify-evenly',
         },
     })
+
     const balanceContainer = useBreakpointValue({
         base: {
             display: 'flex',
             alignItems: 'center',
         },
     })
+
     const mockedCards: Array<IClaimCard> = [
         {
             id: 'how-to-claim',

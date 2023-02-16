@@ -22,7 +22,7 @@ jobs:
                   fetch-depth: '0'
             - name: Bump version and push tag
               id: github_tag_action
-              uses: mathieudutour/github-tag-action@v5.5
+              uses: mathieudutour/github-tag-action@v6.1
               with:
                   default_bump: minor
                   github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -64,14 +64,14 @@ jobs:
                   secret_name="${{ env.SECRET_NAME }}"
                   echo $env_name
                   cat $DOTENV_NAME
-                  echo "settings environment from $dotenv_name"
-                  cp $dotenv_name .env
-                  cat .env.shared >> .env
+                  echo "settings environment from $dotenv_name"                  
+                  cp .env.shared .env
+                  cat $dotenv_name >> .env
+                  echo "copying settings to GITHUB_ENV"
+                  cat .env >> $GITHUB_ENV
                   echo "adding secrets to $dotenv_name file: $secret_name"
                   echo "${{ secrets[env.SECRET_NAME] }}" >> .env
                   echo "${{ secrets.SHARED_ENV }}" >> .env
-                  echo "copying settings to GITHUB_ENV"
-                  cat .env >> $GITHUB_ENV
 
             - name: Load node v16
               uses: actions/setup-node@v3
@@ -103,13 +103,9 @@ jobs:
             - name: Update DNS with new IPFS hash
               env:
                   CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
-                  RECORD_DOMAIN: 'gooddollar.org'
+                  RECORD_DOMAIN: ${{ env.CLOUDFLARE_DOMAIN }}
                   RECORD_NAME: ${{ env.CLOUDFLARE_RECORD_NAME }}
                   CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
-                  REACT_APP_GOOGLE_ANALYTICS_ID: ${{ env.REACT_APP_GOOGLE_ANALYTICS_ID }}
-                  REACT_APP_CELO_PHASE_1: ${{ env.REACT_APP_CELO_PHASE_1 }}
-                  REACT_APP_CELO_PHASE_2: ${{ env.REACT_APP_CELO_PHASE_2 }}
-                  REACT_APP_CELO_PHASE_3: ${{ env.REACT_APP_CELO_PHASE_3 }}
               id: dnslink
               uses: textileio/cloudflare-update-dnslink@master
               with:
@@ -121,7 +117,7 @@ jobs:
               id: create_release
               uses: ncipollo/release-action@v1.8.4
               env:
-                  DEPLOY_ADDR: '${{ env.SUBDOMAIN }}.gooddollar.org'
+                  DEPLOY_ADDR: '${{ env.SUBDOMAIN }}.${{ env.CLOUDFLARE_DOMAIN }}'
               with:
                   tag: ${{ needs.bump_version.outputs.new_tag }}
                   name: ${{ needs.bump_version.outputs.new_tag }}
