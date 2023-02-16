@@ -3869,7 +3869,7 @@ __metadata:
     "@gooddollar/good-design": ^0.0.30
     "@gooddollar/goodprotocol": ^2.0.2
     "@gooddollar/web3sdk": ^0.1.18
-    "@gooddollar/web3sdk-v2": ^0.1.64
+    "@gooddollar/web3sdk-v2": ^0.1.66
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": 3.15.0
@@ -4039,9 +4039,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.1.64":
-  version: 0.1.64
-  resolution: "@gooddollar/web3sdk-v2@npm:0.1.64"
+"@gooddollar/web3sdk-v2@npm:^0.1.66":
+  version: 0.1.66
+  resolution: "@gooddollar/web3sdk-v2@npm:0.1.66"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -4071,7 +4071,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 49227fe8d66b7fa98c58fbf092337a65610d674e5bb96c24ccda6c8f3d132a3e0b593523c972e244d62303c669e1c20aeef42072a2a22e7526a1932c4c7747d4
+  checksum: d0978830cb22f5aab60ec49f714a4668ca7f09af09c63d9ef46ac00d8c0e770c0f38b4a369216b9071e655368e4cf7c7093526e635bb1b9ac58063fbba214cd2
   languageName: node
   linkType: hard
 
@@ -4144,29 +4144,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-tools/merge@npm:8.3.16":
-  version: 8.3.16
-  resolution: "@graphql-tools/merge@npm:8.3.16"
+"@graphql-tools/merge@npm:8.3.18":
+  version: 8.3.18
+  resolution: "@graphql-tools/merge@npm:8.3.18"
   dependencies:
-    "@graphql-tools/utils": 9.1.4
+    "@graphql-tools/utils": 9.2.1
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 4d7fa594e0d97b6d596c85619a8203cb9c88452b75efac4191697de00db5d043639ed47f6bf0a3ccc11e8638714d92a4a8bc37e77b61b46790ddf4a1e5d4bb87
+  checksum: 0834fcf13dec5ee92e39f2e1b27a098654e2db20bf6ef6f43d7efce56b7d750caa59dd16aacb211b8f5a198d29c19d36471401762f5a34e0bc22657285dcae92
   languageName: node
   linkType: hard
 
 "@graphql-tools/mock@npm:^8.1.2":
-  version: 8.7.16
-  resolution: "@graphql-tools/mock@npm:8.7.16"
+  version: 8.7.18
+  resolution: "@graphql-tools/mock@npm:8.7.18"
   dependencies:
-    "@graphql-tools/schema": 9.0.14
-    "@graphql-tools/utils": 9.1.4
+    "@graphql-tools/schema": 9.0.16
+    "@graphql-tools/utils": 9.2.1
     fast-json-stable-stringify: ^2.1.0
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 660c3a06f46cabf21a9fcec28cb825238d8feec16d8de51978e26fa0e7f92dea7bfe5920aaa5990b50bb3f96c115a07d8f095c80506dad19c0ce3d53117fe5f0
+  checksum: bd5186d22f756e2cb977dd0635287fad51c9bcf2e2733f1c681e932d7440b42bc1c9d30d8cd36d32ab2966a28ae1d3ecc81bae0a3c4ed8d938eea0a4bd79d5e0
   languageName: node
   linkType: hard
 
@@ -4184,17 +4184,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-tools/schema@npm:9.0.14":
-  version: 9.0.14
-  resolution: "@graphql-tools/schema@npm:9.0.14"
+"@graphql-tools/schema@npm:9.0.16":
+  version: 9.0.16
+  resolution: "@graphql-tools/schema@npm:9.0.16"
   dependencies:
-    "@graphql-tools/merge": 8.3.16
-    "@graphql-tools/utils": 9.1.4
+    "@graphql-tools/merge": 8.3.18
+    "@graphql-tools/utils": 9.2.1
     tslib: ^2.4.0
     value-or-promise: 1.0.12
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: ae958892363fe8b1715a9fd3c4bdb56d0d5d429693dbb9774ce930d104ed5a7c94db3c41c12d91fd930bf90ab186337d3ba660e765a99a98bde892f0d2dcf40e
+  checksum: ecbd27b4a36424c8d4b2206b1f2d2ec2cff3c66f52ec452b17977642017ca7f00df4df44f2d0426174ceea9596474d0656bc0227f4c1149f2288abb6d186cd68
   languageName: node
   linkType: hard
 
@@ -4209,14 +4209,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-tools/utils@npm:9.1.4":
-  version: 9.1.4
-  resolution: "@graphql-tools/utils@npm:9.1.4"
+"@graphql-tools/utils@npm:9.2.1":
+  version: 9.2.1
+  resolution: "@graphql-tools/utils@npm:9.2.1"
   dependencies:
+    "@graphql-typed-document-node/core": ^3.1.1
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 467135297a07b21bdd706ca03385354931db85fcf2accc514d69b7415c8cb0fb9e551e4bba0870278eab58bf4de757d354d53c88fd0f55b52d8562dbcba71869
+  checksum: 94ed12df5f49e5c338322ffd931236a687a3d5c443bf499f9baab5d4fcd9792234111142be8aa506a01ca2e82732996c4e1d8f6159ff9cc7fdc5c97f63e55226
   languageName: node
   linkType: hard
 
@@ -8112,18 +8113,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@toruslabs/openlogin-ed25519@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@toruslabs/openlogin-ed25519@npm:2.0.0"
+"@toruslabs/openlogin-ed25519@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@toruslabs/openlogin-ed25519@npm:3.0.0"
   dependencies:
     "@toruslabs/tweetnacl-js": ^1.0.3
   peerDependencies:
     "@babel/runtime": 7.x
-  checksum: dce0777a03cee9fd902145e79edba348b4f1640137fb9ca964ea2da77c8d4190d9f7d3da39ee78549ce4e353785de5fad56bc7cff7d6256fa6bb99716e60ba27
+  checksum: cf01836eaa68f8e46914e9948be15fb70300a7aab00a699b8a6476911e4b4d69544a7083b09f815a0ffde39fa83e68bdb7fdc720314c9577e9a2bfcb7e9dc1c2
   languageName: node
   linkType: hard
 
-"@toruslabs/openlogin-jrpc@npm:^2.13.0, @toruslabs/openlogin-jrpc@npm:^2.6.0":
+"@toruslabs/openlogin-jrpc@npm:^2.6.0":
   version: 2.13.0
   resolution: "@toruslabs/openlogin-jrpc@npm:2.13.0"
   dependencies:
@@ -8185,23 +8186,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@toruslabs/openlogin@npm:^2.12.0":
-  version: 2.13.0
-  resolution: "@toruslabs/openlogin@npm:2.13.0"
-  dependencies:
-    "@toruslabs/eccrypto": ^1.1.8
-    "@toruslabs/http-helpers": ^3.2.0
-    "@toruslabs/openlogin-jrpc": ^2.13.0
-    "@toruslabs/openlogin-utils": ^2.13.0
-    lodash.merge: ^4.6.2
-    loglevel: ^1.8.1
-    pump: ^3.0.0
-  peerDependencies:
-    "@babel/runtime": 7.x
-  checksum: c2413733a73e9def1d82d4d347c582e4acc0e4fd13e8737f2973348b955df139d3d7eaefc516e0aaf1440e0f23616baf1212548f005571ee185deb56bc5e5a44
-  languageName: node
-  linkType: hard
-
 "@toruslabs/openlogin@npm:^3.1.0":
   version: 3.1.0
   resolution: "@toruslabs/openlogin@npm:3.1.0"
@@ -8241,7 +8225,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@toruslabs/torus-embed@npm:^1.38.6":
+"@toruslabs/torus-embed@npm:^1.38.8":
   version: 1.38.9
   resolution: "@toruslabs/torus-embed@npm:1.38.9"
   dependencies:
@@ -8398,7 +8382,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@truffle/db-loader@npm:^0.2.13":
+"@truffle/db-loader@npm:^0.2.15":
   version: 0.2.15
   resolution: "@truffle/db-loader@npm:0.2.15"
   dependencies:
@@ -8410,7 +8394,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@truffle/db@npm:^2.0.13, @truffle/db@npm:^2.0.15":
+"@truffle/db@npm:^2.0.15":
   version: 2.0.15
   resolution: "@truffle/db@npm:2.0.15"
   dependencies:
@@ -8451,7 +8435,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@truffle/debugger@npm:^11.0.24":
+"@truffle/debugger@npm:^11.0.26":
   version: 11.0.26
   resolution: "@truffle/debugger@npm:11.0.26"
   dependencies:
@@ -10533,7 +10517,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@web3auth/base-plugin@npm:^4.2.4, @web3auth/base-plugin@npm:^4.6.0":
+"@web3auth/base-plugin@npm:^4.6.0":
   version: 4.6.0
   resolution: "@web3auth/base-plugin@npm:4.6.0"
   dependencies:
@@ -10542,7 +10526,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@web3auth/base-provider@npm:^4.2.4, @web3auth/base-provider@npm:^4.6.0":
+"@web3auth/base-provider@npm:^4.6.0":
   version: 4.6.0
   resolution: "@web3auth/base-provider@npm:4.6.0"
   dependencies:
@@ -10557,7 +10541,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@web3auth/base@npm:^4.0.0, @web3auth/base@npm:^4.2.4, @web3auth/base@npm:^4.6.0":
+"@web3auth/base@npm:^4.0.0, @web3auth/base@npm:^4.6.0":
   version: 4.6.0
   resolution: "@web3auth/base@npm:4.6.0"
   dependencies:
@@ -10573,7 +10557,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@web3auth/core@npm:^4.0.0, @web3auth/core@npm:^4.2.4":
+"@web3auth/core@npm:^4.0.0, @web3auth/core@npm:^4.6.0":
   version: 4.6.0
   resolution: "@web3auth/core@npm:4.6.0"
   dependencies:
@@ -10587,7 +10571,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@web3auth/ethereum-provider@npm:^4.2.4":
+"@web3auth/ethereum-provider@npm:^4.6.0":
   version: 4.6.0
   resolution: "@web3auth/ethereum-provider@npm:4.6.0"
   dependencies:
@@ -10613,23 +10597,23 @@ __metadata:
   linkType: hard
 
 "@web3auth/openlogin-adapter@npm:^4.1.0":
-  version: 4.2.4
-  resolution: "@web3auth/openlogin-adapter@npm:4.2.4"
+  version: 4.6.0
+  resolution: "@web3auth/openlogin-adapter@npm:4.6.0"
   dependencies:
-    "@toruslabs/openlogin": ^2.12.0
-    "@toruslabs/openlogin-ed25519": ^2.0.0
-    "@web3auth/base": ^4.2.4
-    "@web3auth/base-provider": ^4.2.4
-    "@web3auth/ethereum-provider": ^4.2.4
-    "@web3auth/solana-provider": ^4.2.4
+    "@toruslabs/openlogin": ^3.1.0
+    "@toruslabs/openlogin-ed25519": ^3.0.0
+    "@web3auth/base": ^4.6.0
+    "@web3auth/base-provider": ^4.6.0
+    "@web3auth/ethereum-provider": ^4.6.0
+    "@web3auth/solana-provider": ^4.6.0
     lodash.merge: ^4.6.2
   peerDependencies:
     "@babel/runtime": ^7.x
-  checksum: 1ac4b977a7effe81e307d0df62c9db4d5a5c12f18a7ff3ede02c1ea3c71a0d6bce1fd73eb29c0a176ae26f5d12858a13099529cf1f62d566b0a2f28433681ab7
+  checksum: 55bf9c259244d31d27fb46891c221617d64eacabf4ee9fe9750ae7c76f068921f373d07986dfb8adb47a16d47944e66933100f6c27d593720f4673a4a64c3cfb
   languageName: node
   linkType: hard
 
-"@web3auth/solana-provider@npm:^4.2.4":
+"@web3auth/solana-provider@npm:^4.6.0":
   version: 4.6.0
   resolution: "@web3auth/solana-provider@npm:4.6.0"
   dependencies:
@@ -10650,17 +10634,17 @@ __metadata:
   linkType: hard
 
 "@web3auth/torus-wallet-connector-plugin@npm:^4.0.0":
-  version: 4.2.4
-  resolution: "@web3auth/torus-wallet-connector-plugin@npm:4.2.4"
+  version: 4.6.0
+  resolution: "@web3auth/torus-wallet-connector-plugin@npm:4.6.0"
   dependencies:
-    "@toruslabs/torus-embed": ^1.38.6
-    "@web3auth/base": ^4.2.4
-    "@web3auth/base-plugin": ^4.2.4
-    "@web3auth/core": ^4.2.4
+    "@toruslabs/torus-embed": ^1.38.8
+    "@web3auth/base": ^4.6.0
+    "@web3auth/base-plugin": ^4.6.0
+    "@web3auth/core": ^4.6.0
     loglevel: ^1.8.1
   peerDependencies:
     "@babel/runtime": ^7.x
-  checksum: 3dcaf1acfaf6dea9debb56dece5dcd3c4869e592c4d76454614517a2b9f73916bd86eb4326dbaa1a90c91cda2e49eee4bb15ea1cc4055967bfcdbe193f3c41d1
+  checksum: b36490149b4f3046278533dd6b4b49939e60858ad532fc4e0a46d53952af518bb631f83969cb872dba2f41ba2e445e8c919f818b24f674e23a7f66097fd4dec5
   languageName: node
   linkType: hard
 
@@ -28428,8 +28412,8 @@ __metadata:
   linkType: hard
 
 "posthog-react-native@npm:^2.4.0":
-  version: 2.5.1
-  resolution: "posthog-react-native@npm:2.5.1"
+  version: 2.5.2
+  resolution: "posthog-react-native@npm:2.5.2"
   peerDependencies:
     "@react-native-async-storage/async-storage": ">=1.0.0"
     "@react-navigation/native": ">= 5.0.10"
@@ -28456,7 +28440,7 @@ __metadata:
       optional: true
     react-native-navigation:
       optional: true
-  checksum: f84d3300792b37ad056f8fa89fbec7355a5134c93fe65cd53cf363101d5ffa671087973f4b58e8aa65a8ad4b0e9161f5acacbc6261889acb9e8195e0038bf3e3
+  checksum: 45f1c6972da9442803875b5cc95d06d53722183461ac3136eae6b6b286741c1ccc420af7f6b2c4e53886358ea3345d808ccde780b3053916380eb3ef8f40f5a1
   languageName: node
   linkType: hard
 
@@ -32275,9 +32259,9 @@ __metadata:
   linkType: hard
 
 "solidity-rlp@npm:^2.0.5":
-  version: 2.0.6
-  resolution: "solidity-rlp@npm:2.0.6"
-  checksum: b4b0a7986dec3e49502dcac0e34af9b1c231c9fa0af4768ae869b2ebdfa369d4f59036aac469ab3ec43b1681c4313e5fe58349cee152ce9984b87fe78d0b5a2c
+  version: 2.0.7
+  resolution: "solidity-rlp@npm:2.0.7"
+  checksum: 05df8300ed3f1a99eab45177f7dfe95310e0eb1bce7808379285b4a8c5b9f1bb17f3a7ce778a9416889f3b7ecaeb2d365450507f89ca7f4c99e02ac90166e60f
   languageName: node
   linkType: hard
 
@@ -34069,12 +34053,12 @@ __metadata:
   linkType: hard
 
 "truffle@npm:^5.7.3":
-  version: 5.7.4
-  resolution: "truffle@npm:5.7.4"
+  version: 5.7.6
+  resolution: "truffle@npm:5.7.6"
   dependencies:
-    "@truffle/db": ^2.0.13
-    "@truffle/db-loader": ^0.2.13
-    "@truffle/debugger": ^11.0.24
+    "@truffle/db": ^2.0.15
+    "@truffle/db-loader": ^0.2.15
+    "@truffle/debugger": ^11.0.26
     app-module-path: ^2.2.0
     ganache: 7.7.3
     mocha: 10.1.0
@@ -34084,7 +34068,7 @@ __metadata:
       optional: true
   bin:
     truffle: build/cli.bundled.js
-  checksum: 7c0c83a1279362bb0a134e009a4b15504faf4f9db102ff7e328426865ee2c41296d6fd255ccc9488d44b1d09abdf048673d82fe6756f21633ea15bbd1cdedf38
+  checksum: adbd03b9e61088feff195883f8fdd13a26609812221b7b605045482b837b2eba7eb4887814b9e51aa121394414327a3b9dacff23977d2ab334981e391ee6e3c6
   languageName: node
   linkType: hard
 
