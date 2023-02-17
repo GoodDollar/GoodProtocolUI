@@ -19,10 +19,6 @@ const Claim = memo(() => {
     const { chainId } = useActiveWeb3React()
 
     useEffect(() => {
-        console.log('claimbutton chainId -->', { chainId })
-    }, [chainId])
-
-    useEffect(() => {
         //todo: add event analytics on transaction status
         if (claimAmount?.isZero() || state.status === 'Success') {
             setClaimed(true)
@@ -33,13 +29,20 @@ const Claim = memo(() => {
 
     const handleClaim = useCallback(async () => {
         const claim = await send()
-        if (claim) {
-            // todo: add event analytics on transaction receipt
-            setClaimed(true)
-            return true
+
+        if (!claim) {
+            return false
         }
-        return false
+
+        // todo: add event analytics on transaction receipt
+        setClaimed(true)
+        return true
     }, [send])
+
+    const handleConnect = useCallback(async () => {
+        const state = await connect()
+        return !!state.length
+    }, [connect])
 
     const mainView = useBreakpointValue({
         base: {
@@ -164,7 +167,7 @@ const Claim = memo(() => {
                             method="redirect"
                             claim={handleClaim}
                             claimed={claimed}
-                            handleConnect={connect}
+                            handleConnect={handleConnect}
                             chainId={chainId}
                         />
                     </Box>
