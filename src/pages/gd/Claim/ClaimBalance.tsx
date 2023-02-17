@@ -44,11 +44,12 @@ export const ClaimBalance = () => {
     const formattedTime = useMemo(() => claimTime && format(claimTime, 'hh aaa'), [claimTime])
     const { switchNetwork } = useEthers()
 
-    const network = chainId === (SupportedChains.FUSE as number) ? SupportedChains[42220] : SupportedChains[122]
+    //note: we select the alternative chain where a user is able to claim their UBI
+    const altChain = chainId === (SupportedChains.FUSE as number) ? SupportedChains[42220] : SupportedChains[122]
 
     const switchChain = useCallback(() => {
-        switchNetwork(SupportedChains[network as keyof typeof SupportedChains]).catch(noop)
-    }, [switchNetwork, network])
+        switchNetwork(SupportedChains[altChain as keyof typeof SupportedChains]).catch(noop)
+    }, [switchNetwork, altChain])
 
     return (
         <View textAlign="center" display="flex" justifyContent="center" flexDirection="column" w="full" mb="4">
@@ -67,7 +68,7 @@ export const ClaimBalance = () => {
                     borderColor="borderBlue"
                     px="6px"
                     width="200"
-                    text={`Claim on ${network}`}
+                    text={`Claim on ${altChain}`}
                     onPress={switchChain}
                     innerText={{
                         fontSize: 'sm',
