@@ -115,8 +115,8 @@ __metadata:
   linkType: hard
 
 "@apollo/client@npm:^3.2.0, @apollo/client@npm:^3.6.5":
-  version: 3.7.7
-  resolution: "@apollo/client@npm:3.7.7"
+  version: 3.7.5
+  resolution: "@apollo/client@npm:3.7.5"
   dependencies:
     "@graphql-typed-document-node/core": ^3.1.1
     "@wry/context": ^0.7.0
@@ -146,7 +146,7 @@ __metadata:
       optional: true
     subscriptions-transport-ws:
       optional: true
-  checksum: 4f061c663505dbbabe0e5c00f914dbb3ac1cb2a79beb1de49a6bb1cc299c66536ea076d3c30f579c7f9558efe710105f385cc7f69b247f2d198427d5a8f38eb6
+  checksum: c36f4469eb6a9ebc0f750a97cb201bcca725e1e98098c3d135d923e6d711ef8fa99365745b66f40744f59b78b3ffc0883ab2448ddadce89a5053033b40db8706
   languageName: node
   linkType: hard
 
@@ -5093,7 +5093,7 @@ __metadata:
   peerDependencies:
     "@lingui/core": ^3.13.0
     "@lingui/react": ^3.13.0
-    babel-plugin-macros: 2 || 3
+    babel-plugin-macros: 2 || 3
   checksum: 2db278f5a2449ea4040dfdd70ba3b771e5dcad319750cfe2f9ce0375b0e7ef8924ae6123ac6ef422d724551b48515f372450bd8f0fafbc8cf90c68b7ff8b35fb
   languageName: node
   linkType: hard
