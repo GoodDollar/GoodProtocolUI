@@ -41,6 +41,7 @@ const Claim = memo(() => {
 
     const handleConnect = useCallback(async () => {
         const state = await connect()
+
         return !!state.length
     }, [connect])
 
