@@ -3906,9 +3906,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
-  version: 0.0.31-beta.14b989a
-  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=c61ce0&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+"@gooddollar/good-design@npm:0.0.31-beta.57fb259":
+  version: 0.0.31-beta.57fb259
+  resolution: "@gooddollar/good-design@npm:0.0.31-beta.57fb259"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -3941,7 +3941,7 @@ __metadata:
     typescript: 4.7.4
   peerDependencies:
     "@usedapp/core": 1.*
-  checksum: 3f8c8e6415709dfd6ea504f6afa4712729ed989256f05d6af7a565d9b1be8a8e39b9565fa2ff36890dd899b97faa0e60de87d7578928acc9550c25509d392ed6
+  checksum: 009f4fe7b05725736f0c4642acdd45e886d4f3a04d18c813c40997dff1ef89c2e2c52d672ddc8622cd360bb61c4388b6f7d225a49668eb110f2fe4c7a173bf11
   languageName: node
   linkType: hard
 
@@ -3992,10 +3992,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
+    "@gooddollar/good-design": 0.0.31-beta.57fb259
     "@gooddollar/goodprotocol": ^2.0.2
     "@gooddollar/web3sdk": ^0.1.18
-    "@gooddollar/web3sdk-v2": 0.1.69-beta.14b989a
+    "@gooddollar/web3sdk-v2": 0.1.69-beta.57fb259
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": 3.15.0
@@ -4165,9 +4165,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:0.1.69-beta.14b989a":
-  version: 0.1.69-beta.14b989a
-  resolution: "@gooddollar/web3sdk-v2@npm:0.1.69-beta.14b989a"
+"@gooddollar/web3sdk-v2@npm:0.1.69-beta.57fb259":
+  version: 0.1.69-beta.57fb259
+  resolution: "@gooddollar/web3sdk-v2@npm:0.1.69-beta.57fb259"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -4197,7 +4197,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 8760e6fb85c9b7b9913bfb654c65d24b763a0c0da2b3f244dd6a4189823614ee18f69aa6c59da03fcbcabbac176b38f1c9060f1ecb7e01cfda1d3c243b9a81d4
+  checksum: e97f806c6954edc1525ec57b0001371388993e9ca535eb0550b93ebaee2b99b775f7ddba70a2a76a9400f5d3a431b7d2a32bb1f6dc0730be96211fd352baa99d
   languageName: node
   linkType: hard
 
