@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback, useEffect, useState } from 'react'
 import { View, Box, Text } from 'native-base'
 import { ArrowButton, BalanceGD } from '@gooddollar/good-design'
-import { SupportedChains, useHasClaimed } from '@gooddollar/web3sdk-v2'
+import { SupportedChains, SupportedV2Networks, useHasClaimed } from '@gooddollar/web3sdk-v2'
 import { useClaim } from '@gooddollar/web3sdk-v2'
 import usePromise from 'hooks/usePromise'
 import { g$Price } from '@gooddollar/web3sdk'
@@ -33,7 +33,7 @@ const ClaimTimer = () => {
 export const ClaimBalance = () => {
     const { claimTime } = useClaim('everyBlock')
     const { chainId } = useActiveWeb3React()
-    const { claimedFuse, claimedCelo } = useHasClaimed()
+    const { hasClaimed: claimedCelo } = useHasClaimed('CELO')
     const [claimAlt, setClaimAlt] = useState(true)
     const [G$Price] = usePromise(
         () =>
