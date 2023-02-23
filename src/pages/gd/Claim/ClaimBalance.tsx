@@ -1,7 +1,9 @@
-import React, { useMemo, useCallback } from 'react'
+import React, { useMemo, useCallback, useEffect, useState } from 'react'
 import { View, Box, Text } from 'native-base'
+
 import { ArrowButton } from '@gooddollar/good-design'
-import { SupportedChains } from '@gooddollar/web3sdk-v2'
+import { SupportedChains, useHasClaimed } from '@gooddollar/web3sdk-v2'
+
 import { useClaim } from '@gooddollar/web3sdk-v2'
 // import usePromise from 'hooks/usePromise'
 // import { g$Price } from '@gooddollar/web3sdk'
@@ -40,16 +42,24 @@ export const ClaimBalance = () => {
     //             .catch(() => undefined),
     //     [chainId]
     // )
+    const claimedCelo = useHasClaimed('CELO')
+    const claimedFuse = useHasClaimed('FUSE')
+    const [claimAlt, setClaimAlt] = useState(true)
 
     const formattedTime = useMemo(() => claimTime && format(claimTime, 'hh aaa'), [claimTime])
     const { switchNetwork } = useEthers()
 
-    //note: we select the alternative chain where a user is able to claim their UBI
+    //we select the alternative chain where a user is able to claim their UBI
     const altChain = chainId === (SupportedChains.FUSE as number) ? SupportedChains[42220] : SupportedChains[122]
+
+    // if claimed on alt chain, don't show claim on other chain button
+    useEffect(() => {
+        chainId === (SupportedChains.FUSE as number) ? setClaimAlt(claimedCelo) : setClaimAlt(claimedFuse)
+    }, [chainId, claimedFuse, claimedCelo])
 
     const switchChain = useCallback(() => {
         switchNetwork(SupportedChains[altChain as keyof typeof SupportedChains]).catch(noop)
-    }, [switchNetwork, altChain])
+    }, [switchNetwork, claimAlt])
 
     return (
         <View textAlign="center" display="flex" justifyContent="center" flexDirection="column" w="full" mb="4">
@@ -65,17 +75,19 @@ export const ClaimBalance = () => {
                 */}
             </Box>
             <Box alignItems="center">
-                <ArrowButton
-                    borderWidth="1"
-                    borderColor="borderBlue"
-                    px="6px"
-                    width="200"
-                    text={`Claim on ${altChain}`}
-                    onPress={switchChain}
-                    innerText={{
-                        fontSize: 'sm',
-                    }}
-                />
+                {claimAlt && (
+                    <ArrowButton
+                        borderWidth="1"
+                        borderColor="borderBlue"
+                        px="6px"
+                        width="200"
+                        text={`Claim on ${claimAlt}`}
+                        onPress={switchChain}
+                        innerText={{
+                            fontSize: 'sm',
+                        }}
+                    />
+                )}
             </Box>
         </View>
     )
