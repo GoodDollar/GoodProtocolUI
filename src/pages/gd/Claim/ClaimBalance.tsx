@@ -33,8 +33,8 @@ const ClaimTimer = () => {
 export const ClaimBalance = () => {
     const { claimTime } = useClaim('everyBlock')
     const { chainId } = useActiveWeb3React()
-    const { hasClaimed: claimedCelo } = useHasClaimed('CELO')
-    const { hasClaimed: claimedFuse } = useHasClaimed('FUSE')
+    const claimedCelo = useHasClaimed('CELO')
+    const claimedFuse = useHasClaimed('FUSE')
     const [claimAlt, setClaimAlt] = useState(true)
     const [G$Price] = usePromise(
         () =>
