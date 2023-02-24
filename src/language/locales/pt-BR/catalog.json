@@ -485,6 +485,7 @@
   "Turn On Expert Mode": "Ativar modo especialista",
   "Type": "Tipo",
   "UBI is your fair share of G$ tokens, which you can claim daily on CELO.": "",
+  "UBI is your fair share of G$ tokens, which you can claim daily on {network}.": "",
   "Uh Oh!": "Oh, não!",
   "Unknown Source": "Fonte desconhecida",
   "Unknown error": "Erro desconhecido",
