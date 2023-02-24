@@ -485,6 +485,7 @@
   "Turn On Expert Mode": "Skakel Expert Modus",
   "Type": "Tipe",
   "UBI is your fair share of G$ tokens, which you can claim daily on CELO.": "",
+  "UBI is your fair share of G$ tokens, which you can claim daily on {network}.": "",
   "Uh Oh!": "O O O!",
   "Unknown Source": "Onbekende Bron",
   "Unknown error": "Onbekende fout",
