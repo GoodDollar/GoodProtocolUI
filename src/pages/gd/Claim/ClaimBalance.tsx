@@ -9,7 +9,8 @@ import { format } from 'date-fns'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useClaiming } from 'hooks/useClaiming'
 import { noop } from 'lodash'
-import { useEthers } from '@usedapp/core'
+import { useSetChain } from '@web3-onboard/react'
+import { ChainIdHex } from '../../../constants'
 
 const NextClaim = ({ time }: { time: string }) => (
     <Text fontFamily="subheading" fontWeight="normal" fontSize="xs" color="main">
@@ -33,6 +34,7 @@ const ClaimTimer = () => {
 export const ClaimBalance = () => {
     const { claimTime } = useClaim('everyBlock')
     const { chainId } = useActiveWeb3React()
+    const [, setChain] = useSetChain()
     const claimedCelo = useHasClaimed('CELO')
     const claimedFuse = useHasClaimed('FUSE')
     const [claimAlt, setClaimAlt] = useState(true)
@@ -45,10 +47,9 @@ export const ClaimBalance = () => {
     )
 
     const formattedTime = useMemo(() => claimTime && format(claimTime, 'hh aaa'), [claimTime])
-    const { switchNetwork } = useEthers()
 
     //we select the alternative chain where a user is able to claim their UBI
-    const altChain = chainId === (SupportedChains.FUSE as number) ? SupportedChains[42220] : SupportedChains[122]
+    const altChain = chainId === (SupportedChains.FUSE as number) ? 42220 : 122
 
     // if claimed on alt chain, don't show claim on other chain button
     useEffect(() => {
@@ -56,8 +57,8 @@ export const ClaimBalance = () => {
     }, [chainId, claimedFuse, claimedCelo])
 
     const switchChain = useCallback(() => {
-        switchNetwork(SupportedChains[altChain as keyof typeof SupportedChains]).catch(noop)
-    }, [switchNetwork, claimAlt])
+        setChain({ chainId: ChainIdHex[altChain] }).catch(noop)
+    }, [setChain, claimAlt])
 
     return (
         <View textAlign="center" display="flex" justifyContent="center" flexDirection="column" w="full" mb="4">
