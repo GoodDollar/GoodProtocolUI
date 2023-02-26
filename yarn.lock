@@ -3958,9 +3958,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:0.0.36-beta.77cae1d":
-  version: 0.0.36-beta.77cae1d
-  resolution: "@gooddollar/good-design@npm:0.0.36-beta.77cae1d"
+"@gooddollar/good-design@npm:^0.0.36":
+  version: 0.0.36
+  resolution: "@gooddollar/good-design@npm:0.0.36"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -3993,7 +3993,7 @@ __metadata:
     typescript: 4.7.4
   peerDependencies:
     "@usedapp/core": 1.*
-  checksum: ade71d471ae846358d3625bec08baf57bc94f9ecf9c9281cad8794477548f71581dc82376481c93cde2d8287e2a8d89c8a18edc2f2b2b82a8e021efa250b9a70
+  checksum: e79afe1905beb165b6897a930b34dc37001ffdf6c9f205f4aa82aa133e61f31d121becd38d2ee5d5ea971be527b8e36007a45b43639090490bd58a5a57cde42b
   languageName: node
   linkType: hard
 
@@ -4044,10 +4044,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": 0.0.36-beta.77cae1d
+    "@gooddollar/good-design": ^0.0.36
     "@gooddollar/goodprotocol": ^2.0.2
     "@gooddollar/web3sdk": ^0.1.18
-    "@gooddollar/web3sdk-v2": 0.1.74-beta.77cae1d
+    "@gooddollar/web3sdk-v2": ^0.1.74
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": 3.15.0
@@ -4217,9 +4217,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:0.1.74-beta.77cae1d":
-  version: 0.1.74-beta.77cae1d
-  resolution: "@gooddollar/web3sdk-v2@npm:0.1.74-beta.77cae1d"
+"@gooddollar/web3sdk-v2@npm:^0.1.74":
+  version: 0.1.74
+  resolution: "@gooddollar/web3sdk-v2@npm:0.1.74"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -4249,7 +4249,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 5b0069151a6e39559c9a0c63ffe4a1df9f21579dbfd89380d55faf4a3e4cab8627d16862605939930b383eff2bc6ff42b5aeef478da3be9a92b4bf3d9bad69c1
+  checksum: 4b7e0baf0c37f70e61218713e58c80a2753daab957df3df5748d406b2085f6df9a64039c63560dc80dfae7aee7df5d716ce0f3df00d16ab85f358585010d3436
   languageName: node
   linkType: hard
 
