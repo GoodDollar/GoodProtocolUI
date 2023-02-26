@@ -1,12 +1,12 @@
 import { ExternalProvider } from '@ethersproject/providers'
 import { DAO_NETWORK, GdSdkContext, getNetworkEnv, useEnvWeb3 } from '@gooddollar/web3sdk'
-import { Goerli, Mainnet } from '@usedapp/core'
+import { Goerli, Mainnet, useEthers } from '@usedapp/core'
 import { ethers } from 'ethers'
-import React, { ReactNode, ReactNodeArray, useMemo, useEffect } from 'react'
+import React, { ReactNode, ReactNodeArray, useMemo, useEffect, useCallback } from 'react'
 import Web3 from 'web3'
 import useActiveWeb3React from './useActiveWeb3React'
 
-import { Celo, Fuse, Web3Provider, AsyncStorage } from '@gooddollar/web3sdk-v2'
+import { Celo, Fuse, Web3Provider, AsyncStorage, useSwitchNetwork } from '@gooddollar/web3sdk-v2'
 
 type NetworkSettings = {
     currentNetwork: string
@@ -85,4 +85,26 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
             </Web3Provider>
         </GdSdkContext.Provider>
     )
+}
+// use this to override usedapp default switchNetwork used in our custom web3contextprovider
+// this will work with both metamask and wallet connect
+// we call this hook in app.tsx
+export const useUpdateSwitchNetwork = () => {
+    const { setSwitchNetwork } = useSwitchNetwork()
+    const { library } = useEthers()
+    const newSwitch = useCallback(
+        (chainId: number): Promise<void> => {
+            const hexId = '0x' + chainId.toString(16)
+            return (library as any).provider.request({
+                method: 'wallet_switchEthereumChain',
+                params: [{ chainId: hexId }],
+            })
+        },
+        [library]
+    )
+    useEffect(() => {
+        if (library instanceof ethers.providers.Web3Provider && library.provider.request) {
+            setSwitchNetwork(newSwitch)
+        }
+    }, [library])
 }
