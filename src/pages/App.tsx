@@ -16,7 +16,6 @@ import { useFaucet } from '@gooddollar/web3sdk-v2'
 import TransactionUpdater from '../state/transactions/updater'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { isMobile } from 'react-device-detect'
-import { useUpdateSwitchNetwork } from 'hooks/useWeb3'
 
 export const Beta = styled.div`
     font-style: normal;
@@ -53,7 +52,6 @@ const MainBody = styled.div<{ $page?: string }>`
 
 function App(): JSX.Element {
     const bodyRef = useRef<any>(null)
-    useUpdateSwitchNetwork()
 
     // eslint-disable-next-line @typescript-eslint/unbound-method
     const { location, replace } = useHistory()
