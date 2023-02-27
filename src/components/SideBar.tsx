@@ -180,6 +180,11 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 show: true,
             },
             {
+                route: '/bridge',
+                text: 'Bridge',
+                show: true,
+            },
+            {
                 route: '/microbridge',
                 text: 'Micro Bridge',
                 show: process.env.REACT_APP_CELO_PHASE_3,
