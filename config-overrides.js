@@ -1,6 +1,6 @@
 const {
     fixBabelImports,
-    addBabelPlugins,
+    addExternalBabelPlugins,
     addPostcssPlugins,
     override,
     addBabelPresets,
@@ -10,7 +10,7 @@ const path = require('path')
 
 module.exports = override(
     addPostcssPlugins([require('tailwindcss'), require('postcss-preset-env')({ stage: 1 })]),
-    ...addBabelPlugins(
+    ...addExternalBabelPlugins(
         'babel-plugin-react-native-web',
         '@babel/plugin-proposal-optional-chaining',
         '@babel/plugin-proposal-nullish-coalescing-operator',

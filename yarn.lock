@@ -4167,8 +4167,8 @@ __metadata:
   linkType: hard
 
 "@gooddollar/web3sdk@npm:^0.1.18":
-  version: 0.1.18
-  resolution: "@gooddollar/web3sdk@npm:0.1.18"
+  version: 0.1.19
+  resolution: "@gooddollar/web3sdk@npm:0.1.19"
   dependencies:
     "@apollo/client": ^3.2.0
     "@gooddollar/goodprotocol": 1.0.30-beta.3
@@ -4189,7 +4189,7 @@ __metadata:
     web3-eth: 1.8.2
     web3-eth-contract: 1.8.2
     web3-utils: 1.8.2
-  checksum: 68efbcfd514e9c0e91b935a782c88e51c0ec60769da9b4d78420708cd9a6565fd7fc11c48522a9e54f23eaf17cd8f8cfbedf0ac172affdd63e042c5104152dfe
+  checksum: e6f4eba29a47fdc560ad5c01903d56b754e14c36b67f4356eab0da04cb4b326d9d02aab528f2fca3a5974dbfb3b4598b05e674c6bd3c3cf3331f0eb9cfff6734
   languageName: node
   linkType: hard
 
@@ -9984,8 +9984,8 @@ __metadata:
   linkType: hard
 
 "@uniswap/sdk-core@npm:^3.0.0, @uniswap/sdk-core@npm:^3.0.0-alpha.3, @uniswap/sdk-core@npm:^3.1.0":
-  version: 3.1.1
-  resolution: "@uniswap/sdk-core@npm:3.1.1"
+  version: 3.1.2
+  resolution: "@uniswap/sdk-core@npm:3.1.2"
   dependencies:
     "@ethersproject/address": ^5.0.2
     big.js: ^5.2.2
@@ -9993,7 +9993,7 @@ __metadata:
     jsbi: ^3.1.4
     tiny-invariant: ^1.1.0
     toformat: ^2.0.0
-  checksum: d9535bdd8285eca1865ff9fa2d47f03ee498fb8bffd67da543adeaba678b1fcb161e49453f2aa95de8d78dbf17d06683d6dd2708ec1afb00c47ffc10a4e04dbd
+  checksum: fbf98235e5724f150a54f9a5c11cd48a8c4508fbd913fdf7eb0fa4ffcaca86a8dab3baa41d1599682c04749860f463b5b63a412742a57df6ff8117b60078341b
   languageName: node
   linkType: hard
 
@@ -16801,10 +16801,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-to-chromium@npm:^1.3.564, electron-to-chromium@npm:^1.4.284":
-  version: 1.4.312
-  resolution: "electron-to-chromium@npm:1.4.312"
-  checksum: 6f76f7a92180715985f6008409f8cb21fdef4e63fcd80d88907c395afb5dad84d7cbc8e274f718ece8df9bdbdcf14e43d446f7bee2824131f21fe92b74df2c1b
+"electron-to-chromium@npm:1.4.311":
+  version: 1.4.311
+  resolution: "electron-to-chromium@npm:1.4.311"
+  checksum: 663fde5d90293d19c05b0dc65996e1ba6f3ee89d6365de3503de6a96c21439e18ea579fdd7d718e260708aa871ef333de934a4024d54fd109959ac0bca9d1400
   languageName: node
   linkType: hard
 
