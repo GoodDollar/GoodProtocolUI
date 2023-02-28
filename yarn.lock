@@ -3874,15 +3874,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:0.0.39-beta.f209f5c":
-  version: 0.0.39-beta.f209f5c
-  resolution: "@gooddollar/good-design@npm:0.0.39-beta.f209f5c"
+"@gooddollar/good-design@npm:0.0.39-beta.148d6ad":
+  version: 0.0.39-beta.148d6ad
+  resolution: "@gooddollar/good-design@npm:0.0.39-beta.148d6ad"
   dependencies:
     "@gooddollar/goodprotocol": ^2.0.1
     "@lingui/macro": ^3.14.0
     "@lingui/react": ^3.14.0
     "@uniswap/sdk-core": ^3.1.0
     buffer: ^6.0.3
+    metro-react-native-babel-preset: ^0.72.0
     moment: ^2.29.4
     moment-duration-format: ^2.3.2
     native-base: 3.4.11
@@ -3899,7 +3900,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: 849de1948c85c9d2e2fca612fe13a0610ae0fcf2adb92fd7f9b0d533c01eafdfeb6863a01af4e6f93f172c279aaf1d2850f69367a7eb08ae237c9ffce9ab8a11
+  checksum: b2d9bc82d54c94413ab2f271979d4c6808f9ed8bbf2aacaf7b72b37af818b8e6910410059deb16100c96052eb6c3e0d91a425245a61d81948bce1509476c7876
   languageName: node
   linkType: hard
 
@@ -3950,10 +3951,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": 0.0.39-beta.f209f5c
+    "@gooddollar/good-design": 0.0.39-beta.148d6ad
     "@gooddollar/goodprotocol": ^2.0.2
     "@gooddollar/web3sdk": ^0.1.18
-    "@gooddollar/web3sdk-v2": 0.1.76-beta.f209f5c
+    "@gooddollar/web3sdk-v2": 0.1.76-beta.148d6ad
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": 3.15.0
@@ -4123,9 +4124,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:0.1.76-beta.f209f5c":
-  version: 0.1.76-beta.f209f5c
-  resolution: "@gooddollar/web3sdk-v2@npm:0.1.76-beta.f209f5c"
+"@gooddollar/web3sdk-v2@npm:0.1.76-beta.148d6ad":
+  version: 0.1.76-beta.148d6ad
+  resolution: "@gooddollar/web3sdk-v2@npm:0.1.76-beta.148d6ad"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -4162,7 +4163,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: e9fd8f7e8de1009a2d18a264c36cc246dc73fee1ae6388ae6103e3666e3f404179e825cc30b9ffcb717c4aaf5695cb41f26e88ae34339272066de34fca6e5dee
+  checksum: 2e334fd481565a6d2f7e52041453da04baca7948f6db46344c02966a6e7270615063614f135db2a6a0833c4822afb3b1b2c7d69bbce0ab081a73a54a5c8bad7a
   languageName: node
   linkType: hard
 
@@ -24687,7 +24688,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"metro-react-native-babel-preset@npm:0.72.3":
+"metro-react-native-babel-preset@npm:0.72.3, metro-react-native-babel-preset@npm:^0.72.0":
   version: 0.72.3
   resolution: "metro-react-native-babel-preset@npm:0.72.3"
   dependencies:
