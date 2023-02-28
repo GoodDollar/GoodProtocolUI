@@ -3874,9 +3874,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:0.0.40-beta.4bfcded":
-  version: 0.0.40-beta.4bfcded
-  resolution: "@gooddollar/good-design@npm:0.0.40-beta.4bfcded"
+"@gooddollar/good-design@npm:0.0.39-beta.f209f5c":
+  version: 0.0.39-beta.f209f5c
+  resolution: "@gooddollar/good-design@npm:0.0.39-beta.f209f5c"
   dependencies:
     "@gooddollar/goodprotocol": ^2.0.1
     "@lingui/macro": ^3.14.0
@@ -3899,7 +3899,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: 4f51288b1b0462117e6162386f239cfd26d8675b5a06e89375fdb4c315bc7a1e3fc21dab6045d8e08706a5946f2a7870f98b8e938e745b117c3b88fc84dd5d16
+  checksum: 849de1948c85c9d2e2fca612fe13a0610ae0fcf2adb92fd7f9b0d533c01eafdfeb6863a01af4e6f93f172c279aaf1d2850f69367a7eb08ae237c9ffce9ab8a11
   languageName: node
   linkType: hard
 
@@ -3950,10 +3950,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": 0.0.40-beta.4bfcded
+    "@gooddollar/good-design": 0.0.39-beta.f209f5c
     "@gooddollar/goodprotocol": ^2.0.2
     "@gooddollar/web3sdk": ^0.1.18
-    "@gooddollar/web3sdk-v2": 0.1.77-beta.4bfcded
+    "@gooddollar/web3sdk-v2": 0.1.76-beta.f209f5c
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": 3.15.0
@@ -4123,9 +4123,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:0.1.77-beta.4bfcded":
-  version: 0.1.77-beta.4bfcded
-  resolution: "@gooddollar/web3sdk-v2@npm:0.1.77-beta.4bfcded"
+"@gooddollar/web3sdk-v2@npm:0.1.76-beta.f209f5c":
+  version: 0.1.76-beta.f209f5c
+  resolution: "@gooddollar/web3sdk-v2@npm:0.1.76-beta.f209f5c"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -4136,7 +4136,6 @@ __metadata:
     "@sentry/browser": 7.16.0
     "@sentry/react-native": ^4.8.0
     "@solana/web3.js": ^1.72.0
-    "@usedapp/core": 1.2.2
     "@walletconnect/client": ^1.8.0
     "@walletconnect/qrcode-modal": ^1.8.0
     "@web3-onboard/coinbase": ^2.2.0
@@ -4158,11 +4157,12 @@ __metadata:
     react-use-promise: ^0.5.0
   peerDependencies:
     "@react-native-async-storage/async-storage": 1.17.10
+    "@usedapp/core": ^1.2.6
     ethers: 5.*
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: b957f5fb3cfd7f6ae535c5882efe4590db63889210b049768e3a5d0babd67899d7c40fcfca9ec8643caa8c7f4e26f46476b0de70f240c088a077b48b1b3d838a
+  checksum: e9fd8f7e8de1009a2d18a264c36cc246dc73fee1ae6388ae6103e3666e3f404179e825cc30b9ffcb717c4aaf5695cb41f26e88ae34339272066de34fca6e5dee
   languageName: node
   linkType: hard
 
