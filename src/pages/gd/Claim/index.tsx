@@ -7,6 +7,8 @@ import { ClaimBalance } from './ClaimBalance'
 import { SupportedChains, useClaim } from '@gooddollar/web3sdk-v2'
 import { useConnectWallet } from '@web3-onboard/react'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import FirstTimer from 'assets/images/claim/firstimer.png'
+import HowWorks from 'assets/images/claim/howitworks.png'
 
 const Claim = memo(() => {
     const { i18n } = useLingui()
@@ -74,21 +76,52 @@ const Claim = memo(() => {
 
     const mockedCards: Array<IClaimCard> = [
         {
-            id: 'how-to-claim',
+            id: 'how-does-work',
             title: {
-                text: 'How to claim G$',
+                text: 'How does it work?',
                 color: 'primary',
             },
             content: [
                 {
-                    description: {
-                        text: 'First time here? Watch this video to learn the basics about GoodDollar:',
+                    subTitle: {
+                        text: 'Free money, no catch, all thanks to technology.',
                         color: 'goodGrey.500',
                     },
                 },
                 {
-                    imageUrl:
-                        'https://1.bp.blogspot.com/-t6rZyF0sJvc/YCe0-Xx2euI/AAAAAAAADt8/ZVlJPzwtayoLezt1fKE833GRX-n8_MHWwCLcBGAsYHQ/s400-rw/Screenshot_20210213-113418.png',
+                    description: {
+                        text: 'Learn more about how the GoodDollar protocol works here.',
+                        color: 'goodGrey.500',
+                    },
+                },
+                {
+                    imgSrc: HowWorks,
+                },
+            ],
+            bgColor: 'goodWhite.100',
+            hide: claimed,
+        },
+        {
+            id: 'how-to-collect',
+            title: {
+                text: 'How to collect G$',
+                color: 'primary',
+            },
+            content: [
+                {
+                    subTitle: {
+                        text: 'First time here?',
+                        color: 'goodGrey.500',
+                    },
+                },
+                {
+                    description: {
+                        text: 'Anyone in the world can collect G$. Create a wallet to get started.',
+                        color: 'goodGrey.500',
+                    },
+                },
+                {
+                    imgSrc: FirstTimer,
                 },
             ],
             bgColor: 'goodWhite.100',
@@ -97,20 +130,15 @@ const Claim = memo(() => {
         {
             id: 'already-claimed',
             title: {
-                text: `Claimed today? Time to use your G$. 👀`,
+                text: `Use 
+your G$. 🙂`,
                 color: 'white',
             },
             content: [
                 {
                     description: {
-                        text: `You can use your GoodDollars to buy products, book services, and use DeFi to better your life and the live of others.`,
+                        text: `After claiming your G$, use it to support your community, buy products and services, support causes you care about, vote in the GoodDAO, and more. Learn how here`,
                         color: 'white',
-                    },
-                },
-                {
-                    link: {
-                        linkText: 'Buy using G$',
-                        linkUrl: 'https://goodmarkets.xyz/',
                     },
                 },
             ],
@@ -125,6 +153,16 @@ const Claim = memo(() => {
             content: [
                 {
                     list: [
+                        {
+                            id: 'number-countries',
+                            key: '🌏 Number of Countries',
+                            value: '#',
+                        },
+                        {
+                            id: 'tokens-claimed',
+                            key: '✋🏽 Number of G$ Tokens Claimed',
+                            value: '#',
+                        },
                         {
                             id: 'total-distributed',
                             key: '🪂 Total UBI Distributed',
