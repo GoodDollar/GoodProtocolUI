@@ -2274,7 +2274,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chainsafe/ssz@npm:0.9.4":
+"@chainsafe/persistent-merkle-tree@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "@chainsafe/persistent-merkle-tree@npm:0.5.0"
+  dependencies:
+    "@chainsafe/as-sha256": ^0.3.1
+  checksum: 2c67203da776c79cd3a6132e2d672fe132393b2e63dc71604e3134acc8c0ec25cc5e431051545939ea0f7c5ff2066fb806b9e5cab974ca085d046226a1671f7d
+  languageName: node
+  linkType: hard
+
+"@chainsafe/ssz@npm:0.9.4, @chainsafe/ssz@npm:^0.9.2":
   version: 0.9.4
   resolution: "@chainsafe/ssz@npm:0.9.4"
   dependencies:
@@ -2282,6 +2291,16 @@ __metadata:
     "@chainsafe/persistent-merkle-tree": ^0.4.2
     case: ^1.6.3
   checksum: c6eaedeae9e5618b3c666ff4507a27647f665a8dcf17d5ca86da4ed4788c5a93868f256d0005467d184fdf35ec03f323517ec2e55ec42492d769540a2ec396bc
+  languageName: node
+  linkType: hard
+
+"@chainsafe/ssz@npm:^0.10.0":
+  version: 0.10.1
+  resolution: "@chainsafe/ssz@npm:0.10.1"
+  dependencies:
+    "@chainsafe/as-sha256": ^0.3.1
+    "@chainsafe/persistent-merkle-tree": ^0.5.0
+  checksum: 9a890bba0b6ad91bc88c0f8970741e60031a22a921fa9afefb1f83e238703bcc2804194b0b7c9be2157d982e9c771407e3c69333c9e9c65660a1028f913d6354
   languageName: node
   linkType: hard
 
@@ -2801,13 +2820,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ethereumjs/common@npm:^3.0.2, @ethereumjs/common@npm:^3.1.1":
+"@ethereumjs/common@npm:^3.0.2":
   version: 3.1.1
   resolution: "@ethereumjs/common@npm:3.1.1"
   dependencies:
     "@ethereumjs/util": ^8.0.5
     crc-32: ^1.2.0
   checksum: 58602dee9fbcf691dca111b4fd7fd5770f5e86d68012ce48fba396c7038afdca4fca273a9cf39f88cf6ea7b256603a4bd214e94e9d01361efbcd060460b78952
+  languageName: node
+  linkType: hard
+
+"@ethereumjs/common@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@ethereumjs/common@npm:3.1.0"
+  dependencies:
+    "@ethereumjs/util": ^8.0.4
+    crc-32: ^1.2.0
+  checksum: 3e8dfaf1363209bda477833c207f3b7bbef17035a0bcfa883a46a76b05ddcdc1c61c7b8d97b9a5d4445a714d07a1a55997c9513d7dd39176f8f9a452680cffb1
   languageName: node
   linkType: hard
 
@@ -2841,13 +2870,13 @@ __metadata:
   linkType: hard
 
 "@ethereumjs/tx@npm:^4.0.2":
-  version: 4.1.1
-  resolution: "@ethereumjs/tx@npm:4.1.1"
+  version: 4.1.0
+  resolution: "@ethereumjs/tx@npm:4.1.0"
   dependencies:
-    "@chainsafe/ssz": 0.9.4
-    "@ethereumjs/common": ^3.1.1
+    "@chainsafe/ssz": ^0.9.2
+    "@ethereumjs/common": ^3.1.0
     "@ethereumjs/rlp": ^4.0.1
-    "@ethereumjs/util": ^8.0.5
+    "@ethereumjs/util": ^8.0.4
     "@ethersproject/providers": ^5.7.2
     ethereum-cryptography: ^1.1.2
   peerDependencies:
@@ -2855,7 +2884,7 @@ __metadata:
   peerDependenciesMeta:
     c-kzg:
       optional: true
-  checksum: 98897e79adf03ee90ed98c6a543e15e0b4e127bc5bc381d70cdcc76b111574205b94869c29d925ea9e30a98e5ef8b0f5597914359deb9db552017b2e78ef17a8
+  checksum: 51e5439207f0dd55e95a6bd88054ef353d5742fef8f6da1e913684e8306ca8315a5e5341bf9c3cc3fda4d71f15ce60ed85fbca6df8d2bd3743071aa66643ea9d
   languageName: node
   linkType: hard
 
@@ -2867,6 +2896,17 @@ __metadata:
     "@ethereumjs/rlp": ^4.0.1
     ethereum-cryptography: ^1.1.2
   checksum: 318386785295b4584289b1aa576d2621392b3a918d127890db62d3f74184f3377694dd9e951e19bfb9ab80e8dc9e38e180236cac2651dead26097d10963731f9
+  languageName: node
+  linkType: hard
+
+"@ethereumjs/util@npm:^8.0.4":
+  version: 8.0.4
+  resolution: "@ethereumjs/util@npm:8.0.4"
+  dependencies:
+    "@chainsafe/ssz": ^0.10.0
+    "@ethereumjs/rlp": ^4.0.1
+    ethereum-cryptography: ^1.1.2
+  checksum: 753bef8db966def49b1aab039883b27af24f8d79cf38c98b0371a4c067daff8f5cc125aba7287056091808bc53642cbc50e7dae5bb64ee320c4d3ade6074ce30
   languageName: node
   linkType: hard
 
