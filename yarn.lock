@@ -471,7 +471,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.0.0, @babel/core@npm:^7.1.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.13.16, @babel/core@npm:^7.14.0, @babel/core@npm:^7.15.8, @babel/core@npm:^7.16.0, @babel/core@npm:^7.7.5, @babel/core@npm:^7.8.4":
+"@babel/core@npm:^7.0.0, @babel/core@npm:^7.1.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.13.16, @babel/core@npm:^7.14.0, @babel/core@npm:^7.15.8, @babel/core@npm:^7.16.0, @babel/core@npm:^7.18.10, @babel/core@npm:^7.7.5, @babel/core@npm:^7.8.4":
   version: 7.21.0
   resolution: "@babel/core@npm:7.21.0"
   dependencies:
@@ -1938,7 +1938,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.17.2, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.19.0, @babel/runtime@npm:^7.19.4, @babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.20.6, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.4.4, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.2, @babel/runtime@npm:^7.6.3, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.17.2, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.19.0, @babel/runtime@npm:^7.19.4, @babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.20.6, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.4.4, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.2, @babel/runtime@npm:^7.6.3, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.21.0
   resolution: "@babel/runtime@npm:7.21.0"
   dependencies:
@@ -3874,15 +3874,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:0.0.40-beta.65db60a":
-  version: 0.0.40-beta.65db60a
-  resolution: "@gooddollar/good-design@npm:0.0.40-beta.65db60a"
+"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 0.0.40
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=15d951&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
+    "@babel/core": ^7.18.10
+    "@babel/runtime": ^7.18.9
     "@gooddollar/goodprotocol": ^2.0.1
     "@lingui/macro": ^3.14.0
     "@lingui/react": ^3.14.0
     "@uniswap/sdk-core": ^3.1.0
     buffer: ^6.0.3
+    metro-react-native-babel-preset: ^0.72.0
     moment: ^2.29.4
     moment-duration-format: ^2.3.2
     native-base: 3.4.11
@@ -3899,7 +3902,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: 6d6c340621df1fbfa36418ab74385c94bc74e824fdb6c407a04b0f7916980affa40015d96d3f6ea99d32671d703920c7a95911c774d0786af961191c5c62a43b
+  checksum: 9b17040563626f05b8d93f3eca6997820ec5bcfde5749f1d5680835d18026d6e83785c9cc4b613da07354fc416d42f8568b0c28e0db5423e5099bed477a032be
   languageName: node
   linkType: hard
 
@@ -3950,10 +3953,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": 0.0.40-beta.65db60a
+    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
     "@gooddollar/goodprotocol": ^2.0.2
     "@gooddollar/web3sdk": ^0.1.18
-    "@gooddollar/web3sdk-v2": 0.1.77-beta.65db60a
+    "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2"
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": 3.15.0
@@ -4123,9 +4126,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:0.1.77-beta.65db60a":
-  version: 0.1.77-beta.65db60a
-  resolution: "@gooddollar/web3sdk-v2@npm:0.1.77-beta.65db60a"
+"@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 0.1.77
+  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=044423&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -4136,13 +4139,10 @@ __metadata:
     "@sentry/browser": 7.16.0
     "@sentry/react-native": ^4.8.0
     "@solana/web3.js": ^1.72.0
-    "@usedapp/core": 1.2.2
     "@walletconnect/client": ^1.8.0
     "@walletconnect/qrcode-modal": ^1.8.0
     "@web3-onboard/coinbase": ^2.2.0
-    "@web3-onboard/core": ^2.12.1
     "@web3-onboard/injected-wallets": ^2.4.0
-    "@web3-onboard/react": ^2.5.3
     "@web3-onboard/torus": ^2.2.1
     "@web3-onboard/walletconnect": ^2.2.2
     "@web3auth/base": ^4.0.0
@@ -4158,11 +4158,12 @@ __metadata:
     react-use-promise: ^0.5.0
   peerDependencies:
     "@react-native-async-storage/async-storage": 1.17.10
+    "@usedapp/core": ^1.2.6
     ethers: 5.*
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: d4b975e2ade989627ec4bc89584afbe3994eb0b959af186935daed5fa8d66cac56eafe2643af7488141da6067cbe84771e8c68f80b3731f243f974a6f837d610
+  checksum: 4b30cb26eca9bfc36c78ce0cc69323daf3e28970b208f9e9d8fc5e27c0bb3199f1f90a8987258bfa8cc99293bbbe8532c89b0039978aca2ba58d8db7299c0e7b
   languageName: node
   linkType: hard
 
@@ -10502,7 +10503,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@web3-onboard/react@npm:^2.2.5, @web3-onboard/react@npm:^2.5.3":
+"@web3-onboard/react@npm:^2.2.5":
   version: 2.6.4
   resolution: "@web3-onboard/react@npm:2.6.4"
   dependencies:
@@ -24687,7 +24688,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"metro-react-native-babel-preset@npm:0.72.3":
+"metro-react-native-babel-preset@npm:0.72.3, metro-react-native-babel-preset@npm:^0.72.0":
   version: 0.72.3
   resolution: "metro-react-native-babel-preset@npm:0.72.3"
   dependencies:

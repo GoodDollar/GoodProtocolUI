@@ -61,7 +61,6 @@ const Claim = memo(() => {
         },
         lg: {
             gap: '56px',
-            marginLeft: '120px',
             flexDirection: 'row',
             justifyContent: 'justify-evenly',
         },
@@ -98,6 +97,7 @@ const Claim = memo(() => {
                     imgSrc: HowWorks,
                 },
             ],
+            externalLink: 'https://www.notion.so/gooddollar/GoodDollar-Protocol-2cc5c26cf09d40469e4570ad1d983914',
             bgColor: 'goodWhite.100',
             hide: claimed,
         },
@@ -124,6 +124,7 @@ const Claim = memo(() => {
                     imgSrc: FirstTimer,
                 },
             ],
+            externalLink: 'https://www.notion.so/Get-G-873391f31aee4a18ab5ad7fb7467acb3',
             bgColor: 'goodWhite.100',
             hide: claimed,
         },
@@ -142,6 +143,7 @@ your G$. 🙂`,
                     },
                 },
             ],
+            externalLink: 'https://www.notion.so/gooddollar/Use-G-8639553aa7214590a70afec91a7d9e73',
             bgColor: 'primary',
         },
         {
@@ -181,6 +183,7 @@ your G$. 🙂`,
                     ],
                 },
             ],
+            externalLink: 'https://dashboard.gooddollar.org',
             bgColor: 'goodWhite.100',
         },
     ]
@@ -214,7 +217,7 @@ your G$. 🙂`,
                         />
                     </Box>
                 </div>
-                <div className="w-full lg:flex lg:flex-col lg2:w-2/5 xl:w-80">
+                <div className="w-full lg:flex lg:flex-col lg2:w-2/5" style={{ flexGrow: '1' }}>
                     <ClaimCarousel cards={mockedCards} claimed />
                 </div>
             </View>
