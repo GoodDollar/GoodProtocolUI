@@ -207,10 +207,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.18.9",
-    "@gooddollar/good-design": "0.0.39-beta.a68f6b9",
+    "@gooddollar/good-design": "^0.0.41",
     "@gooddollar/goodprotocol": "^2.0.2",
     "@gooddollar/web3sdk": "^0.1.18",
-    "@gooddollar/web3sdk-v2": "0.1.76-beta.a68f6b9",
+    "@gooddollar/web3sdk-v2": "^0.1.78",
     "@headlessui/react": "1.5.0",
     "@types/react-text-mask": "^5.4.8",
     "@types/text-mask-addons": "^3.8.1",
