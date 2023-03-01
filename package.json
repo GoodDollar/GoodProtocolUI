@@ -215,7 +215,7 @@
     "@types/react-text-mask": "^5.4.8",
     "@types/text-mask-addons": "^3.8.1",
     "@uniswap/sdk-core": "^3.0.0",
-    "@usedapp/core": "1.2.2",
+    "@usedapp/core": "^1.2.6",
     "@web3-onboard/coinbase": "^2.0.10",
     "@web3-onboard/injected-wallets": "^2.0.15",
     "@web3-onboard/react": "^2.2.5",
