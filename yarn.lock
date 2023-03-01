@@ -3874,9 +3874,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
-  version: 0.0.40
-  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=15d951&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+"@gooddollar/good-design@npm:0.0.42-beta.796ae3f":
+  version: 0.0.42-beta.796ae3f
+  resolution: "@gooddollar/good-design@npm:0.0.42-beta.796ae3f"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -3902,7 +3902,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: 9b17040563626f05b8d93f3eca6997820ec5bcfde5749f1d5680835d18026d6e83785c9cc4b613da07354fc416d42f8568b0c28e0db5423e5099bed477a032be
+  checksum: 341d6908697865bbb6eab4ed73f2f4e5489f628acfbc63d0af6bbb3d2086e8d13cade2e0cd7e36217464184ce14bce3ecb284fe92042330ab36d901eaca8eb7f
   languageName: node
   linkType: hard
 
@@ -3953,10 +3953,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
+    "@gooddollar/good-design": 0.0.42-beta.796ae3f
     "@gooddollar/goodprotocol": ^2.0.2
     "@gooddollar/web3sdk": ^0.1.18
-    "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2"
+    "@gooddollar/web3sdk-v2": 0.1.79-beta.796ae3f
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": 3.15.0
@@ -4126,9 +4126,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
-  version: 0.1.77
-  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=044423&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+"@gooddollar/web3sdk-v2@npm:0.1.79-beta.796ae3f":
+  version: 0.1.79-beta.796ae3f
+  resolution: "@gooddollar/web3sdk-v2@npm:0.1.79-beta.796ae3f"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -4163,7 +4163,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 4b30cb26eca9bfc36c78ce0cc69323daf3e28970b208f9e9d8fc5e27c0bb3199f1f90a8987258bfa8cc99293bbbe8532c89b0039978aca2ba58d8db7299c0e7b
+  checksum: eb5830e6e3290f8b18682c199c5dcc82f7a8b4b9d24ba7874bbfcb403e2d8c9f8ff37a893b6bcdc723f1247324c9e6f19a89a5ce341fa5e86d85715920104c90
   languageName: node
   linkType: hard
 
