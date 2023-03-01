@@ -17,7 +17,11 @@ module.exports = override(
         '@babel/plugin-syntax-bigint'
         // '@babel/plugin-proposal-class-properties',
     ),
-    ...addBabelPresets('@babel/preset-flow', '@babel/preset-react', '@babel/preset-typescript'),
+    ...addBabelPresets(
+      '@babel/preset-flow',
+      '@babel/preset-react',
+      '@babel/preset-typescript',
+    ),
     fixBabelImports('module-resolver', {
         alias: {
             '^react-native$': 'react-native-web',

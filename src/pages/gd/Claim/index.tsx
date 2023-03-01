@@ -214,6 +214,7 @@ your G$. 🙂`,
                             claim={handleClaim}
                             claimed={claimed}
                             handleConnect={handleConnect}
+                            chainId={chainId}
                         />
                     </Box>
                 </div>
