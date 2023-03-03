@@ -1,60 +1,53 @@
 import React, { memo } from 'react'
-
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { useApplicationTheme } from 'state/application/hooks'
 import {
     KimaTransactionWidget,
     KimaProvider,
-    ThemeOptions,
     FontSizeOptions,
+    ColorModeOptions,
     ModeOptions,
-    SupportNetworks,
+    DAppOptions,
 } from '@kimafinance/kima-transaction-widget'
 import '@kimafinance/kima-transaction-widget/dist/index.css'
 
 const Bridge = memo(() => {
+    const { library } = useActiveWeb3React()
+    const [theme] = useApplicationTheme()
+
     return (
         <KimaProvider>
             <div
+                className="container"
                 style={{
-                    margin: '0 5vw',
+                    display: 'flex',
+                    justifyContent: 'center',
                 }}
             >
-                <div className="container">
-                    <KimaTransactionWidget
-                        theme={ThemeOptions.light}
-                        fontSize={FontSizeOptions.medium}
-                        mode={ModeOptions.bridge}
-                        // kimaBackendUrl='https://transaction_backend.kima.finance'
-                        kimaBackendUrl="http://localhost:3001"
-                        kimaNodeProviderQuery="https://api_staging_testnet.kima.finance"
-                        titleOption={{
-                            initialTitle: 'New Purchase',
-                        }}
-                        useFIAT={true}
-                        paymentTitleOption={{
-                            title: 'You can now purchase our NFT on Polygon, using funds from other chains.',
-                            style: {
-                                fontSize: '1.2em',
-                                fontWeight: '500',
-                            },
-                        }}
-                        // compliantOption={false}
-                        transactionOption={{
-                            targetChain: SupportNetworks.AVALANCHE,
-                            targetAddress: '0x67cc400c434F691Ed45e452dC8F2Baf0101a9B63',
-                            amount: 5,
-                        }}
-                        txId={33}
-                        errorHandler={(e: any) => {
-                            console.log('error:', e)
-                        }}
-                        successHandler={() => {
-                            console.log('success')
-                        }}
-                        closeHandler={() => {
-                            console.log('closed')
-                        }}
-                    />
-                </div>
+                <KimaTransactionWidget
+                    theme={{
+                        colorMode: theme === 'light' ? ColorModeOptions.light : ColorModeOptions.dark,
+                        fontSize: FontSizeOptions.medium,
+                        fontFamily: 'Roboto',
+                        backgroundColorDark: 'rgb(21, 26, 48)',
+                    }}
+                    mode={ModeOptions.bridge}
+                    dAppOption={DAppOptions.G$}
+                    // kimaBackendUrl='https://transaction_backend.kima.finance'
+                    kimaBackendUrl="http://localhost:3001"
+                    kimaNodeProviderQuery="https://api_testnet.kima.finance"
+                    provider={library}
+                    compliantOption={false}
+                    errorHandler={(e: any) => {
+                        console.log('error:', e)
+                    }}
+                    successHandler={() => {
+                        console.log('success')
+                    }}
+                    closeHandler={() => {
+                        console.log('closed')
+                    }}
+                />
             </div>
         </KimaProvider>
     )
