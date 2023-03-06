@@ -2,20 +2,18 @@ import LogoSmall from '../assets/images/logo_primary_small.png'
 import { torus as torusModule } from '@gooddollar/web3sdk-v2'
 import { getNetworkEnv } from 'utils/env'
 
+const network = getNetworkEnv()
+
 export enum AdditionalChainIds {
     FUSE = 122,
     ETH = 1,
     CELO = 42220,
 }
 
-export const getTorusModule = () => {
-    const network = getNetworkEnv()
-    const buildEnv = network !== 'production' ? 'testing' : network
-    return torusModule({
-        buildEnv,
-        showTorusButton: false,
-    })
-}
+export const torus = torusModule({
+    buildEnv: network !== 'production' ? 'testing' : network,
+    showTorusButton: false,
+})
 
 export const connectOptions = {
     chains: [
