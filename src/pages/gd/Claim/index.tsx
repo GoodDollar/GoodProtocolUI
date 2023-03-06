@@ -219,7 +219,8 @@ your G$. 🙂`,
                             firstName="Test"
                             method="redirect"
                             claim={handleClaim}
-                            claimed={{ claimed, state }}
+                            claimed={claimed}
+                            claiming={state?.status === 'Mining'}
                             handleConnect={handleConnect}
                             chainId={chainId}
                         />
