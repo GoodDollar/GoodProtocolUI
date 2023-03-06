@@ -3946,9 +3946,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.0.49":
+"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.0.49
-  resolution: "@gooddollar/good-design@npm:0.0.49"
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=57ecf4&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -3974,7 +3974,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: a114ea30ee9e9f5907821d658d5c237f56465667fca0323970f3ccee0f0ba7c38d9e66beed87da87c340a2459e1fbbaffbcf59a2a8fe3f3968424c25987f7881
+  checksum: 334b3ae3d1d8a9abdc6ab970d37ccc14166ef0cf9dbd7bc37329d75f6736dc5c8e5edb19e4f19ebf7828af69da6a0e1ea9086b9b849cba56ed024eeea36b10cd
   languageName: node
   linkType: hard
 
@@ -4026,10 +4026,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.0.49
+    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
     "@gooddollar/goodprotocol": ^2.0.3
     "@gooddollar/web3sdk": ^0.1.20
-    "@gooddollar/web3sdk-v2": ^0.1.83
+    "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2"
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": 3.15.0
@@ -4199,9 +4199,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.1.83":
+"@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.1.83
-  resolution: "@gooddollar/web3sdk-v2@npm:0.1.83"
+  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=468bf4&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -4236,7 +4236,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 081c1aca3a76630dc5b404215505517f4c85df6dccbea96a64cfa2e0b317a3ebef7abda363210cb8cf1785d4bbcbd91224ef5ca783dbf6d5859292905e48ddf3
+  checksum: 61866df722d6644dd34c30df5a257f0ceae0f9d9de5335414f33a0ef880468c20716dc3c6953255155f71d268fc569ed7294330fa1b80c22de0fd0d23bdeb668
   languageName: node
   linkType: hard
 
