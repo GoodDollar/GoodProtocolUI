@@ -22,7 +22,7 @@ import { Web3ContextProvider } from './hooks/useWeb3'
 import { theme, NativeBaseProvider } from '@gooddollar/good-design'
 import { analyticsConfig, appInfo } from 'hooks/useSendAnalyticsData'
 import { OnboardProvider } from '@gooddollar/web3sdk-v2'
-import { connectOptions, getTorusModule } from 'connectors'
+import { connectOptions, torus } from 'connectors'
 import { HttpsProvider } from 'utils/HttpsProvider'
 import { registerServiceWorker } from './serviceWorker'
 
@@ -86,8 +86,6 @@ const GlobalStyle = createGlobalStyle`
 const enableHttpsRedirect = String(process.env.REACT_APP_ENABLE_HTTPS_REDIRECT) === '1'
 const enableServiceWorker =
     window.location.hostname !== 'localhost' && String(process.env.REACT_APP_ENABLE_SERVICE_WORKER) === '1'
-
-const torus = getTorusModule()
 
 ReactDOM.render(
     <StrictMode>
