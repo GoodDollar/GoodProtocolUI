@@ -1,10 +1,20 @@
 import LogoSmall from '../assets/images/logo_primary_small.png'
+import { torus as torusModule } from '@gooddollar/web3sdk-v2'
+import { getNetworkEnv } from 'utils/env'
+
+const network = getNetworkEnv()
 
 export enum AdditionalChainIds {
     FUSE = 122,
     ETH = 1,
     CELO = 42220,
 }
+
+export const torus = torusModule({
+    buildEnv: network !== 'production' ? 'testing' : network,
+    showTorusButton: false,
+})
+
 export const connectOptions = {
     chains: [
         {
@@ -18,8 +28,7 @@ export const connectOptions = {
             token: 'ETH',
             label: 'Ethereum Mainnet',
             rpcUrl:
-                process.env.REACT_APP_MAINNET_RPC ??
-                'https://eth-mainnet.alchemyapi.io/v2/2kSbx330Sc8S3QRwD9nutr9XST_DfeJh',
+                process.env.REACT_APP_MAINNET_RPC ?? 'https://mainnet.infura.io/v3/586298cc4e26485d9a6f9c4a5f555a22',
         },
         {
             id: '0x7a',

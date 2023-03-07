@@ -4,9 +4,11 @@ import { useLingui } from '@lingui/react'
 import { ClaimButton, ClaimCarousel, IClaimCard, Title } from '@gooddollar/good-design'
 import { Text, useBreakpointValue, Box, View } from 'native-base'
 import { ClaimBalance } from './ClaimBalance'
-import { SupportedChains, useClaim } from '@gooddollar/web3sdk-v2'
+import { useClaim } from '@gooddollar/web3sdk-v2'
 import { useConnectWallet } from '@web3-onboard/react'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import FirstTimer from 'assets/images/claim/firstimer.png'
+import HowWorks from 'assets/images/claim/howitworks.png'
 
 const Claim = memo(() => {
     const { i18n } = useLingui()
@@ -17,8 +19,11 @@ const Claim = memo(() => {
     const [claimed, setClaimed] = useState(false)
     const [, connect] = useConnectWallet()
     const { chainId } = useActiveWeb3React()
-    const network = SupportedChains[chainId]
 
+    // there are three possible scenarios
+    // 1. claim amount is 0, meaning user has claimed that day
+    // 2. status === success, meaning user has just claimed. Could happen that claimAmount has not been updated right after tx confirmation
+    // 3. If neither is true, there is a claim ready for user or its a new user and FV will be triggered instead
     useEffect(() => {
         //todo: add event analytics on transaction status
         if (claimAmount?.isZero() || state.status === 'Success') {
@@ -26,7 +31,7 @@ const Claim = memo(() => {
         } else {
             setClaimed(false)
         }
-    }, [claimAmount, state, send])
+    }, [claimAmount, state, send, chainId])
 
     const handleClaim = useCallback(async () => {
         const claim = await send()
@@ -54,12 +59,11 @@ const Claim = memo(() => {
             alignItems: 'center',
             justifyContent: 'center',
             flexGrow: 1,
-            width: 'full',
+            width: '100%',
             mb: 2,
         },
         lg: {
-            gap: '56px',
-            marginLeft: '120px',
+            gap: claimed ? '58px' : '32px',
             flexDirection: 'row',
             justifyContent: 'justify-evenly',
         },
@@ -69,51 +73,81 @@ const Claim = memo(() => {
         base: {
             display: 'flex',
             alignItems: 'center',
+            width: '369px',
         },
     })
 
     const mockedCards: Array<IClaimCard> = [
         {
-            id: 'how-to-claim',
+            id: 'how-does-work',
             title: {
-                text: 'How to claim G$',
+                text: 'How does it work?',
                 color: 'primary',
             },
             content: [
                 {
-                    description: {
-                        text: 'First time here? Watch this video to learn the basics about GoodDollar:',
+                    subTitle: {
+                        text: 'Free money, no catch, all thanks to technology.',
                         color: 'goodGrey.500',
                     },
                 },
                 {
-                    imageUrl:
-                        'https://1.bp.blogspot.com/-t6rZyF0sJvc/YCe0-Xx2euI/AAAAAAAADt8/ZVlJPzwtayoLezt1fKE833GRX-n8_MHWwCLcBGAsYHQ/s400-rw/Screenshot_20210213-113418.png',
+                    description: {
+                        text: 'Learn more about how the GoodDollar protocol works here.',
+                        color: 'goodGrey.500',
+                    },
+                },
+                {
+                    imgSrc: HowWorks,
                 },
             ],
+            externalLink: 'https://www.notion.so/gooddollar/GoodDollar-Protocol-2cc5c26cf09d40469e4570ad1d983914',
+            bgColor: 'goodWhite.100',
+            hide: claimed,
+        },
+        {
+            id: 'how-to-collect',
+            title: {
+                text: 'How to collect G$',
+                color: 'primary',
+            },
+            content: [
+                {
+                    subTitle: {
+                        text: 'First time here?',
+                        color: 'goodGrey.500',
+                    },
+                },
+                {
+                    description: {
+                        text: 'Anyone in the world can collect G$. Create a wallet to get started.',
+                        color: 'goodGrey.500',
+                    },
+                },
+                {
+                    imgSrc: FirstTimer,
+                },
+            ],
+            externalLink: 'https://www.notion.so/Get-G-873391f31aee4a18ab5ad7fb7467acb3',
             bgColor: 'goodWhite.100',
             hide: claimed,
         },
         {
             id: 'already-claimed',
             title: {
-                text: `Claimed today? Time to use your G$. 👀`,
+                text: `Use 
+your G$. 🙂`,
                 color: 'white',
             },
             content: [
                 {
                     description: {
-                        text: `You can use your GoodDollars to buy products, book services, and use DeFi to better your life and the live of others.`,
+                        text: `After claiming your G$, use it to support your community, buy products and services, support causes you care about, vote in the GoodDAO, and more. Learn how here`,
                         color: 'white',
                     },
                 },
-                {
-                    link: {
-                        linkText: 'Buy using G$',
-                        linkUrl: 'https://goodmarkets.xyz/',
-                    },
-                },
             ],
+            externalLink: 'https://www.notion.so/gooddollar/Use-G-8639553aa7214590a70afec91a7d9e73',
             bgColor: 'primary',
         },
         {
@@ -125,6 +159,16 @@ const Claim = memo(() => {
             content: [
                 {
                     list: [
+                        {
+                            id: 'number-countries',
+                            key: '🌏 Number of Countries',
+                            value: '#',
+                        },
+                        {
+                            id: 'tokens-claimed',
+                            key: '✋🏽 Number of G$ Tokens Claimed',
+                            value: '#',
+                        },
                         {
                             id: 'total-distributed',
                             key: '🪂 Total UBI Distributed',
@@ -143,6 +187,7 @@ const Claim = memo(() => {
                     ],
                 },
             ],
+            externalLink: 'https://dashboard.gooddollar.org',
             bgColor: 'goodWhite.100',
         },
     ]
@@ -150,19 +195,25 @@ const Claim = memo(() => {
     return (
         <>
             <View style={mainView}>
-                <div className="flex flex-col text-center lg:w-5/12">
+                <div className="flex flex-col items-center text-center lg:w-5/12">
                     <Box style={balanceContainer}>
                         {claimed ? (
                             <ClaimBalance />
                         ) : (
                             <>
                                 <Title fontFamily="heading" fontSize="2xl" fontWeight="extrabold" pb="2">
-                                    {i18n._(t`Claim G$`)}
+                                    {i18n._(t`Collect G$`)}
                                 </Title>
 
-                                <Text fontFamily="subheading" fontWeight="normal" color="goodGrey.500" fontSize="sm">
+                                <Text
+                                    w="340px"
+                                    fontFamily="subheading"
+                                    fontWeight="normal"
+                                    color="goodGrey.500"
+                                    fontSize="sm"
+                                >
                                     {i18n._(
-                                        t`UBI is your fair share of G$ tokens, which you can claim daily on ${network}.`
+                                        t`GoodDollar creates free money as a public good, G$ tokens, which you can collect daily.`
                                     )}
                                 </Text>
                             </>
@@ -173,10 +224,14 @@ const Claim = memo(() => {
                             claim={handleClaim}
                             claimed={claimed}
                             handleConnect={handleConnect}
+                            chainId={chainId}
                         />
                     </Box>
                 </div>
-                <div className="w-full lg:flex lg:flex-col lg2:w-2/5 xl:w-80">
+                <div
+                    className={`w-full lg:flex lg:flex-col ${claimed ? 'lg:w-full' : 'lg:w-6/12'}`}
+                    style={{ flexGrow: '1' }}
+                >
                     <ClaimCarousel cards={mockedCards} claimed />
                 </div>
             </View>

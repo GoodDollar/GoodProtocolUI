@@ -1,91 +1,96 @@
-import React, { useMemo, useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { View, Box, Text } from 'native-base'
 
-import { ArrowButton } from '@gooddollar/good-design'
-import { SupportedChains, useHasClaimed } from '@gooddollar/web3sdk-v2'
-
-import { useClaim } from '@gooddollar/web3sdk-v2'
-// import usePromise from 'hooks/usePromise'
-// import { g$Price } from '@gooddollar/web3sdk'
-import { format } from 'date-fns'
+import { ArrowButton, BalanceGD } from '@gooddollar/good-design'
+import { SupportedChains, useHasClaimed, useSwitchNetwork } from '@gooddollar/web3sdk-v2'
+import usePromise from 'hooks/usePromise'
+import { g$Price } from '@gooddollar/web3sdk'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useClaiming } from 'hooks/useClaiming'
-import { noop } from 'lodash'
-import { useEthers } from '@usedapp/core'
+import { useNetworkModalToggle } from 'state/application/hooks'
+import { BigNumber } from '@ethersproject/bignumber'
 
 const NextClaim = ({ time }: { time: string }) => (
     <Text fontFamily="subheading" fontWeight="normal" fontSize="xs" color="main">
-        Claim cycle restart every day at {time}
+        Claim again {time}
     </Text>
 )
 
-const ClaimTimer = () => {
-    const { tillClaim } = useClaiming() // todo: update to timer from sdk-v2
-
-    return (
-        <Box height="50" justifyContent="center" flexDirection="column" my="4">
-            <Text fontFamily="subheading" fontSize="md" color="main">
-                Your next claim
-            </Text>
-            <Text>{tillClaim}</Text>
-        </Box>
-    )
-}
-
 export const ClaimBalance = () => {
-    const { claimTime } = useClaim('everyBlock')
     const { chainId } = useActiveWeb3React()
-    // const [G$Price] = usePromise(
-    //     () =>
-    //         g$Price()
-    //             .then(({ DAI }) => DAI)
-    //             .catch(() => undefined),
-    //     [chainId]
-    // )
+    const [G$Price] = usePromise(
+        () =>
+            g$Price()
+                .then(({ DAI }) => +DAI.toSignificant(6))
+                .catch(() => undefined),
+        [chainId]
+    )
+    const { tillClaim } = useClaiming()
+
     const claimedCelo = useHasClaimed('CELO')
     const claimedFuse = useHasClaimed('FUSE')
-    const [claimAlt, setClaimAlt] = useState(true)
+    const [claimedAlt, setClaimedAlt] = useState(true)
+    const toggleNetworkModal = useNetworkModalToggle()
 
-    const formattedTime = useMemo(() => claimTime && format(claimTime, 'hh aaa'), [claimTime])
-    const { switchNetwork } = useEthers()
+    const { switchNetwork } = useSwitchNetwork()
 
     //we select the alternative chain where a user is able to claim their UBI
     const altChain = chainId === (SupportedChains.FUSE as number) ? SupportedChains[42220] : SupportedChains[122]
 
     // if claimed on alt chain, don't show claim on other chain button
     useEffect(() => {
-        chainId === (SupportedChains.FUSE as number) ? setClaimAlt(claimedCelo) : setClaimAlt(claimedFuse)
+        chainId === (SupportedChains.FUSE as number)
+            ? setClaimedAlt((claimedCelo as unknown as BigNumber)?.isZero())
+            : setClaimedAlt((claimedFuse as unknown as BigNumber)?.isZero())
     }, [chainId, claimedFuse, claimedCelo])
 
     const switchChain = useCallback(() => {
-        switchNetwork(SupportedChains[altChain as keyof typeof SupportedChains]).catch(noop)
-    }, [switchNetwork, claimAlt])
+        // 4902: Network is not added, and should be done manually
+        // explanation to user is shown through network modal
+        switchNetwork(SupportedChains[altChain as keyof typeof SupportedChains]).catch((e: any) => {
+            if (e.code === 4902) {
+                toggleNetworkModal()
+            }
+        })
+    }, [switchNetwork, claimedAlt])
 
     return (
-        <View textAlign="center" display="flex" justifyContent="center" flexDirection="column" w="full" mb="4">
-            <Box backgroundColor="goodWhite.100" borderRadius="15" p="1" w="full" h="34" justifyContent="center">
-                <NextClaim time={formattedTime || ''} />
+        <View
+            textAlign="center"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            flexDirection="column"
+            w="full"
+            mb="4"
+        >
+            <Box
+                backgroundColor="goodWhite.100"
+                borderRadius="15"
+                mb="24px"
+                p="1"
+                w="90%"
+                h="34"
+                justifyContent="center"
+            >
+                <NextClaim time={tillClaim || ''} />
             </Box>
-
-            <ClaimTimer />
-            <Box borderWidth="1" borderColor="borderGrey" width="90%" alignSelf="center" my="2" />
             <Box>
-                {/* todo-fix: https://github.com/GoodDollar/GoodProtocolUI/issues/337
-                  <BalanceGD gdPrice={G$Price} /> 
-                */}
+                <BalanceGD gdPrice={G$Price} />
             </Box>
             <Box alignItems="center">
-                {claimAlt && (
+                {!claimedAlt && (
                     <ArrowButton
                         borderWidth="1"
                         borderColor="borderBlue"
                         px="6px"
-                        width="200"
-                        text={`Claim on ${claimAlt}`}
+                        w="220px"
+                        text={`Claim on ${altChain}`}
                         onPress={switchChain}
                         innerText={{
                             fontSize: 'sm',
                         }}
+                        textInteraction={{ hover: { color: 'white' } }}
                     />
                 )}
             </Box>
