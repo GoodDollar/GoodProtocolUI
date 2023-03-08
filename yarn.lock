@@ -3946,9 +3946,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.0.50":
-  version: 0.0.50
-  resolution: "@gooddollar/good-design@npm:0.0.50"
+"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 0.0.52
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=ee50f4&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -3974,7 +3974,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: 052c341b5fe3b13b6b4c1ae13d7f29679ebd616a2873ee1fe3938add2f6a3d3c89a14287bc0f3e11c047dbde0fe178daf037755e2d2e7f4d184e87b8d76330d7
+  checksum: 74fe3012f26aae025a5521325c772fd564845941654e3a8076ea16b487c9f55b127ec9a9a548a9f1153a8b1f95a940dc6abd86149f1f51c2e5765dc0b521df66
   languageName: node
   linkType: hard
 
@@ -4026,7 +4026,7 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.0.50
+    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
     "@gooddollar/goodprotocol": ^2.0.3
     "@gooddollar/web3sdk": ^0.1.20
     "@gooddollar/web3sdk-v2": ^0.1.83
