@@ -34,7 +34,7 @@ const Bridge = memo(() => {
                     mode={ModeOptions.bridge}
                     dAppOption={DAppOptions.G$}
                     // kimaBackendUrl='https://transaction_backend.kima.finance'
-                    kimaBackendUrl="http://localhost:3001"
+                    kimaBackendUrl="http://54.172.168.100:3001"
                     kimaNodeProviderQuery="https://api_testnet.kima.finance"
                     provider={library}
                     compliantOption={false}
