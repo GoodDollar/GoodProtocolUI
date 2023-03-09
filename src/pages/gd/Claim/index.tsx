@@ -38,8 +38,23 @@ const Claim = memo(() => {
     const handleEvents = useCallback(
         (event: string) => {
             switch (event) {
-                case 'start':
+                case 'connect_start':
+                    sendData({ event: 'claim', action: 'connect_start', network })
+                    break
+                case 'connect_success':
+                    sendData({ event: 'claim', action: 'connect_success', network })
+                    break
+                case 'switch_start':
+                    sendData({ event: 'claim', action: 'network_switch_start', network })
+                    break
+                case 'switch_succes':
+                    sendData({ event: 'claim', action: 'network_switch_success', network })
+                    break
+                case 'action_start':
                     sendData({ event: 'claim', action: 'claim_start', network })
+                    break
+                case 'finish':
+                    sendData({ event: 'claim', action: 'claim_success', network })
                     break
                 default:
                     break
