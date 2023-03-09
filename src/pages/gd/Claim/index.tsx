@@ -239,7 +239,7 @@ your G$. 🙂`,
                             claiming={state?.status === 'Mining'}
                             handleConnect={handleConnect}
                             chainId={chainId}
-                            eventsCb={handleEvents}
+                            onEvent={handleEvents}
                         />
                     </Box>
                 </div>
