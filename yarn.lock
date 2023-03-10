@@ -3982,9 +3982,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.0.54":
-  version: 0.0.54
-  resolution: "@gooddollar/good-design@npm:0.0.54"
+"@gooddollar/good-design@npm:0.0.55-beta.ab1ff19":
+  version: 0.0.55-beta.ab1ff19
+  resolution: "@gooddollar/good-design@npm:0.0.55-beta.ab1ff19"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4010,7 +4010,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: b1665f01e57ee545b29997f8d63c1b8ce6b72e805d8dccf8dee04677f9dad7593ef4c65469383df98df6fa41d49b33e9f746f21265e3ac6d407df4a0f51c2959
+  checksum: c665a61546f8f7eb02cf0ebe3f583d315b8a519b527dad8425f8d1ab3bd23c9fdc922a66d9c912d01bc2074c5fe9042c6a2f66a60986181c7bc355f5689123d5
   languageName: node
   linkType: hard
 
@@ -4062,10 +4062,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.0.54
+    "@gooddollar/good-design": 0.0.55-beta.ab1ff19
     "@gooddollar/goodprotocol": ^2.0.3
     "@gooddollar/web3sdk": ^0.1.20
-    "@gooddollar/web3sdk-v2": ^0.1.83
+    "@gooddollar/web3sdk-v2": 0.1.84-beta.ab1ff19
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": 3.15.0
@@ -4235,9 +4235,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.1.83":
-  version: 0.1.83
-  resolution: "@gooddollar/web3sdk-v2@npm:0.1.83"
+"@gooddollar/web3sdk-v2@npm:0.1.84-beta.ab1ff19":
+  version: 0.1.84-beta.ab1ff19
+  resolution: "@gooddollar/web3sdk-v2@npm:0.1.84-beta.ab1ff19"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -4253,7 +4253,7 @@ __metadata:
     "@web3-onboard/coinbase": ^2.2.0
     "@web3-onboard/injected-wallets": ^2.4.0
     "@web3-onboard/torus": ^2.2.1
-    "@web3-onboard/walletconnect": ^2.2.2
+    "@web3-onboard/walletconnect": ^2.3.1
     "@web3auth/base": ^4.0.0
     "@web3auth/core": ^4.0.0
     "@web3auth/openlogin-adapter": ^4.1.0
@@ -4272,7 +4272,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 081c1aca3a76630dc5b404215505517f4c85df6dccbea96a64cfa2e0b317a3ebef7abda363210cb8cf1785d4bbcbd91224ef5ca783dbf6d5859292905e48ddf3
+  checksum: 3e2268e3836874b00290aa4254b06ee0c606bfa2720e328cd907a7f0b4f56ea8606a862e7a76d3882367ae84ebccf54e8333d5e26f6b8116f5b296a1d1986f5f
   languageName: node
   linkType: hard
 
@@ -11222,7 +11222,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@web3-onboard/walletconnect@npm:^2.2.2":
+"@web3-onboard/walletconnect@npm:^2.3.1":
   version: 2.3.1
   resolution: "@web3-onboard/walletconnect@npm:2.3.1"
   dependencies:
