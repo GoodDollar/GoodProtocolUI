@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback } from 'react'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
 import {
@@ -14,6 +14,10 @@ import '@kimafinance/kima-transaction-widget/dist/index.css'
 const Bridge = memo(() => {
     const { library } = useActiveWeb3React()
     const [theme] = useApplicationTheme()
+
+    const successHandler = useCallback((e) => {
+        console.log(e)
+    }, [])
 
     return (
         <KimaProvider>
@@ -33,20 +37,11 @@ const Bridge = memo(() => {
                     }}
                     mode={ModeOptions.bridge}
                     dAppOption={DAppOptions.G$}
-                    // kimaBackendUrl='https://transaction_backend.kima.finance'
-                    kimaBackendUrl="http://54.172.168.100:3001"
+                    kimaBackendUrl="https://gooddollar-beta.kima.finance"
                     kimaNodeProviderQuery="https://api_testnet.kima.finance"
                     provider={library}
                     compliantOption={false}
-                    errorHandler={(e: any) => {
-                        console.log('error:', e)
-                    }}
-                    successHandler={() => {
-                        console.log('success')
-                    }}
-                    closeHandler={() => {
-                        console.log('closed')
-                    }}
+                    successHandler={successHandler}
                 />
             </div>
         </KimaProvider>
