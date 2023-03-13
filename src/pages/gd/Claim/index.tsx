@@ -4,11 +4,12 @@ import { useLingui } from '@lingui/react'
 import { ClaimButton, ClaimCarousel, IClaimCard, Title } from '@gooddollar/good-design'
 import { Text, useBreakpointValue, Box, View } from 'native-base'
 import { ClaimBalance } from './ClaimBalance'
-import { useClaim } from '@gooddollar/web3sdk-v2'
+import { useClaim, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import { useConnectWallet } from '@web3-onboard/react'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import FirstTimer from 'assets/images/claim/firstimer.png'
 import HowWorks from 'assets/images/claim/howitworks.png'
+import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 
 const Claim = memo(() => {
     const { i18n } = useLingui()
@@ -19,13 +20,14 @@ const Claim = memo(() => {
     const [claimed, setClaimed] = useState(false)
     const [, connect] = useConnectWallet()
     const { chainId } = useActiveWeb3React()
+    const network = SupportedV2Networks[chainId]
+    const sendData = useSendAnalyticsData()
 
     // there are three possible scenarios
     // 1. claim amount is 0, meaning user has claimed that day
     // 2. status === success, meaning user has just claimed. Could happen that claimAmount has not been updated right after tx confirmation
     // 3. If neither is true, there is a claim ready for user or its a new user and FV will be triggered instead
     useEffect(() => {
-        //todo: add event analytics on transaction status
         if (claimAmount?.isZero() || state.status === 'Success') {
             setClaimed(true)
         } else {
@@ -33,15 +35,36 @@ const Claim = memo(() => {
         }
     }, [claimAmount, state, send, chainId])
 
+    const handleEvents = useCallback(
+        (event: string) => {
+            switch (event) {
+                case 'switch_start':
+                    sendData({ event: 'claim', action: 'network_switch_start', network })
+                    break
+                case 'switch_succes':
+                    sendData({ event: 'claim', action: 'network_switch_success', network })
+                    break
+                case 'action_start':
+                    sendData({ event: 'claim', action: 'claim_start', network })
+                    break
+                case 'finish':
+                    sendData({ event: 'claim', action: 'claim_success', network })
+                    break
+                default:
+                    sendData({ event: 'claim', action: event, network })
+                    break
+            }
+        },
+        [sendData]
+    )
+
     const handleClaim = useCallback(async () => {
         const claim = await send()
 
+        sendData({ event: 'claim', action: 'claim_success', network })
         if (!claim) {
             return false
         }
-
-        // todo: add event analytics on transaction receipt
-        setClaimed(true)
         return true
     }, [send])
 
@@ -223,8 +246,10 @@ your G$. 🙂`,
                             method="redirect"
                             claim={handleClaim}
                             claimed={claimed}
+                            claiming={state?.status === 'Mining'}
                             handleConnect={handleConnect}
                             chainId={chainId}
+                            onEvent={handleEvents}
                         />
                     </Box>
                 </div>
@@ -232,7 +257,7 @@ your G$. 🙂`,
                     className={`w-full lg:flex lg:flex-col ${claimed ? 'lg:w-full' : 'lg:w-6/12'}`}
                     style={{ flexGrow: '1' }}
                 >
-                    <ClaimCarousel cards={mockedCards} claimed />
+                    <ClaimCarousel cards={mockedCards} claimed={claimed} />
                 </div>
             </View>
         </>
