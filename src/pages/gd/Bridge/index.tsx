@@ -15,8 +15,12 @@ const Bridge = memo(() => {
     const { library } = useActiveWeb3React()
     const [theme] = useApplicationTheme()
 
-    const successHandler = useCallback((e) => {
-        console.log(e)
+    const successHandler = useCallback(() => {
+        console.log('Kima bridge success:')
+    }, [])
+
+    const errorHandler = useCallback((e) => {
+        console.log('Kima bridge error:', e?.message, e)
     }, [])
 
     return (
@@ -42,6 +46,7 @@ const Bridge = memo(() => {
                     provider={library}
                     compliantOption={false}
                     successHandler={successHandler}
+                    errorHandler={errorHandler}
                 />
             </div>
         </KimaProvider>
