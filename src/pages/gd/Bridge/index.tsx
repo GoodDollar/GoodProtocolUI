@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react'
+import React, { memo, useCallback, useMemo } from 'react'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
 import {
@@ -23,32 +23,26 @@ const Bridge = memo(() => {
         console.log('Kima bridge error:', e?.message, e)
     }, [])
 
+    const options = useMemo(() => {
+        return {
+            theme: {
+                colorMode: theme === 'light' ? ColorModeOptions.light : ColorModeOptions.dark,
+                fontSize: FontSizeOptions.medium,
+                fontFamily: 'Roboto',
+                backgroundColorDark: 'rgb(21, 26, 48)',
+            },
+            mode: ModeOptions.bridge,
+            dAppOption: DAppOptions.G$,
+            kimaBackendUrl: 'https://gooddollar-beta.kima.finance',
+            kimaNodeProviderQuery: 'https://api_testnet.kima.finance',
+            provider: library,
+            compliantOption: false,
+        }
+    }, [theme, library])
+
     return (
         <KimaProvider>
-            <div
-                className="container"
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                }}
-            >
-                <KimaTransactionWidget
-                    theme={{
-                        colorMode: theme === 'light' ? ColorModeOptions.light : ColorModeOptions.dark,
-                        fontSize: FontSizeOptions.medium,
-                        fontFamily: 'Roboto',
-                        backgroundColorDark: 'rgb(21, 26, 48)',
-                    }}
-                    mode={ModeOptions.bridge}
-                    dAppOption={DAppOptions.G$}
-                    kimaBackendUrl="https://gooddollar-beta.kima.finance"
-                    kimaNodeProviderQuery="https://api_testnet.kima.finance"
-                    provider={library}
-                    compliantOption={false}
-                    successHandler={successHandler}
-                    errorHandler={errorHandler}
-                />
-            </div>
+            <KimaTransactionWidget {...options} successHandler={successHandler} errorHandler={errorHandler} />
         </KimaProvider>
     )
 })
