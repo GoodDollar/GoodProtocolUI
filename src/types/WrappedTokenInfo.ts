@@ -12,10 +12,7 @@ export interface TagInfo extends TagDetails {
  * Token instances created from token info.
  */
 export class WrappedTokenInfo extends Token {
-    constructor(
-        public readonly tokenInfo: TokenInfo, 
-        public readonly tags: TagInfo[]
-    ) {
+    constructor(public readonly tokenInfo: TokenInfo, public readonly tags: TagInfo[]) {
         super(
             tokenInfo.chainId,
             isAddressString(tokenInfo.address),
@@ -24,7 +21,7 @@ export class WrappedTokenInfo extends Token {
             tokenInfo.name
         )
     }
-    
+
     get logoURI(): string | undefined {
         return this.tokenInfo.logoURI
     }
