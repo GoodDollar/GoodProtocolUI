@@ -10,13 +10,15 @@ import {
     DAppOptions,
 } from '@kimafinance/kima-transaction-widget'
 import '@kimafinance/kima-transaction-widget/dist/index.css'
+import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 
 const Bridge = memo(() => {
     const { library } = useActiveWeb3React()
     const [theme] = useApplicationTheme()
+    const sendData = useSendAnalyticsData()
 
     const successHandler = useCallback(() => {
-        console.log('Kima bridge success:')
+        sendData({ event: 'kima_bridge', action: 'bridge_success' })
     }, [])
 
     const errorHandler = useCallback((e) => {
