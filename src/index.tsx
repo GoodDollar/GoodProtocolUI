@@ -81,7 +81,6 @@ ReactDOM.render(
                         <LanguageProvider>
                             <AnalyticsProvider config={analyticsConfig} appProps={appInfo}>
                                 <Blocklist>
-                                    {/* <ListsUpdater /> */}
                                     <UserUpdater />
                                     <ApplicationUpdater />
                                     <MulticallUpdater />
