@@ -48,11 +48,7 @@ const Claim = memo(() => {
 
     // upon switching chain we want temporarily to poll everyBlock up untill we have the latest data
     useEffect(() => {
-        if (!claimAmount) {
-            setRefreshRate('everyBlock')
-        } else {
-            setRefreshRate('never')
-        }
+        setRefreshRate(claimAmount ? 'never' : 'everyBlock')
     }, [chainId])
 
     const handleEvents = useCallback(
