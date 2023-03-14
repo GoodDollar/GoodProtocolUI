@@ -23,8 +23,8 @@ const Bridge = memo(() => {
         console.log('Kima bridge error:', e?.message, e)
     }, [])
 
-    const options = useMemo(() => {
-        return {
+    const options = useMemo(
+        () => ({
             theme: {
                 colorMode: theme === 'light' ? ColorModeOptions.light : ColorModeOptions.dark,
                 fontSize: FontSizeOptions.medium,
@@ -37,8 +37,9 @@ const Bridge = memo(() => {
             kimaNodeProviderQuery: 'https://api_testnet.kima.finance',
             provider: library,
             compliantOption: false,
-        }
-    }, [theme, library])
+        }),
+        [theme, library]
+    )
 
     return (
         <KimaProvider>
