@@ -4277,8 +4277,8 @@ __metadata:
   linkType: hard
 
 "@gooddollar/web3sdk@npm:^0.1.20":
-  version: 0.1.20
-  resolution: "@gooddollar/web3sdk@npm:0.1.20"
+  version: 0.1.21
+  resolution: "@gooddollar/web3sdk@npm:0.1.21"
   dependencies:
     "@apollo/client": ^3.2.0
     "@gooddollar/goodprotocol": 1.0.30-beta.3
@@ -4299,7 +4299,7 @@ __metadata:
     web3-eth: 1.8.2
     web3-eth-contract: 1.8.2
     web3-utils: 1.8.2
-  checksum: 475173c9d5f49e099ffbdf9428b364f814f55f8f82e50d2de240562988dcdc0ad63db86b1ed6ad0def07bc2d60d5058585250bd4116a543b77ab783a2c4f9495
+  checksum: 5b163acf655331252f8d1f868358f5a48be292bcee24fe043fe92ebb98227d8b91c0f984063b8f177e07a9e691b29e14a9586585845a6421c76011f92e2030dc
   languageName: node
   linkType: hard
 
