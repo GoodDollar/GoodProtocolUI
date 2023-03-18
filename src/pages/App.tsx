@@ -16,6 +16,7 @@ import { useFaucet } from '@gooddollar/web3sdk-v2'
 import TransactionUpdater from '../state/transactions/updater'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { isMobile } from 'react-device-detect'
+import { WalletChatWidget } from 'react-wallet-chat-gooddollar'
 
 export const Beta = styled.div`
     font-style: normal;
@@ -138,6 +139,7 @@ function App(): JSX.Element {
                     </MainBody>
                 </Wrapper>
             </div>
+            <WalletChatWidget />
         </Suspense>
     )
 }
