@@ -16,7 +16,7 @@ import { getNetworkEnv, UnsupportedChainId } from '@gooddollar/web3sdk'
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 import { useSwitchNetwork } from '@gooddollar/web3sdk-v2'
 import { Text, Link } from 'native-base'
-import { SwitchChainActionModal } from '@gooddollar/good-design'
+import { SwitchChainModal } from '@gooddollar/good-design'
 
 const TextWrapper = styled.div`
     font-style: normal;
@@ -65,7 +65,6 @@ export default function NetworkModal(): JSX.Element | null {
     const networkModalOpen = useModalOpen(ApplicationModal.NETWORK)
     const toggleNetworkModal = useNetworkModalToggle()
     const [toAddNetwork, setToAddNetwork] = useState<ChainId | AdditionalChainId | undefined>()
-    const [switching, setSwitching] = useState(false)
 
     const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[chainId]
     const network = getNetworkEnv()
@@ -92,28 +91,26 @@ export default function NetworkModal(): JSX.Element | null {
     const switchChain = useCallback(
         async (chain: ChainId | AdditionalChainId) => {
             try {
-                setSwitching(true)
                 await switchNetwork(chain)
             } catch (e: any) {
-                setSwitching(false)
                 if (e.code === 4902) {
                     setToAddNetwork(chain)
                     toggleNetworkModal()
+                    return
                 }
             }
-            setSwitching(false)
             sendData({
                 event: 'network_switch',
                 action: 'network_switch_success',
                 network: ChainId[chain],
             })
         },
-        [switchNetwork, sendData, toggleNetworkModal]
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [switchNetwork, sendData]
     )
 
     return (
-        <>
-            <SwitchChainActionModal switching={switching} />
+        <SwitchChainModal>
             <Modal isOpen={networkModalOpen} onDismiss={toggleNetworkModal}>
                 {toAddNetwork ? (
                     <>
@@ -212,6 +209,6 @@ export default function NetworkModal(): JSX.Element | null {
                     </>
                 )}
             </Modal>
-        </>
+        </SwitchChainModal>
     )
 }
