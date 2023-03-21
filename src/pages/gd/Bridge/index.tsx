@@ -1,4 +1,5 @@
 import React, { memo, useCallback, useMemo } from 'react'
+import { useSwitchNetwork } from '@gooddollar/web3sdk-v2'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
 import {
@@ -16,20 +17,26 @@ const Bridge = memo(() => {
     const { library } = useActiveWeb3React()
     const [theme] = useApplicationTheme()
     const sendData = useSendAnalyticsData()
+    const { switchNetwork } = useSwitchNetwork()
 
     const successHandler = useCallback(() => {
         sendData({ event: 'kima_bridge', action: 'bridge_success' })
-    }, [])
+    }, [sendData])
 
-    const errorHandler = useCallback((e) => {
-        console.log('Kima bridge error:', e?.message, e)
-        sendData({ event: 'kima_bridge', action: 'bridge_failure', error: e?.message })
-    }, [])
+    const errorHandler = useCallback(
+        (e) => {
+            console.log('Kima bridge error:', e?.message, e)
+            sendData({ event: 'kima_bridge', action: 'bridge_failure', error: e?.message })
+        },
+        [sendData]
+    )
+
+    const switchChainHandler = useCallback(async (chainId) => await switchNetwork(chainId), [switchNetwork])
 
     const options = useMemo(
         () => ({
             theme: {
-                colorMode: theme === 'light' ? ColorModeOptions.light : ColorModeOptions.dark,
+                colorMode: theme === 'dark' ? ColorModeOptions.dark : ColorModeOptions.light,
                 fontSize: FontSizeOptions.medium,
                 fontFamily: 'Roboto',
                 backgroundColorDark: 'rgb(21, 26, 48)',
@@ -40,13 +47,20 @@ const Bridge = memo(() => {
             kimaNodeProviderQuery: 'https://api_testnet.kima.finance',
             provider: library,
             compliantOption: false,
+            autoConnect: false,
+            helpURL: 'https://t.me/GoodDollarX',
         }),
         [theme, library]
     )
 
     return (
         <KimaProvider>
-            <KimaTransactionWidget {...options} successHandler={successHandler} errorHandler={errorHandler} />
+            <KimaTransactionWidget
+                {...options}
+                successHandler={successHandler}
+                errorHandler={errorHandler}
+                switchChainHandler={switchChainHandler}
+            />
         </KimaProvider>
     )
 })

@@ -4050,7 +4050,7 @@ __metadata:
     "@gooddollar/web3sdk-v2": ^0.1.85
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
-    "@kimafinance/kima-transaction-widget": ^1.1.20-beta.1
+    "@kimafinance/kima-transaction-widget": ^1.1.25-beta.1
     "@lingui/cli": 3.15.0
     "@lingui/detect-locale": ^3.9.0
     "@lingui/loader": ^3.9.0
@@ -5146,9 +5146,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kimafinance/kima-transaction-widget@npm:^1.1.20-beta.1":
-  version: 1.1.20-beta.1
-  resolution: "@kimafinance/kima-transaction-widget@npm:1.1.20-beta.1"
+"@kimafinance/kima-transaction-widget@npm:^1.1.25-beta.1":
+  version: 1.1.25-beta.1
+  resolution: "@kimafinance/kima-transaction-widget@npm:1.1.25-beta.1"
   dependencies:
     "@ethersproject/constants": ^5.7.0
     "@ethersproject/contracts": ^5.7.0
@@ -5172,6 +5172,7 @@ __metadata:
     os-browserify: ^0.3.0
     path-browserify: ^1.0.1
     puppeteer: 18.1.0
+    react-hot-toast: ^2.4.0
     react-redux: ^8.0.4
     redux: ^4.2.0
     sass: ^1.58.1
@@ -5184,7 +5185,7 @@ __metadata:
     react-dom: ">=17.0.1"
     react-redux: ">=7.2.2"
     redux: ">=4.1.2"
-  checksum: ce452ae6ad4b6114fa7be2a459ea183ad0c080e4fa58b169fcbb69a39dd09e1239db39a4f80187cd86d9c50e977dc83aee7d1841ec4b589ffe96ec7cab5069f2
+  checksum: a8dbd3b8888c55aae0bdf556f3c13da12b967fb69a73d1c061748cf0909f5f33357c9ce5271358a7c1ca8a9d51e4b56e7dc26b6d9419ca7e1ef08818e881b478
   languageName: node
   linkType: hard
 
@@ -22120,6 +22121,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"goober@npm:^2.1.10":
+  version: 2.1.12
+  resolution: "goober@npm:2.1.12"
+  peerDependencies:
+    csstype: ^3.0.10
+  checksum: 5945cbe92413031b8859d9087d125a744149e237c8bcf6c15db1998ee3d1b6d680ee4a47dd420f95684b76f72eebc34e98155e8a1cb06748d00cbdc05ede186d
+  languageName: node
+  linkType: hard
+
 "google-libphonenumber@npm:^3.2.15":
   version: 3.2.32
   resolution: "google-libphonenumber@npm:3.2.32"
@@ -32257,6 +32267,18 @@ __metadata:
     "@types/react":
       optional: true
   checksum: f90890d5160dcb2bfae4022cba065d8e5c26b86f34c4604cbbdd39f5e4dfd82c05c317bb05ef3d4da2aa0be7e8e205c905daea1af40d3a7ef0d07c3d289da11c
+  languageName: node
+  linkType: hard
+
+"react-hot-toast@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "react-hot-toast@npm:2.4.0"
+  dependencies:
+    goober: ^2.1.10
+  peerDependencies:
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: 910214496d6821af8e643c5f7087eff6c76f1395756f3d6cf1fc07a599c582c443cbb5a4cadfc58205acf0845b77a2a10a4ca49b385e772b72edc57dfd38d016
   languageName: node
   linkType: hard
 
