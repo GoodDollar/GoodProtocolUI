@@ -152,7 +152,7 @@ export function useOnboardConnect(): OnboardConnectProps {
     const [{ connectedChain }, setChain] = useSetChain()
     const connectedWallets = useWallets()
     const restartApp = useAppRestart()
-    const [hasSendAnalytics, setHasSendAnalytics] = useState(false)
+    const hasSendAnalyticsRef = useRef(false)
     const sendData = useSendAnalyticsData()
 
     const [previouslyConnected, loading]: readonly [any, boolean, any, any] = usePromise(
@@ -208,7 +208,7 @@ export function useOnboardConnect(): OnboardConnectProps {
         }
 
         if (isConnected && connectedChain) {
-            if (!hasSendAnalytics) {
+            if (!hasSendAnalyticsRef.current) {
                 // for a wallet-connect v1 bug we need to verify the existence of peerId to
                 // determine if there is a working connection established
                 if (WalletConnectLabels.includes(connectedWallets[0].label)) {
@@ -221,7 +221,7 @@ export function useOnboardConnect(): OnboardConnectProps {
                 }
 
                 sendData({ event: 'wallet_connect', action: 'wallet_connect_success' })
-                setHasSendAnalytics(true)
+                hasSendAnalyticsRef.current = true
             }
 
             updateStorage(connectedChain.id, connectedWallets)
@@ -255,7 +255,6 @@ export function useOnboardConnect(): OnboardConnectProps {
 
             void Promise.all(promises).then(() => restartApp()) // temporarily necessary, as there is a irrecoverable error/bug when not reloading
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [connectedWallets, tried, loading])
 
     return { tried, activated }
