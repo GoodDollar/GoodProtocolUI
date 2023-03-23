@@ -7,7 +7,7 @@ import { WalletState } from '@web3-onboard/core'
 import type { Account } from '@web3-onboard/core/dist/types'
 import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
 import { isEmpty, noop } from 'lodash'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, useRef } from 'react'
 import web3Utils from 'web3-utils'
 import usePromise from './usePromise'
 import useSendAnalyticsData from './useSendAnalyticsData'
@@ -216,6 +216,7 @@ export function useOnboardConnect(): OnboardConnectProps {
 
                     if (!peerId) {
                         sendData({ event: 'wallet_connect', action: 'wallet_connect_failed' })
+                        hasSendAnalyticsRef.current = true
                         return
                     }
                 }
@@ -255,6 +256,7 @@ export function useOnboardConnect(): OnboardConnectProps {
 
             void Promise.all(promises).then(() => restartApp()) // temporarily necessary, as there is a irrecoverable error/bug when not reloading
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [connectedWallets, tried, loading])
 
     return { tried, activated }
