@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useMemo } from 'react'
+import React, { memo, useCallback, useMemo, useState } from 'react'
 import { useSwitchNetwork } from '@gooddollar/web3sdk-v2'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
@@ -12,20 +12,24 @@ import {
 } from '@kimafinance/kima-transaction-widget'
 import '@kimafinance/kima-transaction-widget/dist/index.css'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
+import { KimaModal } from '@gooddollar/good-design'
 
 const Bridge = memo(() => {
     const { library } = useActiveWeb3React()
     const [theme] = useApplicationTheme()
     const sendData = useSendAnalyticsData()
     const { switchNetwork } = useSwitchNetwork()
+    const [bridgeStatus, setBridgeStatus] = useState<boolean | undefined>(undefined)
 
     const successHandler = useCallback(() => {
+        setBridgeStatus(true)
         sendData({ event: 'kima_bridge', action: 'bridge_success' })
     }, [sendData])
 
     const errorHandler = useCallback(
         (e) => {
             console.log('Kima bridge error:', e?.message, e)
+            setBridgeStatus(false)
             sendData({ event: 'kima_bridge', action: 'bridge_failure', error: e?.message })
         },
         [sendData]
@@ -54,14 +58,16 @@ const Bridge = memo(() => {
     )
 
     return (
-        <KimaProvider>
-            <KimaTransactionWidget
-                {...options}
-                successHandler={successHandler}
-                errorHandler={errorHandler}
-                switchChainHandler={switchChainHandler}
-            />
-        </KimaProvider>
+        <KimaModal success={bridgeStatus}>
+            <KimaProvider>
+                <KimaTransactionWidget
+                    {...options}
+                    successHandler={successHandler}
+                    errorHandler={errorHandler}
+                    switchChainHandler={switchChainHandler}
+                />
+            </KimaProvider>
+        </KimaModal>
     )
 })
 
