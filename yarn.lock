@@ -4198,7 +4198,7 @@ __metadata:
     react-use-gesture: ^6.0.14
     react-use-promise: ^0.5.0
     react-virtualized-auto-sizer: ^1.0.2
-    react-wallet-chat-gooddollar: ^2.0.1
+    react-wallet-chat: ^2.3.6
     react-window: ^1.8.5
     rebass: ^4.0.7
     redux-localstorage-simple: ^2.3.1
@@ -32952,9 +32952,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-wallet-chat-gooddollar@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "react-wallet-chat-gooddollar@npm:2.0.1"
+"react-wallet-chat@npm:^2.3.6":
+  version: 2.3.6
+  resolution: "react-wallet-chat@npm:2.3.6"
   dependencies:
     classnames: ^2.3.2
   peerDependencies:
@@ -32962,7 +32962,7 @@ __metadata:
     postcss: ^8.4.21
     react: ^18.2.0
     tailwindcss: ^3.2.7
-  checksum: 8bed09e124a28356ea06958dd9d6d43ea65bd2f1082940004e5ed8ee1621d8195d0cdedda4dd9c7afec1b63e2b6de4280b144170e271848dbfa63189a7ba1fe4
+  checksum: 5f4e8fb1e3318520cad8327113866107d3ace3ca2c54a7accb55f7d6e4295b5ab0a2202fc089f8b21e99fdb57a77e5d0e3b0611abf3d58b01ed2212a6d8792d6
   languageName: node
   linkType: hard
 
