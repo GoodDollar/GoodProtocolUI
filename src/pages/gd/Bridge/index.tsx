@@ -19,12 +19,15 @@ const Bridge = memo(() => {
 
     const successHandler = useCallback(() => {
         sendData({ event: 'kima_bridge', action: 'bridge_success' })
-    }, [])
+    }, [sendData])
 
-    const errorHandler = useCallback((e) => {
-        console.log('Kima bridge error:', e?.message, e)
-        sendData({ event: 'kima_bridge', action: 'bridge_failure', error: e?.message })
-    }, [])
+    const errorHandler = useCallback(
+        (e) => {
+            console.log('Kima bridge error:', e?.message, e)
+            sendData({ event: 'kima_bridge', action: 'bridge_failure', error: e?.message })
+        },
+        [sendData]
+    )
 
     const options = useMemo(
         () => ({
