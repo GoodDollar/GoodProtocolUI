@@ -1,5 +1,5 @@
-import React, { memo, useCallback, useMemo, useState } from 'react'
-import { useSwitchNetwork } from '@gooddollar/web3sdk-v2'
+import React, { memo, useCallback, useMemo, useState, useRef, useEffect } from 'react'
+import { useSwitchNetwork, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
 import {
@@ -15,11 +15,24 @@ import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { KimaModal } from '@gooddollar/good-design'
 
 const Bridge = memo(() => {
-    const { library } = useActiveWeb3React()
+    const { library, chainId } = useActiveWeb3React()
     const [theme] = useApplicationTheme()
     const sendData = useSendAnalyticsData()
     const { switchNetwork } = useSwitchNetwork()
     const [bridgeStatus, setBridgeStatus] = useState<boolean | undefined>(undefined)
+    const activeChain = useRef({ origin: '', destination: '' })
+
+    useEffect(() => {
+        const supportedNetworks = Object.keys(SupportedV2Networks)
+
+        if (chainId === (SupportedV2Networks.CELO as number)) {
+            supportedNetworks.reverse()
+        }
+
+        const networks = { origin: supportedNetworks[0], destination: supportedNetworks[1] }
+
+        activeChain.current = networks
+    }, [/* used */ chainId, activeChain])
 
     const successHandler = useCallback(() => {
         setBridgeStatus(true)
@@ -28,14 +41,25 @@ const Bridge = memo(() => {
 
     const errorHandler = useCallback(
         (e) => {
-            console.log('Kima bridge error:', e?.message, e)
+            if (e?.code === 'NETWORK_ERROR') return
+            console.log('Kima bridge error:', { message: e?.message, e })
             setBridgeStatus(false)
             sendData({ event: 'kima_bridge', action: 'bridge_failure', error: e?.message })
         },
         [sendData]
     )
 
-    const switchChainHandler = useCallback(async (chainId) => await switchNetwork(chainId), [switchNetwork])
+    const resetState = () => {
+        setBridgeStatus(undefined)
+    }
+
+    const switchChainHandler = useCallback(
+        async (chainId) => {
+            console.log('Kima test log -->', { chainId }) // for testing repeated switch requests
+            await switchNetwork(chainId)
+        },
+        [switchNetwork]
+    )
 
     const options = useMemo(
         () => ({
@@ -58,7 +82,7 @@ const Bridge = memo(() => {
     )
 
     return (
-        <KimaModal success={bridgeStatus}>
+        <KimaModal success={bridgeStatus} networks={activeChain.current} resetState={resetState}>
             <KimaProvider>
                 <KimaTransactionWidget
                     {...options}
