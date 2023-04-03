@@ -43,7 +43,7 @@ const Bridge = memo(() => {
     const successHandler = useCallback(() => {
         setBridgeStatus(true)
         sendData({ event: 'kima_bridge', action: 'bridge_success' })
-    }, [sendData])
+    }, [sendData, setBridgeStatus])
 
     const errorHandler = useCallback(
         (e) => {
@@ -52,7 +52,7 @@ const Bridge = memo(() => {
             setBridgeStatus(false)
             sendData({ event: 'kima_bridge', action: 'bridge_failure', error: e?.message })
         },
-        [sendData]
+        [sendData, setBridgeStatus]
     )
 
     const resetState = () => {
