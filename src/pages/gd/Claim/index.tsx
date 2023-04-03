@@ -11,15 +11,16 @@ import FirstTimer from 'assets/images/claim/firstimer.png'
 import HowWorks from 'assets/images/claim/howitworks.png'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { QueryParams } from '@usedapp/core'
+import { noop } from 'lodash'
 
 const Claim = memo(() => {
     const { i18n } = useLingui()
-    const [refreshRate, setRefreshRate] = useState<QueryParams['refresh']>('never')
+    const [refreshRate, setRefreshRate] = useState<QueryParams['refresh']>(12)
     const {
         claimAmount,
         claimCall: { state, send, resetState },
     } = useClaim(refreshRate)
-    const [claimed, setClaimed] = useState(false)
+    const [claimed, setClaimed] = useState<boolean | undefined>(undefined)
     const [, connect] = useConnectWallet()
     const { chainId } = useActiveWeb3React()
     const network = SupportedV2Networks[chainId]
@@ -30,26 +31,34 @@ const Claim = memo(() => {
     // 2. status === success, meaning user has just claimed. Could happen that claimAmount has not been updated right after tx confirmation
     // 3. If neither is true, there is a claim ready for user or its a new user and FV will be triggered instead
     useEffect(() => {
-        if (claimAmount?.isZero()) {
-            setRefreshRate('never')
-            setClaimed(true)
-        }
-        // after just having claimed and switching chains,
-        // the state of transaction might still be cached causing the ui to update incorrectly
-        // why we force a reset of the tx state after it completes
-        else if (state.status === 'Success') {
-            setRefreshRate('everyBlock')
-            resetState()
-            setClaimed(true)
-        } else {
+        const hasClaimed = async () => {
+            if (state.status === 'Mining') {
+                // don't do anything until transaction is mined
+                return
+            }
+
+            if (claimAmount?.isZero()) {
+                setClaimed(true)
+                setRefreshRate(12)
+                resetState()
+                return
+            } else if (state.status === 'Success') {
+                setClaimed(true)
+                return
+            }
+
             setClaimed(false)
+            setRefreshRate('everyBlock')
         }
-    }, [claimAmount, state, send, chainId])
+        if (claimAmount) hasClaimed().catch(noop)
+        // eslint-disable-next-line react-hooks-addons/no-unused-deps, react-hooks/exhaustive-deps
+    }, [claimAmount, chainId, refreshRate])
 
     // upon switching chain we want temporarily to poll everyBlock up untill we have the latest data
     useEffect(() => {
-        setRefreshRate(claimAmount ? 'never' : 'everyBlock')
-    }, [chainId])
+        setClaimed(undefined)
+        setRefreshRate('everyBlock')
+    }, [/* used */ chainId])
 
     const handleEvents = useCallback(
         (event: string) => {
@@ -71,18 +80,19 @@ const Claim = memo(() => {
                     break
             }
         },
-        [sendData]
+        [sendData, network]
     )
 
     const handleClaim = useCallback(async () => {
+        setRefreshRate('everyBlock')
         const claim = await send()
-
         sendData({ event: 'claim', action: 'claim_success', network })
         if (!claim) {
             return false
         }
         return true
-    }, [send])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [send, network, sendData])
 
     const handleConnect = useCallback(async () => {
         const state = await connect()
@@ -262,7 +272,7 @@ your G$. 🙂`,
                             method="redirect"
                             claim={handleClaim}
                             claimed={claimed}
-                            claiming={state?.status === 'Mining'}
+                            claiming={state?.status === 'Mining' || state?.status === 'Success'} // we check for both to prevent a pre-mature closing of finalization modal
                             handleConnect={handleConnect}
                             chainId={chainId}
                             onEvent={handleEvents}
