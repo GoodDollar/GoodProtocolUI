@@ -47,7 +47,7 @@ const Bridge = memo(() => {
 
     const errorHandler = useCallback(
         (e) => {
-            if (e?.code === 'NETWORK_ERROR') return
+            if (e?.code === 'NETWORK_ERROR' || e?.code === 4001) return
             console.log('Kima bridge error:', { message: e?.message, e })
             setBridgeStatus(false)
             sendData({ event: 'kima_bridge', action: 'bridge_failure', error: e?.message })
@@ -61,7 +61,6 @@ const Bridge = memo(() => {
 
     const switchChainHandler = useCallback(
         async (chainId) => {
-            console.log('Kima test log -->', { chainId }) // for testing repeated switch requests bug
             await switchNetwork(chainId)
         },
         [switchNetwork]

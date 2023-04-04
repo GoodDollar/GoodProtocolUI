@@ -4084,9 +4084,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:0.0.69-beta.7cf8a62":
-  version: 0.0.69-beta.7cf8a62
-  resolution: "@gooddollar/good-design@npm:0.0.69-beta.7cf8a62"
+"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 0.0.68
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=52b1f3&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4112,7 +4112,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: d3c91c3244b504188f4612fe90f78e3d342aad2d78bc2fcf6e6f98e790b72d5dddf32456e48e8667ad315054b80c0cdce550114cbbd83a3e49573204b09ef6c2
+  checksum: 90d1b2a566436fd8c2d71b828ab6e0745a62cfa3ecdb6c2544a6c42a8c883382fdacace85ee29329b01d31f008e78a27c3a96d00be3f61cef6f4eab5199be9db
   languageName: node
   linkType: hard
 
@@ -4164,13 +4164,13 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": 0.0.69-beta.7cf8a62
+    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
     "@gooddollar/goodprotocol": ^2.0.3
     "@gooddollar/web3sdk": ^0.1.20
     "@gooddollar/web3sdk-v2": 0.1.88-beta.7cf8a62
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
-    "@kimafinance/kima-transaction-widget": ^1.1.31-beta.1
+    "@kimafinance/kima-transaction-widget": ^1.1.32-beta.1
     "@lingui/cli": 3.15.0
     "@lingui/detect-locale": ^3.9.0
     "@lingui/loader": ^3.9.0
@@ -5312,9 +5312,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kimafinance/kima-transaction-widget@npm:^1.1.31-beta.1":
-  version: 1.1.31-beta.1
-  resolution: "@kimafinance/kima-transaction-widget@npm:1.1.31-beta.1"
+"@kimafinance/kima-transaction-widget@npm:^1.1.32-beta.1":
+  version: 1.1.32-beta.1
+  resolution: "@kimafinance/kima-transaction-widget@npm:1.1.32-beta.1"
   dependencies:
     "@ethersproject/constants": ^5.7.0
     "@ethersproject/contracts": ^5.7.0
@@ -5352,7 +5352,7 @@ __metadata:
     react-dom: ">=17.0.1"
     react-redux: ">=7.2.2"
     redux: ">=4.1.2"
-  checksum: 5368192a0cb5ec9b486c5011fb95734dc1458b03074d31b58536ed3d6de0fb39a03ba5ecb5a1299b93557d6d26a827a3d978cf9301d5bc9624a9df3897affa6f
+  checksum: a470d1ff2f88c047e2c6bc1063587705b8760ddfe258173ee48fa2555e5c7e3add14b53e99b4c5c2932e63f09f3a8d1da695279231a3a9128c1cc572362d3b38
   languageName: node
   linkType: hard
 
