@@ -32,22 +32,27 @@ const Claim = memo(() => {
     // 3. If neither is true, there is a claim ready for user or its a new user and FV will be triggered instead
     useEffect(() => {
         const hasClaimed = async () => {
+            if (state.status === 'Mining') {
+                // don't do anything until transaction is mined
+                return
+            }
+
             if (claimAmount?.isZero()) {
-                setRefreshRate(12)
                 setClaimed(true)
+                setRefreshRate(12)
+                resetState()
                 return
             } else if (state.status === 'Success') {
                 setClaimed(true)
-            } else {
-                setClaimed(false)
+                return
             }
 
+            setClaimed(false)
             setRefreshRate('everyBlock')
-            resetState()
         }
         if (claimAmount) hasClaimed().catch(noop)
-        // eslint-disable-next-line react-hooks-addons/no-unused-deps
-    }, [claimAmount, state, chainId, resetState, setRefreshRate])
+        // eslint-disable-next-line react-hooks-addons/no-unused-deps, react-hooks/exhaustive-deps
+    }, [claimAmount, chainId, refreshRate])
 
     // upon switching chain we want temporarily to poll everyBlock up untill we have the latest data
     useEffect(() => {
@@ -68,7 +73,8 @@ const Claim = memo(() => {
                     sendData({ event: 'claim', action: 'claim_start', network })
                     break
                 case 'finish':
-                    sendData({ event: 'claim', action: 'claim_success', network })
+                    // finish event does not handle rejected case
+                    // sendData({ event: 'claim', action: 'claim_success', network })
                     break
                 default:
                     sendData({ event: 'claim', action: event, network })
@@ -81,10 +87,10 @@ const Claim = memo(() => {
     const handleClaim = useCallback(async () => {
         setRefreshRate('everyBlock')
         const claim = await send()
-        sendData({ event: 'claim', action: 'claim_success', network })
         if (!claim) {
             return false
         }
+        sendData({ event: 'claim', action: 'claim_success', network })
         return true
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [send, network, sendData])
@@ -267,7 +273,7 @@ your G$. 🙂`,
                             method="redirect"
                             claim={handleClaim}
                             claimed={claimed}
-                            claiming={state?.status === 'Mining'}
+                            claiming={state?.status === 'Mining' || state?.status === 'Success'} // we check for both to prevent a pre-mature closing of finalization modal
                             handleConnect={handleConnect}
                             chainId={chainId}
                             onEvent={handleEvents}
