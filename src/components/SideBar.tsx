@@ -138,7 +138,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             },
             {
                 label: i18n._(t`Fuse Bridge`),
-                url: 'https://app.fuse.fi/#/bridge',
+                url: 'https://app.voltage.finance/index.html#/bridge',
                 dataAttr: 'bridge',
                 withIcon: true,
                 show: true,
@@ -186,7 +186,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             {
                 route: '/bridge',
                 text: 'Bridge',
-                show: true,
+                show: process.env.REACT_APP_CELO_PHASE_3,
             },
             {
                 route: '/microbridge',
