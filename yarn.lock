@@ -2940,7 +2940,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ethersproject/abi@npm:5.7.0, @ethersproject/abi@npm:^5.0.1, @ethersproject/abi@npm:^5.3.1, @ethersproject/abi@npm:^5.5.0, @ethersproject/abi@npm:^5.6.3, @ethersproject/abi@npm:^5.7.0":
+"@ethersproject/abi@npm:5.7.0, @ethersproject/abi@npm:^5.3.1, @ethersproject/abi@npm:^5.5.0, @ethersproject/abi@npm:^5.6.3, @ethersproject/abi@npm:^5.7.0":
   version: 5.7.0
   resolution: "@ethersproject/abi@npm:5.7.0"
   dependencies:
@@ -4126,7 +4126,7 @@ __metadata:
     "@walletconnect/ethereum-provider": 1.5.0
     "@web3-onboard/coinbase": ^2.0.10
     "@web3-onboard/injected-wallets": ^2.0.15
-    "@web3-onboard/react": ^2.2.5
+    "@web3-onboard/react": 2.7.0
     "@web3-onboard/walletconnect": ^2.0.8
     "@web3-onboard/walletlink": ^2.0.6
     "@web3-react/core": ^6.1.9
@@ -11645,19 +11645,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@unstoppabledomains/resolution@npm:^8.0":
-  version: 8.5.0
-  resolution: "@unstoppabledomains/resolution@npm:8.5.0"
-  dependencies:
-    "@ethersproject/abi": ^5.0.1
-    bn.js: ^4.4.0
-    cross-fetch: ^3.1.4
-    crypto-js: ^4.1.1
-    elliptic: ^6.5.4
-  checksum: 3deaae15c0ff9699a30306a5c2a4ff09a5fc9bd9f2c4e9ab22621e85bad7109cff5bfe8bebe2f334cf7b76e602e25b9af659a4d5f5dab44738b41a0b60d8d608
-  languageName: node
-  linkType: hard
-
 "@usedapp/core@npm:^1.2.6":
   version: 1.2.7
   resolution: "@usedapp/core@npm:1.2.7"
@@ -12389,58 +12376,56 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@web3-onboard/common@npm:^2.2.3, @web3-onboard/common@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "@web3-onboard/common@npm:2.3.0"
+"@web3-onboard/common@npm:^2.2.3, @web3-onboard/common@npm:^2.3.0, @web3-onboard/common@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "@web3-onboard/common@npm:2.3.1"
   dependencies:
     bignumber.js: ^9.1.0
     ethers: 5.5.4
-    joi: 17.8.1
-  checksum: eb4b79c8f78de7ab33af0cbd6d345050aa5d0725623fe75b4fc74ce080f07a0e7fc2b3c9ae7cb6b531cf8915093fd2c6a7b37feaee9179c37066207708227743
+    joi: 17.9.1
+  checksum: b1bc69d51cbe3d181e58fea33cf763edbfaaa46afff7bac41f7ccf964bdb1dcc9f5c08c732a9163dea05509bc07eaf16f39c0dc52784a41b67a01b632ef11c03
   languageName: node
   linkType: hard
 
-"@web3-onboard/core@npm:2.15.0":
-  version: 2.15.0
-  resolution: "@web3-onboard/core@npm:2.15.0"
+"@web3-onboard/core@npm:2.17.0":
+  version: 2.17.0
+  resolution: "@web3-onboard/core@npm:2.17.0"
   dependencies:
-    "@unstoppabledomains/resolution": ^8.0
-    "@web3-onboard/common": ^2.2.3
+    "@web3-onboard/common": ^2.3.1
     bignumber.js: ^9.0.0
-    bnc-sdk: ^4.6.6
+    bnc-sdk: ^4.6.7
     bowser: ^2.11.0
     ethers: 5.5.3
     eventemitter3: ^4.0.7
-    joi: ^17.6.1
+    joi: 17.9.1
     lodash.merge: ^4.6.2
     lodash.partition: ^4.6.0
     nanoid: ^4.0.0
     rxjs: ^7.5.5
     svelte: ^3.49.0
     svelte-i18n: ^3.3.13
-  checksum: 69d9cb9e433c0fc6896bacbb5dbee53e73f547fbf23dfb64d749fa418f2de07cadb52522194bb572cefff5ad3c6a8a1f2e9a9d7ef92b5546f0480c65404f13a7
+  checksum: e4a8359c86fe000a20a116a589462ba664afb6500cf68dc549fb2d9444594db9c274992bf2693a1af7e2eeaee4adb5b3592ec072d94751f5f9ef556679e9a9a3
   languageName: node
   linkType: hard
 
-"@web3-onboard/core@patch:@web3-onboard/core@npm%3A2.15.0#./.yarn/patches/@web3-onboard-core-npm-2.15.0-66f779b1b5.patch::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
-  version: 2.15.0
-  resolution: "@web3-onboard/core@patch:@web3-onboard/core@npm%3A2.15.0#./.yarn/patches/@web3-onboard-core-npm-2.15.0-66f779b1b5.patch::version=2.15.0&hash=7d7f54&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+"@web3-onboard/core@patch:@web3-onboard/core@npm%3A2.17.0#./.yarn/patches/@web3-onboard-core-npm-2.17.0-158dbf89b9.patch::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 2.17.0
+  resolution: "@web3-onboard/core@patch:@web3-onboard/core@npm%3A2.17.0#./.yarn/patches/@web3-onboard-core-npm-2.17.0-158dbf89b9.patch::version=2.17.0&hash=74a68c&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
-    "@unstoppabledomains/resolution": ^8.0
-    "@web3-onboard/common": ^2.2.3
+    "@web3-onboard/common": ^2.3.1
     bignumber.js: ^9.0.0
-    bnc-sdk: ^4.6.6
+    bnc-sdk: ^4.6.7
     bowser: ^2.11.0
     ethers: 5.5.3
     eventemitter3: ^4.0.7
-    joi: ^17.6.1
+    joi: 17.9.1
     lodash.merge: ^4.6.2
     lodash.partition: ^4.6.0
     nanoid: ^4.0.0
     rxjs: ^7.5.5
     svelte: ^3.49.0
     svelte-i18n: ^3.3.13
-  checksum: d14ff1e365c82d82da8ef676403e30136a0be53c2c2c156102568e379674d1e28cba59aa5c74287b850488c5c2e5b040e01ca15de60b83ff50570a10d9e8ea11
+  checksum: f734ba6e6225c4076d29b968a054d91ccc1732153c5f8a2f5fd867833f46c7ba6c306e0bbf3357c7a0e84a7dc066389010ca153bb57edc701b42536c544e2ce3
   languageName: node
   linkType: hard
 
@@ -12455,16 +12440,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@web3-onboard/react@npm:^2.2.5":
-  version: 2.6.5
-  resolution: "@web3-onboard/react@npm:2.6.5"
+"@web3-onboard/react@npm:2.7.0":
+  version: 2.7.0
+  resolution: "@web3-onboard/react@npm:2.7.0"
   dependencies:
-    "@web3-onboard/common": ^2.2.3
-    "@web3-onboard/core": ^2.15.4
+    "@web3-onboard/common": ^2.3.0
+    "@web3-onboard/core": ^2.16.0
     use-sync-external-store: 1.0.0
   peerDependencies:
     react: ">=16.8"
-  checksum: 6680356104fc58efb5566792c97f5e2b408a6ee5030806e6d040573cf052c86d8935fae78a0737fde35b878c4c13bc5b9647396456df825acc4d6d87461b3e0c
+  checksum: 6d38b8eb3a28036b18e60fba29224f74d9c4e7b8f7a64ed5077993b977a66c974bd454d1273e0b29e817beabd71cc9a32fed4f1e44750e9f5f0b7a8968709d79
   languageName: node
   linkType: hard
 
@@ -15051,7 +15036,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bn.js@npm:^4.0.0, bn.js@npm:^4.1.0, bn.js@npm:^4.11.0, bn.js@npm:^4.11.6, bn.js@npm:^4.11.8, bn.js@npm:^4.11.9, bn.js@npm:^4.4.0":
+"bn.js@npm:^4.0.0, bn.js@npm:^4.1.0, bn.js@npm:^4.11.0, bn.js@npm:^4.11.6, bn.js@npm:^4.11.8, bn.js@npm:^4.11.9":
   version: 4.12.0
   resolution: "bn.js@npm:4.12.0"
   checksum: 39afb4f15f4ea537b55eaf1446c896af28ac948fdcf47171961475724d1bb65118cca49fa6e3d67706e4790955ec0e74de584e45c8f1ef89f46c812bee5b5a12
@@ -15065,7 +15050,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bnc-sdk@npm:^4.6.6":
+"bnc-sdk@npm:^4.6.7":
   version: 4.6.7
   resolution: "bnc-sdk@npm:4.6.7"
   dependencies:
@@ -25023,16 +25008,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"joi@npm:^17.2.1, joi@npm:^17.6.1, joi@npm:^17.7.0":
-  version: 17.8.3
-  resolution: "joi@npm:17.8.3"
+"joi@npm:17.9.1, joi@npm:^17.2.1, joi@npm:^17.7.0":
+  version: 17.9.1
+  resolution: "joi@npm:17.9.1"
   dependencies:
     "@hapi/hoek": ^9.0.0
     "@hapi/topo": ^5.0.0
     "@sideway/address": ^4.1.3
     "@sideway/formula": ^3.0.1
     "@sideway/pinpoint": ^2.0.0
-  checksum: d93ea768740fc447d19a3340734af8062a53616bfe61d117992632f5064c0abe7ca495a29747317a4f6cd655839507a0e3c9daa90f4f14a7e57a5ad653c43714
+  checksum: 055df3841e00d7ed065ef1cc3330cf69097ab2ffec3083d8b1d6edfd2e25504bf2983f5249d6f0459bcad99fe21bb0c9f6f1cc03569713af27cd5eb00ee7bb7d
   languageName: node
   linkType: hard
 
@@ -28170,7 +28155,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:3.3.4, nanoid@npm:^3.3.1, nanoid@npm:^3.3.4":
+"nanoid@npm:3.3.4":
   version: 3.3.4
   resolution: "nanoid@npm:3.3.4"
   bin:
@@ -28179,12 +28164,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nanoid@npm:^3.3.1, nanoid@npm:^3.3.4":
+  version: 3.3.6
+  resolution: "nanoid@npm:3.3.6"
+  bin:
+    nanoid: bin/nanoid.cjs
+  checksum: 7d0eda657002738aa5206107bd0580aead6c95c460ef1bdd0b1a87a9c7ae6277ac2e9b945306aaa5b32c6dcb7feaf462d0f552e7f8b5718abfc6ead5c94a71b3
+  languageName: node
+  linkType: hard
+
 "nanoid@npm:^4.0.0":
-  version: 4.0.1
-  resolution: "nanoid@npm:4.0.1"
+  version: 4.0.2
+  resolution: "nanoid@npm:4.0.2"
   bin:
     nanoid: bin/nanoid.js
-  checksum: 21022a7910aa690cb05872c07f0c4a317dfe2aa79cc2b5e4ab41d17476e23d973d24c683206d6fa7e1b56bf657cf5dfbc0f1cac7d596bcd2dea0f49635316628
+  checksum: 747c399cea4664dd0be1d0ec498ffd1ef8f1f5221676fc8b577e3f46f66d9afcddb9595d63d19a2e78d0bc6cc33984f65e66bf1682c850b9e26288883d96b53f
   languageName: node
   linkType: hard
 
@@ -34176,11 +34170,11 @@ __metadata:
   linkType: hard
 
 "rxjs@npm:^7.5.2, rxjs@npm:^7.5.5, rxjs@npm:^7.5.6, rxjs@npm:^7.8.0":
-  version: 7.8.0
-  resolution: "rxjs@npm:7.8.0"
+  version: 7.8.1
+  resolution: "rxjs@npm:7.8.1"
   dependencies:
     tslib: ^2.1.0
-  checksum: 61b4d4fd323c1043d8d6ceb91f24183b28bcf5def4f01ca111511d5c6b66755bc5578587fe714ef5d67cf4c9f2e26f4490d4e1d8cabf9bd5967687835e9866a2
+  checksum: de4b53db1063e618ec2eca0f7965d9137cabe98cf6be9272efe6c86b47c17b987383df8574861bcced18ebd590764125a901d5506082be84a8b8e364bf05f119
   languageName: node
   linkType: hard
 
@@ -36184,9 +36178,9 @@ __metadata:
   linkType: hard
 
 "svelte@npm:^3.49.0":
-  version: 3.56.0
-  resolution: "svelte@npm:3.56.0"
-  checksum: d691364416632265dd0bbba23021f5766c5c4f905389978dc73c9c1261141479a7aed9f0bce5e0bde87d7f566e89f18476d95d2299bcac57f165dc7dab3a6095
+  version: 3.58.0
+  resolution: "svelte@npm:3.58.0"
+  checksum: c05625705961adc971e2bed6b86957c065f34e9d358390ad8dc953f8b4c956bb5ed297e3466f18c8080339cd26b973294489ee4094800fd75a8650fa1f6a9b52
   languageName: node
   linkType: hard
 
