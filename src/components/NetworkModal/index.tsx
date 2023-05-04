@@ -1,22 +1,24 @@
-import { NETWORK_ICON, NETWORK_LABEL } from '../../constants/networks'
-import { useModalOpen, useNetworkModalToggle } from '../../state/application/hooks'
-import { ApplicationModal } from '../../state/application/types'
-import { ChainId } from '@sushiswap/sdk'
-import Modal from '../Modal'
-import ModalHeader from '../ModalHeader'
 import React, { useCallback, useMemo, useState } from 'react'
-import Option from '../WalletModal/Option'
-import styled from 'styled-components'
-import { AdditionalChainId } from '../../constants'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
-
-import { getNetworkEnv, UnsupportedChainId } from '@gooddollar/web3sdk'
-import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 import { useSwitchNetwork } from '@gooddollar/web3sdk-v2'
 import { Text, Link } from 'native-base'
 import { SwitchChainModal } from '@gooddollar/good-design'
+import { useConnectWallet } from '@web3-onboard/react'
+import { ChainId } from '@sushiswap/sdk'
+import { getNetworkEnv, UnsupportedChainId } from '@gooddollar/web3sdk'
+import Modal from '../Modal'
+import ModalHeader from '../ModalHeader'
+import Option from '../WalletModal/Option'
+import styled from 'styled-components'
+import { AdditionalChainId } from '../../constants'
+
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { NETWORK_ICON, NETWORK_LABEL } from '../../constants/networks'
+import { useModalOpen, useNetworkModalToggle } from '../../state/application/hooks'
+import { ApplicationModal } from '../../state/application/types'
+
+import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 
 const TextWrapper = styled.div`
     font-style: normal;
@@ -65,6 +67,11 @@ export default function NetworkModal(): JSX.Element | null {
     const networkModalOpen = useModalOpen(ApplicationModal.NETWORK)
     const toggleNetworkModal = useNetworkModalToggle()
     const [toAddNetwork, setToAddNetwork] = useState<ChainId | AdditionalChainId | undefined>()
+    const [{ wallet }] = useConnectWallet()
+
+    // useEffect(() => {
+    //     console.log('WCV2Testing NetworkModal', { wallet })
+    // })
 
     const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[chainId]
     const network = getNetworkEnv()
@@ -91,8 +98,10 @@ export default function NetworkModal(): JSX.Element | null {
     const switchChain = useCallback(
         async (chain: ChainId | AdditionalChainId) => {
             try {
+                console.log('WCV2Testing switchChain -->', { chain, wallet })
                 await switchNetwork(chain)
             } catch (e: any) {
+                console.log('WCV2Testing switch failed -->', { chain, e })
                 if (e.code === 4902) {
                     setToAddNetwork(chain)
                     toggleNetworkModal()
@@ -106,7 +115,7 @@ export default function NetworkModal(): JSX.Element | null {
             })
         },
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [switchNetwork, sendData]
+        [switchNetwork, sendData, wallet]
     )
 
     return (
