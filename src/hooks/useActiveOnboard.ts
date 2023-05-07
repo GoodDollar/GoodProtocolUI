@@ -239,7 +239,7 @@ export function useOnboardConnect(): OnboardConnectProps {
                 return
             }
 
-            const promises = []
+            const promises: Array<any> = []
             const cleanup = async (key: string) => AsyncStorage.removeItem(key).catch(noop)
 
             if (previouslyConnected[0].label[0] === 'Coinbase Wallet') {

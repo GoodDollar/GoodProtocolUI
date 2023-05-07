@@ -1,7 +1,7 @@
 import './styles/index.css'
 import '@fontsource/dm-sans/index.css'
 import 'react-tabs/style/react-tabs.css'
-import './bootstrap'
+import './bootstrap.ts'
 
 import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
