@@ -1,4 +1,4 @@
-function inherits(ctor, superCtor) {
+const inherits = function inherits(ctor, superCtor) {
     if (!superCtor.prototype) return
     ctor.super_ = superCtor
     ctor.prototype = Object.create(superCtor.prototype, {
