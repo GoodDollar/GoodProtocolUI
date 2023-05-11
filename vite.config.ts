@@ -38,7 +38,7 @@ export default defineConfig({
             // e.g. use TypeScript check
             typescript: true,
         }),
-        lingui(),
+        // lingui(),
         nodePolyfills({ protocolImports: true, exclude: ['constants'] }),
         react({
             plugins: [['@lingui/swc-plugin', {}]],
