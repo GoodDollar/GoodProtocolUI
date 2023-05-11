@@ -6,6 +6,7 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills'
 import { lingui } from '@lingui/vite-plugin'
 import checker from 'vite-plugin-checker'
 import dynamicImports from 'vite-plugin-dynamic-import'
+
 import fs from 'fs'
 // import { visualizer } from 'rollup-plugin-visualizer'
 
@@ -33,7 +34,7 @@ export default defineConfig({
         //     brotliSize: true,
         //     filename: 'analice.html',
         // }) as PluginOption,
-        dynamicImports(),
+        dynamicImports(), //for lingui dynamic import lang files
         checker({
             // e.g. use TypeScript check
             typescript: true,
@@ -58,5 +59,14 @@ export default defineConfig({
     },
     define: {
         'process.env': process.env,
+    },
+    build: {
+        commonjsOptions: {
+            transformMixedEsModules: true,
+            include: [/kima/, /solana/, /node_modules/], // handle kima require undefined in production build
+        },
+    },
+    optimizeDeps: {
+        include: ['@kimafinance/kima-transaction-widget', '@solana/web3.js'], // handle kima require undefined in production build
     },
 })

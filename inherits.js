@@ -10,4 +10,4 @@ const inherits = function inherits(ctor, superCtor) {
         },
     })
 }
-module.exports = inherits
+export default inherits
