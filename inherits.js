@@ -1,4 +1,4 @@
-const inherits = function inherits(ctor, superCtor) {
+module.exports = function inherits(ctor, superCtor) {
     if (!superCtor.prototype) return
     ctor.super_ = superCtor
     ctor.prototype = Object.create(superCtor.prototype, {
@@ -10,4 +10,3 @@ const inherits = function inherits(ctor, superCtor) {
         },
     })
 }
-export default inherits

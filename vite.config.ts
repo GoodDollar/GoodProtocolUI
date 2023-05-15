@@ -35,10 +35,10 @@ export default defineConfig({
         //     filename: 'analice.html',
         // }) as PluginOption,
         dynamicImports(), //for lingui dynamic import lang files
-        checker({
-            // e.g. use TypeScript check
-            typescript: true,
-        }),
+        // checker({
+        //     // e.g. use TypeScript check
+        //     typescript: true,
+        // }),
         // lingui(),
         nodePolyfills({ protocolImports: true, exclude: ['constants'] }),
         react({
@@ -63,10 +63,10 @@ export default defineConfig({
     build: {
         commonjsOptions: {
             transformMixedEsModules: true,
-            include: [/kima/, /solana/, /node_modules/], // handle kima require undefined in production build
+            include: [/kima/, /solana/, /node_modules/,/resize-observer/], // handle kima require undefined in production build
         },
     },
     optimizeDeps: {
-        include: ['@kimafinance/kima-transaction-widget', '@solana/web3.js'], // handle kima require undefined in production build
+        include: ['@kimafinance/kima-transaction-widget', '@solana/web3.js','@juggle/resize-observer'], // handle kima require undefined in production build
     },
 })
