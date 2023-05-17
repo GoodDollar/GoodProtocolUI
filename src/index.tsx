@@ -62,7 +62,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   onboard-v2::part(mobile-icon-img) {
-    width: 150px;
+    width: 120px;
     height: fit-content;
   }
 `

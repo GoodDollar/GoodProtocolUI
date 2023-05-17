@@ -12789,7 +12789,7 @@ __metadata:
 
 "@web3-onboard/core@patch:@web3-onboard/core@npm%3A2.17.0#./.yarn/patches/@web3-onboard-core-npm-2.17.0-158dbf89b9.patch::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 2.17.0
-  resolution: "@web3-onboard/core@patch:@web3-onboard/core@npm%3A2.17.0#./.yarn/patches/@web3-onboard-core-npm-2.17.0-158dbf89b9.patch::version=2.17.0&hash=74a68c&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  resolution: "@web3-onboard/core@patch:@web3-onboard/core@npm%3A2.17.0#./.yarn/patches/@web3-onboard-core-npm-2.17.0-158dbf89b9.patch::version=2.17.0&hash=ebf9dc&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@web3-onboard/common": ^2.3.1
     bignumber.js: ^9.0.0
@@ -12804,7 +12804,7 @@ __metadata:
     rxjs: ^7.5.5
     svelte: ^3.49.0
     svelte-i18n: ^3.3.13
-  checksum: f734ba6e6225c4076d29b968a054d91ccc1732153c5f8a2f5fd867833f46c7ba6c306e0bbf3357c7a0e84a7dc066389010ca153bb57edc701b42536c544e2ce3
+  checksum: 070999365347470ed6288a884d44ff1d921232fe29b732c12dfd9c75f5be445f6f9377f6d67011b1fe99924ce0e0518675b14a11dd2ed183937debe11b0bad01
   languageName: node
   linkType: hard
 
