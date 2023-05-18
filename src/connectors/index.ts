@@ -21,19 +21,18 @@ const getUrl = (env: string) => {
 export const gd = customwc({
     label: 'gooddollar',
     ...(wc2InitOptions as any),
-    handleUri: (uri) =>
-        new Promise((res) => {
-            const url = getUrl(network || 'development-celo')
-            const wcUri = url + encodeURIComponent(uri)
-            switch (getDevice().os.name) {
-                case 'Android':
-                    window.open(`gooddollar://wc?uri=${encodeURIComponent(uri)}`, '_blank')
-                    break
-                default:
-                    window.open(wcUri, '_blank')
-            }
-            res(true)
-        }),
+    handleUri: async (uri) => {
+        const url = getUrl(network || 'development-celo')
+        const wcUri = url + encodeURIComponent(uri)
+        switch (getDevice().os.name) {
+            case 'Android':
+                window.open(`gooddollar://wc?uri=${encodeURIComponent(uri)}`, '_blank')
+                break
+            default:
+                window.open(wcUri, '_blank')
+        }
+        return true
+    },
 })
 
 export const torus = torusModule({
