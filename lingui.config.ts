@@ -1,8 +1,10 @@
-import { formatter } from '@lingui/format-json'
+// import { formatter } from '@lingui/format-json'
+import { formatter } from '@lingui/format-po'
+
 export default {
-    format: formatter({ style: 'minimal' }),
+    format: formatter(),
     catalogs: [
-        {
+        {        
             path: '<rootDir>/src/language/locales/{locale}/catalog',
             include: ['<rootDir>/src'],
         },

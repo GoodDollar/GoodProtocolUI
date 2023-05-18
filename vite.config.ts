@@ -42,7 +42,7 @@ export default defineConfig({
         //     // e.g. use TypeScript check
         //     typescript: true,
         // }),
-        // lingui(),
+        lingui(),
         nodePolyfills({ protocolImports: true, exclude: ['constants'] }),
         react({
             plugins: [['@lingui/swc-plugin', {}]]
@@ -53,10 +53,7 @@ export default defineConfig({
     resolve: {
         alias: {
             'react-native': 'react-native-web',
-            'react-native-svg': 'react-native-svg-web',
-            'readable-stream': 'vite-compatible-readable-stream',
-            inherits: './inherits.js',
-            stream: 'readable-stream'
+            'react-native-svg': 'react-native-svg-web'
         },
         dedupe: ['react', 'ethers', 'react-dom', 'native-base']
     },
