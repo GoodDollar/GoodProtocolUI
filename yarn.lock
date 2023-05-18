@@ -4191,8 +4191,8 @@ __metadata:
   linkType: hard
 
 "@gooddollar/bridge-app@npm:^1.5.0":
-  version: 1.5.4
-  resolution: "@gooddollar/bridge-app@npm:1.5.4"
+  version: 1.5.0
+  resolution: "@gooddollar/bridge-app@npm:1.5.0"
   dependencies:
     dotenv: ^16.0.3
     eth-proof: ^2.1.6
@@ -4202,7 +4202,7 @@ __metadata:
     lodash: ^4.17.21
     node-fetch: 2
     p-all: 3.0.0
-  checksum: 2ebdea6c626c5936ce90f4c76726d76b590752f56356f6032dd32f8a2c9222eeaa8c7ca070aa5eff4c75dd43ef04d52e63bf4279c2385cdf02b92804a5440dc0
+  checksum: fce6c0b5a8635bc3f4eea686d87c4e6a09ec8d0c79b763219f601027a43872db001678a651308d9fa074c3183cf4879b793973f188c1d3da4c8a4e6dd9661ce3
   languageName: node
   linkType: hard
 
@@ -10045,10 +10045,10 @@ __metadata:
   linkType: hard
 
 "@toruslabs/openlogin-jrpc@npm:^4.0.0":
-  version: 4.3.0
-  resolution: "@toruslabs/openlogin-jrpc@npm:4.3.0"
+  version: 4.2.0
+  resolution: "@toruslabs/openlogin-jrpc@npm:4.2.0"
   dependencies:
-    "@toruslabs/openlogin-utils": ^4.3.0
+    "@toruslabs/openlogin-utils": ^4.2.0
     end-of-stream: ^1.4.4
     eth-rpc-errors: ^4.0.3
     events: ^3.3.0
@@ -10058,7 +10058,7 @@ __metadata:
     readable-stream: ^4.3.0
   peerDependencies:
     "@babel/runtime": 7.x
-  checksum: a9d79ed530e7fd4033a7c54130152396ce29caad5912ce61dc06b58edcc77ccff5fa5c78a0523dd4ffa57d90999378d660a88d09e8ea7607ba8b7a64841e397c
+  checksum: 6fc1f3b6c109e7e3d9a1dda2b2dd1d898e76d45cedb5407862603272da3897f11527c30dec39be473b53f0e169aee21d69e2dae138f2c4fda75aebca4cada621
   languageName: node
   linkType: hard
 
@@ -10088,14 +10088,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@toruslabs/openlogin-utils@npm:^4.3.0":
-  version: 4.3.0
-  resolution: "@toruslabs/openlogin-utils@npm:4.3.0"
+"@toruslabs/openlogin-utils@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "@toruslabs/openlogin-utils@npm:4.2.0"
   dependencies:
     base64url: ^3.0.1
   peerDependencies:
     "@babel/runtime": 7.x
-  checksum: dc880d8c13a85c5c797a3a8ab952b8fb1027c7d25c6479d9081d17272fa043f808ec8e7767df777d6ccce64a48e454b4f8906b7c5f671a31609db495fb14a614
+  checksum: 6f7eb473550a28d3667a8558fee6d73d56ffe2b3c8a3b564da05d4d4640e8b1901ab6fbc9517735f6c2d525743b6ec5fc5a4661ba9d70902992e65c78e3d1dd1
   languageName: node
   linkType: hard
 
