@@ -69,10 +69,6 @@ export default function NetworkModal(): JSX.Element | null {
     const [toAddNetwork, setToAddNetwork] = useState<ChainId | AdditionalChainId | undefined>()
     const [{ wallet }] = useConnectWallet()
 
-    // useEffect(() => {
-    //     console.log('WCV2Testing NetworkModal', { wallet })
-    // })
-
     const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[chainId]
     const network = getNetworkEnv()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -98,10 +94,8 @@ export default function NetworkModal(): JSX.Element | null {
     const switchChain = useCallback(
         async (chain: ChainId | AdditionalChainId) => {
             try {
-                console.log('WCV2Testing switchChain -->', { chain, wallet })
                 await switchNetwork(chain)
             } catch (e: any) {
-                console.log('WCV2Testing switch failed -->', { chain, e })
                 if (e.code === 4902) {
                     setToAddNetwork(chain)
                     toggleNetworkModal()
