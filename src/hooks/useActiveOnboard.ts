@@ -116,7 +116,7 @@ export function useActiveOnboard<T = any>(): ActiveOnboardInterface<T> {
  */
 export function StoreOnboardState(wallets: WalletState[], activeChainId: string | undefined): void {
     if (isEmpty(wallets)) {
-        void AsyncStorage.removeItem('currentConnectWallet')
+        void AsyncStorage.safeRemove('currentConnectWallet')
         return
     }
 
@@ -237,7 +237,7 @@ export function useOnboardConnect(): OnboardConnectProps {
             }
 
             const promises = []
-            const cleanup = async (key: string) => AsyncStorage.removeItem(key).catch(noop)
+            const cleanup = async (key: string) => AsyncStorage.safeRemove(key)
             const cleanupList = async (regex: RegExp) => {
                 try {
                     const keys = await AsyncStorage.getAllKeys()
