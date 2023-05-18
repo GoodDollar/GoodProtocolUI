@@ -4,7 +4,6 @@ import { useLingui } from '@lingui/react'
 import { useSwitchNetwork } from '@gooddollar/web3sdk-v2'
 import { Text, Link } from 'native-base'
 import { SwitchChainModal } from '@gooddollar/good-design'
-import { useConnectWallet } from '@web3-onboard/react'
 import { ChainId } from '@sushiswap/sdk'
 import { getNetworkEnv, UnsupportedChainId } from '@gooddollar/web3sdk'
 import Modal from '../Modal'
@@ -67,7 +66,6 @@ export default function NetworkModal(): JSX.Element | null {
     const networkModalOpen = useModalOpen(ApplicationModal.NETWORK)
     const toggleNetworkModal = useNetworkModalToggle()
     const [toAddNetwork, setToAddNetwork] = useState<ChainId | AdditionalChainId | undefined>()
-    const [{ wallet }] = useConnectWallet()
 
     const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[chainId]
     const network = getNetworkEnv()
@@ -109,7 +107,7 @@ export default function NetworkModal(): JSX.Element | null {
             })
         },
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [switchNetwork, sendData, wallet]
+        [switchNetwork, sendData]
     )
 
     return (
