@@ -4191,8 +4191,8 @@ __metadata:
   linkType: hard
 
 "@gooddollar/bridge-app@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "@gooddollar/bridge-app@npm:1.5.0"
+  version: 1.5.4
+  resolution: "@gooddollar/bridge-app@npm:1.5.4"
   dependencies:
     dotenv: ^16.0.3
     eth-proof: ^2.1.6
@@ -4202,7 +4202,7 @@ __metadata:
     lodash: ^4.17.21
     node-fetch: 2
     p-all: 3.0.0
-  checksum: fce6c0b5a8635bc3f4eea686d87c4e6a09ec8d0c79b763219f601027a43872db001678a651308d9fa074c3183cf4879b793973f188c1d3da4c8a4e6dd9661ce3
+  checksum: 2ebdea6c626c5936ce90f4c76726d76b590752f56356f6032dd32f8a2c9222eeaa8c7ca070aa5eff4c75dd43ef04d52e63bf4279c2385cdf02b92804a5440dc0
   languageName: node
   linkType: hard
 
@@ -4222,9 +4222,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:0.0.74-beta.e1d2b5f":
-  version: 0.0.74-beta.e1d2b5f
-  resolution: "@gooddollar/good-design@npm:0.0.74-beta.e1d2b5f"
+"@gooddollar/good-design@npm:^0.0.74":
+  version: 0.0.74
+  resolution: "@gooddollar/good-design@npm:0.0.74"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4251,7 +4251,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: c6aacfa301df1b02708cb9abd3ce05b022695b8f33fc3e494a0ede7eeb7ef64acb062eb73bf6dc6643f34a3f97a6a123728c12794b11b70f21f060ed45367756
+  checksum: 5c300a0033dbbf5527cbec9f03a16121ffb4ad6164e5ccb56eb92fdb4a2a210ae2bd0fad3fc3a1d48dc88e97863727b0fab42c4e14aa992500d831ad5ee38289
   languageName: node
   linkType: hard
 
@@ -4303,10 +4303,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": 0.0.74-beta.e1d2b5f
+    "@gooddollar/good-design": ^0.0.74
     "@gooddollar/goodprotocol": ^2.0.3
     "@gooddollar/web3sdk": ^0.1.20
-    "@gooddollar/web3sdk-v2": 0.1.95-beta.e1d2b5f
+    "@gooddollar/web3sdk-v2": ^0.1.95
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@kimafinance/kima-transaction-widget": ^1.1.42-beta.1
@@ -4478,9 +4478,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:0.1.95-beta.e1d2b5f":
-  version: 0.1.95-beta.e1d2b5f
-  resolution: "@gooddollar/web3sdk-v2@npm:0.1.95-beta.e1d2b5f"
+"@gooddollar/web3sdk-v2@npm:^0.1.95":
+  version: 0.1.95
+  resolution: "@gooddollar/web3sdk-v2@npm:0.1.95"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -4517,7 +4517,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: eca37e712a3b9e6fbd190bd9eec1f11849ddbb5b96155186d33d83f63f35c240e157bc3dd327769daefb542f6df1a8be3f76459971f6d9a49528c5f8ee5b0028
+  checksum: 0c854a585c51376cf59db307dac91c788f586b817340ea928eedaba52b3ac90911ab0a273d35e788e80d66f2f3e16b664ed833a69a578161ef74387a4cb05bab
   languageName: node
   linkType: hard
 
@@ -10045,10 +10045,10 @@ __metadata:
   linkType: hard
 
 "@toruslabs/openlogin-jrpc@npm:^4.0.0":
-  version: 4.2.0
-  resolution: "@toruslabs/openlogin-jrpc@npm:4.2.0"
+  version: 4.3.0
+  resolution: "@toruslabs/openlogin-jrpc@npm:4.3.0"
   dependencies:
-    "@toruslabs/openlogin-utils": ^4.2.0
+    "@toruslabs/openlogin-utils": ^4.3.0
     end-of-stream: ^1.4.4
     eth-rpc-errors: ^4.0.3
     events: ^3.3.0
@@ -10058,7 +10058,7 @@ __metadata:
     readable-stream: ^4.3.0
   peerDependencies:
     "@babel/runtime": 7.x
-  checksum: 6fc1f3b6c109e7e3d9a1dda2b2dd1d898e76d45cedb5407862603272da3897f11527c30dec39be473b53f0e169aee21d69e2dae138f2c4fda75aebca4cada621
+  checksum: a9d79ed530e7fd4033a7c54130152396ce29caad5912ce61dc06b58edcc77ccff5fa5c78a0523dd4ffa57d90999378d660a88d09e8ea7607ba8b7a64841e397c
   languageName: node
   linkType: hard
 
@@ -10088,14 +10088,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@toruslabs/openlogin-utils@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "@toruslabs/openlogin-utils@npm:4.2.0"
+"@toruslabs/openlogin-utils@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "@toruslabs/openlogin-utils@npm:4.3.0"
   dependencies:
     base64url: ^3.0.1
   peerDependencies:
     "@babel/runtime": 7.x
-  checksum: 6f7eb473550a28d3667a8558fee6d73d56ffe2b3c8a3b564da05d4d4640e8b1901ab6fbc9517735f6c2d525743b6ec5fc5a4661ba9d70902992e65c78e3d1dd1
+  checksum: dc880d8c13a85c5c797a3a8ab952b8fb1027c7d25c6479d9081d17272fa043f808ec8e7767df777d6ccce64a48e454b4f8906b7c5f671a31609db495fb14a614
   languageName: node
   linkType: hard
 
@@ -37633,9 +37633,9 @@ __metadata:
   linkType: hard
 
 "tslib@npm:^2.4.1":
-  version: 2.5.1
-  resolution: "tslib@npm:2.5.1"
-  checksum: 535e41e956b32d21aeff007a2c74989d1a6bf3fecb2b0141d80e5b9920bf90e23b4f0cd3772704bc03637c762dbdc1a314d75a407dd7189afbe3e83d80df9392
+  version: 2.5.2
+  resolution: "tslib@npm:2.5.2"
+  checksum: 4d3c1e238b94127ed0e88aa0380db3c2ddae581dc0f4bae5a982345e9f50ee5eda90835b8bfba99b02df10a5734470be197158c36f9129ac49fdc14a6a9da222
   languageName: node
   linkType: hard
 
