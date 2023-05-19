@@ -4302,12 +4302,13 @@ __metadata:
     react-use-gesture: ^6.0.14
     react-use-promise: ^0.5.0
     react-virtualized-auto-sizer: ^1.0.2
-    react-wallet-chat: ^2.5.8
+    react-wallet-chat: ^2.6.7
     react-window: ^1.8.5
     rebass: ^4.0.7
     redux-localstorage-simple: ^2.3.1
     rxjs: ^7.5.6
     serve: ^11.3.0
+    siwe: ^2.1.4
     source-map-explorer: ^2.5.2
     start-server-and-test: ^1.11.0
     styled-components: ^5.3.3
@@ -8906,6 +8907,18 @@ __metadata:
   dependencies:
     antlr4ts: ^0.5.0-alpha.4
   checksum: 6ccbdab334331a58fde2a739cff76d5a99d836186b7899e8e027266f2af2a4bddc77c9c2abd01307cea6c470345d48edc470049e9672143b73f4aff3c8976183
+  languageName: node
+  linkType: hard
+
+"@spruceid/siwe-parser@npm:*":
+  version: 2.0.2
+  resolution: "@spruceid/siwe-parser@npm:2.0.2"
+  dependencies:
+    "@noble/hashes": ^1.1.2
+    apg-js: ^4.1.1
+    uri-js: ^4.4.1
+    valid-url: ^1.0.9
+  checksum: 689b09a73026c79223805c77762b923af25209274f26d5f26d95f808a882ceb138dfbdfb6d7c8e31a67fb677bc16d90079c83821ee8e7c8bcece29cd94b2a67b
   languageName: node
   linkType: hard
 
@@ -13607,6 +13620,13 @@ __metadata:
     normalize-path: ^3.0.0
     picomatch: ^2.0.4
   checksum: 3e044fd6d1d26545f235a9fe4d7a534e2029d8e59fa7fd9f2a6eb21230f6b5380ea1eaf55136e60cbf8e613544b3b766e7a6fa2102e2a3a117505466e3025dc2
+  languageName: node
+  linkType: hard
+
+"apg-js@npm:^4.1.1":
+  version: 4.1.3
+  resolution: "apg-js@npm:4.1.3"
+  checksum: fa815838fc3c4b2fa5801419d050c5cf0ac8b5dbbc7476a9c9b8e1ae5fc78feccf01ff3ff52ef1e80c72f8b7bf39f589f1b8aaad5f5aeba399523a9ba18da127
   languageName: node
   linkType: hard
 
@@ -33056,9 +33076,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-wallet-chat@npm:^2.5.8":
-  version: 2.5.8
-  resolution: "react-wallet-chat@npm:2.5.8"
+"react-wallet-chat@npm:^2.6.7":
+  version: 2.6.7
+  resolution: "react-wallet-chat@npm:2.6.7"
   dependencies:
     classnames: ^2.3.2
   peerDependencies:
@@ -33066,7 +33086,7 @@ __metadata:
     postcss: ^8.4.21
     react: 17.0.2
     tailwindcss: ^3.2.7
-  checksum: 4102802f8fd903789132beca59e644b49b2d4dc982b499fec56cf8263a5b61ccf1504095b2a1f4862abe5d695cd136ed649883cbc763cce69834ac75cdb89459
+  checksum: f37f739128084ab34dede92c48cbbbcb64d4ba40a0e282b7246fb2e46714c2fb8334bb6678439c4c2668cc5b7b6c254b0948f340b30c6b68d4c7a43b3cc37b1d
   languageName: node
   linkType: hard
 
@@ -34926,6 +34946,20 @@ __metadata:
   version: 1.0.5
   resolution: "sisteransi@npm:1.0.5"
   checksum: aba6438f46d2bfcef94cf112c835ab395172c75f67453fe05c340c770d3c402363018ae1ab4172a1026a90c47eaccf3af7b6ff6fa749a680c2929bd7fa2b37a4
+  languageName: node
+  linkType: hard
+
+"siwe@npm:^2.1.4":
+  version: 2.1.4
+  resolution: "siwe@npm:2.1.4"
+  dependencies:
+    "@spruceid/siwe-parser": "*"
+    "@stablelib/random": ^1.0.1
+    uri-js: ^4.4.1
+    valid-url: ^1.0.9
+  peerDependencies:
+    ethers: ^5.6.8 || ^6.0.8
+  checksum: a5eb48a72ccd8cca155b667e065a08ea01f626be81c489ccc65e8978cb5928857d31f073d3dabcb951581293a08868ea5cfaa183ae32bd2bc2ed0b3d88fcca77
   languageName: node
   linkType: hard
 
@@ -37973,7 +38007,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uri-js@npm:^4.2.2":
+"uri-js@npm:^4.2.2, uri-js@npm:^4.4.1":
   version: 4.4.1
   resolution: "uri-js@npm:4.4.1"
   dependencies:
@@ -38333,6 +38367,13 @@ __metadata:
     convert-source-map: ^1.6.0
     source-map: ^0.7.3
   checksum: e52b48764f55aed62ff87f2b5f710c874f992cd1313eac8f438bf65aeeb0689153d85bb76e39514fd90ba3521d6ebea929a8ae1339b6d7b0cf18fb0ed13d8b40
+  languageName: node
+  linkType: hard
+
+"valid-url@npm:^1.0.9":
+  version: 1.0.9
+  resolution: "valid-url@npm:1.0.9"
+  checksum: 3ecb030559404441c2cf104cbabab8770efb0f36d117db03d1081052ef133015a68806148ce954bb4dd0b5c42c14b709a88783c93d66b0916cb67ba771c98702
   languageName: node
   linkType: hard
 
