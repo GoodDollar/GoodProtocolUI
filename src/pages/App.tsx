@@ -88,16 +88,16 @@ function App(): JSX.Element {
             signer
                 .getAddress()
                 .then((address) => {
-                    const domain = window.location.host
-                    const origin = window.location.protocol + domain
+                    const _domain = window.location.host
+                    const _origin = window.location.protocol + '//' + _domain
                     const statement =
                         'You are signing a plain-text message to prove you own this wallet address. No gas fees or transactions will occur.'
 
                     const siweMessage = new SiweMessage({
-                        domain,
+                        domain: _domain,
                         address: address,
                         statement,
-                        uri: origin,
+                        uri: _origin,
                         version: '1',
                         chainId,
                     })
