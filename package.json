@@ -234,7 +234,7 @@
         "react-share": "^4.4.0",
         "react-spring-bottom-sheet": "^3.4.1",
         "react-text-mask": "^5.4.3",
-        "react-wallet-chat": "^2.6.8",
+        "react-wallet-chat": "^2.6.9",
         "rxjs": "^7.5.6",
         "siwe": "^2.1.4",
         "text-mask-addons": "^3.8.0",
