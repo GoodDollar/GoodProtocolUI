@@ -69,7 +69,7 @@ const Bridge = memo(() => {
     const options = useMemo(
         () => ({
             theme: {
-                colorMode: theme === 'dark' ? ColorModeOptions.dark : ColorModeOptions.light,
+                colorMode: theme === 'light' ? ColorModeOptions.light : ColorModeOptions.dark,
                 fontSize: FontSizeOptions.medium,
                 fontFamily: 'Roboto',
                 backgroundColorDark: 'rgb(21, 26, 48)',
