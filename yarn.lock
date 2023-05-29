@@ -12853,8 +12853,7 @@ __metadata:
     "@walletconnect/client": ^1.8.0
     "@walletconnect/ethereum-provider": 2.7.0
     "@walletconnect/qrcode-modal": ^1.8.0
-    "@web3-onboard/common": ^2.3.1
-    "@web3modal/standalone": 2.2.2
+    "@web3-onboard/common": ^2.3.0
     rxjs: ^7.5.2
   checksum: bc31eb4e2351ec86a2cb74c06bd8b81e98051018159d4aa7ee3d21014abe1fd4491a729845e94a94351c852a3e174de934546d498cf51b6f43bb97664c819e26
   languageName: node
