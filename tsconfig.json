@@ -18,7 +18,8 @@
         "skipDefaultLibCheck": true,
         "noEmit": true,
         "jsx": "react-jsx",
-        "baseUrl": "./src"
+        "baseUrl": "./src",
+        "typeRoots": ["./node_modules/@types", "./types", "./node_modules/@react-spring/types", "./src"]
     },
     "include": ["src"],
     "exclude": ["node_modules"]

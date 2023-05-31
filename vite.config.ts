@@ -1,5 +1,5 @@
 import { defineConfig, PluginOption } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import react from '@vitejs/plugin-react'
 import viteTsconfigPaths from 'vite-tsconfig-paths'
 import svgrPlugin from 'vite-plugin-svgr'
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
@@ -19,7 +19,7 @@ let https: any
 if (process.env.HTTPS === 'true') {
     https = {
         key: fs.readFileSync(process.env.SSL_KEY_FILE as any),
-        cert: fs.readFileSync(process.env.SSL_CRT_FILE as any)
+        cert: fs.readFileSync(process.env.SSL_CRT_FILE as any),
     }
 } else {
     https = false
@@ -27,7 +27,7 @@ if (process.env.HTTPS === 'true') {
 export default defineConfig({
     envPrefix: 'REACT_APP_',
     server: {
-        https
+        https,
     },
     plugins: [
         // visualizer({
@@ -42,31 +42,33 @@ export default defineConfig({
         //     // e.g. use TypeScript check
         //     typescript: true,
         // }),
-        lingui(),
         nodePolyfills({ protocolImports: true, exclude: ['constants'] }),
         react({
-            plugins: [['@lingui/swc-plugin', {}]]
+            babel: {
+                plugins: ['macros'],
+            },
         }),
+        lingui(),
         viteTsconfigPaths(),
-        svgrPlugin()
+        svgrPlugin(),
     ],
     resolve: {
         alias: {
             'react-native': 'react-native-web',
-            'react-native-svg': 'react-native-svg-web'
+            'react-native-svg': 'react-native-svg-web',
         },
-        dedupe: ['react', 'ethers', 'react-dom', 'native-base']
+        dedupe: ['react', 'ethers', 'react-dom', 'native-base'],
     },
     define: {
-        'process.env': process.env
+        'process.env': process.env,
     },
     build: {
         commonjsOptions: {
             transformMixedEsModules: true,
-            include: [/kima/, /solana/, /node_modules/, /resize-observer/] // handle kima require undefined in production build
-        }
+            include: [/kima/, /solana/, /node_modules/, /resize-observer/], // handle kima require undefined in production build, observer global inherits
+        },
     },
     optimizeDeps: {
-        include: ['@kimafinance/kima-transaction-widget', '@solana/web3.js', '@juggle/resize-observer'] // handle kima require undefined in production build
-    }
+        include: ['@kimafinance/kima-transaction-widget', '@solana/web3.js', '@juggle/resize-observer'], // handle kima require undefined in production build
+    },
 })

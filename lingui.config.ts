@@ -1,13 +1,9 @@
-// import { formatter } from '@lingui/format-json'
-import { formatter } from '@lingui/format-po'
-
 export default {
-    format: formatter(),
     catalogs: [
         {        
             path: '<rootDir>/src/language/locales/{locale}/catalog',
             include: ['<rootDir>/src'],
         },
     ],
-    locales: ['de', 'en', 'es-AR', 'es', 'it', 'he', 'ro', 'ru', 'vi', 'zh-CN', 'zh-TW', 'ko', 'ja', 'fr'],
+    locales: ['af','ar','ca','cs','da','de','el','en', 'es-AR', 'es','fi','fr', 'it', 'he','hi','hu','ja','nl','no','pl','pt','pt-BR', 'ro', 'ru','sr','sv','tr','uk', 'vi','zh', 'zh-CN', 'zh-TW', 'ko']
 }

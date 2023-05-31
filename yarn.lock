@@ -4500,10 +4500,10 @@ __metadata:
     "@kimafinance/kima-transaction-widget": ^1.1.42-beta.1
     "@lingui/cli": ^4.0.0
     "@lingui/format-json": ^4.0.0
+    "@lingui/format-po": ^4.2.0
     "@lingui/macro": ^4.0.0
     "@lingui/react": ^4.0.0
-    "@lingui/swc-plugin": ^4.0.0
-    "@lingui/vite-plugin": ^4.0.0
+    "@lingui/vite-plugin": ^4.2.0
     "@popperjs/core": ^2.4.4
     "@reach/dialog": ^0.10.3
     "@reach/portal": ^0.10.3
@@ -4556,7 +4556,6 @@ __metadata:
     "@usedapp/core": ^1.2.6
     "@vitalets/google-translate-api": ^7.0.0
     "@vitejs/plugin-react": ^4.0.0
-    "@vitejs/plugin-react-swc": ^3.3.0
     "@walletconnect/ethereum-provider": 1.5.0
     "@web3-onboard/core": ^2.17.0
     "@web3-onboard/react": 2.7.0
@@ -5803,7 +5802,53 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/cli@npm:4.0.0, @lingui/cli@npm:^4.0.0":
+"@lingui/babel-plugin-extract-messages@npm:4.2.0":
+  version: 4.2.0
+  resolution: "@lingui/babel-plugin-extract-messages@npm:4.2.0"
+  checksum: fd10f77e9242a6e4d79a8027a68e3cb14f23749ea1770075c67742f509f7744c862416a103557ba7652e736ba50f50a05478ac8c779d347f3f674e3be8c258a6
+  languageName: node
+  linkType: hard
+
+"@lingui/cli@npm:4.2.0":
+  version: 4.2.0
+  resolution: "@lingui/cli@npm:4.2.0"
+  dependencies:
+    "@babel/core": ^7.21.0
+    "@babel/generator": ^7.21.1
+    "@babel/parser": ^7.21.2
+    "@babel/runtime": ^7.21.0
+    "@babel/types": ^7.21.2
+    "@lingui/babel-plugin-extract-messages": 4.2.0
+    "@lingui/conf": 4.2.0
+    "@lingui/core": 4.2.0
+    "@lingui/format-po": 4.2.0
+    "@lingui/message-utils": 4.2.0
+    babel-plugin-macros: ^3.0.1
+    chalk: ^4.1.0
+    chokidar: 3.5.1
+    cli-table: 0.3.6
+    commander: ^10.0.0
+    convert-source-map: ^2.0.0
+    date-fns: ^2.16.1
+    esbuild: ^0.17.10
+    glob: ^7.1.4
+    inquirer: ^7.3.3
+    micromatch: 4.0.2
+    normalize-path: ^3.0.0
+    ora: ^5.1.0
+    pathe: ^1.1.0
+    pkg-up: ^3.1.0
+    pofile: ^1.1.4
+    pseudolocale: ^2.0.0
+    ramda: ^0.27.1
+    source-map: ^0.8.0-beta.0
+  bin:
+    lingui: dist/lingui.js
+  checksum: 80268fc87c24e41495a95a5477dc6451b242742c183574c94a0591da4159582e89fdc1e889e28821392d424e501ddb6319996d4de165ea0ad7307c014661c245
+  languageName: node
+  linkType: hard
+
+"@lingui/cli@npm:^4.0.0":
   version: 4.0.0
   resolution: "@lingui/cli@npm:4.0.0"
   dependencies:
@@ -5877,6 +5922,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lingui/conf@npm:4.2.0":
+  version: 4.2.0
+  resolution: "@lingui/conf@npm:4.2.0"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    chalk: ^4.1.0
+    cosmiconfig: ^8.0.0
+    jest-validate: ^29.4.3
+    jiti: ^1.17.1
+    lodash.get: ^4.4.2
+  checksum: baafb3b37f07ad83ac84427eb3400529a689982718a862ca375eb15c8553780051c46c3d8a9b7c921285046a2395b2e5fa36688cd1cea7336254fa5a11954c5c
+  languageName: node
+  linkType: hard
+
 "@lingui/core@npm:3.17.2":
   version: 3.17.2
   resolution: "@lingui/core@npm:3.17.2"
@@ -5895,6 +5954,16 @@ __metadata:
     "@babel/runtime": ^7.20.13
     "@lingui/message-utils": 4.0.0
   checksum: 1ca41fcde3703ed170bb26c3ff86423045cf02aaf84afd3eaa146c80098ef0380203d1450e5911f1d257481da2eec6bae1529a348c8e7491c93be3b73d8a2ebd
+  languageName: node
+  linkType: hard
+
+"@lingui/core@npm:4.2.0":
+  version: 4.2.0
+  resolution: "@lingui/core@npm:4.2.0"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@lingui/message-utils": 4.2.0
+  checksum: 116fc0f6f3554492733743f152ec790c03f18141c6319f7a5041dc65c0d3058ac73ba0b0cb83cd4ed093ea854bd38deaac4a6726ac27208db6a1fcb8b0f0bc8f
   languageName: node
   linkType: hard
 
@@ -5917,6 +5986,18 @@ __metadata:
     date-fns: ^2.29.3
     pofile: ^1.1.4
   checksum: 62b6e136913b9ab2aa5970e46b8e13436e93c5464773b21a47a447e998a93685cb702af31f8e32b275004553d6d005fe76062fde777677b30f9c58150dbbf6dd
+  languageName: node
+  linkType: hard
+
+"@lingui/format-po@npm:4.2.0, @lingui/format-po@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "@lingui/format-po@npm:4.2.0"
+  dependencies:
+    "@lingui/conf": 4.2.0
+    "@lingui/message-utils": 4.2.0
+    date-fns: ^2.29.3
+    pofile: ^1.1.4
+  checksum: 7a58f58f90a7f2b89f774c687e91814eca29e307e4e008d62f38daefb28eb6cd40b061def0366c060144fbae14ab7c1fe99a13b504bb83b49c9c7b21eda64c8e
   languageName: node
   linkType: hard
 
@@ -5961,6 +6042,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lingui/message-utils@npm:4.2.0":
+  version: 4.2.0
+  resolution: "@lingui/message-utils@npm:4.2.0"
+  dependencies:
+    "@messageformat/parser": ^5.0.0
+  checksum: 7a4ff9032e6735da8e08b0d2e50b9d15534e425d795173d422d273abe3852ce52aa7f8d72b65678f3bbb443de706141b1bef0665d2aed6e98e73659c00eb7354
+  languageName: node
+  linkType: hard
+
 "@lingui/react@npm:^3.14.0":
   version: 3.17.2
   resolution: "@lingui/react@npm:3.17.2"
@@ -5985,24 +6075,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/swc-plugin@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@lingui/swc-plugin@npm:4.0.0"
-  peerDependencies:
-    "@lingui/macro": 4
-  checksum: 50b104db7f77659d94d954466b0161cc06bc694e89b5a8315106324f886a18b1fc02c58e054c2e26ed51861ed82bea5889b31f671a60be28b31794975dca2d72
-  languageName: node
-  linkType: hard
-
-"@lingui/vite-plugin@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@lingui/vite-plugin@npm:4.0.0"
+"@lingui/vite-plugin@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "@lingui/vite-plugin@npm:4.2.0"
   dependencies:
-    "@lingui/cli": 4.0.0
-    "@lingui/conf": 4.0.0
+    "@lingui/cli": 4.2.0
+    "@lingui/conf": 4.2.0
   peerDependencies:
     vite: 3 - 4
-  checksum: 4cbaf3143190ca2af445aafc5f1cff381729344315d2dfd6f04866ec95cd9a4fcf0d9c6a5d1f2d04a8599c0d9d77f9da035292fdd101bfa709aebe18be297cdb
+  checksum: 43576af82dda0db4897aae848dd73d1e0a54727f9e74e4ab7a359ac6717f72ae099f3f44c09511e58127451da0dfb55ae5e414991a49d24cf122a2f0b6367333
   languageName: node
   linkType: hard
 
@@ -10113,120 +10194,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-arm64@npm:1.3.56":
-  version: 1.3.56
-  resolution: "@swc/core-darwin-arm64@npm:1.3.56"
-  conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@swc/core-darwin-x64@npm:1.3.56":
-  version: 1.3.56
-  resolution: "@swc/core-darwin-x64@npm:1.3.56"
-  conditions: os=darwin & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@swc/core-linux-arm-gnueabihf@npm:1.3.56":
-  version: 1.3.56
-  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.3.56"
-  conditions: os=linux & cpu=arm
-  languageName: node
-  linkType: hard
-
-"@swc/core-linux-arm64-gnu@npm:1.3.56":
-  version: 1.3.56
-  resolution: "@swc/core-linux-arm64-gnu@npm:1.3.56"
-  conditions: os=linux & cpu=arm64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@swc/core-linux-arm64-musl@npm:1.3.56":
-  version: 1.3.56
-  resolution: "@swc/core-linux-arm64-musl@npm:1.3.56"
-  conditions: os=linux & cpu=arm64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@swc/core-linux-x64-gnu@npm:1.3.56":
-  version: 1.3.56
-  resolution: "@swc/core-linux-x64-gnu@npm:1.3.56"
-  conditions: os=linux & cpu=x64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@swc/core-linux-x64-musl@npm:1.3.56":
-  version: 1.3.56
-  resolution: "@swc/core-linux-x64-musl@npm:1.3.56"
-  conditions: os=linux & cpu=x64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@swc/core-win32-arm64-msvc@npm:1.3.56":
-  version: 1.3.56
-  resolution: "@swc/core-win32-arm64-msvc@npm:1.3.56"
-  conditions: os=win32 & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@swc/core-win32-ia32-msvc@npm:1.3.56":
-  version: 1.3.56
-  resolution: "@swc/core-win32-ia32-msvc@npm:1.3.56"
-  conditions: os=win32 & cpu=ia32
-  languageName: node
-  linkType: hard
-
-"@swc/core-win32-x64-msvc@npm:1.3.56":
-  version: 1.3.56
-  resolution: "@swc/core-win32-x64-msvc@npm:1.3.56"
-  conditions: os=win32 & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@swc/core@npm:^1.3.42":
-  version: 1.3.56
-  resolution: "@swc/core@npm:1.3.56"
-  dependencies:
-    "@swc/core-darwin-arm64": 1.3.56
-    "@swc/core-darwin-x64": 1.3.56
-    "@swc/core-linux-arm-gnueabihf": 1.3.56
-    "@swc/core-linux-arm64-gnu": 1.3.56
-    "@swc/core-linux-arm64-musl": 1.3.56
-    "@swc/core-linux-x64-gnu": 1.3.56
-    "@swc/core-linux-x64-musl": 1.3.56
-    "@swc/core-win32-arm64-msvc": 1.3.56
-    "@swc/core-win32-ia32-msvc": 1.3.56
-    "@swc/core-win32-x64-msvc": 1.3.56
-  peerDependencies:
-    "@swc/helpers": ^0.5.0
-  dependenciesMeta:
-    "@swc/core-darwin-arm64":
-      optional: true
-    "@swc/core-darwin-x64":
-      optional: true
-    "@swc/core-linux-arm-gnueabihf":
-      optional: true
-    "@swc/core-linux-arm64-gnu":
-      optional: true
-    "@swc/core-linux-arm64-musl":
-      optional: true
-    "@swc/core-linux-x64-gnu":
-      optional: true
-    "@swc/core-linux-x64-musl":
-      optional: true
-    "@swc/core-win32-arm64-msvc":
-      optional: true
-    "@swc/core-win32-ia32-msvc":
-      optional: true
-    "@swc/core-win32-x64-msvc":
-      optional: true
-  peerDependenciesMeta:
-    "@swc/helpers":
-      optional: true
-  checksum: 9e05f09450c9ba2851655faf2e139e965b36d80dc2862a688a716117d45883fc749d3bcfad755c7a6a04d9bada9b0eb569ff6872853d4a4f5a99e5e6d33f1a44
-  languageName: node
-  linkType: hard
-
 "@swc/helpers@npm:^0.4.14":
   version: 0.4.14
   resolution: "@swc/helpers@npm:0.4.14"
@@ -12642,17 +12609,6 @@ __metadata:
     configstore: ^5.0.1
     got: ^9.6.0
   checksum: 5504c438bc06991ea0cca53a9fdf59c480589548f315dfd69f34382496c64808c8c88196172c5791923c98ebe77a28301dea3728609205b89a1a21dfe633933d
-  languageName: node
-  linkType: hard
-
-"@vitejs/plugin-react-swc@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "@vitejs/plugin-react-swc@npm:3.3.0"
-  dependencies:
-    "@swc/core": ^1.3.42
-  peerDependencies:
-    vite: ^4
-  checksum: f2a5f4ef47d9200d0bbfd64637b347eaa3acfae7b2294e84afd469941c015fb1bfe8569e1cb9aa9151c7636fd43edbafb177f7903242f5240235b403b3e4a62e
   languageName: node
   linkType: hard
 
@@ -30839,6 +30795,13 @@ __metadata:
   version: 4.0.0
   resolution: "path-type@npm:4.0.0"
   checksum: 5b1e2daa247062061325b8fdbfd1fb56dde0a448fb1455453276ea18c60685bdad23a445dc148cf87bc216be1573357509b7d4060494a6fd768c7efad833ee45
+  languageName: node
+  linkType: hard
+
+"pathe@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "pathe@npm:1.1.0"
+  checksum: 6b9be9968ea08a90c0824934799707a1c6a1ad22ac1f22080f377e3f75856d5e53a331b01d327329bfce538a14590587cfb250e8e7947f64408797c84c252056
   languageName: node
   linkType: hard
 

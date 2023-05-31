@@ -16,8 +16,8 @@ const getInitialLocale = () => {
 }
 
 async function activate(locale: string) {
-    const path = locale + '/catalog.json'
-    const messages = (await import('./locales/' + path)).default
+    const path = locale + '/catalog'
+    const { messages } = await import('./locales/' + path + '.po')
     i18n.load(locale, messages)
     i18n.activate(locale)
 }
