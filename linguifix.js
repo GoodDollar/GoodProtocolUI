@@ -7,7 +7,6 @@ const { formatter: createJsonFormatter } = require('@lingui/format-json')
 
 const poFormatter = createPoFormatter()
 const jsonFormatter = createJsonFormatter({ style: 'lingui' })
-const lFormatter = createJsonFormatter({ style: 'minimal' })
 
 const [readdirAsync, readFileAsync, writeFileAsync] = [readdir, readFile, writeFile].map(promisify)
 const [parseJSON, parsePO] = [jsonFormatter, poFormatter].map(formatter => bindKey(formatter, 'parse'))
