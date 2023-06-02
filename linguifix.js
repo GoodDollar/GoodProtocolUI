@@ -1,38 +1,32 @@
-const createPoFormatter = require('@lingui/format-po').formatter
-const createJsonFormatter = require('@lingui/format-json').formatter
-const { generateMessageId } = require('@lingui/message-utils/generateMessageId')
-
-const fs = require('fs')
+const { readdir, readFile, writeFile } = require('fs')
+const { promisify } = require('util')
+const { mapValues } = require('lodash')
+const { formatter: createPoFormatter } = require('@lingui/format-po')
+const { formatter: createJsonFormatter } = require('@lingui/format-json')
 
 const poFormatter = createPoFormatter()
 const jsonFormatter = createJsonFormatter({ style: 'lingui' })
 const lFormatter = createJsonFormatter({ style: 'minimal' })
-const dir = fs.readdirSync('src/language/locales')
-// "messageId": {
-//     "translation": "Translated message",
-//     "message": "Default message",
-//     "description": "Comment for translators",
-//     "origin": [["src/App.js", 3]]
-//  },
-const ps = dir.map(async (item) => {
-    const catalog = jsonFormatter.parse(fs.readFileSync(`src/language/locales/${item}/catalog.json.bak`, 'utf8'))
-    const newCatalog = poFormatter.parse(fs.readFileSync(`src/language/locales/${item}/catalog.po`, 'utf8'))
-    Object.keys(newCatalog).forEach((k) => {
-        const msg = newCatalog[k].message
-        const translation = catalog[msg]
-        if (translation && translation !== msg) newCatalog[k].translation = translation
+
+const [readdirAsync, readFileAsync, writeFileAsync] = [readdir, readFile, writeFile].map(promisify)
+const [parseJSON, parsePO] = [jsonFormatter, poFormatter].map(formatter => buffer => formatter.parse(buffer))
+
+readdirAsync('src/language/locales')
+  .then(async dir => Promise.all(dir.map(async item => {
+    const path = 'src/language/locales/item' + item
+    const catalog = await readFileAsync(path + '/catalog.json.bak', 'utf8').then(parseJSON)
+    const compiledCatalog = await readFileAsync(path + '/catalog.po', 'utf8').then(parsePO)
+
+    const newCatalog = mapValues(compiledCatalog, item => {
+      const { message } = item
+      const translation = catalog[message]
+
+      return !translation || translation === message ? item : { ...item, translation }
     })
+    
     const output = poFormatter.serialize(newCatalog, {})
-    fs.writeFileSync(`src/language/locales/${item}/catalog.po`, output)
-})
-Promise.all(ps).then((_) => console.log('done'))
 
-// console.log({ catalog, output })
+    await writeFileAsync(path + '/catalog.po', output)
+  })))
+  .then(() => console.log('done'))
 
-// async main() {
-//   const catalog = jsonFormatter.parse(await fs.readFile('myfile.json', "utf8"));
-//   await fs.writeFile('myfile.po', poFormatter.serialize(newFileConent))
-//   console.log('Done!')
-// }
-
-// main();
