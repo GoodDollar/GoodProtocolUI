@@ -1,6 +1,7 @@
 const { readdir, readFile, writeFile } = require('fs')
 const { promisify } = require('util')
-const { mapValues } = require('lodash')
+const { bindKey, mapValues } = require('lodash')
+
 const { formatter: createPoFormatter } = require('@lingui/format-po')
 const { formatter: createJsonFormatter } = require('@lingui/format-json')
 
@@ -9,15 +10,17 @@ const jsonFormatter = createJsonFormatter({ style: 'lingui' })
 const lFormatter = createJsonFormatter({ style: 'minimal' })
 
 const [readdirAsync, readFileAsync, writeFileAsync] = [readdir, readFile, writeFile].map(promisify)
-const [parseJSON, parsePO] = [jsonFormatter, poFormatter].map(formatter => buffer => formatter.parse(buffer))
+const [parseJSON, parsePO] = [jsonFormatter, poFormatter].map(formatter => bindKey(formatter, 'parse'))
 
 readdirAsync('src/language/locales')
   .then(async dir => Promise.all(dir.map(async item => {
-    const path = 'src/language/locales/item' + item
-    const catalog = await readFileAsync(path + '/catalog.json.bak', 'utf8').then(parseJSON)
-    const compiledCatalog = await readFileAsync(path + '/catalog.po', 'utf8').then(parsePO)
+    const path = `src/language/locales/${item}/`
+    const poPath = path + 'catalog.po'    
+    
+    const catalog = await readFileAsync(path + 'catalog.json.bak', 'utf8').then(parseJSON)
+    const poCatalog = await readFileAsync(poPath, 'utf8').then(parsePO)
 
-    const newCatalog = mapValues(compiledCatalog, item => {
+    const newCatalog = mapValues(poCatalog, item => {
       const { message } = item
       const translation = catalog[message]
 
@@ -26,7 +29,7 @@ readdirAsync('src/language/locales')
     
     const output = poFormatter.serialize(newCatalog, {})
 
-    await writeFileAsync(path + '/catalog.po', output)
+    await writeFileAsync(poPath, output)
   })))
   .then(() => console.log('done'))
 
