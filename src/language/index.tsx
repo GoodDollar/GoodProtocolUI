@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 import { AsyncStorage } from '@gooddollar/web3sdk-v2'
 
 // This array should equal the array set in .linguirc
-export const locales = ['de', 'en', 'es-AR', 'es', 'it', 'he', 'ro', 'ru', 'vi', 'zh-CN', 'zh-TW', 'ko', 'ja']
+export const locales = ['de', 'en', 'es-AR', 'es', 'it', 'he', 'ro', 'ru', 'uk', 'vi', 'zh-CN', 'zh-TW', 'ko', 'ja']
 export const defaultLocale = 'en'
 
 const getInitialLocale = () => {

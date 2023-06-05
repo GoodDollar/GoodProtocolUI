@@ -5,10 +5,20 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
-#. js-lingui-explicit-id
 #: src/components/AppBar.tsx:202
 #: src/components/Savings/SavingsCard/index.tsx:48
+msgid ""
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/pages/gd/Portfolio/index.tsx:399
 msgid "Stake Positions"
 msgstr ""
@@ -2632,7 +2642,7 @@ msgstr "כמות"
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/index.tsx:407
+#: src/pages/gd/Swap/SwapCore/index.tsx:410
 msgid "Approve"
 msgstr "לאשׁר"
 
@@ -2640,11 +2650,11 @@ msgstr "לאשׁר"
 msgid "APPROVE"
 msgstr "לְאַשֵׁר"
 
-#: src/pages/gd/Swap/SwapCore/index.tsx:406
+#: src/pages/gd/Swap/SwapCore/index.tsx:409
 msgid "Approved"
 msgstr "מאושר"
 
-#: src/pages/gd/Swap/SwapCore/index.tsx:404
+#: src/pages/gd/Swap/SwapCore/index.tsx:407
 msgid "Approving"
 msgstr "אישור"
 
@@ -2965,8 +2975,8 @@ msgstr "מַכפִּיל"
 msgid "My Stake"
 msgstr "החלק שלי"
 
-#: src/components/NetworkModal/index.tsx:141
-#: src/components/NetworkModal/index.tsx:190
+#: src/components/NetworkModal/index.tsx:142
+#: src/components/NetworkModal/index.tsx:191
 msgid "network"
 msgstr "רֶשֶׁת"
 
@@ -2992,8 +3002,8 @@ msgstr "חודש הבא:"
 msgid "No data."
 msgstr "אין מידע."
 
-#: src/components/NetworkModal/index.tsx:140
-#: src/components/NetworkModal/index.tsx:189
+#: src/components/NetworkModal/index.tsx:141
+#: src/components/NetworkModal/index.tsx:190
 msgid "on the"
 msgstr "על ה"
 
@@ -3083,7 +3093,7 @@ msgstr "שם חיפוש או הדבק את הכתובת"
 msgid "Share with friends"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/index.tsx:371
+#: src/pages/gd/Swap/SwapCore/index.tsx:374
 #: src/pages/gd/Swap/SwapSettings/index.tsx:80
 msgid "Slippage Tolerance"
 msgstr "תנודת מחיר מקובלת"
@@ -3125,7 +3135,7 @@ msgstr "החל מ 1.0, מכפיל שלך יגדל ל 2.0 לאחר חודש אח�
 msgid "Success!"
 msgstr "הַצלָחָה!"
 
-#: src/pages/gd/Swap/SwapCore/index.tsx:421
+#: src/pages/gd/Swap/SwapCore/index.tsx:424
 msgid "Swap"
 msgstr "להחלִיף"
 
@@ -3133,13 +3143,13 @@ msgstr "להחלִיף"
 msgid "Swap Completed"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/index.tsx:344
-#: src/pages/gd/Swap/SwapCore/index.tsx:358
+#: src/pages/gd/Swap/SwapCore/index.tsx:347
+#: src/pages/gd/Swap/SwapCore/index.tsx:361
 msgid "Swap from"
 msgstr "החלפה מ"
 
-#: src/pages/gd/Swap/SwapCore/index.tsx:344
-#: src/pages/gd/Swap/SwapCore/index.tsx:358
+#: src/pages/gd/Swap/SwapCore/index.tsx:347
+#: src/pages/gd/Swap/SwapCore/index.tsx:361
 msgid "Swap to"
 msgstr "להחליף ל"
 
@@ -3166,7 +3176,7 @@ msgstr ""
 msgid "The fixed annual interest."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/index.tsx:252
+#: src/pages/gd/Swap/SwapCore/index.tsx:255
 msgid ""
 "The GoodReserve is a Bancor-V1 Automated Market Maker (AMM) that operates on Ethereum.\n"
 "This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
@@ -3304,7 +3314,7 @@ msgstr "הצג על אקספלורר"
 msgid "View transaction on explorer"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/index.tsx:246
+#: src/pages/gd/Swap/SwapCore/index.tsx:249
 msgid ""
 "Voltage is an UNI-V2 Automated Market Maker (AMM)\n"
 "that operates on Fuse Network where G$ is paired to other market tokens such as FUSE or USDC.\n"
@@ -3328,8 +3338,8 @@ msgstr "ארנק"
 msgid "Wallet balance"
 msgstr "מאזן ארנק"
 
-#: src/components/NetworkModal/index.tsx:120
-#: src/components/NetworkModal/index.tsx:169
+#: src/components/NetworkModal/index.tsx:121
+#: src/components/NetworkModal/index.tsx:170
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3372,8 +3382,8 @@ msgstr "משכו כספים מ {0}"
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "אתה יוצר UBI לאלפי אנשים ברחבי העולם."
 
-#: src/components/NetworkModal/index.tsx:136
-#: src/components/NetworkModal/index.tsx:185
+#: src/components/NetworkModal/index.tsx:137
+#: src/components/NetworkModal/index.tsx:186
 msgid "You are currently browsing"
 msgstr "אתה כרגע גלישה"
 

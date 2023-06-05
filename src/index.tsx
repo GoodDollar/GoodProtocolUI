@@ -14,14 +14,14 @@ import store from './state'
 import ApplicationUpdater from './state/application/updater'
 import MulticallUpdater from './state/multicall/updater'
 import UserUpdater from './state/user/updater'
-import ThemeProvider from './theme'
+import ThemeProvider, { theme as TwTheme } from './theme'
 import LanguageProvider from 'language'
 import { createGlobalStyle } from 'styled-components'
 import { Web3ContextProvider } from './hooks/useWeb3'
 import { theme, NativeBaseProvider } from '@gooddollar/good-design'
 import { analyticsConfig, appInfo } from 'hooks/useSendAnalyticsData'
 import { OnboardProvider } from '@gooddollar/web3sdk-v2'
-import { connectOptions, torus } from 'connectors'
+import { connectOptions, torus, gd } from 'connectors'
 import { HttpsProvider } from 'utils/HttpsProvider'
 import { registerServiceWorker } from './serviceWorker'
 
@@ -31,7 +31,7 @@ if (window.ethereum) {
 
 const GlobalStyle = createGlobalStyle`
   body {
-      color: ${({ theme }) => theme.color.text1};
+      color: ${({ theme }: { theme: ReturnType<typeof TwTheme> }) => theme.color.text1};
   }
 
 
@@ -43,8 +43,8 @@ const GlobalStyle = createGlobalStyle`
     --onboard-wallet-app-icon-border-color: #E9ECFF;
     --onboard-close-button-background: none;
     --onboard-close-button-color: black;
-    --onboard-font-family-normal: ${({ theme }) => theme.font.primary};
-    --onboard-font-family-light: ${({ theme }) => theme.font.secondary};
+    --onboard-font-family-normal: ${({ theme }: { theme: ReturnType<typeof TwTheme> }) => theme.font.primary};
+    --onboard-font-family-light: ${({ theme }: { theme: ReturnType<typeof TwTheme> }) => theme.font.secondary};
 
 
   }
@@ -62,7 +62,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   onboard-v2::part(mobile-icon-img) {
-    width: 150px;
+    width: 120px;
     height: fit-content;
   }
 `
@@ -74,7 +74,7 @@ const enableServiceWorker =
 ReactDOM.render(
     <StrictMode>
         <HttpsProvider enabled={enableHttpsRedirect}>
-            <OnboardProvider options={connectOptions} wallets={{ custom: [torus] }}>
+            <OnboardProvider options={connectOptions} wallets={{ custom: [torus, gd] }}>
                 <Web3ContextProvider>
                     <Provider store={store}>
                         <LanguageProvider>
