@@ -4222,9 +4222,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:0.0.76-beta.d9a11a0":
-  version: 0.0.76-beta.d9a11a0
-  resolution: "@gooddollar/good-design@npm:0.0.76-beta.d9a11a0"
+"@gooddollar/good-design@npm:0.0.76-beta.d558110":
+  version: 0.0.76-beta.d558110
+  resolution: "@gooddollar/good-design@npm:0.0.76-beta.d558110"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4251,7 +4251,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: 83018fc494104f9915ad7d9dc7816f409444f3b9d5dbdf685b0537147718a7274d613bced8d174f487de09e677d897559a6a5a2d4993e7e58674039af5855e8a
+  checksum: 61b21d1205082c60471f8e31c8fc4da99cd267901fbc1e031a0f9c883f17f0ef7a80489ed6e2c71df7d09047edbed99bf26e5b736a33a9a14ffd1c460b18414c
   languageName: node
   linkType: hard
 
@@ -4303,10 +4303,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": 0.0.76-beta.d9a11a0
+    "@gooddollar/good-design": 0.0.76-beta.d558110
     "@gooddollar/goodprotocol": ^2.0.3
     "@gooddollar/web3sdk": ^0.1.20
-    "@gooddollar/web3sdk-v2": 0.1.99-beta.d9a11a0
+    "@gooddollar/web3sdk-v2": 0.1.99-beta.d558110
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@kimafinance/kima-transaction-widget": ^1.1.42-beta.1
@@ -4478,9 +4478,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:0.1.99-beta.d9a11a0":
-  version: 0.1.99-beta.d9a11a0
-  resolution: "@gooddollar/web3sdk-v2@npm:0.1.99-beta.d9a11a0"
+"@gooddollar/web3sdk-v2@npm:0.1.99-beta.d558110":
+  version: 0.1.99-beta.d558110
+  resolution: "@gooddollar/web3sdk-v2@npm:0.1.99-beta.d558110"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -4517,7 +4517,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: b30839ddb90391afda282af8d27c4cada56d59646a56676d876c230a2a2a436f8c5eccec486de67504097bcb97a62bd1d447e0365f3c5b57b3276fffa20add8c
+  checksum: 1d1ef53806c96c3ee6efd2d4fabdfde22e9a665310d08da047133635ea900daad9831c6e355acbc51be2b63e3ef6d59b6a0127bfa8200f99187f6726e0720b33
   languageName: node
   linkType: hard
 
