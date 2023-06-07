@@ -34,7 +34,6 @@ const GlobalStyle = createGlobalStyle`
       color: ${({ theme }: { theme: TwTheme }) => theme.color.text1};
   }
 
-
   :root {
     --onboard-wallet-columns: 2;
     --foreground-color: #eff1fc;
