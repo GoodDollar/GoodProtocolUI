@@ -1,7 +1,7 @@
 {
     "name": "@gooddollar/protocol-ui",
     "description": "GoodProtocol Interface",
-    "version": "1.0.33",
+    "version": "1.6.1",
     "homepage": ".",
     "private": true,
     "scripts": {
@@ -209,10 +209,10 @@
     },
     "dependencies": {
         "@babel/runtime": "^7.18.9",
-        "@gooddollar/good-design": "^0.0.74",
+        "@gooddollar/good-design": "^0.0.77",
         "@gooddollar/goodprotocol": "^2.0.3",
-        "@gooddollar/web3sdk": "^0.1.20",
-        "@gooddollar/web3sdk-v2": "^0.1.95",
+        "@gooddollar/web3sdk": "^0.1.24",
+        "@gooddollar/web3sdk-v2": "^0.1.100",
         "@headlessui/react": "1.5.0",
         "@kimafinance/kima-transaction-widget": "^1.1.42-beta.1",
         "@types/react-text-mask": "^5.4.8",
