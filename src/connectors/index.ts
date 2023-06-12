@@ -19,7 +19,7 @@ const getWalletUrl = (env: string) => {
 }
 
 const getDappUrl = (env: string) => {
-    const dappEnv = devEnv.includes(env) ? 'dev.' : stagingEnv.includes(env) ? 'staging.' : ''
+    const dappEnv = devEnv.includes(env) ? 'dev.' : stagingEnv.includes(env) ? 'qa.' : ''
     return `https://${dappEnv}gooddapp.org`
 }
 
