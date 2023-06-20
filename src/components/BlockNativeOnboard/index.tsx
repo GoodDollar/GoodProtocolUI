@@ -34,7 +34,7 @@ export const OnboardConnectButton: FC = () => {
         const osName = getDevice().os.name
 
         try {
-            // temp solution for incorrectly where it tries and open a deeplink on desktop
+            // temp solution for where it tries and open a deeplink for desktop app
             if (['Linux', 'Windows', 'macOS'].includes(osName)) {
                 AsyncStorage.safeRemove('WALLETCONNECT_DEEPLINK_CHOICE')
             }
