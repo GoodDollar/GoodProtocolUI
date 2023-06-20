@@ -1,12 +1,13 @@
+import React, { ReactNode, ReactNodeArray, useMemo, useEffect } from 'react'
 import { ExternalProvider } from '@ethersproject/providers'
-import { DAO_NETWORK, GdSdkContext, getNetworkEnv, useEnvWeb3 } from '@gooddollar/web3sdk'
+import { DAO_NETWORK, GdSdkContext, useEnvWeb3 } from '@gooddollar/web3sdk'
 import { Goerli, Mainnet } from '@usedapp/core'
 import { ethers } from 'ethers'
-import React, { ReactNode, ReactNodeArray, useMemo, useEffect } from 'react'
 import Web3 from 'web3'
 import useActiveWeb3React from './useActiveWeb3React'
 
 import { Celo, Fuse, Web3Provider, AsyncStorage } from '@gooddollar/web3sdk-v2'
+import { getEnv } from 'utils/env'
 
 type NetworkSettings = {
     currentNetwork: string
@@ -51,7 +52,9 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
         [eipProvider]
     )
 
-    const contractsEnv = getNetworkEnv()
+    const network = getEnv()
+    const contractsEnv = network
+    const contractsEnvV2 = network === 'development' ? 'fuse' : network
 
     return (
         <GdSdkContext.Provider
@@ -63,7 +66,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
         >
             <Web3Provider
                 web3Provider={webprovider}
-                env={contractsEnv}
+                env={contractsEnvV2}
                 config={{
                     pollingInterval: 15000,
                     networks: [Goerli, Mainnet, Fuse, Celo],
