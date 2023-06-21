@@ -51,6 +51,17 @@ export const UniSwap = (): JSX.Element => {
     const globalDispatch = useDispatch()
     const { connectedEnv } = useGetEnvChainId(42220)
     const gdTokenAddress = G$ContractAddresses('GoodDollar', connectedEnv) as string
+    const customTheme = {
+        ...uniTheme,
+        primary: '#404040',
+        fontFamily: 'Roboto',
+        accent: '#00AEFF',
+        outline: '#00AFFF',
+        active: '#00AFFF',
+        // onAccent: '#00AEFF',
+        accentSoft: '#00AEFF',
+        networkDefaultShadow: 'hsl(199deg 100% 50% / 20%)',
+    }
 
     const gdToken = {
         chainId: 42220,
@@ -186,7 +197,7 @@ export const UniSwap = (): JSX.Element => {
                 permit2={true}
                 jsonRpcUrlMap={jsonRpcUrlMap}
                 provider={web3Provider}
-                theme={uniTheme}
+                theme={customTheme}
                 onConnectWalletClick={connectOnboard}
                 onError={handleError}
                 onTxFail={handleTxFailed}
