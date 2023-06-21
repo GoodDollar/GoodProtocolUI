@@ -65,7 +65,6 @@ export class Web3CustomProvider extends Web3Provider implements EIP1193ProviderE
     send(method: string, params: Array<TransactionObject>): Promise<any> {
         if (method === 'eth_sendTransaction') {
             params[0].gasPrice = BigNumber.from(5e9).toHexString()
-            return this.jsonRpcFetchFunc(method, params)
         }
         return this.jsonRpcFetchFunc(method, params)
     }
