@@ -5,7 +5,7 @@ import { useApplicationTheme } from 'state/application/hooks'
 import { darkTheme, lightTheme, OnTxFail, OnTxSubmit, OnTxSuccess, SwapWidget, TokenInfo } from '@uniswap/widgets'
 import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
 import { useConnectWallet } from '@web3-onboard/react'
-import { AsyncStorage, getDevice, G$ContractAddresses, useGetEnvChainId } from '@gooddollar/web3sdk-v2'
+import { AsyncStorage, getDevice, G$ContractAddresses, useGetEnvChainId, useWeb3Context } from '@gooddollar/web3sdk-v2'
 import { useDispatch } from 'react-redux'
 import { addTransaction } from 'state/transactions/actions'
 import { ChainId } from '@sushiswap/sdk'
@@ -45,7 +45,8 @@ const celoTokenList: TokenInfo[] = [
 export const UniSwap = (): JSX.Element => {
     const [theme] = useApplicationTheme()
     const uniTheme = theme === 'dark' ? darkTheme : lightTheme
-    const { account, library } = useActiveWeb3React()
+    const { account } = useActiveWeb3React()
+    const { web3Provider } = useWeb3Context()
     const [, connect] = useConnectWallet()
     const globalDispatch = useDispatch()
     const { connectedEnv } = useGetEnvChainId(42220)
@@ -58,7 +59,7 @@ export const UniSwap = (): JSX.Element => {
         symbol: 'G$',
         decimals: 18,
         logoURI:
-            'https://raw.githubusercontent.com/GoodDollar/GOodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
+            'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
     }
 
     celoTokenList.push(gdToken)
@@ -184,7 +185,7 @@ export const UniSwap = (): JSX.Element => {
                 defaultInputTokenAddress={gdTokenAddress}
                 permit2={true}
                 jsonRpcUrlMap={jsonRpcUrlMap}
-                provider={library}
+                provider={web3Provider}
                 theme={uniTheme}
                 onConnectWalletClick={connectOnboard}
                 onError={handleError}
