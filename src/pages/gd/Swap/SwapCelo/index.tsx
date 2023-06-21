@@ -3,6 +3,7 @@ import React, { useCallback } from 'react'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
 import { darkTheme, lightTheme, OnTxFail, OnTxSubmit, OnTxSuccess, SwapWidget, TokenInfo } from '@uniswap/widgets'
+import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
 import { useConnectWallet } from '@web3-onboard/react'
 import { AsyncStorage, getDevice, G$ContractAddresses, useGetEnvChainId } from '@gooddollar/web3sdk-v2'
 import { useDispatch } from 'react-redux'
@@ -30,6 +31,7 @@ const celoTokenList: TokenInfo[] = [
             },
         },
     },
+    //todo-fix: adding this native token in the list makes it show up twice. but by default the logo's are not functioning on the widget
     // {
     //     chainId: 42220,
     //     address: '0x471EcE3750Da237f93B8E339c536989b8978a438',
@@ -90,25 +92,59 @@ export const UniSwap = (): JSX.Element => {
         async (txHash: string, data: any) => {
             console.log('handleTxSubmit -->', { txHash, data })
             // todo: get info from receipt data, below is just placeholder
-            const tradeInfo = {
-                input: {
-                    decimals: 18,
-                    symbol: 'G$',
-                },
-                output: {
-                    decimals: 2,
-                    symbol: 'CELO',
-                },
+            const { info } = data
+            switch (info.type) {
+                //approve
+                case 0: {
+                    // do we want to add this to transaction list as well?
+                    // const { tokenAddress } = info
+                    // const symbol = tokenSymbols[tokenAddress]
+                    // globalDispatch({
+                    //   addTransaction({
+                    //     chainId: 42220 as ChainId,
+                    //     hash: txHash,
+                    //     from: account!,
+                    //     summary: `Approved spending of ${symbol}`,
+                    //     tradeInfo: tradeInfo,
+                    //  })
+                    // })
+
+                    break
+                }
+                // swap
+                case 1: {
+                    const { trade } = info
+                    const { input, output } = trade.routes[0]
+                    const {
+                        inputAmount,
+                        outputAmount,
+                    }: { inputAmount: CurrencyAmount<Currency>; outputAmount: CurrencyAmount<Currency> } =
+                        trade.swaps[0]
+                    const tradeInfo = {
+                        input: {
+                            decimals: input.decimals,
+                            symbol: input.symbol,
+                        },
+                        output: {
+                            decimals: output.decimals,
+                            symbol: output.symbol,
+                        },
+                    }
+                    const swappedAmount = inputAmount.toSignificant(6)
+                    const receivedAmount = outputAmount.toSignificant(6)
+                    const summary = `Swapped ${swappedAmount} ${input.symbol} to ${receivedAmount} ${output.symbol}`
+                    globalDispatch(
+                        addTransaction({
+                            chainId: 42220 as ChainId,
+                            hash: txHash,
+                            from: account!,
+                            summary: summary,
+                            tradeInfo: tradeInfo,
+                        })
+                    )
+                    break
+                }
             }
-            globalDispatch(
-                addTransaction({
-                    chainId: 42220 as ChainId,
-                    hash: txHash,
-                    from: account!,
-                    summary: 'Swapped X to X',
-                    tradeInfo: tradeInfo,
-                })
-            )
         },
         [account]
     )
