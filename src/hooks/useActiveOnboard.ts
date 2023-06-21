@@ -61,16 +61,12 @@ export interface EIP1193ProviderExtended extends EIP1193Provider {
     selectedProvider?: Partial<ISelectedProvider>
 }
 
-export class Web3CustomProvider extends Web3Provider implements EIP1193ProviderExtended {
+export class Web3CustomProvider extends Web3Provider {
     send(method: string, params: Array<TransactionObject>): Promise<any> {
         if (method === 'eth_sendTransaction') {
             params[0].gasPrice = BigNumber.from(5e9).toHexString()
         }
         return this.jsonRpcFetchFunc(method, params)
-    }
-    public async request(args: EthSignTransactionRequest | any): Promise<any> {
-        const { method, params } = args
-        return super.send(method, params)
     }
 }
 
