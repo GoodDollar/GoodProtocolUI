@@ -2,9 +2,12 @@ import React, { useCallback } from 'react'
 
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
-import { darkTheme, lightTheme, SwapWidget, TokenInfo } from '@uniswap/widgets'
+import { darkTheme, lightTheme, OnTxFail, OnTxSubmit, OnTxSuccess, SwapWidget, TokenInfo } from '@uniswap/widgets'
 import { useConnectWallet } from '@web3-onboard/react'
 import { AsyncStorage, getDevice, G$ContractAddresses, useGetEnvChainId } from '@gooddollar/web3sdk-v2'
+import { useDispatch } from 'react-redux'
+import { addTransaction } from 'state/transactions/actions'
+import { ChainId } from '@sushiswap/sdk'
 
 const jsonRpcUrlMap = {
     122: ['https://rpc.fuse.io', 'https://fuse-rpc.gateway.pokt.network'],
@@ -41,6 +44,8 @@ export const UniSwap = (): JSX.Element => {
     const [theme] = useApplicationTheme()
     const uniTheme = theme === 'dark' ? darkTheme : lightTheme
     const { account, library } = useActiveWeb3React()
+    const [, connect] = useConnectWallet()
+    const globalDispatch = useDispatch()
     const { connectedEnv } = useGetEnvChainId(42220)
     const gdTokenAddress = G$ContractAddresses('GoodDollar', connectedEnv) as string
 
@@ -53,9 +58,8 @@ export const UniSwap = (): JSX.Element => {
         logoURI:
             'https://raw.githubusercontent.com/GoodDollar/GOodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
     }
-    celoTokenList.push(gdToken)
 
-    const [, connect] = useConnectWallet()
+    celoTokenList.push(gdToken)
 
     const connectOnboard = useCallback(async () => {
         if (!account) {
@@ -74,16 +78,83 @@ export const UniSwap = (): JSX.Element => {
         return true
     }, [connect])
 
+    const handleError = useCallback(async (e) => {
+        console.log('handleError -->', { e })
+    }, [])
+
+    const handleTxFailed: OnTxFail = useCallback(async (error: string, data: any) => {
+        console.log('handleTxFailed -->', { error, data })
+    }, [])
+
+    const handleTxSubmit: OnTxSubmit = useCallback(
+        async (txHash: string, data: any) => {
+            console.log('handleTxSubmit -->', { txHash, data })
+            // todo: get info from receipt data, below is just placeholder
+            const tradeInfo = {
+                input: {
+                    decimals: 18,
+                    symbol: 'G$',
+                },
+                output: {
+                    decimals: 2,
+                    symbol: 'CELO',
+                },
+            }
+            globalDispatch(
+                addTransaction({
+                    chainId: 42220 as ChainId,
+                    hash: txHash,
+                    from: account!,
+                    summary: 'Swapped X to X',
+                    tradeInfo: tradeInfo,
+                })
+            )
+        },
+        [account]
+    )
+
+    const handleTxSuccess: OnTxSuccess = useCallback(async (txHash: string, data: any) => {
+        console.log('handleTxSuccess -->', { txHash, data })
+        //todo: potentially showing share modal (as we do on other chains when buying G$)
+        //     <ShareTransaction
+        //     title={i18n._(t`Swap Completed`)}
+        //     text={i18n._(
+        //         t`You just used your crypto for good to help fund crypto UBI for all with GoodDollar!`
+        //     )}
+        //     shareProps={{
+        //         title: i18n._(t`Share with friends`),
+        //         copyText: 'I just bought GoodDollars at https://goodswap.xyz to make the world better',
+        //         show: true,
+        //         linkedin: {
+        //             url: 'https://gooddollar.org',
+        //         },
+        //         twitter: {
+        //             url: 'https://gooddollar.org',
+        //             hashtags: ['InvestForGood'],
+        //         },
+        //         facebook: {
+        //             url: 'https://gooddollar.org',
+        //             hashtag: '#InvestForGood',
+        //         },
+        //     }}
+        // />
+    }, [])
+
     return (
         <div>
             <SwapWidget
                 width="550px"
                 tokenList={celoTokenList}
                 defaultInputTokenAddress={gdTokenAddress}
+                permit2={true}
                 jsonRpcUrlMap={jsonRpcUrlMap}
                 provider={library}
                 theme={uniTheme}
                 onConnectWalletClick={connectOnboard}
+                onError={handleError}
+                onTxFail={handleTxFailed}
+                onTxSubmit={handleTxSubmit}
+                onTxSuccess={handleTxSuccess}
             />
         </div>
     )
