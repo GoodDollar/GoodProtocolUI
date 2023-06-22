@@ -4376,9 +4376,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:0.0.80-beta.34739b3":
-  version: 0.0.80-beta.34739b3
-  resolution: "@gooddollar/good-design@npm:0.0.80-beta.34739b3"
+"@gooddollar/good-design@npm:^0.0.80":
+  version: 0.0.80
+  resolution: "@gooddollar/good-design@npm:0.0.80"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4405,7 +4405,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: b956fdbafc5bf50b66e581bd6595f7115b6c524a109c2e809789463b7dee468c67519e271c57a3ef357a7294f6d7b8c832e3ed308f5874ff7d47484cedd598ee
+  checksum: 06659ae2b89e0cc858169451c8437ec33a35ae538dd03c1e72b9791bce3a75fb2cf190e27bfd23af548e9139f5ec59df07f10624569dc221f3bed3cdda72d64e
   languageName: node
   linkType: hard
 
@@ -4456,10 +4456,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": 0.0.80-beta.34739b3
+    "@gooddollar/good-design": ^0.0.80
     "@gooddollar/goodprotocol": ^2.0.3
     "@gooddollar/web3sdk": ^0.1.25
-    "@gooddollar/web3sdk-v2": 0.1.105-beta.34739b3
+    "@gooddollar/web3sdk-v2": ^0.1.105
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@kimafinance/kima-transaction-widget": ^1.1.42-beta.1
@@ -4642,9 +4642,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:0.1.105-beta.34739b3":
-  version: 0.1.105-beta.34739b3
-  resolution: "@gooddollar/web3sdk-v2@npm:0.1.105-beta.34739b3"
+"@gooddollar/web3sdk-v2@npm:^0.1.105":
+  version: 0.1.105
+  resolution: "@gooddollar/web3sdk-v2@npm:0.1.105"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -4682,7 +4682,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 1bbbea80a3f3209277534fe9b26f1cb595a30421e8f10cc80fab1b4225212cbceb10d202dfa7fa49ae0debedf6dbf55da08f8cc2d4ac25cd35d2270ee91506ae
+  checksum: ed090c101eda3c1d0826d9e4ebc8c92d99ece728eff3c41687a0044a2e3d414ea0c20d8fae825d60f0f1fd90483d95e8a2e2940a101c988ecd6dc83d8e1a7659
   languageName: node
   linkType: hard
 
@@ -29299,9 +29299,9 @@ __metadata:
   linkType: hard
 
 "mixpanel-react-native@npm:^2.1.0":
-  version: 2.3.0
-  resolution: "mixpanel-react-native@npm:2.3.0"
-  checksum: 6717f5bdaa6c746ab259cf064a2e20451a73a179bf3a5dfdba89289feb1c8099b2db4bd047e21dab787804d82271720c89992b3b9a3141448c9b0cbff2507b27
+  version: 2.3.1
+  resolution: "mixpanel-react-native@npm:2.3.1"
+  checksum: 019d11ee55f6da89d30111a31c514bc7de0ec2be51d81e4258f9dc89054fc44c5306bd7a7374d30e8cc2485b5db4825869a3b5764a8cf516127d08550c812a98
   languageName: node
   linkType: hard
 

@@ -58,9 +58,12 @@ export const UniSwap = (): JSX.Element => {
         accent: '#00AEFF',
         outline: '#00AFFF',
         active: '#00AFFF',
-        // onAccent: '#00AEFF',
         accentSoft: '#00AEFF',
         networkDefaultShadow: 'hsl(199deg 100% 50% / 20%)',
+    }
+
+    const tokenSymbols = {
+        [gdTokenAddress]: 'G$',
     }
 
     const gdToken = {
@@ -102,25 +105,21 @@ export const UniSwap = (): JSX.Element => {
 
     const handleTxSubmit: OnTxSubmit = useCallback(
         async (txHash: string, data: any) => {
-            console.log('handleTxSubmit -->', { txHash, data })
-            // todo: get info from receipt data, below is just placeholder
             const { info } = data
             switch (info.type) {
                 //approve
                 case 0: {
-                    // do we want to add this to transaction list as well?
-                    // const { tokenAddress } = info
-                    // const symbol = tokenSymbols[tokenAddress]
-                    // globalDispatch({
-                    //   addTransaction({
-                    //     chainId: 42220 as ChainId,
-                    //     hash: txHash,
-                    //     from: account!,
-                    //     summary: `Approved spending of ${symbol}`,
-                    //     tradeInfo: tradeInfo,
-                    //  })
-                    // })
-
+                    const { tokenAddress } = info
+                    const symbol = tokenSymbols[tokenAddress]
+                    const summary = symbol ? `Approved spending of ${symbol}` : 'Approved spending'
+                    globalDispatch(
+                        addTransaction({
+                            chainId: 42220 as ChainId,
+                            hash: txHash,
+                            from: account!,
+                            summary,
+                        })
+                    )
                     break
                 }
                 // swap
