@@ -5,7 +5,7 @@ import { isMobile } from 'react-device-detect'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 
 const WalletChat = () => {
-    const { account, chainId, label } = useActiveWeb3React()
+    const { account, chainId, label, eipProvider } = useActiveWeb3React()
 
     return (
         <WalletChatWidget
@@ -16,6 +16,7 @@ const WalletChat = () => {
                           walletName: label || '',
                           account: account,
                           chainId,
+                          provider: eipProvider,
                       }
                     : undefined
             }
