@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { WalletChatWidget } from 'react-wallet-chat'
+import { WalletChatWidget } from 'react-wallet-chat-gd'
 import { isMobile } from 'react-device-detect'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 
