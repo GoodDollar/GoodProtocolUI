@@ -14,6 +14,7 @@ import {
 import { useDispatch } from 'react-redux'
 import { addTransaction } from 'state/transactions/actions'
 import { ChainId } from '@sushiswap/sdk'
+import { isMobile } from 'react-device-detect'
 
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
@@ -63,6 +64,7 @@ export const UniSwap = (): JSX.Element => {
     const sendData = useSendAnalytics()
     const { connectedEnv } = useGetEnvChainId(42220)
     const gdTokenAddress = G$ContractAddresses('GoodDollar', connectedEnv) as string
+
     const customTheme = {
         ...uniTheme,
         primary: '#404040',
@@ -197,7 +199,7 @@ export const UniSwap = (): JSX.Element => {
     return (
         <div>
             <SwapWidget
-                width="550px"
+                width={isMobile ? 'auto' : '550px'}
                 tokenList={celoTokenList}
                 defaultInputTokenAddress={gdTokenAddress}
                 permit2={true}
@@ -209,6 +211,7 @@ export const UniSwap = (): JSX.Element => {
                 onTxFail={handleTxFailed}
                 onTxSubmit={handleTxSubmit}
                 onTxSuccess={handleTxSuccess}
+                dialogOptions={{ pageCentered: !!isMobile }}
             />
         </div>
     )
