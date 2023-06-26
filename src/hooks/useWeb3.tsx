@@ -1,12 +1,14 @@
-import { ExternalProvider } from '@ethersproject/providers'
-import { DAO_NETWORK, GdSdkContext, getNetworkEnv, useEnvWeb3 } from '@gooddollar/web3sdk'
-import { Goerli, Mainnet } from '@usedapp/core'
-import { ethers } from 'ethers'
-import React, { ReactNode, ReactNodeArray, useMemo, useEffect } from 'react'
+import React, { ReactNode, ReactNodeArray, useEffect, useMemo } from 'react'
+import { BigNumber, ethers } from 'ethers'
 import Web3 from 'web3'
-import useActiveWeb3React from './useActiveWeb3React'
-
+import { ExternalProvider } from '@ethersproject/providers'
+import { Goerli, Mainnet } from '@usedapp/core'
+import { ChainId } from '@sushiswap/sdk'
+import { DAO_NETWORK, GdSdkContext, useEnvWeb3 } from '@gooddollar/web3sdk'
 import { Celo, Fuse, Web3Provider, AsyncStorage } from '@gooddollar/web3sdk-v2'
+
+import useActiveWeb3React from './useActiveWeb3React'
+import { getEnv } from 'utils/env'
 
 type NetworkSettings = {
     currentNetwork: string
@@ -41,7 +43,7 @@ export function useNetwork(): NetworkSettings {
 
 export function Web3ContextProvider({ children }: { children: ReactNode | ReactNodeArray }): JSX.Element {
     const { rpcs } = useNetwork()
-    const { eipProvider } = useActiveWeb3React()
+    const { eipProvider, chainId } = useActiveWeb3React()
 
     const [mainnetWeb3] = useEnvWeb3(DAO_NETWORK.MAINNET)
 
@@ -51,7 +53,18 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
         [eipProvider]
     )
 
-    const contractsEnv = getNetworkEnv()
+    if (webprovider && chainId === (42220 as ChainId)) {
+        webprovider.send = async (method: string, params: any) => {
+            if (method === 'eth_sendTransaction') {
+                params[0].gasPrice = BigNumber.from(5e9).toHexString()
+            }
+            return webprovider.jsonRpcFetchFunc(method, params)
+        }
+    }
+
+    const network = getEnv()
+    const contractsEnv = network
+    const contractsEnvV2 = network === 'development' ? 'fuse' : network
 
     return (
         <GdSdkContext.Provider
@@ -63,7 +76,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
         >
             <Web3Provider
                 web3Provider={webprovider}
-                env={contractsEnv}
+                env={contractsEnvV2}
                 config={{
                     pollingInterval: 15000,
                     networks: [Goerli, Mainnet, Fuse, Celo],

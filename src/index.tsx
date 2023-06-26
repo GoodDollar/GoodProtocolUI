@@ -14,14 +14,14 @@ import store from './state'
 import ApplicationUpdater from './state/application/updater'
 import MulticallUpdater from './state/multicall/updater'
 import UserUpdater from './state/user/updater'
-import ThemeProvider from './theme'
+import ThemeProvider, { TwTheme } from './theme'
 import LanguageProvider from 'language'
 import { createGlobalStyle } from 'styled-components'
 import { Web3ContextProvider } from './hooks/useWeb3'
 import { theme, NativeBaseProvider } from '@gooddollar/good-design'
 import { analyticsConfig, appInfo } from 'hooks/useSendAnalyticsData'
 import { OnboardProvider } from '@gooddollar/web3sdk-v2'
-import { connectOptions, torus } from 'connectors'
+import { connectOptions, torus, gd } from 'connectors'
 import { HttpsProvider } from 'utils/HttpsProvider'
 import { registerServiceWorker } from './serviceWorker'
 
@@ -31,27 +31,25 @@ if (window.ethereum) {
 
 const GlobalStyle = createGlobalStyle`
   body {
-      color: ${({ theme }) => theme.color.text1};
+      color: ${({ theme }: { theme: TwTheme }) => theme.color.text1};
   }
 
-
   :root {
-    --onboard-wallet-columns: 1;
-    --onboard-connect-sidebar-background: #F6F8FA;
+    --onboard-wallet-columns: 2;
+    --foreground-color: #eff1fc;
+    --onboard-wallet-button-background-hover: #eff1fc;
     --onboard-wallet-button-border-color: #E9ECFF;
     --onboard-wallet-app-icon-border-color: #E9ECFF;
     --onboard-close-button-background: none;
     --onboard-close-button-color: black;
-    --onboard-font-family-normal: ${({ theme }) => theme.font.primary};
-    --onboard-font-family-light: ${({ theme }) => theme.font.secondary};
-    // --onboard-font-size-6: 1.05rem;
-    // --onboard-gray-700: #999EA8;
+    --onboard-font-family-normal: ${({ theme }: { theme: TwTheme }) => theme.font.primary};
+    --onboard-font-family-light: ${({ theme }: { theme: TwTheme }) => theme.font.secondary};
 
 
   }
   onboard-v2::part(sidebar-heading-img) {
     max-width: 100%;
-    height: fit-content;
+    height: auto;
   }
   onboard-v2::part(main-modal) {
     @media screen and (max-width: 420px) {
@@ -59,12 +57,12 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   onboard-v2::part(mobile-icon-container) {
-    width: fit-content;
+    width: auto;
   }
 
   onboard-v2::part(mobile-icon-img) {
-    width: 150px;
-    height: fit-content;
+    width: 120px;
+    height: auto;
   }
 `
 
@@ -75,7 +73,7 @@ const enableServiceWorker =
 ReactDOM.render(
     <StrictMode>
         <HttpsProvider enabled={enableHttpsRedirect}>
-            <OnboardProvider options={connectOptions} wallets={{ custom: [torus] }}>
+            <OnboardProvider options={connectOptions} wallets={{ custom: [torus, gd] }}>
                 <Web3ContextProvider>
                     <Provider store={store}>
                         <LanguageProvider>

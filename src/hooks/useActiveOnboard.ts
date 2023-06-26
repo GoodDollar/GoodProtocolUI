@@ -1,20 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { useEffect, useMemo, useState, useRef } from 'react'
 import { Web3Provider } from '@ethersproject/providers'
-import { AsyncStorage, useAppRestart } from '@gooddollar/web3sdk-v2'
 import { ChainId } from '@sushiswap/sdk'
 import { EIP1193Provider } from '@web3-onboard/common'
 import { WalletState } from '@web3-onboard/core'
 import type { Account } from '@web3-onboard/core/dist/types'
+import { useConnectWallet, useSetChain, useWallets } from '@web3-onboard/react'
 import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
-import { isEmpty, noop } from 'lodash'
-import { useEffect, useMemo, useState, useRef } from 'react'
+import { isEmpty } from 'lodash'
 import web3Utils from 'web3-utils'
+import { SupportedChainId, UnsupportedChainId } from '@gooddollar/web3sdk'
+import { AsyncStorage, useAppRestart } from '@gooddollar/web3sdk-v2'
+
 import usePromise from './usePromise'
 import useSendAnalyticsData from './useSendAnalyticsData'
-
-import { SupportedChainId, UnsupportedChainId } from '@gooddollar/web3sdk'
-
-import { useConnectWallet, useSetChain, useWallets } from '@web3-onboard/react'
 
 export type IsSupportedChainId = {
     isSupported: boolean
@@ -32,15 +31,11 @@ export const WalletLabels: Readonly<string[]> = [
     'Coinbase Wallet',
     'Google (Web3Auth)',
     'GoodDollar Wallet',
+    'Valora',
 ]
 
-export const WalletConnectLabels: Readonly<string[]> = ['GoodDollar Wallet', 'WalletConnect']
-
-export const WalletLinkKeys: Readonly<string[]> = [
-    '-walletlink:https://www.walletlink.org:Addresses',
-    '-walletlink:https://www.walletlink.org:session:secret',
-    '-walletlink:https://www.walletlink.org:session:id',
-]
+export const WalletConnectLabels: Readonly<string[]> = ['WalletConnect']
+export const WalletConnectV2Labels: Readonly<string[]> = ['Valora', 'GoodDollar Wallet']
 
 export type ActiveOnboard<T = any> = Omit<
     Web3ReactContextInterface<Web3Provider>,
@@ -83,7 +78,6 @@ export function IsSupportedChain(chainIdHex: string): IsSupportedChainId {
 
 export function onboardContext(wstate: WalletState[]): ActiveOnboardInterface {
     const [{ provider, label, accounts, chains }] = wstate
-    const web3provider = new Web3Provider(provider)
     const chainIdHex = chains[0].id
     const { isSupported, chainId } = IsSupportedChain(chainIdHex)
     const error = !isSupported ? new UnsupportedChainId(chainIdHex) : undefined
@@ -95,7 +89,6 @@ export function onboardContext(wstate: WalletState[]): ActiveOnboardInterface {
         account: web3Utils.toChecksumAddress(accounts[0]?.address),
         label: label,
         eipProvider: provider as EIP1193ProviderExtended,
-        library: web3provider,
         error: error,
     }
 }
@@ -120,7 +113,7 @@ export function useActiveOnboard<T = any>(): ActiveOnboardInterface<T> {
  */
 export function StoreOnboardState(wallets: WalletState[], activeChainId: string | undefined): void {
     if (isEmpty(wallets)) {
-        void AsyncStorage.removeItem('currentConnectWallet')
+        void AsyncStorage.safeRemove('currentConnectWallet')
         return
     }
 
@@ -157,7 +150,7 @@ export function useOnboardConnect(): OnboardConnectProps {
 
     const [previouslyConnected, loading]: readonly [any, boolean, any, any] = usePromise(
         async () => AsyncStorage.getItem('currentConnectWallet').then((value: any): any => value ?? {}),
-        []
+        [connectedWallets]
     )
 
     const updateStorage = (newChainId: string, currentWallet: WalletState[]) => {
@@ -196,7 +189,6 @@ export function useOnboardConnect(): OnboardConnectProps {
         } else if (activated || !previouslyConnected[0]) {
             setTried(true)
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [/* used */ connect, activated, tried, previouslyConnected, loading])
 
     useEffect(() => {
@@ -230,7 +222,8 @@ export function useOnboardConnect(): OnboardConnectProps {
 
         // disconnect
         if (!isConnected && previouslyConnected.length && (tried || activated)) {
-            const toReload = WalletLabels.includes(previouslyConnected[0].label[0])
+            const prevConnected = previouslyConnected[0]?.label[0]
+            const toReload = WalletLabels.includes(prevConnected)
 
             StoreOnboardState(connectedWallets, '0x1')
             setActivated(false)
@@ -239,11 +232,25 @@ export function useOnboardConnect(): OnboardConnectProps {
                 return
             }
 
-            const promises = []
-            const cleanup = async (key: string) => AsyncStorage.removeItem(key).catch(noop)
+            const promises: Array<Promise<void[] | void | undefined>> = []
+            const cleanup = async (key: string) => AsyncStorage.safeRemove(key)
+            const cleanupList = async (regex: RegExp) => {
+                try {
+                    const keys = await AsyncStorage.getAllKeys()
+                    const filteredKeys = keys.filter((key) => regex.test(key))
+                    return Promise.all(filteredKeys.map((key) => cleanup(key)))
+                } catch (error) {
+                    sendData({ event: 'wallet_connect_v2', action: 'failed_disconnect_cleanup' })
+                    return
+                }
+            }
 
-            if (previouslyConnected[0].label[0] === 'Coinbase Wallet') {
-                promises.push(...WalletLinkKeys.map(cleanup))
+            if (prevConnected === 'Coinbase Wallet') {
+                promises.push(cleanupList(/-walletlink/))
+            }
+
+            if (WalletConnectV2Labels.includes(prevConnected)) {
+                promises.push(cleanupList(/wc@2/))
             }
 
             if (toReload) {
@@ -256,8 +263,7 @@ export function useOnboardConnect(): OnboardConnectProps {
 
             void Promise.all(promises).then(() => restartApp()) // temporarily necessary, as there is a irrecoverable error/bug when not reloading
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [connectedWallets, tried, loading])
+    }, [connectedWallets, tried, loading, previouslyConnected])
 
     return { tried, activated }
 }
