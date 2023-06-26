@@ -4610,12 +4610,14 @@ __metadata:
     react-use-gesture: ^6.0.14
     react-use-promise: ^0.5.0
     react-virtualized-auto-sizer: ^1.0.2
+    react-wallet-chat-gd: ^2.7.8
     react-window: ^1.8.5
     rebass: ^4.0.7
     redux-localstorage-simple: ^2.3.1
     rollup-plugin-visualizer: ^5.9.0
     rxjs: ^7.5.6
     serve: ^11.3.0
+    siwe: ^2.1.4
     source-map-explorer: ^2.5.2
     start-server-and-test: ^1.11.0
     styled-components: ^5.3.3
@@ -6232,7 +6234,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@noble/hashes@npm:1.3.1, @noble/hashes@npm:^1.3.0, @noble/hashes@npm:~1.3.0":
+"@noble/hashes@npm:1.3.1, @noble/hashes@npm:^1.1.2, @noble/hashes@npm:^1.3.0, @noble/hashes@npm:~1.3.0":
   version: 1.3.1
   resolution: "@noble/hashes@npm:1.3.1"
   checksum: 7fdefc0f7a0c1ec27acc6ff88841793e3f93ec4ce6b8a6a12bfc0dd70ae6b7c4c82fe305fdfeda1735d5ad4a9eebe761e6693b3d355689c559e91242f4bc95b1
@@ -9424,6 +9426,18 @@ __metadata:
   dependencies:
     antlr4ts: ^0.5.0-alpha.4
   checksum: 6ccbdab334331a58fde2a739cff76d5a99d836186b7899e8e027266f2af2a4bddc77c9c2abd01307cea6c470345d48edc470049e9672143b73f4aff3c8976183
+  languageName: node
+  linkType: hard
+
+"@spruceid/siwe-parser@npm:*":
+  version: 2.0.2
+  resolution: "@spruceid/siwe-parser@npm:2.0.2"
+  dependencies:
+    "@noble/hashes": ^1.1.2
+    apg-js: ^4.1.1
+    uri-js: ^4.4.1
+    valid-url: ^1.0.9
+  checksum: 689b09a73026c79223805c77762b923af25209274f26d5f26d95f808a882ceb138dfbdfb6d7c8e31a67fb677bc16d90079c83821ee8e7c8bcece29cd94b2a67b
   languageName: node
   linkType: hard
 
@@ -14779,6 +14793,13 @@ __metadata:
     normalize-path: ^3.0.0
     picomatch: ^2.0.4
   checksum: 3e044fd6d1d26545f235a9fe4d7a534e2029d8e59fa7fd9f2a6eb21230f6b5380ea1eaf55136e60cbf8e613544b3b766e7a6fa2102e2a3a117505466e3025dc2
+  languageName: node
+  linkType: hard
+
+"apg-js@npm:^4.1.1":
+  version: 4.1.3
+  resolution: "apg-js@npm:4.1.3"
+  checksum: fa815838fc3c4b2fa5801419d050c5cf0ac8b5dbbc7476a9c9b8e1ae5fc78feccf01ff3ff52ef1e80c72f8b7bf39f589f1b8aaad5f5aeba399523a9ba18da127
   languageName: node
   linkType: hard
 
@@ -21766,24 +21787,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ethers@npm:^4.0.32":
-  version: 4.0.49
-  resolution: "ethers@npm:4.0.49"
-  dependencies:
-    aes-js: 3.0.0
-    bn.js: ^4.11.9
-    elliptic: 6.5.4
-    hash.js: 1.1.3
-    js-sha3: 0.5.7
-    scrypt-js: 2.0.4
-    setimmediate: 1.0.4
-    uuid: 2.0.1
-    xmlhttprequest: 1.8.0
-  checksum: 357115348a5f1484c7745fae1d852876788216c7d94c072c80132192f1800c4d388433ea2456750856641d6d4eed8a3b41847eb44f5e1c42139963864e3bcc38
-  languageName: node
-  linkType: hard
-
-"ethers@npm:^5.*, ethers@npm:^5.0.0, ethers@npm:^5.0.13, ethers@npm:^5.3.1, ethers@npm:^5.6.4, ethers@npm:^5.7.0, ethers@npm:^5.7.2":
+"ethers@npm:5.7.2, ethers@npm:^5.*, ethers@npm:^5.0.0, ethers@npm:^5.0.13, ethers@npm:^5.3.1, ethers@npm:^5.6.4, ethers@npm:^5.7.0, ethers@npm:^5.7.2":
   version: 5.7.2
   resolution: "ethers@npm:5.7.2"
   dependencies:
@@ -21818,6 +21822,23 @@ __metadata:
     "@ethersproject/web": 5.7.1
     "@ethersproject/wordlists": 5.7.0
   checksum: b7c08cf3e257185a7946117dbbf764433b7ba0e77c27298dec6088b3bc871aff711462b0621930c56880ff0a7ceb8b1d3a361ffa259f93377b48e34107f62553
+  languageName: node
+  linkType: hard
+
+"ethers@npm:^4.0.32":
+  version: 4.0.49
+  resolution: "ethers@npm:4.0.49"
+  dependencies:
+    aes-js: 3.0.0
+    bn.js: ^4.11.9
+    elliptic: 6.5.4
+    hash.js: 1.1.3
+    js-sha3: 0.5.7
+    scrypt-js: 2.0.4
+    setimmediate: 1.0.4
+    uuid: 2.0.1
+    xmlhttprequest: 1.8.0
+  checksum: 357115348a5f1484c7745fae1d852876788216c7d94c072c80132192f1800c4d388433ea2456750856641d6d4eed8a3b41847eb44f5e1c42139963864e3bcc38
   languageName: node
   linkType: hard
 
@@ -35093,6 +35114,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-wallet-chat-gd@npm:^2.7.8":
+  version: 2.7.8
+  resolution: "react-wallet-chat-gd@npm:2.7.8"
+  dependencies:
+    "@stablelib/random": ^1.0.2
+    classnames: ^2.3.2
+    ethers: 5.7.2
+  peerDependencies:
+    autoprefixer: ^10.4.13
+    postcss: ^8.4.21
+    react: 17.0.2
+    tailwindcss: ^3.2.7
+  checksum: 8f4f322af0198d343e1db49923d469649fe196309dc2f3a2fd51e435fea65b81f7a448c366df5a9254d1b4ebc7cec05d9adb64fdf26bc62eaa5e5a61045aa1c6
+  languageName: node
+  linkType: hard
+
 "react-window@npm:^1.8.5, react-window@npm:^1.8.6":
   version: 1.8.8
   resolution: "react-window@npm:1.8.8"
@@ -37016,6 +37053,20 @@ __metadata:
   version: 1.0.5
   resolution: "sisteransi@npm:1.0.5"
   checksum: aba6438f46d2bfcef94cf112c835ab395172c75f67453fe05c340c770d3c402363018ae1ab4172a1026a90c47eaccf3af7b6ff6fa749a680c2929bd7fa2b37a4
+  languageName: node
+  linkType: hard
+
+"siwe@npm:^2.1.4":
+  version: 2.1.4
+  resolution: "siwe@npm:2.1.4"
+  dependencies:
+    "@spruceid/siwe-parser": "*"
+    "@stablelib/random": ^1.0.1
+    uri-js: ^4.4.1
+    valid-url: ^1.0.9
+  peerDependencies:
+    ethers: ^5.6.8 || ^6.0.8
+  checksum: a5eb48a72ccd8cca155b667e065a08ea01f626be81c489ccc65e8978cb5928857d31f073d3dabcb951581293a08868ea5cfaa183ae32bd2bc2ed0b3d88fcca77
   languageName: node
   linkType: hard
 
@@ -40199,7 +40250,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uri-js@npm:^4.2.2":
+"uri-js@npm:^4.2.2, uri-js@npm:^4.4.1":
   version: 4.4.1
   resolution: "uri-js@npm:4.4.1"
   dependencies:
@@ -40559,6 +40610,13 @@ __metadata:
     convert-source-map: ^1.6.0
     source-map: ^0.7.3
   checksum: e52b48764f55aed62ff87f2b5f710c874f992cd1313eac8f438bf65aeeb0689153d85bb76e39514fd90ba3521d6ebea929a8ae1339b6d7b0cf18fb0ed13d8b40
+  languageName: node
+  linkType: hard
+
+"valid-url@npm:^1.0.9":
+  version: 1.0.9
+  resolution: "valid-url@npm:1.0.9"
+  checksum: 3ecb030559404441c2cf104cbabab8770efb0f36d117db03d1081052ef133015a68806148ce954bb4dd0b5c42c14b709a88783c93d66b0916cb67ba771c98702
   languageName: node
   linkType: hard
 
