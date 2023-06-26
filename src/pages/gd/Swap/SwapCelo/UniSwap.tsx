@@ -1,14 +1,23 @@
 import React, { useCallback } from 'react'
 
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { useApplicationTheme } from 'state/application/hooks'
 import { darkTheme, lightTheme, OnTxFail, OnTxSubmit, OnTxSuccess, SwapWidget, TokenInfo } from '@uniswap/widgets'
 import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
 import { useConnectWallet } from '@web3-onboard/react'
-import { AsyncStorage, getDevice, G$ContractAddresses, useGetEnvChainId, useWeb3Context } from '@gooddollar/web3sdk-v2'
+import {
+    AsyncStorage,
+    getDevice,
+    G$ContractAddresses,
+    useGetEnvChainId,
+    useWeb3Context,
+    SupportedChains,
+} from '@gooddollar/web3sdk-v2'
 import { useDispatch } from 'react-redux'
 import { addTransaction } from 'state/transactions/actions'
 import { ChainId } from '@sushiswap/sdk'
+
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { useApplicationTheme } from 'state/application/hooks'
+import useSendAnalytics from 'hooks/useSendAnalyticsData'
 
 const jsonRpcUrlMap = {
     122: ['https://rpc.fuse.io', 'https://fuse-rpc.gateway.pokt.network'],
@@ -46,10 +55,12 @@ const celoTokenList: TokenInfo[] = [
 export const UniSwap = (): JSX.Element => {
     const [theme] = useApplicationTheme()
     const uniTheme = theme === 'dark' ? darkTheme : lightTheme
-    const { account } = useActiveWeb3React()
     const { web3Provider } = useWeb3Context()
+    const { account, chainId } = useActiveWeb3React()
+    const network = SupportedChains[chainId]
     const [, connect] = useConnectWallet()
     const globalDispatch = useDispatch()
+    const sendData = useSendAnalytics()
     const { connectedEnv } = useGetEnvChainId(42220)
     const gdTokenAddress = G$ContractAddresses('GoodDollar', connectedEnv) as string
     const customTheme = {
@@ -97,7 +108,7 @@ export const UniSwap = (): JSX.Element => {
     }, [connect])
 
     const handleError = useCallback(async (e) => {
-        console.log('handleError -->', { e })
+        sendData({ event: 'swap', action: 'swap_failed', error: e })
     }, [])
 
     const handleTxFailed: OnTxFail = useCallback(async (error: string, data: any) => {
@@ -113,6 +124,8 @@ export const UniSwap = (): JSX.Element => {
                     const { tokenAddress } = info
                     const symbol = tokenSymbols[tokenAddress]
                     const summary = symbol ? `Approved spending of ${symbol}` : 'Approved spending'
+                    const type = symbol ? 'sell' : 'buy'
+                    sendData({ event: 'swap', action: 'swap_approve', type, network })
                     globalDispatch(
                         addTransaction({
                             chainId: 42220 as ChainId,
@@ -145,6 +158,17 @@ export const UniSwap = (): JSX.Element => {
                     const swappedAmount = inputAmount.toSignificant(6)
                     const receivedAmount = outputAmount.toSignificant(6)
                     const summary = `Swapped ${swappedAmount} ${input.symbol} to ${receivedAmount} ${output.symbol}`
+                    const type = input.symbol === 'G$' ? 'sell' : 'buy'
+
+                    sendData({
+                        event: 'swap',
+                        action: 'swap_confirm',
+                        amount: type === 'buy' ? receivedAmount : swappedAmount,
+                        tokens: [input.symbol, output.symbol],
+                        type,
+                        network,
+                    })
+
                     globalDispatch(
                         addTransaction({
                             chainId: 42220 as ChainId,
@@ -158,35 +182,17 @@ export const UniSwap = (): JSX.Element => {
                 }
             }
         },
-        [account]
+        [account, network]
     )
 
-    const handleTxSuccess: OnTxSuccess = useCallback(async (txHash: string, data: any) => {
-        console.log('handleTxSuccess -->', { txHash, data })
-        //todo: potentially showing share modal (as we do on other chains when buying G$)
-        //     <ShareTransaction
-        //     title={i18n._(t`Swap Completed`)}
-        //     text={i18n._(
-        //         t`You just used your crypto for good to help fund crypto UBI for all with GoodDollar!`
-        //     )}
-        //     shareProps={{
-        //         title: i18n._(t`Share with friends`),
-        //         copyText: 'I just bought GoodDollars at https://goodswap.xyz to make the world better',
-        //         show: true,
-        //         linkedin: {
-        //             url: 'https://gooddollar.org',
-        //         },
-        //         twitter: {
-        //             url: 'https://gooddollar.org',
-        //             hashtags: ['InvestForGood'],
-        //         },
-        //         facebook: {
-        //             url: 'https://gooddollar.org',
-        //             hashtag: '#InvestForGood',
-        //         },
-        //     }}
-        // />
-    }, [])
+    const handleTxSuccess: OnTxSuccess = useCallback(
+        async (txHash: string, data: any) => {
+            const { inputAmount } = data.info.trade.swaps[0]
+            const type = inputAmount.currency.symbol === 'G$' ? 'sell' : 'buy'
+            sendData({ event: 'swap', action: 'swap_success', type, network })
+        },
+        [network]
+    )
 
     return (
         <div>
