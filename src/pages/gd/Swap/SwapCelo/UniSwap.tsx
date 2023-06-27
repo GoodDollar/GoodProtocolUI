@@ -19,7 +19,7 @@ import { isMobile } from 'react-device-detect'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
 import useSendAnalytics from 'hooks/useSendAnalyticsData'
-import celoTokenList from './celo-tokenlist.json'
+import { tokens } from './celo-tokenlist.json'
 
 const jsonRpcUrlMap = {
     122: ['https://rpc.fuse.io', 'https://fuse-rpc.gateway.pokt.network'],
@@ -37,7 +37,6 @@ export const UniSwap = (): JSX.Element => {
     const sendData = useSendAnalytics()
     const { connectedEnv } = useGetEnvChainId(42220)
     const gdTokenAddress = G$ContractAddresses('GoodDollar', connectedEnv) as string
-    const { tokens } = celoTokenList
 
     const customTheme = {
         ...uniTheme,
