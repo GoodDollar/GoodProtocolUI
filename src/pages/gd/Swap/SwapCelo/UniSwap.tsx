@@ -110,7 +110,7 @@ export const UniSwap = (): JSX.Element => {
     }, [connect])
 
     const handleError = useCallback(async (e) => {
-        sendData({ event: 'swap', action: 'swap_failed', error: e })
+        sendData({ event: 'swap', action: 'swap_failed', error: e.message })
     }, [])
 
     const handleTxFailed: OnTxFail = useCallback(async (error: string, data: any) => {
