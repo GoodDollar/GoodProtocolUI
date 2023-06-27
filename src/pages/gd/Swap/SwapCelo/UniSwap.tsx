@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 
-import { darkTheme, lightTheme, OnTxFail, OnTxSubmit, OnTxSuccess, SwapWidget, TokenInfo } from '@uniswap/widgets'
+import { darkTheme, lightTheme, OnTxFail, OnTxSubmit, OnTxSuccess, SwapWidget } from '@uniswap/widgets'
 import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
 import { useConnectWallet } from '@web3-onboard/react'
 import {
@@ -19,39 +19,12 @@ import { isMobile } from 'react-device-detect'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
 import useSendAnalytics from 'hooks/useSendAnalyticsData'
+import celoTokenList from './celo-tokenlist.json'
 
 const jsonRpcUrlMap = {
     122: ['https://rpc.fuse.io', 'https://fuse-rpc.gateway.pokt.network'],
     42220: ['https://forno.celo.org', 'https://celo-rpc.gateway.pokt.network'],
 }
-
-const celoTokenList: TokenInfo[] = [
-    {
-        name: 'Wrapped Ether',
-        address: '0x2DEf4285787d58a2f811AF24755A8150622f4361',
-        symbol: 'WETH',
-        decimals: 18,
-        chainId: 42220,
-        logoURI:
-            'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
-        extensions: {
-            bridgeInfo: {
-                '1': {
-                    tokenAddress: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-                },
-            },
-        },
-    },
-    //todo-fix: adding this native token in the list makes it show up twice. but by default the logo's are not functioning on the widget
-    // {
-    //     chainId: 42220,
-    //     address: '0x471EcE3750Da237f93B8E339c536989b8978a438',
-    //     name: 'Celo',
-    //     symbol: 'CELO',
-    //     decimals: 18,
-    //     logoURI: 'https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png',
-    // },
-]
 
 export const UniSwap = (): JSX.Element => {
     const [theme] = useApplicationTheme()
@@ -64,6 +37,7 @@ export const UniSwap = (): JSX.Element => {
     const sendData = useSendAnalytics()
     const { connectedEnv } = useGetEnvChainId(42220)
     const gdTokenAddress = G$ContractAddresses('GoodDollar', connectedEnv) as string
+    const { tokens } = celoTokenList
 
     const customTheme = {
         ...uniTheme,
@@ -90,7 +64,7 @@ export const UniSwap = (): JSX.Element => {
             'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
     }
 
-    celoTokenList.push(gdToken)
+    tokens.push(gdToken)
 
     const connectOnboard = useCallback(async () => {
         if (!account) {
@@ -200,7 +174,7 @@ export const UniSwap = (): JSX.Element => {
         <div>
             <SwapWidget
                 width={isMobile ? 'auto' : '550px'}
-                tokenList={celoTokenList}
+                tokenList={tokens}
                 defaultInputTokenAddress={gdTokenAddress}
                 permit2={true}
                 jsonRpcUrlMap={jsonRpcUrlMap}
