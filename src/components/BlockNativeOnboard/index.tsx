@@ -7,6 +7,10 @@ import { noop } from 'lodash'
 import { useBreakpointValue } from 'native-base'
 import { Web3ActionButton } from '@gooddollar/good-design'
 import { SupportedChains, AsyncStorage, getDevice } from '@gooddollar/web3sdk-v2'
+import { connectOptions, torus } from 'connectors'
+
+import { OnboardProvider } from '@gooddollar/web3sdk-v2'
+import { useSelectedChain } from 'state/application/hooks'
 
 /**
  * Just a button to trigger the onboard connect modal.
@@ -74,5 +78,19 @@ export const OnboardConnectButton: FC = () => {
             isDisabled={connecting}
             isLoading={connecting}
         />
+    )
+}
+
+// wrapper so we can pass the selected chain
+export const OnboardProviderWrapper = ({ children }) => {
+    const { selectedChain } = useSelectedChain()
+    return (
+        <OnboardProvider
+            options={connectOptions}
+            wallets={{ custom: [torus] }}
+            wc2Options={{ requiredChains: [selectedChain] }}
+        >
+            {children}
+        </OnboardProvider>
     )
 }
