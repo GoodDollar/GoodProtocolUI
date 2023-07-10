@@ -227,8 +227,8 @@ function AppBar(): JSX.Element {
                                     )}
                                 </button>
                             </div>
-                            <div className="fixed bottom-0 left-0 flex flex-row items-center justify-center w-full lg:w-auto lg:relative lg:p-0 actions-wrapper h-20 lg:h-12 ">
-                                <div className="hidden xs:inline-block me-6">
+                            <div className="fixed bottom-0 left-0 flex flex-row items-center justify-center w-full h-20 gap-2 lg:w-auto lg:relative lg:p-0 actions-wrapper lg:h-12">
+                                <div className="hidden xs:inline-block">
                                     <Web3Network />
                                 </div>
 
