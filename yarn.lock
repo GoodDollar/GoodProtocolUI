@@ -13208,7 +13208,7 @@ __metadata:
 
 "@uniswap/widgets@patch:@uniswap/widgets@npm%3A2.53.0#./.yarn/patches/@uniswap-widgets-npm-2.53.0-515f06935c.patch::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 2.53.0
-  resolution: "@uniswap/widgets@patch:@uniswap/widgets@npm%3A2.53.0#./.yarn/patches/@uniswap-widgets-npm-2.53.0-515f06935c.patch::version=2.53.0&hash=8d55c4&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  resolution: "@uniswap/widgets@patch:@uniswap/widgets@npm%3A2.53.0#./.yarn/patches/@uniswap-widgets-npm-2.53.0-515f06935c.patch::version=2.53.0&hash=a75208&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/runtime": ">=7.17.0"
     "@fontsource/ibm-plex-mono": ^4.5.1
@@ -13281,7 +13281,7 @@ __metadata:
       optional: true
     utf-8-validate:
       optional: true
-  checksum: 1ed675be99e651d59d139a1290c9318ea2986c8f241a59fd7ddefba4781a16cba1511af107f32c876d68e9a79173bbddad5746af237750a142669284e728bf2f
+  checksum: 639232be7ba2342aab9fb3c32c91b5e008ad499a04ded3d21ba1b24c4f13be14279dc71071c6f0cdb1754d90aa19696d7617c542c9b323b976088d813fbeca76
   languageName: node
   linkType: hard
 
