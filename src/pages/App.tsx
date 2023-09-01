@@ -141,7 +141,11 @@ function App(): JSX.Element {
                                 className={`flex flex-col flex-glow w-full justify-start items-center
                              ${location.pathname === '/dashboard' ? 'md:auto' : 'md:h-screen'}
                              ${location.pathname === '/claim' && 'transform sm:scale-75 xl:scale-100'}
-                             md:justify-center`}
+                             ${
+                                 location.pathname === '/goodid'
+                                     ? 'flex-col-reverse md:justify-end justify-end'
+                                     : 'md:justify-center'
+                             }`}
                             >
                                 <Routes />
                                 <TransactionUpdater />

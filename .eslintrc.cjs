@@ -19,6 +19,7 @@ module.exports = {
     },
     ignorePatterns: ['/build/**/*', '/types/*/*d.ts', '/src/**/*.test.ts*', '/**/*.*js', '*.config.ts'],
     rules: {
+        'no-undef': 'error',
         'prettier/prettier': 'warn',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
@@ -62,5 +63,8 @@ module.exports = {
         react: {
             version: 'detect'
         }
+    },
+    globals: {
+        JSX: true
     }
 }
