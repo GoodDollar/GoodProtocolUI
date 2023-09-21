@@ -18,6 +18,8 @@ interface Window {
     BinanceChain?: any
     eth?: object
     ethereum?: {
+        isMiniPay?: boolean
+        isOpera?: boolean
         isMetaMask?: boolean
         on?: (...args: any[]) => void
         off?: (...args: any[]) => void
@@ -25,7 +27,7 @@ interface Window {
         removeAllListeners?: (...args: any[]) => void
         autoRefreshOnNetworkChange?: boolean
         request?: (args: RequestArguments) => Promise<unknown>
-        providers?: array
+        providers?: Array
         selectedProvider: {
             isMetaMask?: boolean
             on?: (...args: any[]) => void
