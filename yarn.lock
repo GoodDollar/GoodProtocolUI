@@ -11236,6 +11236,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@toruslabs/openlogin-jrpc@npm:^2.6.0":
+  version: 2.13.0
+  resolution: "@toruslabs/openlogin-jrpc@npm:2.13.0"
+  dependencies:
+    "@toruslabs/openlogin-utils": ^2.13.0
+    end-of-stream: ^1.4.4
+    eth-rpc-errors: ^4.0.3
+    events: ^3.3.0
+    fast-safe-stringify: ^2.1.1
+    once: ^1.4.0
+    pump: ^3.0.0
+    readable-stream: ^3.6.0
+  peerDependencies:
+    "@babel/runtime": 7.x
+  checksum: b572c2c94e7b317d68693e74f06b5add1c932c31729e5e2d4beb6a9625a1477fa7e2b4b5cdf3e6547534e226e6be6e401efbbd88f75a4e418bae96bacc5735e5
+  languageName: node
+  linkType: hard
+
 "@toruslabs/openlogin-jrpc@npm:^3.0.0, @toruslabs/openlogin-jrpc@npm:^3.2.0":
   version: 3.2.0
   resolution: "@toruslabs/openlogin-jrpc@npm:3.2.0"
@@ -11287,6 +11305,19 @@ __metadata:
   peerDependencies:
     "@babel/runtime": 7.x
   checksum: 724ffee82beca7416806b9f32840a48339d7a0403ffdafd1299da9426c362be713b04f74f59544a2460e7d15d73aca828cd4d3295fb4a79d1dc6fccc237a9845
+  languageName: node
+  linkType: hard
+
+"@toruslabs/openlogin-utils@npm:^2.13.0":
+  version: 2.13.0
+  resolution: "@toruslabs/openlogin-utils@npm:2.13.0"
+  dependencies:
+    base64url: ^3.0.1
+    keccak: ^3.0.3
+    randombytes: ^2.1.0
+  peerDependencies:
+    "@babel/runtime": 7.x
+  checksum: 0f5f50950809d677cd027ac8ea30f44de4d1edc6108c37c346d1e3d2ec89ead49ad6ea7b392cc3360cd3a7aa6909f414f7f0acab68a210264a60b26b3e9e7244
   languageName: node
   linkType: hard
 
@@ -29492,7 +29523,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loglevel@npm:^1.6.8, loglevel@npm:^1.8.1":
+"loglevel@npm:^1.6.8, loglevel@npm:^1.8.0, loglevel@npm:^1.8.1":
   version: 1.8.1
   resolution: "loglevel@npm:1.8.1"
   checksum: a1a62db40291aaeaef2f612334c49e531bff71cc1d01a2acab689ab80d59e092f852ab164a5aedc1a752fdc46b7b162cb097d8a9eb2cf0b299511106c29af61d
