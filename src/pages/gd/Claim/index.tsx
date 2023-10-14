@@ -1,11 +1,11 @@
-import React, { memo, useState, useEffect, useCallback } from 'react'
+import React, { memo, useCallback, useState, useEffect } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { ArrowButton, ClaimButton, ClaimCarousel, IClaimCard, Title } from '@gooddollar/good-design'
 import { useHistory } from 'react-router-dom'
 import { Text, useBreakpointValue, Box, View } from 'native-base'
 import { ClaimBalance } from './ClaimBalance'
-import { useClaim, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
+import { NewsFeedProvider, useClaim, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import { useConnectWallet } from '@web3-onboard/react'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import FirstTimer from 'assets/images/claim/firstimer.png'
@@ -14,6 +14,8 @@ import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { QueryParams } from '@usedapp/core'
 import { noop } from 'lodash'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
+import { getNetworkEnv } from 'utils/env'
+import { feedConfig, NewsFeedWidget } from '../../../components/NewsFeed'
 
 const Claim = memo(() => {
     const { i18n } = useLingui()
@@ -29,6 +31,9 @@ const Claim = memo(() => {
     const sendData = useSendAnalyticsData()
     const isSimpleApp = useIsSimpleApp()
     const history = useHistory()
+
+    const networkEnv = getNetworkEnv()
+    const isProd = networkEnv.includes('production')
 
     // there are three possible scenarios
     // 1. claim amount is 0, meaning user has claimed that day
@@ -127,6 +132,27 @@ const Claim = memo(() => {
         },
     })
 
+    const claimView = useBreakpointValue({
+        base: {
+            display: 'flex',
+            alignItems: 'center',
+            paddingTop: '2.5rem',
+            width: '100%',
+        },
+        lg: {
+            width: '50%',
+        },
+    })
+
+    const newsFeedView = useBreakpointValue({
+        base: {
+            width: '100%',
+        },
+        lg: {
+            width: '50%',
+        },
+    })
+
     const balanceContainer = useBreakpointValue({
         base: {
             display: 'flex',
@@ -211,76 +237,83 @@ your G$. 🙂`,
     ]
 
     return (
-        <>
-            <View style={mainView}>
-                <div className="flex flex-col items-center text-center lg:w-5/12">
-                    <Box style={balanceContainer}>
-                        {claimed ? (
-                            <ClaimBalance refresh={refreshRate} />
-                        ) : (
-                            <>
-                                <Title fontFamily="heading" fontSize="2xl" fontWeight="extrabold" pb="2">
-                                    {i18n._(t`Collect G$`)}
-                                </Title>
+        <NewsFeedProvider {...(isProd ? { feedFilter: feedConfig.production.feedFilter } : { env: 'qa' })}>
+            <>
+                <View style={mainView}>
+                    <View style={claimView}>
+                        <div className="flex flex-col items-center text-center lg:w-5/12">
+                            <Box style={balanceContainer}>
+                                {claimed ? (
+                                    <ClaimBalance refresh={refreshRate} />
+                                ) : (
+                                    <>
+                                        <Title fontFamily="heading" fontSize="2xl" fontWeight="extrabold" pb="2">
+                                            {i18n._(t`Collect G$`)}
+                                        </Title>
 
+                                        <Text
+                                            w="340px"
+                                            fontFamily="subheading"
+                                            fontWeight="normal"
+                                            color="goodGrey.500"
+                                            fontSize="sm"
+                                        >
+                                            {i18n._(
+                                                t`GoodDollar creates free money as a public good, G$ tokens, which you can collect daily.`
+                                            )}
+                                        </Text>
+                                    </>
+                                )}
+                                <ClaimButton
+                                    firstName="Test"
+                                    method="redirect"
+                                    claim={handleClaim}
+                                    claimed={claimed}
+                                    claiming={state?.status === 'Mining' || state?.status === 'Success'} // we check for both to prevent a pre-mature closing of finalization modal
+                                    handleConnect={handleConnect}
+                                    chainId={chainId}
+                                    onEvent={handleEvents}
+                                />
+                            </Box>
+                        </div>
+                        {isSimpleApp && claimed && (
+                            <View>
+                                <ArrowButton
+                                    borderWidth="1"
+                                    borderColor="borderBlue"
+                                    px="6px"
+                                    w="220px"
+                                    mb="4"
+                                    text={`Exchange G$ <> cUSD`}
+                                    onPress={navigateToSwap}
+                                    innerText={{
+                                        fontSize: 'sm',
+                                    }}
+                                    textInteraction={{ hover: { color: 'white' } }}
+                                />
                                 <Text
-                                    w="340px"
-                                    fontFamily="subheading"
-                                    fontWeight="normal"
-                                    color="goodGrey.500"
-                                    fontSize="sm"
+                                    alignSelf={'center'}
+                                    justifyItems={'center'}
+                                    alignContent={'center'}
+                                    justifyContent={'center'}
                                 >
-                                    {i18n._(
-                                        t`GoodDollar creates free money as a public good, G$ tokens, which you can collect daily.`
-                                    )}
+                                    OR
                                 </Text>
-                            </>
+                            </View>
                         )}
-                        <ClaimButton
-                            firstName="Test"
-                            method="redirect"
-                            claim={handleClaim}
-                            claimed={claimed}
-                            claiming={state?.status === 'Mining' || state?.status === 'Success'} // we check for both to prevent a pre-mature closing of finalization modal
-                            handleConnect={handleConnect}
-                            chainId={chainId}
-                            onEvent={handleEvents}
-                        />
-                    </Box>
-                </div>
-                {isSimpleApp && claimed && (
-                    <View>
-                        <ArrowButton
-                            borderWidth="1"
-                            borderColor="borderBlue"
-                            px="6px"
-                            w="220px"
-                            mb="4"
-                            text={`Exchange G$ <> cUSD`}
-                            onPress={navigateToSwap}
-                            innerText={{
-                                fontSize: 'sm',
-                            }}
-                            textInteraction={{ hover: { color: 'white' } }}
-                        />
-                        <Text
-                            alignSelf={'center'}
-                            justifyItems={'center'}
-                            alignContent={'center'}
-                            justifyContent={'center'}
+                        <div
+                            className={`w-4/5 lg:flex lg:flex-col ${claimed ? 'lg:w-full' : 'lg:w-3/5'}`}
+                            style={{ flexGrow: '1' }}
                         >
-                            OR
-                        </Text>
+                            <ClaimCarousel cards={mockedCards} claimed={claimed} />
+                        </div>
                     </View>
-                )}
-                <div
-                    className={`w-4/5 lg:flex lg:flex-col ${claimed ? 'lg:w-full' : 'lg:w-3/5'}`}
-                    style={{ flexGrow: '1' }}
-                >
-                    <ClaimCarousel cards={mockedCards} claimed={claimed} />
-                </div>
-            </View>
-        </>
+                    <View style={newsFeedView}>
+                        <NewsFeedWidget />
+                    </View>
+                </View>
+            </>
+        </NewsFeedProvider>
     )
 })
 
