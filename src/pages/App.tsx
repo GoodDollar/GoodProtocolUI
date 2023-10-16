@@ -140,6 +140,7 @@ function App(): JSX.Element {
         }
     )
 
+    // TODO: Remove styling on this container and handle on each page separately
     const routerContainerClasses = classNames('flex flex-col flex-glow w-full', {
         'md:auto': isDash,
         'md:h-screen:': !isDash,
@@ -158,7 +159,6 @@ function App(): JSX.Element {
                     <MainBody ref={bodyRef} className={mainBodyClasses} $page={location.pathname}>
                         <Popups />
                         <Web3ReactManager>
-                            {/* TODO: Remove styling on this container and handle on each page separately */}
                             <div className={routerContainerClasses}>
                                 <Routes />
                                 <TransactionUpdater />
