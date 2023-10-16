@@ -11,11 +11,8 @@ export const feedConfig = {
     },
 }
 
-// todo: add lazy-loader
 export const NewsFeedWidget = () => {
     const { feed } = useContext(NewsFeedContext)
-
-    if (!feed) return null
 
     return <NewsFeed feed={feed} />
 }

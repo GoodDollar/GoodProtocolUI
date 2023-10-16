@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState, useEffect } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { ArrowButton, ClaimButton, ClaimCarousel, IClaimCard, Title } from '@gooddollar/good-design'

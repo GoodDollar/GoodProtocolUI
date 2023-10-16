@@ -4844,7 +4844,7 @@ __metadata:
 
 "@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.1.1-beta.5420890
-  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=9809c1&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=e0b8be&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4874,7 +4874,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: 15de4e3633af1d35ec5a55d4061701d63e76a6bddad8264303f03c08362fe074eae6188aac01b5c9d68bf463a82246662befd5c71a26a54bb7af3d0202d5fdc7
+  checksum: 48266bbbcb3145d4e93b58a893ab26d080e0a063712a1f5b95b2bcb821ac56058a26e7714b0975beb74123827260948e031e2b93db6de49acf686fbb585dea2e
   languageName: node
   linkType: hard
 

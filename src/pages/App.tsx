@@ -55,9 +55,9 @@ const MainBody = styled.div<{ $page?: string }>`
 `
 
 const AppWrap = styled.div`
-    height: 100vh;
-    @supports (height: 100svh) {
-        height: 100svh; // should handle viewport on safari better
+    height: 90vh;
+    @supports (height: 90svh) {
+        height: 90svh; // should handle viewport on safari better
     }
 `
 
