@@ -4,15 +4,18 @@ import { useLingui } from '@lingui/react'
 import { ArrowButton, ClaimButton, ClaimCarousel, IClaimCard, Title } from '@gooddollar/good-design'
 import { useHistory } from 'react-router-dom'
 import { Text, useBreakpointValue, Box, View } from 'native-base'
-import { ClaimBalance } from './ClaimBalance'
-import { NewsFeedProvider, useClaim, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import { useConnectWallet } from '@web3-onboard/react'
+import { isMobile } from 'react-device-detect'
+import { NewsFeedProvider, useClaim, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
+import { QueryParams } from '@usedapp/core'
+import { noop } from 'lodash'
+
+import { ClaimBalance } from './ClaimBalance'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import FirstTimer from 'assets/images/claim/firstimer.png'
 import HowWorks from 'assets/images/claim/howitworks.png'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
-import { QueryParams } from '@usedapp/core'
-import { noop } from 'lodash'
+
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 import { getNetworkEnv } from 'utils/env'
 import { feedConfig, NewsFeedWidget } from '../../../components/NewsFeed'
@@ -116,7 +119,7 @@ const Claim = memo(() => {
 
     const mainView = useBreakpointValue({
         base: {
-            gap: '32px',
+            gap: '40px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -126,7 +129,7 @@ const Claim = memo(() => {
             mb: 2,
         },
         lg: {
-            gap: claimed ? '58px' : '32px',
+            // gap: claimed ? '58px' : '32px',
             flexDirection: 'row',
             justifyContent: 'justify-evenly',
         },
@@ -140,7 +143,9 @@ const Claim = memo(() => {
             width: '100%',
         },
         lg: {
-            width: '50%',
+            width: '90%',
+            alignItems: 'center',
+            paddingTop: '2rem',
         },
     })
 
@@ -160,6 +165,8 @@ const Claim = memo(() => {
             width: '369px',
         },
     })
+
+    console.log('isMobile -->', { isMobile })
 
     const mockedCards: Array<IClaimCard> = [
         {
@@ -181,9 +188,7 @@ const Claim = memo(() => {
                         color: 'goodGrey.500',
                     },
                 },
-                {
-                    imgSrc: HowWorks,
-                },
+                ...(isMobile ? [{ imgSrc: HowWorks }] : []),
             ],
             externalLink: 'https://www.notion.so/gooddollar/GoodDollar-Protocol-2cc5c26cf09d40469e4570ad1d983914',
             bgColor: 'goodWhite.100',
@@ -208,9 +213,7 @@ const Claim = memo(() => {
                         color: 'goodGrey.500',
                     },
                 },
-                {
-                    imgSrc: FirstTimer,
-                },
+                ...(isMobile ? [{ imgSrc: FirstTimer }] : []),
             ],
             externalLink: 'https://www.notion.so/Get-G-873391f31aee4a18ab5ad7fb7467acb3',
             bgColor: 'goodWhite.100',
@@ -219,8 +222,7 @@ const Claim = memo(() => {
         {
             id: 'already-claimed',
             title: {
-                text: `Use 
-your G$. 🙂`,
+                text: `Use your G$. 🙂`,
                 color: 'white',
             },
             content: [
@@ -241,7 +243,7 @@ your G$. 🙂`,
             <>
                 <View style={mainView}>
                     <View style={claimView}>
-                        <div className="flex flex-col items-center text-center lg:w-5/12">
+                        <div className="flex flex-col items-center text-center lg:w-1/2">
                             <Box style={balanceContainer}>
                                 {claimed ? (
                                     <ClaimBalance refresh={refreshRate} />
@@ -302,10 +304,10 @@ your G$. 🙂`,
                             </View>
                         )}
                         <div
-                            className={`w-4/5 lg:flex lg:flex-col ${claimed ? 'lg:w-full' : 'lg:w-3/5'}`}
-                            style={{ flexGrow: '1' }}
+                            className={`w-4/5 lg:self-start lg:flex lg:flex-col ${claimed ? 'lg:w-full' : 'lg:w-3/5'}`}
+                            style={{ flexGrow: '1', alignSelf: 'flex-start', marginLeft: '15%' }}
                         >
-                            <ClaimCarousel cards={mockedCards} claimed={claimed} />
+                            <ClaimCarousel cards={mockedCards} claimed={claimed} isMobile={isMobile} />
                         </div>
                     </View>
                     <View style={newsFeedView}>

@@ -36,7 +36,7 @@ export const Beta = styled.div`
 const Wrapper = styled.div<{ isSimpleApp?: boolean }>`
     @media ${({ theme }) => theme.media.sm} {
         overflow-y: hidden;
-        max-height: 580px;
+        max-height: 650px;
     }
     @media ${({ theme }) => theme.media.md} {
         padding-bottom: ${(props) => (props.isSimpleApp ? '0px' : '75px')};
@@ -132,21 +132,28 @@ function App(): JSX.Element {
                     {!isMobile && <SideBar />}
                     <MainBody
                         ref={bodyRef}
-                        className={`z-0 flex flex-col items-center flex-grow h-full px-4 pt-4 pb-4 overflow-x-hidden overflow-y-auto sm:pt-8 md:pt-10
-                        ${location.pathname === '/goodid' ? 'flex-start' : 'justify-between'}`}
+                        className={`z-0 flex flex-col items-center flex-grow h-full px-4 pt-4 pb-4 overflow-x-hidden overflow-y-auto sm:pt-8
+                        ${location.pathname === '/goodid' ? 'flex-start' : 'justify-between'}
+                        ${location.pathname === '/claim' ? 'xl:pt-0' : 'md:pt-10'}`}
                         $page={location.pathname}
                     >
                         <Popups />
                         <Web3ReactManager>
+                            {/* TODO: Remove styling on this container and handle on each page separately */}
                             <div
-                                className={`flex flex-col flex-glow w-full justify-start items-center
-                             ${location.pathname === '/dashboard' ? 'md:auto' : 'md:h-screen'}
-                             ${location.pathname === '/claim' && 'transform sm:scale-75 xl:scale-100'}
-                             ${
-                                 location.pathname === '/goodid'
-                                     ? 'flex-col-reverse md:justify-end justify-end'
-                                     : 'md:justify-center'
-                             }`}
+                                className={`flex flex-col flex-glow w-full 
+                                ${location.pathname === '/dashboard' ? 'md:auto' : 'md:h-screen'}
+                                ${
+                                    location.pathname === '/claim'
+                                        ? 'transform sm:scale-75 xl:scale-100 items-start sm:-ml-96 sm:-mt-24 xl:mt-0 xl:ml-0 md:justify-start'
+                                        : 'justify-start items-center'
+                                }
+                                ${
+                                    location.pathname === '/goodid'
+                                        ? 'flex-col-reverse md:justify-end justify-end'
+                                        : 'md:justify-center'
+                                }
+                             `}
                             >
                                 <Routes />
                                 <TransactionUpdater />

@@ -4844,7 +4844,7 @@ __metadata:
 
 "@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.1.1-beta.5420890
-  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=720dd7&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=9809c1&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4874,7 +4874,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: f4401c1a9d0e82c8b4dc37fad66b234b8a5f14477ca243802054cd3dde8dc966e4f3b706a42404bf875147f8c121d55ead7ae448a5bd66c5e8f0118d44100b7b
+  checksum: 15de4e3633af1d35ec5a55d4061701d63e76a6bddad8264303f03c08362fe074eae6188aac01b5c9d68bf463a82246662befd5c71a26a54bb7af3d0202d5fdc7
   languageName: node
   linkType: hard
 
@@ -5107,8 +5107,8 @@ __metadata:
   linkType: soft
 
 "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
-  version: 0.2.1-beta.5420890
-  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=4f33de&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  version: 0.1.121
+  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=aba306&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5122,8 +5122,6 @@ __metadata:
     "@sentry/browser": 7.16.0
     "@sentry/react-native": ^4.8.0
     "@solana/web3.js": ^1.72.0
-    "@types/react": ^18.2.28
-    "@usedapp/core": ^1.2.13
     "@walletconnect/client": ^1.8.0
     "@walletconnect/qrcode-modal": ^1.8.0
     "@web3-onboard/coinbase": ^2.2.4
@@ -5153,9 +5151,12 @@ __metadata:
     wagmi: ^1.3.8
   peerDependencies:
     "@react-native-async-storage/async-storage": 1.17.10
+    "@usedapp/core": ^1.2.6
+    ethers: 5.7.2
+    react: "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 0be1ac1fd9f4ef22ba8df498ac7136b5af4adc57379cad15a4ab50bfa15bb5e15949eb8f547a91157ed3a7736d594415f5ccf380ed5991f4a8327f42f9c4d604
+  checksum: 7993515f5dcad5b7b7d47fa8e448da30196c98135680ca0dcb19ae223645b3862e9cf337d4d14b00c53f89ae41fd670c6d39c10d2a00fa00179f4c1b5a976181
   languageName: node
   linkType: hard
 
@@ -13166,7 +13167,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@usedapp/core@npm:^1.2.13, @usedapp/core@npm:^1.2.6":
+"@usedapp/core@npm:^1.2.6":
   version: 1.2.13
   resolution: "@usedapp/core@npm:1.2.13"
   dependencies:
