@@ -152,9 +152,11 @@ const Claim = memo(() => {
     const newsFeedView = useBreakpointValue({
         base: {
             width: '100%',
+            marginTop: '16px',
         },
         lg: {
             width: '50%',
+            marginTop: '16px',
         },
     })
 
