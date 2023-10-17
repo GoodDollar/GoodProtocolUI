@@ -307,7 +307,7 @@ const Claim = memo(() => {
                         )}
                         <div
                             className={`w-4/5 lg:self-start lg:flex lg:flex-col ${claimed ? 'lg:w-full' : 'lg:w-3/5'}`}
-                            style={{ flexGrow: '1', alignSelf: 'flex-start', marginLeft: '15%' }}
+                            style={{ flexGrow: '1', alignSelf: 'flex-start', marginLeft: !isMobile ? '15%' : 0 }}
                         >
                             <ClaimCarousel cards={mockedCards} claimed={claimed} isMobile={isMobile} />
                         </div>

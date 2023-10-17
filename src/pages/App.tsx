@@ -131,12 +131,12 @@ function App(): JSX.Element {
     const isDash = pathname.startsWith('/dashboard')
 
     const mainBodyClasses = classNames(
-        'z-0 flex flex-col items-center flex-grow h-full px-4 pt-4 pb-4 overflow-x-hidden overflow-y-auto sm:pt-8',
+        'z-0 flex flex-col items-center flex-grow h-full pt-4 pb-4 overflow-x-hidden overflow-y-auto sm:pt-8',
         {
             'flex-start': isFV,
             'justify-between': !isFV,
-            'xl:pt-0': isClaim,
-            'md:pt-10': !isClaim,
+            'xl:pt-0 px-2': isClaim,
+            'md:pt-10 px-4': !isClaim,
         }
     )
 
