@@ -12,13 +12,16 @@ import { noop } from 'lodash'
 
 import { ClaimBalance } from './ClaimBalance'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import FirstTimer from 'assets/images/claim/firstimer.png'
-import HowWorks from 'assets/images/claim/howitworks.png'
-import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 
+import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 import { getNetworkEnv } from 'utils/env'
 import { feedConfig, NewsFeedWidget } from '../../../components/NewsFeed'
+
+import BillyHappy from 'assets/images/claim/billysmile.png'
+import BillyGrin from 'assets/images/claim/billygrin.png'
+import BillyConfused from 'assets/images/claim/billyconfused.png'
+import classNames from 'classnames'
 
 const Claim = memo(() => {
     const { i18n } = useLingui()
@@ -183,18 +186,36 @@ const Claim = memo(() => {
                         text: 'Free money, no catch, all thanks to technology.',
                         color: 'goodGrey.500',
                     },
-                },
-                {
                     description: {
                         text: 'Learn more about how the GoodDollar protocol works here.',
                         color: 'goodGrey.500',
                     },
+                    ...(isMobile && { imgSrc: BillyConfused }),
                 },
-                ...(isMobile ? [{ imgSrc: HowWorks }] : []),
             ],
             externalLink: 'https://www.notion.so/gooddollar/GoodDollar-Protocol-2cc5c26cf09d40469e4570ad1d983914',
             bgColor: 'goodWhite.100',
             hide: claimed,
+        },
+        {
+            id: 'already-claimed',
+            title: {
+                text: `Use your G$. 🙂`,
+                color: 'white',
+            },
+            content: [
+                {
+                    description: {
+                        text: `After claiming your G$, use it to support your community, buy products and services, support causes you care about, vote in the GoodDAO, and more. 
+                      
+Learn how here`,
+                        color: 'white',
+                    },
+                    ...(isMobile && { imgSrc: BillyHappy }),
+                },
+            ],
+            externalLink: 'https://www.notion.so/gooddollar/Use-G-8639553aa7214590a70afec91a7d9e73',
+            bgColor: 'primary',
         },
         {
             id: 'how-to-collect',
@@ -208,37 +229,25 @@ const Claim = memo(() => {
                         text: 'First time here?',
                         color: 'goodGrey.500',
                     },
-                },
-                {
                     description: {
                         text: 'Anyone in the world can collect G$. Create a wallet to get started.',
                         color: 'goodGrey.500',
                     },
+                    ...(isMobile && { imgSrc: BillyGrin }),
                 },
-                ...(isMobile ? [{ imgSrc: FirstTimer }] : []),
             ],
             externalLink: 'https://www.notion.so/Get-G-873391f31aee4a18ab5ad7fb7467acb3',
             bgColor: 'goodWhite.100',
             hide: claimed,
         },
-        {
-            id: 'already-claimed',
-            title: {
-                text: `Use your G$. 🙂`,
-                color: 'white',
-            },
-            content: [
-                {
-                    description: {
-                        text: `After claiming your G$, use it to support your community, buy products and services, support causes you care about, vote in the GoodDAO, and more. Learn how here`,
-                        color: 'white',
-                    },
-                },
-            ],
-            externalLink: 'https://www.notion.so/gooddollar/Use-G-8639553aa7214590a70afec91a7d9e73',
-            bgColor: 'primary',
-        },
     ]
+
+    const carrouselClasses = classNames('lg:self-start lg:flex lg:flex-col ', {
+        'w-full': isMobile,
+        'lg:w-full': claimed,
+        'lg:w-3/5': !claimed,
+        'px-6': isMobile,
+    })
 
     return (
         <NewsFeedProvider {...(isProd ? { feedFilter: feedConfig.production.feedFilter } : { env: 'qa' })}>
@@ -306,8 +315,12 @@ const Claim = memo(() => {
                             </View>
                         )}
                         <div
-                            className={`w-4/5 lg:self-start lg:flex lg:flex-col ${claimed ? 'lg:w-full' : 'lg:w-3/5'}`}
-                            style={{ flexGrow: '1', alignSelf: 'flex-start', marginLeft: !isMobile ? '15%' : 0 }}
+                            className={carrouselClasses}
+                            style={{
+                                flexGrow: '1',
+                                alignSelf: 'flex-start',
+                                marginLeft: !isMobile ? '15%' : 0,
+                            }}
                         >
                             <ClaimCarousel cards={mockedCards} claimed={claimed} isMobile={isMobile} />
                         </div>
