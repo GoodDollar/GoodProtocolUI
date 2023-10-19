@@ -246,7 +246,6 @@ Learn how here`,
         'w-full': isMobile,
         'lg:w-full': claimed,
         'lg:w-3/5': !claimed,
-        'px-6': isMobile,
     })
 
     return (
