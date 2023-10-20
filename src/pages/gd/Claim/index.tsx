@@ -171,6 +171,8 @@ const Claim = memo(() => {
         },
     })
 
+    console.log('isMobile -->', { isMobile })
+
     const mockedCards: Array<IClaimCard> = [
         {
             id: 'how-does-work',

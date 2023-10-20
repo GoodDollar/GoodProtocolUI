@@ -38,6 +38,10 @@ export const Beta = styled.div`
 const Wrapper = styled.div<{ isSimpleApp?: boolean }>`
     @media ${({ theme }) => theme.media.sm} {
         overflow-y: hidden;
+<<<<<<< HEAD
+=======
+        max-height: 650px;
+>>>>>>> 4d4b87a1abc907be37b50af80e66fd9045de68c7
     }
     @media ${({ theme }) => theme.media.md} {
         padding-bottom: ${(props) => (props.isSimpleApp ? '0px' : '75px')};
