@@ -230,9 +230,10 @@ function AppBar(): JSX.Element {
     })
 
     const mainMenuContainer = classNames(
-        'fixed bottom-0 left-0 flex flex-row items-center justify-center w-full h-20 gap-2 lg:w-auto lg:relative lg:p-0 actions-wrapper lg:h-12',
+        'fixed bottom-0 left-0 flex flex-row items-center justify-center w-full gap-2 lg:w-auto lg:relative lg:p-0 actions-wrapper lg:h-12',
         {
             'h-14': isSimpleApp && isMobile,
+            'h-20': !isSimpleApp,
         }
     )
 

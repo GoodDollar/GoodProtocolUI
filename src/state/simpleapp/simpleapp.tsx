@@ -18,6 +18,7 @@ export const SimpleAppProvider = ({ children }) => {
     useEffect(() => {
         const isSimpleApp = params.get('simpleapp')
         if (!isSimpleApp) {
+            localStorage.removeItem('GD_SIMPLEAPP')
             return
         }
         localStorage.setItem('GD_SIMPLEAPP', isSimpleApp)
