@@ -23,7 +23,7 @@ export const NavBar = withTheme({ name: 'NavBar' })(({ ...props }: any) => (
     <View {...props}>
         <ActionButton action="claim" />
         <ActionButton action="swap" />
-        <ActionButton action="dapplib" />
-        <ActionButton action="donate" />
+        <ActionButton isExternal action="dapplib" />
+        <ActionButton isExternal action="donate" />
     </View>
 ))
