@@ -1,5 +1,5 @@
 {
-    "buildCommand": "yarn build:web",
+    "buildCommand": "yarn build",
     "git": {
         "deploymentEnabled": false
     },
