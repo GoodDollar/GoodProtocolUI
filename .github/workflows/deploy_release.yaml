@@ -69,6 +69,8 @@ jobs:
                   echo "setting environment from secrets file: $secret_name"
                   echo "${{ secrets.SHARED_ENV }}" >> .env
                   echo "${{ secrets[env.SECRET_NAME] }}" >> .env
+                  echo "adding orbis production key"
+                  echo "REACT_APP_FEEDCONTEXT_PROD=${{ secrets.REACT_APP_FEEDCONTEXT_PROD}}" >> .env
                   echo "copying settings to GITHUB_ENV"
                   cat .env >> $GITHUB_ENV
 
