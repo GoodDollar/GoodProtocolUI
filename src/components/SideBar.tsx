@@ -1,6 +1,13 @@
 import React, { useState, useMemo } from 'react'
 import { Text, Box, View, useBreakpointValue, HStack, useColorModeValue, ScrollView } from 'native-base'
-import { AsyncStorage, useClaim, useG$Balance, useG$Tokens, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
+import {
+    AsyncStorage,
+    getDevice,
+    useClaim,
+    useG$Balance,
+    useG$Tokens,
+    SupportedV2Networks,
+} from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 
@@ -45,6 +52,9 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const bgContainer = useColorModeValue('goodWhite.100', '#151A30')
     const bgWalletBalance = useColorModeValue('white', '#1a1f38')
     const textColor = useColorModeValue('goodGrey.700', 'goodGrey.300')
+    const osName = getDevice().os.name
+    const viewPort = osName === 'iOS' ? '98vh' : '100vh'
+
     const containerStyles = useBreakpointValue({
         base: {
             width: '90%',
@@ -53,7 +63,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             transition: 'all 1s ease',
             display: 'grid',
             paddingBottom: 0,
-            height: '590px',
+            height: `calc(${viewPort} - 130px)`,
             gap: '1px',
             // paddingLeft: '18px',
         },
@@ -217,7 +227,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             justifyContent="space-between"
             style={containerStyles}
         >
-            <Box display="flex" justifyContent="center" flexDirection="column" px="6" py="4" bg={bgContainer}>
+            <Box display="flex" h="100%" justifyContent="center" flexDirection="column" px="6" py="4" bg={bgContainer}>
                 {account && (
                     <Box px={4} pt={2} bg={bgWalletBalance} borderRadius="12px">
                         <div className="flex items-center gap-2">
