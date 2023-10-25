@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/AppBar.tsx:204
+#: src/components/AppBar.tsx:244
 #: src/components/Savings/SavingsCard/index.tsx:48
 msgid ""
 msgstr ""
@@ -2759,7 +2759,7 @@ msgstr "נקה את כל"
 msgid "Close"
 msgstr "סגור"
 
-#: src/pages/gd/Claim/index.tsx:223
+#: src/pages/gd/Claim/index.tsx:255
 msgid "Collect G$"
 msgstr ""
 
@@ -2829,7 +2829,7 @@ msgstr "סקירה פיקדון"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:150
+#: src/components/SideBar.tsx:160
 msgid "Docs"
 msgstr "מסמכים"
 
@@ -2841,7 +2841,7 @@ msgstr "נכשלה בטעינה"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:143
+#: src/components/SideBar.tsx:153
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2874,7 +2874,7 @@ msgstr "עבור אל תיק הפורפוליו"
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:157
+#: src/components/SideBar.tsx:167
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2890,7 +2890,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:234
+#: src/pages/gd/Claim/index.tsx:266
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -3011,7 +3011,7 @@ msgstr "על ה"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "אופס! אירעה שגיאה לא ידועה. נא לרענן את הדף, או לבקר בדפדפן או במכשיר אחר"
 
-#: src/components/AppBar.tsx:226
+#: src/components/AppBar.tsx:265
 msgid "Open main menu"
 msgstr "פתח תפריט ראשי"
 
@@ -3330,11 +3330,11 @@ msgstr "מחכה לאישור"
 msgid "Waiting For Confirmation"
 msgstr "מחכה לאישור"
 
-#: src/components/SideBar.tsx:136
+#: src/components/SideBar.tsx:146
 msgid "Wallet"
 msgstr "ארנק"
 
-#: src/components/SideBar.tsx:226
+#: src/components/SideBar.tsx:236
 msgid "Wallet balance"
 msgstr "מאזן ארנק"
 
