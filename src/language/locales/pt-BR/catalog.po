@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/AppBar.tsx:244
+#: src/components/AppBar.tsx:250
 #: src/components/Savings/SavingsCard/index.tsx:48
 msgid ""
 msgstr ""
@@ -2337,7 +2337,7 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:160
+#: src/components/SideBar.tsx:165
 msgid "Docs"
 msgstr ""
 
@@ -2349,7 +2349,7 @@ msgstr "Falha ao carregar"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:153
+#: src/components/SideBar.tsx:158
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2382,7 +2382,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:167
+#: src/components/SideBar.tsx:172
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2519,7 +2519,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Ups! Ocorreu um erro desconhecido. Atualize a página ou visite de outro navegador ou dispositivo"
 
-#: src/components/AppBar.tsx:265
+#: src/components/AppBar.tsx:272
 msgid "Open main menu"
 msgstr "Abra o menu principal"
 
@@ -2838,11 +2838,11 @@ msgstr ""
 msgid "Waiting For Confirmation"
 msgstr ""
 
-#: src/components/SideBar.tsx:146
+#: src/components/SideBar.tsx:151
 msgid "Wallet"
 msgstr "Carteira"
 
-#: src/components/SideBar.tsx:236
+#: src/components/SideBar.tsx:241
 msgid "Wallet balance"
 msgstr ""
 
