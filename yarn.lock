@@ -4894,9 +4894,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:0.1.8-beta.31cca00":
+"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.1.8-beta.31cca00
-  resolution: "@gooddollar/good-design@npm:0.1.8-beta.31cca00"
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=f52009&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4928,7 +4928,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: e621a82ea835e9ece933b01f51fe8ac3e9d6356b923f4cc9059f79563dcf9f34b9f9451d51c51d6e1f0046c4534e9d06f938aff01a20eaf03660de559e432c2d
+  checksum: 841b8695a9f02b7b595df47ca42d1b9791350757af4049b43163933e6518d96616a6ec13ca26af38f864fcd0ae2328da274d085357f355736ee3ae4f691364b0
   languageName: node
   linkType: hard
 
@@ -4979,10 +4979,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": 0.1.8-beta.31cca00
+    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
     "@gooddollar/goodprotocol": ^2.0.3
     "@gooddollar/web3sdk": ^0.1.25
-    "@gooddollar/web3sdk-v2": 0.2.4-beta.31cca00
+    "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2"
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@kimafinance/kima-transaction-widget": ^1.1.42-beta.1
@@ -5160,9 +5160,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:0.2.4-beta.31cca00":
+"@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.2.4-beta.31cca00
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.4-beta.31cca00"
+  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=cd7186&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5177,7 +5177,6 @@ __metadata:
     "@sentry/react-native": ^4.8.0
     "@solana/web3.js": ^1.72.0
     "@types/react": ^18.2.28
-    "@usedapp/core": ^1.2.13
     "@walletconnect/client": ^1.8.0
     "@walletconnect/qrcode-modal": ^1.8.0
     "@web3-onboard/coinbase": ^2.2.4
@@ -5209,7 +5208,7 @@ __metadata:
     "@react-native-async-storage/async-storage": 1.17.10
     react-native: "*"
     react-native-web: "*"
-  checksum: aa4396c0f85fa216d02d520ef2f2ade74aafe8aec81066e9d556e745323bee6eca0f3f75fba449323852423340496c63a17f046b247ae014987e5f8e09158da2
+  checksum: 5f87a1c66952bd9044e64958ad87e339cd2c749355502e70276d129f05adec24a66489939da2a01813a9c679937471f45801022047a171cca27635bab106070d
   languageName: node
   linkType: hard
 
@@ -13234,7 +13233,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@usedapp/core@npm:^1.2.13, @usedapp/core@npm:^1.2.6":
+"@usedapp/core@npm:^1.2.6":
   version: 1.2.13
   resolution: "@usedapp/core@npm:1.2.13"
   dependencies:
