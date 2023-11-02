@@ -202,8 +202,7 @@
     "posthog-react-native": "2.7.1",
     "@web3-onboard/core": "patch:@web3-onboard/core@npm%3A2.20.2#./.yarn/patches/@web3-onboard-core-npm-2.20.2-2119caa15c.patch",
     "@uniswap/widgets/@uniswap/sdk-core": "^4.0.6",
-    "@uniswap/widgets@^2.53.0": "patch:@uniswap/widgets@npm%3A2.53.0#./.yarn/patches/@uniswap-widgets-npm-2.53.0-515f06935c.patch",
-    "react-native-web-webview@^1.0.2": "patch:react-native-web-webview@npm%3A1.0.2#./.yarn/patches/react-native-web-webview-npm-1.0.2-2a7da84b81.patch"
+    "@uniswap/widgets@^2.53.0": "patch:@uniswap/widgets@npm%3A2.53.0#./.yarn/patches/@uniswap-widgets-npm-2.53.0-515f06935c.patch"
   },
   "dependencies": {
     "@babel/runtime": "^7.18.9",

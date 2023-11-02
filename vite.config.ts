@@ -68,11 +68,15 @@ export default defineConfig({
     build: {
         commonjsOptions: {
             transformMixedEsModules: true,
-            include: [/kima/, /solana/, /node_modules/, /resize-observer/], // handle kima require undefined in production build, observer global inherits
+            include: [/kima/, /solana/, /resize-observer/], // handle kima require undefined in production build, observer global inherits
         },
     },
     optimizeDeps: {
+        esbuildOptions: {
+            loader: {
+                '.html': 'text',
+            },
+        },
         include: ['@kimafinance/kima-transaction-widget', '@solana/web3.js', '@juggle/resize-observer'], // handle kima require undefined in production build
-        exclude: ['react-native-web-webview'],
     },
 })

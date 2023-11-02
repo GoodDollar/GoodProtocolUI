@@ -35009,7 +35009,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-web-webview@npm:1.0.2":
+"react-native-web-webview@npm:^1.0.2":
   version: 1.0.2
   resolution: "react-native-web-webview@npm:1.0.2"
   dependencies:
@@ -35018,18 +35018,6 @@ __metadata:
     file-loader: "*"
     react-native-web: "*"
   checksum: 577f28367692dd8290f13cdd27f9aadf39f4ab926dfb2952ea823a007430fa39983318f7e6662977378910316c544be1e5129840b165b0761287898677630add
-  languageName: node
-  linkType: hard
-
-"react-native-web-webview@patch:react-native-web-webview@npm%3A1.0.2#./.yarn/patches/react-native-web-webview-npm-1.0.2-2a7da84b81.patch::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
-  version: 1.0.2
-  resolution: "react-native-web-webview@patch:react-native-web-webview@npm%3A1.0.2#./.yarn/patches/react-native-web-webview-npm-1.0.2-2a7da84b81.patch::version=1.0.2&hash=d6dab4&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
-  dependencies:
-    qs: ^6.5.1
-  peerDependencies:
-    file-loader: "*"
-    react-native-web: "*"
-  checksum: 03b425b636fdf9ea85248e63adebd4badb6925a04e54c9afe98a3063283e2083766f9c1ec04fe0f3b700eeb21dec6e6a6adf059ab3ee3881a9ff40c4264e2691
   languageName: node
   linkType: hard
 
