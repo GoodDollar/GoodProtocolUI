@@ -4894,9 +4894,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:0.1.8-beta.27b2ce3":
-  version: 0.1.8-beta.27b2ce3
-  resolution: "@gooddollar/good-design@npm:0.1.8-beta.27b2ce3"
+"@gooddollar/good-design@npm:0.1.8-beta.a50290d":
+  version: 0.1.8-beta.a50290d
+  resolution: "@gooddollar/good-design@npm:0.1.8-beta.a50290d"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4928,7 +4928,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: 0ee9f9e0609aa26cb1eb84f879c5f0e4df8ec1f8b6a0e711eb4e9159489e196a7c9ddf46eeb8fde00e920ec67527c22b2376f96ae449f12502ce14dccee0bfcc
+  checksum: 71110b738fd45a0150a36c9a90ddc978d8d4ca21fabad422eb707f98c10bd5afca52a76c51678e26ed289052994db4c563632ed82a3e090dcc9a06068c711517
   languageName: node
   linkType: hard
 
@@ -4979,10 +4979,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": 0.1.8-beta.27b2ce3
+    "@gooddollar/good-design": 0.1.8-beta.a50290d
     "@gooddollar/goodprotocol": ^2.0.3
     "@gooddollar/web3sdk": ^0.1.25
-    "@gooddollar/web3sdk-v2": 0.2.4-beta.27b2ce3
+    "@gooddollar/web3sdk-v2": 0.2.4-beta.a50290d
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@kimafinance/kima-transaction-widget": ^1.1.42-beta.1
@@ -5160,9 +5160,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:0.2.4-beta.27b2ce3":
-  version: 0.2.4-beta.27b2ce3
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.4-beta.27b2ce3"
+"@gooddollar/web3sdk-v2@npm:0.2.4-beta.a50290d":
+  version: 0.2.4-beta.a50290d
+  resolution: "@gooddollar/web3sdk-v2@npm:0.2.4-beta.a50290d"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5208,7 +5208,7 @@ __metadata:
     "@react-native-async-storage/async-storage": 1.17.10
     react-native: "*"
     react-native-web: "*"
-  checksum: d317e3b32a2b8ec52ef41d4771a69d6a784b38cb1b890aa18e6bc3d8aa1fd2aa060c9f1dcdec745231bec4382e6f68dd1029d6577ffa18a0c81673fa1ef63136
+  checksum: cc2cc83054e2248e0facf8d62f18c89f308032d9ad55bcc409b92a73fa08672e5e87ee1e524dba8b4c65668988ef7d4f892f4c6fb37e556c98e20e71fea79d5a
   languageName: node
   linkType: hard
 
