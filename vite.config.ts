@@ -7,6 +7,7 @@ import { lingui } from '@lingui/vite-plugin'
 import checker from 'vite-plugin-checker'
 import dynamicImports from 'vite-plugin-dynamic-import'
 import dotenv from 'dotenv'
+// import { string } from "rollup-plugin-string";
 
 dotenv.config()
 
@@ -57,6 +58,7 @@ export default defineConfig({
         alias: {
             'react-native': 'react-native-web',
             'react-native-svg': 'react-native-svg-web',
+            'react-native-webview': 'react-native-web-webview',
             jsbi: path.resolve(__dirname, '.', 'node_modules', 'jsbi', 'dist', 'jsbi-cjs.js'), // https://github.com/Uniswap/sdk-core/issues/20#issuecomment-1559863408
         },
         dedupe: ['react', 'ethers', 'react-dom', 'native-base'],
@@ -72,5 +74,6 @@ export default defineConfig({
     },
     optimizeDeps: {
         include: ['@kimafinance/kima-transaction-widget', '@solana/web3.js', '@juggle/resize-observer'], // handle kima require undefined in production build
+        exclude: ['react-native-web-webview'],
     },
 })

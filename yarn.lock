@@ -4894,9 +4894,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.1.7":
+"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.1.7
-  resolution: "@gooddollar/good-design@npm:0.1.7"
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=03bab4&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4923,10 +4923,12 @@ __metadata:
     react-native-svg-uri: ^1.2.3
     react-native-svg-web: ^1.0.9
     react-native-web: 0.17.7
+    react-native-web-webview: ^1.0.2
+    react-native-webview: ^13.2.2
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: ad5ae87986dad9f926b36409cd38e987333eaa50ee1791b874d2a9d82ce2f35411071282249a5ee8e7be09cbdcb11fa364bb4c82dff0046d6a3e9ebe029d5682
+  checksum: 969878a3b702687ea3099293c289f000da8be3828fec9a55c38bc8a1517edb5976c1a70efe96f4c46ccc32a0f0e0f1a46bf06bfbc69f7f91837887559394b256
   languageName: node
   linkType: hard
 
@@ -4977,10 +4979,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.1.7
+    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
     "@gooddollar/goodprotocol": ^2.0.3
     "@gooddollar/web3sdk": ^0.1.25
-    "@gooddollar/web3sdk-v2": ^0.2.3
+    "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2"
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@kimafinance/kima-transaction-widget": ^1.1.42-beta.1
@@ -5158,9 +5160,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.2.3":
+"@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.2.3
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.3"
+  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=11f130&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5207,7 +5209,7 @@ __metadata:
     "@react-native-async-storage/async-storage": 1.17.10
     react-native: "*"
     react-native-web: "*"
-  checksum: 13a6920d38855a6cd3194b12da47efb8d46fc76780d2138a3645e17aecfee395fb297213fb7b29bb3b3825d7ce3b411850c71b23133eb1aeff1783f896cc21ab
+  checksum: 1411b28d8fb8d4da5365258eccba51cc3f522c1374d527ba414402f38866deb2cf59d5f0aba50f155e9cf9ba21c53ca12d86e4728d32faade15a873b9b41b8c1
   languageName: node
   linkType: hard
 
@@ -25514,7 +25516,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"invariant@npm:^2.2.4":
+"invariant@npm:2.2.4, invariant@npm:^2.2.4":
   version: 2.2.4
   resolution: "invariant@npm:2.2.4"
   dependencies:
@@ -34302,7 +34304,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:^6.10.3, qs@npm:^6.11.0, qs@npm:^6.9.4":
+"qs@npm:^6.10.3, qs@npm:^6.11.0, qs@npm:^6.5.1, qs@npm:^6.9.4":
   version: 6.11.2
   resolution: "qs@npm:6.11.2"
   dependencies:
@@ -35008,6 +35010,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-web-webview@npm:1.0.2":
+  version: 1.0.2
+  resolution: "react-native-web-webview@npm:1.0.2"
+  dependencies:
+    qs: ^6.5.1
+  peerDependencies:
+    file-loader: "*"
+    react-native-web: "*"
+  checksum: 577f28367692dd8290f13cdd27f9aadf39f4ab926dfb2952ea823a007430fa39983318f7e6662977378910316c544be1e5129840b165b0761287898677630add
+  languageName: node
+  linkType: hard
+
+"react-native-web-webview@patch:react-native-web-webview@npm%3A1.0.2#./.yarn/patches/react-native-web-webview-npm-1.0.2-2a7da84b81.patch::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 1.0.2
+  resolution: "react-native-web-webview@patch:react-native-web-webview@npm%3A1.0.2#./.yarn/patches/react-native-web-webview-npm-1.0.2-2a7da84b81.patch::version=1.0.2&hash=d6dab4&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  dependencies:
+    qs: ^6.5.1
+  peerDependencies:
+    file-loader: "*"
+    react-native-web: "*"
+  checksum: 03b425b636fdf9ea85248e63adebd4badb6925a04e54c9afe98a3063283e2083766f9c1ec04fe0f3b700eeb21dec6e6a6adf059ab3ee3881a9ff40c4264e2691
+  languageName: node
+  linkType: hard
+
 "react-native-web@npm:0.17.7":
   version: 0.17.7
   resolution: "react-native-web@npm:0.17.7"
@@ -35023,6 +35049,19 @@ __metadata:
     react: ">=17.0.1"
     react-dom: ">=17.0.1"
   checksum: 9a32073d18e12f7d0e77befc0489f07a60e4aea9b7d6da9228387f488956b8f3e04eff02102f70bc427d8ee5047b6f393dc6cb4b3d34501504b9799344054e34
+  languageName: node
+  linkType: hard
+
+"react-native-webview@npm:^13.2.2":
+  version: 13.6.2
+  resolution: "react-native-webview@npm:13.6.2"
+  dependencies:
+    escape-string-regexp: 2.0.0
+    invariant: 2.2.4
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 20cbad5bf47410f8aabab3c12610770204edb26b9ad8690f2f868c6b784a84b05231718bae2ea72a2ac2ebcbc0af89fe05a37b56615c4e8363f9aafadbe64b5a
   languageName: node
   linkType: hard
 
