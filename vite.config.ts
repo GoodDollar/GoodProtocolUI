@@ -7,7 +7,6 @@ import { lingui } from '@lingui/vite-plugin'
 import checker from 'vite-plugin-checker'
 import dynamicImports from 'vite-plugin-dynamic-import'
 import dotenv from 'dotenv'
-// import { string } from "rollup-plugin-string";
 
 dotenv.config()
 
