@@ -372,30 +372,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.0.0, @babel/core@npm:^7.1.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.13.16, @babel/core@npm:^7.14.0, @babel/core@npm:^7.15.8, @babel/core@npm:^7.16.0, @babel/core@npm:^7.21.0, @babel/core@npm:^7.21.3, @babel/core@npm:^7.22.5, @babel/core@npm:^7.7.5, @babel/core@npm:^7.8.4":
-  version: 7.23.0
-  resolution: "@babel/core@npm:7.23.0"
-  dependencies:
-    "@ampproject/remapping": ^2.2.0
-    "@babel/code-frame": ^7.22.13
-    "@babel/generator": ^7.23.0
-    "@babel/helper-compilation-targets": ^7.22.15
-    "@babel/helper-module-transforms": ^7.23.0
-    "@babel/helpers": ^7.23.2
-    "@babel/parser": ^7.23.0
-    "@babel/template": ^7.22.15
-    "@babel/traverse": ^7.23.2
-    "@babel/types": ^7.23.0
-    convert-source-map: ^2.0.0
-    debug: ^4.1.0
-    gensync: ^1.0.0-beta.2
-    json5: ^2.2.3
-    semver: ^6.3.1
-  checksum: cebd9b48dbc970a7548522f207f245c69567e5ea17ebb1a4e4de563823cf20a01177fe8d2fe19b6e1461361f92fa169fd0b29f8ee9d44eeec84842be1feee5f2
-  languageName: node
-  linkType: hard
-
-"@babel/core@npm:^7.18.10":
+"@babel/core@npm:^7.0.0, @babel/core@npm:^7.1.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.13.16, @babel/core@npm:^7.14.0, @babel/core@npm:^7.15.8, @babel/core@npm:^7.16.0, @babel/core@npm:^7.18.10, @babel/core@npm:^7.21.0, @babel/core@npm:^7.21.3, @babel/core@npm:^7.22.5, @babel/core@npm:^7.7.5, @babel/core@npm:^7.8.4":
   version: 7.23.2
   resolution: "@babel/core@npm:7.23.2"
   dependencies:
@@ -671,18 +648,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helpers@npm:^7.12.1":
-  version: 7.23.1
-  resolution: "@babel/helpers@npm:7.23.1"
-  dependencies:
-    "@babel/template": ^7.22.15
-    "@babel/traverse": ^7.23.2
-    "@babel/types": ^7.23.0
-  checksum: acfc345102045c24ea2a4d60e00dcf8220e215af3add4520e2167700661338e6a80bd56baf44bb764af05ec6621101c9afc315dc107e18c61fa6da8acbdbb893
-  languageName: node
-  linkType: hard
-
-"@babel/helpers@npm:^7.23.2":
+"@babel/helpers@npm:^7.12.1, @babel/helpers@npm:^7.23.2":
   version: 7.23.2
   resolution: "@babel/helpers@npm:7.23.2"
   dependencies:
@@ -2072,25 +2038,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/traverse@npm:^7.1.0, @babel/traverse@npm:^7.12.1, @babel/traverse@npm:^7.14.0, @babel/traverse@npm:^7.21.2, @babel/traverse@npm:^7.22.5, @babel/traverse@npm:^7.4.5, @babel/traverse@npm:^7.7.0":
-  version: 7.23.0
-  resolution: "@babel/traverse@npm:7.23.0"
-  dependencies:
-    "@babel/code-frame": ^7.22.13
-    "@babel/generator": ^7.23.0
-    "@babel/helper-environment-visitor": ^7.22.20
-    "@babel/helper-function-name": ^7.23.0
-    "@babel/helper-hoist-variables": ^7.22.5
-    "@babel/helper-split-export-declaration": ^7.22.6
-    "@babel/parser": ^7.23.0
-    "@babel/types": ^7.23.0
-    debug: ^4.1.0
-    globals: ^11.1.0
-  checksum: 0b17fae53269e1af2cd3edba00892bc2975ad5df9eea7b84815dab07dfec2928c451066d51bc65b4be61d8499e77db7e547ce69ef2a7b0eca3f96269cb43a0b0
-  languageName: node
-  linkType: hard
-
-"@babel/traverse@npm:^7.23.2":
+"@babel/traverse@npm:^7.1.0, @babel/traverse@npm:^7.12.1, @babel/traverse@npm:^7.14.0, @babel/traverse@npm:^7.21.2, @babel/traverse@npm:^7.22.5, @babel/traverse@npm:^7.23.2, @babel/traverse@npm:^7.4.5, @babel/traverse@npm:^7.7.0":
   version: 7.23.2
   resolution: "@babel/traverse@npm:7.23.2"
   dependencies:
@@ -12822,21 +12770,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniswap/sdk-core@npm:^4, @uniswap/sdk-core@npm:^4.0.0, @uniswap/sdk-core@npm:^4.0.2, @uniswap/sdk-core@npm:^4.0.6":
-  version: 4.0.6
-  resolution: "@uniswap/sdk-core@npm:4.0.6"
-  dependencies:
-    "@ethersproject/address": ^5.0.2
-    big.js: ^5.2.2
-    decimal.js-light: ^2.5.0
-    jsbi: ^3.1.4
-    tiny-invariant: ^1.1.0
-    toformat: ^2.0.0
-  checksum: 0dd876d117c2d359a09047fafb5e80e8312b4db2cb0078a968d0ebbdb0a294558e8a0ea13678b113a9c2026f7c394193eb56650a250fd0c52ec51680c8aed3bc
-  languageName: node
-  linkType: hard
-
-"@uniswap/sdk-core@npm:^4.0.9":
+"@uniswap/sdk-core@npm:^4, @uniswap/sdk-core@npm:^4.0.0, @uniswap/sdk-core@npm:^4.0.2, @uniswap/sdk-core@npm:^4.0.6, @uniswap/sdk-core@npm:^4.0.9":
   version: 4.0.9
   resolution: "@uniswap/sdk-core@npm:4.0.9"
   dependencies:

@@ -48,7 +48,7 @@ export default defineConfig({
             exclude: ['constants'],
             globals: {
                 Buffer: true,
-                // global: true,
+                global: true,
                 process: true,
             },
         }),
@@ -70,9 +70,9 @@ export default defineConfig({
         },
         dedupe: ['react', 'ethers', 'react-dom', 'native-base'],
     },
-    define: {
-        'process.env': process.env,
-    },
+    // define: {
+    //     'process.env': process.env,
+    // },
     build: {
         commonjsOptions: {
             transformMixedEsModules: true,
@@ -80,6 +80,7 @@ export default defineConfig({
                 /kima/,
                 /solana/,
                 /resize-observer/,
+                /readable-stream/,
                 /node_modules/, // <-- or full node-modules
                 // /bn/, <-- or specifying all mix modules separately?
                 // /bignumber/,
@@ -98,6 +99,11 @@ export default defineConfig({
                 '.html': 'text',
             },
         },
-        include: ['@kimafinance/kima-transaction-widget', '@solana/web3.js', '@juggle/resize-observer'], // handle kima require undefined in production build
+        include: [
+            '@kimafinance/kima-transaction-widget',
+            '@solana/web3.js',
+            '@juggle/resize-observer',
+            'readable-stream',
+        ], // handle kima require undefined in production build
     },
 })
