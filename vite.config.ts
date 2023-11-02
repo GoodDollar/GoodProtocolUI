@@ -43,7 +43,15 @@ export default defineConfig({
         //     // e.g. use TypeScript check
         //     typescript: true,
         // }),
-        nodePolyfills({ protocolImports: true, exclude: ['constants'] }),
+        nodePolyfills({
+            protocolImports: true,
+            exclude: ['constants'],
+            globals: {
+                Buffer: true,
+                // global: true,
+                process: true,
+            },
+        }),
         react({
             babel: {
                 plugins: ['macros'],
@@ -68,7 +76,20 @@ export default defineConfig({
     build: {
         commonjsOptions: {
             transformMixedEsModules: true,
-            include: [/kima/, /solana/, /resize-observer/], // handle kima require undefined in production build, observer global inherits
+            include: [
+                /kima/,
+                /solana/,
+                /resize-observer/,
+                /node_modules/, // <-- or full node-modules
+                // /bn/, <-- or specifying all mix modules separately?
+                // /bignumber/,
+                // /sha3/,
+                // /hash/,
+                // /bech3/,
+                // /jsbi/,
+                // /toFormat/,
+                // /aes/,
+            ], // handle kima require undefined in production build, observer global inherits
         },
     },
     optimizeDeps: {
