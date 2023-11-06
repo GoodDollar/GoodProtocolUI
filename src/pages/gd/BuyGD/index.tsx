@@ -35,9 +35,11 @@ const BuyGd = memo(() => {
                 <OnramperController />
             </Box>
             <Box w="100%" mb={6}>
-                <SlideDownTab tabTitle="G$ Calculator">
-                    <Converter gdPrice={G$Price} />
-                </SlideDownTab>
+                {G$Price && (
+                  <SlideDownTab tabTitle="G$ Calculator">
+                      <Converter gdPrice={G$Price} />
+                  </SlideDownTab>
+                )}  
             </Box>
             <Box w="100%" mb={6}>
                 <SlideDownTab tabTitle="FAQ">
