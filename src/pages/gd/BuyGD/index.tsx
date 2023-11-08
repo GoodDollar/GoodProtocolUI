@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback } from 'react'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { CentreBox, Converter, GdOnramperWidget, SlideDownTab, Title } from '@gooddollar/good-design'
@@ -6,8 +6,18 @@ import { Box, Text, useBreakpointValue } from 'native-base'
 import { g$Price } from '@gooddollar/web3sdk'
 
 import usePromise from 'hooks/usePromise'
+import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 
 const BuyGd = memo(() => {
+    const sendData = useSendAnalyticsData()
+
+    const handleEvents = useCallback(
+        (event: string) => {
+            sendData({ event: 'buy', action: event })
+        },
+        [sendData]
+    )
+
     const [G$Price] = usePromise(
         () =>
             g$Price()
@@ -112,7 +122,7 @@ const BuyGd = memo(() => {
                 </Text>
                 {/* todo: width on mobile should be more responsive */}
                 <Box style={onrampWrapper}>
-                    <GdOnramperWidget isTesting={true} />
+                    <GdOnramperWidget isTesting={true} onEvents={handleEvents} />
                 </Box>
             </CentreBox>
             <CentreBox w="100%" justifyContent="flex-start" style={rightContainer}>
