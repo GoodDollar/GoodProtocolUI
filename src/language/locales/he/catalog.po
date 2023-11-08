@@ -2684,7 +2684,7 @@ msgstr "יתרה"
 msgid "Blocked address"
 msgstr "כתובת חסומה"
 
-#: src/pages/gd/BuyGD/index.tsx:85
+#: src/pages/gd/BuyGD/index.tsx:95
 msgid "Buy G$"
 msgstr ""
 
@@ -2692,7 +2692,7 @@ msgstr ""
 msgid "Change"
 msgstr "שינוי"
 
-#: src/pages/gd/BuyGD/index.tsx:109
+#: src/pages/gd/BuyGD/index.tsx:119
 msgid "Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$."
 msgstr ""
 
@@ -3143,7 +3143,7 @@ msgstr "החל מ 1.0, מכפיל שלך יגדל ל 2.0 לאחר חודש אח�
 msgid "Success!"
 msgstr "הַצלָחָה!"
 
-#: src/pages/gd/BuyGD/index.tsx:97
+#: src/pages/gd/BuyGD/index.tsx:107
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
@@ -3207,7 +3207,7 @@ msgstr ""
 msgid "The total of your deposits which accumulates the rewards."
 msgstr ""
 
-#: src/pages/gd/BuyGD/index.tsx:142
+#: src/pages/gd/BuyGD/index.tsx:152
 msgid "The widget in this page is a third-party service provided by Onramper. Please note that the verification of your transaction by Onramper may take up to 24 hours to complete. Following verification, it may take up to 3 business days for GoodDollars to be available in your wallet. In the event that the process takes longer, after receiving a confirmation email from your payment provider, please return to this screen to check the status of your transaction."
 msgstr ""
 
@@ -3363,7 +3363,7 @@ msgstr ""
 msgid "What's an exit contribution?"
 msgstr "מהי תרומת יציאה?"
 
-#: src/pages/gd/BuyGD/index.tsx:138
+#: src/pages/gd/BuyGD/index.tsx:148
 msgid "Why haven't my funds arrived yet?"
 msgstr ""
 
