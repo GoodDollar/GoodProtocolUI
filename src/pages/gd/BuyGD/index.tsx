@@ -18,7 +18,7 @@ const BuyGd = memo(() => {
 
     const mainView = useBreakpointValue({
         base: {
-            gap: '40px',
+            gap: 40,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
