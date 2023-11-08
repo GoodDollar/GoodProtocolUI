@@ -70,9 +70,6 @@ export default defineConfig({
         },
         dedupe: ['react', 'ethers', 'react-dom', 'native-base'],
     },
-    // define: {
-    //     'process.env': process.env,
-    // },
     build: {
         commonjsOptions: {
             transformMixedEsModules: true,

@@ -206,10 +206,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.18.9",
-    "@gooddollar/good-design": "0.1.8-beta.4e0fc5d",
+    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design",
     "@gooddollar/goodprotocol": "^2.0.3",
     "@gooddollar/web3sdk": "^0.1.25",
-    "@gooddollar/web3sdk-v2": "0.2.4-beta.4e0fc5d",
+    "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2",
     "@headlessui/react": "1.5.0",
     "@kimafinance/kima-transaction-widget": "^1.1.42-beta.1",
     "@lingui/format-json": "^4.0.0",
