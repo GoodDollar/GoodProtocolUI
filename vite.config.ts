@@ -72,28 +72,13 @@ export default defineConfig({
     },
     build: {
         commonjsOptions: {
-            transformMixedEsModules: true,
-            include: [
-                /kima/,
-                /solana/,
-                /resize-observer/,
-                /readable-stream/,
-                /node_modules/, // <-- or full node-modules
-                // /bn/, <-- or specifying all mix modules separately?
-                // /bignumber/,
-                // /sha3/,
-                // /hash/,
-                // /bech3/,
-                // /jsbi/,
-                // /toFormat/,
-                // /aes/,
-            ], // handle kima require undefined in production build, observer global inherits
+            transformMixedEsModules: true, //handle deps that use "require" and "module.exports"
         },
     },
     optimizeDeps: {
         esbuildOptions: {
             loader: {
-                '.html': 'text',
+                '.html': 'text', // allow import or require of html files
             },
         },
         include: [
