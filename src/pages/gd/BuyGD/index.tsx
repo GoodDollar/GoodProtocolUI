@@ -12,7 +12,7 @@ const BuyGd = memo(() => {
     const sendData = useSendAnalyticsData()
 
     const handleEvents = useCallback(
-        (event: string, error?: string) => {
+        (event: string, data?: any, error?: string) => {
             sendData({ event: 'buy', action: event, ...(error && { error: error }) })
         },
         [sendData]
