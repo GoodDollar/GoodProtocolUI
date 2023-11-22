@@ -2671,9 +2671,17 @@ msgstr "餘額"
 msgid "Blocked address"
 msgstr "被封鎖的地址"
 
+#: src/pages/gd/BuyGD/index.tsx:99
+msgid "Buy G$"
+msgstr ""
+
 #: src/components/AccountDetails/index.tsx:268
 msgid "Change"
 msgstr "改變"
+
+#: src/pages/gd/BuyGD/index.tsx:123
+msgid "Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$."
+msgstr ""
 
 #: src/components/ClaimRewards/index.tsx:80
 msgid "Claim All"
@@ -2746,7 +2754,7 @@ msgstr "清除所有"
 msgid "Close"
 msgstr "關閉"
 
-#: src/pages/gd/Claim/index.tsx:253
+#: src/pages/gd/Claim/index.tsx:248
 msgid "Collect G$"
 msgstr ""
 
@@ -2816,7 +2824,7 @@ msgstr "存款概述"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:165
+#: src/components/SideBar.tsx:168
 msgid "Docs"
 msgstr "文档"
 
@@ -2828,7 +2836,7 @@ msgstr "加載失敗"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:158
+#: src/components/SideBar.tsx:161
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2861,7 +2869,7 @@ msgstr "去投資組合"
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:172
+#: src/components/SideBar.tsx:175
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2877,7 +2885,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:264
+#: src/pages/gd/Claim/index.tsx:259
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -3122,6 +3130,10 @@ msgstr "從1.0開始，您的乘數將增加到2.0，在一個月的綁定到信
 msgid "Success!"
 msgstr "成功！"
 
+#: src/pages/gd/BuyGD/index.tsx:111
+msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
+msgstr ""
+
 #: src/pages/gd/Swap/SwapCore/index.tsx:424
 msgid "Swap"
 msgstr "代幣兌換"
@@ -3180,6 +3192,10 @@ msgstr ""
 
 #: src/components/Savings/SavingsCard/index.tsx:68
 msgid "The total of your deposits which accumulates the rewards."
+msgstr ""
+
+#: src/pages/gd/BuyGD/index.tsx:156
+msgid "The widget in this page is a third-party service provided by Onramper. Please note that the verification of your transaction by Onramper may take up to 24 hours to complete. Following verification, it may take up to 3 business days for GoodDollars to be available in your wallet. In the event that the process takes longer, after receiving a confirmation email from your payment provider, please return to this screen to check the status of your transaction."
 msgstr ""
 
 #: src/pages/gd/Stake/index.tsx:86
@@ -3317,11 +3333,11 @@ msgstr "等待確認中"
 msgid "Waiting For Confirmation"
 msgstr "等待確認中"
 
-#: src/components/SideBar.tsx:151
+#: src/components/SideBar.tsx:154
 msgid "Wallet"
 msgstr "錢包"
 
-#: src/components/SideBar.tsx:241
+#: src/components/SideBar.tsx:249
 msgid "Wallet balance"
 msgstr "錢包平衡"
 
@@ -3333,6 +3349,10 @@ msgstr ""
 #: src/pages/gd/Swap/SwapDescriptions/index.tsx:29
 msgid "What's an exit contribution?"
 msgstr "退出貢獻是什麼？"
+
+#: src/pages/gd/BuyGD/index.tsx:152
+msgid "Why haven't my funds arrived yet?"
+msgstr ""
 
 #: src/components/PortfolioTableRow/index.tsx:67
 #: src/components/Withdraw/index.tsx:140
