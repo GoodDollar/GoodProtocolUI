@@ -5047,9 +5047,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.1.17":
-  version: 0.1.17
-  resolution: "@gooddollar/good-design@npm:0.1.17"
+"@gooddollar/good-design@npm:^0.1.18":
+  version: 0.1.18
+  resolution: "@gooddollar/good-design@npm:0.1.18"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -5081,7 +5081,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: 4a8e269cbcdf5d4f474f95a460fb5d9001d6d3382cfa7496838c53d3ca566350510fcf91938500908737790223f295b445a9ac826a9b51b73d4352841cdd4400
+  checksum: 4d515e0def2052a3514dd0cc5f7701724835959beab2fdfb63eda41d9f7166895157c3913eca10de2980fe332b5bd74ae28894324c9d7451c71cf7867a650947
   languageName: node
   linkType: hard
 
@@ -5154,7 +5154,7 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.1.17
+    "@gooddollar/good-design": ^0.1.18
     "@gooddollar/goodprotocol": ^2.0.22
     "@gooddollar/web3sdk": ^0.1.25
     "@gooddollar/web3sdk-v2": ^0.2.8
@@ -5240,6 +5240,7 @@ __metadata:
     customize-cra: ^1.0.0
     date-fns: ^2.29.3
     decimal.js: ^10.3.1
+    dotenv: ^16.3.1
     eslint: 7.32.0
     eslint-config-prettier: ^8.5.0
     eslint-config-react-app: ^6.0.0
@@ -21411,7 +21412,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.0.3":
+"dotenv@npm:^16.0.3, dotenv@npm:^16.3.1":
   version: 16.3.1
   resolution: "dotenv@npm:16.3.1"
   checksum: 15d75e7279018f4bafd0ee9706593dd14455ddb71b3bcba9c52574460b7ccaf67d5cf8b2c08a5af1a9da6db36c956a04a1192b101ee102a3e0cf8817bbcf3dfd
