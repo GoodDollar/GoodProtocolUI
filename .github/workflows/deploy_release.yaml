@@ -3,9 +3,9 @@ name: Deploy Release New
 on:
     push:
         branches:
-            - master
-            - production
-            - staging
+            - master2 # temp before full removal of this flow
+            # - production
+            # - staging
     workflow_dispatch:
 
 jobs:

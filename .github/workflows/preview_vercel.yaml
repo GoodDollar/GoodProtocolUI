@@ -4,7 +4,9 @@ on:
     push:
         branches:
             - master
+            - staging
     pull_request:
+        types: [opened, synchronize, edited, ready_for_review]
         branches:
             - master
     workflow_dispatch:
@@ -24,8 +26,14 @@ jobs:
                   node-version: 18
                   cache: yarn
             - run: yarn install --immutable
-            # build the local mono-repo dependencies
-            - run: yarn vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+            - name: Set Vercel environment
+              run: |
+                  if [ "${{ github.ref }}" = "refs/heads/staging" ]; then
+                    echo "VERCEL_ENV=preview" >> $GITHUB_ENV
+                  else
+                    echo "VERCEL_ENV=development" >> $GITHUB_ENV
+                  fi
+            - run: yarn vercel pull --yes --environment=${{ env.VERCEL_ENV }} --token=${{ secrets.VERCEL_TOKEN }}
             - run: yarn vercel build --token=${{ secrets.VERCEL_TOKEN }}
             - id: deploy
               run: echo "::set-output name=url::$(yarn vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})"
