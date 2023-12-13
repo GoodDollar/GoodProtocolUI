@@ -5,7 +5,7 @@ import { ExternalProvider } from '@ethersproject/providers'
 import { Goerli, Mainnet } from '@usedapp/core'
 import { ChainId } from '@sushiswap/sdk'
 import { DAO_NETWORK, GdSdkContext, useEnvWeb3 } from '@gooddollar/web3sdk'
-import { Celo, Fuse, Web3Provider, AsyncStorage } from '@gooddollar/web3sdk-v2'
+import { AsyncStorage, Celo, Fuse, Web3Provider } from '@gooddollar/web3sdk-v2'
 
 import useActiveWeb3React from './useActiveWeb3React'
 import { getEnv } from 'utils/env'
@@ -24,13 +24,13 @@ type NetworkSettings = {
 export function useNetwork(): NetworkSettings {
     const [currentNetwork, rpcs] = useMemo(
         () => [
-            process.env.REACT_APP_NETWORK || 'fuse',
+            import.meta.env.REACT_APP_NETWORK || 'fuse',
             {
                 MAINNET_RPC:
-                    process.env.REACT_APP_MAINNET_RPC ||
+                    import.meta.env.REACT_APP_MAINNET_RPC ||
                     (ethers.getDefaultProvider('mainnet') as any).providerConfigs[0].provider.connection.url,
-                FUSE_RPC: process.env.REACT_APP_FUSE_RPC || 'https://rpc.fuse.io',
-                CELO_RPC: process.env.REACT_APP_CELO_RPC || 'https://forno.celo.org',
+                FUSE_RPC: import.meta.env.REACT_APP_FUSE_RPC || 'https://rpc.fuse.io',
+                CELO_RPC: import.meta.env.REACT_APP_CELO_RPC || 'https://forno.celo.org',
                 KOVAN_RPC: undefined,
                 ROPSTEN_RPC: undefined,
             },
@@ -57,9 +57,9 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
         [eipProvider]
     )
 
-    if (webprovider && chainId === (42220 as ChainId)) {
+    if (webprovider) {
         webprovider.send = async (method: string, params: any) => {
-            if (method === 'eth_sendTransaction') {
+            if (chainId === (42220 as ChainId) && method === 'eth_sendTransaction') {
                 params[0].gasPrice = BigNumber.from(5e9).toHexString()
             }
             return webprovider.jsonRpcFetchFunc(method, params)
@@ -88,7 +88,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                     readOnlyUrls: {
                         1: 'https://rpc.ankr.com/eth',
                         122: 'https://rpc.fuse.io',
-                        42220: 'https://forno.celo.org',
+                        42220: import.meta.env.REACT_APP_CELO_RPC || 'https://forno.celo.org',
                     },
                 }}
             >

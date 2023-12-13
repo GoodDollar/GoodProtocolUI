@@ -1,8 +1,17 @@
 import React, { useState, useMemo } from 'react'
 import { Text, Box, View, useBreakpointValue, HStack, useColorModeValue, ScrollView } from 'native-base'
-import { AsyncStorage, useClaim, useG$Balance, useG$Tokens, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
+import {
+    AsyncStorage,
+    getDevice,
+    useClaim,
+    useG$Balance,
+    useG$Tokens,
+    SupportedV2Networks,
+} from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
+import { useLocation } from 'react-router-dom'
+import { SlideDownTab } from '@gooddollar/good-design'
 
 import WalletBalance from 'components/WalletBalance'
 import { ReactComponent as WalletBalanceIcon } from '../assets/images/walletBalanceIcon.svg'
@@ -16,6 +25,7 @@ import LanguageSwitch from './LanguageSwitch'
 import { NavLink } from './Link'
 import usePromise from '../hooks/usePromise'
 import { ExternalLink } from 'theme'
+import { SubMenuItems } from './StyledMenu/SubMenu'
 
 const SocialsLink: React.FC<{ network: string; logo: string; url: string }> = ({ network, logo, url }) => (
     <a href={url} target="_blank" className="flex items-center space-x-2" rel="noreferrer">
@@ -41,10 +51,20 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const [G$, GOOD, GDX] = useG$Tokens()
     const [imported, setImported] = useState<boolean>(false)
     const { isWhitelisted } = useClaim()
+    const { pathname } = useLocation()
+    const isBuyGd = pathname.startsWith('/buy')
 
     const bgContainer = useColorModeValue('goodWhite.100', '#151A30')
     const bgWalletBalance = useColorModeValue('white', '#1a1f38')
     const textColor = useColorModeValue('goodGrey.700', 'goodGrey.300')
+
+    const { browser, os } = getDevice()
+    const isiOS = os.name === 'iOS'
+    const isChrome = browser.name === 'Chrome'
+
+    const viewPort = isiOS ? '98vh' : '100vh'
+    const browserViewPort = isChrome && isiOS ? '160px' : '130px'
+
     const containerStyles = useBreakpointValue({
         base: {
             width: '90%',
@@ -53,7 +73,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             transition: 'all 1s ease',
             display: 'grid',
             paddingBottom: 0,
-            height: '590px',
+            height: `calc(${viewPort} - ${browserViewPort})`,
             gap: '1px',
             // paddingLeft: '18px',
         },
@@ -133,32 +153,82 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const externalLinks = useMemo(
         () => [
             {
-                label: i18n._(t`Wallet`),
-                url: 'https://wallet.gooddollar.org',
-                dataAttr: 'wallet',
-                withIcon: true,
-                show: true,
+                subMenuTitle: 'Regular',
+                items: [
+                    {
+                        label: i18n._(t`Donate`),
+                        url: 'https://gooddollar.notion.site/Donate-to-a-G-Cause-e7d31fb67bb8494abb3a7989ebe6f181',
+                        dataAttr: 'donate',
+                        withIcon: true,
+                        show: true,
+                    },
+                    {
+                        label: i18n._(t`Save G$`),
+                        url: 'https://app.halofi.me/#/challenges?tokensymbol=gd',
+                        dataAttr: 'save',
+                        withIcon: true,
+                        show: true,
+                    },
+                    {
+                        label: i18n._(t`Dapps`),
+                        url: 'https://example.com',
+                        dataAttr: 'squid',
+                        withIcon: true,
+                        show: false, // will be added at a later stage
+                    },
+                ],
             },
             {
-                label: i18n._(t`Fuse Bridge`),
-                url: 'https://app.voltage.finance/index.html#/bridge',
-                dataAttr: 'bridge',
-                withIcon: true,
-                show: true,
+                subMenuTitle: 'Bridges',
+                items: [
+                    {
+                        label: i18n._(t`Squid Router`),
+                        url: 'https://v2.app.squidrouter.com/',
+                        dataAttr: 'squid',
+                        withIcon: true,
+                        show: true,
+                    },
+                    {
+                        label: i18n._(t`Fuse Bridge`),
+                        url: 'https://app.voltage.finance/index.html#/bridge',
+                        dataAttr: 'bridge',
+                        withIcon: true,
+                        show: true,
+                    },
+                ],
             },
             {
-                label: i18n._(t`Docs`),
-                url: 'https://docs.gooddollar.org',
-                dataAttr: 'docs',
-                withIcon: true,
-                show: true,
-            },
-            {
-                label: i18n._(t`Good Airdrop`),
-                url: 'https://airdrop.gooddollar.org',
-                dataAttr: 'airdrop',
-                withIcon: true,
-                show: true,
+                subMenuTitle: 'More',
+                items: [
+                    {
+                        label: i18n._(t`GoodWallet`),
+                        url: 'https://wallet.gooddollar.org',
+                        dataAttr: 'wallet',
+                        withIcon: true,
+                        show: true,
+                    },
+                    {
+                        label: i18n._(t`Dashboard`),
+                        url: 'https://dashboard.gooddollar.org/',
+                        dataAttr: 'dashboard',
+                        withIcon: true,
+                        show: true,
+                    },
+                    {
+                        label: i18n._(t`Docs`),
+                        url: 'https://docs.gooddollar.org',
+                        dataAttr: 'docs',
+                        withIcon: true,
+                        show: true,
+                    },
+                    {
+                        label: i18n._(t`Good Airdrop`),
+                        url: 'https://airdrop.gooddollar.org',
+                        dataAttr: 'airdrop',
+                        withIcon: true,
+                        show: true,
+                    },
+                ],
             },
         ],
         [i18n]
@@ -167,9 +237,9 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const internalLinks = useMemo(
         () => [
             {
-                route: '/goodid',
-                text: 'GoodID',
-                show: isWhitelisted,
+                route: '/buy',
+                text: 'Buy G$',
+                show: isBuyGd, // todo: add post-hog feature flags for pages
             },
             {
                 route: '/claim',
@@ -192,22 +262,23 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 show: true,
             },
             {
+                route: '/goodid',
+                text: 'GoodID',
+                show: isWhitelisted,
+            },
+
+            {
                 route: '/bridge',
                 text: 'Bridge',
-                show: process.env.REACT_APP_CELO_PHASE_3,
+                show: false,
             },
             {
                 route: '/microbridge',
                 text: 'Micro Bridge',
-                show: process.env.REACT_APP_CELO_PHASE_3,
-            },
-            {
-                route: '/dashboard',
-                text: 'Dashboard',
-                show: true,
+                show: false,
             },
         ],
-        [isWhitelisted]
+        [isWhitelisted, pathname]
     )
 
     return (
@@ -245,11 +316,29 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                             </NavLink>
                         ))}
 
-                    {externalLinks
-                        .filter((external) => external.show)
-                        .map(({ label, url, dataAttr, withIcon }) => (
-                            <ExternalLink key={label} label={label} url={url} dataAttr={dataAttr} withIcon={withIcon} />
-                        ))}
+                    {externalLinks.map((subMenu) =>
+                        subMenu.subMenuTitle === 'Regular' ? (
+                            <SubMenuItems items={subMenu.items} />
+                        ) : (
+                            <SlideDownTab
+                                key={subMenu.subMenuTitle}
+                                tabTitle={subMenu.subMenuTitle}
+                                viewInteraction={{ hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 } }}
+                                styles={{
+                                    button: {
+                                        borderRadius: 12,
+                                    },
+                                    content: { alignItems: 'flex-start', paddingLeft: 4 },
+                                }}
+                                arrowSmall
+                            >
+                                <SubMenuItems
+                                    items={subMenu.items}
+                                    styles={{ alignItems: 'flex-start', paddingLeft: 4 }}
+                                />
+                            </SlideDownTab>
+                        )
+                    )}
                 </ScrollView>
 
                 <div className="flex flex-col justify-center gap-3 mt-2.5">

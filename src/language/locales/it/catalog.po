@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/AppBar.tsx:204
+#: src/components/AppBar.tsx:250
 #: src/components/Savings/SavingsCard/index.tsx:48
 msgid ""
 msgstr ""
@@ -2682,9 +2682,17 @@ msgstr "Saldo"
 msgid "Blocked address"
 msgstr "Indirizzo bloccato"
 
+#: src/pages/gd/BuyGD/index.tsx:100
+msgid "Buy G$"
+msgstr ""
+
 #: src/components/AccountDetails/index.tsx:268
 msgid "Change"
 msgstr "Modificare"
+
+#: src/pages/gd/BuyGD/index.tsx:124
+msgid "Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$."
+msgstr ""
 
 #: src/components/ClaimRewards/index.tsx:80
 msgid "Claim All"
@@ -2757,7 +2765,7 @@ msgstr "Cancella tutto"
 msgid "Close"
 msgstr "Chiudere"
 
-#: src/pages/gd/Claim/index.tsx:255
+#: src/pages/gd/Claim/index.tsx:267
 msgid "Collect G$"
 msgstr ""
 
@@ -2784,7 +2792,7 @@ msgstr "Congratulazioni!"
 msgid "Connect a wallet to see your portfolio"
 msgstr ""
 
-#: src/components/BlockNativeOnboard/index.tsx:35
+#: src/components/BlockNativeOnboard/index.tsx:34
 msgid "Connect to a wallet"
 msgstr "Collega wallet"
 
@@ -2808,6 +2816,14 @@ msgstr "Copia indirizzo"
 msgid "Current Rate"
 msgstr "Tasso attuale"
 
+#: src/components/SideBar.tsx:173
+msgid "Dapps"
+msgstr ""
+
+#: src/components/SideBar.tsx:211
+msgid "Dashboard"
+msgstr ""
+
 #: src/components/Savings/SavingsCard/index.tsx:67
 #: src/pages/gd/Stake/StakeDeposit/index.tsx:371
 msgid "DEPOSIT"
@@ -2827,9 +2843,13 @@ msgstr "Panoramica del deposito"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:150
+#: src/components/SideBar.tsx:218
 msgid "Docs"
 msgstr "Documenti"
+
+#: src/components/SideBar.tsx:159
+msgid "Donate"
+msgstr ""
 
 #: src/components/Gas/index.tsx:12
 msgid "failed to load"
@@ -2839,7 +2859,7 @@ msgstr "impossibile caricare"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:143
+#: src/components/SideBar.tsx:192
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2872,7 +2892,7 @@ msgstr "Vai al portfolio."
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:157
+#: src/components/SideBar.tsx:225
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2888,13 +2908,17 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:266
+#: src/pages/gd/Claim/index.tsx:278
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
 #: src/pages/gd/Stake/index.tsx:463
 #: src/pages/gd/Stake/index.tsx:467
 msgid "GoodStakes"
+msgstr ""
+
+#: src/components/SideBar.tsx:204
+msgid "GoodWallet"
 msgstr ""
 
 #: src/pages/gd/Portfolio/index.tsx:333
@@ -3009,7 +3033,7 @@ msgstr "sul"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Oops! Si è verificato un Errore imprevisto. Aggiorna la pagina o visita da un altro browser o dispositivo"
 
-#: src/components/AppBar.tsx:226
+#: src/components/AppBar.tsx:272
 msgid "Open main menu"
 msgstr "Apri menù principale"
 
@@ -3077,6 +3101,10 @@ msgstr "Percorso"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "Il routing attraverso questi token è risultato nel prezzo migliore per la tua operazione."
 
+#: src/components/SideBar.tsx:166
+msgid "Save G$"
+msgstr ""
+
 #: src/components/Savings/SavingsCard/SavingsCardRow/index.tsx:36
 #: src/pages/gd/Stake/Savings/index.tsx:151
 msgid "Savings"
@@ -3098,6 +3126,10 @@ msgstr "Tolleranza slippage"
 
 #: src/pages/gd/Stake/index.tsx:77
 msgid "Social APY"
+msgstr ""
+
+#: src/components/SideBar.tsx:185
+msgid "Squid Router"
 msgstr ""
 
 #: src/pages/gd/Stake/index.tsx:215
@@ -3132,6 +3164,10 @@ msgstr "A partire da 1,0, il tuo moltiplicatore aumenterà fino a 2.0 dopo un me
 #: src/components/WithdrawRewards/index.tsx:123
 msgid "Success!"
 msgstr "Successo!"
+
+#: src/pages/gd/BuyGD/index.tsx:112
+msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
+msgstr ""
 
 #: src/pages/gd/Swap/SwapCore/index.tsx:424
 msgid "Swap"
@@ -3191,6 +3227,10 @@ msgstr ""
 
 #: src/components/Savings/SavingsCard/index.tsx:68
 msgid "The total of your deposits which accumulates the rewards."
+msgstr ""
+
+#: src/pages/gd/BuyGD/index.tsx:167
+msgid "The widget in this page is a third-party service provided by Onramper. Please note that the verification of your transaction by Onramper may take up to 24 hours to complete. Following verification, it may take up to 3 business days for GoodDollars to be available in your wallet. In the event that the process takes longer, after receiving a confirmation email from your payment provider, please return to this screen to check the status of your transaction."
 msgstr ""
 
 #: src/pages/gd/Stake/index.tsx:86
@@ -3328,11 +3368,11 @@ msgstr "Aspettando la conferma"
 msgid "Waiting For Confirmation"
 msgstr "Aspettando la conferma"
 
-#: src/components/SideBar.tsx:136
-msgid "Wallet"
-msgstr ""
+#: src/components/SideBar.tsx:154
+#~ msgid "Wallet"
+#~ msgstr ""
 
-#: src/components/SideBar.tsx:226
+#: src/components/SideBar.tsx:297
 msgid "Wallet balance"
 msgstr "Bilancia del portafoglio."
 
@@ -3344,6 +3384,10 @@ msgstr ""
 #: src/pages/gd/Swap/SwapDescriptions/index.tsx:29
 msgid "What's an exit contribution?"
 msgstr "Qual è un contributo di uscita?"
+
+#: src/pages/gd/BuyGD/index.tsx:163
+msgid "Why haven't my funds arrived yet?"
+msgstr ""
 
 #: src/components/PortfolioTableRow/index.tsx:67
 #: src/components/Withdraw/index.tsx:140
