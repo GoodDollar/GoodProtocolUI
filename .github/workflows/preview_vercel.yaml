@@ -6,7 +6,7 @@ on:
             - master
             - staging
     pull_request:
-        types: [opened, synchronize]
+        types: [opened, synchronize, edited, ready_for_review]
         branches:
             - master
     workflow_dispatch:
