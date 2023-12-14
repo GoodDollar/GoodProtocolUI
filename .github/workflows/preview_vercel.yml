@@ -43,8 +43,6 @@ jobs:
               run: |
                   npm version minor -m "chore: release qa version %s [skip build]"
                   git push https://${{ secrets.GIT_AUTH }}@github.com/GoodDollar/GoodProtocolUI master:${{ github.event.inputs.targetbranch }} --force --follow-tags
-                  git checkout master
-                  git merge staging
                   git push https://${{ secrets.GIT_AUTH }}@github.com/GoodDollar/GoodProtocolUI master --follow-tags
     preview:
         runs-on: ubuntu-latest
