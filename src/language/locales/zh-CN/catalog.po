@@ -19,6 +19,52 @@ msgid ""
 msgstr ""
 
 #. js-lingui-explicit-id
+#: src/components/Faq.tsx:12
+msgid "The Buy G$ tool allows you to use your local currency to purchase GoodDollars. You can buy using a variety of methods which vary by your country and jurisdiction. The widget in this page is a third-party service provided by Onramper, which works with a variety of service providers that facilitate purchasing through other channels (such as banks, mobile money providers and credit cards). As such GoodDollar does not have access to any of the information you share while using this tool and cannot offer support with your transaction."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/Faq.tsx:19
+msgid ""
+"1. In the widget (to the left if you’re on a desktop and above if you’re on a mobile phone), decide the value you’d like to buy and click the button “Buy CUSD.” A Onramp partner will be suggested to you according to your location.\n"
+"\n"
+"IT IS IMPORTANT TO KEEP THE GOODDAPP WINDOW OPEN FOR THIS ENTIRE PROCESS. Do not close the GoodDapp window until after Step 4 (below).\n"
+"                \n"
+"                2.Start and complete the KYC process by following the steps provided by the Onramp partner. You may have to take a picture of your national ID and a selfie. Once you're verified, you'll receive e-mail confirmation from the Onramp partner and be asked to complete the purchase.\n"
+"                \n"
+"                3.Complete your payment through the payment provider.\n"
+"                Once you have confirmation from the payment provider that your funds were successfully purchased, return to the GoodDapp window to trigger the Swap."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/Faq.tsx:33
+msgid ""
+"Verification of your transaction by Onramper may take up to 24 hours to complete. Following verification, it may take up to 3 business days for GoodDollars to be available in your wallet. In the event that the process takes longer, after receiving a confirmation email from your payment provider, please return to this screen to check the status of your transaction.\n"
+"\n"
+"                https://docs.onramper.com/docs/support"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/Faq.tsx:42
+msgid ""
+"Many sellers, such as Moonpay, require you to provide information on who you are, sometimes including an upload of your ID/passport. In case you do not pass this identity verification, your order will fail.\n"
+"\n"
+"                Additionally, your payment itself can fail for various reasons. If you’ve paid with a credit card, the most common reasons for failed orders are:\n"
+"                · you used someone else’s credit card or inputted the wrong billing address\n"
+"                · your issuing bank declined the credit card authorization\n"
+"                · your bank does not support crypto-acquisitions\n"
+"                · incorrect billing info\n"
+"                If you’ve paid with a bank transfer, the most common reasons for failed orders are:\n"
+"                · you’ve sent the transfer from someone else’s bank account\n"
+"                · you haven’t included the reference number provided to you\n"
+"                · you have sent an incorrect amount\n"
+"                \n"
+"                🌎 Some jurisdictions may not support crypto purchases, so your verification or transaction may have failed because of your location.\n"
+"                \n"
+"                💳 Some payment types (like pre-paid cards) may not be supported by all of Onramper’s service providers."
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/pages/gd/Portfolio/index.tsx:399
 msgid "Stake Positions"
 msgstr ""
@@ -2667,7 +2713,7 @@ msgstr "余额"
 msgid "Blocked address"
 msgstr "被封锁的地址"
 
-#: src/pages/gd/BuyGD/index.tsx:100
+#: src/pages/gd/BuyGD/index.tsx:102
 msgid "Buy G$"
 msgstr ""
 
@@ -2675,7 +2721,7 @@ msgstr ""
 msgid "Change"
 msgstr "改变"
 
-#: src/pages/gd/BuyGD/index.tsx:124
+#: src/pages/gd/BuyGD/index.tsx:126
 msgid "Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$."
 msgstr ""
 
@@ -2909,6 +2955,10 @@ msgstr ""
 #: src/pages/gd/Portfolio/index.tsx:333
 msgid "Holding"
 msgstr "保持"
+
+#: src/components/Faq.tsx:18
+msgid "How does it work?"
+msgstr ""
 
 #: src/pages/gd/Portfolio/index.tsx:236
 msgid "How many GOOD tokens you are accumulating by this stake position."
@@ -3150,7 +3200,7 @@ msgstr "从1.0开始，您的乘数将增加到2.0，在一个月的绑定到信
 msgid "Success!"
 msgstr "成功！"
 
-#: src/pages/gd/BuyGD/index.tsx:112
+#: src/pages/gd/BuyGD/index.tsx:114
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
@@ -3215,8 +3265,8 @@ msgid "The total of your deposits which accumulates the rewards."
 msgstr ""
 
 #: src/pages/gd/BuyGD/index.tsx:167
-msgid "The widget in this page is a third-party service provided by Onramper. Please note that the verification of your transaction by Onramper may take up to 24 hours to complete. Following verification, it may take up to 3 business days for GoodDollars to be available in your wallet. In the event that the process takes longer, after receiving a confirmation email from your payment provider, please return to this screen to check the status of your transaction."
-msgstr ""
+#~ msgid "The widget in this page is a third-party service provided by Onramper. Please note that the verification of your transaction by Onramper may take up to 24 hours to complete. Following verification, it may take up to 3 business days for GoodDollars to be available in your wallet. In the event that the process takes longer, after receiving a confirmation email from your payment provider, please return to this screen to check the status of your transaction."
+#~ msgstr ""
 
 #: src/pages/gd/Stake/index.tsx:86
 msgid "These are the total yearly rewards in G$ and GOOD."
@@ -3366,12 +3416,24 @@ msgstr "钱包平衡"
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
+#: src/components/Faq.tsx:11
+msgid "What is this tool?"
+msgstr ""
+
 #: src/pages/gd/Swap/SwapDescriptions/index.tsx:29
 msgid "What's an exit contribution?"
 msgstr "退出贡献是什么？"
 
+#: src/components/Faq.tsx:41
+msgid "Why did my verification or transaction fail?"
+msgstr ""
+
 #: src/pages/gd/BuyGD/index.tsx:163
-msgid "Why haven't my funds arrived yet?"
+#~ msgid "Why haven't my funds arrived yet?"
+#~ msgstr ""
+
+#: src/components/Faq.tsx:32
+msgid "Why haven’t my funds arrived?"
 msgstr ""
 
 #: src/components/PortfolioTableRow/index.tsx:67

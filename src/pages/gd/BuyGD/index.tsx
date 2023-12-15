@@ -8,6 +8,7 @@ import { useGetEnvChainId } from '@gooddollar/web3sdk-v2'
 
 import usePromise from 'hooks/usePromise'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
+import { Faq } from 'components/Faq'
 
 const BuyGd = memo(() => {
     const sendData = useSendAnalyticsData()
@@ -54,6 +55,7 @@ const BuyGd = memo(() => {
             alignItems: 'stretch',
             borderRightWidth: 1,
             flexGrow: 1,
+            justifyContent: 'flex-start',
         },
     })
 
@@ -140,34 +142,16 @@ const BuyGd = memo(() => {
                         <SlideDownTab
                             tabTitle="G$ Calculator"
                             viewInteraction={{ hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 } }}
+                            styles={{
+                                titleFont: { fontSize: 'l' },
+                            }}
                         >
                             <Converter gdPrice={G$Price} />
                         </SlideDownTab>
                     )}
                 </Box>
                 <Box w="100%" mb={2} style={sideTabs}>
-                    <SlideDownTab
-                        tabTitle="FAQ"
-                        viewInteraction={{ hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 } }}
-                    >
-                        <Text
-                            textAlign="center"
-                            w={350}
-                            fontFamily="subheading"
-                            fontWeight="bold"
-                            color="goodGrey.500"
-                            fontSize="sm"
-                            mb={10}
-                            mt={4}
-                        >
-                            {i18n._(t`Why haven't my funds arrived yet?`)}
-                        </Text>
-                        <Text w={350} fontFamily="subheading" fontWeight="normal" color="goodGrey.400" fontSize="sm">
-                            {i18n._(
-                                t`The widget in this page is a third-party service provided by Onramper. Please note that the verification of your transaction by Onramper may take up to 24 hours to complete. Following verification, it may take up to 3 business days for GoodDollars to be available in your wallet. In the event that the process takes longer, after receiving a confirmation email from your payment provider, please return to this screen to check the status of your transaction.`
-                            )}
-                        </Text>
-                    </SlideDownTab>
+                    <Faq />
                 </Box>
             </CentreBox>
         </Box>
