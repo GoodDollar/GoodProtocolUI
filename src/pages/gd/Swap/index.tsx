@@ -7,7 +7,8 @@ import SwapCore from './SwapCore'
 
 const Swap = memo(() => {
     const { chainId } = useActiveWeb3React()
-    return (chainId as any) === SupportedChains.CELO ? <UniSwap /> : <SwapCore />
+    // return (chainId as any) === SupportedChains.CELO ? <UniSwap /> : <SwapCore />
+    return <></>
 })
 
 export default Swap

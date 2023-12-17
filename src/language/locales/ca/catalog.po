@@ -13,7 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/AppBar.tsx:250
 #: src/components/Savings/SavingsCard/index.tsx:48
 msgid ""
 msgstr ""
@@ -2345,8 +2344,8 @@ msgid "Congratulations!"
 msgstr ""
 
 #: src/pages/gd/Portfolio/index.tsx:466
-msgid "Connect a wallet to see your portfolio"
-msgstr ""
+#~ msgid "Connect a wallet to see your portfolio"
+#~ msgstr ""
 
 #: src/components/BlockNativeOnboard/index.tsx:34
 msgid "Connect to a wallet"
@@ -2457,8 +2456,8 @@ msgid "GoodDAO"
 msgstr ""
 
 #: src/pages/gd/Stake/index.tsx:478
-msgid "GoodDAO Staking"
-msgstr ""
+#~ msgid "GoodDAO Staking"
+#~ msgstr ""
 
 #: src/components/Savings/SavingsStat/SavingsMobileStat.tsx:47
 msgid "GoodDollar"
@@ -2470,8 +2469,8 @@ msgstr ""
 
 #: src/pages/gd/Stake/index.tsx:463
 #: src/pages/gd/Stake/index.tsx:467
-msgid "GoodStakes"
-msgstr ""
+#~ msgid "GoodStakes"
+#~ msgstr ""
 
 #: src/components/SideBar.tsx:204
 msgid "GoodWallet"
@@ -2529,8 +2528,8 @@ msgstr ""
 
 #: src/pages/gd/Stake/index.tsx:97
 #: src/pages/gd/Stake/index.tsx:283
-msgid "Loading..."
-msgstr ""
+#~ msgid "Loading..."
+#~ msgstr ""
 
 #: src/pages/gd/Swap/SwapInput/index.tsx:40
 msgid "max"
@@ -2581,8 +2580,8 @@ msgstr ""
 
 #: src/pages/gd/Stake/index.tsx:102
 #: src/pages/gd/Stake/index.tsx:290
-msgid "No data."
-msgstr ""
+#~ msgid "No data."
+#~ msgstr ""
 
 #: src/components/NetworkModal/index.tsx:144
 #: src/components/NetworkModal/index.tsx:193
@@ -2593,7 +2592,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr ""
 
-#: src/components/AppBar.tsx:272
+#: src/components/AppBar.tsx:275
 msgid "Open main menu"
 msgstr ""
 
@@ -2696,8 +2695,8 @@ msgstr ""
 #: src/pages/gd/Stake/index.tsx:319
 #: src/pages/gd/Stake/index.tsx:397
 #: src/pages/gd/Stake/index.tsx:463
-msgid "Stake"
-msgstr ""
+#~ msgid "Stake"
+#~ msgstr ""
 
 #: src/pages/gd/Portfolio/index.tsx:221
 msgid "STAKE"
@@ -2792,6 +2791,10 @@ msgstr ""
 #: src/pages/gd/BuyGD/index.tsx:167
 #~ msgid "The widget in this page is a third-party service provided by Onramper. Please note that the verification of your transaction by Onramper may take up to 24 hours to complete. Following verification, it may take up to 3 business days for GoodDollars to be available in your wallet. In the event that the process takes longer, after receiving a confirmation email from your payment provider, please return to this screen to check the status of your transaction."
 #~ msgstr ""
+
+#: src/components/AppBar.tsx:252
+msgid "There has been a security breach. The app will be disabled until further notice"
+msgstr ""
 
 #: src/pages/gd/Stake/index.tsx:86
 msgid "These are the total yearly rewards in G$ and GOOD."

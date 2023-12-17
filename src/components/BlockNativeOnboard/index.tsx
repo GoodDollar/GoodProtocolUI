@@ -63,17 +63,19 @@ export const OnboardConnectButton: FC = () => {
         return null
     }
 
-    return (
-        <Web3ActionButton
-            text={buttonText}
-            web3Action={noop}
-            supportedChains={[SupportedChains.CELO, SupportedChains.MAINNET, SupportedChains.FUSE]}
-            handleConnect={onWalletConnect}
-            variant={'outlined'}
-            isDisabled={connecting}
-            isLoading={connecting}
-        />
-    )
+    return <></>
+
+    // return (
+    //     <Web3ActionButton
+    //         text={buttonText}
+    //         web3Action={noop}
+    //         supportedChains={[SupportedChains.CELO, SupportedChains.MAINNET, SupportedChains.FUSE]}
+    //         handleConnect={onWalletConnect}
+    //         variant={'outlined'}
+    //         isDisabled={connecting}
+    //         isLoading={connecting}
+    //     />
+    // )
 }
 
 // wrapper so we can pass the selected chain
