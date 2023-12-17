@@ -139,7 +139,7 @@ const TopBar = styled.div<{ $mobile: boolean }>`
         $mobile &&
         `
     background-color: transparent;
-    height: 400px; 
+    height: 40px; 
     align-items: flex-end;
     padding-left: 16px;
     padding-right: 16px;
