@@ -1,0 +1,69 @@
+# .github/workflows/preview.yml
+name: preview
+on:
+    push:
+        branches: [master, staging]
+    pull_request:
+        types: [opened, synchronize, edited, ready_for_review]
+        branches:
+            - master
+    workflow_dispatch:
+        inputs:
+            release:
+                description: 'release type (qa release only)'
+                required: true
+                default: 'qa'
+            targetbranch:
+                description: 'target deployment branch'
+                required: true
+                default: 'staging'
+env:
+    VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+    VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+jobs:
+    release:
+        name: Release
+        if: "github.event_name == 'workflow_dispatch' && github.event.inputs.release == 'qa'"
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+            - uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
+                  fetch-depth: 0
+            - name: setup git
+              run: |
+                  git config --local user.email "techadmin@gooddollar.org"
+                  git config --local user.name "Techadmin"
+                  npm install -g auto-changelog
+
+            - name: update version qa
+              run: |
+                  npm version minor -m "chore: release qa version %s [skip build]"
+                  git push https://${{ secrets.GIT_AUTH }}@github.com/GoodDollar/GoodProtocolUI master:${{ github.event.inputs.targetbranch }} --force --follow-tags
+                  git push https://${{ secrets.GIT_AUTH }}@github.com/GoodDollar/GoodProtocolUI master --follow-tags
+    preview:
+        runs-on: ubuntu-latest
+        environment:
+            name: preview
+            url: ${{ steps.deploy.outputs.url }}
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+                  cache: yarn
+            - run: yarn install --immutable
+            - name: Set Vercel environment
+              run: |
+                  if [ "${{ github.ref }}" = "refs/heads/staging" ]; then
+                    echo "VERCEL_ENV=preview" >> $GITHUB_ENV
+                  else
+                    echo "VERCEL_ENV=development" >> $GITHUB_ENV
+                  fi
+            - run: yarn vercel pull --yes --environment=${{ env.VERCEL_ENV }} --token=${{ secrets.VERCEL_TOKEN }}
+            - run: yarn vercel build --token=${{ secrets.VERCEL_TOKEN }}
+            - id: deploy
+              run: echo "::set-output name=url::$(yarn vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})"
