@@ -280,7 +280,7 @@ Learn how here`,
                                     </Text>
                                 </>
                             )}
-                            <ClaimButton
+                            {/* <ClaimButton
                                 firstName="Test"
                                 method="redirect"
                                 claim={handleClaim}
@@ -289,11 +289,11 @@ Learn how here`,
                                 handleConnect={handleConnect}
                                 chainId={chainId}
                                 onEvent={handleEvents}
-                            />
+                            /> */}
                         </Box>
                     </div>
                     <CentreBox style={carrouselStyles}>
-                        <ClaimCarousel cards={mockedCards} claimed={claimed} isMobile={isMobile} />
+                        {/* <ClaimCarousel cards={mockedCards} claimed={claimed} isMobile={isMobile} /> */}
                     </CentreBox>
                 </CentreBox>
                 <CentreBox style={newsFeedView}>

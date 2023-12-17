@@ -50,7 +50,7 @@ function AppNotice(props: AppNoticeProps): JSX.Element {
     return (
         <>
             {props.show && (
-                <AppNoticeBanner className="mobile" style={{ backgroundColor: props.bg }} onClick={props.onClick}>
+                <AppNoticeBanner className="mobile" style={{ backgroundColor: 'red' }} onClick={props.onClick}>
                     <div>
                         {props.text}
                         {props.link && (
@@ -59,7 +59,7 @@ function AppNotice(props: AppNoticeProps): JSX.Element {
                                 Contracts
                             </AppNoticeLink>
                         )}
-                        . Learn more
+                        {/* . Learn more */}
                         {props.link && (
                             <AppNoticeLink
                                 href={props.link[1]}
