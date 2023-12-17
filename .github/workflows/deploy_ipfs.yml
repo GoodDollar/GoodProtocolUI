@@ -33,16 +33,16 @@ jobs:
         needs: bump_version
         if: ${{ needs.bump_version.outputs.new_tag != null }}
         steps:
-            # - name: Pre-checks - Env is Dev
-            #   run: |
-            #       echo "ENV=development" >> $GITHUB_ENV
-            #       echo "SECRET_NAME=DEV_ENV" >> $GITHUB_ENV
+            - name: Pre-checks - Env is Dev
+              run: |
+                  echo "ENV=development" >> $GITHUB_ENV
+                  echo "SECRET_NAME=DEV_ENV" >> $GITHUB_ENV
 
-            # - name: Pre-checks - Env is QA
-            #   if: ${{ endsWith(github.ref, '/staging') }}
-            #   run: |
-            #       echo "ENV=staging" >> $GITHUB_ENV
-            #       echo "SECRET_NAME=STAGING_ENV" >> $GITHUB_ENV
+            - name: Pre-checks - Env is QA
+              if: ${{ endsWith(github.ref, '/staging') }}
+              run: |
+                  echo "ENV=staging" >> $GITHUB_ENV
+                  echo "SECRET_NAME=STAGING_ENV" >> $GITHUB_ENV
 
             - name: Pre-checks - Env is PRODUCTION
               if: ${{ endsWith(github.ref, '/production') }}
@@ -60,7 +60,7 @@ jobs:
                   secret_name="${{ env.SECRET_NAME }}"
                   echo $env_name
                   cat env/shared
-                  cat $dotenv_name
+                  cat env/production
                   echo "setting environment from $dotenv_name"
                   cp env/shared .env
                   cat $dotenv_name >> .env
