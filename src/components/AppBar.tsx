@@ -31,7 +31,7 @@ const AppBarWrapper = styled.header`
     .site-logo {
         height: 29px;
     }
-    height: 87px;
+    height: 150px;
 
     .mobile-menu-button {
         display: none;
@@ -139,7 +139,7 @@ const TopBar = styled.div<{ $mobile: boolean }>`
         $mobile &&
         `
     background-color: transparent;
-    height: 40px; 
+    height: 400px; 
     align-items: flex-end;
     padding-left: 16px;
     padding-right: 16px;
@@ -247,8 +247,11 @@ function AppBar(): JSX.Element {
             className="relative z-10 flex flex-row justify-between w-screen flex-nowrap background"
             style={{ flexDirection: 'column' }}
         >
-            <AppNotice text={i18n._(t``)} link={['']} show={false}></AppNotice>
             <>
+                <AppNotice
+                    text={i18n._(t`There has been a security breach. The app will be disabled until further notice`)}
+                    show={true}
+                />
                 <div className="lg:px-8 lg:pt-4 lg:pb-2">
                     <TopBar $mobile={isMobile} className="flex items-center justify-between">
                         <div className="flex flex-col">
@@ -281,7 +284,7 @@ function AppBar(): JSX.Element {
 
                             {!isMinipay && (
                                 <div className={mainMenuContainer}>
-                                    {!isSimpleApp ? <Web3Bar /> : isMobile ? <NavBar /> : null}
+                                    {/* {!isSimpleApp ? <Web3Bar /> : isMobile ? <NavBar /> : null} */}
                                     {/* // : isMobile ? <NavBar /> : null} <-- enable for opera when swap is ready */}
                                 </div>
                             )}

@@ -1,7 +1,7 @@
 {
     "name": "@gooddollar/protocol-ui",
     "description": "GoodProtocol Interface",
-    "version": "1.9.1",
+    "version": "1.17.0",
     "homepage": ".",
     "private": true,
     "scripts": {
@@ -167,6 +167,7 @@
         "tailwindcss": "^3.3.2",
         "tailwindcss-border-gradient-radius": "^2.0.0",
         "use-count-up": "^2.2.5",
+        "vercel": "^32.7.2",
         "vite": "^4.3.5",
         "vite-compatible-readable-stream": "^3.6.1",
         "vite-plugin-checker": "^0.6.0",
@@ -206,10 +207,10 @@
     },
     "dependencies": {
         "@babel/runtime": "^7.18.9",
-        "@gooddollar/good-design": "^0.1.28",
-        "@gooddollar/goodprotocol": "^2.0.22",
+        "@gooddollar/good-design": "^0.1.32",
+        "@gooddollar/goodprotocol": "^2.0.24",
         "@gooddollar/web3sdk": "^0.1.26",
-        "@gooddollar/web3sdk-v2": "^0.2.9",
+        "@gooddollar/web3sdk-v2": "^0.2.12",
         "@headlessui/react": "1.5.0",
         "@kimafinance/kima-transaction-widget": "^1.1.42-beta.1",
         "@lingui/format-json": "^4.0.0",
