@@ -211,7 +211,7 @@ function AppBar(): JSX.Element {
     const showPrice = useFeatureFlag('show-gd-price')
     const posthog = usePostHog()
     const payload = posthog?.getFeatureFlagPayload('app-notice')
-    const { enabled: appNoticeEnabled, message, color } = (payload as any) || {}
+    const { enabled: appNoticeEnabled, message, color, link } = (payload as any) || {}
 
     const [G$Price] = usePromise(async () => {
         try {
@@ -252,7 +252,7 @@ function AppBar(): JSX.Element {
             style={{ flexDirection: 'column', height: appNoticeEnabled ? '150px' : '87px' }}
         >
             <>
-                {appNoticeEnabled && <AppNotice text={message} bg={color} show={true} />}
+                {appNoticeEnabled && <AppNotice text={message} bg={color} link={link} show={true} />}
                 <div className="lg:px-8 lg:pt-4 lg:pb-2">
                     <TopBar $mobile={isMobile} className="flex items-center justify-between">
                         <div className="flex flex-col">
