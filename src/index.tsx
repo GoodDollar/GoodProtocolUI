@@ -89,7 +89,7 @@ ReactDOM.render(
                             <LanguageProvider>
                                 <PostHogProvider
                                     apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
-                                    options={{ host: 'https://app.posthog.com' }}
+                                    options={{ host: 'https://vercelrp.gooddapp.org/ingest' }}
                                     autocapture={false}
                                 >
                                     <AnalyticsProvider config={analyticsConfig} appProps={appInfo}>
