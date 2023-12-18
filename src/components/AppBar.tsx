@@ -209,14 +209,14 @@ function AppBar(): JSX.Element {
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const isSimpleApp = useIsSimpleApp()
 
-    const [G$Price] = usePromise(async () => {
-        try {
-            const data = await g$Price()
-            return data.DAI
-        } catch {
-            return undefined
-        }
-    }, [chainId])
+    // const [G$Price] = usePromise(async () => {
+    //     try {
+    //         const data = await g$Price()
+    //         return data.DAI
+    //     } catch {
+    //         return undefined
+    //     }
+    // }, [chainId])
 
     const toggleSideBar = useCallback(() => {
         setSidebarOpen(!sidebarOpen)
@@ -262,7 +262,7 @@ function AppBar(): JSX.Element {
                                     <LogoPrimary className="w-auto site-logo lg:block" />
                                 )}
                             </LogoWrapper>
-                            <G$Balance price={G$Price} display={showBalance} color={fontColor} pl="0" p="2" />
+                            {/* <G$Balance price={G$Price} display={showBalance} color={fontColor} pl="0" p="2" /> */}
                         </div>
 
                         <div className="flex flex-row items-end h-10 space-x-2">
@@ -291,7 +291,7 @@ function AppBar(): JSX.Element {
                         </div>
                     </TopBar>
                     <div className="px-4 pb-2 lg:hidden">
-                        <G$Balance price={G$Price} color={fontColor} padding="0" />
+                        {/* <G$Balance price={G$Price} color={fontColor} padding="0" /> */}
                     </div>
                 </div>
                 {isMobile && (

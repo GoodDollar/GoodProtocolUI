@@ -171,7 +171,8 @@ const Claim = memo(() => {
         },
         lg: {
             paddingLeft: 24,
-            width: 375,
+            // width: 375,
+            width: '100%',
             justifyContent: 'flex-start',
         },
     })
@@ -256,7 +257,7 @@ Learn how here`,
     return (
         <>
             <Box w="100%" mb="8" style={mainView}>
-                <CentreBox style={claimView}>
+                {/* <CentreBox style={claimView}>
                     <div className="flex flex-col items-center text-center lg:w-1/2">
                         <Box style={balanceContainer}>
                             {claimed ? (
@@ -280,7 +281,7 @@ Learn how here`,
                                     </Text>
                                 </>
                             )}
-                            {/* <ClaimButton
+                            <ClaimButton
                                 firstName="Test"
                                 method="redirect"
                                 claim={handleClaim}
@@ -289,13 +290,13 @@ Learn how here`,
                                 handleConnect={handleConnect}
                                 chainId={chainId}
                                 onEvent={handleEvents}
-                            /> */}
+                            />
                         </Box>
                     </div>
                     <CentreBox style={carrouselStyles}>
-                        {/* <ClaimCarousel cards={mockedCards} claimed={claimed} isMobile={isMobile} /> */}
+                        <ClaimCarousel cards={mockedCards} claimed={claimed} isMobile={isMobile} />
                     </CentreBox>
-                </CentreBox>
+                </CentreBox> */}
                 <CentreBox style={newsFeedView}>
                     <NewsFeedWidget />
                 </CentreBox>
