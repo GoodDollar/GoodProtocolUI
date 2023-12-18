@@ -40,7 +40,7 @@ const AppNoticeLink = styled.a`
 export type AppNoticeProps = {
     text: any
     bg?: string
-    link?: string[]
+    link?: string
     show?: boolean
     onClick?: () => void
 }
@@ -50,28 +50,15 @@ function AppNotice(props: AppNoticeProps): JSX.Element {
     return (
         <>
             {props.show && (
-                <AppNoticeBanner className="mobile" style={{ backgroundColor: 'red' }} onClick={props.onClick}>
+                <AppNoticeBanner className="mobile" style={{ backgroundColor: props.bg }} onClick={props.onClick}>
                     <div>
                         {props.text}
                         {props.link && (
-                            <AppNoticeLink href={props.link[0]} target="_blank" rel="noreferrer">
+                            <AppNoticeLink href={props.link} target="_blank" rel="noreferrer">
                                 {' '}
-                                Contracts
+                                Learn more.
                             </AppNoticeLink>
                         )}
-                        {/* . Learn more */}
-                        {props.link && (
-                            <AppNoticeLink
-                                href={props.link[1]}
-                                style={{ lineHeight: '2.2' }}
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                {' '}
-                                here
-                            </AppNoticeLink>
-                        )}
-                        .
                     </div>
                 </AppNoticeBanner>
             )}

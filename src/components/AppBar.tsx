@@ -7,6 +7,7 @@ import { g$Price } from '@gooddollar/web3sdk'
 import { isMobile } from 'react-device-detect'
 import classNames from 'classnames'
 import { Text, useBreakpointValue, ITextProps, Pressable } from 'native-base'
+import { useFeatureFlagEnabled, usePostHog } from 'posthog-js/react'
 
 import { useActiveWeb3React } from '../hooks/useActiveWeb3React'
 import Web3Network from './Web3Network'
@@ -31,7 +32,6 @@ const AppBarWrapper = styled.header`
     .site-logo {
         height: 29px;
     }
-    height: 150px;
 
     .mobile-menu-button {
         display: none;
@@ -139,7 +139,7 @@ const TopBar = styled.div<{ $mobile: boolean }>`
         $mobile &&
         `
     background-color: transparent;
-    height: 400px; 
+    height: 40px; 
     align-items: flex-end;
     padding-left: 16px;
     padding-right: 16px;
@@ -208,6 +208,10 @@ function AppBar(): JSX.Element {
     const { chainId } = useActiveWeb3React()
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const isSimpleApp = useIsSimpleApp()
+    const showPrice = useFeatureFlagEnabled('show-gd-price')
+    const posthog = usePostHog()
+    const payload = posthog?.getFeatureFlagPayload('app-notice')
+    const { enabled: appNoticeEnabled, message, color, link } = (payload as any) || {}
 
     const [G$Price] = usePromise(async () => {
         try {
@@ -245,13 +249,10 @@ function AppBar(): JSX.Element {
     return (
         <AppBarWrapper
             className="relative z-10 flex flex-row justify-between w-screen flex-nowrap background"
-            style={{ flexDirection: 'column' }}
+            style={{ flexDirection: 'column', height: appNoticeEnabled ? '150px' : '87px' }}
         >
             <>
-                <AppNotice
-                    text={i18n._(t`There has been a security breach. The app will be disabled until further notice`)}
-                    show={true}
-                />
+                {appNoticeEnabled && <AppNotice text={message} bg={color} link={link} show={true} />}
                 <div className="lg:px-8 lg:pt-4 lg:pb-2">
                     <TopBar $mobile={isMobile} className="flex items-center justify-between">
                         <div className="flex flex-col">
@@ -262,7 +263,9 @@ function AppBar(): JSX.Element {
                                     <LogoPrimary className="w-auto site-logo lg:block" />
                                 )}
                             </LogoWrapper>
-                            <G$Balance price={G$Price} display={showBalance} color={fontColor} pl="0" p="2" />
+                            {showPrice && (
+                                <G$Balance price={G$Price} display={showBalance} color={fontColor} pl="0" p="2" />
+                            )}
                         </div>
 
                         <div className="flex flex-row items-end h-10 space-x-2">
@@ -284,14 +287,14 @@ function AppBar(): JSX.Element {
 
                             {!isMinipay && (
                                 <div className={mainMenuContainer}>
-                                    {/* {!isSimpleApp ? <Web3Bar /> : isMobile ? <NavBar /> : null} */}
+                                    {!isSimpleApp ? <Web3Bar /> : isMobile ? <NavBar /> : null}
                                     {/* // : isMobile ? <NavBar /> : null} <-- enable for opera when swap is ready */}
                                 </div>
                             )}
                         </div>
                     </TopBar>
                     <div className="px-4 pb-2 lg:hidden">
-                        <G$Balance price={G$Price} color={fontColor} padding="0" />
+                        {showPrice && <G$Balance price={G$Price} color={fontColor} padding="0" />}
                     </div>
                 </div>
                 {isMobile && (
