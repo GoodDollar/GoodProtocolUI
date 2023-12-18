@@ -139,10 +139,10 @@ const Claim = memo(() => {
             }
             sendData({ event: 'claim', action: 'claim_success', network })
             return true
-        } else {
-            showModal()
-            return false
         }
+
+        showModal()
+        return false
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [send, network, sendData])
 
@@ -151,10 +151,10 @@ const Claim = memo(() => {
             const state = await connect()
 
             return !!state.length
-        } else {
-            showModal()
-            return false
         }
+
+        showModal()
+        return false
     }, [connect])
 
     const mainView = useBreakpointValue({
