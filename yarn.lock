@@ -5012,9 +5012,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.1.33":
-  version: 0.1.33
-  resolution: "@gooddollar/good-design@npm:0.1.33"
+"@gooddollar/good-design@npm:^0.1.34":
+  version: 0.1.34
+  resolution: "@gooddollar/good-design@npm:0.1.34"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -5046,7 +5046,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: 36cbe659e6a556ba40e418b382ac740a9ce00e1b699ac9b9694b56add952e4ffdfe9db0824287ab1571ad4c52cf144a9562f5444a1b0fa5fd74044ae8ff0db6b
+  checksum: 1eaaeae0cf1ddfe512e9e5ab3bad2878e245926eca21eca1b8dcac3ba8780f416165ac5c407c8d9674aed77cb345777789fc39786b370148a5b013d4697ae280
   languageName: node
   linkType: hard
 
@@ -5098,10 +5098,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.1.33
+    "@gooddollar/good-design": ^0.1.34
     "@gooddollar/goodprotocol": ^2.0.24
     "@gooddollar/web3sdk": ^0.1.26
-    "@gooddollar/web3sdk-v2": ^0.2.12
+    "@gooddollar/web3sdk-v2": ^0.2.13
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@kimafinance/kima-transaction-widget": ^1.1.42-beta.1
@@ -5282,9 +5282,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.2.12":
-  version: 0.2.12
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.12"
+"@gooddollar/web3sdk-v2@npm:^0.2.13":
+  version: 0.2.13
+  resolution: "@gooddollar/web3sdk-v2@npm:0.2.13"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5320,7 +5320,7 @@ __metadata:
     mixpanel-react-native: ^2.1.0
     moment: 2.29.4
     multiformats: 9.9.0
-    posthog-react-native: ^2.4.0
+    posthog-react-native: 2.8.1
     react-native-indicative: ^0.2.1
     react-native-restart: ^0.0.24
     react-use-promise: ^0.5.0
@@ -5330,7 +5330,7 @@ __metadata:
     "@react-native-async-storage/async-storage": 1.17.10
     react-native: "*"
     react-native-web: "*"
-  checksum: c108c962fc2ab3af172aead32371bd1811701938663685e5d218e2e1dd058229d8e2b842b84bec84215d59bfffe009217fad566e68ebd97f22a09d6fb9251489
+  checksum: 97a01011b8699f919387787759615a83bef9d56a25f7bf3c29db10a8474ebb09980ffad3cc2a08ee95494ff6e5d75420f0f1e229ad3fdc19b805270306255976
   languageName: node
   linkType: hard
 

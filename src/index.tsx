@@ -88,8 +88,8 @@ ReactDOM.render(
                         <Web3ContextProvider>
                             <LanguageProvider>
                                 <PostHogProvider
-                                    apiKey={'phc_VfJkmAUgLw36oH4oYeDmJHsvRrURBYF5zaFUeSKgfgD'}
-                                    options={{ host: 'https://vercelrp.gooddapp.org/ingest' }}
+                                    apiKey="phc_VfJkmAUgLw36oH4oYeDmJHsvRrURBYF5zaFUeSKgfgD"
+                                    options={{ host: 'https://app.posthog.com' }}
                                     autocapture={false}
                                 >
                                     <AnalyticsProvider config={analyticsConfig} appProps={appInfo}>
