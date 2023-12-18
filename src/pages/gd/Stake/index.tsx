@@ -3,6 +3,8 @@ import { t } from '@lingui/macro'
 import AsyncTokenIcon from 'components/gd/sushi/AsyncTokenIcon'
 import ListHeaderWithSort from 'components/gd/sushi/ListHeaderWithSort'
 import React, { Fragment, useState } from 'react'
+import { useFeatureFlag } from 'posthog-react-native'
+
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import useSearchAndSort from 'hooks/useSearchAndSort'
 import { useLingui } from '@lingui/react'
@@ -90,321 +92,321 @@ const StakeTable = ({
     // TODO: look into loading variable, it's not updating properly (loading text doesn't appear now)
     // console.log('stake loading table -->', loading)
 
-    // return isMobile ? (
-    //     <>
-    //         {loading && !list.items.length && (
-    //             <div>
-    //                 <div className="text-center">{i18n._(t`Loading...`)}</div>
-    //             </div>
-    //         )}
-    //         {!loading && !list.items && (
-    //             <div>
-    //                 <div className="text-center">{error ? error.message : i18n._(t`No data.`)}</div>
-    //             </div>
-    //         )}
-    //         {list.items &&
-    //             list.items.map((stake: Stake) => (
-    //                 <CellSC key={stake.address}>
-    //                     <div className="flex items-center font-bold token flex-nowrap">
-    //                         <AsyncTokenIcon
-    //                             address={stake.tokens.A.address}
-    //                             chainId={stake.tokens.A.chainId as number}
-    //                             className="block w-5 h-5 mr-2 rounded-lg md:w-10 md:h-10 lg:w-12 lg:h-12"
-    //                             network={network}
-    //                         />
-    //                         <div>
-    //                             <div className="whitespace-nowrap">
-    //                                 {stake.tokens.A.symbol}
-    //                                 {stake.tokens.B !== stake.tokens.A && `/${stake.tokens.B.symbol}`}
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                     <div className="protocol">
-    //                         <ListHeaderWithSort sort={list} sortKey="protocol" className="title">
-    //                             <div className="flex items-center">
-    //                                 {headings.protocol.name}
-    //                                 <QuestionHelper text={headings.protocol.text} />
-    //                             </div>
-    //                         </ListHeaderWithSort>
-    //                         <div className="value">{stake.protocol}</div>
-    //                     </div>
-    //                     <div className="apy">
-    //                         <ListHeaderWithSort sort={list} sortKey="APY" direction="descending" className="title">
-    //                             <div className="flex items-center">
-    //                                 {headings.APY.name}
-    //                                 <QuestionHelper text={headings.APY.text} />
-    //                             </div>
-    //                         </ListHeaderWithSort>
-    //                         <div className="value">{stake.APY ? `${stake.APY?.toFixed(2)}%` : '-'}</div>
-    //                     </div>
-    //                     <div className="socialapy">
-    //                         <ListHeaderWithSort
-    //                             sort={list}
-    //                             sortKey="socialAPY"
-    //                             direction="descending"
-    //                             className="title"
-    //                         >
-    //                             <div className="flex items-center">
-    //                                 {headings.socialAPY.name}
-    //                                 <QuestionHelper text={headings.socialAPY.text} />
-    //                             </div>
-    //                         </ListHeaderWithSort>
-    //                         <div className="value">{stake.socialAPY.toFixed(2)}%</div>
-    //                     </div>
-    //                     <div className="liquidity">
-    //                         <ListHeaderWithSort
-    //                             sort={list}
-    //                             sortKey="liquidity"
-    //                             direction="descending"
-    //                             className="title"
-    //                         >
-    //                             <div className="flex items-center">
-    //                                 {headings.liquidity.name}
-    //                                 <QuestionHelper text={headings.liquidity.text} />
-    //                             </div>
-    //                         </ListHeaderWithSort>
-    //                         <div className="value">
-    //                             {stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ? 'G$' : '$'}
-    //                             {stake.liquidity.toSignificant(6, { groupSeparator: ',' })}
-    //                         </div>
-    //                     </div>
-    //                     <div className="total">
-    //                         <ListHeaderWithSort
-    //                             sort={list}
-    //                             sortKey={rewardsSortKey}
-    //                             direction="descending"
-    //                             className="title"
-    //                         >
-    //                             <div className="flex items-center">
-    //                                 {headings.totalRewards.name}
-    //                                 <QuestionHelper text={headings.totalRewards.text} />
-    //                             </div>
-    //                         </ListHeaderWithSort>
-    //                         <div className="value">
-    //                             {stake.rewards.G$.greaterThan(0) && (
-    //                                 <div className="whitespace-nowrap">
-    //                                     {stake.rewards.G$.toFixed(2, { groupSeparator: ',' })}{' '}
-    //                                     {stake.rewards.G$.currency.symbol}
-    //                                 </div>
-    //                             )}
-    //                             <div className="whitespace-nowrap">
-    //                                 {stake.rewards.GDAO.toFixed(2, { groupSeparator: ',' })}{' '}
-    //                                 {stake.rewards.GDAO.currency.symbol}
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                     <div className="stake">
-    //                         <ActionOrSwitchButton
-    //                             size="sm"
-    //                             borderRadius="6px"
-    //                             noShadow={true}
-    //                             requireChain={network.toUpperCase() as keyof typeof SupportedChains}
-    //                             onClick={() => {
-    //                                 sendData({
-    //                                     event: 'stake',
-    //                                     action: 'stake_start',
-    //                                     token: stake.tokens.A.symbol,
-    //                                     type: stake.protocol,
-    //                                     network,
-    //                                 })
-    //                                 setActiveStake(stake)
-    //                                 setActiveTableName()
-    //                             }}
-    //                             ButtonEl={ButtonOutlined}
-    //                         >
-    //                             {i18n._(t`Stake`)}
-    //                         </ActionOrSwitchButton>
-    //                     </div>
-    //                 </CellSC>
-    //             ))}
-    //     </>
-    // ) : (
-    //     <Wrapper>
-    //         <Table
-    //             header={
-    //                 <tr>
-    //                     <th></th>
-    //                     <th>
-    //                         <ListHeaderWithSort sort={list} sortKey="tokens.A.symbol">
-    //                             <div className="flex items-center">
-    //                                 {headings.token.name} <QuestionHelper text={headings.token.text} />
-    //                             </div>
-    //                         </ListHeaderWithSort>
-    //                     </th>
-    //                     <th>
-    //                         <ListHeaderWithSort sort={list} sortKey="protocol">
-    //                             <div className="flex items-center">
-    //                                 {headings.protocol.name}
-    //                                 <QuestionHelper text={headings.protocol.text} />
-    //                             </div>
-    //                         </ListHeaderWithSort>
-    //                     </th>
-    //                     {hasAPY && (
-    //                         <th>
-    //                             <ListHeaderWithSort sort={list} sortKey="APY" direction="descending">
-    //                                 <div className="flex items-center">
-    //                                     {headings.APY.name}
-    //                                     <QuestionHelper text={headings.APY.text} />
-    //                                 </div>
-    //                             </ListHeaderWithSort>
-    //                         </th>
-    //                     )}
-    //                     <th>
-    //                         <ListHeaderWithSort sort={list} sortKey="socialAPY" direction="descending">
-    //                             <div className="flex items-center">
-    //                                 {headings.socialAPY.name}
-    //                                 <QuestionHelper text={headings.socialAPY.text} />
-    //                             </div>
-    //                         </ListHeaderWithSort>
-    //                     </th>
-    //                     <th>
-    //                         <ListHeaderWithSort sort={list} sortKey="liquidity" direction="descending">
-    //                             <div className="flex items-center">
-    //                                 {headings.liquidity.name}
-    //                                 <QuestionHelper text={headings.liquidity.text} />
-    //                             </div>
-    //                         </ListHeaderWithSort>
-    //                     </th>
-    //                     <th>
-    //                         <ListHeaderWithSort sort={list} sortKey={rewardsSortKey} direction="descending">
-    //                             <div className="flex items-center">
-    //                                 {headings.totalRewards.name}
-    //                                 <QuestionHelper text={headings.totalRewards.text} />
-    //                             </div>
-    //                         </ListHeaderWithSort>
-    //                     </th>
-    //                     <th></th>
-    //                 </tr>
-    //             }
-    //         >
-    //             {loading && !list.items.length && (
-    //                 <tr>
-    //                     <td colSpan={8}>
-    //                         <div className="text-center">{i18n._(t`Loading...`)}</div>
-    //                     </td>
-    //                 </tr>
-    //             )}
-    //             {!loading && !list.items && (
-    //                 <tr>
-    //                     <td colSpan={8}>
-    //                         <div className="text-center">{error ? error.message : i18n._(t`No data.`)}</div>
-    //                     </td>
-    //                 </tr>
-    //             )}
-    //             {list.items &&
-    //                 list.items.map((stake: Stake) => {
-    //                     return (
-    //                         <Fragment key={stake.address}>
-    //                             {/* {isMobile ? (
-    //                                 <tr className="mobile">
-    //                                     <td colSpan={8}>
-    //                                         <ActionOrSwitchButton
-    //                                             size="sm"
-    //                                             borderRadius="6px"
-    //                                             noShadow={true}
-    //                                             requireChain={network.toUpperCase() as keyof typeof SupportedChains}
-    //                                             onClick={() => {
-    //                                                 sendData({
-    //                                                     event: 'stake',
-    //                                                     action: 'stake_start',
-    //                                                     token: stake.tokens.A.symbol,
-    //                                                     type: stake.protocol,
-    //                                                     network: network,
-    //                                                 })
-    //                                                 setActiveStake(stake)
-    //                                                 setActiveTableName()
-    //                                             }}
-    //                                         >
-    //                                             {' '}
-    //                                             {i18n._(t`Stake`)}
-    //                                         </ActionOrSwitchButton>
-    //                                     </td>
-    //                                 </tr>
-    //                             ) : (
-    //                                 <tr>
-    //                                     <td>
-    //                                         <div style={{ width: 48 }}>
-    //                                             <AsyncTokenIcon
-    //                                                 address={stake.tokens.A.address}
-    //                                                 chainId={stake.tokens.A.chainId as number}
-    //                                                 className="block w-5 h-5 rounded-lg md:w-10 md:h-10 lg:w-12 lg:h-12"
-    //                                                 network={network}
-    //                                             />
-    //                                         </div>
-    //                                     </td>
-    //                                     <td>
-    //                                         <div className="inline-flex flex-col md:flex-row">
-    //                                             <div className="whitespace-nowrap">{stake.tokens.A.symbol}</div>
-    //                                             {stake.tokens.B !== stake.tokens.A && (
-    //                                                 <div>/{stake.tokens.B.symbol}</div>
-    //                                             )}
-    //                                         </div>
-    //                                     </td>
-    //                                     <td>
-    //                                         <div className="left">
-    //                                             <strong>{stake.protocol}</strong>
-    //                                         </div>
-    //                                     </td>
-    //                                     {hasAPY && (
-    //                                         <td>
-    //                                             <div className="left">{stake.APY?.toFixed(2)}%</div>
-    //                                         </td>
-    //                                     )}
-    //                                     <td>
-    //                                         <div className="left">{stake.socialAPY.toFixed(2)}%</div>
-    //                                     </td>
-    //                                     <td>
-    //                                         <div className="center right">
-    //                                             {stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ? 'G$' : '$'}
-    //                                             {stake.liquidity.toSignificant(6, { groupSeparator: ',' })}
-    //                                         </div>
-    //                                     </td>
-    //                                     <td>
-    //                                         <div className="right">
-    //                                             {stake.rewards.G$.greaterThan(0) && (
-    //                                                 <div className="whitespace-nowrap">
-    //                                                     {stake.rewards.G$.toFixed(2, { groupSeparator: ',' })}{' '}
-    //                                                     {stake.rewards.G$.currency.symbol}
-    //                                                 </div>
-    //                                             )}
-    //                                             <div className="whitespace-nowrap">
-    //                                                 {stake.rewards.GDAO.toFixed(2, { groupSeparator: ',' })}{' '}
-    //                                                 {stake.rewards.GDAO.currency.symbol}
-    //                                             </div>
-    //                                         </div>
-    //                                     </td>
-    //                                     <td>
-    //                                         <ActionOrSwitchButton
-    //                                             size="sm"
-    //                                             width="78px"
-    //                                             borderRadius="6px"
-    //                                             noShadow={true}
-    //                                             requireChain={network.toUpperCase() as keyof typeof SupportedChains}
-    //                                             page="Stake"
-    //                                             onClick={() => {
-    //                                                 sendData({
-    //                                                     event: 'stake',
-    //                                                     action: 'stake_start',
-    //                                                     token: stake.tokens.A.symbol,
-    //                                                     type: stake.protocol,
-    //                                                     network: network,
-    //                                                 })
-    //                                                 setActiveStake(stake)
-    //                                                 setActiveTableName()
-    //                                             }}
-    //                                         >
-    //                                             {' '}
-    //                                             {i18n._(t`Stake`)}
-    //                                         </ActionOrSwitchButton>
-    //                                     </td>
-    //                                 </tr>
-    //                             )} */}
-    //                         </Fragment>
-    //                     )
-    //                 })}
-    //         </Table>
-    //     </Wrapper>
-    // )
+    return isMobile ? (
+        <>
+            {loading && !list.items.length && (
+                <div>
+                    <div className="text-center">{i18n._(t`Loading...`)}</div>
+                </div>
+            )}
+            {!loading && !list.items && (
+                <div>
+                    <div className="text-center">{error ? error.message : i18n._(t`No data.`)}</div>
+                </div>
+            )}
+            {list.items &&
+                list.items.map((stake: Stake) => (
+                    <CellSC key={stake.address}>
+                        <div className="flex items-center font-bold token flex-nowrap">
+                            <AsyncTokenIcon
+                                address={stake.tokens.A.address}
+                                chainId={stake.tokens.A.chainId as number}
+                                className="block w-5 h-5 mr-2 rounded-lg md:w-10 md:h-10 lg:w-12 lg:h-12"
+                                network={network}
+                            />
+                            <div>
+                                <div className="whitespace-nowrap">
+                                    {stake.tokens.A.symbol}
+                                    {stake.tokens.B !== stake.tokens.A && `/${stake.tokens.B.symbol}`}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="protocol">
+                            <ListHeaderWithSort sort={list} sortKey="protocol" className="title">
+                                <div className="flex items-center">
+                                    {headings.protocol.name}
+                                    <QuestionHelper text={headings.protocol.text} />
+                                </div>
+                            </ListHeaderWithSort>
+                            <div className="value">{stake.protocol}</div>
+                        </div>
+                        <div className="apy">
+                            <ListHeaderWithSort sort={list} sortKey="APY" direction="descending" className="title">
+                                <div className="flex items-center">
+                                    {headings.APY.name}
+                                    <QuestionHelper text={headings.APY.text} />
+                                </div>
+                            </ListHeaderWithSort>
+                            <div className="value">{stake.APY ? `${stake.APY?.toFixed(2)}%` : '-'}</div>
+                        </div>
+                        <div className="socialapy">
+                            <ListHeaderWithSort
+                                sort={list}
+                                sortKey="socialAPY"
+                                direction="descending"
+                                className="title"
+                            >
+                                <div className="flex items-center">
+                                    {headings.socialAPY.name}
+                                    <QuestionHelper text={headings.socialAPY.text} />
+                                </div>
+                            </ListHeaderWithSort>
+                            <div className="value">{stake.socialAPY.toFixed(2)}%</div>
+                        </div>
+                        <div className="liquidity">
+                            <ListHeaderWithSort
+                                sort={list}
+                                sortKey="liquidity"
+                                direction="descending"
+                                className="title"
+                            >
+                                <div className="flex items-center">
+                                    {headings.liquidity.name}
+                                    <QuestionHelper text={headings.liquidity.text} />
+                                </div>
+                            </ListHeaderWithSort>
+                            <div className="value">
+                                {stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ? 'G$' : '$'}
+                                {stake.liquidity.toSignificant(6, { groupSeparator: ',' })}
+                            </div>
+                        </div>
+                        <div className="total">
+                            <ListHeaderWithSort
+                                sort={list}
+                                sortKey={rewardsSortKey}
+                                direction="descending"
+                                className="title"
+                            >
+                                <div className="flex items-center">
+                                    {headings.totalRewards.name}
+                                    <QuestionHelper text={headings.totalRewards.text} />
+                                </div>
+                            </ListHeaderWithSort>
+                            <div className="value">
+                                {stake.rewards.G$.greaterThan(0) && (
+                                    <div className="whitespace-nowrap">
+                                        {stake.rewards.G$.toFixed(2, { groupSeparator: ',' })}{' '}
+                                        {stake.rewards.G$.currency.symbol}
+                                    </div>
+                                )}
+                                <div className="whitespace-nowrap">
+                                    {stake.rewards.GDAO.toFixed(2, { groupSeparator: ',' })}{' '}
+                                    {stake.rewards.GDAO.currency.symbol}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="stake">
+                            <ActionOrSwitchButton
+                                size="sm"
+                                borderRadius="6px"
+                                noShadow={true}
+                                requireChain={network.toUpperCase() as keyof typeof SupportedChains}
+                                onClick={() => {
+                                    sendData({
+                                        event: 'stake',
+                                        action: 'stake_start',
+                                        token: stake.tokens.A.symbol,
+                                        type: stake.protocol,
+                                        network,
+                                    })
+                                    setActiveStake(stake)
+                                    setActiveTableName()
+                                }}
+                                ButtonEl={ButtonOutlined}
+                            >
+                                {i18n._(t`Stake`)}
+                            </ActionOrSwitchButton>
+                        </div>
+                    </CellSC>
+                ))}
+        </>
+    ) : (
+        <Wrapper>
+            <Table
+                header={
+                    <tr>
+                        <th></th>
+                        <th>
+                            <ListHeaderWithSort sort={list} sortKey="tokens.A.symbol">
+                                <div className="flex items-center">
+                                    {headings.token.name} <QuestionHelper text={headings.token.text} />
+                                </div>
+                            </ListHeaderWithSort>
+                        </th>
+                        <th>
+                            <ListHeaderWithSort sort={list} sortKey="protocol">
+                                <div className="flex items-center">
+                                    {headings.protocol.name}
+                                    <QuestionHelper text={headings.protocol.text} />
+                                </div>
+                            </ListHeaderWithSort>
+                        </th>
+                        {hasAPY && (
+                            <th>
+                                <ListHeaderWithSort sort={list} sortKey="APY" direction="descending">
+                                    <div className="flex items-center">
+                                        {headings.APY.name}
+                                        <QuestionHelper text={headings.APY.text} />
+                                    </div>
+                                </ListHeaderWithSort>
+                            </th>
+                        )}
+                        <th>
+                            <ListHeaderWithSort sort={list} sortKey="socialAPY" direction="descending">
+                                <div className="flex items-center">
+                                    {headings.socialAPY.name}
+                                    <QuestionHelper text={headings.socialAPY.text} />
+                                </div>
+                            </ListHeaderWithSort>
+                        </th>
+                        <th>
+                            <ListHeaderWithSort sort={list} sortKey="liquidity" direction="descending">
+                                <div className="flex items-center">
+                                    {headings.liquidity.name}
+                                    <QuestionHelper text={headings.liquidity.text} />
+                                </div>
+                            </ListHeaderWithSort>
+                        </th>
+                        <th>
+                            <ListHeaderWithSort sort={list} sortKey={rewardsSortKey} direction="descending">
+                                <div className="flex items-center">
+                                    {headings.totalRewards.name}
+                                    <QuestionHelper text={headings.totalRewards.text} />
+                                </div>
+                            </ListHeaderWithSort>
+                        </th>
+                        <th></th>
+                    </tr>
+                }
+            >
+                {loading && !list.items.length && (
+                    <tr>
+                        <td colSpan={8}>
+                            <div className="text-center">{i18n._(t`Loading...`)}</div>
+                        </td>
+                    </tr>
+                )}
+                {!loading && !list.items && (
+                    <tr>
+                        <td colSpan={8}>
+                            <div className="text-center">{error ? error.message : i18n._(t`No data.`)}</div>
+                        </td>
+                    </tr>
+                )}
+                {list.items &&
+                    list.items.map((stake: Stake) => {
+                        return (
+                            <Fragment key={stake.address}>
+                                {isMobile ? (
+                                    <tr className="mobile">
+                                        <td colSpan={8}>
+                                            <ActionOrSwitchButton
+                                                size="sm"
+                                                borderRadius="6px"
+                                                noShadow={true}
+                                                requireChain={network.toUpperCase() as keyof typeof SupportedChains}
+                                                onClick={() => {
+                                                    sendData({
+                                                        event: 'stake',
+                                                        action: 'stake_start',
+                                                        token: stake.tokens.A.symbol,
+                                                        type: stake.protocol,
+                                                        network: network,
+                                                    })
+                                                    setActiveStake(stake)
+                                                    setActiveTableName()
+                                                }}
+                                            >
+                                                {' '}
+                                                {i18n._(t`Stake`)}
+                                            </ActionOrSwitchButton>
+                                        </td>
+                                    </tr>
+                                ) : (
+                                    <tr>
+                                        <td>
+                                            <div style={{ width: 48 }}>
+                                                <AsyncTokenIcon
+                                                    address={stake.tokens.A.address}
+                                                    chainId={stake.tokens.A.chainId as number}
+                                                    className="block w-5 h-5 rounded-lg md:w-10 md:h-10 lg:w-12 lg:h-12"
+                                                    network={network}
+                                                />
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div className="inline-flex flex-col md:flex-row">
+                                                <div className="whitespace-nowrap">{stake.tokens.A.symbol}</div>
+                                                {stake.tokens.B !== stake.tokens.A && (
+                                                    <div>/{stake.tokens.B.symbol}</div>
+                                                )}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div className="left">
+                                                <strong>{stake.protocol}</strong>
+                                            </div>
+                                        </td>
+                                        {hasAPY && (
+                                            <td>
+                                                <div className="left">{stake.APY?.toFixed(2)}%</div>
+                                            </td>
+                                        )}
+                                        <td>
+                                            <div className="left">{stake.socialAPY.toFixed(2)}%</div>
+                                        </td>
+                                        <td>
+                                            <div className="center right">
+                                                {stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ? 'G$' : '$'}
+                                                {stake.liquidity.toSignificant(6, { groupSeparator: ',' })}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div className="right">
+                                                {stake.rewards.G$.greaterThan(0) && (
+                                                    <div className="whitespace-nowrap">
+                                                        {stake.rewards.G$.toFixed(2, { groupSeparator: ',' })}{' '}
+                                                        {stake.rewards.G$.currency.symbol}
+                                                    </div>
+                                                )}
+                                                <div className="whitespace-nowrap">
+                                                    {stake.rewards.GDAO.toFixed(2, { groupSeparator: ',' })}{' '}
+                                                    {stake.rewards.GDAO.currency.symbol}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <ActionOrSwitchButton
+                                                size="sm"
+                                                width="78px"
+                                                borderRadius="6px"
+                                                noShadow={true}
+                                                requireChain={network.toUpperCase() as keyof typeof SupportedChains}
+                                                page="Stake"
+                                                onClick={() => {
+                                                    sendData({
+                                                        event: 'stake',
+                                                        action: 'stake_start',
+                                                        token: stake.tokens.A.symbol,
+                                                        type: stake.protocol,
+                                                        network: network,
+                                                    })
+                                                    setActiveStake(stake)
+                                                    setActiveTableName()
+                                                }}
+                                            >
+                                                {' '}
+                                                {i18n._(t`Stake`)}
+                                            </ActionOrSwitchButton>
+                                        </td>
+                                    </tr>
+                                )}
+                            </Fragment>
+                        )
+                    })}
+            </Table>
+        </Wrapper>
+    )
 }
 
 const StakesSC = styled.div`
@@ -425,54 +427,59 @@ export default function Stakes(): JSX.Element | null {
     const { i18n } = useLingui()
     const { web3 } = useGdContextProvider()
     const { chainId } = useActiveWeb3React()
-    // const governanceStaking = useGovernanceStaking(web3, chainId)
+    const governanceStaking = useGovernanceStaking(web3, 122)
     const [mainnetWeb3] = useEnvWeb3(DAO_NETWORK.MAINNET, web3, chainId)
-    // const [stakes = [], loading, error, refetch] = usePromise(async () => {
-    //     const stakes = await (web3 && mainnetWeb3 && !disableTestnetMain.includes(chainId)
-    //         ? getStakes(mainnetWeb3)
-    //         : Promise.resolve([]))
+    const [stakes = [], loading, error, refetch] = usePromise(async () => {
+        const stakes = await (web3 && mainnetWeb3 && !disableTestnetMain.includes(chainId)
+            ? getStakes(mainnetWeb3)
+            : Promise.resolve([]))
 
-    //     return stakes
-    // }, [web3, mainnetWeb3])
+        return stakes
+    }, [web3, mainnetWeb3])
 
-    // const sorted = useSearchAndSort(
-    //     stakes,
-    //     { keys: ['tokens.A.symbol', 'tokens.B.symbol', 'tokens.A.name', 'tokens.B.name'], threshold: 0.1 },
-    //     { key: 'tokens.A.symbol', direction: 'descending' }
-    // )
-    // const govsorted = useSearchAndSort(
-    //     governanceStaking,
-    //     { keys: ['tokens.A.symbol', 'tokens.A.name'], threshold: 0.1 },
-    //     { key: 'tokens.A.symbol', direction: 'descending' }
-    // )
+    const mainnetStakesEnabled = useFeatureFlag('mainnet-stakes')
 
-    // const [activeStake, setActiveStake] = useState<Stake>()
-    // const [activeTableName, setActiveTableName] = useState<string>('')
+    const sorted = useSearchAndSort(
+        stakes,
+        { keys: ['tokens.A.symbol', 'tokens.B.symbol', 'tokens.A.name', 'tokens.B.name'], threshold: 0.1 },
+        { key: 'tokens.A.symbol', direction: 'descending' }
+    )
+    const govsorted = useSearchAndSort(
+        governanceStaking,
+        { keys: ['tokens.A.symbol', 'tokens.A.name'], threshold: 0.1 },
+        { key: 'tokens.A.symbol', direction: 'descending' }
+    )
 
-    // const { width } = useWindowSize()
+    const [activeStake, setActiveStake] = useState<Stake>()
+    const [activeTableName, setActiveTableName] = useState<string>('')
 
-    // const isMobile = width ? width <= 768 : undefined
+    const { width } = useWindowSize()
 
-    // useCallbackOnFocus(refetch)
+    const isMobile = width ? width <= 768 : undefined
 
     return (
         <Layout>
             {' '}
             <StakesSC>
-                {/* <MarketHeader
-                    title={isMobile ? i18n._(t`Stake`) : i18n._(t`GoodStakes`)}
-                    lists={sorted}
-                    noSearch={stakes.length < 2}
-                />
-                {isMobile ? <h2 className="header">{i18n._(t`GoodStakes`)}</h2> : <div></div>}
-                <StakeTable
-                    list={sorted}
-                    error={error}
-                    loading={loading}
-                    network={DAO_NETWORK.MAINNET}
-                    setActiveStake={setActiveStake}
-                    setActiveTableName={() => setActiveTableName('GoodStakes')}
-                />
+                {mainnetStakesEnabled && (
+                    <>
+                        <MarketHeader
+                            title={isMobile ? i18n._(t`Stake`) : i18n._(t`GoodStakes`)}
+                            lists={sorted}
+                            noSearch={stakes.length < 2}
+                        />
+                        {isMobile ? <h2 className="header">{i18n._(t`GoodStakes`)}</h2> : <div></div>}
+                        <StakeTable
+                            list={sorted}
+                            error={error}
+                            loading={loading}
+                            network={DAO_NETWORK.MAINNET}
+                            setActiveStake={setActiveStake}
+                            setActiveTableName={() => setActiveTableName('GoodStakes')}
+                        />
+                    </>
+                )}
+
                 <div className={isMobile ? 'mt-4' : 'mt-12'} />
                 <MarketHeader
                     title={i18n._(t`GoodDAO Staking`)}
@@ -489,9 +496,9 @@ export default function Stakes(): JSX.Element | null {
                     rewardsSortKey={'rewards.GDAO'}
                     setActiveStake={setActiveStake}
                     setActiveTableName={() => setActiveTableName('GoodDAO Staking')}
-                /> */}
+                />
 
-                {/* <Modal isOpen={!!activeStake} showClose onDismiss={() => setActiveStake(undefined)}>
+                <Modal isOpen={!!activeStake} showClose onDismiss={() => setActiveStake(undefined)}>
                     {activeStake && (
                         <StakeDeposit
                             stake={activeStake}
@@ -500,7 +507,7 @@ export default function Stakes(): JSX.Element | null {
                             activeTableName={activeTableName}
                         />
                     )}
-                </Modal> */}
+                </Modal>
             </StakesSC>
             {import.meta.env.REACT_APP_CELO_PHASE_3 && <Savings />}
         </Layout>

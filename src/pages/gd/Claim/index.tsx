@@ -1,13 +1,14 @@
 import React, { memo, useCallback, useEffect, useState } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { CentreBox, ClaimButton, ClaimCarousel, IClaimCard, Title } from '@gooddollar/good-design'
-import { Text, useBreakpointValue, Box } from 'native-base'
+import { CentreBox, ClaimButton, ClaimCarousel, IClaimCard, Image, Title, useModal } from '@gooddollar/good-design'
+import { Box, Text, useBreakpointValue, View } from 'native-base'
 import { useConnectWallet } from '@web3-onboard/react'
 import { isMobile } from 'react-device-detect'
 import { useClaim, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import { QueryParams } from '@usedapp/core'
 import { noop } from 'lodash'
+import { usePostHog } from 'posthog-react-native'
 
 import { ClaimBalance } from './ClaimBalance'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -18,6 +19,40 @@ import { NewsFeedWidget } from '../../../components/NewsFeed'
 import BillyHappy from 'assets/images/claim/billysmile.png'
 import BillyGrin from 'assets/images/claim/billygrin.png'
 import BillyConfused from 'assets/images/claim/billyconfused.png'
+
+import Maintance from 'assets/images/claim/maintance.png'
+
+const DialogHeader = () => (
+    <Box>
+        <Title color="main" fontSize="l" lineHeight={36}>
+            Claiming Unavailable
+        </Title>
+    </Box>
+)
+
+const DialogBody = ({ message }: { message: string }) => (
+    <View>
+        <Image resizeMode="contain" source={{ uri: Maintance }} w="auto" h={120} mb={4} />
+        <Text fontFamily="subheading" lineHeight="20px">
+            {message}
+        </Text>
+    </View>
+)
+
+const useDisabledClaimingModal = (message: string) => {
+    const { Modal, showModal } = useModal()
+
+    const Dialog = useCallback(
+        () => (
+            <React.Fragment>
+                <Modal header={<DialogHeader />} body={<DialogBody message={message} />} onClose={noop} closeText="x" />
+            </React.Fragment>
+        ),
+        [Modal]
+    )
+
+    return { Dialog, showModal }
+}
 
 const Claim = memo(() => {
     const { i18n } = useLingui()
@@ -31,6 +66,11 @@ const Claim = memo(() => {
     const { chainId } = useActiveWeb3React()
     const network = SupportedV2Networks[chainId]
     const sendData = useSendAnalyticsData()
+    const postHog = usePostHog()
+    const payload = postHog?.getFeatureFlagPayload('claim-feature')
+    const { enabled: claimEnabled, disabledMessage = '' } = (payload as any) || {}
+
+    const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
 
     // there are three possible scenarios
     // 1. claim amount is 0, meaning user has claimed that day
@@ -92,19 +132,29 @@ const Claim = memo(() => {
 
     const handleClaim = useCallback(async () => {
         setRefreshRate('everyBlock')
-        const claim = await send()
-        if (!claim) {
+        if (claimEnabled) {
+            const claim = await send()
+            if (!claim) {
+                return false
+            }
+            sendData({ event: 'claim', action: 'claim_success', network })
+            return true
+        } else {
+            showModal()
             return false
         }
-        sendData({ event: 'claim', action: 'claim_success', network })
-        return true
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [send, network, sendData])
 
     const handleConnect = useCallback(async () => {
-        const state = await connect()
+        if (claimEnabled) {
+            const state = await connect()
 
-        return !!state.length
+            return !!state.length
+        } else {
+            showModal()
+            return false
+        }
     }, [connect])
 
     const mainView = useBreakpointValue({
@@ -171,8 +221,7 @@ const Claim = memo(() => {
         },
         lg: {
             paddingLeft: 24,
-            // width: 375,
-            width: '100%',
+            width: 375,
             justifyContent: 'flex-start',
         },
     })
@@ -257,7 +306,8 @@ Learn how here`,
     return (
         <>
             <Box w="100%" mb="8" style={mainView}>
-                {/* <CentreBox style={claimView}>
+                <Dialog />
+                <CentreBox style={claimView}>
                     <div className="flex flex-col items-center text-center lg:w-1/2">
                         <Box style={balanceContainer}>
                             {claimed ? (
@@ -296,7 +346,7 @@ Learn how here`,
                     <CentreBox style={carrouselStyles}>
                         <ClaimCarousel cards={mockedCards} claimed={claimed} isMobile={isMobile} />
                     </CentreBox>
-                </CentreBox> */}
+                </CentreBox>
                 <CentreBox style={newsFeedView}>
                     <NewsFeedWidget />
                 </CentreBox>

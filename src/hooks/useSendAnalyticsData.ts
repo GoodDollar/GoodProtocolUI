@@ -13,7 +13,7 @@ const mixpanelKey = import.meta.env.REACT_APP_MIXPANEL_KEY
 export const analyticsConfig: IAnalyticsConfig = {
     google: { enabled: true },
     indicative: { apiKey: indicativeKey, enabled: !!indicativeKey },
-    posthog: { apiKey: posthogKey, enabled: !!posthogKey },
+    posthog: { apiKey: posthogKey, enabled: false },
     mixpanel: { apiKey: mixpanelKey, enabled: !!mixpanelKey },
 }
 
