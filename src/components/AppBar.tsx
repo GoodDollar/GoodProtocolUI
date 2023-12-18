@@ -7,7 +7,7 @@ import { g$Price } from '@gooddollar/web3sdk'
 import { isMobile } from 'react-device-detect'
 import classNames from 'classnames'
 import { Text, useBreakpointValue, ITextProps, Pressable } from 'native-base'
-import { useFeatureFlag, usePostHog } from 'posthog-react-native'
+import { useFeatureFlagEnabled, usePostHog } from 'posthog-js/react'
 
 import { useActiveWeb3React } from '../hooks/useActiveWeb3React'
 import Web3Network from './Web3Network'
@@ -208,7 +208,7 @@ function AppBar(): JSX.Element {
     const { chainId } = useActiveWeb3React()
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const isSimpleApp = useIsSimpleApp()
-    const showPrice = useFeatureFlag('show-gd-price')
+    const showPrice = useFeatureFlagEnabled('show-gd-price')
     const posthog = usePostHog()
     const payload = posthog?.getFeatureFlagPayload('app-notice')
     const { enabled: appNoticeEnabled, message, color, link } = (payload as any) || {}

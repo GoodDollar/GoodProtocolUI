@@ -8,7 +8,7 @@ import { isMobile } from 'react-device-detect'
 import { useClaim, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import { QueryParams } from '@usedapp/core'
 import { noop } from 'lodash'
-import { usePostHog } from 'posthog-react-native'
+import { usePostHog } from 'posthog-js/react'
 
 import { ClaimBalance } from './ClaimBalance'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'

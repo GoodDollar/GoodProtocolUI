@@ -232,6 +232,7 @@
         "ethers": "^5.7.2",
         "mobile-device-detect": "^0.4.3",
         "native-base": "3.4.11",
+        "posthog-js": "^1.96.1",
         "react-native": "0.70.4",
         "react-native-safe-area-context": "3.4.1",
         "react-native-web": "0.17.7",

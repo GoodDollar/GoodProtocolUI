@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { SupportedChains } from '@gooddollar/web3sdk-v2'
-import { usePostHog } from 'posthog-react-native'
+import { usePostHog } from 'posthog-js/react'
 
 import { UniSwap } from './SwapCelo/UniSwap'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
