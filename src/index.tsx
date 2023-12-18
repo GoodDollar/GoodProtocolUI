@@ -79,8 +79,6 @@ const enableServiceWorker =
 const networkEnv = getNetworkEnv()
 const prodOrQa = /\b(production|staging)\b/.test(networkEnv)
 
-console.log('testing -->', { meta: import.meta.env.REACT_APP_POSTHOG_KEY })
-
 ReactDOM.render(
     <StrictMode>
         <HttpsProvider enabled={enableHttpsRedirect}>
