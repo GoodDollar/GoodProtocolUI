@@ -88,7 +88,7 @@ ReactDOM.render(
                         <Web3ContextProvider>
                             <LanguageProvider>
                                 <PostHogProvider
-                                    apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
+                                    apiKey={'phc_VfJkmAUgLw36oH4oYeDmJHsvRrURBYF5zaFUeSKgfgD'}
                                     options={{ host: 'https://vercelrp.gooddapp.org/ingest' }}
                                     autocapture={false}
                                 >
