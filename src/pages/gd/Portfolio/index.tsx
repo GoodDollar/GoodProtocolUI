@@ -458,14 +458,14 @@ const Portfolio = memo(() => {
 
     return (
         <Layout classes="md:mt-24 xl:mt-0 sh:mt-30">
-            {/* <PortfolioSC>
+            <PortfolioSC>
                 <Title className="mb-6 md:pl-4">Portfolio</Title>
                 {account ? (
                     portfolio
                 ) : (
                     <Placeholder className="mx-4">{i18n._(t`Connect a wallet to see your portfolio`)}</Placeholder>
                 )}
-            </PortfolioSC> */}
+            </PortfolioSC>
         </Layout>
     )
 })
