@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 import { HashRouter as Router } from 'react-router-dom'
 import { AnalyticsProvider } from '@gooddollar/web3sdk-v2'
 import { NewsFeedProvider } from '@gooddollar/web3sdk-v2'
-import { PostHogProvider } from 'posthog-react-native'
+import { PostHogProvider } from 'posthog-js/react'
 
 import Blocklist from './components/Blocklist'
 import App from './pages/App'
@@ -88,9 +88,11 @@ ReactDOM.render(
                         <Web3ContextProvider>
                             <LanguageProvider>
                                 <PostHogProvider
-                                    apiKey={'phc_VfJkmAUgLw36oH4oYeDmJHsvRrURBYF5zaFUeSKgfgD'}
-                                    options={{ host: 'https://vercelrp.gooddapp.org/ingest' }}
-                                    autocapture={false}
+                                    apiKey={
+                                        import.meta.env.REACT_APP_POSTHOG_KEY ??
+                                        'phc_VfJkmAUgLw36oH4oYeDmJHsvRrURBYF5zaFUeSKgfgD'
+                                    }
+                                    options={{ api_host: 'https://app.posthog.com' }}
                                 >
                                     <AnalyticsProvider config={analyticsConfig} appProps={appInfo}>
                                         <Blocklist>
