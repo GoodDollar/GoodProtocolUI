@@ -9,6 +9,7 @@ import { Provider } from 'react-redux'
 import { HashRouter as Router } from 'react-router-dom'
 import { AnalyticsProvider } from '@gooddollar/web3sdk-v2'
 import { NewsFeedProvider } from '@gooddollar/web3sdk-v2'
+import { PostHogProvider } from 'posthog-react-native'
 
 import Blocklist from './components/Blocklist'
 import App from './pages/App'
@@ -86,23 +87,29 @@ ReactDOM.render(
                     <OnboardProviderWrapper>
                         <Web3ContextProvider>
                             <LanguageProvider>
-                                <AnalyticsProvider config={analyticsConfig} appProps={appInfo}>
-                                    <Blocklist>
-                                        <UserUpdater />
-                                        <ApplicationUpdater />
-                                        <MulticallUpdater />
-                                        <ThemeProvider>
-                                            <NativeBaseProvider theme={nbTheme}>
-                                                <GlobalStyle />
-                                                <Router>
-                                                    <SimpleAppProvider>
-                                                        <App />
-                                                    </SimpleAppProvider>
-                                                </Router>
-                                            </NativeBaseProvider>
-                                        </ThemeProvider>
-                                    </Blocklist>
-                                </AnalyticsProvider>
+                                <PostHogProvider
+                                    apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
+                                    options={{ host: 'https://app.posthog.com' }}
+                                    autocapture={false}
+                                >
+                                    <AnalyticsProvider config={analyticsConfig} appProps={appInfo}>
+                                        <Blocklist>
+                                            <UserUpdater />
+                                            <ApplicationUpdater />
+                                            <MulticallUpdater />
+                                            <ThemeProvider>
+                                                <NativeBaseProvider theme={nbTheme}>
+                                                    <GlobalStyle />
+                                                    <Router>
+                                                        <SimpleAppProvider>
+                                                            <App />
+                                                        </SimpleAppProvider>
+                                                    </Router>
+                                                </NativeBaseProvider>
+                                            </ThemeProvider>
+                                        </Blocklist>
+                                    </AnalyticsProvider>
+                                </PostHogProvider>
                             </LanguageProvider>
                         </Web3ContextProvider>
                     </OnboardProviderWrapper>

@@ -207,7 +207,7 @@
     },
     "dependencies": {
         "@babel/runtime": "^7.18.9",
-        "@gooddollar/good-design": "^0.1.32",
+        "@gooddollar/good-design": "^0.1.33",
         "@gooddollar/goodprotocol": "^2.0.24",
         "@gooddollar/web3sdk": "^0.1.26",
         "@gooddollar/web3sdk-v2": "^0.2.12",
