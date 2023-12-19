@@ -5012,9 +5012,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.1.34":
-  version: 0.1.34
-  resolution: "@gooddollar/good-design@npm:0.1.34"
+"@gooddollar/good-design@npm:^0.1.35":
+  version: 0.1.35
+  resolution: "@gooddollar/good-design@npm:0.1.35"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -5046,7 +5046,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: 1eaaeae0cf1ddfe512e9e5ab3bad2878e245926eca21eca1b8dcac3ba8780f416165ac5c407c8d9674aed77cb345777789fc39786b370148a5b013d4697ae280
+  checksum: 4dea51b29d64fcf3516ef066d06435ff722b57e8ed49e6451b1c36cf76acacb9a3f9f8a67c9f5579aedcf24de4ba708bc8e014e2f3e8e3bd7fe18b2ed06b669f
   languageName: node
   linkType: hard
 
@@ -5098,7 +5098,7 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.1.34
+    "@gooddollar/good-design": ^0.1.35
     "@gooddollar/goodprotocol": ^2.0.24
     "@gooddollar/web3sdk": ^0.1.26
     "@gooddollar/web3sdk-v2": ^0.2.13
@@ -21827,9 +21827,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.601":
-  version: 1.4.614
-  resolution: "electron-to-chromium@npm:1.4.614"
-  checksum: e99e6c8600aa76b4d385a4381b943ec2cfeebfdc36a2675fbf87b334256428b92f5d79ab287b8bab0e1875a992284a8a95a03b41b71e9d64a75b5088daf1dc5e
+  version: 1.4.615
+  resolution: "electron-to-chromium@npm:1.4.615"
+  checksum: 9ffb1d0dac11c629bd8aa38efa7d2e3f41de943cf81fb41ab05e960e954c464c168d1f2f7e571813805e85b895279f2882bcafa551a2f23089646008d7a5bd06
   languageName: node
   linkType: hard
 

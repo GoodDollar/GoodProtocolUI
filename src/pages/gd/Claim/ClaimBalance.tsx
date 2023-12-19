@@ -1,10 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { View, Box, Text } from 'native-base'
-
 import { ArrowButton, BalanceGD } from '@gooddollar/good-design'
 import { SupportedChains, useHasClaimed, useSwitchNetwork } from '@gooddollar/web3sdk-v2'
-import usePromise from 'hooks/usePromise'
 import { g$Price } from '@gooddollar/web3sdk'
+import { useFeatureFlagEnabled } from 'posthog-js/react'
+
+import usePromise from 'hooks/usePromise'
+
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useClaiming } from 'hooks/useClaiming'
 import { useNetworkModalToggle } from 'state/application/hooks'
@@ -28,6 +30,7 @@ export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) =
         [chainId]
     )
     const { tillClaim } = useClaiming()
+    const showUsdPrice = useFeatureFlagEnabled('show-gd-price')
 
     const claimedCelo = useHasClaimed('CELO')
     const claimedFuse = useHasClaimed('FUSE')
@@ -81,7 +84,7 @@ export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) =
                 <NextClaim time={tillClaim || ''} />
             </Box>
             <Box>
-                <BalanceGD gdPrice={G$Price} refresh={refresh} />
+                <BalanceGD gdPrice={G$Price} refresh={refresh} showUsd={showUsdPrice} />
             </Box>
             <Box alignItems="center">
                 {!isSimpleApp && !claimedAlt && (

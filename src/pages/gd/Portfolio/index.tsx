@@ -378,7 +378,6 @@ const Portfolio = memo(() => {
                                         {i18n._(t`Claim G$ rewards`)}
                                     </ActionOrSwitchButton>
                                 }
-                                // trigger={<ButtonDefault width={'156px'}>{i18n._(t`Claim rewards`)}</ButtonDefault>}
                             />
                         </div>
                         <div className="h-full withdraw-button md:h-auto">
@@ -390,7 +389,6 @@ const Portfolio = memo(() => {
                                         {i18n._(t`Claim GOOD rewards`)}
                                     </ButtonDefault>
                                 }
-                                // trigger={<ButtonDefault width={'156px'}>{i18n._(t`Claim rewards`)}</ButtonDefault>}
                             />
                         </div>
                     </div>
@@ -402,10 +400,7 @@ const Portfolio = memo(() => {
                     {showNotice && (
                         <AppNotice
                             text={'Please withdraw your funds from all deprecated contracts and use our new'}
-                            link={[
-                                'https://goodswap.xyz/#/stakes',
-                                'https://www.gooddollar.org/gooddollar-critical-system-upgrade-february-27-2022/',
-                            ]}
+                            link={'https://www.gooddollar.org/gooddollar-critical-system-upgrade-february-27-2022/'}
                             show={true}
                         ></AppNotice>
                     )}
@@ -416,10 +411,7 @@ const Portfolio = memo(() => {
                     {showNotice && (
                         <AppNotice
                             text={'Please withdraw your funds from all deprecated contracts and use our new'}
-                            link={[
-                                'https://goodswap.xyz/#/stakes',
-                                'https://www.gooddollar.org/gooddollar-critical-system-upgrade-february-27-2022/',
-                            ]}
+                            link={'https://www.gooddollar.org/gooddollar-critical-system-upgrade-february-27-2022/'}
                             show={true}
                         ></AppNotice>
                     )}
