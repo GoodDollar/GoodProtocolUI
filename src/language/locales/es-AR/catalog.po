@@ -64,12 +64,12 @@ msgid ""
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/pages/gd/Portfolio/index.tsx:399
+#: src/pages/gd/Portfolio/index.tsx:397
 msgid "Stake Positions"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/pages/gd/Portfolio/index.tsx:452
+#: src/pages/gd/Portfolio/index.tsx:444
 msgid "Savings"
 msgstr ""
 
@@ -2669,7 +2669,7 @@ msgstr "Cuenta"
 msgid "amount"
 msgstr "Monto"
 
-#: src/pages/gd/Stake/index.tsx:74
+#: src/pages/gd/Stake/index.tsx:76
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
@@ -2693,7 +2693,7 @@ msgstr "Aprobatorio"
 msgid "APPROVING"
 msgstr "APROBATORIA"
 
-#: src/pages/gd/Stake/index.tsx:73
+#: src/pages/gd/Stake/index.tsx:75
 msgid "APY"
 msgstr ""
 
@@ -2739,7 +2739,7 @@ msgstr ""
 msgid "Claim GOOD"
 msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:390
+#: src/pages/gd/Portfolio/index.tsx:389
 msgid "Claim GOOD rewards"
 msgstr ""
 
@@ -2798,9 +2798,9 @@ msgstr "Limpiar todo"
 msgid "Close"
 msgstr "Cerrar"
 
-#: src/pages/gd/Claim/index.tsx:267
-#~ msgid "Collect G$"
-#~ msgstr ""
+#: src/pages/gd/Claim/index.tsx:318
+msgid "Collect G$"
+msgstr ""
 
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:160
 msgid "Confirm swap"
@@ -2821,9 +2821,9 @@ msgstr "Confirme esta transacción en su billetera."
 msgid "Congratulations!"
 msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:466
-#~ msgid "Connect a wallet to see your portfolio"
-#~ msgstr ""
+#: src/pages/gd/Portfolio/index.tsx:458
+msgid "Connect a wallet to see your portfolio"
+msgstr ""
 
 #: src/components/BlockNativeOnboard/index.tsx:34
 msgid "Connect to a wallet"
@@ -2933,22 +2933,22 @@ msgstr ""
 msgid "GoodDAO"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:478
-#~ msgid "GoodDAO Staking"
-#~ msgstr ""
+#: src/pages/gd/Stake/index.tsx:485
+msgid "GoodDAO Staking"
+msgstr ""
 
 #: src/components/Savings/SavingsStat/SavingsMobileStat.tsx:47
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:278
-#~ msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
-#~ msgstr ""
+#: src/pages/gd/Claim/index.tsx:329
+msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
+msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:463
 #: src/pages/gd/Stake/index.tsx:467
-#~ msgid "GoodStakes"
-#~ msgstr ""
+#: src/pages/gd/Stake/index.tsx:471
+msgid "GoodStakes"
+msgstr ""
 
 #: src/components/SideBar.tsx:204
 msgid "GoodWallet"
@@ -2986,11 +2986,11 @@ msgstr "¿Cuánto te gustaría depositar?"
 msgid "How much would you like to withdraw?"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:81
+#: src/pages/gd/Stake/index.tsx:83
 msgid "Liquidity"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:82
+#: src/pages/gd/Stake/index.tsx:84
 msgid "Liquidity is the total value staked in the GoodDollar Trust staking contract (USD)."
 msgstr ""
 
@@ -3004,10 +3004,10 @@ msgstr "Tarifa de proveedor de liquidez"
 msgid "loading..."
 msgstr "cargando..."
 
-#: src/pages/gd/Stake/index.tsx:97
-#: src/pages/gd/Stake/index.tsx:283
-#~ msgid "Loading..."
-#~ msgstr "Cargando..."
+#: src/pages/gd/Stake/index.tsx:99
+#: src/pages/gd/Stake/index.tsx:285
+msgid "Loading..."
+msgstr "Cargando..."
 
 #: src/pages/gd/Swap/SwapInput/index.tsx:40
 msgid "max"
@@ -3056,10 +3056,10 @@ msgstr "Cuota de red"
 msgid "Next month:"
 msgstr "Próximo mes:"
 
-#: src/pages/gd/Stake/index.tsx:102
-#: src/pages/gd/Stake/index.tsx:290
-#~ msgid "No data."
-#~ msgstr "Sin datos."
+#: src/pages/gd/Stake/index.tsx:104
+#: src/pages/gd/Stake/index.tsx:292
+msgid "No data."
+msgstr "Sin datos."
 
 #: src/components/NetworkModal/index.tsx:144
 #: src/components/NetworkModal/index.tsx:193
@@ -3070,7 +3070,7 @@ msgstr "sobre el"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "¡UPS! Un error desconocido ocurrió. Actualiza la página o visita desde otro navegador o dispositivo."
 
-#: src/components/AppBar.tsx:275
+#: src/components/AppBar.tsx:278
 msgid "Open main menu"
 msgstr "Abrir menú principal"
 
@@ -3098,7 +3098,7 @@ msgid "Price Impact"
 msgstr "Impacto en el precio"
 
 #: src/components/Withdraw/index.tsx:146
-#: src/pages/gd/Stake/index.tsx:69
+#: src/pages/gd/Stake/index.tsx:71
 #: src/pages/gd/Stake/Savings/index.tsx:109
 msgid "Protocol"
 msgstr "Protocolo"
@@ -3161,7 +3161,7 @@ msgstr ""
 msgid "Slippage Tolerance"
 msgstr "Tolerancia al deslizamiento"
 
-#: src/pages/gd/Stake/index.tsx:77
+#: src/pages/gd/Stake/index.tsx:79
 msgid "Social APY"
 msgstr ""
 
@@ -3169,12 +3169,12 @@ msgstr ""
 msgid "Squid Router"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:215
-#: src/pages/gd/Stake/index.tsx:319
-#: src/pages/gd/Stake/index.tsx:397
-#: src/pages/gd/Stake/index.tsx:463
-#~ msgid "Stake"
-#~ msgstr "Apostar"
+#: src/pages/gd/Stake/index.tsx:217
+#: src/pages/gd/Stake/index.tsx:321
+#: src/pages/gd/Stake/index.tsx:399
+#: src/pages/gd/Stake/index.tsx:467
+msgid "Stake"
+msgstr "Apostar"
 
 #: src/pages/gd/Portfolio/index.tsx:221
 msgid "STAKE"
@@ -3271,14 +3271,14 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/AppBar.tsx:252
-msgid "There has been a security breach. The app will be disabled until further notice"
-msgstr ""
+#~ msgid "There has been a security breach. The app will be disabled until further notice"
+#~ msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:86
+#: src/pages/gd/Stake/index.tsx:88
 msgid "These are the total yearly rewards in G$ and GOOD."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:78
+#: src/pages/gd/Stake/index.tsx:80
 msgid "This is the annual percentage of UBI your stake will create."
 msgstr ""
 
@@ -3287,11 +3287,11 @@ msgstr ""
 msgid "This is the protocol that the token is staked to."
 msgstr "Este es el protocolo de que el token está apostado."
 
-#: src/pages/gd/Stake/index.tsx:70
+#: src/pages/gd/Stake/index.tsx:72
 msgid "This is the protocol that the token will be staked to."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:66
+#: src/pages/gd/Stake/index.tsx:68
 msgid "This is the token that is currently available to stake to the Fund."
 msgstr ""
 
@@ -3316,7 +3316,7 @@ msgstr "Este mes"
 #~ msgstr "Este proyecto está en beta. Úselo bajo su propio riesgo"
 
 #: src/components/Withdraw/index.tsx:142
-#: src/pages/gd/Stake/index.tsx:65
+#: src/pages/gd/Stake/index.tsx:67
 #: src/pages/gd/Stake/Savings/index.tsx:104
 msgid "Token"
 msgstr "Simbólico"
@@ -3334,7 +3334,7 @@ msgstr ""
 msgid "Total currently saved."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:85
+#: src/pages/gd/Stake/index.tsx:87
 msgid "Total Rewards"
 msgstr ""
 
