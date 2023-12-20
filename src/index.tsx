@@ -88,10 +88,7 @@ ReactDOM.render(
                         <Web3ContextProvider>
                             <LanguageProvider>
                                 <PostHogProvider
-                                    apiKey={
-                                        import.meta.env.REACT_APP_POSTHOG_KEY ??
-                                        'phc_VfJkmAUgLw36oH4oYeDmJHsvRrURBYF5zaFUeSKgfgD'
-                                    }
+                                    apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
                                     options={{ api_host: 'https://app.posthog.com' }}
                                 >
                                     <AnalyticsProvider config={analyticsConfig} appProps={appInfo}>
