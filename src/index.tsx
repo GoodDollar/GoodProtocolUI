@@ -89,7 +89,9 @@ ReactDOM.render(
                             <LanguageProvider>
                                 <PostHogProvider
                                     apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
-                                    options={{ api_host: 'https://app.posthog.com' }}
+                                    options={{
+                                        api_host: import.meta.env.REACT_APP_POSTHOG_PROXY ?? 'https://app.posthog.com',
+                                    }}
                                 >
                                     <AnalyticsProvider config={analyticsConfig} appProps={appInfo}>
                                         <Blocklist>
