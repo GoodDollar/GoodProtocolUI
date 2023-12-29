@@ -306,7 +306,7 @@ function AppBar(): JSX.Element {
                                         </Text>
                                         <WalletBalanceIcon />
                                     </BasePressable>
-                                    {walletBalanceOpen && <WalletBalanceWrapper />}
+                                    {walletBalanceOpen && <WalletBalanceWrapper toggleView={toggleWalletBalance} />}
                                 </Box>
                             )}
                             {!isMinipay && (

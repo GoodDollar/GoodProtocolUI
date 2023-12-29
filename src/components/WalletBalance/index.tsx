@@ -3,10 +3,11 @@ import { ChainId } from '@sushiswap/sdk'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
 import { Fragment } from 'react'
+import { noop } from 'lodash'
 import { LoadingPlaceHolder } from 'theme/components'
 import { AsyncStorage, G$Balances, SupportedV2Networks, useG$Balance, useG$Tokens } from '@gooddollar/web3sdk-v2'
 import { Box, Text, useColorModeValue } from 'native-base'
-import { CentreBox } from '@gooddollar/good-design'
+import { BasePressable, CentreBox } from '@gooddollar/good-design'
 import { isMobile } from 'react-device-detect'
 
 import usePromise from 'hooks/usePromise'
@@ -17,6 +18,7 @@ import useMetaMask from 'hooks/useMetaMask'
 //assets
 import { ReactComponent as WalletBalanceIcon } from '../../assets/images/walletBalanceIcon.svg'
 import { ReactComponent as MetaMaskIcon } from '../../assets/svg/mm-icon.svg'
+import { ReactComponent as DoubleBars } from '../../assets/svg/double-bars.svg'
 
 export type WalletBalanceProps = {
     balances: G$Balances
@@ -25,7 +27,7 @@ export type WalletBalanceProps = {
 
 const chains = Object.values(AdditionalChainId)
 
-export const WalletBalanceWrapper = () => {
+export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }) => {
     const { ethereum } = window
     const { chainId } = useActiveWeb3React()
     const metaMaskInfo = useMetaMask()
@@ -118,7 +120,8 @@ export const WalletBalanceWrapper = () => {
                 alignItems="flex-start"
                 justifyContent="flex-start"
                 px={2}
-                py={4}
+                pt={4}
+                pb={2}
                 bgColor="white"
                 borderTopLeftRadius={12}
                 borderTopRightRadius={12}
@@ -147,6 +150,11 @@ export const WalletBalanceWrapper = () => {
                         </Text>
                     </Box>
                 )}
+            </Box>
+            <Box alignItems="center" paddingTop={2}>
+                <BasePressable onPress={toggleView}>
+                    <DoubleBars />
+                </BasePressable>
             </Box>
         </Box>
     )
