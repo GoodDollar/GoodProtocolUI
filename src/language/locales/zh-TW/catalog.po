@@ -2850,11 +2850,11 @@ msgstr "複製地址"
 msgid "Current Rate"
 msgstr "當前利率"
 
-#: src/components/SideBar.tsx:173
+#: src/components/SideBar.tsx:93
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:211
+#: src/components/SideBar.tsx:131
 msgid "Dashboard"
 msgstr ""
 
@@ -2877,11 +2877,11 @@ msgstr "存款概述"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:218
+#: src/components/SideBar.tsx:138
 msgid "Docs"
 msgstr "文档"
 
-#: src/components/SideBar.tsx:159
+#: src/components/SideBar.tsx:79
 msgid "Donate"
 msgstr ""
 
@@ -2893,7 +2893,7 @@ msgstr "加載失敗"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:192
+#: src/components/SideBar.tsx:112
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2926,7 +2926,7 @@ msgstr "去投資組合"
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:225
+#: src/components/SideBar.tsx:145
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2951,7 +2951,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:204
+#: src/components/SideBar.tsx:124
 msgid "GoodWallet"
 msgstr ""
 
@@ -3071,7 +3071,7 @@ msgstr "在這一點"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "糟糕！出現未知錯誤。請刷新頁面，或從其他瀏覽器或設備訪問"
 
-#: src/components/AppBar.tsx:278
+#: src/components/AppBar.tsx:318
 msgid "Open main menu"
 msgstr "打開主菜單"
 
@@ -3139,7 +3139,7 @@ msgstr "路徑"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "路由經過這些代幣將給您的交易帶來最好的價格。"
 
-#: src/components/SideBar.tsx:166
+#: src/components/SideBar.tsx:86
 msgid "Save G$"
 msgstr ""
 
@@ -3166,7 +3166,7 @@ msgstr "可容忍滑點"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:185
+#: src/components/SideBar.tsx:105
 msgid "Squid Router"
 msgstr ""
 
@@ -3414,7 +3414,7 @@ msgstr "等待確認中"
 #~ msgid "Wallet"
 #~ msgstr "錢包"
 
-#: src/components/SideBar.tsx:297
+#: src/components/WalletBalance/index.tsx:128
 msgid "Wallet balance"
 msgstr "錢包平衡"
 

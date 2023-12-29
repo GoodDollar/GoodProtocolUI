@@ -2871,11 +2871,11 @@ msgstr "Копировать адрес"
 msgid "Current Rate"
 msgstr "Текущая скорость"
 
-#: src/components/SideBar.tsx:173
+#: src/components/SideBar.tsx:93
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:211
+#: src/components/SideBar.tsx:131
 msgid "Dashboard"
 msgstr ""
 
@@ -2898,11 +2898,11 @@ msgstr "Обзор депозита"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:218
+#: src/components/SideBar.tsx:138
 msgid "Docs"
 msgstr "Документы"
 
-#: src/components/SideBar.tsx:159
+#: src/components/SideBar.tsx:79
 msgid "Donate"
 msgstr ""
 
@@ -2914,7 +2914,7 @@ msgstr "ошибка загрузки"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:192
+#: src/components/SideBar.tsx:112
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2947,7 +2947,7 @@ msgstr "Перейти к портфолио"
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:225
+#: src/components/SideBar.tsx:145
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2972,7 +2972,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:204
+#: src/components/SideBar.tsx:124
 msgid "GoodWallet"
 msgstr ""
 
@@ -3092,7 +3092,7 @@ msgstr "на"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Ой! Произошла неизвестная ошибка. Обновите страницу или перейдите в другой браузер или другое устройство."
 
-#: src/components/AppBar.tsx:278
+#: src/components/AppBar.tsx:318
 msgid "Open main menu"
 msgstr "Открыть главное меню"
 
@@ -3160,7 +3160,7 @@ msgstr "Маршрут"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "Маршрутизация через эти токены привела к лучшей цене для вашей сделки."
 
-#: src/components/SideBar.tsx:166
+#: src/components/SideBar.tsx:86
 msgid "Save G$"
 msgstr ""
 
@@ -3187,7 +3187,7 @@ msgstr "Допуск по проскальзыванию"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:185
+#: src/components/SideBar.tsx:105
 msgid "Squid Router"
 msgstr ""
 
@@ -3435,7 +3435,7 @@ msgstr "Ожидание подтверждения"
 #~ msgid "Wallet"
 #~ msgstr "Кошелек"
 
-#: src/components/SideBar.tsx:297
+#: src/components/WalletBalance/index.tsx:128
 msgid "Wallet balance"
 msgstr "Баланс кошелька"
 

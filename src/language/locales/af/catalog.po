@@ -2371,11 +2371,11 @@ msgstr "Kopieer adres"
 msgid "Current Rate"
 msgstr "Huidige Koers"
 
-#: src/components/SideBar.tsx:173
+#: src/components/SideBar.tsx:93
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:211
+#: src/components/SideBar.tsx:131
 msgid "Dashboard"
 msgstr ""
 
@@ -2398,11 +2398,11 @@ msgstr "Deposito oorsig"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:218
+#: src/components/SideBar.tsx:138
 msgid "Docs"
 msgstr "Dokumente"
 
-#: src/components/SideBar.tsx:159
+#: src/components/SideBar.tsx:79
 msgid "Donate"
 msgstr ""
 
@@ -2414,7 +2414,7 @@ msgstr "misluk om te laai"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:192
+#: src/components/SideBar.tsx:112
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2447,7 +2447,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:225
+#: src/components/SideBar.tsx:145
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2472,7 +2472,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:204
+#: src/components/SideBar.tsx:124
 msgid "GoodWallet"
 msgstr ""
 
@@ -2592,7 +2592,7 @@ msgstr "op die"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Oeps! 'n Onbekende fout het voorgekom. Verfris asseblief die bladsy, of besoek vanaf 'n ander blaaier of toestel"
 
-#: src/components/AppBar.tsx:278
+#: src/components/AppBar.tsx:318
 msgid "Open main menu"
 msgstr "Open hoofkieslys"
 
@@ -2660,7 +2660,7 @@ msgstr "Roete"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "Routing deur middel van hierdie tekens het gelei tot die beste prys vir jou handel."
 
-#: src/components/SideBar.tsx:166
+#: src/components/SideBar.tsx:86
 msgid "Save G$"
 msgstr ""
 
@@ -2687,7 +2687,7 @@ msgstr "Glip Verdraagsaamheid"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:185
+#: src/components/SideBar.tsx:105
 msgid "Squid Router"
 msgstr ""
 
@@ -2935,7 +2935,7 @@ msgstr "Wag Vir Bevestiging"
 #~ msgid "Wallet"
 #~ msgstr "beursie"
 
-#: src/components/SideBar.tsx:297
+#: src/components/WalletBalance/index.tsx:128
 msgid "Wallet balance"
 msgstr "Beursie balans"
 

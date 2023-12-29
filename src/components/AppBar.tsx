@@ -1,13 +1,14 @@
 import { Fraction } from '@uniswap/sdk-core'
-import React, { useState, useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
 import { g$Price } from '@gooddollar/web3sdk'
 import { isMobile } from 'react-device-detect'
 import classNames from 'classnames'
-import { Text, useBreakpointValue, ITextProps, Pressable } from 'native-base'
+import { Box, ITextProps, Pressable, Text, useBreakpointValue } from 'native-base'
 import { useFeatureFlagEnabled, usePostHog } from 'posthog-js/react'
+import { BasePressable } from '@gooddollar/good-design'
 
 import { useActiveWeb3React } from '../hooks/useActiveWeb3React'
 import Web3Network from './Web3Network'
@@ -20,12 +21,15 @@ import NetworkModal from './NetworkModal'
 import AppNotice from './AppNotice'
 import { OnboardConnectButton } from './BlockNativeOnboard'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
+import WalletBalanceWrapper from './WalletBalance'
 
+import { ReactComponent as WalletBalanceIcon } from '../assets/images/walletBalanceIcon.svg'
 import { ReactComponent as LogoPrimary } from '../assets/svg/logo_primary_2023.svg'
 import { ReactComponent as LogoWhite } from '../assets/svg/logo_white_2023.svg'
 import { useApplicationTheme } from '../state/application/hooks'
 import { ReactComponent as Burger } from '../assets/images/burger.svg'
 import { ReactComponent as X } from '../assets/images/x.svg'
+import { useG$Balance } from '@gooddollar/web3sdk-v2'
 
 const AppBarWrapper = styled.header`
     background: ${({ theme }) => theme.color.secondaryBg};
@@ -205,13 +209,16 @@ const Web3Bar = () => {
 function AppBar(): JSX.Element {
     const [theme] = useApplicationTheme()
     const { i18n } = useLingui()
-    const { chainId } = useActiveWeb3React()
+    const { account, chainId } = useActiveWeb3React()
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const isSimpleApp = useIsSimpleApp()
     const showPrice = useFeatureFlagEnabled('show-gd-price')
     const posthog = usePostHog()
     const payload = posthog?.getFeatureFlagPayload('app-notice')
     const { enabled: appNoticeEnabled, message, color, link } = (payload as any) || {}
+    const [walletBalanceOpen, setWalletBalanceOpen] = useState(false)
+    const { G$ } = useG$Balance(5)
+    const [gdBalance, setGdBalance] = useState('0.00')
 
     const [G$Price] = usePromise(async () => {
         try {
@@ -221,6 +228,17 @@ function AppBar(): JSX.Element {
             return undefined
         }
     }, [chainId])
+
+    useEffect(() => {
+        if (G$) {
+            const formatted = G$.format({
+                useFixedPrecision: true,
+                suffix: '',
+                prefix: G$.currency?.ticker + ' ',
+            })
+            setGdBalance(formatted)
+        }
+    }, [/* used */ chainId, G$])
 
     const toggleSideBar = useCallback(() => {
         setSidebarOpen(!sidebarOpen)
@@ -246,6 +264,10 @@ function AppBar(): JSX.Element {
     const { ethereum } = window
     const isMinipay = ethereum?.isMiniPay
 
+    const toggleWalletBalance = useCallback(() => {
+        setWalletBalanceOpen((prev) => !prev)
+    }, [walletBalanceOpen])
+
     return (
         <AppBarWrapper
             className="relative z-10 flex flex-row justify-between w-screen flex-nowrap background"
@@ -254,7 +276,7 @@ function AppBar(): JSX.Element {
             <>
                 {appNoticeEnabled && <AppNotice text={message} bg={color} link={link} show={true} />}
                 <div className="lg:px-8 lg:pt-4 lg:pb-2">
-                    <TopBar $mobile={isMobile} className="flex items-center justify-between">
+                    <TopBar $mobile={isMobile} className="relative flex items-center justify-between">
                         <div className="flex flex-col">
                             <LogoWrapper $mobile={isMobile} className="flex-shrink-0">
                                 {theme === 'dark' ? (
@@ -268,7 +290,25 @@ function AppBar(): JSX.Element {
                             )}
                         </div>
 
-                        <div className="flex flex-row items-end h-10 space-x-2">
+                        <div className="relative flex flex-row items-center h-10 space-x-2">
+                            {account && (
+                                <Box flexDirection="row" alignItems="center">
+                                    <BasePressable onPress={toggleWalletBalance} innerView={{ flexDirection: 'row' }}>
+                                        <Text
+                                            color={walletBalanceOpen ? 'primary' : 'goodGrey.700'}
+                                            selectable={false}
+                                            pr={1}
+                                            fontFamily="subheading"
+                                            fontWeight={400}
+                                            fontSize="xs"
+                                        >
+                                            {gdBalance}
+                                        </Text>
+                                        <WalletBalanceIcon />
+                                    </BasePressable>
+                                    {walletBalanceOpen && <WalletBalanceWrapper />}
+                                </Box>
+                            )}
                             {!isMinipay && (
                                 <div className="flex flex-row items-center space-x-2">
                                     <button
