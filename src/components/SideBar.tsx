@@ -157,7 +157,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     }
 
     const footerStyles = classNames('flex flex-col justify-center gap-3 mt-2.5', {
-        'w-1/5': !isMobile,
+        'w-52': !isMobile,
     })
 
     const externalLinks = useMemo(

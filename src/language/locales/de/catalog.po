@@ -2867,11 +2867,11 @@ msgstr "Adresse kopieren."
 msgid "Current Rate"
 msgstr "Tageskurs"
 
-#: src/components/SideBar.tsx:173
+#: src/components/SideBar.tsx:183
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:211
+#: src/components/SideBar.tsx:221
 msgid "Dashboard"
 msgstr ""
 
@@ -2894,11 +2894,11 @@ msgstr "Übersicht einleiten."
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:218
+#: src/components/SideBar.tsx:228
 msgid "Docs"
 msgstr ""
 
-#: src/components/SideBar.tsx:159
+#: src/components/SideBar.tsx:169
 msgid "Donate"
 msgstr ""
 
@@ -2910,7 +2910,7 @@ msgstr "Laden fehlgeschlagen"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:192
+#: src/components/SideBar.tsx:202
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2943,7 +2943,7 @@ msgstr "Gehe zum Portfolio."
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:225
+#: src/components/SideBar.tsx:235
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2968,7 +2968,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:204
+#: src/components/SideBar.tsx:214
 msgid "GoodWallet"
 msgstr ""
 
@@ -3088,7 +3088,7 @@ msgstr "auf der"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Hoppla! Ein unbekannter Fehler ist aufgetreten. Bitte aktualisieren Sie die Seite oder besuchen Sie sie von einem anderen Browser oder Gerät aus"
 
-#: src/components/AppBar.tsx:278
+#: src/components/AppBar.tsx:280
 msgid "Open main menu"
 msgstr "Hauptmenü öffnen"
 
@@ -3156,7 +3156,7 @@ msgstr ""
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "Das Weiterleiten durch diese Token ergab den besten Preis für Ihren Handel."
 
-#: src/components/SideBar.tsx:166
+#: src/components/SideBar.tsx:176
 msgid "Save G$"
 msgstr ""
 
@@ -3183,7 +3183,7 @@ msgstr "Schlupftoleranz"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:185
+#: src/components/SideBar.tsx:195
 msgid "Squid Router"
 msgstr ""
 
@@ -3431,7 +3431,7 @@ msgstr "Auf Bestätigung warten"
 #~ msgid "Wallet"
 #~ msgstr "Brieftasche"
 
-#: src/components/SideBar.tsx:297
+#: src/components/SideBar.tsx:316
 msgid "Wallet balance"
 msgstr "Geldbörsenbetrag"
 

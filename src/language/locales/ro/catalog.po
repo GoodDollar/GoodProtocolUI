@@ -2867,11 +2867,11 @@ msgstr "Adresa de copiere"
 msgid "Current Rate"
 msgstr "Rata curenta"
 
-#: src/components/SideBar.tsx:173
+#: src/components/SideBar.tsx:183
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:211
+#: src/components/SideBar.tsx:221
 msgid "Dashboard"
 msgstr ""
 
@@ -2894,11 +2894,11 @@ msgstr "Depozit Privire de ansamblu"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:218
+#: src/components/SideBar.tsx:228
 msgid "Docs"
 msgstr "Documente"
 
-#: src/components/SideBar.tsx:159
+#: src/components/SideBar.tsx:169
 msgid "Donate"
 msgstr ""
 
@@ -2910,7 +2910,7 @@ msgstr "incarcarea a esuat"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:192
+#: src/components/SideBar.tsx:202
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2943,7 +2943,7 @@ msgstr "Du-te la portofoliu."
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:225
+#: src/components/SideBar.tsx:235
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2968,7 +2968,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:204
+#: src/components/SideBar.tsx:214
 msgid "GoodWallet"
 msgstr ""
 
@@ -3088,7 +3088,7 @@ msgstr "pe"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Hopa! O eroare necunoscută s-a întamplat. Vă rugăm să reîmprospătați pagina sau să vizitați un alt browser sau dispozitiv"
 
-#: src/components/AppBar.tsx:278
+#: src/components/AppBar.tsx:280
 msgid "Open main menu"
 msgstr "Deschideți meniul principal"
 
@@ -3156,7 +3156,7 @@ msgstr "Traseu"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "Trecerea prin aceste jetoane a dus la cel mai bun preț pentru tranzacția dvs."
 
-#: src/components/SideBar.tsx:166
+#: src/components/SideBar.tsx:176
 msgid "Save G$"
 msgstr ""
 
@@ -3183,7 +3183,7 @@ msgstr "Toleranță la alunecare"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:185
+#: src/components/SideBar.tsx:195
 msgid "Squid Router"
 msgstr ""
 
@@ -3431,7 +3431,7 @@ msgstr "Așteptați confirmarea"
 #~ msgid "Wallet"
 #~ msgstr "Portofel"
 
-#: src/components/SideBar.tsx:297
+#: src/components/SideBar.tsx:316
 msgid "Wallet balance"
 msgstr "Balanța portofelului"
 
