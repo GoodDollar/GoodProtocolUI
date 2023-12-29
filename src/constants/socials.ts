@@ -16,7 +16,7 @@ export const socials = {
     },
     tg: {
         icon: TgIcon,
-        url: 'https://t.me/GoodDollarX',
+        url: 'https://ubi.gd/3GF6f78',
     },
     x: {
         icon: XIcon,
@@ -32,7 +32,7 @@ export const socials = {
     },
     dis: {
         icon: DiscordIcon,
-        url: 'https://discord.com/invite/H3seC734',
+        url: 'https://ubi.gd/48wdaLR',
     },
     med: {
         icon: MediumIcon,
