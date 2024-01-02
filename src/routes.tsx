@@ -27,9 +27,9 @@ function Routes(): JSX.Element {
                 <Route exact strict path="/portfolio" component={Portfolio} />
                 <Route exact strict path="/goodid" component={GoodId} />
                 <Route exact strict path="/buy" component={BuyGd} />
-                {import.meta.env.REACT_APP_CELO_PHASE_3 && <Route exact strict path="/bridge" component={Bridge} />}
+                {process.env.REACT_APP_CELO_PHASE_3 && <Route exact strict path="/bridge" component={Bridge} />}
                 <Route exact strict path="/claim" component={Claim} />
-                {import.meta.env.REACT_APP_CELO_PHASE_3 && (
+                {process.env.REACT_APP_CELO_PHASE_3 && (
                     <Route exact strict path="/microbridge" component={MicroBridge} />
                 )}
                 <Route component={RedirectHashRoutes} />

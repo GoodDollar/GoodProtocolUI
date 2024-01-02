@@ -5,7 +5,7 @@ import { NewsFeedContext } from '@gooddollar/web3sdk-v2'
 export const feedConfig = {
     production: {
         feedFilter: {
-            context: import.meta.env.REACT_APP_FEEDCONTEXT_PROD,
+            context: process.env.REACT_APP_FEEDCONTEXT_PROD,
             tag: 'publishDapp',
         },
     },

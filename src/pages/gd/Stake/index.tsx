@@ -16,7 +16,6 @@ import { Wrapper, CellSC } from './styled'
 import StakeDeposit from './StakeDeposit'
 import usePromise from 'hooks/usePromise'
 import { QuestionHelper } from 'components'
-import useCallbackOnFocus from 'hooks/useCallbackOnFocus'
 import { Savings } from './Savings'
 import { disableTestnetMain } from 'constants/index'
 
@@ -509,7 +508,7 @@ export default function Stakes(): JSX.Element | null {
                     )}
                 </Modal>
             </StakesSC>
-            {import.meta.env.REACT_APP_CELO_PHASE_3 && <Savings />}
+            {process.env.REACT_APP_CELO_PHASE_3 && <Savings />}
         </Layout>
     )
 }
