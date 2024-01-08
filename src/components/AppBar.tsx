@@ -272,7 +272,7 @@ function AppBar(): JSX.Element {
 
                         <div className="flex flex-row items-end h-10 space-x-2">
                             {!isMinipay && (
-                                <div className="flex flex-row items-center space-x-2">
+                                <div className="z-50 flex flex-row items-center space-x-2">
                                     <button
                                         onClick={toggleSideBar}
                                         className="inline-flex items-center justify-center rounded-md mobile-menu-button focus:outline-none"
