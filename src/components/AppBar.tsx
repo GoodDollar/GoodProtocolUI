@@ -1,12 +1,12 @@
 import { Fraction } from '@uniswap/sdk-core'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
 import { g$Price } from '@gooddollar/web3sdk'
 import { isMobile } from 'react-device-detect'
 import classNames from 'classnames'
-import { Box, ITextProps, Pressable, Text, useBreakpointValue } from 'native-base'
+import { Box, ITextProps, Pressable, PresenceTransition, Text, useBreakpointValue } from 'native-base'
 import { useFeatureFlagEnabled, usePostHog } from 'posthog-js/react'
 import { BasePressable } from '@gooddollar/good-design'
 
@@ -59,7 +59,7 @@ const AppBarWrapper = styled.header`
 
         .site-logo {
             width: 131px;
-            height: 25px;
+            height: 20px;
         }
     }
 `
@@ -112,7 +112,7 @@ export const DivOutlined = styled.div<{
 const SidebarContainer = styled.div<{ $mobile: boolean; scrWidth: number; appNotice: boolean }>`
     ${({ $mobile, scrWidth, appNotice }) =>
         $mobile &&
-        `top: ${appNotice ? `90px` : `75px`};
+        `top: ${appNotice ? `140px` : `40px`};
   width: ${scrWidth}px;
   height: 95%;
   left: -806px;
@@ -125,19 +125,6 @@ const SidebarContainer = styled.div<{ $mobile: boolean; scrWidth: number; appNot
   }`}
 `
 
-const SidebarOverlay = styled.div`
-    z-index: 0;
-    opacity: 0;
-    transition: all 0.5s ease;
-    &.open {
-        top: 75px;
-        transition: all 0.5s ease;
-        opacity: 1;
-        background-color: #3c3c3c3c;
-        z-index: 10;
-        height: 100%;
-    }
-`
 // will be moved to native base soon
 const TopBar = styled.div<{ $mobile: boolean }>`
     ${({ $mobile }) =>
@@ -145,7 +132,7 @@ const TopBar = styled.div<{ $mobile: boolean }>`
         `
     background-color: transparent;
     height: 40px; 
-    align-items: flex-end;
+    align-items: center;
     padding-left: 16px;
     padding-right: 16px;
   }`}
@@ -240,17 +227,9 @@ function AppBar(): JSX.Element {
         [G$]
     )
 
-    const toggleSideBar = useCallback(() => {
-        setSidebarOpen(!sidebarOpen)
-    }, [sidebarOpen])
-
     const fontColor = useBreakpointValue({
         base: 'goodGrey.400',
         lg: 'lightGrey',
-    })
-    const showBalance = useBreakpointValue({
-        base: 'none',
-        lg: 'block',
     })
 
     const mainMenuContainer = classNames(
@@ -264,9 +243,23 @@ function AppBar(): JSX.Element {
     const { ethereum } = window
     const isMinipay = ethereum?.isMiniPay
 
-    const toggleWalletBalance = useCallback(() => {
-        setWalletBalanceOpen((prev) => !prev)
-    }, [walletBalanceOpen])
+    const toggleSideBar = () => {
+        setSidebarOpen((prevSidebarOpen) => {
+            if (!prevSidebarOpen) {
+                setWalletBalanceOpen(false)
+            }
+            return !prevSidebarOpen
+        })
+    }
+
+    const toggleWalletBalance = () => {
+        setWalletBalanceOpen((prevWalletBalanceOpen) => {
+            if (!prevWalletBalanceOpen) {
+                setSidebarOpen(false)
+            }
+            return !prevWalletBalanceOpen
+        })
+    }
 
     return (
         <AppBarWrapper
@@ -285,9 +278,6 @@ function AppBar(): JSX.Element {
                                     <LogoPrimary className="w-auto site-logo lg:block" />
                                 )}
                             </LogoWrapper>
-                            {showPrice && (
-                                <G$Balance price={G$Price} display={showBalance} color={fontColor} pl="0" p="2" />
-                            )}
                         </div>
 
                         <div className="relative flex flex-row items-center h-10 space-x-2">
@@ -304,9 +294,19 @@ function AppBar(): JSX.Element {
                                         >
                                             {gdBalance}
                                         </Text>
-                                        <WalletBalanceIcon />
+                                        <WalletBalanceIcon fill={walletBalanceOpen ? '#00AFFF' : '#000'} />
                                     </BasePressable>
-                                    {walletBalanceOpen && <WalletBalanceWrapper toggleView={toggleWalletBalance} />}
+                                    <PresenceTransition
+                                        visible={walletBalanceOpen}
+                                        initial={{ scaleY: 0, translateY: 20 }}
+                                        animate={{
+                                            scaleY: 1,
+                                            translateY: 0,
+                                            transition: { duration: 250 },
+                                        }}
+                                    >
+                                        <WalletBalanceWrapper toggleView={toggleWalletBalance} />
+                                    </PresenceTransition>
                                 </Box>
                             )}
                             {!isMinipay && (
@@ -347,13 +347,37 @@ function AppBar(): JSX.Element {
                         >
                             <SideBar mobile={isMobile} closeSidebar={toggleSideBar} />
                         </SidebarContainer>
-                        <SidebarOverlay
-                            id="overlay"
-                            onClick={toggleSideBar}
-                            className={`fixed lg:hidden w-full ${sidebarOpen ? ' open ' : ''}`}
-                        ></SidebarOverlay>
                     </>
                 )}
+                <Pressable
+                    display={sidebarOpen || walletBalanceOpen ? 'block' : 'none'}
+                    position="absolute"
+                    h="1000%"
+                    w="100%"
+                    //@ts-ignore no other way to apply style for cursor, but not part of type definition
+                    style={{ cursor: 'default' }}
+                    onPress={walletBalanceOpen ? toggleWalletBalance : toggleSideBar}
+                    zIndex={'-1'}
+                >
+                    <PresenceTransition
+                        testID="overlay"
+                        visible={sidebarOpen || walletBalanceOpen}
+                        initial={{
+                            opacity: 0,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            transition: { duration: 500 },
+                        }}
+                        style={{
+                            zIndex: walletBalanceOpen ? -1 : sidebarOpen ? 10 : 0,
+                            backgroundColor: isMobile ? '#3c3c3c3c' : 'none ',
+                            width: '100%',
+                            top: appNoticeEnabled ? `140px` : `40px`,
+                            height: '100%',
+                        }}
+                    />
+                </Pressable>
             </>
         </AppBarWrapper>
     )

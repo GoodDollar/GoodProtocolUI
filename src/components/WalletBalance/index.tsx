@@ -102,11 +102,12 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
     return (
         <Box
             px={4}
-            py={4}
+            paddingBottom={2}
+            paddingTop={4}
             w={375}
             position="absolute"
             right={isMobile ? -30 : 0}
-            top={42}
+            top={30}
             bg={bgWalletBalance}
             borderRadius="12px"
             borderBottomLeftRadius={12}
@@ -127,7 +128,7 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
                 borderTopLeftRadius={12}
                 borderTopRightRadius={12}
             >
-                <WalletBalanceIcon />
+                <WalletBalanceIcon fill="#00AFFF" />
                 <Text ml={2} fontFamily="subheading" fontSize="sm" fontWeight="500" color={textColor}>
                     {i18n._(t`Wallet balance`)}
                 </Text>
@@ -153,7 +154,7 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
                 )}
             </Box>
             <Box alignItems="center" paddingTop={2}>
-                <BasePressable onPress={toggleView}>
+                <BasePressable width="100%" alignItems="center" onPress={toggleView}>
                     <DoubleBars />
                 </BasePressable>
             </Box>
