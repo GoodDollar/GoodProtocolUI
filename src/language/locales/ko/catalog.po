@@ -2826,11 +2826,11 @@ msgstr ""
 msgid "Current Rate"
 msgstr ""
 
-#: src/components/SideBar.tsx:173
+#: src/components/SideBar.tsx:183
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:211
+#: src/components/SideBar.tsx:221
 msgid "Dashboard"
 msgstr ""
 
@@ -2853,11 +2853,11 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:218
+#: src/components/SideBar.tsx:228
 msgid "Docs"
 msgstr "문서"
 
-#: src/components/SideBar.tsx:159
+#: src/components/SideBar.tsx:169
 msgid "Donate"
 msgstr ""
 
@@ -2869,7 +2869,7 @@ msgstr "불러 오지 못했습니다"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:192
+#: src/components/SideBar.tsx:202
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2902,7 +2902,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:225
+#: src/components/SideBar.tsx:235
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2927,7 +2927,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:204
+#: src/components/SideBar.tsx:214
 msgid "GoodWallet"
 msgstr ""
 
@@ -3047,7 +3047,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "이런! 알 수없는 오류가 발생했습니다. 페이지를 새로 고침하거나 다른 브라우저 또는 기기에서 방문하세요."
 
-#: src/components/AppBar.tsx:278
+#: src/components/AppBar.tsx:280
 msgid "Open main menu"
 msgstr "메인 메뉴 열기"
 
@@ -3115,7 +3115,7 @@ msgstr "루트"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "다음 토큰들을 통한 라우팅을 통해 최적의 가격이 산출되었습니다."
 
-#: src/components/SideBar.tsx:166
+#: src/components/SideBar.tsx:176
 msgid "Save G$"
 msgstr ""
 
@@ -3142,7 +3142,7 @@ msgstr "미끄러짐 공차"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:185
+#: src/components/SideBar.tsx:195
 msgid "Squid Router"
 msgstr ""
 
@@ -3390,7 +3390,7 @@ msgstr ""
 #~ msgid "Wallet"
 #~ msgstr "지갑"
 
-#: src/components/SideBar.tsx:297
+#: src/components/SideBar.tsx:316
 msgid "Wallet balance"
 msgstr ""
 
