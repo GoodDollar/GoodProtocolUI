@@ -3088,7 +3088,7 @@ msgstr "auf der"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Hoppla! Ein unbekannter Fehler ist aufgetreten. Bitte aktualisieren Sie die Seite oder besuchen Sie sie von einem anderen Browser oder Gerät aus"
 
-#: src/components/AppBar.tsx:320
+#: src/components/AppBar.tsx:318
 msgid "Open main menu"
 msgstr "Hauptmenü öffnen"
 
@@ -3431,7 +3431,7 @@ msgstr "Auf Bestätigung warten"
 #~ msgid "Wallet"
 #~ msgstr "Brieftasche"
 
-#: src/components/WalletBalance/index.tsx:131
+#: src/components/WalletBalance/index.tsx:133
 msgid "Wallet balance"
 msgstr "Geldbörsenbetrag"
 
