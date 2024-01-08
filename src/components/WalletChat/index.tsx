@@ -9,7 +9,7 @@ const WalletChat = () => {
 
     return (
         <WalletChatWidget
-            style={{ marginBottom: isMobile ? '75px' : '0px' }}
+            style={{ marginBottom: isMobile ? '35px' : '0px' }}
             connectedWallet={
                 account && chainId
                     ? {

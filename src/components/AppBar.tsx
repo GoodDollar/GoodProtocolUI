@@ -22,6 +22,7 @@ import AppNotice from './AppNotice'
 import { OnboardConnectButton } from './BlockNativeOnboard'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 import WalletBalanceWrapper from './WalletBalance'
+import { getScreenWidth } from 'utils/screenSizes'
 
 import { ReactComponent as WalletBalanceIcon } from '../assets/images/walletBalanceIcon.svg'
 import { ReactComponent as LogoPrimary } from '../assets/svg/logo_primary_2023.svg'
@@ -108,11 +109,11 @@ export const DivOutlined = styled.div<{
         cursor: auto;
     }
 `
-const SidebarContainer = styled.div<{ $mobile: boolean }>`
-    ${({ $mobile }) =>
+const SidebarContainer = styled.div<{ $mobile: boolean; scrWidth: number; appNotice: boolean }>`
+    ${({ $mobile, scrWidth, appNotice }) =>
         $mobile &&
-        `  top: 75px;
-  width: 75%;
+        `top: ${appNotice ? `90px` : `75px`};
+  width: ${scrWidth}px;
   height: 95%;
   left: -806px;
   position: fixed;
@@ -219,6 +220,7 @@ function AppBar(): JSX.Element {
     const [walletBalanceOpen, setWalletBalanceOpen] = useState(false)
     const { G$ } = useG$Balance(5)
     const [gdBalance, setGdBalance] = useState('0.00')
+    const scrWidth = getScreenWidth()
 
     const [G$Price] = usePromise(async () => {
         try {
@@ -339,7 +341,12 @@ function AppBar(): JSX.Element {
                 </div>
                 {isMobile && (
                     <>
-                        <SidebarContainer $mobile={isMobile} className={`${sidebarOpen ? ' open ' : ''} w-64`}>
+                        <SidebarContainer
+                            $mobile={isMobile}
+                            scrWidth={scrWidth}
+                            appNotice={appNoticeEnabled}
+                            className={`${sidebarOpen ? ' open ' : ''} w-64`}
+                        >
                             <SideBar mobile={isMobile} closeSidebar={toggleSideBar} />
                         </SidebarContainer>
                         <SidebarOverlay

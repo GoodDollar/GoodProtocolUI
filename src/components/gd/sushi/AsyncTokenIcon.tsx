@@ -25,7 +25,7 @@ const AsyncTokenIcon = ({
         setLoadedSrc('')
         if (!(address && chainId)) return
         if (BAD_SRCS[address]) {
-            setLoadedSrc(`${import.meta.env.PUBLIC_URL}/images/tokens/unknown.png`)
+            setLoadedSrc(`${process.env.PUBLIC_URL}/images/tokens/unknown.png`)
             return
         }
 
@@ -39,7 +39,7 @@ const AsyncTokenIcon = ({
         image.addEventListener('load', handleLoad)
         image.onerror = () => {
             BAD_SRCS[address] = true
-            setLoadedSrc(`${import.meta.env.PUBLIC_URL}/images/tokens/unknown.png`)
+            setLoadedSrc(`${process.env.PUBLIC_URL}/images/tokens/unknown.png`)
         }
         image.src = src
         return () => {

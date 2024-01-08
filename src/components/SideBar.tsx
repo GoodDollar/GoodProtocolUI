@@ -5,15 +5,16 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useLocation } from 'react-router-dom'
 import { SlideDownTab } from '@gooddollar/good-design'
+import { isMobile } from 'react-device-detect'
 
-import DiscordLogo from '../assets/images/discord-logo-new.png'
-import TelegramLogo from '../assets/images/telegram.png'
-import TwitterLogo from '../assets/images/twitter.png'
 import { useApplicationTheme } from '../state/application/hooks'
 import LanguageSwitch from './LanguageSwitch'
 import { NavLink } from './Link'
 import { ExternalLink } from 'theme'
 import { SubMenuItems } from './StyledMenu/SubMenu'
+import { socials } from 'constants/socials'
+import { getScreenWidth } from 'utils/screenSizes'
+import classNames from 'classnames'
 
 const SocialsLink: React.FC<{ network: string; logo: string; url: string }> = ({ network, logo, url }) => (
     <a href={url} target="_blank" className="flex items-center space-x-2" rel="noreferrer">
@@ -39,15 +40,20 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const bgContainer = useColorModeValue('goodWhite.100', '#151A30')
 
     const { browser, os } = getDevice()
+    const scrWidth = getScreenWidth()
     const isiOS = os.name === 'iOS'
     const isChrome = browser.name === 'Chrome'
 
     const viewPort = isiOS ? '98vh' : '100vh'
     const browserViewPort = isChrome && isiOS ? '160px' : '130px'
 
+    const socialItems = Object.entries(socials)
+    const firstRowItems = socialItems.slice(0, 4)
+    const secondRowItems = socialItems.slice(4)
+
     const containerStyles = useBreakpointValue({
         base: {
-            width: '90%',
+            width: '100%',
             flexShrink: 0,
             // height: '100%',
             transition: 'all 1s ease',
@@ -69,6 +75,10 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             closeSidebar()
         }
     }
+
+    const footerStyles = classNames('flex flex-col justify-center gap-3 mt-2.5', {
+        'w-52': !isMobile,
+    })
 
     const externalLinks = useMemo(
         () => [
@@ -190,12 +200,22 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             {
                 route: '/bridge',
                 text: 'Bridge',
-                show: false,
+                show: process.env.REACT_APP_CELO_PHASE_3,
             },
             {
                 route: '/microbridge',
                 text: 'Micro Bridge',
-                show: false,
+                show: process.env.REACT_APP_CELO_PHASE_3,
+            },
+            {
+                route: '/dashboard',
+                text: 'Dashboard',
+                show: true,
+            },
+            {
+                route: '/buy',
+                text: 'Buy G$',
+                show: isBuyGd, // todo: use post-hog feature flag
             },
         ],
         [isWhitelisted, pathname]
@@ -208,7 +228,16 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             justifyContent="space-between"
             style={containerStyles}
         >
-            <Box display="flex" h="100%" justifyContent="center" flexDirection="column" px="6" py="4" bg={bgContainer}>
+            <Box
+                display="flex"
+                w={scrWidth}
+                h="100%"
+                justifyContent="center"
+                flexDirection="column"
+                px="6"
+                py="4"
+                bg={bgContainer}
+            >
                 <ScrollView scrollEnabled={true} display="flex" flexDir="column">
                     {internalLinks
                         .filter((internal) => internal.show)
@@ -242,9 +271,8 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                         )
                     )}
                 </ScrollView>
-
-                <div className="flex flex-col justify-center gap-3 mt-2.5">
-                    <div className="flex flex-row h-6 gap-10">
+                <div className={footerStyles}>
+                    <div className="flex flex-row w-full h-6 gap-10">
                         <div className="flex items-center justify-center">
                             <svg
                                 width="24"
@@ -272,7 +300,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                     </div>
                     <Box
                         display="flex"
-                        flexDir="row"
+                        flexDir="column"
                         alignItems="center"
                         justifyContent="justify-start"
                         borderTopWidth={1}
@@ -280,10 +308,15 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                         pt={4}
                         pl={1}
                     >
-                        <HStack space={10}>
-                            <SocialsLink network="twitter" logo={TwitterLogo} url="https://twitter.com/gooddollarorg" />
-                            <SocialsLink network="telegram" logo={TelegramLogo} url="https://t.me/GoodDollarX" />
-                            <SocialsLink network="discord" logo={DiscordLogo} url="https://discord.gg/RKVHwdQtme" />
+                        <HStack space={15} justifyContent="space-between" width="100%">
+                            {firstRowItems.map(([key, { icon, url }]) => (
+                                <SocialsLink key={key} network={key} logo={icon} url={url} />
+                            ))}
+                        </HStack>
+                        <HStack space={15} mt={4} justifyContent="space-between" width="100%">
+                            {secondRowItems.map(([key, { icon, url }]) => (
+                                <SocialsLink key={key} network={key} logo={icon} url={url} />
+                            ))}
                         </HStack>
                     </Box>
                     <Box mt="2">

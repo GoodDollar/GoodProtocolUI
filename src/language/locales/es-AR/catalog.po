@@ -2669,7 +2669,7 @@ msgstr "Cuenta"
 msgid "amount"
 msgstr "Monto"
 
-#: src/pages/gd/Stake/index.tsx:76
+#: src/pages/gd/Stake/index.tsx:75
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
@@ -2693,7 +2693,7 @@ msgstr "Aprobatorio"
 msgid "APPROVING"
 msgstr "APROBATORIA"
 
-#: src/pages/gd/Stake/index.tsx:75
+#: src/pages/gd/Stake/index.tsx:74
 msgid "APY"
 msgstr ""
 
@@ -2849,11 +2849,11 @@ msgstr "Dirección de copia"
 msgid "Current Rate"
 msgstr "Tasa actual"
 
-#: src/components/SideBar.tsx:93
+#: src/components/SideBar.tsx:103
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:131
+#: src/components/SideBar.tsx:141
 msgid "Dashboard"
 msgstr ""
 
@@ -2876,11 +2876,11 @@ msgstr "Descripción de depósito"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:138
+#: src/components/SideBar.tsx:148
 msgid "Docs"
 msgstr ""
 
-#: src/components/SideBar.tsx:79
+#: src/components/SideBar.tsx:89
 msgid "Donate"
 msgstr ""
 
@@ -2892,7 +2892,7 @@ msgstr "falló al cargar"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:112
+#: src/components/SideBar.tsx:122
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2925,7 +2925,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:145
+#: src/components/SideBar.tsx:155
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2933,7 +2933,7 @@ msgstr ""
 msgid "GoodDAO"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:485
+#: src/pages/gd/Stake/index.tsx:484
 msgid "GoodDAO Staking"
 msgstr ""
 
@@ -2945,12 +2945,12 @@ msgstr ""
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:467
-#: src/pages/gd/Stake/index.tsx:471
+#: src/pages/gd/Stake/index.tsx:466
+#: src/pages/gd/Stake/index.tsx:470
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:124
+#: src/components/SideBar.tsx:134
 msgid "GoodWallet"
 msgstr ""
 
@@ -2986,11 +2986,11 @@ msgstr "¿Cuánto te gustaría depositar?"
 msgid "How much would you like to withdraw?"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:83
+#: src/pages/gd/Stake/index.tsx:82
 msgid "Liquidity"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:84
+#: src/pages/gd/Stake/index.tsx:83
 msgid "Liquidity is the total value staked in the GoodDollar Trust staking contract (USD)."
 msgstr ""
 
@@ -3004,8 +3004,8 @@ msgstr "Tarifa de proveedor de liquidez"
 msgid "loading..."
 msgstr "cargando..."
 
-#: src/pages/gd/Stake/index.tsx:99
-#: src/pages/gd/Stake/index.tsx:285
+#: src/pages/gd/Stake/index.tsx:98
+#: src/pages/gd/Stake/index.tsx:284
 msgid "Loading..."
 msgstr "Cargando..."
 
@@ -3056,8 +3056,8 @@ msgstr "Cuota de red"
 msgid "Next month:"
 msgstr "Próximo mes:"
 
-#: src/pages/gd/Stake/index.tsx:104
-#: src/pages/gd/Stake/index.tsx:292
+#: src/pages/gd/Stake/index.tsx:103
+#: src/pages/gd/Stake/index.tsx:291
 msgid "No data."
 msgstr "Sin datos."
 
@@ -3070,7 +3070,7 @@ msgstr "sobre el"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "¡UPS! Un error desconocido ocurrió. Actualiza la página o visita desde otro navegador o dispositivo."
 
-#: src/components/AppBar.tsx:318
+#: src/components/AppBar.tsx:320
 msgid "Open main menu"
 msgstr "Abrir menú principal"
 
@@ -3098,7 +3098,7 @@ msgid "Price Impact"
 msgstr "Impacto en el precio"
 
 #: src/components/Withdraw/index.tsx:146
-#: src/pages/gd/Stake/index.tsx:71
+#: src/pages/gd/Stake/index.tsx:70
 #: src/pages/gd/Stake/Savings/index.tsx:109
 msgid "Protocol"
 msgstr "Protocolo"
@@ -3138,7 +3138,7 @@ msgstr "Ruta"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "El enrutamiento a través de estos tokens resultó en el mejor precio para su comercio."
 
-#: src/components/SideBar.tsx:86
+#: src/components/SideBar.tsx:96
 msgid "Save G$"
 msgstr ""
 
@@ -3161,18 +3161,18 @@ msgstr ""
 msgid "Slippage Tolerance"
 msgstr "Tolerancia al deslizamiento"
 
-#: src/pages/gd/Stake/index.tsx:79
+#: src/pages/gd/Stake/index.tsx:78
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:105
+#: src/components/SideBar.tsx:115
 msgid "Squid Router"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:217
-#: src/pages/gd/Stake/index.tsx:321
-#: src/pages/gd/Stake/index.tsx:399
-#: src/pages/gd/Stake/index.tsx:467
+#: src/pages/gd/Stake/index.tsx:216
+#: src/pages/gd/Stake/index.tsx:320
+#: src/pages/gd/Stake/index.tsx:398
+#: src/pages/gd/Stake/index.tsx:466
 msgid "Stake"
 msgstr "Apostar"
 
@@ -3274,11 +3274,11 @@ msgstr ""
 #~ msgid "There has been a security breach. The app will be disabled until further notice"
 #~ msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:88
+#: src/pages/gd/Stake/index.tsx:87
 msgid "These are the total yearly rewards in G$ and GOOD."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:80
+#: src/pages/gd/Stake/index.tsx:79
 msgid "This is the annual percentage of UBI your stake will create."
 msgstr ""
 
@@ -3287,11 +3287,11 @@ msgstr ""
 msgid "This is the protocol that the token is staked to."
 msgstr "Este es el protocolo de que el token está apostado."
 
-#: src/pages/gd/Stake/index.tsx:72
+#: src/pages/gd/Stake/index.tsx:71
 msgid "This is the protocol that the token will be staked to."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:68
+#: src/pages/gd/Stake/index.tsx:67
 msgid "This is the token that is currently available to stake to the Fund."
 msgstr ""
 
@@ -3316,7 +3316,7 @@ msgstr "Este mes"
 #~ msgstr "Este proyecto está en beta. Úselo bajo su propio riesgo"
 
 #: src/components/Withdraw/index.tsx:142
-#: src/pages/gd/Stake/index.tsx:67
+#: src/pages/gd/Stake/index.tsx:66
 #: src/pages/gd/Stake/Savings/index.tsx:104
 msgid "Token"
 msgstr "Simbólico"
@@ -3334,7 +3334,7 @@ msgstr ""
 msgid "Total currently saved."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:87
+#: src/pages/gd/Stake/index.tsx:86
 msgid "Total Rewards"
 msgstr ""
 
@@ -3413,7 +3413,7 @@ msgstr "Esperando confirmación"
 #~ msgid "Wallet"
 #~ msgstr "Cartera"
 
-#: src/components/WalletBalance/index.tsx:128
+#: src/components/WalletBalance/index.tsx:131
 msgid "Wallet balance"
 msgstr "Balance de billetera"
 

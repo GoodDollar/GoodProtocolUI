@@ -2666,7 +2666,7 @@ msgstr "帐户"
 msgid "amount"
 msgstr "数量"
 
-#: src/pages/gd/Stake/index.tsx:76
+#: src/pages/gd/Stake/index.tsx:75
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
@@ -2690,7 +2690,7 @@ msgstr "批准中"
 msgid "APPROVING"
 msgstr "批准"
 
-#: src/pages/gd/Stake/index.tsx:75
+#: src/pages/gd/Stake/index.tsx:74
 msgid "APY"
 msgstr ""
 
@@ -2846,11 +2846,11 @@ msgstr "复制地址"
 msgid "Current Rate"
 msgstr "当前利率"
 
-#: src/components/SideBar.tsx:93
+#: src/components/SideBar.tsx:103
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:131
+#: src/components/SideBar.tsx:141
 msgid "Dashboard"
 msgstr ""
 
@@ -2873,11 +2873,11 @@ msgstr "存款概述"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:138
+#: src/components/SideBar.tsx:148
 msgid "Docs"
 msgstr "文档"
 
-#: src/components/SideBar.tsx:79
+#: src/components/SideBar.tsx:89
 msgid "Donate"
 msgstr ""
 
@@ -2889,7 +2889,7 @@ msgstr "加载失败"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:112
+#: src/components/SideBar.tsx:122
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2922,7 +2922,7 @@ msgstr "去投资组合"
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:145
+#: src/components/SideBar.tsx:155
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2930,7 +2930,7 @@ msgstr ""
 msgid "GoodDAO"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:485
+#: src/pages/gd/Stake/index.tsx:484
 msgid "GoodDAO Staking"
 msgstr ""
 
@@ -2942,12 +2942,12 @@ msgstr ""
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:467
-#: src/pages/gd/Stake/index.tsx:471
+#: src/pages/gd/Stake/index.tsx:466
+#: src/pages/gd/Stake/index.tsx:470
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:124
+#: src/components/SideBar.tsx:134
 msgid "GoodWallet"
 msgstr ""
 
@@ -2983,11 +2983,11 @@ msgstr "你想存入多少钱？"
 msgid "How much would you like to withdraw?"
 msgstr "你想退出多少钱？"
 
-#: src/pages/gd/Stake/index.tsx:83
+#: src/pages/gd/Stake/index.tsx:82
 msgid "Liquidity"
 msgstr "流动性"
 
-#: src/pages/gd/Stake/index.tsx:84
+#: src/pages/gd/Stake/index.tsx:83
 msgid "Liquidity is the total value staked in the GoodDollar Trust staking contract (USD)."
 msgstr ""
 
@@ -3001,8 +3001,8 @@ msgstr "LP奖励"
 msgid "loading..."
 msgstr "载入中..."
 
-#: src/pages/gd/Stake/index.tsx:99
-#: src/pages/gd/Stake/index.tsx:285
+#: src/pages/gd/Stake/index.tsx:98
+#: src/pages/gd/Stake/index.tsx:284
 msgid "Loading..."
 msgstr "载入中..."
 
@@ -3053,8 +3053,8 @@ msgstr "网络费用"
 msgid "Next month:"
 msgstr "下个月："
 
-#: src/pages/gd/Stake/index.tsx:104
-#: src/pages/gd/Stake/index.tsx:292
+#: src/pages/gd/Stake/index.tsx:103
+#: src/pages/gd/Stake/index.tsx:291
 msgid "No data."
 msgstr "没有数据。"
 
@@ -3067,7 +3067,7 @@ msgstr "在这一点"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "糟糕！出现未知错误。请刷新页面，或从其他浏览器或设备访问"
 
-#: src/components/AppBar.tsx:318
+#: src/components/AppBar.tsx:320
 msgid "Open main menu"
 msgstr "打开主菜单"
 
@@ -3095,7 +3095,7 @@ msgid "Price Impact"
 msgstr "价格影响"
 
 #: src/components/Withdraw/index.tsx:146
-#: src/pages/gd/Stake/index.tsx:71
+#: src/pages/gd/Stake/index.tsx:70
 #: src/pages/gd/Stake/Savings/index.tsx:109
 msgid "Protocol"
 msgstr "协议"
@@ -3135,7 +3135,7 @@ msgstr "路径"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "路由经过这些代币将给您的交易带来最好的价格。"
 
-#: src/components/SideBar.tsx:86
+#: src/components/SideBar.tsx:96
 msgid "Save G$"
 msgstr ""
 
@@ -3158,18 +3158,18 @@ msgstr ""
 msgid "Slippage Tolerance"
 msgstr "可容忍滑点"
 
-#: src/pages/gd/Stake/index.tsx:79
+#: src/pages/gd/Stake/index.tsx:78
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:105
+#: src/components/SideBar.tsx:115
 msgid "Squid Router"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:217
-#: src/pages/gd/Stake/index.tsx:321
-#: src/pages/gd/Stake/index.tsx:399
-#: src/pages/gd/Stake/index.tsx:467
+#: src/pages/gd/Stake/index.tsx:216
+#: src/pages/gd/Stake/index.tsx:320
+#: src/pages/gd/Stake/index.tsx:398
+#: src/pages/gd/Stake/index.tsx:466
 msgid "Stake"
 msgstr "质押"
 
@@ -3271,11 +3271,11 @@ msgstr ""
 #~ msgid "There has been a security breach. The app will be disabled until further notice"
 #~ msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:88
+#: src/pages/gd/Stake/index.tsx:87
 msgid "These are the total yearly rewards in G$ and GOOD."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:80
+#: src/pages/gd/Stake/index.tsx:79
 msgid "This is the annual percentage of UBI your stake will create."
 msgstr ""
 
@@ -3284,11 +3284,11 @@ msgstr ""
 msgid "This is the protocol that the token is staked to."
 msgstr "这是令牌赌注的协议。"
 
-#: src/pages/gd/Stake/index.tsx:72
+#: src/pages/gd/Stake/index.tsx:71
 msgid "This is the protocol that the token will be staked to."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:68
+#: src/pages/gd/Stake/index.tsx:67
 msgid "This is the token that is currently available to stake to the Fund."
 msgstr ""
 
@@ -3313,7 +3313,7 @@ msgstr "这个月"
 #~ msgstr "该项目处于测试阶段。使用风险自负"
 
 #: src/components/Withdraw/index.tsx:142
-#: src/pages/gd/Stake/index.tsx:67
+#: src/pages/gd/Stake/index.tsx:66
 #: src/pages/gd/Stake/Savings/index.tsx:104
 msgid "Token"
 msgstr "代币"
@@ -3331,7 +3331,7 @@ msgstr "价值总额托出来。"
 msgid "Total currently saved."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:87
+#: src/pages/gd/Stake/index.tsx:86
 msgid "Total Rewards"
 msgstr ""
 
@@ -3410,7 +3410,7 @@ msgstr "等待确认中"
 #~ msgid "Wallet"
 #~ msgstr "钱包"
 
-#: src/components/WalletBalance/index.tsx:128
+#: src/components/WalletBalance/index.tsx:131
 msgid "Wallet balance"
 msgstr "钱包平衡"
 
