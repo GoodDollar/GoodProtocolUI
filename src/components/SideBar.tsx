@@ -280,12 +280,22 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             {
                 route: '/bridge',
                 text: 'Bridge',
-                show: false,
+                show: process.env.REACT_APP_CELO_PHASE_3,
             },
             {
                 route: '/microbridge',
                 text: 'Micro Bridge',
-                show: false,
+                show: process.env.REACT_APP_CELO_PHASE_3,
+            },
+            {
+                route: '/dashboard',
+                text: 'Dashboard',
+                show: true,
+            },
+            {
+                route: '/buy',
+                text: 'Buy G$',
+                show: isBuyGd, // todo: use post-hog feature flag
             },
         ],
         [isWhitelisted, pathname]
