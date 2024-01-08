@@ -2681,7 +2681,7 @@ msgstr ""
 msgid "amount"
 msgstr "Quantità"
 
-#: src/pages/gd/Stake/index.tsx:76
+#: src/pages/gd/Stake/index.tsx:75
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
@@ -2705,7 +2705,7 @@ msgstr "Approvazione"
 msgid "APPROVING"
 msgstr "Approvazione"
 
-#: src/pages/gd/Stake/index.tsx:75
+#: src/pages/gd/Stake/index.tsx:74
 msgid "APY"
 msgstr ""
 
@@ -2945,7 +2945,7 @@ msgstr ""
 msgid "GoodDAO"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:485
+#: src/pages/gd/Stake/index.tsx:484
 msgid "GoodDAO Staking"
 msgstr ""
 
@@ -2957,8 +2957,8 @@ msgstr ""
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:467
-#: src/pages/gd/Stake/index.tsx:471
+#: src/pages/gd/Stake/index.tsx:466
+#: src/pages/gd/Stake/index.tsx:470
 msgid "GoodStakes"
 msgstr ""
 
@@ -2998,11 +2998,11 @@ msgstr "Quanto ti piacerebbe depositare?"
 msgid "How much would you like to withdraw?"
 msgstr "Quanto ti piacerebbe ritirare?"
 
-#: src/pages/gd/Stake/index.tsx:83
+#: src/pages/gd/Stake/index.tsx:82
 msgid "Liquidity"
 msgstr "Liquidità"
 
-#: src/pages/gd/Stake/index.tsx:84
+#: src/pages/gd/Stake/index.tsx:83
 msgid "Liquidity is the total value staked in the GoodDollar Trust staking contract (USD)."
 msgstr ""
 
@@ -3016,8 +3016,8 @@ msgstr "Commissione per fornitori di liquidità"
 msgid "loading..."
 msgstr "caricamento..."
 
-#: src/pages/gd/Stake/index.tsx:99
-#: src/pages/gd/Stake/index.tsx:285
+#: src/pages/gd/Stake/index.tsx:98
+#: src/pages/gd/Stake/index.tsx:284
 msgid "Loading..."
 msgstr "Caricamento..."
 
@@ -3068,8 +3068,8 @@ msgstr "Tassa di rete"
 msgid "Next month:"
 msgstr "Il prossimo mese:"
 
-#: src/pages/gd/Stake/index.tsx:104
-#: src/pages/gd/Stake/index.tsx:292
+#: src/pages/gd/Stake/index.tsx:103
+#: src/pages/gd/Stake/index.tsx:291
 msgid "No data."
 msgstr "Nessun dato."
 
@@ -3110,7 +3110,7 @@ msgid "Price Impact"
 msgstr "Impatto sul prezzo"
 
 #: src/components/Withdraw/index.tsx:146
-#: src/pages/gd/Stake/index.tsx:71
+#: src/pages/gd/Stake/index.tsx:70
 #: src/pages/gd/Stake/Savings/index.tsx:109
 msgid "Protocol"
 msgstr "Protocollo"
@@ -3173,7 +3173,7 @@ msgstr ""
 msgid "Slippage Tolerance"
 msgstr "Tolleranza slippage"
 
-#: src/pages/gd/Stake/index.tsx:79
+#: src/pages/gd/Stake/index.tsx:78
 msgid "Social APY"
 msgstr ""
 
@@ -3181,10 +3181,10 @@ msgstr ""
 msgid "Squid Router"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:217
-#: src/pages/gd/Stake/index.tsx:321
-#: src/pages/gd/Stake/index.tsx:399
-#: src/pages/gd/Stake/index.tsx:467
+#: src/pages/gd/Stake/index.tsx:216
+#: src/pages/gd/Stake/index.tsx:320
+#: src/pages/gd/Stake/index.tsx:398
+#: src/pages/gd/Stake/index.tsx:466
 msgid "Stake"
 msgstr "Metti in staking"
 
@@ -3286,11 +3286,11 @@ msgstr ""
 #~ msgid "There has been a security breach. The app will be disabled until further notice"
 #~ msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:88
+#: src/pages/gd/Stake/index.tsx:87
 msgid "These are the total yearly rewards in G$ and GOOD."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:80
+#: src/pages/gd/Stake/index.tsx:79
 msgid "This is the annual percentage of UBI your stake will create."
 msgstr ""
 
@@ -3299,11 +3299,11 @@ msgstr ""
 msgid "This is the protocol that the token is staked to."
 msgstr "Questo è il protocollo che il token è puntato."
 
-#: src/pages/gd/Stake/index.tsx:72
+#: src/pages/gd/Stake/index.tsx:71
 msgid "This is the protocol that the token will be staked to."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:68
+#: src/pages/gd/Stake/index.tsx:67
 msgid "This is the token that is currently available to stake to the Fund."
 msgstr ""
 
@@ -3328,7 +3328,7 @@ msgstr "Questo mese"
 #~ msgstr "Questo progetto è in versione beta. Utilizzare a proprio rischio"
 
 #: src/components/Withdraw/index.tsx:142
-#: src/pages/gd/Stake/index.tsx:67
+#: src/pages/gd/Stake/index.tsx:66
 #: src/pages/gd/Stake/Savings/index.tsx:104
 msgid "Token"
 msgstr ""
@@ -3346,7 +3346,7 @@ msgstr "Importo totale sul valore puntato."
 msgid "Total currently saved."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:87
+#: src/pages/gd/Stake/index.tsx:86
 msgid "Total Rewards"
 msgstr ""
 
@@ -3425,7 +3425,7 @@ msgstr "Aspettando la conferma"
 #~ msgid "Wallet"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:316
+#: src/components/SideBar.tsx:326
 msgid "Wallet balance"
 msgstr "Bilancia del portafoglio."
 

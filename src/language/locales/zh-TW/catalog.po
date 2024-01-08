@@ -2670,7 +2670,7 @@ msgstr "帳戶"
 msgid "amount"
 msgstr "數量"
 
-#: src/pages/gd/Stake/index.tsx:76
+#: src/pages/gd/Stake/index.tsx:75
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
@@ -2694,7 +2694,7 @@ msgstr "批準中"
 msgid "APPROVING"
 msgstr "批准"
 
-#: src/pages/gd/Stake/index.tsx:75
+#: src/pages/gd/Stake/index.tsx:74
 msgid "APY"
 msgstr ""
 
@@ -2934,7 +2934,7 @@ msgstr ""
 msgid "GoodDAO"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:485
+#: src/pages/gd/Stake/index.tsx:484
 msgid "GoodDAO Staking"
 msgstr ""
 
@@ -2946,8 +2946,8 @@ msgstr ""
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:467
-#: src/pages/gd/Stake/index.tsx:471
+#: src/pages/gd/Stake/index.tsx:466
+#: src/pages/gd/Stake/index.tsx:470
 msgid "GoodStakes"
 msgstr ""
 
@@ -2987,11 +2987,11 @@ msgstr "你想存入多少錢？"
 msgid "How much would you like to withdraw?"
 msgstr "你想退出多少錢？"
 
-#: src/pages/gd/Stake/index.tsx:83
+#: src/pages/gd/Stake/index.tsx:82
 msgid "Liquidity"
 msgstr "流動性"
 
-#: src/pages/gd/Stake/index.tsx:84
+#: src/pages/gd/Stake/index.tsx:83
 msgid "Liquidity is the total value staked in the GoodDollar Trust staking contract (USD)."
 msgstr ""
 
@@ -3005,8 +3005,8 @@ msgstr "LP獎勵"
 msgid "loading..."
 msgstr "載入中..."
 
-#: src/pages/gd/Stake/index.tsx:99
-#: src/pages/gd/Stake/index.tsx:285
+#: src/pages/gd/Stake/index.tsx:98
+#: src/pages/gd/Stake/index.tsx:284
 msgid "Loading..."
 msgstr "載入中..."
 
@@ -3057,8 +3057,8 @@ msgstr "網絡費用"
 msgid "Next month:"
 msgstr "下個月："
 
-#: src/pages/gd/Stake/index.tsx:104
-#: src/pages/gd/Stake/index.tsx:292
+#: src/pages/gd/Stake/index.tsx:103
+#: src/pages/gd/Stake/index.tsx:291
 msgid "No data."
 msgstr "沒有數據。"
 
@@ -3099,7 +3099,7 @@ msgid "Price Impact"
 msgstr "價格影響"
 
 #: src/components/Withdraw/index.tsx:146
-#: src/pages/gd/Stake/index.tsx:71
+#: src/pages/gd/Stake/index.tsx:70
 #: src/pages/gd/Stake/Savings/index.tsx:109
 msgid "Protocol"
 msgstr "協議"
@@ -3162,7 +3162,7 @@ msgstr ""
 msgid "Slippage Tolerance"
 msgstr "可容忍滑點"
 
-#: src/pages/gd/Stake/index.tsx:79
+#: src/pages/gd/Stake/index.tsx:78
 msgid "Social APY"
 msgstr ""
 
@@ -3170,10 +3170,10 @@ msgstr ""
 msgid "Squid Router"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:217
-#: src/pages/gd/Stake/index.tsx:321
-#: src/pages/gd/Stake/index.tsx:399
-#: src/pages/gd/Stake/index.tsx:467
+#: src/pages/gd/Stake/index.tsx:216
+#: src/pages/gd/Stake/index.tsx:320
+#: src/pages/gd/Stake/index.tsx:398
+#: src/pages/gd/Stake/index.tsx:466
 msgid "Stake"
 msgstr "質押"
 
@@ -3275,11 +3275,11 @@ msgstr ""
 #~ msgid "There has been a security breach. The app will be disabled until further notice"
 #~ msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:88
+#: src/pages/gd/Stake/index.tsx:87
 msgid "These are the total yearly rewards in G$ and GOOD."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:80
+#: src/pages/gd/Stake/index.tsx:79
 msgid "This is the annual percentage of UBI your stake will create."
 msgstr ""
 
@@ -3288,11 +3288,11 @@ msgstr ""
 msgid "This is the protocol that the token is staked to."
 msgstr "這是令牌賭注的協議。"
 
-#: src/pages/gd/Stake/index.tsx:72
+#: src/pages/gd/Stake/index.tsx:71
 msgid "This is the protocol that the token will be staked to."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:68
+#: src/pages/gd/Stake/index.tsx:67
 msgid "This is the token that is currently available to stake to the Fund."
 msgstr ""
 
@@ -3317,7 +3317,7 @@ msgstr "這個月"
 #~ msgstr "該項目處於測試階段。使用風險自負"
 
 #: src/components/Withdraw/index.tsx:142
-#: src/pages/gd/Stake/index.tsx:67
+#: src/pages/gd/Stake/index.tsx:66
 #: src/pages/gd/Stake/Savings/index.tsx:104
 msgid "Token"
 msgstr "代幣"
@@ -3335,7 +3335,7 @@ msgstr "價值總額托出來。"
 msgid "Total currently saved."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:87
+#: src/pages/gd/Stake/index.tsx:86
 msgid "Total Rewards"
 msgstr ""
 
@@ -3414,7 +3414,7 @@ msgstr "等待確認中"
 #~ msgid "Wallet"
 #~ msgstr "錢包"
 
-#: src/components/SideBar.tsx:316
+#: src/components/SideBar.tsx:326
 msgid "Wallet balance"
 msgstr "錢包平衡"
 
