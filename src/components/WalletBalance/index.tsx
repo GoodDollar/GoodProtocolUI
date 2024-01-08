@@ -39,25 +39,26 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
     const { i18n } = useLingui()
 
     const importToMetamask = async () => {
-        const allTokens: any[] = []
-        allTokens.push({
-            type: 'ERC20',
-            options: {
-                address: G$.address,
-                symbol: G$.ticker,
-                decimals: G$.decimals,
-                image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
+        const allTokens: any[] = [
+            {
+                type: 'ERC20',
+                options: {
+                    address: G$.address,
+                    symbol: G$.ticker,
+                    decimals: G$.decimals,
+                    image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
+                },
             },
-        })
-        allTokens.push({
-            type: 'ERC20',
-            options: {
-                address: GOOD.address,
-                symbol: GOOD.ticker,
-                decimals: GOOD.decimals,
-                image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png',
+            {
+                type: 'ERC20',
+                options: {
+                    address: GOOD.address,
+                    symbol: GOOD.ticker,
+                    decimals: GOOD.decimals,
+                    image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png',
+                },
             },
-        })
+        ]
 
         if (!SupportedV2Networks[chainId] && balances.GDX)
             allTokens.push({

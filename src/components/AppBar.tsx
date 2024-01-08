@@ -1,5 +1,5 @@
 import { Fraction } from '@uniswap/sdk-core'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
@@ -219,7 +219,6 @@ function AppBar(): JSX.Element {
     const { enabled: appNoticeEnabled, message, color, link } = (payload as any) || {}
     const [walletBalanceOpen, setWalletBalanceOpen] = useState(false)
     const { G$ } = useG$Balance(5)
-    const [gdBalance, setGdBalance] = useState('0.00')
     const scrWidth = getScreenWidth()
 
     const [G$Price] = usePromise(async () => {
@@ -231,16 +230,15 @@ function AppBar(): JSX.Element {
         }
     }, [chainId])
 
-    useEffect(() => {
-        if (G$) {
-            const formatted = G$.format({
+    const gdBalance = useMemo(
+        () =>
+            G$?.format({
                 useFixedPrecision: true,
                 suffix: '',
                 prefix: G$.currency?.ticker + ' ',
-            })
-            setGdBalance(formatted)
-        }
-    }, [/* used */ chainId, G$])
+            }) ?? '0.00',
+        [G$]
+    )
 
     const toggleSideBar = useCallback(() => {
         setSidebarOpen(!sidebarOpen)
