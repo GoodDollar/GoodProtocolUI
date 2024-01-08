@@ -1623,11 +1623,11 @@ msgstr ""
 msgid "Current Rate"
 msgstr ""
 
-#: src/components/SideBar.tsx:183
+#: src/components/SideBar.tsx:103
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:221
+#: src/components/SideBar.tsx:141
 msgid "Dashboard"
 msgstr ""
 
@@ -1650,11 +1650,11 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:228
+#: src/components/SideBar.tsx:148
 msgid "Docs"
 msgstr "डॉक्स"
 
-#: src/components/SideBar.tsx:169
+#: src/components/SideBar.tsx:89
 msgid "Donate"
 msgstr ""
 
@@ -1666,7 +1666,7 @@ msgstr "लोड करने में विफल"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:202
+#: src/components/SideBar.tsx:122
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -1699,7 +1699,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:235
+#: src/components/SideBar.tsx:155
 msgid "Good Airdrop"
 msgstr ""
 
@@ -1724,7 +1724,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:214
+#: src/components/SideBar.tsx:134
 msgid "GoodWallet"
 msgstr ""
 
@@ -1844,7 +1844,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "उफ़! एक अज्ञात ग़लती हुई। कृपया पृष्ठ को रीफ़्रेश करें, या किसी अन्य ब्राउज़र या डिवाइस से जाएँ"
 
-#: src/components/AppBar.tsx:280
+#: src/components/AppBar.tsx:318
 msgid "Open main menu"
 msgstr "मुख्य मेनू खोलें"
 
@@ -1912,7 +1912,7 @@ msgstr "मार्ग"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "इन टोकन के माध्यम से रूटिंग करने से आपके व्यापार के लिए सबसे अच्छी कीमत मिली।"
 
-#: src/components/SideBar.tsx:176
+#: src/components/SideBar.tsx:96
 msgid "Save G$"
 msgstr ""
 
@@ -1939,7 +1939,7 @@ msgstr "स्लिपेज टॉलरेंस"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:195
+#: src/components/SideBar.tsx:115
 msgid "Squid Router"
 msgstr ""
 
@@ -2187,7 +2187,7 @@ msgstr ""
 #~ msgid "Wallet"
 #~ msgstr "बटुआ"
 
-#: src/components/SideBar.tsx:326
+#: src/components/WalletBalance/index.tsx:133
 msgid "Wallet balance"
 msgstr ""
 

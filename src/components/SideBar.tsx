@@ -1,27 +1,15 @@
-import React, { useState, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { Text, Box, View, useBreakpointValue, HStack, useColorModeValue, ScrollView } from 'native-base'
-import {
-    AsyncStorage,
-    getDevice,
-    useClaim,
-    useG$Balance,
-    useG$Tokens,
-    SupportedV2Networks,
-} from '@gooddollar/web3sdk-v2'
+import { getDevice, useClaim } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useLocation } from 'react-router-dom'
 import { SlideDownTab } from '@gooddollar/good-design'
 import { isMobile } from 'react-device-detect'
 
-import WalletBalance from 'components/WalletBalance'
-import { ReactComponent as WalletBalanceIcon } from '../assets/images/walletBalanceIcon.svg'
-import useActiveWeb3React from '../hooks/useActiveWeb3React'
-import useMetaMask from '../hooks/useMetaMask'
 import { useApplicationTheme } from '../state/application/hooks'
 import LanguageSwitch from './LanguageSwitch'
 import { NavLink } from './Link'
-import usePromise from '../hooks/usePromise'
 import { ExternalLink } from 'theme'
 import { SubMenuItems } from './StyledMenu/SubMenu'
 import { socials } from 'constants/socials'
@@ -45,19 +33,11 @@ const externalPrivacyStyles = {
 export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; closeSidebar?: any }): JSX.Element {
     const [theme, setTheme] = useApplicationTheme()
     const { i18n } = useLingui()
-    const { ethereum } = window
-    const { chainId, account } = useActiveWeb3React()
-    const metaMaskInfo = useMetaMask()
-    const balances = useG$Balance(5)
-    const [G$, GOOD, GDX] = useG$Tokens()
-    const [imported, setImported] = useState<boolean>(false)
     const { isWhitelisted } = useClaim()
     const { pathname } = useLocation()
     const isBuyGd = pathname.startsWith('/buy')
 
     const bgContainer = useColorModeValue('goodWhite.100', '#151A30')
-    const bgWalletBalance = useColorModeValue('white', '#1a1f38')
-    const textColor = useColorModeValue('goodGrey.700', 'goodGrey.300')
 
     const { browser, os } = getDevice()
     const scrWidth = getScreenWidth()
@@ -89,66 +69,6 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             display: 'flex',
         },
     })
-
-    const importToMetamask = async () => {
-        const allTokens: any[] = []
-        allTokens.push({
-            type: 'ERC20',
-            options: {
-                address: G$.address,
-                symbol: G$.ticker,
-                decimals: G$.decimals,
-                image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gd-logo.png',
-            },
-        })
-        allTokens.push({
-            type: 'ERC20',
-            options: {
-                address: GOOD.address,
-                symbol: GOOD.ticker,
-                decimals: GOOD.decimals,
-                image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/good-logo.png',
-            },
-        })
-
-        if (!SupportedV2Networks[chainId] && balances.GDX)
-            allTokens.push({
-                type: 'ERC20',
-                options: {
-                    address: GDX.address,
-                    symbol: GDX.ticker,
-                    decimals: GDX.decimals,
-                    image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gdx-logo.png',
-                },
-            })
-
-        void Promise.all(
-            allTokens.map(async (token) => {
-                // todo: fix multiple requests bug after succesfully adding all assets.
-                //IE. wallet_watchAsset auto triggered when switching chain
-                metaMaskInfo.isMultiple
-                    ? ethereum?.selectedProvider?.request &&
-                      (await ethereum.selectedProvider.request({
-                          method: 'wallet_watchAsset',
-                          params: token,
-                      }))
-                    : ethereum?.request &&
-                      (await ethereum.request({
-                          method: 'wallet_watchAsset',
-                          params: token,
-                      }))
-            })
-        ).then(async () => {
-            setImported(true)
-            await AsyncStorage.setItem(`${chainId}_metamask_import_status`, true)
-        })
-    }
-
-    const [loading] = usePromise(async () => {
-        const imported = await AsyncStorage.getItem(`${chainId}_metamask_import_status`)
-        setImported(imported)
-        return imported
-    }, [chainId])
 
     const onTabClick = () => {
         if (mobile) {
@@ -318,24 +238,6 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 py="4"
                 bg={bgContainer}
             >
-                {account && (
-                    <Box px={4} pt={2} bg={bgWalletBalance} borderRadius="12px">
-                        <div className="flex items-center gap-2">
-                            <WalletBalanceIcon />
-                            <Text fontFamily="subheading" fontSize="sm" fontWeight="normal" color={textColor}>
-                                {i18n._(t`Wallet balance`)}
-                            </Text>
-                        </div>
-                        <Box display="flex" flexDir="col" pl={8} pb={2}>
-                            {account && <WalletBalance balances={balances} chainId={chainId} />}
-                            {!loading && !imported && (
-                                <Text fontFamily="subheading" fontSize="xs" onPress={importToMetamask} color="primary">
-                                    Import to Metamask
-                                </Text>
-                            )}
-                        </Box>
-                    </Box>
-                )}
                 <ScrollView scrollEnabled={true} display="flex" flexDir="column">
                     {internalLinks
                         .filter((internal) => internal.show)

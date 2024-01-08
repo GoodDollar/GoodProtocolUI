@@ -2849,11 +2849,11 @@ msgstr "Dirección de copia"
 msgid "Current Rate"
 msgstr "Tasa actual"
 
-#: src/components/SideBar.tsx:183
+#: src/components/SideBar.tsx:103
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:221
+#: src/components/SideBar.tsx:141
 msgid "Dashboard"
 msgstr ""
 
@@ -2876,11 +2876,11 @@ msgstr "Descripción de depósito"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:228
+#: src/components/SideBar.tsx:148
 msgid "Docs"
 msgstr ""
 
-#: src/components/SideBar.tsx:169
+#: src/components/SideBar.tsx:89
 msgid "Donate"
 msgstr ""
 
@@ -2892,7 +2892,7 @@ msgstr "falló al cargar"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:202
+#: src/components/SideBar.tsx:122
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2925,7 +2925,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:235
+#: src/components/SideBar.tsx:155
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2950,7 +2950,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:214
+#: src/components/SideBar.tsx:134
 msgid "GoodWallet"
 msgstr ""
 
@@ -3070,7 +3070,7 @@ msgstr "sobre el"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "¡UPS! Un error desconocido ocurrió. Actualiza la página o visita desde otro navegador o dispositivo."
 
-#: src/components/AppBar.tsx:280
+#: src/components/AppBar.tsx:318
 msgid "Open main menu"
 msgstr "Abrir menú principal"
 
@@ -3138,7 +3138,7 @@ msgstr "Ruta"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "El enrutamiento a través de estos tokens resultó en el mejor precio para su comercio."
 
-#: src/components/SideBar.tsx:176
+#: src/components/SideBar.tsx:96
 msgid "Save G$"
 msgstr ""
 
@@ -3165,7 +3165,7 @@ msgstr "Tolerancia al deslizamiento"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:195
+#: src/components/SideBar.tsx:115
 msgid "Squid Router"
 msgstr ""
 
@@ -3413,7 +3413,7 @@ msgstr "Esperando confirmación"
 #~ msgid "Wallet"
 #~ msgstr "Cartera"
 
-#: src/components/SideBar.tsx:326
+#: src/components/WalletBalance/index.tsx:133
 msgid "Wallet balance"
 msgstr "Balance de billetera"
 
