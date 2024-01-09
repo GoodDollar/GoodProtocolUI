@@ -2592,7 +2592,7 @@ msgstr "على"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "عفوًا! حدث خطأ غير معروف. يرجى تحديث الصفحة، أو الزيارة من متصفح أو جهاز آخر"
 
-#: src/components/AppBar.tsx:318
+#: src/components/AppBar.tsx:319
 msgid "Open main menu"
 msgstr "القائمة الرئيسية المفتوحة"
 
