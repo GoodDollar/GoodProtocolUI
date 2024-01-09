@@ -163,6 +163,9 @@ function App(): JSX.Element {
 
     const isTwoColumns = isBuy || isClaim
 
+    const [sidebarOpen, setSidebarOpen] = useState(false)
+    const [walletBalanceOpen, setWalletBalanceOpen] = useState(false)
+
     const mainBodyClasses = classNames(
         'z-0 flex flex-col items-center flex-grow h-full pt-4 pb-4 overflow-x-hidden overflow-y-auto sm:pt-8',
         {
@@ -185,7 +188,10 @@ function App(): JSX.Element {
     return (
         <Suspense fallback={null}>
             <AppWrap className="flex flex-col overflow-hidden" $isMiniPay={isMinipay}>
-                <AppBar />
+                <AppBar
+                    sideBar={[sidebarOpen, setSidebarOpen]}
+                    walletBalance={[walletBalanceOpen, setWalletBalanceOpen]}
+                />
                 <Wrapper isSimpleApp className="flex flex-grow overflow-hidden">
                     {!isMobile && <SideBar />}
                     <MainBody ref={bodyRef} className={mainBodyClasses} $page={location.pathname}>
@@ -198,7 +204,7 @@ function App(): JSX.Element {
                         </Web3ReactManager>
                     </MainBody>
                 </Wrapper>
-                {!isSimpleApp && <WalletChat />}
+                {!isSimpleApp && !sidebarOpen && <WalletChat />}
             </AppWrap>
         </Suspense>
     )

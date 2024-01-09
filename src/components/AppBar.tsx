@@ -1,5 +1,5 @@
 import { Fraction } from '@uniswap/sdk-core'
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
@@ -194,17 +194,18 @@ const Web3Bar = () => {
     )
 }
 
-function AppBar(): JSX.Element {
+function AppBar({ sideBar, walletBalance }): JSX.Element {
     const [theme] = useApplicationTheme()
     const { i18n } = useLingui()
     const { account, chainId } = useActiveWeb3React()
-    const [sidebarOpen, setSidebarOpen] = useState(false)
     const isSimpleApp = useIsSimpleApp()
     const showPrice = useFeatureFlagEnabled('show-gd-price')
     const posthog = usePostHog()
     const payload = posthog?.getFeatureFlagPayload('app-notice')
     const { enabled: appNoticeEnabled, message, color, link } = (payload as any) || {}
-    const [walletBalanceOpen, setWalletBalanceOpen] = useState(false)
+    const [sidebarOpen, setSidebarOpen] = sideBar
+    const [walletBalanceOpen, setWalletBalanceOpen] = walletBalance
+
     const { G$ } = useG$Balance(5)
     const scrWidth = getScreenWidth()
 
