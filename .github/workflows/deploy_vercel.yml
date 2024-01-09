@@ -31,6 +31,7 @@ jobs:
               with:
                   persist-credentials: false
                   fetch-depth: 0
+                  ref: ${{ github.event.inputs.release == 'qa' && 'master' || 'staging' }}
             - name: setup git
               run: |
                   git config --local user.email "techadmin@gooddollar.org"
