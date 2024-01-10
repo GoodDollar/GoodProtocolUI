@@ -11,6 +11,7 @@ import { BasePressable, CentreBox } from '@gooddollar/good-design'
 import { isMobile } from 'react-device-detect'
 
 import usePromise from 'hooks/usePromise'
+import { getScreenWidth } from 'utils/screenSizes'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { AdditionalChainId } from '../../constants'
 import useMetaMask from 'hooks/useMetaMask'
@@ -37,6 +38,7 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
     const textColor = useColorModeValue('goodGrey.700', 'goodGrey.300')
     const [imported, setImported] = useState<boolean>(false)
     const { i18n } = useLingui()
+    const scrWidth = getScreenWidth()
 
     const importToMetamask = async () => {
         const allTokens: any[] = [
@@ -104,9 +106,9 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
             px={4}
             paddingBottom={2}
             paddingTop={4}
-            w={375}
+            w={isMobile ? scrWidth : 375}
             position="absolute"
-            right={isMobile ? -30 : 0}
+            right={0}
             top={30}
             bg={bgWalletBalance}
             borderRadius="12px"

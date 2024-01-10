@@ -208,6 +208,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
 
     const { G$ } = useG$Balance(5)
     const scrWidth = getScreenWidth()
+    console.log('scrWidthTesting -->', { scrWidth })
 
     const [G$Price] = usePromise(async () => {
         try {
@@ -292,6 +293,9 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                                             fontFamily="subheading"
                                             fontWeight={400}
                                             fontSize="xs"
+                                            display="flex"
+                                            justifyContent="center"
+                                            alignItems="center"
                                         >
                                             {gdBalance}
                                         </Text>
@@ -299,10 +303,11 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                                     </BasePressable>
                                     <PresenceTransition
                                         visible={walletBalanceOpen}
-                                        initial={{ scaleY: 0, translateY: 20 }}
+                                        initial={{ scaleY: 0, translateY: 20, translateX: isMobile ? 47 : 0 }}
                                         animate={{
                                             scaleY: 1,
                                             translateY: 0,
+                                            translateX: isMobile ? 47 : 0,
                                             transition: { duration: 250 },
                                         }}
                                     >
