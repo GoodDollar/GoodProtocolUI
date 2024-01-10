@@ -2592,7 +2592,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Ups! Ocorreu um erro desconhecido. Atualize a página ou visite de outro navegador ou dispositivo"
 
-#: src/components/AppBar.tsx:324
+#: src/components/AppBar.tsx:323
 msgid "Open main menu"
 msgstr "Abra o menu principal"
 
