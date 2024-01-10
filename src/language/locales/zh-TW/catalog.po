@@ -3071,7 +3071,7 @@ msgstr "在這一點"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "糟糕！出現未知錯誤。請刷新頁面，或從其他瀏覽器或設備訪問"
 
-#: src/components/AppBar.tsx:319
+#: src/components/AppBar.tsx:324
 msgid "Open main menu"
 msgstr "打開主菜單"
 
@@ -3414,7 +3414,7 @@ msgstr "等待確認中"
 #~ msgid "Wallet"
 #~ msgstr "錢包"
 
-#: src/components/WalletBalance/index.tsx:133
+#: src/components/WalletBalance/index.tsx:135
 msgid "Wallet balance"
 msgstr "錢包平衡"
 

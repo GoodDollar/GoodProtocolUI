@@ -3088,7 +3088,7 @@ msgstr "pe"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Hopa! O eroare necunoscută s-a întamplat. Vă rugăm să reîmprospătați pagina sau să vizitați un alt browser sau dispozitiv"
 
-#: src/components/AppBar.tsx:319
+#: src/components/AppBar.tsx:324
 msgid "Open main menu"
 msgstr "Deschideți meniul principal"
 
@@ -3431,7 +3431,7 @@ msgstr "Așteptați confirmarea"
 #~ msgid "Wallet"
 #~ msgstr "Portofel"
 
-#: src/components/WalletBalance/index.tsx:133
+#: src/components/WalletBalance/index.tsx:135
 msgid "Wallet balance"
 msgstr "Balanța portofelului"
 
