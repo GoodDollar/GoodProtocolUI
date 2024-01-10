@@ -40,7 +40,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const bgContainer = useColorModeValue('goodWhite.100', '#151A30')
 
     const { browser, os } = getDevice()
-    const scrWidth = getScreenWidth()
+    const scrWidth = isMobile ? getScreenWidth() : '100%'
     const isiOS = os.name === 'iOS'
     const isChrome = browser.name === 'Chrome'
 
