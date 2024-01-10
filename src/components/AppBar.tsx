@@ -208,7 +208,6 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
 
     const { G$ } = useG$Balance(5)
     const scrWidth = getScreenWidth()
-    console.log('scrWidthTesting -->', { scrWidth })
 
     const [G$Price] = usePromise(async () => {
         try {
