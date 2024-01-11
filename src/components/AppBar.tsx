@@ -262,6 +262,20 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
         })
     }
 
+    const walletBalanceStyles = useBreakpointValue({
+        base: {
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'flex-end',
+            height: 24,
+        },
+        lg: {
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: 'auto',
+        },
+    })
+
     return (
         <AppBarWrapper
             className="relative z-10 flex flex-row justify-between w-screen flex-nowrap background"
@@ -269,7 +283,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
         >
             <>
                 {appNoticeEnabled && <AppNotice text={message} bg={color} link={link} show={true} />}
-                <div className="lg:px-8 lg:pt-4 lg:pb-2">
+                <div className="lg:px-8 lg:py-4">
                     <TopBar $mobile={isMobile} className="relative flex items-center justify-between">
                         <div className="flex flex-col">
                             <LogoWrapper $mobile={isMobile} className="flex-shrink-0">
@@ -292,9 +306,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                                             fontFamily="subheading"
                                             fontWeight={400}
                                             fontSize="xs"
-                                            display="flex"
-                                            justifyContent="center"
-                                            alignItems="center"
+                                            style={walletBalanceStyles}
                                         >
                                             {gdBalance}
                                         </Text>
