@@ -3088,7 +3088,7 @@ msgstr "pe"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Hopa! O eroare necunoscută s-a întamplat. Vă rugăm să reîmprospătați pagina sau să vizitați un alt browser sau dispozitiv"
 
-#: src/components/AppBar.tsx:323
+#: src/components/AppBar.tsx:335
 msgid "Open main menu"
 msgstr "Deschideți meniul principal"
 

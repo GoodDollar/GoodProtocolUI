@@ -3072,7 +3072,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Oops! Une erreur inconnue est survenue. Veuillez actualiser la page ou la consulter à partir d'un autre navigateur ou appareil"
 
-#: src/components/AppBar.tsx:323
+#: src/components/AppBar.tsx:335
 msgid "Open main menu"
 msgstr "Ouvrir le menu principal"
 
