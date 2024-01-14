@@ -317,12 +317,12 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                                         initial={{
                                             scaleY: 0,
                                             translateY: 20,
-                                            translateX: isSimpleApp ? 17 : isMobile ? 47 : 0,
+                                            translateX: isMinipay ? 17 : isMobile ? 47 : 0,
                                         }}
                                         animate={{
                                             scaleY: 1,
                                             translateY: 0,
-                                            translateX: isMobile ? 47 : 0,
+                                            translateX: isMinipay ? 17 : isMobile ? 47 : 0,
                                             transition: { duration: 250 },
                                         }}
                                     >

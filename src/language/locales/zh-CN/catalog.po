@@ -3067,7 +3067,7 @@ msgstr "在这一点"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "糟糕！出现未知错误。请刷新页面，或从其他浏览器或设备访问"
 
-#: src/components/AppBar.tsx:335
+#: src/components/AppBar.tsx:339
 msgid "Open main menu"
 msgstr "打开主菜单"
 
