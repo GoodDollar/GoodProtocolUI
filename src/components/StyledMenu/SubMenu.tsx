@@ -1,7 +1,7 @@
 import React from 'react'
 import { ExternalLink } from 'theme'
 
-export const SubMenuItems = ({ items, styles }: { items: any; onPress: any; styles?: any }) =>
+export const SubMenuItems = ({ items, onPress, styles }: { items: any; onPress: any; styles?: any }) =>
     items
         .filter((ext) => ext.show)
         .map(({ label, url, dataAttr, withIcon }) => (
@@ -12,5 +12,6 @@ export const SubMenuItems = ({ items, styles }: { items: any; onPress: any; styl
                 dataAttr={dataAttr}
                 withIcon={withIcon}
                 customStyles={styles}
+                onPress={onPress}
             />
         ))
