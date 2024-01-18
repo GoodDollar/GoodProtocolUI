@@ -7,6 +7,7 @@ import { parse } from 'qs'
 import isEqual from 'lodash/isEqual'
 import { isMobile } from 'react-device-detect'
 import classNames from 'classnames'
+import { RedirectModal, useRedirectNotice } from '@gooddollar/good-design'
 
 import { AppBar, Popups } from '../components'
 import Web3ReactManager from '../components/Web3ReactManager'
@@ -104,6 +105,11 @@ function App(): JSX.Element {
     const sendData = useSendAnalyticsData()
 
     const isMinipay = window?.ethereum?.isMiniPay
+    const { modalProps } = useRedirectNotice()
+
+    useEffect(() => {
+        console.log('modalProps should have changed... -->', { modalProps })
+    }, [modalProps])
 
     void useFaucet()
 
@@ -187,25 +193,27 @@ function App(): JSX.Element {
 
     return (
         <Suspense fallback={null}>
-            <AppWrap className="flex flex-col overflow-hidden" $isMiniPay={isMinipay}>
-                <AppBar
-                    sideBar={[sidebarOpen, setSidebarOpen]}
-                    walletBalance={[walletBalanceOpen, setWalletBalanceOpen]}
-                />
-                <Wrapper isSimpleApp className="flex flex-grow overflow-hidden">
-                    {!isMobile && <SideBar />}
-                    <MainBody ref={bodyRef} className={mainBodyClasses} $page={location.pathname}>
-                        <Popups />
-                        <Web3ReactManager>
-                            <div className={routerContainerClasses}>
-                                <Routes />
-                                <TransactionUpdater />
-                            </div>
-                        </Web3ReactManager>
-                    </MainBody>
-                </Wrapper>
-                {!isSimpleApp && !sidebarOpen && <WalletChat />}
-            </AppWrap>
+            <RedirectModal modalProps={modalProps}>
+                <AppWrap className="flex flex-col overflow-hidden" $isMiniPay={isMinipay}>
+                    <AppBar
+                        sideBar={[sidebarOpen, setSidebarOpen]}
+                        walletBalance={[walletBalanceOpen, setWalletBalanceOpen]}
+                    />
+                    <Wrapper isSimpleApp className="flex flex-grow overflow-hidden">
+                        {!isMobile && <SideBar />}
+                        <MainBody ref={bodyRef} className={mainBodyClasses} $page={location.pathname}>
+                            <Popups />
+                            <Web3ReactManager>
+                                <div className={routerContainerClasses}>
+                                    <Routes />
+                                    <TransactionUpdater />
+                                </div>
+                            </Web3ReactManager>
+                        </MainBody>
+                    </Wrapper>
+                    {!isSimpleApp && !sidebarOpen && <WalletChat />}
+                </AppWrap>
+            </RedirectModal>
         </Suspense>
     )
 }

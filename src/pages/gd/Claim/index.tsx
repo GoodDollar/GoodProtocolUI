@@ -45,7 +45,13 @@ const useDisabledClaimingModal = (message: string) => {
     const Dialog = useCallback(
         () => (
             <React.Fragment>
-                <Modal header={<DialogHeader />} body={<DialogBody message={message} />} onClose={noop} closeText="x" />
+                <Modal
+                    _modalContainer={{ paddingLeft: 18, paddingRight: 18, paddingBottom: 18 }}
+                    header={<DialogHeader />}
+                    body={<DialogBody message={message} />}
+                    onClose={noop}
+                    closeText="x"
+                />
             </React.Fragment>
         ),
         [Modal]
