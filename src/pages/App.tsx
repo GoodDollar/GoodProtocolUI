@@ -107,10 +107,6 @@ function App(): JSX.Element {
     const isMinipay = window?.ethereum?.isMiniPay
     const { modalProps } = useRedirectNotice()
 
-    useEffect(() => {
-        console.log('modalProps should have changed... -->', { modalProps })
-    }, [modalProps])
-
     void useFaucet()
 
     useEffect(() => {
