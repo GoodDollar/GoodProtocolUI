@@ -2679,7 +2679,7 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:245
+#: src/components/AccountDetails/index.tsx:253
 msgid "Account"
 msgstr "Tài khoản"
 
@@ -2737,7 +2737,7 @@ msgstr "Địa chỉ bị chặn"
 msgid "Buy G$"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:268
+#: src/components/AccountDetails/index.tsx:276
 msgid "Change"
 msgstr "Thay đổi"
 
@@ -2807,16 +2807,15 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:306
+#: src/components/AccountDetails/index.tsx:315
 msgid "Clear all"
 msgstr "Quet sạch tât cả"
 
-#: src/components/TransactionConfirmationModal/index.tsx:100
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:286
 msgid "Close"
 msgstr "Gần"
 
-#: src/pages/gd/Claim/index.tsx:318
+#: src/pages/gd/Claim/index.tsx:324
 msgid "Collect G$"
 msgstr ""
 
@@ -2828,8 +2827,6 @@ msgstr "Xác nhận trao đổi"
 msgid "CONFIRM SWAP"
 msgstr "Xác nhận trao đổi"
 
-#: src/components/ModalViews/index.tsx:37
-#: src/components/TransactionConfirmationModal/index.tsx:57
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:263
 msgid "Confirm this transaction in your wallet"
 msgstr "Xác nhận giao dịch này trong ví của bạn"
@@ -2851,7 +2848,7 @@ msgstr "Kết nối với ví"
 msgid "Connect wallet"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:218
+#: src/components/AccountDetails/index.tsx:221
 msgid "Connected with"
 msgstr "Kết nối với"
 
@@ -2859,7 +2856,7 @@ msgstr "Kết nối với"
 msgid "Copied"
 msgstr "Đã sao chép"
 
-#: src/components/AccountDetails/index.tsx:284
+#: src/components/AccountDetails/index.tsx:292
 msgid "Copy address"
 msgstr "Sao chép địa chỉ"
 
@@ -2867,11 +2864,11 @@ msgstr "Sao chép địa chỉ"
 msgid "Current Rate"
 msgstr "Tỷ lệ hiện tại"
 
-#: src/components/SideBar.tsx:103
+#: src/components/SideBar.tsx:121
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:141
+#: src/components/SideBar.tsx:159
 msgid "Dashboard"
 msgstr ""
 
@@ -2890,15 +2887,15 @@ msgstr ""
 msgid "Deposit overview"
 msgstr "Tổng quan về tiền gửi."
 
-#: src/components/AccountDetails/index.tsx:259
+#: src/components/AccountDetails/index.tsx:267
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:148
+#: src/components/SideBar.tsx:166
 msgid "Docs"
 msgstr ""
 
-#: src/components/SideBar.tsx:89
+#: src/components/SideBar.tsx:107
 msgid "Donate"
 msgstr ""
 
@@ -2910,7 +2907,7 @@ msgstr "không tải được"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:122
+#: src/components/SideBar.tsx:140
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2943,7 +2940,7 @@ msgstr "Đi đến danh mục đầu tư"
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:155
+#: src/components/SideBar.tsx:173
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2959,7 +2956,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:329
+#: src/pages/gd/Claim/index.tsx:335
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -2968,7 +2965,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:134
+#: src/components/SideBar.tsx:152
 msgid "GoodWallet"
 msgstr ""
 
@@ -3126,7 +3123,7 @@ msgstr "Giao thức"
 msgid "PROTOCOL"
 msgstr "Giao thức"
 
-#: src/components/AccountDetails/index.tsx:304
+#: src/components/AccountDetails/index.tsx:313
 msgid "Recent Transactions"
 msgstr "Giao dịch gần đây"
 
@@ -3156,7 +3153,7 @@ msgstr "Lộ trình"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "Định tuyến thông qua các mã thông báo này dẫn đến giá tốt nhất cho giao dịch của bạn."
 
-#: src/components/SideBar.tsx:96
+#: src/components/SideBar.tsx:114
 msgid "Save G$"
 msgstr ""
 
@@ -3183,7 +3180,7 @@ msgstr "Khả năng chịu trượt"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:115
+#: src/components/SideBar.tsx:133
 msgid "Squid Router"
 msgstr ""
 
@@ -3380,7 +3377,6 @@ msgstr "Thời hạn giao dịch"
 msgid "Transaction settings"
 msgstr "Cài đặt giao dịch"
 
-#: src/components/TransactionConfirmationModal/index.tsx:89
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:271
 msgid "Transaction Submitted"
 msgstr "Giao dịch được gửi"
@@ -3400,16 +3396,15 @@ msgstr ""
 msgid "Unsupported network"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:290
+#: src/components/AccountDetails/index.tsx:298
 #: src/components/Popups/TransactionPopup.tsx:46
-#: src/components/TransactionConfirmationModal/index.tsx:93
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:280
 msgid "View on explorer"
 msgstr "Xem trên explorer"
 
 #: src/components/ModalViews/index.tsx:69
-msgid "View transaction on explorer"
-msgstr ""
+#~ msgid "View transaction on explorer"
+#~ msgstr ""
 
 #: src/pages/gd/Swap/SwapCore/index.tsx:249
 msgid ""
@@ -3424,8 +3419,8 @@ msgid "Waiting for Confirmation"
 msgstr "Chờ đợi sự xác nhận"
 
 #: src/components/TransactionConfirmationModal/index.tsx:49
-msgid "Waiting For Confirmation"
-msgstr "Chờ đợi sự xác nhận"
+#~ msgid "Waiting For Confirmation"
+#~ msgstr "Chờ đợi sự xác nhận"
 
 #: src/components/SideBar.tsx:154
 #~ msgid "Wallet"
@@ -3578,6 +3573,6 @@ msgstr "Giao dịch của bạn sẽ hoàn nguyên nếu giá thay đổi bất 
 msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 msgstr "Giao dịch của bạn sẽ hoàn nguyên nếu có một biến động giá lớn, bất lợi trước khi nó được xác nhận."
 
-#: src/components/AccountDetails/index.tsx:313
+#: src/components/AccountDetails/index.tsx:322
 msgid "Your transactions will appear here..."
 msgstr "Giao dịch của bạn sẽ xuất hiện ở đây ..."

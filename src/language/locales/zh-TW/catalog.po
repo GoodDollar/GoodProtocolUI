@@ -2662,7 +2662,7 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:245
+#: src/components/AccountDetails/index.tsx:253
 msgid "Account"
 msgstr "帳戶"
 
@@ -2720,7 +2720,7 @@ msgstr "被封鎖的地址"
 msgid "Buy G$"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:268
+#: src/components/AccountDetails/index.tsx:276
 msgid "Change"
 msgstr "改變"
 
@@ -2790,16 +2790,15 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:306
+#: src/components/AccountDetails/index.tsx:315
 msgid "Clear all"
 msgstr "清除所有"
 
-#: src/components/TransactionConfirmationModal/index.tsx:100
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:286
 msgid "Close"
 msgstr "關閉"
 
-#: src/pages/gd/Claim/index.tsx:318
+#: src/pages/gd/Claim/index.tsx:324
 msgid "Collect G$"
 msgstr ""
 
@@ -2811,8 +2810,6 @@ msgstr "確認交換"
 msgid "CONFIRM SWAP"
 msgstr "確認交換"
 
-#: src/components/ModalViews/index.tsx:37
-#: src/components/TransactionConfirmationModal/index.tsx:57
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:263
 msgid "Confirm this transaction in your wallet"
 msgstr "在錢包中確認此事務"
@@ -2834,7 +2831,7 @@ msgstr "連接錢包"
 msgid "Connect wallet"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:218
+#: src/components/AccountDetails/index.tsx:221
 msgid "Connected with"
 msgstr "與"
 
@@ -2842,7 +2839,7 @@ msgstr "與"
 msgid "Copied"
 msgstr "已復制"
 
-#: src/components/AccountDetails/index.tsx:284
+#: src/components/AccountDetails/index.tsx:292
 msgid "Copy address"
 msgstr "複製地址"
 
@@ -2850,11 +2847,11 @@ msgstr "複製地址"
 msgid "Current Rate"
 msgstr "當前利率"
 
-#: src/components/SideBar.tsx:103
+#: src/components/SideBar.tsx:121
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:141
+#: src/components/SideBar.tsx:159
 msgid "Dashboard"
 msgstr ""
 
@@ -2873,15 +2870,15 @@ msgstr ""
 msgid "Deposit overview"
 msgstr "存款概述"
 
-#: src/components/AccountDetails/index.tsx:259
+#: src/components/AccountDetails/index.tsx:267
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:148
+#: src/components/SideBar.tsx:166
 msgid "Docs"
 msgstr "文档"
 
-#: src/components/SideBar.tsx:89
+#: src/components/SideBar.tsx:107
 msgid "Donate"
 msgstr ""
 
@@ -2893,7 +2890,7 @@ msgstr "加載失敗"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:122
+#: src/components/SideBar.tsx:140
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2926,7 +2923,7 @@ msgstr "去投資組合"
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:155
+#: src/components/SideBar.tsx:173
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2942,7 +2939,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:329
+#: src/pages/gd/Claim/index.tsx:335
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -2951,7 +2948,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:134
+#: src/components/SideBar.tsx:152
 msgid "GoodWallet"
 msgstr ""
 
@@ -3109,7 +3106,7 @@ msgstr "協議"
 msgid "PROTOCOL"
 msgstr "協議"
 
-#: src/components/AccountDetails/index.tsx:304
+#: src/components/AccountDetails/index.tsx:313
 msgid "Recent Transactions"
 msgstr "最近的交易"
 
@@ -3139,7 +3136,7 @@ msgstr "路徑"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "路由經過這些代幣將給您的交易帶來最好的價格。"
 
-#: src/components/SideBar.tsx:96
+#: src/components/SideBar.tsx:114
 msgid "Save G$"
 msgstr ""
 
@@ -3166,7 +3163,7 @@ msgstr "可容忍滑點"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:115
+#: src/components/SideBar.tsx:133
 msgid "Squid Router"
 msgstr ""
 
@@ -3363,7 +3360,6 @@ msgstr "交易期限"
 msgid "Transaction settings"
 msgstr "交易設置"
 
-#: src/components/TransactionConfirmationModal/index.tsx:89
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:271
 msgid "Transaction Submitted"
 msgstr "交易提交"
@@ -3383,16 +3379,15 @@ msgstr ""
 msgid "Unsupported network"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:290
+#: src/components/AccountDetails/index.tsx:298
 #: src/components/Popups/TransactionPopup.tsx:46
-#: src/components/TransactionConfirmationModal/index.tsx:93
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:280
 msgid "View on explorer"
 msgstr "在瀏覽器查看"
 
 #: src/components/ModalViews/index.tsx:69
-msgid "View transaction on explorer"
-msgstr ""
+#~ msgid "View transaction on explorer"
+#~ msgstr ""
 
 #: src/pages/gd/Swap/SwapCore/index.tsx:249
 msgid ""
@@ -3407,8 +3402,8 @@ msgid "Waiting for Confirmation"
 msgstr "等待確認中"
 
 #: src/components/TransactionConfirmationModal/index.tsx:49
-msgid "Waiting For Confirmation"
-msgstr "等待確認中"
+#~ msgid "Waiting For Confirmation"
+#~ msgstr "等待確認中"
 
 #: src/components/SideBar.tsx:154
 #~ msgid "Wallet"
@@ -3561,6 +3556,6 @@ msgstr "如果價格的不利變化超過這個百分比，您的交易將被退
 msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 msgstr "如果交易在確認之前出現大的不利價格變動，則交易將恢復。"
 
-#: src/components/AccountDetails/index.tsx:313
+#: src/components/AccountDetails/index.tsx:322
 msgid "Your transactions will appear here..."
 msgstr "您的交易將出現在這裡......"

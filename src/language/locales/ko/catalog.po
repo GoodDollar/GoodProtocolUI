@@ -2638,7 +2638,7 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:245
+#: src/components/AccountDetails/index.tsx:253
 msgid "Account"
 msgstr ""
 
@@ -2696,7 +2696,7 @@ msgstr ""
 msgid "Buy G$"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:268
+#: src/components/AccountDetails/index.tsx:276
 msgid "Change"
 msgstr ""
 
@@ -2766,16 +2766,15 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:306
+#: src/components/AccountDetails/index.tsx:315
 msgid "Clear all"
 msgstr ""
 
-#: src/components/TransactionConfirmationModal/index.tsx:100
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:286
 msgid "Close"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:318
+#: src/pages/gd/Claim/index.tsx:324
 msgid "Collect G$"
 msgstr ""
 
@@ -2787,8 +2786,6 @@ msgstr ""
 msgid "CONFIRM SWAP"
 msgstr ""
 
-#: src/components/ModalViews/index.tsx:37
-#: src/components/TransactionConfirmationModal/index.tsx:57
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:263
 msgid "Confirm this transaction in your wallet"
 msgstr ""
@@ -2810,7 +2807,7 @@ msgstr "지갑에 연결"
 msgid "Connect wallet"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:218
+#: src/components/AccountDetails/index.tsx:221
 msgid "Connected with"
 msgstr ""
 
@@ -2818,7 +2815,7 @@ msgstr ""
 msgid "Copied"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:284
+#: src/components/AccountDetails/index.tsx:292
 msgid "Copy address"
 msgstr ""
 
@@ -2826,11 +2823,11 @@ msgstr ""
 msgid "Current Rate"
 msgstr ""
 
-#: src/components/SideBar.tsx:103
+#: src/components/SideBar.tsx:121
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:141
+#: src/components/SideBar.tsx:159
 msgid "Dashboard"
 msgstr ""
 
@@ -2849,15 +2846,15 @@ msgstr ""
 msgid "Deposit overview"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:259
+#: src/components/AccountDetails/index.tsx:267
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:148
+#: src/components/SideBar.tsx:166
 msgid "Docs"
 msgstr "문서"
 
-#: src/components/SideBar.tsx:89
+#: src/components/SideBar.tsx:107
 msgid "Donate"
 msgstr ""
 
@@ -2869,7 +2866,7 @@ msgstr "불러 오지 못했습니다"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:122
+#: src/components/SideBar.tsx:140
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2902,7 +2899,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:155
+#: src/components/SideBar.tsx:173
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2918,7 +2915,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:329
+#: src/pages/gd/Claim/index.tsx:335
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -2927,7 +2924,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:134
+#: src/components/SideBar.tsx:152
 msgid "GoodWallet"
 msgstr ""
 
@@ -3085,7 +3082,7 @@ msgstr ""
 msgid "PROTOCOL"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:304
+#: src/components/AccountDetails/index.tsx:313
 msgid "Recent Transactions"
 msgstr ""
 
@@ -3115,7 +3112,7 @@ msgstr "루트"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "다음 토큰들을 통한 라우팅을 통해 최적의 가격이 산출되었습니다."
 
-#: src/components/SideBar.tsx:96
+#: src/components/SideBar.tsx:114
 msgid "Save G$"
 msgstr ""
 
@@ -3142,7 +3139,7 @@ msgstr "미끄러짐 공차"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:115
+#: src/components/SideBar.tsx:133
 msgid "Squid Router"
 msgstr ""
 
@@ -3339,7 +3336,6 @@ msgstr "거래 제한시간"
 msgid "Transaction settings"
 msgstr ""
 
-#: src/components/TransactionConfirmationModal/index.tsx:89
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:271
 msgid "Transaction Submitted"
 msgstr ""
@@ -3359,16 +3355,15 @@ msgstr ""
 msgid "Unsupported network"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:290
+#: src/components/AccountDetails/index.tsx:298
 #: src/components/Popups/TransactionPopup.tsx:46
-#: src/components/TransactionConfirmationModal/index.tsx:93
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:280
 msgid "View on explorer"
 msgstr "탐색기에서보기"
 
 #: src/components/ModalViews/index.tsx:69
-msgid "View transaction on explorer"
-msgstr ""
+#~ msgid "View transaction on explorer"
+#~ msgstr ""
 
 #: src/pages/gd/Swap/SwapCore/index.tsx:249
 msgid ""
@@ -3383,8 +3378,8 @@ msgid "Waiting for Confirmation"
 msgstr ""
 
 #: src/components/TransactionConfirmationModal/index.tsx:49
-msgid "Waiting For Confirmation"
-msgstr ""
+#~ msgid "Waiting For Confirmation"
+#~ msgstr ""
 
 #: src/components/SideBar.tsx:154
 #~ msgid "Wallet"
@@ -3537,6 +3532,6 @@ msgstr "가격이 해당 퍼센티지 이상으로 불리하게 변경되면 거
 msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 msgstr "거래가 확인되기 전에 크게 불리한 가격 변동이 있는 경우 거래가 취소됩니다."
 
-#: src/components/AccountDetails/index.tsx:313
+#: src/components/AccountDetails/index.tsx:322
 msgid "Your transactions will appear here..."
 msgstr ""

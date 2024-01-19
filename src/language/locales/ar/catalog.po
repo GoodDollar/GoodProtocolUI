@@ -2183,7 +2183,7 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:245
+#: src/components/AccountDetails/index.tsx:253
 msgid "Account"
 msgstr "الحساب"
 
@@ -2241,7 +2241,7 @@ msgstr "عنوان محظور"
 msgid "Buy G$"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:268
+#: src/components/AccountDetails/index.tsx:276
 msgid "Change"
 msgstr "تغيير"
 
@@ -2311,16 +2311,15 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:306
+#: src/components/AccountDetails/index.tsx:315
 msgid "Clear all"
 msgstr "امسح الكل"
 
-#: src/components/TransactionConfirmationModal/index.tsx:100
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:286
 msgid "Close"
 msgstr "إغلاق"
 
-#: src/pages/gd/Claim/index.tsx:318
+#: src/pages/gd/Claim/index.tsx:324
 msgid "Collect G$"
 msgstr ""
 
@@ -2332,8 +2331,6 @@ msgstr "تأكيد المبادلة"
 msgid "CONFIRM SWAP"
 msgstr "تأكيد المبادلة"
 
-#: src/components/ModalViews/index.tsx:37
-#: src/components/TransactionConfirmationModal/index.tsx:57
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:263
 msgid "Confirm this transaction in your wallet"
 msgstr "قم بتأكيد هذه المعاملة في محفظتك"
@@ -2355,7 +2352,7 @@ msgstr "الاتصال بمحفظة"
 msgid "Connect wallet"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:218
+#: src/components/AccountDetails/index.tsx:221
 msgid "Connected with"
 msgstr "متصل بـ"
 
@@ -2363,7 +2360,7 @@ msgstr "متصل بـ"
 msgid "Copied"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:284
+#: src/components/AccountDetails/index.tsx:292
 msgid "Copy address"
 msgstr "عنوان النسخ"
 
@@ -2371,11 +2368,11 @@ msgstr "عنوان النسخ"
 msgid "Current Rate"
 msgstr "السعر الحالي"
 
-#: src/components/SideBar.tsx:103
+#: src/components/SideBar.tsx:121
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:141
+#: src/components/SideBar.tsx:159
 msgid "Dashboard"
 msgstr ""
 
@@ -2394,15 +2391,15 @@ msgstr ""
 msgid "Deposit overview"
 msgstr "نظرة على الإيداع"
 
-#: src/components/AccountDetails/index.tsx:259
+#: src/components/AccountDetails/index.tsx:267
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:148
+#: src/components/SideBar.tsx:166
 msgid "Docs"
 msgstr "مستندات"
 
-#: src/components/SideBar.tsx:89
+#: src/components/SideBar.tsx:107
 msgid "Donate"
 msgstr ""
 
@@ -2414,7 +2411,7 @@ msgstr "فشل التحميل"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:122
+#: src/components/SideBar.tsx:140
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2447,7 +2444,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:155
+#: src/components/SideBar.tsx:173
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2463,7 +2460,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:329
+#: src/pages/gd/Claim/index.tsx:335
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -2472,7 +2469,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:134
+#: src/components/SideBar.tsx:152
 msgid "GoodWallet"
 msgstr ""
 
@@ -2630,7 +2627,7 @@ msgstr "بروتوكول"
 msgid "PROTOCOL"
 msgstr "بروتوكول"
 
-#: src/components/AccountDetails/index.tsx:304
+#: src/components/AccountDetails/index.tsx:313
 msgid "Recent Transactions"
 msgstr "المعاملات الأخيرة"
 
@@ -2660,7 +2657,7 @@ msgstr "الطريق"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "أدى التوجيه عبر هذه الرموز إلى أفضل سعر لتداولك."
 
-#: src/components/SideBar.tsx:96
+#: src/components/SideBar.tsx:114
 msgid "Save G$"
 msgstr ""
 
@@ -2687,7 +2684,7 @@ msgstr "تسامح الانزلاق"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:115
+#: src/components/SideBar.tsx:133
 msgid "Squid Router"
 msgstr ""
 
@@ -2884,7 +2881,6 @@ msgstr "المهلة النهائية"
 msgid "Transaction settings"
 msgstr "إعدادات المعاملات"
 
-#: src/components/TransactionConfirmationModal/index.tsx:89
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:271
 msgid "Transaction Submitted"
 msgstr "تم إرسال المعاملة"
@@ -2904,16 +2900,15 @@ msgstr ""
 msgid "Unsupported network"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:290
+#: src/components/AccountDetails/index.tsx:298
 #: src/components/Popups/TransactionPopup.tsx:46
-#: src/components/TransactionConfirmationModal/index.tsx:93
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:280
 msgid "View on explorer"
 msgstr "عرض على المستكشف"
 
 #: src/components/ModalViews/index.tsx:69
-msgid "View transaction on explorer"
-msgstr ""
+#~ msgid "View transaction on explorer"
+#~ msgstr ""
 
 #: src/pages/gd/Swap/SwapCore/index.tsx:249
 msgid ""
@@ -2928,8 +2923,8 @@ msgid "Waiting for Confirmation"
 msgstr "انتظار التأكيد"
 
 #: src/components/TransactionConfirmationModal/index.tsx:49
-msgid "Waiting For Confirmation"
-msgstr "انتظار التأكيد"
+#~ msgid "Waiting For Confirmation"
+#~ msgstr "انتظار التأكيد"
 
 #: src/components/SideBar.tsx:154
 #~ msgid "Wallet"
@@ -3082,6 +3077,6 @@ msgstr "ستعود معاملتك إذا تغير السعر بشكل غير إ�
 msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 msgstr "ستعود معاملتك إذا كانت هناك حركة سعر كبيرة وغير مواتية قبل تأكيدها."
 
-#: src/components/AccountDetails/index.tsx:313
+#: src/components/AccountDetails/index.tsx:322
 msgid "Your transactions will appear here..."
 msgstr "ستظهر معاملاتك هنا..."
