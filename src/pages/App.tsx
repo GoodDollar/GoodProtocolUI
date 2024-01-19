@@ -105,7 +105,7 @@ function App(): JSX.Element {
     const sendData = useSendAnalyticsData()
 
     const isMinipay = window?.ethereum?.isMiniPay
-    const { modalProps } = useRedirectNotice()
+    const { open, url, onClose } = useRedirectNotice()
 
     void useFaucet()
 
@@ -189,7 +189,7 @@ function App(): JSX.Element {
 
     return (
         <Suspense fallback={null}>
-            <RedirectModal modalProps={modalProps}>
+            <RedirectModal open={open} url={url} onClose={onClose}>
                 <AppWrap className="flex flex-col overflow-hidden" $isMiniPay={isMinipay}>
                     <AppBar
                         sideBar={[sidebarOpen, setSidebarOpen]}
