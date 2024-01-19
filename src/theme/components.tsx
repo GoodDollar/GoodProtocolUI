@@ -1,11 +1,12 @@
-import { darken } from 'polished'
 import React from 'react'
+import { darken } from 'polished'
 import { ExternalLink as LinkIconFeather, Trash } from 'react-feather'
-
 import { Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
-import useSendAnalyticsData from '../hooks/useSendAnalyticsData'
 import { Pressable, useColorModeValue } from 'native-base'
+import { useRedirectNotice } from '@gooddollar/good-design'
+
+import useSendAnalyticsData from '../hooks/useSendAnalyticsData'
 
 export const ButtonText = styled.button`
     outline: none;
@@ -196,19 +197,21 @@ export const UniTokenAnimated = styled.img`
 export const ExternalLink: React.FC<{
     url: string
     dataAttr: string
+    onPress?: (e: any, url: string) => void
     label?: string
     withIcon?: boolean
     withDefaultStyles?: boolean
     customStyles?: any
     children?: React.ReactNode
-}> = ({ url, dataAttr, label, withDefaultStyles, customStyles, withIcon, children }) => {
+}> = ({ url, dataAttr, onPress, label, withDefaultStyles, customStyles, withIcon, children }) => {
     const sendData = useSendAnalyticsData()
     const textColor = useColorModeValue('goodGrey.700', 'goodGrey.300')
+    const { goToExternal } = useRedirectNotice()
 
     const onExternalClick = (e: any) => {
         const key = e.target.getAttribute('data-key')
-
         sendData({ event: 'goto_page', action: `goto_${key}` })
+        onPress ? onPress(e, url) : goToExternal(e, url)
     }
 
     return (

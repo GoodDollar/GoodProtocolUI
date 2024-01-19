@@ -3,6 +3,9 @@ import { useLingui } from '@lingui/react'
 import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { useConnectWallet } from '@web3-onboard/react'
+import { useRedirectNotice } from '@gooddollar/good-design'
+
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { WalletLabels } from '../../hooks/useActiveOnboard'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
@@ -17,7 +20,6 @@ import Copy from './Copy'
 import Transaction from './Transaction'
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 
-import { useConnectWallet } from '@web3-onboard/react'
 import { getEnv } from 'utils/env'
 
 const UpperSection = styled.div`
@@ -213,6 +215,7 @@ export default function AccountDetails({
     //eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
     const sendData = useSendAnalyticsData()
+    const { goToExternal } = useRedirectNotice()
 
     function formatConnectorName() {
         return `${i18n._(t`Connected with`)} ${wallet?.label}`
@@ -235,6 +238,11 @@ export default function AccountDetails({
     const clearAllTransactionsCallback = useCallback(() => {
         if (chainId) dispatch(clearAllTransactions({ chainId }))
     }, [dispatch, chainId])
+
+    const goToExplorer = (e: any, url: string) => {
+        toggleWalletModal()
+        goToExternal(e, url)
+    }
 
     return (
         <>
@@ -289,6 +297,7 @@ export default function AccountDetails({
                                                 url={getExplorerLink(chainId, account, 'address')}
                                                 label={i18n._(t`View on explorer`)}
                                                 dataAttr="external_explorer"
+                                                onPress={goToExplorer}
                                             />
                                         )}
                                     </div>

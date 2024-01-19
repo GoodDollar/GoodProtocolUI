@@ -4,7 +4,7 @@ import { getDevice, useClaim } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useLocation } from 'react-router-dom'
-import { SlideDownTab } from '@gooddollar/good-design'
+import { SlideDownTab, useRedirectNotice } from '@gooddollar/good-design'
 import { isMobile } from 'react-device-detect'
 
 import { useApplicationTheme } from '../state/application/hooks'
@@ -16,11 +16,23 @@ import { socials } from 'constants/socials'
 import { getScreenWidth } from 'utils/screenSizes'
 import classNames from 'classnames'
 
-const SocialsLink: React.FC<{ network: string; logo: string; url: string }> = ({ network, logo, url }) => (
-    <a href={url} target="_blank" className="flex items-center space-x-2" rel="noreferrer">
-        <img src={logo} alt={`${network} logo`} width="20" height="20" />
-    </a>
-)
+const SocialsLink: React.FC<{ network: string; logo: string; url: string; onPress: (e: any, url: string) => void }> = ({
+    network,
+    logo,
+    url,
+    onPress,
+}) => {
+    // type handling
+    const handleClick = (e: any) => {
+        onPress(e, url)
+    }
+
+    return (
+        <a href={url} target="_blank" className="flex items-center space-x-2" rel="noreferrer" onClick={handleClick}>
+            <img src={logo} alt={`${network} logo`} width="20" height="20" />
+        </a>
+    )
+}
 
 const externalPrivacyStyles = {
     paddingTop: '4px',
@@ -32,6 +44,7 @@ const externalPrivacyStyles = {
 
 export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; closeSidebar?: any }): JSX.Element {
     const [theme, setTheme] = useApplicationTheme()
+    const { goToExternal } = useRedirectNotice()
     const { i18n } = useLingui()
     const { isWhitelisted } = useClaim()
     const { pathname } = useLocation()
@@ -74,6 +87,11 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
         if (mobile) {
             closeSidebar()
         }
+    }
+
+    const handleExternal = (e: any, url: string) => {
+        onTabClick()
+        goToExternal(e, url)
     }
 
     const footerStyles = classNames('flex flex-col justify-center gap-3 mt-2.5', {
@@ -249,12 +267,14 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
 
                     {externalLinks.map((subMenu) =>
                         subMenu.subMenuTitle === 'Regular' ? (
-                            <SubMenuItems items={subMenu.items} />
+                            <SubMenuItems items={subMenu.items} onPress={handleExternal} />
                         ) : (
                             <SlideDownTab
                                 key={subMenu.subMenuTitle}
                                 tabTitle={subMenu.subMenuTitle}
-                                viewInteraction={{ hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 } }}
+                                viewInteraction={{
+                                    hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 },
+                                }}
                                 styles={{
                                     button: {
                                         borderRadius: 12,
@@ -266,6 +286,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                                 <SubMenuItems
                                     items={subMenu.items}
                                     styles={{ alignItems: 'flex-start', paddingLeft: 4 }}
+                                    onPress={handleExternal}
                                 />
                             </SlideDownTab>
                         )
@@ -310,12 +331,12 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                     >
                         <HStack space={15} justifyContent="space-between" width="100%">
                             {firstRowItems.map(([key, { icon, url }]) => (
-                                <SocialsLink key={key} network={key} logo={icon} url={url} />
+                                <SocialsLink key={key} network={key} logo={icon} url={url} onPress={handleExternal} />
                             ))}
                         </HStack>
                         <HStack space={15} mt={4} justifyContent="space-between" width="100%">
                             {secondRowItems.map(([key, { icon, url }]) => (
-                                <SocialsLink key={key} network={key} logo={icon} url={url} />
+                                <SocialsLink key={key} network={key} logo={icon} url={url} onPress={handleExternal} />
                             ))}
                         </HStack>
                     </Box>
@@ -326,6 +347,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                             dataAttr="privacy"
                             withDefaultStyles={true}
                             customStyles={externalPrivacyStyles}
+                            onPress={handleExternal}
                         />
                         <ExternalLink
                             label="Terms and Conditions"
@@ -333,6 +355,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                             dataAttr="terms"
                             withDefaultStyles={true}
                             customStyles={externalPrivacyStyles}
+                            onPress={handleExternal}
                         />
                     </Box>
                 </div>

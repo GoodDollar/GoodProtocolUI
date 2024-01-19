@@ -30,6 +30,7 @@ import { registerServiceWorker } from './serviceWorker'
 import { OnboardProviderWrapper } from 'components/BlockNativeOnboard'
 import { SimpleAppProvider } from 'state/simpleapp/simpleapp'
 import { nbTheme } from './theme/nbtheme'
+import { RedirectNoticeProvider } from '@gooddollar/good-design'
 
 if (window.ethereum) {
     window.ethereum.autoRefreshOnNetworkChange = false
@@ -84,36 +85,39 @@ ReactDOM.render(
         <HttpsProvider enabled={enableHttpsRedirect}>
             <Provider store={store}>
                 <NewsFeedProvider {...(prodOrQa ? { feedFilter: feedConfig.production.feedFilter } : { env: 'qa' })}>
-                    <OnboardProviderWrapper>
-                        <Web3ContextProvider>
-                            <LanguageProvider>
-                                <PostHogProvider
-                                    apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
-                                    options={{
-                                        api_host: import.meta.env.REACT_APP_POSTHOG_PROXY ?? 'https://app.posthog.com',
-                                    }}
-                                >
-                                    <AnalyticsProvider config={analyticsConfig} appProps={appInfo}>
-                                        <Blocklist>
-                                            <UserUpdater />
-                                            <ApplicationUpdater />
-                                            <MulticallUpdater />
-                                            <ThemeProvider>
-                                                <NativeBaseProvider theme={nbTheme}>
-                                                    <GlobalStyle />
-                                                    <Router>
-                                                        <SimpleAppProvider>
-                                                            <App />
-                                                        </SimpleAppProvider>
-                                                    </Router>
-                                                </NativeBaseProvider>
-                                            </ThemeProvider>
-                                        </Blocklist>
-                                    </AnalyticsProvider>
-                                </PostHogProvider>
-                            </LanguageProvider>
-                        </Web3ContextProvider>
-                    </OnboardProviderWrapper>
+                    <RedirectNoticeProvider>
+                        <OnboardProviderWrapper>
+                            <Web3ContextProvider>
+                                <LanguageProvider>
+                                    <PostHogProvider
+                                        apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
+                                        options={{
+                                            api_host:
+                                                import.meta.env.REACT_APP_POSTHOG_PROXY ?? 'https://app.posthog.com',
+                                        }}
+                                    >
+                                        <AnalyticsProvider config={analyticsConfig} appProps={appInfo}>
+                                            <Blocklist>
+                                                <UserUpdater />
+                                                <ApplicationUpdater />
+                                                <MulticallUpdater />
+                                                <ThemeProvider>
+                                                    <NativeBaseProvider theme={nbTheme}>
+                                                        <GlobalStyle />
+                                                        <Router>
+                                                            <SimpleAppProvider>
+                                                                <App />
+                                                            </SimpleAppProvider>
+                                                        </Router>
+                                                    </NativeBaseProvider>
+                                                </ThemeProvider>
+                                            </Blocklist>
+                                        </AnalyticsProvider>
+                                    </PostHogProvider>
+                                </LanguageProvider>
+                            </Web3ContextProvider>
+                        </OnboardProviderWrapper>
+                    </RedirectNoticeProvider>
                 </NewsFeedProvider>
             </Provider>
         </HttpsProvider>
