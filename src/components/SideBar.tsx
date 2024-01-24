@@ -104,6 +104,13 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 subMenuTitle: 'Regular',
                 items: [
                     {
+                        label: i18n._(t`Buy G$`),
+                        url: 'https://v2.app.squidrouter.com/',
+                        dataAttr: 'buygd_squid',
+                        withIcon: true,
+                        show: true,
+                    },
+                    {
                         label: i18n._(t`Donate`),
                         url: 'https://gooddollar.notion.site/Donate-to-a-G-Cause-e7d31fb67bb8494abb3a7989ebe6f181',
                         dataAttr: 'donate',
