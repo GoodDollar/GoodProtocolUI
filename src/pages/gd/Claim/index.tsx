@@ -188,8 +188,13 @@ const Claim = memo(() => {
             width: '100%',
         },
         lg: {
+            width: '50%',
+        },
+        xl: {
+            width: '60%',
+        },
+        '2xl': {
             paddingRight: 24,
-            paddingLeft: 63,
             alignItems: 'center',
             flexGrow: 1,
         },

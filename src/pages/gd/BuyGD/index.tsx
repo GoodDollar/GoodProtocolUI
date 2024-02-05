@@ -51,7 +51,6 @@ const BuyGd = memo(() => {
     const leftContainer = useBreakpointValue({
         lg: {
             paddingRight: 24,
-            paddingLeft: 63,
             alignItems: 'stretch',
             borderRightWidth: 1,
             flexGrow: 1,
@@ -62,7 +61,7 @@ const BuyGd = memo(() => {
     const rightContainer = useBreakpointValue({
         lg: {
             paddingLeft: 24,
-            paddingTop: 60,
+            paddingTop: 48,
             width: 375,
         },
     })
@@ -143,7 +142,7 @@ const BuyGd = memo(() => {
                             tabTitle="G$ Calculator"
                             viewInteraction={{ hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 } }}
                             styles={{
-                                titleFont: { fontSize: 'l' },
+                                titleFont: { fontSize: 'l', fontFamily: 'heading', fontWeight: '700' },
                             }}
                         >
                             <Converter gdPrice={G$Price} />
