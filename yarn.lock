@@ -5012,9 +5012,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
-  version: 0.1.36
-  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=be71cc&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+"@gooddollar/good-design@npm:0.1.37-beta.3cd25eb":
+  version: 0.1.37-beta.3cd25eb
+  resolution: "@gooddollar/good-design@npm:0.1.37-beta.3cd25eb"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -5046,7 +5046,7 @@ __metadata:
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: 3051dba67da71d3037f0cf39827edb8480d2540c26829abf7eac0abe8293d4c9aa302a6362d1ea0ece8027137942902bdb992d3d8730f204b3d40f98174f97f1
+  checksum: 35cedc6a283e451ff003784fe79d521be46d9b1f3f28059303f6fd70540819bb7a5bb1523ce0c3ffaed19709b2efea894047fb3b01ba76779cc0f3b1f83037be
   languageName: node
   linkType: hard
 
@@ -5098,10 +5098,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
+    "@gooddollar/good-design": 0.1.37-beta.3cd25eb
     "@gooddollar/goodprotocol": ^2.0.24
     "@gooddollar/web3sdk": ^0.1.28
-    "@gooddollar/web3sdk-v2": ^0.2.14
+    "@gooddollar/web3sdk-v2": 0.2.15-beta.3cd25eb
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@kimafinance/kima-transaction-widget": ^1.1.42-beta.1
@@ -5281,9 +5281,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.2.14":
-  version: 0.2.14
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.14"
+"@gooddollar/web3sdk-v2@npm:0.2.15-beta.3cd25eb":
+  version: 0.2.15-beta.3cd25eb
+  resolution: "@gooddollar/web3sdk-v2@npm:0.2.15-beta.3cd25eb"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5329,7 +5329,7 @@ __metadata:
     "@react-native-async-storage/async-storage": 1.17.10
     react-native: "*"
     react-native-web: "*"
-  checksum: 765f2d8ad42fc28c5f556b8b5cbe7bd1d31ce100a6a3aa9780b7d61cf8742a0f1ca843d73ca9a79dae540402c0cdef1fbfb65b6d5d63ab7d26637727cc2824fe
+  checksum: f14d936c2d42a0372c9672f6ac8fdb572461f90a4bacec725a9c6711f5944d7905bbe889e21cfc00d577b91e58a02caf76f61f1b8b8e43c1265a1f8e5f841b70
   languageName: node
   linkType: hard
 
