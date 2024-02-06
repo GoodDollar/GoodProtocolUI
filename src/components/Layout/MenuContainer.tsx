@@ -13,8 +13,6 @@ export const menuContainerTheme = {
         bottom: 0,
         left: 0,
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
         width: '100%',
         ...Platform.select({
             android: {
