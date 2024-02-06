@@ -4,10 +4,10 @@ import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
 import { g$Price } from '@gooddollar/web3sdk'
-import classNames from 'classnames'
 import { Box, ITextProps, Pressable, PresenceTransition, Text, useBreakpointValue } from 'native-base'
 import { useFeatureFlagEnabled, usePostHog } from 'posthog-js/react'
-import { BasePressable, CentreBox } from '@gooddollar/good-design'
+import { BasePressable, CentreBox, useScreenSize } from '@gooddollar/good-design'
+import { useG$Balance } from '@gooddollar/web3sdk-v2'
 
 import { useActiveWeb3React } from '../hooks/useActiveWeb3React'
 import Web3Network from './Web3Network'
@@ -21,7 +21,7 @@ import AppNotice from './AppNotice'
 import { OnboardConnectButton } from './BlockNativeOnboard'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 import WalletBalanceWrapper from './WalletBalance'
-import { useScreenDetect } from 'hooks/useScreenDetect'
+import { MenuContainer } from './Layout/MenuContainer'
 
 import { ReactComponent as WalletBalanceIcon } from '../assets/images/walletBalanceIcon.svg'
 import { ReactComponent as LogoPrimary } from '../assets/svg/logo_primary_2023.svg'
@@ -29,7 +29,6 @@ import { ReactComponent as LogoWhite } from '../assets/svg/logo_white_2023.svg'
 import { useApplicationTheme } from '../state/application/hooks'
 import { ReactComponent as Burger } from '../assets/images/burger.svg'
 import { ReactComponent as X } from '../assets/images/x.svg'
-import { useG$Balance } from '@gooddollar/web3sdk-v2'
 
 const AppBarWrapper = styled.header`
     background: ${({ theme }) => theme.color.secondaryBg};
@@ -194,7 +193,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
     const { enabled: appNoticeEnabled, message, color, link } = (payload as any) || {}
     const [sidebarOpen, setSidebarOpen] = sideBar
     const [walletBalanceOpen, setWalletBalanceOpen] = walletBalance
-    const { isMobileView, isSmallTablet, isTabletView } = useScreenDetect()
+    const { isMobileView, isSmallTabletView, isTabletView, isDesktopView } = useScreenSize()
 
     const { G$ } = useG$Balance(5)
 
@@ -221,14 +220,6 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
         base: 'goodGrey.400',
         lg: 'lightGrey',
     })
-
-    const mainMenuContainer = classNames(
-        'fixed bottom-0 left-0 flex flex-row items-center justify-center w-full gap-2 lg:w-auto lg:relative lg:p-0 actions-wrapper lg:h-12',
-        {
-            'h-14': isSimpleApp && isTabletView,
-            'h-20': !isSimpleApp,
-        }
-    )
 
     const { ethereum } = window
     const isMinipay = ethereum?.isMiniPay
@@ -269,8 +260,8 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
         base: {
             paddingTop: 12,
             paddingBottom: 8,
-            paddingLeft: 32,
-            paddingRight: 32,
+            paddingLeft: 16,
+            paddingRight: 16,
             justifyContent: 'space-between',
         },
         md: {
@@ -307,7 +298,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                         </LogoWrapper>
                     </div>
 
-                    <div className="relative flex flex-row items-center h-10 space-x-2">
+                    <div className="relative flex flex-row items-center">
                         {account && (
                             <Box flexDirection="row" alignItems="center">
                                 <BasePressable onPress={toggleWalletBalance} innerView={{ flexDirection: 'row' }}>
@@ -343,10 +334,10 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                             </Box>
                         )}
                         {!isMinipay && (
-                            <div className="z-50 flex flex-row items-center space-x-2">
+                            <div className="z-50 flex flex-row items-center">
                                 <button
                                     onClick={toggleSideBar}
-                                    className="inline-flex items-center justify-center rounded-md mobile-menu-button focus:outline-none"
+                                    className="inline-flex items-center justify-center ml-2 rounded-md mobile-menu-button focus:outline-none"
                                 >
                                     <span className="sr-only">{i18n._(t`Open main menu`)}</span>
                                     {sidebarOpen ? (
@@ -359,25 +350,25 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                         )}
 
                         {!isMinipay && (
-                            <div className={mainMenuContainer}>
-                                {!isSimpleApp && !isTabletView ? <Web3Bar /> : !isTabletView ? <NavBar /> : null}
+                            <MenuContainer>
+                                {!isSimpleApp && isDesktopView ? <Web3Bar /> : !isTabletView ? <NavBar /> : null}
                                 {/* // : isMobile ? <NavBar /> : null} <-- enable for opera when swap is ready */}
-                            </div>
+                            </MenuContainer>
                         )}
                     </div>
                 </CentreBox>
                 <div className="px-4 pb-2 lg:hidden">
                     {showPrice && <G$Balance price={G$Price} color={fontColor} padding="0" />}
                 </div>
-                {isTabletView && (
+                {!isDesktopView && (
                     <>
                         <SidebarContainer
-                            $mobile={isTabletView}
+                            $mobile={!isDesktopView}
                             appNotice={appNoticeEnabled}
-                            scrWidth={isMobileView ? '100%' : isSmallTablet ? '50%' : '40%'}
+                            scrWidth={isMobileView ? '100%' : isSmallTabletView ? '50%' : '40%'}
                             className={`${sidebarOpen ? ' open ' : ''} w-64`}
                         >
-                            <SideBar mobile={isTabletView} closeSidebar={toggleSideBar} />
+                            <SideBar mobile={!isDesktopView} closeSidebar={toggleSideBar} />
                         </SidebarContainer>
                     </>
                 )}
@@ -403,7 +394,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                         }}
                         style={{
                             zIndex: walletBalanceOpen ? -1 : sidebarOpen ? 10 : 0,
-                            backgroundColor: isTabletView ? '#3c3c3c3c' : 'none ',
+                            backgroundColor: !isDesktopView ? '#3c3c3c3c' : 'none ',
                             width: '100%',
                             top: appNoticeEnabled ? `140px` : `40px`,
                             height: '100%',

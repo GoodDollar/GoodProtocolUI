@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const DASHBOARD_URL = process.env.REACT_APP_DATASTUDIO_DASHBOARD_URL || 'http://dashboard.gooddollar.org/'
+const DASHBOARD_URL = process.env.REACT_APP_DATASTUDIO_DASHBOARD_URL || 'https://dashboard.gooddollar.org/'
 
 const Wrapper = styled.div`
     width: 100%;

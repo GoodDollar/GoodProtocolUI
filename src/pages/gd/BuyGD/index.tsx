@@ -33,7 +33,6 @@ const BuyGd = memo(() => {
 
     const mainView = useBreakpointValue({
         base: {
-            gap: 48,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -50,6 +49,7 @@ const BuyGd = memo(() => {
 
     const leftContainer = useBreakpointValue({
         lg: {
+            width: '50%',
             paddingRight: 24,
             alignItems: 'stretch',
             borderRightWidth: 1,
@@ -72,7 +72,7 @@ const BuyGd = memo(() => {
             fontSize: 'sm',
         },
         lg: {
-            width: 600,
+            width: '100%',
         },
     })
 

@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { parse } from 'qs'
 import isEqual from 'lodash/isEqual'
 import classNames from 'classnames'
-import { RedirectModal, useRedirectNotice } from '@gooddollar/good-design'
+import { RedirectModal, useRedirectNotice, useScreenSize } from '@gooddollar/good-design'
 
 import { AppBar, Popups } from '../components'
 import Web3ReactManager from '../components/Web3ReactManager'
@@ -19,7 +19,6 @@ import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import WalletChat from '../components/WalletChat'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 import MainPageContainer from 'components/Layout/MainPageContainer'
-import { useScreenDetect } from 'hooks/useScreenDetect'
 
 export const Beta = styled.div`
     font-style: normal;
@@ -96,7 +95,7 @@ function App(): JSX.Element {
 
     const isMinipay = window?.ethereum?.isMiniPay
     const { open, url, onClose } = useRedirectNotice()
-    const { isTabletView } = useScreenDetect()
+    const { isDesktopView } = useScreenSize()
 
     void useFaucet()
 
@@ -174,7 +173,7 @@ function App(): JSX.Element {
                         walletBalance={[walletBalanceOpen, setWalletBalanceOpen]}
                     />
                     <Wrapper isSimpleApp className="flex flex-grow overflow-hidden">
-                        {!isTabletView && <SideBar />}
+                        {isDesktopView && <SideBar />}
                         <MainPageContainer isFv={isFV} isDashboard={isDash}>
                             <Popups />
                             <Web3ReactManager>

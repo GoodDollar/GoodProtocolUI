@@ -4,9 +4,8 @@ import { getDevice, useClaim } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useLocation } from 'react-router-dom'
-import { SlideDownTab, useRedirectNotice } from '@gooddollar/good-design'
+import { SlideDownTab, useRedirectNotice, useScreenSize } from '@gooddollar/good-design'
 
-import { useScreenDetect } from 'hooks/useScreenDetect'
 import { useApplicationTheme } from '../state/application/hooks'
 import LanguageSwitch from './LanguageSwitch'
 import { NavLink } from './Link'
@@ -52,7 +51,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const bgContainer = useColorModeValue('goodWhite.100', '#151A30')
 
     const { browser, os } = getDevice()
-    const { isTabletView } = useScreenDetect()
+    const { isTabletView } = useScreenSize()
     const scrWidth = '100%'
     const isiOS = os.name === 'iOS'
     const isChrome = browser.name === 'Chrome'
@@ -73,6 +72,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             paddingBottom: 0,
             height: `calc(${viewPort} - ${browserViewPort})`,
             gap: '1px',
+            justifyContent: 'stretch',
         },
         lg: {
             width: '258px',
@@ -93,7 +93,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     }
 
     const footerStyles = classNames('flex flex-col justify-center gap-3 mt-2.5', {
-        'w-52': !isTabletView,
+        'w-full': !isTabletView,
     })
 
     const externalLinks = useMemo(
@@ -283,6 +283,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                                     titleFont: {
                                         fontFamily: 'subheading',
                                         fontWeight: '400',
+                                        paddingLeft: 2,
                                     },
                                 }}
                                 arrowSmall
