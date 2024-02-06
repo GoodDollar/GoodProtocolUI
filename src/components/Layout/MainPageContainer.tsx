@@ -46,7 +46,7 @@ export const mpContainerTheme = {
 
 const MainPageContainer = withTheme({ name: 'MainPageContainer' })(
     ({ children, mainBody, flexStart, justifyBetween, dashboardBody, isFv, isDashboard }: IMainPageContainerProps) => {
-        const bgColor = useColorModeValue('white', 'mainDarkContrast')
+        const bgColor = useColorModeValue('white', '#222B45')
         const styles = useBreakpointValue({
             base: {
                 ...mainBody,

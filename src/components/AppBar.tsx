@@ -14,7 +14,7 @@ import Web3Network from './Web3Network'
 import Web3Status from './Web3Status'
 import { useWalletModalToggle } from '../state/application/hooks'
 import SideBar from './SideBar'
-import { NavBar } from './StyledMenu/Navbar'
+// import { NavBar } from './StyledMenu/Navbar'
 import usePromise from '../hooks/usePromise'
 import NetworkModal from './NetworkModal'
 import AppNotice from './AppNotice'
@@ -351,8 +351,8 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
 
                         {!isMinipay && (
                             <MenuContainer>
-                                {!isSimpleApp && isDesktopView ? <Web3Bar /> : !isTabletView ? <NavBar /> : null}
-                                {/* // : isMobile ? <NavBar /> : null} <-- enable for opera when swap is ready */}
+                                {!isSimpleApp ? <Web3Bar /> : null}
+                                {/* // : isMobile ? <NavBar /> : null} <-- dont show navbar anyway until design updates */}
                             </MenuContainer>
                         )}
                     </div>
