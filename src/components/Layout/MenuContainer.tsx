@@ -39,9 +39,7 @@ export const MenuContainer = withTheme({ name: 'MenuContainer' })(
                 android: 'absolute',
                 web: 'fixed',
             }),
-            lg: {
-                position: 'relative',
-            },
+            lg: 'relative',
         })
 
         return (
