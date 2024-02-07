@@ -28,10 +28,14 @@ export const menuContainerTheme = {
 export const MenuContainer = withTheme({ name: 'MenuContainer' })(
     ({ children, isSimpleApp, ...props }: MenuContainerProps) => {
         const bgColor = useColorModeValue('white', '#222B45')
+        const background = useBreakpointValue({
+            base: bgColor,
+            lg: '',
+        })
 
         const containerHeight = useBreakpointValue({
             base: isSimpleApp ? 14 : 56,
-            xl: 20,
+            xl: 10,
         })
 
         const position = useBreakpointValue({
@@ -43,7 +47,7 @@ export const MenuContainer = withTheme({ name: 'MenuContainer' })(
         })
 
         return (
-            <CentreBox bgColor={bgColor} h={containerHeight} position={position} {...props}>
+            <CentreBox bgColor={background} h={containerHeight} position={position} {...props}>
                 {children}
             </CentreBox>
         )
