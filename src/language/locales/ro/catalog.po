@@ -2733,7 +2733,8 @@ msgstr "Echilibru"
 msgid "Blocked address"
 msgstr "Adresa blocată"
 
-#: src/pages/gd/BuyGD/index.tsx:102
+#: src/components/SideBar.tsx:105
+#: src/pages/gd/BuyGD/index.tsx:101
 msgid "Buy G$"
 msgstr ""
 
@@ -2741,7 +2742,7 @@ msgstr ""
 msgid "Change"
 msgstr "Schimbare"
 
-#: src/pages/gd/BuyGD/index.tsx:126
+#: src/pages/gd/BuyGD/index.tsx:125
 msgid "Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$."
 msgstr ""
 
@@ -2815,7 +2816,7 @@ msgstr "Curata tot"
 msgid "Close"
 msgstr "Închide"
 
-#: src/pages/gd/Claim/index.tsx:324
+#: src/pages/gd/Claim/index.tsx:338
 msgid "Collect G$"
 msgstr ""
 
@@ -2864,11 +2865,11 @@ msgstr "Adresa de copiere"
 msgid "Current Rate"
 msgstr "Rata curenta"
 
-#: src/components/SideBar.tsx:121
+#: src/components/SideBar.tsx:126
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:159
+#: src/components/SideBar.tsx:164
 msgid "Dashboard"
 msgstr ""
 
@@ -2891,11 +2892,11 @@ msgstr "Depozit Privire de ansamblu"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:166
+#: src/components/SideBar.tsx:171
 msgid "Docs"
 msgstr "Documente"
 
-#: src/components/SideBar.tsx:107
+#: src/components/SideBar.tsx:112
 msgid "Donate"
 msgstr ""
 
@@ -2907,7 +2908,7 @@ msgstr "incarcarea a esuat"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:140
+#: src/components/SideBar.tsx:145
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2940,7 +2941,7 @@ msgstr "Du-te la portofoliu."
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:173
+#: src/components/SideBar.tsx:178
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2956,7 +2957,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:335
+#: src/pages/gd/Claim/index.tsx:349
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -2965,7 +2966,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:152
+#: src/components/SideBar.tsx:157
 msgid "GoodWallet"
 msgstr ""
 
@@ -3085,7 +3086,7 @@ msgstr "pe"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Hopa! O eroare necunoscută s-a întamplat. Vă rugăm să reîmprospătați pagina sau să vizitați un alt browser sau dispozitiv"
 
-#: src/components/AppBar.tsx:339
+#: src/components/AppBar.tsx:342
 msgid "Open main menu"
 msgstr "Deschideți meniul principal"
 
@@ -3153,7 +3154,7 @@ msgstr "Traseu"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "Trecerea prin aceste jetoane a dus la cel mai bun preț pentru tranzacția dvs."
 
-#: src/components/SideBar.tsx:114
+#: src/components/SideBar.tsx:119
 msgid "Save G$"
 msgstr ""
 
@@ -3180,7 +3181,7 @@ msgstr "Toleranță la alunecare"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:133
+#: src/components/SideBar.tsx:138
 msgid "Squid Router"
 msgstr ""
 
@@ -3217,7 +3218,7 @@ msgstr "Începând cu 1.0, multiplicatorul dvs. va crește la 2.0 după o lună 
 msgid "Success!"
 msgstr "Succes!"
 
-#: src/pages/gd/BuyGD/index.tsx:114
+#: src/pages/gd/BuyGD/index.tsx:113
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
