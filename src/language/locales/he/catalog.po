@@ -3082,7 +3082,7 @@ msgstr "על ה"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "אופס! אירעה שגיאה לא ידועה. נא לרענן את הדף, או לבקר בדפדפן או במכשיר אחר"
 
-#: src/components/AppBar.tsx:342
+#: src/components/AppBar.tsx:341
 msgid "Open main menu"
 msgstr "פתח תפריט ראשי"
 

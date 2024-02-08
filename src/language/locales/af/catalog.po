@@ -2590,7 +2590,7 @@ msgstr "op die"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Oeps! 'n Onbekende fout het voorgekom. Verfris asseblief die bladsy, of besoek vanaf 'n ander blaaier of toestel"
 
-#: src/components/AppBar.tsx:342
+#: src/components/AppBar.tsx:341
 msgid "Open main menu"
 msgstr "Open hoofkieslys"
 
