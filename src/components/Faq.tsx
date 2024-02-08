@@ -64,7 +64,7 @@ IT IS IMPORTANT TO KEEP THE GOODDAPP WINDOW OPEN FOR THIS ENTIRE PROCESS. Do not
             tabTitle="FAQ"
             viewInteraction={{ hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 } }}
             styles={{
-                titleFont: { fontSize: 'l' },
+                titleFont: { fontSize: 'l', fontFamily: 'heading', fontWeight: '700' },
                 button: { marginBottom: 25, borderRadius: 12 },
             }}
         >

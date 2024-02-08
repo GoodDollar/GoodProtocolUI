@@ -33,7 +33,6 @@ const BuyGd = memo(() => {
 
     const mainView = useBreakpointValue({
         base: {
-            gap: 48,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -50,8 +49,8 @@ const BuyGd = memo(() => {
 
     const leftContainer = useBreakpointValue({
         lg: {
+            width: '50%',
             paddingRight: 24,
-            paddingLeft: 63,
             alignItems: 'stretch',
             borderRightWidth: 1,
             flexGrow: 1,
@@ -62,7 +61,7 @@ const BuyGd = memo(() => {
     const rightContainer = useBreakpointValue({
         lg: {
             paddingLeft: 24,
-            paddingTop: 60,
+            paddingTop: 48,
             width: 375,
         },
     })
@@ -73,7 +72,7 @@ const BuyGd = memo(() => {
             fontSize: 'sm',
         },
         lg: {
-            width: 600,
+            width: '100%',
         },
     })
 
@@ -143,7 +142,7 @@ const BuyGd = memo(() => {
                             tabTitle="G$ Calculator"
                             viewInteraction={{ hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 } }}
                             styles={{
-                                titleFont: { fontSize: 'l' },
+                                titleFont: { fontSize: 'l', fontFamily: 'heading', fontWeight: '700' },
                             }}
                         >
                             <Converter gdPrice={G$Price} />

@@ -4,25 +4,24 @@ import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
 import { g$Price } from '@gooddollar/web3sdk'
-import { isMobile } from 'react-device-detect'
-import classNames from 'classnames'
 import { Box, ITextProps, Pressable, PresenceTransition, Text, useBreakpointValue } from 'native-base'
 import { useFeatureFlagEnabled, usePostHog } from 'posthog-js/react'
-import { BasePressable } from '@gooddollar/good-design'
+import { BasePressable, CentreBox, useScreenSize } from '@gooddollar/good-design'
+import { useG$Balance } from '@gooddollar/web3sdk-v2'
 
 import { useActiveWeb3React } from '../hooks/useActiveWeb3React'
 import Web3Network from './Web3Network'
 import Web3Status from './Web3Status'
 import { useWalletModalToggle } from '../state/application/hooks'
 import SideBar from './SideBar'
-import { NavBar } from './StyledMenu/Navbar'
+// import { NavBar } from './StyledMenu/Navbar'
 import usePromise from '../hooks/usePromise'
 import NetworkModal from './NetworkModal'
 import AppNotice from './AppNotice'
 import { OnboardConnectButton } from './BlockNativeOnboard'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 import WalletBalanceWrapper from './WalletBalance'
-import { getScreenWidth } from 'utils/screenSizes'
+import { MenuContainer } from './Layout/MenuContainer'
 
 import { ReactComponent as WalletBalanceIcon } from '../assets/images/walletBalanceIcon.svg'
 import { ReactComponent as LogoPrimary } from '../assets/svg/logo_primary_2023.svg'
@@ -30,7 +29,6 @@ import { ReactComponent as LogoWhite } from '../assets/svg/logo_white_2023.svg'
 import { useApplicationTheme } from '../state/application/hooks'
 import { ReactComponent as Burger } from '../assets/images/burger.svg'
 import { ReactComponent as X } from '../assets/images/x.svg'
-import { useG$Balance } from '@gooddollar/web3sdk-v2'
 
 const AppBarWrapper = styled.header`
     background: ${({ theme }) => theme.color.secondaryBg};
@@ -38,11 +36,14 @@ const AppBarWrapper = styled.header`
         height: 29px;
     }
 
-    .mobile-menu-button {
-        display: none;
-    }
     @media ${({ theme }) => theme.media.lg} {
         box-shadow: ${({ theme }) => theme.shadow.headerNew};
+    }
+
+    @media ${({ theme }) => theme.media.xl} {
+        .mobile-menu-button {
+            display: none;
+        }
     }
 
     @media ${({ theme }) => theme.media.md} {
@@ -109,11 +110,11 @@ export const DivOutlined = styled.div<{
         cursor: auto;
     }
 `
-const SidebarContainer = styled.div<{ $mobile: boolean; scrWidth: number; appNotice: boolean }>`
+const SidebarContainer = styled.div<{ $mobile: boolean; scrWidth?: number | string; appNotice: boolean }>`
     ${({ $mobile, scrWidth, appNotice }) =>
         $mobile &&
         `top: ${appNotice ? `140px` : `40px`};
-  width: ${scrWidth}px;
+  width: ${scrWidth};
   height: 95%;
   left: -806px;
   position: fixed;
@@ -122,19 +123,6 @@ const SidebarContainer = styled.div<{ $mobile: boolean; scrWidth: number; appNot
   &.open {
     transition: transform 1s ease;
     transform: translateX(806px)
-  }`}
-`
-
-// will be moved to native base soon
-const TopBar = styled.div<{ $mobile: boolean }>`
-    ${({ $mobile }) =>
-        $mobile &&
-        `
-    background-color: transparent;
-    height: 40px; 
-    align-items: center;
-    padding-left: 16px;
-    padding-right: 16px;
   }`}
 `
 
@@ -205,9 +193,9 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
     const { enabled: appNoticeEnabled, message, color, link } = (payload as any) || {}
     const [sidebarOpen, setSidebarOpen] = sideBar
     const [walletBalanceOpen, setWalletBalanceOpen] = walletBalance
+    const { isMobileView, isSmallTabletView, isTabletView, isDesktopView } = useScreenSize()
 
     const { G$ } = useG$Balance(5)
-    const scrWidth = getScreenWidth()
 
     const [G$Price] = usePromise(async () => {
         try {
@@ -232,14 +220,6 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
         base: 'goodGrey.400',
         lg: 'lightGrey',
     })
-
-    const mainMenuContainer = classNames(
-        'fixed bottom-0 left-0 flex flex-row items-center justify-center w-full gap-2 lg:w-auto lg:relative lg:p-0 actions-wrapper lg:h-12',
-        {
-            'h-14': isSimpleApp && isMobile,
-            'h-20': !isSimpleApp,
-        }
-    )
 
     const { ethereum } = window
     const isMinipay = ethereum?.isMiniPay
@@ -276,6 +256,30 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
         },
     })
 
+    const barContainerStyles = useBreakpointValue({
+        base: {
+            paddingTop: 12,
+            paddingBottom: 8,
+            paddingLeft: 16,
+            paddingRight: 16,
+            justifyContent: 'space-between',
+        },
+        md: {
+            paddingTop: 16,
+            paddingBottom: 16,
+            paddingLeft: 32,
+            paddingRight: 32,
+            justifyContent: 'space-between',
+        },
+        lg: {
+            paddingTop: 16,
+            paddingBottom: 16,
+            paddingLeft: 48,
+            paddingRight: 48,
+            justifyContent: 'space-between',
+        },
+    })
+
     return (
         <AppBarWrapper
             className="relative z-10 flex flex-row justify-between w-screen flex-nowrap background"
@@ -283,90 +287,88 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
         >
             <>
                 {appNoticeEnabled && <AppNotice text={message} bg={color} link={link} show={true} />}
-                <div className="lg:px-8 lg:py-4">
-                    <TopBar $mobile={isMobile} className="relative flex items-center justify-between">
-                        <div className="flex flex-col">
-                            <LogoWrapper $mobile={isMobile} className="flex-shrink-0">
-                                {theme === 'dark' ? (
-                                    <LogoWhite className="w-auto site-logo lg:block" />
-                                ) : (
-                                    <LogoPrimary className="w-auto site-logo lg:block" />
-                                )}
-                            </LogoWrapper>
-                        </div>
-
-                        <div className="relative flex flex-row items-center h-10 space-x-2">
-                            {account && (
-                                <Box flexDirection="row" alignItems="center">
-                                    <BasePressable onPress={toggleWalletBalance} innerView={{ flexDirection: 'row' }}>
-                                        <Text
-                                            color={walletBalanceOpen ? 'primary' : 'goodGrey.700'}
-                                            selectable={false}
-                                            pr={1}
-                                            fontFamily="subheading"
-                                            fontWeight={400}
-                                            fontSize="xs"
-                                            style={walletBalanceStyles}
-                                        >
-                                            {gdBalance}
-                                        </Text>
-                                        <WalletBalanceIcon fill={walletBalanceOpen ? '#00AFFF' : '#000'} />
-                                    </BasePressable>
-                                    <PresenceTransition
-                                        visible={walletBalanceOpen}
-                                        initial={{
-                                            scaleY: 0,
-                                            translateY: 20,
-                                            translateX: isMinipay ? 17 : isMobile ? 47 : 0,
-                                        }}
-                                        animate={{
-                                            scaleY: 1,
-                                            translateY: 0,
-                                            translateX: isMinipay ? 17 : isMobile ? 47 : 0,
-                                            transition: { duration: 250 },
-                                        }}
-                                    >
-                                        <WalletBalanceWrapper toggleView={toggleWalletBalance} />
-                                    </PresenceTransition>
-                                </Box>
+                <CentreBox style={barContainerStyles} flexDir="row">
+                    <div className="flex flex-col">
+                        <LogoWrapper $mobile={isTabletView} className="flex-shrink-0">
+                            {theme === 'dark' ? (
+                                <LogoWhite className="w-auto site-logo lg:block" />
+                            ) : (
+                                <LogoPrimary className="w-auto site-logo lg:block" />
                             )}
-                            {!isMinipay && (
-                                <div className="z-50 flex flex-row items-center space-x-2">
-                                    <button
-                                        onClick={toggleSideBar}
-                                        className="inline-flex items-center justify-center rounded-md mobile-menu-button focus:outline-none"
-                                    >
-                                        <span className="sr-only">{i18n._(t`Open main menu`)}</span>
-                                        {sidebarOpen ? (
-                                            <X title="Close" className="block w-6 h-6" aria-hidden="true" />
-                                        ) : (
-                                            <Burger title="Burger" className="block w-6 h-6" aria-hidden="true" />
-                                        )}
-                                    </button>
-                                </div>
-                            )}
-
-                            {!isMinipay && (
-                                <div className={mainMenuContainer}>
-                                    {!isSimpleApp ? <Web3Bar /> : isMobile ? <NavBar /> : null}
-                                    {/* // : isMobile ? <NavBar /> : null} <-- enable for opera when swap is ready */}
-                                </div>
-                            )}
-                        </div>
-                    </TopBar>
-                    <div className="px-4 pb-2 lg:hidden">
-                        {showPrice && <G$Balance price={G$Price} color={fontColor} padding="0" />}
+                        </LogoWrapper>
                     </div>
+
+                    <div className="relative flex flex-row items-center">
+                        {account && (
+                            <Box flexDirection="row" alignItems="center">
+                                <BasePressable onPress={toggleWalletBalance} innerView={{ flexDirection: 'row' }}>
+                                    <Text
+                                        color={walletBalanceOpen ? 'primary' : 'goodGrey.700'}
+                                        selectable={false}
+                                        pr={1}
+                                        fontFamily="subheading"
+                                        fontWeight={400}
+                                        fontSize="xs"
+                                        style={walletBalanceStyles}
+                                    >
+                                        {gdBalance}
+                                    </Text>
+                                    <WalletBalanceIcon fill={walletBalanceOpen ? '#00AFFF' : '#000'} />
+                                </BasePressable>
+                                <PresenceTransition
+                                    visible={walletBalanceOpen}
+                                    initial={{
+                                        scaleY: 0,
+                                        translateY: 20,
+                                        translateX: isMinipay ? 17 : isTabletView ? 47 : 0,
+                                    }}
+                                    animate={{
+                                        scaleY: 1,
+                                        translateY: 0,
+                                        translateX: isMinipay ? 17 : isTabletView ? 47 : 0,
+                                        transition: { duration: 250 },
+                                    }}
+                                >
+                                    <WalletBalanceWrapper toggleView={toggleWalletBalance} />
+                                </PresenceTransition>
+                            </Box>
+                        )}
+                        {!isMinipay && (
+                            <div className="z-50 flex flex-row items-center">
+                                <button
+                                    onClick={toggleSideBar}
+                                    className="inline-flex items-center justify-center ml-2 rounded-md mobile-menu-button focus:outline-none"
+                                >
+                                    <span className="sr-only">{i18n._(t`Open main menu`)}</span>
+                                    {sidebarOpen ? (
+                                        <X title="Close" className="block w-6 h-6" aria-hidden="true" />
+                                    ) : (
+                                        <Burger title="Burger" className="block w-6 h-6" aria-hidden="true" />
+                                    )}
+                                </button>
+                            </div>
+                        )}
+
+                        {!isMinipay && (
+                            <MenuContainer>
+                                {!isSimpleApp ? <Web3Bar /> : null}
+                                {/* // : isMobile ? <NavBar /> : null} <-- dont show navbar anyway until design updates */}
+                            </MenuContainer>
+                        )}
+                    </div>
+                </CentreBox>
+                <div className="px-4 pb-2 lg:hidden">
+                    {showPrice && <G$Balance price={G$Price} color={fontColor} padding="0" />}
                 </div>
-                {isMobile && (
+                {!isDesktopView && (
                     <>
                         <SidebarContainer
-                            $mobile={isMobile}
-                            scrWidth={scrWidth}
+                            $mobile={!isDesktopView}
                             appNotice={appNoticeEnabled}
+                            scrWidth={isMobileView ? '100%' : isSmallTabletView ? '50%' : '40%'}
                             className={`${sidebarOpen ? ' open ' : ''} w-64`}
                         >
-                            <SideBar mobile={isMobile} closeSidebar={toggleSideBar} />
+                            <SideBar mobile={!isDesktopView} closeSidebar={toggleSideBar} />
                         </SidebarContainer>
                     </>
                 )}
@@ -392,7 +394,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                         }}
                         style={{
                             zIndex: walletBalanceOpen ? -1 : sidebarOpen ? 10 : 0,
-                            backgroundColor: isMobile ? '#3c3c3c3c' : 'none ',
+                            backgroundColor: !isDesktopView ? '#3c3c3c3c' : 'none ',
                             width: '100%',
                             top: appNoticeEnabled ? `140px` : `40px`,
                             height: '100%',

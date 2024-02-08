@@ -5,9 +5,8 @@ import { useFaucet } from '@gooddollar/web3sdk-v2'
 import { useDispatch } from 'react-redux'
 import { parse } from 'qs'
 import isEqual from 'lodash/isEqual'
-import { isMobile } from 'react-device-detect'
 import classNames from 'classnames'
-import { RedirectModal, useRedirectNotice } from '@gooddollar/good-design'
+import { RedirectModal, useRedirectNotice, useScreenSize } from '@gooddollar/good-design'
 
 import { AppBar, Popups } from '../components'
 import Web3ReactManager from '../components/Web3ReactManager'
@@ -19,6 +18,7 @@ import TransactionUpdater from '../state/transactions/updater'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import WalletChat from '../components/WalletChat'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
+import MainPageContainer from 'components/Layout/MainPageContainer'
 
 export const Beta = styled.div`
     font-style: normal;
@@ -43,17 +43,6 @@ const Wrapper = styled.div<{ isSimpleApp?: boolean }>`
     @media ${({ theme }) => theme.media.md} {
         padding-bottom: ${(props) => (props.isSimpleApp ? '0px' : '75px')};
     }
-`
-
-const MainBody = styled.div<{ $page?: string }>`
-    ${({ $page }) =>
-        $page === '/dashboard' &&
-        `
-    width: 80%;
-    height: 100%;
-    padding: 50px 20px 50px 20px;
-  `}
-    background-color: ${({ theme }) => theme.color.bgBody};
 `
 
 const AppWrap = styled.div<{ $isMiniPay?: boolean }>`
@@ -106,6 +95,7 @@ function App(): JSX.Element {
 
     const isMinipay = window?.ethereum?.isMiniPay
     const { open, url, onClose } = useRedirectNotice()
+    const { isDesktopView } = useScreenSize()
 
     void useFaucet()
 
@@ -160,23 +150,10 @@ function App(): JSX.Element {
 
     const isFV = pathname.startsWith('/goodid')
     const isClaim = pathname.startsWith('/claim')
-    const isBuy = pathname.startsWith('/buy')
     const isDash = pathname.startsWith('/dashboard')
-
-    const isTwoColumns = isBuy || isClaim
 
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const [walletBalanceOpen, setWalletBalanceOpen] = useState(false)
-
-    const mainBodyClasses = classNames(
-        'z-0 flex flex-col items-center flex-grow h-full pt-4 pb-4 overflow-x-hidden overflow-y-auto sm:pt-8',
-        {
-            'flex-start': isFV,
-            'justify-between': !isFV,
-            'xl:pr-8 xl:pt-10 xl:pl-12 xl:pb-0 px-2': isTwoColumns,
-            'md:pt-10 px-4': !isTwoColumns,
-        }
-    )
 
     // TODO: Remove styling on this container and handle on each page separately
     const routerContainerClasses = classNames('flex flex-col flex-glow w-full', {
@@ -196,8 +173,8 @@ function App(): JSX.Element {
                         walletBalance={[walletBalanceOpen, setWalletBalanceOpen]}
                     />
                     <Wrapper isSimpleApp className="flex flex-grow overflow-hidden">
-                        {!isMobile && <SideBar />}
-                        <MainBody ref={bodyRef} className={mainBodyClasses} $page={location.pathname}>
+                        {isDesktopView && <SideBar />}
+                        <MainPageContainer isFv={isFV} isDashboard={isDash}>
                             <Popups />
                             <Web3ReactManager>
                                 <div className={routerContainerClasses}>
@@ -205,7 +182,7 @@ function App(): JSX.Element {
                                     <TransactionUpdater />
                                 </div>
                             </Web3ReactManager>
-                        </MainBody>
+                        </MainPageContainer>
                     </Wrapper>
                     {!isSimpleApp && !sidebarOpen && <WalletChat />}
                 </AppWrap>

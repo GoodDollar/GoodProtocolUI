@@ -1,10 +1,18 @@
 import React, { memo, useCallback, useEffect, useState } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { CentreBox, ClaimButton, ClaimCarousel, IClaimCard, Image, Title, useModal } from '@gooddollar/good-design'
+import {
+    CentreBox,
+    ClaimButton,
+    ClaimCarousel,
+    IClaimCard,
+    Image,
+    Title,
+    useModal,
+    useScreenSize,
+} from '@gooddollar/good-design'
 import { Box, Text, useBreakpointValue, View } from 'native-base'
 import { useConnectWallet } from '@web3-onboard/react'
-import { isMobile } from 'react-device-detect'
 import { useClaim, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import { QueryParams } from '@usedapp/core'
 import { noop } from 'lodash'
@@ -75,6 +83,7 @@ const Claim = memo(() => {
     const postHog = usePostHog()
     const payload = postHog?.getFeatureFlagPayload('claim-feature')
     const { enabled: claimEnabled, disabledMessage = '' } = (payload as any) || {}
+    const { isSmallTabletView } = useScreenSize()
 
     const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
 
@@ -188,8 +197,13 @@ const Claim = memo(() => {
             width: '100%',
         },
         lg: {
+            width: '50%',
+        },
+        xl: {
+            width: '60%',
+        },
+        '2xl': {
             paddingRight: 24,
-            paddingLeft: 63,
             alignItems: 'center',
             flexGrow: 1,
         },
@@ -257,7 +271,7 @@ const Claim = memo(() => {
                         text: 'Learn more about how the GoodDollar protocol works here.',
                         color: 'goodGrey.500',
                     },
-                    ...(isMobile && { imgSrc: BillyConfused }),
+                    ...(isSmallTabletView && { imgSrc: BillyConfused }),
                 },
             ],
             externalLink: 'https://www.notion.so/gooddollar/GoodDollar-Protocol-2cc5c26cf09d40469e4570ad1d983914',
@@ -278,7 +292,7 @@ const Claim = memo(() => {
 Learn how here`,
                         color: 'white',
                     },
-                    ...(isMobile && { imgSrc: BillyHappy }),
+                    ...(isSmallTabletView && { imgSrc: BillyHappy }),
                 },
             ],
             externalLink: 'https://www.notion.so/gooddollar/Use-G-8639553aa7214590a70afec91a7d9e73',
@@ -300,7 +314,7 @@ Learn how here`,
                         text: 'Anyone in the world can collect G$. Create a wallet to get started.',
                         color: 'goodGrey.500',
                     },
-                    ...(isMobile && { imgSrc: BillyGrin }),
+                    ...(isSmallTabletView && { imgSrc: BillyGrin }),
                 },
             ],
             externalLink: 'https://www.notion.so/Get-G-873391f31aee4a18ab5ad7fb7467acb3',
@@ -350,7 +364,7 @@ Learn how here`,
                         </Box>
                     </div>
                     <CentreBox style={carrouselStyles}>
-                        <ClaimCarousel cards={mockedCards} claimed={claimed} isMobile={isMobile} />
+                        <ClaimCarousel cards={mockedCards} claimed={claimed} isMobile={isSmallTabletView} />
                     </CentreBox>
                 </CentreBox>
                 <CentreBox style={newsFeedView}>

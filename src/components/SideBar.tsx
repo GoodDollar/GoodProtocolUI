@@ -4,8 +4,7 @@ import { getDevice, useClaim } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useLocation } from 'react-router-dom'
-import { SlideDownTab, useRedirectNotice } from '@gooddollar/good-design'
-import { isMobile } from 'react-device-detect'
+import { SlideDownTab, useRedirectNotice, useScreenSize } from '@gooddollar/good-design'
 
 import { useApplicationTheme } from '../state/application/hooks'
 import LanguageSwitch from './LanguageSwitch'
@@ -13,7 +12,6 @@ import { NavLink } from './Link'
 import { ExternalLink } from 'theme'
 import { SubMenuItems } from './StyledMenu/SubMenu'
 import { socials } from 'constants/socials'
-import { getScreenWidth } from 'utils/screenSizes'
 import classNames from 'classnames'
 
 const SocialsLink: React.FC<{ network: string; logo: string; url: string; onPress: (e: any, url: string) => void }> = ({
@@ -53,7 +51,8 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const bgContainer = useColorModeValue('goodWhite.100', '#151A30')
 
     const { browser, os } = getDevice()
-    const scrWidth = isMobile ? getScreenWidth() : '100%'
+    const { isTabletView } = useScreenSize()
+    const scrWidth = '100%'
     const isiOS = os.name === 'iOS'
     const isChrome = browser.name === 'Chrome'
 
@@ -68,13 +67,12 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
         base: {
             width: '100%',
             flexShrink: 0,
-            // height: '100%',
             transition: 'all 1s ease',
             display: 'grid',
             paddingBottom: 0,
             height: `calc(${viewPort} - ${browserViewPort})`,
             gap: '1px',
-            // paddingLeft: '18px',
+            justifyContent: 'stretch',
         },
         lg: {
             width: '258px',
@@ -95,7 +93,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     }
 
     const footerStyles = classNames('flex flex-col justify-center gap-3 mt-2.5', {
-        'w-52': !isMobile,
+        'w-full': !isTabletView,
     })
 
     const externalLinks = useMemo(
@@ -237,11 +235,6 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 text: 'Dashboard',
                 show: true,
             },
-            {
-                route: '/buy',
-                text: 'Buy G$',
-                show: isBuyGd, // todo: use post-hog feature flag
-            },
         ],
         [isWhitelisted, pathname]
     )
@@ -274,7 +267,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
 
                     {externalLinks.map((subMenu) =>
                         subMenu.subMenuTitle === 'Regular' ? (
-                            <SubMenuItems items={subMenu.items} onPress={handleExternal} />
+                            <SubMenuItems key={subMenu.subMenuTitle} items={subMenu.items} onPress={handleExternal} />
                         ) : (
                             <SlideDownTab
                                 key={subMenu.subMenuTitle}
@@ -287,6 +280,11 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                                         borderRadius: 12,
                                     },
                                     content: { alignItems: 'flex-start', paddingLeft: 4 },
+                                    titleFont: {
+                                        fontFamily: 'subheading',
+                                        fontWeight: '400',
+                                        paddingLeft: 2,
+                                    },
                                 }}
                                 arrowSmall
                             >

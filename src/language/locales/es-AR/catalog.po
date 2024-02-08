@@ -2715,7 +2715,8 @@ msgstr "Equilibrio"
 msgid "Blocked address"
 msgstr "Dirección bloqueada"
 
-#: src/pages/gd/BuyGD/index.tsx:102
+#: src/components/SideBar.tsx:105
+#: src/pages/gd/BuyGD/index.tsx:101
 msgid "Buy G$"
 msgstr ""
 
@@ -2723,7 +2724,7 @@ msgstr ""
 msgid "Change"
 msgstr "Cambio"
 
-#: src/pages/gd/BuyGD/index.tsx:126
+#: src/pages/gd/BuyGD/index.tsx:125
 msgid "Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$."
 msgstr ""
 
@@ -2797,7 +2798,7 @@ msgstr "Limpiar todo"
 msgid "Close"
 msgstr "Cerrar"
 
-#: src/pages/gd/Claim/index.tsx:324
+#: src/pages/gd/Claim/index.tsx:338
 msgid "Collect G$"
 msgstr ""
 
@@ -2846,11 +2847,11 @@ msgstr "Dirección de copia"
 msgid "Current Rate"
 msgstr "Tasa actual"
 
-#: src/components/SideBar.tsx:121
+#: src/components/SideBar.tsx:126
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:159
+#: src/components/SideBar.tsx:164
 msgid "Dashboard"
 msgstr ""
 
@@ -2873,11 +2874,11 @@ msgstr "Descripción de depósito"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:166
+#: src/components/SideBar.tsx:171
 msgid "Docs"
 msgstr ""
 
-#: src/components/SideBar.tsx:107
+#: src/components/SideBar.tsx:112
 msgid "Donate"
 msgstr ""
 
@@ -2889,7 +2890,7 @@ msgstr "falló al cargar"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:140
+#: src/components/SideBar.tsx:145
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2922,7 +2923,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:173
+#: src/components/SideBar.tsx:178
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2938,7 +2939,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:335
+#: src/pages/gd/Claim/index.tsx:349
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -2947,7 +2948,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:152
+#: src/components/SideBar.tsx:157
 msgid "GoodWallet"
 msgstr ""
 
@@ -3067,7 +3068,7 @@ msgstr "sobre el"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "¡UPS! Un error desconocido ocurrió. Actualiza la página o visita desde otro navegador o dispositivo."
 
-#: src/components/AppBar.tsx:339
+#: src/components/AppBar.tsx:342
 msgid "Open main menu"
 msgstr "Abrir menú principal"
 
@@ -3135,7 +3136,7 @@ msgstr "Ruta"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "El enrutamiento a través de estos tokens resultó en el mejor precio para su comercio."
 
-#: src/components/SideBar.tsx:114
+#: src/components/SideBar.tsx:119
 msgid "Save G$"
 msgstr ""
 
@@ -3162,7 +3163,7 @@ msgstr "Tolerancia al deslizamiento"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:133
+#: src/components/SideBar.tsx:138
 msgid "Squid Router"
 msgstr ""
 
@@ -3199,7 +3200,7 @@ msgstr ""
 msgid "Success!"
 msgstr "¡Éxito!"
 
-#: src/pages/gd/BuyGD/index.tsx:114
+#: src/pages/gd/BuyGD/index.tsx:113
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 

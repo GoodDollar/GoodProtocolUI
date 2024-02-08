@@ -51,7 +51,7 @@ interface NavLinkProps extends React.PropsWithoutRef<ReactRouterNavLinkProps>, R
 export function NavLink({
     href = '#',
     children,
-    className = 'pt-2 pr-2 w-52 rounded-xl line xl:pr-3 whitespace-nowrap',
+    className = 'w-full pt-2 pr-2 rounded-xl line xl:pr-3 whitespace-nowrap',
     isNavBar = false,
     onPress,
     ...rest

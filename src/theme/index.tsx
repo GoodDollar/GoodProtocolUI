@@ -141,6 +141,7 @@ export function theme(darkMode: boolean) {
             sm: 'screen and (max-width: 520px)',
             md: 'screen and (max-width: 975px)',
             lg: 'screen and (min-width: 976px)',
+            xl: 'screen and (min-width: 1010px)',
         },
         grids: {
             sm: 8,
