@@ -167,7 +167,6 @@ const Web3Bar = () => {
                     alignItems="center"
                     px={3}
                     py={2}
-                    ml={2}
                     borderWidth="1"
                     borderRadius="12px"
                     borderColor="borderBlue"

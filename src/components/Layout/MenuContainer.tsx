@@ -47,7 +47,13 @@ export const MenuContainer = withTheme({ name: 'MenuContainer' })(
         })
 
         return (
-            <CentreBox bgColor={background} h={containerHeight} position={position} {...props}>
+            <CentreBox
+                justifyContent="flex-start"
+                bgColor={background}
+                h={containerHeight}
+                position={position}
+                {...props}
+            >
                 {children}
             </CentreBox>
         )
