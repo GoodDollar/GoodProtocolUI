@@ -107,6 +107,7 @@ const BuyGd = memo(() => {
                     color="goodGrey.500"
                     fontFamily="subheading"
                     fontWeight="normal"
+                    textAlign="center"
                     mb={6}
                 >
                     {i18n._(
@@ -119,6 +120,7 @@ const BuyGd = memo(() => {
                     color="goodGrey.500"
                     fontFamily="subheading"
                     fontWeight="bold"
+                    textAlign="center"
                     mb={6}
                 >
                     {i18n._(
@@ -142,7 +144,7 @@ const BuyGd = memo(() => {
                             tabTitle="G$ Calculator"
                             viewInteraction={{ hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 } }}
                             styles={{
-                                titleFont: { fontSize: 'l', fontFamily: 'heading', fontWeight: '700' },
+                                titleFont: { fontSize: 'l', fontFamily: 'heading', fontWeight: '700', paddingLeft: 2 },
                             }}
                         >
                             <Converter gdPrice={G$Price} />
