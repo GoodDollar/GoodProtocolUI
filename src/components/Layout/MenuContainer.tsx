@@ -46,14 +46,13 @@ export const MenuContainer = withTheme({ name: 'MenuContainer' })(
             lg: 'relative',
         })
 
+        const justify = useBreakpointValue({
+            base: 'center',
+            lg: 'flex-start',
+        })
+
         return (
-            <CentreBox
-                justifyContent="flex-start"
-                bgColor={background}
-                h={containerHeight}
-                position={position}
-                {...props}
-            >
+            <CentreBox justifyContent={justify} bgColor={background} h={containerHeight} position={position} {...props}>
                 {children}
             </CentreBox>
         )

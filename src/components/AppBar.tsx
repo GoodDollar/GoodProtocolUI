@@ -307,7 +307,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                                         pr={1}
                                         fontFamily="subheading"
                                         fontWeight={400}
-                                        fontSize="xs"
+                                        fontSize="sm"
                                         style={walletBalanceStyles}
                                     >
                                         {gdBalance}
