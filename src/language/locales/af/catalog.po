@@ -2931,7 +2931,7 @@ msgstr "Wag vir Bevestiging"
 #~ msgid "Wallet"
 #~ msgstr "beursie"
 
-#: src/components/WalletBalance/index.tsx:135
+#: src/components/WalletBalance/index.tsx:137
 msgid "Wallet balance"
 msgstr "Beursie balans"
 

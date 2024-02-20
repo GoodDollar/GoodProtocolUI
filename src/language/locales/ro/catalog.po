@@ -3427,7 +3427,7 @@ msgstr "Așteptați confirmarea"
 #~ msgid "Wallet"
 #~ msgstr "Portofel"
 
-#: src/components/WalletBalance/index.tsx:135
+#: src/components/WalletBalance/index.tsx:137
 msgid "Wallet balance"
 msgstr "Balanța portofelului"
 

@@ -3431,7 +3431,7 @@ msgstr "Ожидание подтверждения"
 #~ msgid "Wallet"
 #~ msgstr "Кошелек"
 
-#: src/components/WalletBalance/index.tsx:135
+#: src/components/WalletBalance/index.tsx:137
 msgid "Wallet balance"
 msgstr "Баланс кошелька"
 
