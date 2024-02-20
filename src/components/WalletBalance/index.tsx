@@ -15,7 +15,6 @@ import { getScreenWidth } from 'utils/screenSizes'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { AdditionalChainId } from '../../constants'
 import useMetaMask from 'hooks/useMetaMask'
-import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 
 //assets
 import { ReactComponent as WalletBalanceIcon } from '../../assets/images/walletBalanceIcon.svg'
@@ -40,7 +39,7 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
     const [imported, setImported] = useState<boolean>(false)
     const { i18n } = useLingui()
     const scrWidth = getScreenWidth()
-    const isSimpleApp = useIsSimpleApp()
+    const isMinipay = ethereum?.isMiniPay
 
     const importToMetamask = async () => {
         const allTokens: any[] = [
@@ -148,7 +147,7 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
             >
                 <WalletBalance balances={balances} chainId={chainId} />
                 {/* todo: retest this flow */}
-                {!loading && !imported && !isSimpleApp && (
+                {!loading && !imported && !isMinipay && (
                     <Box flexDir="row" mt={4}>
                         <MetaMaskIcon />
                         <Text pl={2} fontFamily="subheading" fontSize="xs" onPress={importToMetamask} color="primary">
