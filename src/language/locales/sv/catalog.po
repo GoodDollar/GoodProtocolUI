@@ -2590,7 +2590,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr ""
 
-#: src/components/AppBar.tsx:341
+#: src/components/AppBar.tsx:342
 msgid "Open main menu"
 msgstr ""
 
@@ -2931,7 +2931,7 @@ msgstr ""
 #~ msgid "Wallet"
 #~ msgstr ""
 
-#: src/components/WalletBalance/index.tsx:137
+#: src/components/WalletBalance/index.tsx:136
 msgid "Wallet balance"
 msgstr ""
 

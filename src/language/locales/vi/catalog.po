@@ -3086,7 +3086,7 @@ msgstr "trên"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Giáo sư! Đã xảy ra lỗi không xác định. Vui lòng làm mới trang hoặc truy cập từ trình duyệt hoặc thiết bị khác"
 
-#: src/components/AppBar.tsx:341
+#: src/components/AppBar.tsx:342
 msgid "Open main menu"
 msgstr "Mở menu chính"
 
@@ -3427,7 +3427,7 @@ msgstr "Chờ đợi sự xác nhận"
 #~ msgid "Wallet"
 #~ msgstr "Ví tiền"
 
-#: src/components/WalletBalance/index.tsx:137
+#: src/components/WalletBalance/index.tsx:136
 msgid "Wallet balance"
 msgstr "Ví thăng bằng"
 

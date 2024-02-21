@@ -3070,7 +3070,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "おっとっと！不明なエラーが発生しました。ページを更新するか、別のブラウザまたはデバイスからアクセスしてください"
 
-#: src/components/AppBar.tsx:341
+#: src/components/AppBar.tsx:342
 msgid "Open main menu"
 msgstr "メインメニューを開く"
 
@@ -3411,7 +3411,7 @@ msgstr ""
 #~ msgid "Wallet"
 #~ msgstr "財布"
 
-#: src/components/WalletBalance/index.tsx:137
+#: src/components/WalletBalance/index.tsx:136
 msgid "Wallet balance"
 msgstr ""
 
