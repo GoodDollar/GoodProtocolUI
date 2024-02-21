@@ -93,6 +93,7 @@ ReactDOM.render(
                                         apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
                                         options={{
                                             host: import.meta.env.REACT_APP_POSTHOG_PROXY ?? 'https://app.posthog.com',
+                                            persistence: 'memory',
                                         }}
                                         autocapture={false}
                                     >

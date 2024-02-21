@@ -5235,6 +5235,7 @@ __metadata:
     react-hot-loader: ^4.13.0
     react-markdown: ^4.3.1
     react-native: 0.70.4
+    react-native-device-info: ^10.12.0
     react-native-safe-area-context: 3.4.1
     react-native-web: 0.17.7
     react-popper: ^2.2.3
@@ -35387,9 +35388,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"posthog-react-native@npm:2.7.1":
-  version: 2.7.1
-  resolution: "posthog-react-native@npm:2.7.1"
+"posthog-react-native@npm:2.8.1":
+  version: 2.8.1
+  resolution: "posthog-react-native@npm:2.8.1"
   peerDependencies:
     "@react-native-async-storage/async-storage": ">=1.0.0"
     "@react-navigation/native": ">= 5.0.10"
@@ -35416,7 +35417,40 @@ __metadata:
       optional: true
     react-native-navigation:
       optional: true
-  checksum: 8acfe544579740227496370dbd0fb0b1883ce0ff1b6e095dd25fc41ce159463d5790cdacf7aeb4886777e95658b571d03bb39d049de10f9f24678f351c498450
+  checksum: 52e77fc5ec79496043b47875b96c06ae5654c44b1c4b358bfbee2cce157b78b1e284f559d7a192120be555d8d4c5bb4e2cf0aeb4674b3cd2c998723ed10b7304
+  languageName: node
+  linkType: hard
+
+"posthog-react-native@npm:^2.11.5":
+  version: 2.11.5
+  resolution: "posthog-react-native@npm:2.11.5"
+  peerDependencies:
+    "@react-native-async-storage/async-storage": ">=1.0.0"
+    "@react-navigation/native": ">= 5.0.10"
+    expo-application: ">= 4.0.0"
+    expo-device: ">= 4.0.0"
+    expo-file-system: ">= 13.0.0"
+    expo-localization: ">= 11.0.0"
+    react-native-device-info: ">= 10.0.0"
+    react-native-navigation: ">=6.0.0"
+  peerDependenciesMeta:
+    "@react-native-async-storage/async-storage":
+      optional: true
+    "@react-navigation/native":
+      optional: true
+    expo-application:
+      optional: true
+    expo-device:
+      optional: true
+    expo-file-system:
+      optional: true
+    expo-localization:
+      optional: true
+    react-native-device-info:
+      optional: true
+    react-native-navigation:
+      optional: true
+  checksum: b9880fcc1cc150c0ee4ceb64ef7fdb78b1c5aa01906e71e7b1b4d232d90ed36c9ad09808785c17ca48dc369766ee8ec93686b652263a6585cc67f5cce40970a3
   languageName: node
   linkType: hard
 
@@ -36578,6 +36612,15 @@ __metadata:
     jscodeshift: ^0.13.1
     nullthrows: ^1.1.1
   checksum: 2a50ad71e09bc8cbb3694057cf47d6e9665c16f3968d1dc2b71e83c8c4e7be3b07b74bea08750ec9c8f6c60e6c746a5f695963c8694e5a76edcbce35a53a6a06
+  languageName: node
+  linkType: hard
+
+"react-native-device-info@npm:^10.12.0":
+  version: 10.12.0
+  resolution: "react-native-device-info@npm:10.12.0"
+  peerDependencies:
+    react-native: "*"
+  checksum: dc3a4ada40f0de960f652f1e7962c5f2b538695cad5ad11ca85a6ab445a7f01a7123dceeb7ead234dd110a54935cb9c10fccc648cfd0d6f157041e9299075f74
   languageName: node
   linkType: hard
 
