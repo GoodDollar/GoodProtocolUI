@@ -3,7 +3,7 @@ import { t } from '@lingui/macro'
 import AsyncTokenIcon from 'components/gd/sushi/AsyncTokenIcon'
 import ListHeaderWithSort from 'components/gd/sushi/ListHeaderWithSort'
 import React, { Fragment, useState } from 'react'
-import { useFeatureFlagEnabled } from 'posthog-js/react'
+import { useFeatureFlag } from 'posthog-react-native'
 
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import useSearchAndSort from 'hooks/useSearchAndSort'
@@ -436,7 +436,7 @@ export default function Stakes(): JSX.Element | null {
         return stakes
     }, [web3, mainnetWeb3])
 
-    const mainnetStakesEnabled = useFeatureFlagEnabled('mainnet-stakes')
+    const mainnetStakesEnabled = useFeatureFlag('mainnet-stakes')
 
     const sorted = useSearchAndSort(
         stakes,

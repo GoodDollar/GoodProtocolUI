@@ -16,7 +16,7 @@ import { useConnectWallet } from '@web3-onboard/react'
 import { useClaim, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import { QueryParams } from '@usedapp/core'
 import { noop } from 'lodash'
-import { usePostHog } from 'posthog-js/react'
+import { usePostHog } from 'posthog-react-native'
 
 import { ClaimBalance } from './ClaimBalance'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'

@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 import { HashRouter as Router } from 'react-router-dom'
 import { AnalyticsProvider } from '@gooddollar/web3sdk-v2'
 import { NewsFeedProvider } from '@gooddollar/web3sdk-v2'
-import { PostHogProvider } from 'posthog-js/react'
+import { PostHogProvider } from 'posthog-react-native'
 
 import Blocklist from './components/Blocklist'
 import App from './pages/App'
@@ -92,9 +92,9 @@ ReactDOM.render(
                                     <PostHogProvider
                                         apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
                                         options={{
-                                            api_host:
-                                                import.meta.env.REACT_APP_POSTHOG_PROXY ?? 'https://app.posthog.com',
+                                            host: import.meta.env.REACT_APP_POSTHOG_PROXY ?? 'https://app.posthog.com',
                                         }}
+                                        autocapture={false}
                                     >
                                         <AnalyticsProvider config={analyticsConfig} appProps={appInfo}>
                                             <Blocklist>

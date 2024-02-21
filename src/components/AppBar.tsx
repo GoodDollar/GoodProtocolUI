@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { t } from '@lingui/macro'
 import { g$Price } from '@gooddollar/web3sdk'
 import { Box, ITextProps, Pressable, PresenceTransition, Text, useBreakpointValue } from 'native-base'
-import { useFeatureFlagEnabled, usePostHog } from 'posthog-js/react'
+import { useFeatureFlag, usePostHog } from 'posthog-react-native'
 import { BasePressable, CentreBox, useScreenSize } from '@gooddollar/good-design'
 import { useG$Balance } from '@gooddollar/web3sdk-v2'
 
@@ -186,7 +186,8 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
     const { i18n } = useLingui()
     const { account, chainId } = useActiveWeb3React()
     const isSimpleApp = useIsSimpleApp()
-    const showPrice = useFeatureFlagEnabled('show-gd-price')
+    const showPrice = useFeatureFlag('show-gd-price')
+
     const posthog = usePostHog()
     const payload = posthog?.getFeatureFlagPayload('app-notice')
     const { enabled: appNoticeEnabled, message, color, link } = (payload as any) || {}

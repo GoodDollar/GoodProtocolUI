@@ -3,7 +3,7 @@ import { View, Box, Text } from 'native-base'
 import { ArrowButton, BalanceGD } from '@gooddollar/good-design'
 import { SupportedChains, useHasClaimed, useSwitchNetwork } from '@gooddollar/web3sdk-v2'
 import { g$Price } from '@gooddollar/web3sdk'
-import { useFeatureFlagEnabled } from 'posthog-js/react'
+import { useFeatureFlag } from 'posthog-react-native'
 
 import usePromise from 'hooks/usePromise'
 
@@ -30,7 +30,7 @@ export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) =
         [chainId]
     )
     const { tillClaim } = useClaiming()
-    const showUsdPrice = useFeatureFlagEnabled('show-gd-price')
+    const showUsdPrice = useFeatureFlag('show-gd-price') as boolean | undefined
 
     const claimedCelo = useHasClaimed('CELO')
     const claimedFuse = useHasClaimed('FUSE')
