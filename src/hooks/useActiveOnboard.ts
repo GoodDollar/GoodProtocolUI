@@ -10,7 +10,7 @@ import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
 import { isEmpty } from 'lodash'
 import web3Utils from 'web3-utils'
 import { SupportedChainId, UnsupportedChainId } from '@gooddollar/web3sdk'
-import { AsyncStorage, useAppRestart } from '@gooddollar/web3sdk-v2'
+import { AsyncStorage } from '@gooddollar/web3sdk-v2'
 
 import usePromise from './usePromise'
 import useSendAnalyticsData from './useSendAnalyticsData'
@@ -144,7 +144,6 @@ export function useOnboardConnect(): OnboardConnectProps {
     const [, connect] = useConnectWallet()
     const [{ connectedChain }, setChain] = useSetChain()
     const connectedWallets = useWallets()
-    const restartApp = useAppRestart()
     const hasSendAnalyticsRef = useRef(false)
     const sendData = useSendAnalyticsData()
 
@@ -226,7 +225,6 @@ export function useOnboardConnect(): OnboardConnectProps {
         // disconnect
         if (!isConnected && previouslyConnected.length && (tried || activated)) {
             const prevConnected = previouslyConnected[0]?.label[0]
-            const toReload = WalletLabels.includes(prevConnected)
 
             StoreOnboardState(connectedWallets, '0x1')
             setActivated(false)
@@ -257,15 +255,9 @@ export function useOnboardConnect(): OnboardConnectProps {
                 promises.push(cleanupList(/wc@2/))
             }
 
-            if (toReload) {
-                promises.push(cleanup('walletconnect'))
-            }
-
             if (isEmpty(promises)) {
                 return
             }
-
-            void Promise.all(promises).then(() => restartApp()) // temporarily necessary, as there is a irrecoverable error/bug when not reloading
         }
     }, [connectedWallets, tried, loading, previouslyConnected])
 
