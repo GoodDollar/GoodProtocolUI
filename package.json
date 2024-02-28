@@ -200,14 +200,15 @@
         "@uniswap/smart-order-router": "3.13.2-hotfix2",
         "@web3-onboard/core": "patch:@web3-onboard/core@npm%3A2.20.2#./.yarn/patches/@web3-onboard-core-npm-2.20.2-2119caa15c.patch",
         "@uniswap/widgets/@uniswap/sdk-core": "^4.0.6",
-        "@uniswap/widgets@^2.53.0": "patch:@uniswap/widgets@npm%3A2.53.0#./.yarn/patches/@uniswap-widgets-npm-2.53.0-515f06935c.patch"
+        "@uniswap/widgets@^2.53.0": "patch:@uniswap/widgets@npm%3A2.53.0#./.yarn/patches/@uniswap-widgets-npm-2.53.0-515f06935c.patch",
+        "react-native-animatable@^1.4.0": "patch:react-native-animatable@npm%3A1.4.0#./.yarn/patches/react-native-animatable-npm-1.4.0-8061fbfc78.patch"
     },
     "dependencies": {
         "@babel/runtime": "^7.18.9",
-        "@gooddollar/good-design": "^0.1.38",
+        "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design",
         "@gooddollar/goodprotocol": "^2.0.24",
         "@gooddollar/web3sdk": "^0.1.29",
-        "@gooddollar/web3sdk-v2": "^0.2.16",
+        "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2",
         "@headlessui/react": "1.5.0",
         "@kimafinance/kima-transaction-widget": "^1.1.42-beta.1",
         "@lingui/format-json": "^4.0.0",
@@ -228,7 +229,7 @@
         "dotenv": "^16.3.1",
         "ethers": "^5.7.2",
         "mobile-device-detect": "^0.4.3",
-        "native-base": "3.4.11",
+        "native-base": "^3.4.28",
         "posthog-react-native": "^2.11.5",
         "react-native": "0.70.4",
         "react-native-device-info": "^10.12.0",
