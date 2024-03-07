@@ -1,4 +1,5 @@
 import React, { cloneElement, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { AsyncStorage } from '@gooddollar/web3sdk-v2'
 import { SwapCardSC, SwapContentWrapperSC, SwapWrapperSC } from '../styled'
 import SwapRow from '../SwapRow'
 import { ButtonAction } from 'components/gd/Button'
@@ -33,6 +34,7 @@ import {
     SellInfo,
     SupportedChainId,
     useGdContextProvider,
+    voltagePairData,
 } from '@gooddollar/web3sdk'
 
 const SwapCore = memo(() => {
@@ -49,6 +51,35 @@ const SwapCore = memo(() => {
         token: network === 'FUSE' ? FUSE : ETHER,
         value: '',
     })
+
+    const [pairData, setPairData] = useState()
+
+    useEffect(() => {
+        const getPairData = async () => {
+            if (Number(chainId) === SupportedChainId.FUSE) {
+                let pairData: any
+                const latestPairData = await AsyncStorage.getItem('voltage_latest_pair_data')
+                const recentPairData = latestPairData ? JSON.parse(latestPairData) : null
+
+                if (!recentPairData) {
+                    pairData = await voltagePairData()
+                }
+
+                await AsyncStorage.setItem(
+                    'voltage_latest_pair_data',
+                    JSON.stringify({
+                        data: pairData,
+                    })
+                )
+
+                setPairData(pairData)
+            }
+        }
+
+        if (Number(chainId) === SupportedChainId.FUSE && !pairData) {
+            void getPairData()
+        }
+    }, [chainId])
 
     useEffect(() => {
         setSwapPair({

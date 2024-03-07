@@ -5111,7 +5111,7 @@ __metadata:
     "@fullhuman/postcss-purgecss": ^4.0.3
     "@gooddollar/good-design": ^0.1.38
     "@gooddollar/goodprotocol": ^2.0.24
-    "@gooddollar/web3sdk": ^0.1.29
+    "@gooddollar/web3sdk": "file:.yalc/@gooddollar/web3sdk"
     "@gooddollar/web3sdk-v2": ^0.2.16
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
@@ -5345,9 +5345,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/web3sdk@npm:^0.1.29":
-  version: 0.1.29
-  resolution: "@gooddollar/web3sdk@npm:0.1.29"
+"@gooddollar/web3sdk@file:.yalc/@gooddollar/web3sdk::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 0.1.30
+  resolution: "@gooddollar/web3sdk@file:.yalc/@gooddollar/web3sdk#.yalc/@gooddollar/web3sdk::hash=8d84f2&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@apollo/client": ^3.2.0
     "@gooddollar/goodprotocol": ^2.0.22
@@ -5369,7 +5369,7 @@ __metadata:
     web3-eth: 1.8.2
     web3-eth-contract: 1.8.2
     web3-utils: 1.8.2
-  checksum: f0c55f9426f5727412030f5541fdec90d9976e675b81ca17d9cad47f4dfadff6cc82c55d2fdee8166311bbc4fbb4c0bbe6922f5f0b759897e055ead8df91075b
+  checksum: 3fd61c89ec58d1f4d9ae2ef25f007f77baa4dd4170f2f47bdd86350304e6ad8f8cca04705f6afd28ff88015170d474957671ecb7c93c44d91004b1a1a9133397
   languageName: node
   linkType: hard
 
