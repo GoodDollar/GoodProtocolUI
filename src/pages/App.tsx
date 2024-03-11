@@ -166,27 +166,26 @@ function App(): JSX.Element {
 
     return (
         <Suspense fallback={null}>
-            <RedirectModal open={open} url={url} onClose={onClose}>
-                <AppWrap className="flex flex-col overflow-hidden" $isMiniPay={isMinipay}>
-                    <AppBar
-                        sideBar={[sidebarOpen, setSidebarOpen]}
-                        walletBalance={[walletBalanceOpen, setWalletBalanceOpen]}
-                    />
-                    <Wrapper isSimpleApp className="flex flex-grow overflow-hidden">
-                        {isDesktopView && <SideBar />}
-                        <MainPageContainer isFv={isFV} isDashboard={isDash}>
-                            <Popups />
-                            <Web3ReactManager>
-                                <div className={routerContainerClasses}>
-                                    <Routes />
-                                    <TransactionUpdater />
-                                </div>
-                            </Web3ReactManager>
-                        </MainPageContainer>
-                    </Wrapper>
-                    {!isSimpleApp && !sidebarOpen && <WalletChat />}
-                </AppWrap>
-            </RedirectModal>
+            <RedirectModal open={open} url={url} onClose={onClose} />
+            <AppWrap className="flex flex-col overflow-hidden" $isMiniPay={isMinipay}>
+                <AppBar
+                    sideBar={[sidebarOpen, setSidebarOpen]}
+                    walletBalance={[walletBalanceOpen, setWalletBalanceOpen]}
+                />
+                <Wrapper isSimpleApp className="flex flex-grow overflow-hidden">
+                    {isDesktopView && <SideBar />}
+                    <MainPageContainer isFv={isFV} isDashboard={isDash}>
+                        <Popups />
+                        <Web3ReactManager>
+                            <div className={routerContainerClasses}>
+                                <Routes />
+                                <TransactionUpdater />
+                            </div>
+                        </Web3ReactManager>
+                    </MainPageContainer>
+                </Wrapper>
+                {!isSimpleApp && !sidebarOpen && <WalletChat />}
+            </AppWrap>
         </Suspense>
     )
 }
