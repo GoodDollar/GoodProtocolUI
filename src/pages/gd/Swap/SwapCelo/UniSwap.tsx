@@ -29,7 +29,6 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
 import useSendAnalytics from 'hooks/useSendAnalyticsData'
 import { tokens } from './celo-tokenlist.json'
-import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 
 const jsonRpcUrlMap = {
     122: ['https://rpc.fuse.io', 'https://fuse-rpc.gateway.pokt.network'],
@@ -46,7 +45,6 @@ export const UniSwap = (): JSX.Element => {
     const globalDispatch = useDispatch()
     const sendData = useSendAnalytics()
     const { connectedEnv } = useGetEnvChainId(42220)
-    const isSimpleApp = useIsSimpleApp()
 
     const cusdTokenAddress = '0x765DE816845861e75A25fCA122bb6898B8B1282a'
     const gdTokenAddress = G$ContractAddresses('GoodDollar', connectedEnv) as string
@@ -188,8 +186,8 @@ export const UniSwap = (): JSX.Element => {
             <SwapWidget
                 width={containerWidth}
                 tokenList={tokens}
-                defaultInputTokenAddress={gdTokenAddress}
-                defaultOutputTokenAddress={isSimpleApp ? cusdTokenAddress : undefined}
+                defaultInputTokenAddress={cusdTokenAddress}
+                defaultOutputTokenAddress={gdTokenAddress}
                 settings={{
                     slippage: { auto: false, max: '0.3' },
                     routerPreference: RouterPreference.CLIENT,
