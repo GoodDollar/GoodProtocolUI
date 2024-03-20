@@ -10,6 +10,7 @@ import {
     Title,
     useModal,
     useScreenSize,
+    ClaimSuccessModal,
 } from '@gooddollar/good-design'
 import { Box, Text, useBreakpointValue, View } from 'native-base'
 import { useConnectWallet } from '@web3-onboard/react'
@@ -332,7 +333,10 @@ Learn how here`,
                     <div className="flex flex-col items-center text-center lg:w-1/2">
                         <Box style={balanceContainer}>
                             {claimed ? (
-                                <ClaimBalance refresh={refreshRate} />
+                                <>
+                                    <ClaimBalance refresh={refreshRate} />
+                                    <ClaimSuccessModal open={state?.status === 'Success'} />
+                                </>
                             ) : (
                                 <>
                                     <Title fontFamily="heading" fontSize="2xl" fontWeight="extrabold" pb="2">
@@ -350,18 +354,18 @@ Learn how here`,
                                             t`GoodDollar creates free money as a public good, G$ tokens, which you can collect daily.`
                                         )}
                                     </Text>
+                                    <ClaimButton
+                                        firstName="Test"
+                                        method="redirect"
+                                        claim={handleClaim}
+                                        claimed={claimed}
+                                        claiming={state}
+                                        handleConnect={handleConnect}
+                                        chainId={chainId}
+                                        onEvent={handleEvents}
+                                    />
                                 </>
                             )}
-                            <ClaimButton
-                                firstName="Test"
-                                method="redirect"
-                                claim={handleClaim}
-                                claimed={claimed}
-                                claiming={state?.status === 'Mining' || state?.status === 'Success'} // we check for both to prevent a pre-mature closing of finalization modal
-                                handleConnect={handleConnect}
-                                chainId={chainId}
-                                onEvent={handleEvents}
-                            />
                         </Box>
                     </div>
                     <CentreBox style={carrouselStyles}>

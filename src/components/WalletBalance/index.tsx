@@ -138,7 +138,7 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
             </Box>
             <Box
                 display="flex"
-                flexDir="col"
+                flexDir="column"
                 pl={2}
                 pb={2}
                 bgColor="white"
