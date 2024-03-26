@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { SupportedChains, useGetEnvChainId } from '@gooddollar/web3sdk-v2'
-import { usePostHog } from 'posthog-react-native'
+import { useFeatureFlagWithPayload } from 'posthog-react-native'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { HStack, Link, Text, VStack } from 'native-base'
@@ -15,8 +15,7 @@ const Swap = memo(() => {
     const { chainId } = useActiveWeb3React()
     const { connectedEnv } = useGetEnvChainId(chainId)
     const isProd = connectedEnv.includes('production')
-    const postHog = usePostHog()
-    const payload = postHog?.getFeatureFlagPayload('swap-feature')
+    const payload = useFeatureFlagWithPayload('swap-feature')
     const { fuseEnabled, celoEnabled, reserveEnabled } = (payload as any) || {}
     const toggleNetworkModal = useNetworkModalToggle()
 

@@ -17,7 +17,7 @@ import { useConnectWallet } from '@web3-onboard/react'
 import { useClaim, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import { QueryParams } from '@usedapp/core'
 import { noop } from 'lodash'
-import { usePostHog } from 'posthog-react-native'
+import { useFeatureFlagWithPayload } from 'posthog-react-native'
 
 import { ClaimBalance } from './ClaimBalance'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -81,8 +81,7 @@ const Claim = memo(() => {
     const { chainId } = useActiveWeb3React()
     const network = SupportedV2Networks[chainId]
     const sendData = useSendAnalyticsData()
-    const postHog = usePostHog()
-    const payload = postHog?.getFeatureFlagPayload('claim-feature')
+    const payload = useFeatureFlagWithPayload('claim-feature')
     const { enabled: claimEnabled, disabledMessage = '' } = (payload as any) || {}
     const { isSmallTabletView } = useScreenSize()
 
