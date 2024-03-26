@@ -31,8 +31,8 @@ import useSendAnalytics from 'hooks/useSendAnalyticsData'
 import { tokens } from './celo-tokenlist.json'
 
 const jsonRpcUrlMap = {
-    122: ['https://rpc.fuse.io', 'https://fuse-rpc.gateway.pokt.network'],
-    42220: ['https://rpc.ankr.com/celo', 'https://celo-rpc.gateway.pokt.network'],
+    122: ['https://rpc.fuse.io', 'https://fuse-pokt.nodies.app', 'https://fuse.liquify.com'],
+    42220: ['https://forno.celo.org', 'https://rpc.ankr.com/celo', 'https://1rpc.io/celo'],
 }
 
 export const UniSwap = (): JSX.Element => {
