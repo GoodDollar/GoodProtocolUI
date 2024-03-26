@@ -8,7 +8,7 @@ import { useGetEnvChainId } from '@gooddollar/web3sdk-v2'
 
 import usePromise from 'hooks/usePromise'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
-import { Faq } from 'components/Faq'
+import { Faq } from 'components/Faq/Faq'
 
 const BuyGd = memo(() => {
     const sendData = useSendAnalyticsData()
@@ -152,7 +152,7 @@ const BuyGd = memo(() => {
                     )}
                 </Box>
                 <Box w="100%" mb={2} style={sideTabs}>
-                    <Faq />
+                    <Faq type="buy" />
                 </Box>
             </CentreBox>
         </Box>
