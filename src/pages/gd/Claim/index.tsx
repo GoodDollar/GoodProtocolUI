@@ -81,7 +81,7 @@ const Claim = memo(() => {
     const { chainId } = useActiveWeb3React()
     const network = SupportedV2Networks[chainId]
     const sendData = useSendAnalyticsData()
-    const payload = useFeatureFlagWithPayload('claim-feature')
+    const [, payload] = useFeatureFlagWithPayload('claim-feature')
     const { enabled: claimEnabled, disabledMessage = '' } = (payload as any) || {}
     const { isSmallTabletView } = useScreenSize()
 
@@ -160,7 +160,7 @@ const Claim = memo(() => {
 
         return false
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [send, network, sendData])
+    }, [send, network, sendData, claimEnabled])
 
     const handleConnect = useCallback(async () => {
         if (claimEnabled) {
@@ -171,7 +171,7 @@ const Claim = memo(() => {
             showModal()
         }
         return false
-    }, [connect])
+    }, [connect, claimEnabled])
 
     const mainView = useBreakpointValue({
         base: {

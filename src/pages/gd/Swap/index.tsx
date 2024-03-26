@@ -15,7 +15,7 @@ const Swap = memo(() => {
     const { chainId } = useActiveWeb3React()
     const { connectedEnv } = useGetEnvChainId(chainId)
     const isProd = connectedEnv.includes('production')
-    const payload = useFeatureFlagWithPayload('swap-feature')
+    const [, payload] = useFeatureFlagWithPayload('swap-feature')
     const { fuseEnabled, celoEnabled, reserveEnabled } = (payload as any) || {}
     const toggleNetworkModal = useNetworkModalToggle()
 
