@@ -6,7 +6,13 @@ import { Box, useBreakpointValue } from 'native-base'
 import { CentreBox, Title } from '@gooddollar/good-design'
 import { Faq } from 'components/Faq/Faq'
 
-export const PageLayout: FC<PropsWithChildren<any>> = ({ title, faqType, customTabs, children }) => {
+interface PageLayoutProps {
+    title: string
+    faqType?: 'buy' | 'swap'
+    customTabs?: JSX.Element[]
+}
+
+export const PageLayout: FC<PropsWithChildren<PageLayoutProps>> = ({ title, faqType, customTabs, children }) => {
     const mainView = useBreakpointValue({
         base: {
             display: 'flex',
