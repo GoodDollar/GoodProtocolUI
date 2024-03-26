@@ -4994,7 +4994,7 @@ __metadata:
     "@gooddollar/good-design": ^0.1.42
     "@gooddollar/goodprotocol": ^2.0.24
     "@gooddollar/web3sdk": ^0.1.29
-    "@gooddollar/web3sdk-v2": 0.2.17-beta.2382e77
+    "@gooddollar/web3sdk-v2": ^0.2.18
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@kimafinance/kima-transaction-widget": ^1.1.42-beta.1
@@ -5175,9 +5175,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:0.2.17-beta.2382e77":
-  version: 0.2.17-beta.2382e77
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.17-beta.2382e77"
+"@gooddollar/web3sdk-v2@npm:^0.2.18":
+  version: 0.2.18
+  resolution: "@gooddollar/web3sdk-v2@npm:0.2.18"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5223,7 +5223,7 @@ __metadata:
     "@react-native-async-storage/async-storage": 1.17.10
     react-native: "*"
     react-native-web: "*"
-  checksum: b46ced7ca2339726183fe839f4484dbf5429a4e2b6623e50f582d599b49358129333520d168d5f5f55a6c3666b00d8af32aefd3af193139050a07a2bf99464f5
+  checksum: b6097ce42c11a5917d270116647a8be418b21db16a2402df84d79c7881e1edc3ff7f5c909311caf54c6c72c13bd73dfff45780d41818fe150ea4816e85abc29a
   languageName: node
   linkType: hard
 
@@ -10799,6 +10799,27 @@ __metadata:
     "@ethersproject/providers": ^5.0.0-beta
     "@ethersproject/solidity": ^5.0.0-beta
   checksum: 3b8b0823cb46ad07517c22c454dbdd4fcae65b09a02824861820f35573eeacd41d321a8fa662b8ad0feb0324b7ea921e600ab36ef796fb8e7866cb617fe1d146
+  languageName: node
+  linkType: hard
+
+"@sushiswap/sdk@patch:@sushiswap/sdk@npm%3A5.0.0-canary.7#./.yarn/patches/@sushiswap-sdk-npm-5.0.0-canary.7-f38ca71c99.patch::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 5.0.0-canary.7
+  resolution: "@sushiswap/sdk@patch:@sushiswap/sdk@npm%3A5.0.0-canary.7#./.yarn/patches/@sushiswap-sdk-npm-5.0.0-canary.7-f38ca71c99.patch::version=5.0.0-canary.7&hash=054a04&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  dependencies:
+    "@uniswap/v2-core": ^1.0.0
+    big.js: ^5.2.2
+    decimal.js-light: ^2.5.0
+    jsbi: ^3.1.1
+    tiny-invariant: ^1.1.0
+    tiny-warning: ^1.0.3
+    toformat: ^2.0.0
+  peerDependencies:
+    "@ethersproject/address": ^5.0.0-beta
+    "@ethersproject/contracts": ^5.0.0-beta
+    "@ethersproject/networks": ^5.0.0-beta
+    "@ethersproject/providers": ^5.0.0-beta
+    "@ethersproject/solidity": ^5.0.0-beta
+  checksum: 9b909ee51b8c67365cd5b0ad14f02868cd1b358c54450de0217cad5b6ccd5bac09021f0ebb30a24a2d23059e4fdb77b633dab167200b84bde75164efeb43d1c1
   languageName: node
   linkType: hard
 

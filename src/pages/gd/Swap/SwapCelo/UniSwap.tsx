@@ -23,7 +23,7 @@ import { useDispatch } from 'react-redux'
 import { addTransaction } from 'state/transactions/actions'
 import { ChainId } from '@sushiswap/sdk'
 import { isMobile } from 'react-device-detect'
-import { Box } from 'native-base'
+import { Center } from 'native-base'
 
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
@@ -182,7 +182,7 @@ export const UniSwap = (): JSX.Element => {
     )
 
     return (
-        <Box w={containerWidth}>
+        <Center w={containerWidth} alignSelf="center">
             <SwapWidget
                 width={containerWidth}
                 tokenList={tokens}
@@ -204,6 +204,6 @@ export const UniSwap = (): JSX.Element => {
                 onTxSuccess={handleTxSuccess}
                 dialogOptions={{ pageCentered: !!isMobile }}
             />
-        </Box>
+        </Center>
     )
 }
