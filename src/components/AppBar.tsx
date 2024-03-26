@@ -188,7 +188,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
     const isSimpleApp = useIsSimpleApp()
     const showPrice = useFeatureFlag('show-gd-price')
 
-    const payload = useFeatureFlagWithPayload('app-notice')
+    const [, payload] = useFeatureFlagWithPayload('app-notice')
     const { enabled: appNoticeEnabled, message, color, link } = (payload as any) || {}
     const [sidebarOpen, setSidebarOpen] = sideBar
     const [walletBalanceOpen, setWalletBalanceOpen] = walletBalance

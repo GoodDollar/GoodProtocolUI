@@ -8,7 +8,7 @@ import SwapCore from './SwapCore'
 
 const Swap = memo(() => {
     const { chainId } = useActiveWeb3React()
-    const payload = useFeatureFlagWithPayload('swap-feature')
+    const [, payload] = useFeatureFlagWithPayload('swap-feature')
 
     const { fuseEnabled, celoEnabled, reserveEnabled } = (payload as any) || {}
 
