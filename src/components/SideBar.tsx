@@ -279,6 +279,9 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                                     button: {
                                         borderRadius: 12,
                                     },
+                                    innerButton: {
+                                        height: '10',
+                                    },
                                     content: { alignItems: 'flex-start', paddingLeft: 4 },
                                     titleFont: {
                                         fontFamily: 'subheading',
