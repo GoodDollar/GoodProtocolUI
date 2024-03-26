@@ -9,8 +9,8 @@ import { useConnectWallet, useSetChain, useWallets } from '@web3-onboard/react'
 import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
 import { isEmpty } from 'lodash'
 import web3Utils from 'web3-utils'
-import { SupportedChainId, UnsupportedChainId } from '@gooddollar/web3sdk'
-import { AsyncStorage } from '@gooddollar/web3sdk-v2'
+import { UnsupportedChainId } from '@gooddollar/web3sdk'
+import { AsyncStorage, SupportedChains } from '@gooddollar/web3sdk-v2'
 
 import usePromise from './usePromise'
 import useSendAnalyticsData from './useSendAnalyticsData'
@@ -71,7 +71,7 @@ export interface ActiveOnboardInterface<T = any> extends ActiveOnboard<Web3Provi
 
 export function IsSupportedChain(chainIdHex: string): IsSupportedChainId {
     const chainId = parseInt(chainIdHex)
-    const isSupported = Object.values(SupportedChainId).includes(chainId)
+    const isSupported = Object.values(SupportedChains).includes(chainId)
     const supportedChainHex = isSupported ? chainIdHex : '0xa4ec'
     return { isSupported: isSupported, chainId: supportedChainHex }
 }
@@ -99,7 +99,7 @@ export function useActiveOnboard<T = any>(): ActiveOnboardInterface<T> {
         if (connectedWallets.length > 0) {
             return onboardContext(connectedWallets)
         } else {
-            return { active: false, chainId: 1 }
+            return { active: false, chainId: 42220 }
         }
     }, [connectedWallets])
 
