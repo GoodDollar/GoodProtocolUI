@@ -162,7 +162,7 @@ const Claim = memo(() => {
 
         return false
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [send, network, sendData])
+    }, [send, network, sendData, claimEnabled])
 
     const handleConnect = useCallback(async () => {
         if (claimEnabled || isMinipay) {
@@ -173,7 +173,7 @@ const Claim = memo(() => {
             showModal()
         }
         return false
-    }, [connect])
+    }, [connect, claimEnabled])
 
     const mainView = useBreakpointValue({
         base: {
