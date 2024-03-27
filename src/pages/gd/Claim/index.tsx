@@ -84,6 +84,9 @@ const Claim = memo(() => {
     const { enabled: claimEnabled, disabledMessage = '' } = (payload as any) || {}
     const { isSmallTabletView } = useScreenSize()
 
+    const { ethereum } = window
+    const isMinipay = ethereum?.isMiniPay
+
     const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
 
     // there are three possible scenarios
@@ -146,7 +149,7 @@ const Claim = memo(() => {
 
     const handleClaim = useCallback(async () => {
         setRefreshRate('everyBlock')
-        if (claimEnabled) {
+        if (claimEnabled || isMinipay) {
             const claim = await send()
             if (!claim) {
                 return false
@@ -162,7 +165,7 @@ const Claim = memo(() => {
     }, [send, network, sendData])
 
     const handleConnect = useCallback(async () => {
-        if (claimEnabled) {
+        if (claimEnabled || isMinipay) {
             const state = await connect()
 
             return !!state.length
