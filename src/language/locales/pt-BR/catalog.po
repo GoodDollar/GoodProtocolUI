@@ -2332,7 +2332,7 @@ msgstr ""
 msgid "Clear all"
 msgstr ""
 
-#: src/pages/gd/Swap/index.tsx:46
+#: src/pages/gd/Swap/index.tsx:45
 msgid "Click here to learn how to switch your network."
 msgstr ""
 
@@ -2340,7 +2340,7 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:343
+#: src/pages/gd/Claim/index.tsx:345
 msgid "Collect G$"
 msgstr ""
 
@@ -2477,7 +2477,7 @@ msgstr ""
 msgid "GoodDAO Staking"
 msgstr ""
 
-#: src/pages/gd/Swap/index.tsx:40
+#: src/pages/gd/Swap/index.tsx:39
 msgid "GoodDapp currently does not support Swap on Ethereum."
 msgstr ""
 
@@ -2485,7 +2485,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:354
+#: src/pages/gd/Claim/index.tsx:356
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -2530,7 +2530,7 @@ msgstr ""
 msgid "How much would you like to withdraw?"
 msgstr ""
 
-#: src/pages/gd/Swap/index.tsx:48
+#: src/pages/gd/Swap/index.tsx:47
 msgid "Learn more"
 msgstr ""
 
@@ -2618,7 +2618,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Ups! Ocorreu um erro desconhecido. Atualize a página ou visite de outro navegador ou dispositivo"
 
-#: src/components/AppBar.tsx:342
+#: src/components/AppBar.tsx:341
 msgid "Open main menu"
 msgstr "Abra o menu principal"
 
@@ -2635,11 +2635,11 @@ msgstr "Pendente"
 msgid "PENDING SIGN..."
 msgstr ""
 
-#: src/pages/gd/Swap/index.tsx:56
+#: src/pages/gd/Swap/index.tsx:55
 msgid "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
 msgstr ""
 
-#: src/pages/gd/Swap/index.tsx:43
+#: src/pages/gd/Swap/index.tsx:42
 msgid "Please switch your network to Fuse or Celo to Swap."
 msgstr ""
 
