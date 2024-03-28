@@ -80,8 +80,8 @@ const Claim = memo(() => {
     const { chainId } = useActiveWeb3React()
     const network = SupportedV2Networks[chainId]
     const sendData = useSendAnalyticsData()
-    const payload = useFeatureFlagWithPayload('claim-feature')
-    const { enabled: claimEnabled, disabledMessage = '' } = (payload as any) || {}
+    const [, payload] = useFeatureFlagWithPayload('claim-feature')
+    const { enabled: claimEnabled, disabledMessage } = (payload as any) || {}
     const { isSmallTabletView } = useScreenSize()
 
     const { ethereum } = window
@@ -173,7 +173,7 @@ const Claim = memo(() => {
             showModal()
         }
         return false
-    }, [connect, claimEnabled])
+    }, [connect, claimEnabled, isMinipay])
 
     const mainView = useBreakpointValue({
         base: {
