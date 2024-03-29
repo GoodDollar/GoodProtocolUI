@@ -2813,7 +2813,11 @@ msgid "Clear all"
 msgstr ""
 
 #: src/pages/gd/Swap/index.tsx:45
-msgid "Click here to learn how to switch your network."
+#~ msgid "Click here to learn how to switch your network."
+#~ msgstr ""
+
+#: src/pages/gd/Swap/index.tsx:53
+msgid "Click here to learn more about GoodDollar liquidity, including how to provide liquidity."
 msgstr ""
 
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:286
@@ -3010,7 +3014,7 @@ msgstr ""
 msgid "How much would you like to withdraw?"
 msgstr ""
 
-#: src/pages/gd/Swap/index.tsx:47
+#: src/pages/gd/Swap/index.tsx:57
 msgid "Learn more"
 msgstr ""
 
@@ -3115,11 +3119,11 @@ msgstr "En attente"
 msgid "PENDING SIGN..."
 msgstr ""
 
-#: src/pages/gd/Swap/index.tsx:55
+#: src/pages/gd/Swap/index.tsx:65
 msgid "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
 msgstr ""
 
-#: src/pages/gd/Swap/index.tsx:42
+#: src/pages/gd/Swap/index.tsx:48
 msgid "Please switch your network to Fuse or Celo to Swap."
 msgstr ""
 
