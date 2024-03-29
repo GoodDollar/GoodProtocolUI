@@ -38,11 +38,21 @@ const Swap = memo(() => {
                     <Text fontFamily="subheading" fontSize="sm" color="goodGrey.600">
                         {i18n._(t`GoodDapp currently does not support Swap on Ethereum.`)}
                     </Text>
-                    <Link isExternal={false} onPress={toggleNetworkModal} _text={{ color: 'primary' }}>
+                    <Link
+                        fontFamily="subheading"
+                        fontSize="sm"
+                        isExternal={false}
+                        onPress={toggleNetworkModal}
+                        _text={{ color: 'primary' }}
+                    >
                         {i18n._(t`Please switch your network to Fuse or Celo to Swap.`)}
                     </Link>
                     <HStack space={1}>
-                        <Text>{i18n._(t`Click here to learn how to switch your network.`)}</Text>
+                        <Text fontFamily="subheading" fontSize="sm" color="goodGrey.600">
+                            {i18n._(
+                                t`Click here to learn more about GoodDollar liquidity, including how to provide liquidity.`
+                            )}
+                        </Text>
                         <Link isExternal _text={{ color: 'primary' }} href="https://docs.gooddollar.org/liquidity">
                             {i18n._(t`Learn more`)}
                         </Link>
