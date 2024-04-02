@@ -89,6 +89,9 @@ const Claim = memo(() => {
     const isSimpleApp = useIsSimpleApp()
     const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
 
+    const { ethereum } = window
+    const isMinipay = ethereum?.isMiniPay
+
     // there are three possible scenarios
     // 1. claim amount is 0, meaning user has claimed that day
     // 2. status === success, meaning user has just claimed. Could happen that claimAmount has not been updated right after tx confirmation
@@ -149,11 +152,9 @@ const Claim = memo(() => {
 
     const handleClaim = useCallback(async () => {
         setRefreshRate('everyBlock')
-        if (claimEnabled) {
-            const claim = await send(
-                // minipay
-                isSimpleApp ? { gasPrice: undefined, maxFeePerGas: 5e9, maxPriorityFeePerGas: 0 } : {}
-            )
+        if (claimEnabled || isMinipay) {
+            // minipay doesnt handle gasPrice correctly, so we let it decide
+            const claim = await send(isMinipay ? { gasPrice: undefined } : {})
             if (!claim) {
                 return false
             }
