@@ -30,6 +30,7 @@ import BillyGrin from 'assets/images/claim/billygrin.png'
 import BillyConfused from 'assets/images/claim/billyconfused.png'
 
 import Maintance from 'assets/images/claim/maintance.png'
+import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 
 const DialogHeader = () => (
     <Box>
@@ -85,9 +86,7 @@ const Claim = memo(() => {
     const { enabled: claimEnabled, disabledMessage = '' } = (payload as any) || {}
     const { isSmallTabletView } = useScreenSize()
 
-    const { ethereum } = window
-    const isMinipay = ethereum?.isMiniPay
-
+    const isSimpleApp = useIsSimpleApp()
     const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
 
     // there are three possible scenarios
@@ -150,8 +149,11 @@ const Claim = memo(() => {
 
     const handleClaim = useCallback(async () => {
         setRefreshRate('everyBlock')
-        if (claimEnabled || isMinipay) {
-            const claim = await send()
+        if (claimEnabled) {
+            const claim = await send(
+                // minipay
+                isSimpleApp ? { gasPrice: undefined, maxFeePerGas: 5e9, maxPriorityFeePerGas: 0 } : {}
+            )
             if (!claim) {
                 return false
             }
@@ -163,10 +165,10 @@ const Claim = memo(() => {
 
         return false
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [send, network, sendData, claimEnabled])
+    }, [send, network, sendData, claimEnabled, isSimpleApp])
 
     const handleConnect = useCallback(async () => {
-        if (claimEnabled || isMinipay) {
+        if (claimEnabled) {
             const state = await connect()
 
             return !!state.length
