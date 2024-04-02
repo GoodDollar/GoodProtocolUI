@@ -151,7 +151,8 @@ const Claim = memo(() => {
     const handleClaim = useCallback(async () => {
         setRefreshRate('everyBlock')
         if (claimEnabled || isMinipay) {
-            const claim = await send()
+            // minipay doesnt handle gasPrice correctly, so we let it decide
+            const claim = await send(isMinipay ? { gasPrice: undefined } : {})
             if (!claim) {
                 return false
             }
