@@ -2,7 +2,7 @@ import React, { ReactNode, ReactNodeArray, useEffect, useMemo } from 'react'
 import { BigNumber, ethers } from 'ethers'
 import Web3 from 'web3'
 import { ExternalProvider } from '@ethersproject/providers'
-import { Goerli, Mainnet } from '@usedapp/core'
+import { Mainnet } from '@usedapp/core'
 import { ChainId } from '@sushiswap/sdk'
 import { DAO_NETWORK, GdSdkContext, useEnvWeb3 } from '@gooddollar/web3sdk'
 import { AsyncStorage, Celo, Fuse, Web3Provider } from '@gooddollar/web3sdk-v2'
@@ -83,7 +83,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                 env={contractsEnvV2}
                 config={{
                     pollingInterval: 15000,
-                    networks: [Goerli, Mainnet, Fuse, Celo],
+                    networks: [Mainnet, Fuse, Celo],
                     readOnlyChainId: undefined,
                     readOnlyUrls: {
                         1: 'https://rpc.ankr.com/eth',
