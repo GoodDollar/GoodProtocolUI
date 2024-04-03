@@ -87,12 +87,6 @@ export default defineConfig(({ command, mode }) => {
                     '.html': 'text', // allow import or require of html files
                 },
             },
-            include: [
-                '@kimafinance/kima-transaction-widget',
-                '@solana/web3.js',
-                '@juggle/resize-observer',
-                'readable-stream',
-            ], // handle kima require undefined in production build
         },
     }
 })
