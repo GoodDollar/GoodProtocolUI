@@ -73,6 +73,9 @@ export default defineConfig(({ command, mode }) => {
             dedupe: ['react', 'ethers', 'react-dom', 'native-base'],
         },
         build: {
+            rollupOptions: {
+                external: ['@lit-protocol/sdk-browser'],
+            },
             commonjsOptions: {
                 transformMixedEsModules: true, //handle deps that use "require" and "module.exports"
             },
