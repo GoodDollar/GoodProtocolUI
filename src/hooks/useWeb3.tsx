@@ -48,7 +48,7 @@ export function useNetwork(): NetworkSettings {
 export function Web3ContextProvider({ children }: { children: ReactNode | ReactNodeArray }): JSX.Element {
     const { rpcs } = useNetwork()
     const { eipProvider, chainId } = useActiveWeb3React()
-
+    const isMiniPay = window?.ethereum?.isMiniPay
     const [mainnetWeb3] = useEnvWeb3(DAO_NETWORK.MAINNET)
 
     const web3 = useMemo(() => (eipProvider ? new Web3(eipProvider as any) : mainnetWeb3), [eipProvider, mainnetWeb3])
@@ -59,7 +59,8 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
 
     if (webprovider) {
         webprovider.send = async (method: string, params: any) => {
-            if (chainId === (42220 as ChainId) && method === 'eth_sendTransaction') {
+            // for celo force gasPrice to 5 gwei
+            if (!isMiniPay && chainId === (42220 as ChainId) && method === 'eth_sendTransaction') {
                 params[0].gasPrice = BigNumber.from(5e9).toHexString()
             }
             return webprovider.jsonRpcFetchFunc(method, params)
