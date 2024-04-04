@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { SupportedChains, useGetEnvChainId } from '@gooddollar/web3sdk-v2'
+import { SupportedChains } from '@gooddollar/web3sdk-v2'
 import { useFeatureFlagWithPayload } from 'posthog-react-native'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
@@ -13,16 +13,14 @@ import { PageLayout } from 'components/Layout/PageLayout'
 
 const Swap = memo(() => {
     const { chainId } = useActiveWeb3React()
-    const { connectedEnv } = useGetEnvChainId(chainId)
-    const isProd = connectedEnv.includes('production')
     const [, payload] = useFeatureFlagWithPayload('swap-feature')
     const { fuseEnabled, celoEnabled, reserveEnabled } = (payload as any) || {}
     const toggleNetworkModal = useNetworkModalToggle()
 
     const swapComponentMapping = {
-        [SupportedChains.FUSE]: { component: <SwapCore />, enabled: !isProd || (isProd && fuseEnabled) },
-        [SupportedChains.MAINNET]: { component: <SwapCore />, enabled: isProd && reserveEnabled },
-        [SupportedChains.CELO]: { component: <UniSwap />, enabled: !isProd || (isProd && celoEnabled) },
+        [SupportedChains.FUSE]: { component: <SwapCore />, enabled: fuseEnabled },
+        [SupportedChains.MAINNET]: { component: <SwapCore />, enabled: reserveEnabled },
+        [SupportedChains.CELO]: { component: <UniSwap />, enabled: celoEnabled },
     }
 
     const chainConfig = swapComponentMapping[chainId as any]
