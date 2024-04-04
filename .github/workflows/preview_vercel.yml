@@ -1,5 +1,5 @@
 # .github/workflows/preview.yml
-name: preview
+name: DeployQA
 on:
     push:
         branches: [master, staging]
