@@ -46,7 +46,16 @@ export const SwapWrapperSC = styled.div`
     z-index: 2;
     border: 1px solid ${({ theme }) => theme.color.border1};
     width: 100%;
+    @media (min-width: 360px) {
+        width: auto;
+    }
     @media (min-width: 980px) {
+        width: 410px;
+    }
+    @media (min-width: 1100px) {
+        width: 500px;
+    }
+    @media (min-width: 1400px) {
         width: 700px;
     }
 `

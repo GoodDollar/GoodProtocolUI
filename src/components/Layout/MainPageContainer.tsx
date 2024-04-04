@@ -30,8 +30,6 @@ export const mpContainerTheme = {
             height: '100%',
             paddingTop: 16,
             paddingBottom: 16,
-            paddingRight: 32,
-            paddingLeft: 48,
             overflowX: 'hidden',
             overflowY: 'auto',
         },
@@ -51,11 +49,13 @@ const MainPageContainer = withTheme({ name: 'MainPageContainer' })(
             base: {
                 ...mainBody,
                 ...(isFv ? justifyBetween : flexStart),
-                ...(isDashboard ? dashboardBody : {}),
+                ...(isDashboard ? dashboardBody : { paddingRight: 16, paddingLeft: 16 }),
             },
             lg: {
                 ...mainBody,
                 ...(isFv ? justifyBetween : flexStart),
+                paddingRight: 32,
+                paddingLeft: 48,
             },
         })
 

@@ -30,6 +30,11 @@ export const PageLayout: FC<PropsWithChildren<PageLayoutProps>> = ({ title, faqT
     })
 
     const leftContainer = useBreakpointValue({
+        base: {
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+        },
         lg: {
             width: '50%',
             paddingRight: 24,
@@ -42,6 +47,14 @@ export const PageLayout: FC<PropsWithChildren<PageLayoutProps>> = ({ title, faqT
     })
 
     const rightContainer = useBreakpointValue({
+        base: {
+            marginTop: 32,
+            width: '100vw',
+            borderColor: '#52525254',
+            borderTopWidth: 1,
+            height: '20vh',
+            paddingTop: 4,
+        },
         lg: {
             paddingLeft: 24,
             paddingTop: 48,
@@ -57,6 +70,7 @@ export const PageLayout: FC<PropsWithChildren<PageLayoutProps>> = ({ title, faqT
             alignItems: 'flex-start',
         },
     })
+
     return (
         <Box w="100%" mb="8" style={mainView}>
             <CentreBox borderColor="borderGrey" style={leftContainer}>

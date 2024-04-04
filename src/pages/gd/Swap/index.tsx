@@ -62,7 +62,8 @@ const Swap = memo(() => {
                 <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={8}>
                     <Text fontFamily="subheading" fontSize="sm" color="goodGrey.600" pt={4} pb={8} textAlign="center">
                         {i18n._(
-                            t`Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!`
+                            t`On this page, you can convert your digital assets. 
+Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!`
                         )}
                     </Text>
                 </VStack>

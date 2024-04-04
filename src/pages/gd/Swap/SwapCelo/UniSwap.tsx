@@ -48,7 +48,6 @@ export const UniSwap = (): JSX.Element => {
 
     const cusdTokenAddress = '0x765DE816845861e75A25fCA122bb6898B8B1282a'
     const gdTokenAddress = G$ContractAddresses('GoodDollar', connectedEnv) as string
-    const containerWidth = isMobile ? 'auto' : '550px'
 
     const customTheme = {
         ...uniTheme,
@@ -182,9 +181,9 @@ export const UniSwap = (): JSX.Element => {
     )
 
     return (
-        <Center w={containerWidth} alignSelf="center">
+        <Center w={'auto'} maxW="550" alignSelf="center">
             <SwapWidget
-                width={containerWidth}
+                width={'auto'}
                 tokenList={tokens}
                 defaultInputTokenAddress={cusdTokenAddress}
                 defaultOutputTokenAddress={gdTokenAddress}

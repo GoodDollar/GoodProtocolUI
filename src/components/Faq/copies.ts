@@ -7,6 +7,11 @@ type FaqItemCopy = {
 
 const faqSwapCopy: FaqItemCopy[] = [
     {
+        id: 'whatsswap',
+        question: `What is a Swap?`,
+        answer: `A swap is when you convert one digital asset for another, allowing people to diversify their cryptocurrency holdings. \n\nThe swap on this page happens through decentralized exchanges (DEXs). When you swap, your funds are sent directly to the DEX service (Voltage on Fuse Network or Uniswap on Celo Network).`,
+    },
+    {
         id: 'whereliqfrom',
         question: `Where is the GoodDapp widget pulling the liquidity from?`,
         answer: `The GoodDapp Swap widget seamlessly integrates with Fuse's Voltage Finance DEX and Celo's Uniswap DEX, allowing you to swap your assets.`,
@@ -14,7 +19,7 @@ const faqSwapCopy: FaqItemCopy[] = [
     {
         id: 'whatarefees',
         question: `What are the fees for swapping?`,
-        answer: `The GoodDapp Swap widget seamlessly integrates with Fuse's Voltage Finance DEX and Celo's Uniswap DEX, allowing you to swap your assets.`,
+        answer: `The fee structure is based on factors such as transaction volume and network fees. You can view the applicable fees before confirming you transactions. \n\n GoodDapp does not charge extra fees.`,
     },
     {
         id: 'whichnetworks',
@@ -63,8 +68,13 @@ const faqSwapCopy: FaqItemCopy[] = [
     {
         id: 'howtoprovideliquidity',
         question: `How can I provide G$ liquidity?`,
-        answer: `If you are interested in learning more about GoodDollar liquidity, including how to provide liquidity, please click here`,
-        //todo: add links for docs + squidrouter
+        answer: `If you are interested in learning more about GoodDollar liquidity, including how to provide liquidity, \n`,
+        links: [
+            {
+                href: 'https://docs.gooddollar.org/liquidity',
+                linkText: 'Please click here',
+            },
+        ],
     },
 ]
 
