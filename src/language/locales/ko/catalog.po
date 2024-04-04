@@ -2633,19 +2633,19 @@ msgstr ""
 msgid "{amount} {0}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:36
+#: src/components/Faq/Faq.tsx:46
 msgid "{answer}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:51
+#: src/components/Faq/Faq.tsx:61
 msgid "{linkText}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:12
+#: src/components/Faq/Faq.tsx:14
 msgid "{question}"
 msgstr ""
 
-#: src/components/Layout/PageLayout.tsx:64
+#: src/components/Layout/PageLayout.tsx:78
 msgid "{title}"
 msgstr ""
 
@@ -3073,6 +3073,12 @@ msgstr ""
 msgid "on the"
 msgstr ""
 
+#: src/pages/gd/Swap/index.tsx:65
+msgid ""
+"On this page, you can convert your digital assets. \n"
+"Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
+msgstr ""
+
 #: src/components/Web3ReactManager/index.tsx:61
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "이런! 알 수없는 오류가 발생했습니다. 페이지를 새로 고침하거나 다른 브라우저 또는 기기에서 방문하세요."
@@ -3095,8 +3101,8 @@ msgid "PENDING SIGN..."
 msgstr ""
 
 #: src/pages/gd/Swap/index.tsx:65
-msgid "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
-msgstr ""
+#~ msgid "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
+#~ msgstr ""
 
 #: src/pages/gd/Swap/index.tsx:48
 msgid "Please switch your network to Fuse or Celo to Swap."

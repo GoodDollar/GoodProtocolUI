@@ -2178,19 +2178,19 @@ msgstr ""
 msgid "{amount} {0}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:36
+#: src/components/Faq/Faq.tsx:46
 msgid "{answer}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:51
+#: src/components/Faq/Faq.tsx:61
 msgid "{linkText}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:12
+#: src/components/Faq/Faq.tsx:14
 msgid "{question}"
 msgstr ""
 
-#: src/components/Layout/PageLayout.tsx:64
+#: src/components/Layout/PageLayout.tsx:78
 msgid "{title}"
 msgstr ""
 
@@ -2618,6 +2618,12 @@ msgstr "لا توجد بيانات."
 msgid "on the"
 msgstr "على"
 
+#: src/pages/gd/Swap/index.tsx:65
+msgid ""
+"On this page, you can convert your digital assets. \n"
+"Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
+msgstr ""
+
 #: src/components/Web3ReactManager/index.tsx:61
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "عفوًا! حدث خطأ غير معروف. يرجى تحديث الصفحة، أو الزيارة من متصفح أو جهاز آخر"
@@ -2640,8 +2646,8 @@ msgid "PENDING SIGN..."
 msgstr "علامة معلقة..."
 
 #: src/pages/gd/Swap/index.tsx:65
-msgid "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
-msgstr ""
+#~ msgid "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
+#~ msgstr ""
 
 #: src/pages/gd/Swap/index.tsx:48
 msgid "Please switch your network to Fuse or Celo to Swap."
