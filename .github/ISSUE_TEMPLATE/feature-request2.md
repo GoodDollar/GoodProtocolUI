@@ -30,4 +30,7 @@ Any requests not following requested format will make it take longer, or won't b
 ## Acceptance Criteria
 *Specify criteria that will be used to determine if the feature meets the requirements and functions correctly.*
 - [ ] (Should include a list of testing points for QA how to verify design/functionality)
-filled out by the development team or can contain suggestions._ 
+filled out by the development team or can contain suggestions._
+
+## Test Cases
+*Specify the happy path and unhappy path scenarios to test to verify the feature works as expected.*
