@@ -99,7 +99,7 @@ const PortfolioTableRow = memo(({ stake, onUpdate, isMobile }: PortfolioTableRow
                             {stake.stake.amount.toSignificant(6, { groupSeparator: ',' })}{' '}
                             {stake.stake.amount.currency.symbol}
                         </span>{' '}
-                        <br />~{stake.stake.amount$.toFixed(2, { groupSeparator: ',' })}$
+                        {/* <br />~{stake.stake.amount$.toFixed(2, { groupSeparator: ',' })}$ */}
                     </td>
                     {stake.protocol !== LIQUIDITY_PROTOCOL.GOODDAO ? (
                         <td className="whitespace-nowrap">

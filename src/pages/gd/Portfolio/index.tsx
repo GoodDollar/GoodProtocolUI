@@ -147,7 +147,7 @@ const MobileCell = ({
                     </Title>
                     <span className="whitespace-nowrap value">
                         {stake.stake.amount.toSignificant(6, { groupSeparator: ',' })}{' '}
-                        {stake.stake.amount.currency.symbol}~{stake.stake.amount$.toFixed(2, { groupSeparator: ',' })}$
+                        {/* {stake.stake.amount.currency.symbol}~{stake.stake.amount$.toFixed(2, { groupSeparator: ',' })}$ */}
                     </span>
                 </div>
                 <div className="part withdraw">
@@ -298,7 +298,7 @@ const Portfolio = memo(() => {
                     <div className="flex flex-col segment">
                         <Title type="category">{i18n._(t`My Stake`)}</Title>
                         <PortfolioValueSC>
-                            ~{data?.aggregated?.myStake.toFixed(2, { groupSeparator: ',' }) ?? '0.00'}$
+                            {/* ~{data?.aggregated?.myStake.toFixed(2, { groupSeparator: ',' }) ?? '0.00'}$ */}
                         </PortfolioValueSC>
                     </div>
                     <div className="flex flex-col segment">
@@ -308,7 +308,7 @@ const Portfolio = memo(() => {
                             {data?.aggregated?.rewardsG$.currency.symbol}
                             <br />
                             <small>
-                                ~{data?.aggregated?.rewardsG$$.toFixed(2, { groupSeparator: ',' }) ?? '0.00'}$
+                                {/* ~{data?.aggregated?.rewardsG$$.toFixed(2, { groupSeparator: ',' }) ?? '0.00'}$ */}
                             </small>
                         </PortfolioValueSC>
                     </div>
@@ -350,7 +350,7 @@ const Portfolio = memo(() => {
                             {data?.aggregated?.rewardsG$Unclaimed.currency.symbol}
                             <br />
                             <small>
-                                ~{data?.aggregated?.rewardsG$Unclaimed$.toFixed(2, { groupSeparator: ',' }) ?? '0.00'}$
+                                {/* ~{data?.aggregated?.rewardsG$Unclaimed$.toFixed(2, { groupSeparator: ',' }) ?? '0.00'}$ */}
                             </small>
                         </PortfolioValueSC>
                     </div>
