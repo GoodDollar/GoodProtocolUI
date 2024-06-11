@@ -220,9 +220,6 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
         lg: 'lightGrey',
     })
 
-    const { ethereum } = window
-    const isMinipay = ethereum?.isMiniPay
-
     const toggleSideBar = () => {
         setSidebarOpen((prevSidebarOpen) => {
             if (!prevSidebarOpen) {
@@ -319,12 +316,12 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                                     initial={{
                                         scaleY: 0,
                                         translateY: 20,
-                                        translateX: isMinipay ? 17 : isSmallTabletView ? 47 : 0,
+                                        translateX: isSmallTabletView ? 47 : 0,
                                     }}
                                     animate={{
                                         scaleY: 1,
                                         translateY: 0,
-                                        translateX: isMinipay ? 17 : isSmallTabletView ? 47 : 0,
+                                        translateX: isSmallTabletView ? 47 : 0,
                                         transition: { duration: 250 },
                                     }}
                                 >
@@ -370,7 +367,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                 <Pressable
                     display={sidebarOpen || walletBalanceOpen ? 'block' : 'none'}
                     position="absolute"
-                    h="1000%"
+                    h="100vh"
                     w="100%"
                     //@ts-ignore no other way to apply style for cursor, but not part of type definition
                     style={{ cursor: 'default' }}

@@ -10,7 +10,6 @@ const FaqItem = ({ id, question, answer, links }) => {
     const { isDesktopView } = useScreenSize()
     return (
         <SlideDownTab
-            key={id}
             tabTitle={i18n._(t`${question}`)}
             mb={2}
             viewInteraction={{
@@ -49,6 +48,7 @@ const FaqItem = ({ id, question, answer, links }) => {
                 <VStack w="100%">
                     {links.map(({ text, href, linkText }) => (
                         <Text
+                            key={id}
                             pl={2}
                             width="100%"
                             fontFamily="subheading"

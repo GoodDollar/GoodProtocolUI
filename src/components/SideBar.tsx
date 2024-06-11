@@ -57,7 +57,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const isChrome = browser.name === 'Chrome'
 
     const viewPort = isiOS ? '98vh' : '100vh'
-    const browserViewPort = isChrome && isiOS ? '160px' : '130px'
+    const browserViewPort = isChrome && isiOS ? '160px' : '90px'
 
     const socialItems = Object.entries(socials)
     const firstRowItems = socialItems.slice(0, 4)
