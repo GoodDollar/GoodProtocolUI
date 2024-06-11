@@ -2633,7 +2633,7 @@ msgstr ""
 msgid "{amount} {0}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:46
+#: src/components/Faq/Faq.tsx:45
 msgid "{answer}"
 msgstr ""
 
@@ -2641,7 +2641,7 @@ msgstr ""
 msgid "{linkText}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:14
+#: src/components/Faq/Faq.tsx:13
 msgid "{question}"
 msgstr ""
 
@@ -3083,7 +3083,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "이런! 알 수없는 오류가 발생했습니다. 페이지를 새로 고침하거나 다른 브라우저 또는 기기에서 방문하세요."
 
-#: src/components/AppBar.tsx:340
+#: src/components/AppBar.tsx:337
 msgid "Open main menu"
 msgstr "메인 메뉴 열기"
 

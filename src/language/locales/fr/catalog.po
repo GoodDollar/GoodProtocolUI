@@ -2658,7 +2658,7 @@ msgstr ""
 msgid "{amount} {0}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:46
+#: src/components/Faq/Faq.tsx:45
 msgid "{answer}"
 msgstr ""
 
@@ -2666,7 +2666,7 @@ msgstr ""
 msgid "{linkText}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:14
+#: src/components/Faq/Faq.tsx:13
 msgid "{question}"
 msgstr ""
 
@@ -3108,7 +3108,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Oops! Une erreur inconnue est survenue. Veuillez actualiser la page ou la consulter à partir d'un autre navigateur ou appareil"
 
-#: src/components/AppBar.tsx:340
+#: src/components/AppBar.tsx:337
 msgid "Open main menu"
 msgstr "Ouvrir le menu principal"
 

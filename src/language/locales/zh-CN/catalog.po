@@ -2653,7 +2653,7 @@ msgstr ""
 msgid "{amount} {0}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:46
+#: src/components/Faq/Faq.tsx:45
 msgid "{answer}"
 msgstr ""
 
@@ -2661,7 +2661,7 @@ msgstr ""
 msgid "{linkText}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:14
+#: src/components/Faq/Faq.tsx:13
 msgid "{question}"
 msgstr ""
 
@@ -3103,7 +3103,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "糟糕！出现未知错误。请刷新页面，或从其他浏览器或设备访问"
 
-#: src/components/AppBar.tsx:340
+#: src/components/AppBar.tsx:337
 msgid "Open main menu"
 msgstr "打开主菜单"
 
