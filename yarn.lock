@@ -4832,20 +4832,18 @@ __metadata:
   linkType: hard
 
 "@gooddollar/good-design@npm:^0.1.44":
-  version: 0.1.44
-  resolution: "@gooddollar/good-design@npm:0.1.44"
+  version: 0.1.46
+  resolution: "@gooddollar/good-design@npm:0.1.46"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
     "@gooddollar/goodprotocol": ^2.0.24
     "@lingui/macro": ^3.14.0
     "@lingui/react": ^3.14.0
-    "@lottiefiles/react-lottie-player": ^3.5.3
     "@magiklabs/react-sdk": ^1.0.8
     "@uniswap/sdk-core": ^3.1.0
     buffer: ^6.0.3
     ethers: 5.7.2
-    lottie-react-native: ^6.6.0
     metro-react-native-babel-preset: ^0.72.0
     moment: ^2.29.4
     moment-duration-format: ^2.3.2
@@ -4856,20 +4854,18 @@ __metadata:
     react-helmet: ^6.1.0
     react-inlinesvg: 2.3.0
     react-native: 0.70.4
-    react-native-animatable: ^1.4.0
     react-native-mask-input: ^1.2.2
     react-native-safe-area-context: ^3.3.2
     react-native-svg: ^12.1.1
     react-native-svg-uri: ^1.2.3
     react-native-svg-web: ^1.0.9
     react-native-web: 0.17.7
-    react-native-web-lottie: ^1.4.4
     react-native-web-webview: ^1.0.2
     react-native-webview: ^13.2.2
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
     require-from-string: ^2.0.2
-  checksum: 3c3393ab5c657e7f8023bb09c8eab211072eddc9f6bbde97667c08d372d57781b911e790dd663da9b7db7b36018fd8c595f494be7928e61b56e49213fc07cb77
+  checksum: 57435c91ba15fbdd40aed260cbf79f814d9965c6f1801ed37fc2c94bd7b59ebf36aefca7278c1b5b3bdde6e87737905a8a33e6db89238608d1cd2fe5d4cbe4b1
   languageName: node
   linkType: hard
 
@@ -4923,7 +4919,7 @@ __metadata:
     "@fullhuman/postcss-purgecss": ^4.0.3
     "@gooddollar/good-design": ^0.1.44
     "@gooddollar/goodprotocol": ^2.0.24
-    "@gooddollar/web3sdk": ^0.1.29
+    "@gooddollar/web3sdk": ^0.1.33
     "@gooddollar/web3sdk-v2": ^0.2.20
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
@@ -5104,8 +5100,8 @@ __metadata:
   linkType: soft
 
 "@gooddollar/web3sdk-v2@npm:^0.2.20":
-  version: 0.2.20
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.20"
+  version: 0.2.22
+  resolution: "@gooddollar/web3sdk-v2@npm:0.2.22"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5136,6 +5132,7 @@ __metadata:
     "@web3modal/react": ^2.6.2
     base-64: ^1.0.0
     dexie: ^3.2.4
+    ethers: 5.7.2
     eventemitter3: ^4.0.7
     mixpanel-browser: ^2.45.0
     mixpanel-react-native: ^2.1.0
@@ -5151,13 +5148,13 @@ __metadata:
     "@react-native-async-storage/async-storage": 1.17.10
     react-native: "*"
     react-native-web: "*"
-  checksum: 1ea0793c3d6c43f60e422885ca9abbf933e339d8bba556620e1fe82374d0946e6efbce4de48e3bcc2eff5b6804f1c251ec4e4bbf68e65189229689a474ae6607
+  checksum: 2f410e624288bedcf90eb1cb7b1e4b0ea700fe4dd735f2bd3558a82643fa39c24408fd2d7747136a250fc478fcfa6bca5640e47fe0d5b5c7f4830493637fe615
   languageName: node
   linkType: hard
 
-"@gooddollar/web3sdk@npm:^0.1.29":
-  version: 0.1.31
-  resolution: "@gooddollar/web3sdk@npm:0.1.31"
+"@gooddollar/web3sdk@npm:^0.1.33":
+  version: 0.1.33
+  resolution: "@gooddollar/web3sdk@npm:0.1.33"
   dependencies:
     "@apollo/client": ^3.2.0
     "@gooddollar/goodprotocol": ^2.0.22
@@ -5179,7 +5176,7 @@ __metadata:
     web3-eth: 1.8.2
     web3-eth-contract: 1.8.2
     web3-utils: 1.8.2
-  checksum: 5a03fe677520a0cf4c68884be3a962702d200e6f908c5ebadb9ac575e4a7df156ac8d3f65437ddc873824221d28b8eb4a1253420e7ffe963356e373e0e589271
+  checksum: f879b5a2793ad2857ce2a2c924e699203d5b0e3e7c4badf010ef2f25575fda87ab2d550368cc4f141e390c9072b178433b9e0c8bd11d93023b7cb63a9650f716
   languageName: node
   linkType: hard
 
@@ -6218,17 +6215,6 @@ __metadata:
   dependencies:
     "@lit-labs/ssr-dom-shim": ^1.0.0
   checksum: 011a3ef0933fda86ec726d29ebc14e829e2f1ba23eca8ed8ed4d5c6f2a102c55cc6986000c5f4c8c3d0c549bc671f5d84d00ce91adc5bbd95970eec3662c0a92
-  languageName: node
-  linkType: hard
-
-"@lottiefiles/react-lottie-player@npm:^3.5.3":
-  version: 3.5.3
-  resolution: "@lottiefiles/react-lottie-player@npm:3.5.3"
-  dependencies:
-    lottie-web: ^5.10.2
-  peerDependencies:
-    react: 16 - 18
-  checksum: 083521730d8a75a70c82446df859d08d5e3614b937afa419249d047d9cbffb61fba24733e1a736593e734530d99aa715a38fcbbebbcca5a72ff4719145931da1
   languageName: node
   linkType: hard
 
@@ -28684,33 +28670,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lottie-react-native@npm:^6.6.0":
-  version: 6.6.0
-  resolution: "lottie-react-native@npm:6.6.0"
-  peerDependencies:
-    "@dotlottie/react-player": ^1.6.1
-    "@lottiefiles/react-lottie-player": ^3.5.3
-    react: "*"
-    react-native: ">=0.46"
-    react-native-windows: ">=0.63.x"
-  peerDependenciesMeta:
-    "@dotlottie/react-player":
-      optional: true
-    "@lottiefiles/react-lottie-player":
-      optional: true
-    react-native-windows:
-      optional: true
-  checksum: c989a1765caf7d6a80d72eb1c4702648cc744b07c13f1085f6f4233992264686191d84ff88233b6083ae2548261fccd9375cb9de1f81364f3f2477928d6f5c3b
-  languageName: node
-  linkType: hard
-
-"lottie-web@npm:^5.10.2, lottie-web@npm:^5.7.1":
-  version: 5.12.2
-  resolution: "lottie-web@npm:5.12.2"
-  checksum: af5bc3bc405fd760de8b17a36158d5a8c3e8c586c711d0c63681ddf056b65bc6b54ea36b1fcad782fb02dbe12e696a40e0ba72daf41b8f10ab5b5d1113793636
-  languageName: node
-  linkType: hard
-
 "loupe@npm:^2.3.1":
   version: 2.3.6
   resolution: "loupe@npm:2.3.6"
@@ -35125,24 +35084,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-animatable@npm:1.4.0":
-  version: 1.4.0
-  resolution: "react-native-animatable@npm:1.4.0"
-  dependencies:
-    prop-types: ^15.8.1
-  checksum: a1b211aff745b97351d78643d641fa298f7d71524eaf22fee8a69257ce52e85d6b3caf8e7fd26a521af34984fba7402b7c632c35ea69d618769387d1dcb6b32a
-  languageName: node
-  linkType: hard
-
-"react-native-animatable@patch:react-native-animatable@npm%3A1.4.0#./.yarn/patches/react-native-animatable-npm-1.4.0-8061fbfc78.patch::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
-  version: 1.4.0
-  resolution: "react-native-animatable@patch:react-native-animatable@npm%3A1.4.0#./.yarn/patches/react-native-animatable-npm-1.4.0-8061fbfc78.patch::version=1.4.0&hash=9a6239&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
-  dependencies:
-    prop-types: ^15.8.1
-  checksum: 3a3d17d98c69305cf1b4b5b650541cc0a6a194a9dc0e54c7f142d13ab3f367b2082929abea386c4b1c31faaae48730e0cb150c1dcd3ebc1eb1dbcb4fa8abfbcf
-  languageName: node
-  linkType: hard
-
 "react-native-codegen@npm:^0.70.6":
   version: 0.70.6
   resolution: "react-native-codegen@npm:0.70.6"
@@ -35242,17 +35183,6 @@ __metadata:
     react: "*"
     react-native: ">=0.50.0"
   checksum: e51a4eccb205c433c088087500b9da6a2956b2f5937ca18211243d033c2f57c9e720167222c394aa660fa070c417ea120ba9542cc3a6b178d0017895b7d35d2e
-  languageName: node
-  linkType: hard
-
-"react-native-web-lottie@npm:^1.4.4":
-  version: 1.4.4
-  resolution: "react-native-web-lottie@npm:1.4.4"
-  dependencies:
-    lottie-web: ^5.7.1
-  peerDependencies:
-    react-native-web: "*"
-  checksum: a9a55c5f0af2b16a278f5a6fd78067a6c4556dd8200747f958a896f5e2635a21b418902837b549f1338bef34abf942ff24aa50fc7cce88b96095cc8aa6a6bb29
   languageName: node
   linkType: hard
 

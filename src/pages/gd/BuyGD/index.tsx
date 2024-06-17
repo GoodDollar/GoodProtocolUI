@@ -3,17 +3,20 @@ import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { Converter, GdOnramperWidget, SlideDownTab } from '@gooddollar/good-design'
 import { Box, Text, useBreakpointValue } from 'native-base'
-import { g$Price } from '@gooddollar/web3sdk'
+import { useEthers } from '@usedapp/core'
 import { useGetEnvChainId } from '@gooddollar/web3sdk-v2'
+import { g$ReservePrice, useGdContextProvider } from '@gooddollar/web3sdk'
 
 import usePromise from 'hooks/usePromise'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { PageLayout } from 'components/Layout/PageLayout'
 
 const CalculatorTab = () => {
+    const { chainId } = useEthers()
+    const { web3 } = useGdContextProvider()
     const [G$Price] = usePromise(
         () =>
-            g$Price()
+            g$ReservePrice(web3, chainId ?? 1)
                 .then(({ DAI }) => +DAI.toSignificant(6))
                 .catch(() => undefined),
         []

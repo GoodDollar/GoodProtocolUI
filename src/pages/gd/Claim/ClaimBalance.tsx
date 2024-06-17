@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { View, Box, Text } from 'native-base'
 import { ArrowButton, BalanceGD } from '@gooddollar/good-design'
 import { SupportedChains, useHasClaimed, useSwitchNetwork } from '@gooddollar/web3sdk-v2'
-import { g$Price } from '@gooddollar/web3sdk'
+import { g$ReservePrice, useGdContextProvider } from '@gooddollar/web3sdk'
 import { useFeatureFlag } from 'posthog-react-native'
 
 import usePromise from 'hooks/usePromise'
@@ -22,13 +22,17 @@ const NextClaim = ({ time }: { time: string }) => (
 
 export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) => {
     const { chainId } = useActiveWeb3React()
-    const [G$Price] = usePromise(
-        () =>
-            g$Price()
-                .then(({ DAI }) => +DAI.toSignificant(6))
-                .catch(() => undefined),
-        [chainId]
-    )
+    const { web3 } = useGdContextProvider()
+    const [G$Price] = usePromise(async () => {
+        try {
+            const reservePrice = await g$ReservePrice(web3, 1)
+
+            return +reservePrice?.DAI?.asFraction.toSignificant(6)
+        } catch {
+            return undefined
+        }
+    }, [web3, chainId])
+
     const { tillClaim } = useClaiming()
     const showUsdPrice = useFeatureFlag('show-gd-price') as boolean | undefined
 

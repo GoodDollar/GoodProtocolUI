@@ -7,6 +7,7 @@ import { parse } from 'qs'
 import isEqual from 'lodash/isEqual'
 import classNames from 'classnames'
 import { RedirectModal, useRedirectNotice, useScreenSize } from '@gooddollar/good-design'
+import { setConfig } from '@gooddollar/web3sdk'
 
 import { AppBar, Popups } from '../components'
 import Web3ReactManager from '../components/Web3ReactManager'
@@ -80,6 +81,8 @@ const AppWrap = styled.div<{ $isMiniPay?: boolean }>`
     }
     `}
 `
+
+setConfig({ graphKey: process.env.REACT_APP_GRAPH_KEY ?? '' })
 
 function App(): JSX.Element {
     const bodyRef = useRef<any>(null)
