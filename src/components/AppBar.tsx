@@ -1,9 +1,9 @@
-import { Fraction } from '@uniswap/sdk-core'
 import React, { useMemo } from 'react'
+import { Fraction } from '@uniswap/sdk-core'
 import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
-import { g$Price } from '@gooddollar/web3sdk'
+import { g$ReservePrice, useGdContextProvider } from '@gooddollar/web3sdk'
 import { Box, ITextProps, Pressable, PresenceTransition, Text, useBreakpointValue } from 'native-base'
 import { useFeatureFlag, useFeatureFlagWithPayload } from 'posthog-react-native'
 import { BasePressable, CentreBox, useScreenSize } from '@gooddollar/good-design'
@@ -187,6 +187,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
     const { account, chainId } = useActiveWeb3React()
     const isSimpleApp = useIsSimpleApp()
     const showPrice = useFeatureFlag('show-gd-price')
+    const { web3 } = useGdContextProvider()
 
     const [, payload] = useFeatureFlagWithPayload('app-notice')
     const { enabled: appNoticeEnabled, message, color, link } = (payload as any) || {}
@@ -198,12 +199,13 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
 
     const [G$Price] = usePromise(async () => {
         try {
-            const data = await g$Price()
-            return data.DAI
+            const data = await g$ReservePrice(web3, 1)
+
+            return data.DAI.asFraction
         } catch {
             return undefined
         }
-    }, [chainId])
+    }, [chainId, web3])
 
     const gdBalance = useMemo(
         () =>
