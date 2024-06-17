@@ -2758,7 +2758,7 @@ msgstr ""
 msgid "Change"
 msgstr "Cambio"
 
-#: src/pages/gd/BuyGD/index.tsx:91
+#: src/pages/gd/BuyGD/index.tsx:94
 msgid "Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$."
 msgstr ""
 
@@ -3124,7 +3124,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "¡UPS! Un error desconocido ocurrió. Actualiza la página o visita desde otro navegador o dispositivo."
 
-#: src/components/AppBar.tsx:337
+#: src/components/AppBar.tsx:339
 msgid "Open main menu"
 msgstr "Abrir menú principal"
 
@@ -3264,7 +3264,7 @@ msgstr "A partir de 1.0, su multiplicador aumentará a 2.0 después de un mes de
 msgid "Success!"
 msgstr "¡Éxito!"
 
-#: src/pages/gd/BuyGD/index.tsx:78
+#: src/pages/gd/BuyGD/index.tsx:81
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
