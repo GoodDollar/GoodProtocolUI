@@ -96,6 +96,9 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
         'w-full': !isTabletView,
     })
 
+    const { ethereum } = window
+    const isMinipay = ethereum?.isMiniPay
+
     const externalLinks = useMemo(
         () => [
             {
@@ -207,12 +210,12 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             {
                 route: '/stakes',
                 text: 'Stake',
-                show: true,
+                show: true && !isMinipay,
             },
             {
                 route: '/portfolio',
                 text: 'Portfolio',
-                show: true,
+                show: true && !isMinipay,
             },
             {
                 route: '/goodid',
@@ -265,40 +268,45 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                             </NavLink>
                         ))}
 
-                    {externalLinks.map((subMenu) =>
-                        subMenu.subMenuTitle === 'Regular' ? (
-                            <SubMenuItems key={subMenu.subMenuTitle} items={subMenu.items} onPress={handleExternal} />
-                        ) : (
-                            <SlideDownTab
-                                key={subMenu.subMenuTitle}
-                                tabTitle={subMenu.subMenuTitle}
-                                viewInteraction={{
-                                    hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 },
-                                }}
-                                styles={{
-                                    button: {
-                                        borderRadius: 12,
-                                    },
-                                    innerButton: {
-                                        height: '10',
-                                    },
-                                    content: { alignItems: 'flex-start', paddingLeft: 4 },
-                                    titleFont: {
-                                        fontFamily: 'subheading',
-                                        fontWeight: '400',
-                                        paddingLeft: 2,
-                                    },
-                                }}
-                                arrowSmall
-                            >
+                    {!isMinipay &&
+                        externalLinks.map((subMenu) =>
+                            subMenu.subMenuTitle === 'Regular' ? (
                                 <SubMenuItems
+                                    key={subMenu.subMenuTitle}
                                     items={subMenu.items}
-                                    styles={{ alignItems: 'flex-start', paddingLeft: 4 }}
                                     onPress={handleExternal}
                                 />
-                            </SlideDownTab>
-                        )
-                    )}
+                            ) : (
+                                <SlideDownTab
+                                    key={subMenu.subMenuTitle}
+                                    tabTitle={subMenu.subMenuTitle}
+                                    viewInteraction={{
+                                        hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 },
+                                    }}
+                                    styles={{
+                                        button: {
+                                            borderRadius: 12,
+                                        },
+                                        innerButton: {
+                                            height: '10',
+                                        },
+                                        content: { alignItems: 'flex-start', paddingLeft: 4 },
+                                        titleFont: {
+                                            fontFamily: 'subheading',
+                                            fontWeight: '400',
+                                            paddingLeft: 2,
+                                        },
+                                    }}
+                                    arrowSmall
+                                >
+                                    <SubMenuItems
+                                        items={subMenu.items}
+                                        styles={{ alignItems: 'flex-start', paddingLeft: 4 }}
+                                        onPress={handleExternal}
+                                    />
+                                </SlideDownTab>
+                            )
+                        )}
                 </ScrollView>
                 <div className={footerStyles}>
                     <div className="flex flex-row w-full h-6 gap-10">

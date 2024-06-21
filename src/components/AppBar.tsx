@@ -189,6 +189,9 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
     const showPrice = useFeatureFlag('show-gd-price')
     const { web3 } = useGdContextProvider()
 
+    const { ethereum } = window
+    const isMinipay = ethereum?.isMiniPay
+
     const [, payload] = useFeatureFlagWithPayload('app-notice')
     const { enabled: appNoticeEnabled, message, color, link } = (payload as any) || {}
     const [sidebarOpen, setSidebarOpen] = sideBar
@@ -331,21 +334,19 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                                 </PresenceTransition>
                             </Box>
                         )}
-                        {!isMinipay && (
-                            <div className="z-50 flex flex-row items-center">
-                                <button
-                                    onClick={toggleSideBar}
-                                    className="inline-flex items-center justify-center ml-2 rounded-md mobile-menu-button focus:outline-none"
-                                >
-                                    <span className="sr-only">{i18n._(t`Open main menu`)}</span>
-                                    {sidebarOpen ? (
-                                        <X title="Close" className="block w-6 h-6" aria-hidden="true" />
-                                    ) : (
-                                        <Burger title="Burger" className="block w-6 h-6" aria-hidden="true" />
-                                    )}
-                                </button>
-                            </div>
-                        )}
+                        <div className="z-50 flex flex-row items-center">
+                            <button
+                                onClick={toggleSideBar}
+                                className="inline-flex items-center justify-center ml-2 rounded-md mobile-menu-button focus:outline-none"
+                            >
+                                <span className="sr-only">{i18n._(t`Open main menu`)}</span>
+                                {sidebarOpen ? (
+                                    <X title="Close" className="block w-6 h-6" aria-hidden="true" />
+                                ) : (
+                                    <Burger title="Burger" className="block w-6 h-6" aria-hidden="true" />
+                                )}
+                            </button>
+                        </div>
 
                         {!isMinipay && (
                             <MenuContainer>
