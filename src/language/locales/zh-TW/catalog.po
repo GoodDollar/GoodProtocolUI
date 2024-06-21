@@ -2733,7 +2733,7 @@ msgstr "餘額"
 msgid "Blocked address"
 msgstr "被封鎖的地址"
 
-#: src/components/SideBar.tsx:105
+#: src/components/SideBar.tsx:108
 msgid "Buy G$"
 msgstr ""
 
@@ -2872,11 +2872,11 @@ msgstr "複製地址"
 #~ msgid "Current Rate"
 #~ msgstr "當前利率"
 
-#: src/components/SideBar.tsx:126
+#: src/components/SideBar.tsx:129
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:164
+#: src/components/SideBar.tsx:167
 msgid "Dashboard"
 msgstr ""
 
@@ -2899,11 +2899,11 @@ msgstr "存款概述"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:171
+#: src/components/SideBar.tsx:174
 msgid "Docs"
 msgstr "文档"
 
-#: src/components/SideBar.tsx:112
+#: src/components/SideBar.tsx:115
 msgid "Donate"
 msgstr ""
 
@@ -2915,7 +2915,7 @@ msgstr "加載失敗"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:145
+#: src/components/SideBar.tsx:148
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2948,7 +2948,7 @@ msgstr "去投資組合"
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:178
+#: src/components/SideBar.tsx:181
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2977,7 +2977,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:157
+#: src/components/SideBar.tsx:160
 msgid "GoodWallet"
 msgstr ""
 
@@ -3107,7 +3107,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "糟糕！出現未知錯誤。請刷新頁面，或從其他瀏覽器或設備訪問"
 
-#: src/components/AppBar.tsx:339
+#: src/components/AppBar.tsx:342
 msgid "Open main menu"
 msgstr "打開主菜單"
 
@@ -3183,7 +3183,7 @@ msgstr "路徑"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "路由經過這些代幣將給您的交易帶來最好的價格。"
 
-#: src/components/SideBar.tsx:119
+#: src/components/SideBar.tsx:122
 msgid "Save G$"
 msgstr ""
 
@@ -3210,7 +3210,7 @@ msgstr "可容忍滑點"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:138
+#: src/components/SideBar.tsx:141
 msgid "Squid Router"
 msgstr ""
 

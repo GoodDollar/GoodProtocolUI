@@ -2754,7 +2754,7 @@ msgstr "Остаток средств"
 msgid "Blocked address"
 msgstr "Заблокированный адрес"
 
-#: src/components/SideBar.tsx:105
+#: src/components/SideBar.tsx:108
 msgid "Buy G$"
 msgstr ""
 
@@ -2893,11 +2893,11 @@ msgstr "Копировать адрес"
 #~ msgid "Current Rate"
 #~ msgstr "Текущая скорость"
 
-#: src/components/SideBar.tsx:126
+#: src/components/SideBar.tsx:129
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:164
+#: src/components/SideBar.tsx:167
 msgid "Dashboard"
 msgstr ""
 
@@ -2920,11 +2920,11 @@ msgstr "Обзор депозита"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:171
+#: src/components/SideBar.tsx:174
 msgid "Docs"
 msgstr "Документы"
 
-#: src/components/SideBar.tsx:112
+#: src/components/SideBar.tsx:115
 msgid "Donate"
 msgstr ""
 
@@ -2936,7 +2936,7 @@ msgstr "ошибка загрузки"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:145
+#: src/components/SideBar.tsx:148
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2969,7 +2969,7 @@ msgstr "Перейти к портфолио"
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:178
+#: src/components/SideBar.tsx:181
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2998,7 +2998,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:157
+#: src/components/SideBar.tsx:160
 msgid "GoodWallet"
 msgstr ""
 
@@ -3128,7 +3128,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Ой! Произошла неизвестная ошибка. Обновите страницу или перейдите в другой браузер или другое устройство."
 
-#: src/components/AppBar.tsx:339
+#: src/components/AppBar.tsx:342
 msgid "Open main menu"
 msgstr "Открыть главное меню"
 
@@ -3204,7 +3204,7 @@ msgstr "Маршрут"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "Маршрутизация через эти токены привела к лучшей цене для вашей сделки."
 
-#: src/components/SideBar.tsx:119
+#: src/components/SideBar.tsx:122
 msgid "Save G$"
 msgstr ""
 
@@ -3231,7 +3231,7 @@ msgstr "Допуск по проскальзыванию"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:138
+#: src/components/SideBar.tsx:141
 msgid "Squid Router"
 msgstr ""
 

@@ -1506,7 +1506,7 @@ msgstr "संतुलन"
 msgid "Blocked address"
 msgstr ""
 
-#: src/components/SideBar.tsx:105
+#: src/components/SideBar.tsx:108
 msgid "Buy G$"
 msgstr ""
 
@@ -1645,11 +1645,11 @@ msgstr ""
 #~ msgid "Current Rate"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:126
+#: src/components/SideBar.tsx:129
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:164
+#: src/components/SideBar.tsx:167
 msgid "Dashboard"
 msgstr ""
 
@@ -1672,11 +1672,11 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:171
+#: src/components/SideBar.tsx:174
 msgid "Docs"
 msgstr "डॉक्स"
 
-#: src/components/SideBar.tsx:112
+#: src/components/SideBar.tsx:115
 msgid "Donate"
 msgstr ""
 
@@ -1688,7 +1688,7 @@ msgstr "लोड करने में विफल"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:145
+#: src/components/SideBar.tsx:148
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -1721,7 +1721,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:178
+#: src/components/SideBar.tsx:181
 msgid "Good Airdrop"
 msgstr ""
 
@@ -1750,7 +1750,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:157
+#: src/components/SideBar.tsx:160
 msgid "GoodWallet"
 msgstr ""
 
@@ -1880,7 +1880,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "उफ़! एक अज्ञात ग़लती हुई। कृपया पृष्ठ को रीफ़्रेश करें, या किसी अन्य ब्राउज़र या डिवाइस से जाएँ"
 
-#: src/components/AppBar.tsx:339
+#: src/components/AppBar.tsx:342
 msgid "Open main menu"
 msgstr "मुख्य मेनू खोलें"
 
@@ -1956,7 +1956,7 @@ msgstr "मार्ग"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "इन टोकन के माध्यम से रूटिंग करने से आपके व्यापार के लिए सबसे अच्छी कीमत मिली।"
 
-#: src/components/SideBar.tsx:119
+#: src/components/SideBar.tsx:122
 msgid "Save G$"
 msgstr ""
 
@@ -1983,7 +1983,7 @@ msgstr "स्लिपेज टॉलरेंस"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:138
+#: src/components/SideBar.tsx:141
 msgid "Squid Router"
 msgstr ""
 

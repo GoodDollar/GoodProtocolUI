@@ -2254,7 +2254,7 @@ msgstr "Balans"
 msgid "Blocked address"
 msgstr "Geblokkeerde adres"
 
-#: src/components/SideBar.tsx:105
+#: src/components/SideBar.tsx:108
 msgid "Buy G$"
 msgstr ""
 
@@ -2393,11 +2393,11 @@ msgstr "Kopieer adres"
 #~ msgid "Current Rate"
 #~ msgstr "Huidige Koers"
 
-#: src/components/SideBar.tsx:126
+#: src/components/SideBar.tsx:129
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:164
+#: src/components/SideBar.tsx:167
 msgid "Dashboard"
 msgstr ""
 
@@ -2420,11 +2420,11 @@ msgstr "Deposito oorsig"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:171
+#: src/components/SideBar.tsx:174
 msgid "Docs"
 msgstr "Dokumente"
 
-#: src/components/SideBar.tsx:112
+#: src/components/SideBar.tsx:115
 msgid "Donate"
 msgstr ""
 
@@ -2436,7 +2436,7 @@ msgstr "misluk om te laai"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:145
+#: src/components/SideBar.tsx:148
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2469,7 +2469,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:178
+#: src/components/SideBar.tsx:181
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2498,7 +2498,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:157
+#: src/components/SideBar.tsx:160
 msgid "GoodWallet"
 msgstr ""
 
@@ -2628,7 +2628,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Oeps! 'n Onbekende fout het voorgekom. Verfris asseblief die bladsy, of besoek vanaf 'n ander blaaier of toestel"
 
-#: src/components/AppBar.tsx:339
+#: src/components/AppBar.tsx:342
 msgid "Open main menu"
 msgstr "Open hoofkieslys"
 
@@ -2704,7 +2704,7 @@ msgstr "Roete"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "Routing deur middel van hierdie tekens het gelei tot die beste prys vir jou handel."
 
-#: src/components/SideBar.tsx:119
+#: src/components/SideBar.tsx:122
 msgid "Save G$"
 msgstr ""
 
@@ -2731,7 +2731,7 @@ msgstr "Glip Verdraagsaamheid"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:138
+#: src/components/SideBar.tsx:141
 msgid "Squid Router"
 msgstr ""
 

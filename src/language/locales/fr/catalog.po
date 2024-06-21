@@ -2734,7 +2734,7 @@ msgstr "Solde"
 msgid "Blocked address"
 msgstr ""
 
-#: src/components/SideBar.tsx:105
+#: src/components/SideBar.tsx:108
 msgid "Buy G$"
 msgstr ""
 
@@ -2873,11 +2873,11 @@ msgstr ""
 #~ msgid "Current Rate"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:126
+#: src/components/SideBar.tsx:129
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:164
+#: src/components/SideBar.tsx:167
 msgid "Dashboard"
 msgstr ""
 
@@ -2900,11 +2900,11 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:171
+#: src/components/SideBar.tsx:174
 msgid "Docs"
 msgstr ""
 
-#: src/components/SideBar.tsx:112
+#: src/components/SideBar.tsx:115
 msgid "Donate"
 msgstr ""
 
@@ -2916,7 +2916,7 @@ msgstr "échec du chargement"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:145
+#: src/components/SideBar.tsx:148
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2949,7 +2949,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:178
+#: src/components/SideBar.tsx:181
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2978,7 +2978,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:157
+#: src/components/SideBar.tsx:160
 msgid "GoodWallet"
 msgstr ""
 
@@ -3108,7 +3108,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Oops! Une erreur inconnue est survenue. Veuillez actualiser la page ou la consulter à partir d'un autre navigateur ou appareil"
 
-#: src/components/AppBar.tsx:339
+#: src/components/AppBar.tsx:342
 msgid "Open main menu"
 msgstr "Ouvrir le menu principal"
 
@@ -3184,7 +3184,7 @@ msgstr ""
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "Le routage à travers ces tokens vous a permis d'obtenir le meilleur prix pour votre trade."
 
-#: src/components/SideBar.tsx:119
+#: src/components/SideBar.tsx:122
 msgid "Save G$"
 msgstr ""
 
@@ -3211,7 +3211,7 @@ msgstr "Tolérance de slippage"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:138
+#: src/components/SideBar.tsx:141
 msgid "Squid Router"
 msgstr ""
 
