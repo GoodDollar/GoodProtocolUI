@@ -331,24 +331,28 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                                 </PresenceTransition>
                             </Box>
                         )}
-                        <div className="z-50 flex flex-row items-center">
-                            <button
-                                onClick={toggleSideBar}
-                                className="inline-flex items-center justify-center ml-2 rounded-md mobile-menu-button focus:outline-none"
-                            >
-                                <span className="sr-only">{i18n._(t`Open main menu`)}</span>
-                                {sidebarOpen ? (
-                                    <X title="Close" className="block w-6 h-6" aria-hidden="true" />
-                                ) : (
-                                    <Burger title="Burger" className="block w-6 h-6" aria-hidden="true" />
-                                )}
-                            </button>
-                        </div>
+                        {!isMinipay && (
+                            <div className="z-50 flex flex-row items-center">
+                                <button
+                                    onClick={toggleSideBar}
+                                    className="inline-flex items-center justify-center ml-2 rounded-md mobile-menu-button focus:outline-none"
+                                >
+                                    <span className="sr-only">{i18n._(t`Open main menu`)}</span>
+                                    {sidebarOpen ? (
+                                        <X title="Close" className="block w-6 h-6" aria-hidden="true" />
+                                    ) : (
+                                        <Burger title="Burger" className="block w-6 h-6" aria-hidden="true" />
+                                    )}
+                                </button>
+                            </div>
+                        )}
 
-                        <MenuContainer>
-                            {!isSimpleApp ? <Web3Bar /> : null}
-                            {/* // : isMobile ? <NavBar /> : null} <-- dont show navbar anyway until design updates */}
-                        </MenuContainer>
+                        {!isMinipay && (
+                            <MenuContainer>
+                                {!isSimpleApp ? <Web3Bar /> : null}
+                                {/* // : isMobile ? <NavBar /> : null} <-- dont show navbar anyway until design updates */}
+                            </MenuContainer>
+                        )}
                     </div>
                 </CentreBox>
                 <div className="px-4 pb-2 lg:hidden">
