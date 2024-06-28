@@ -33,6 +33,9 @@ export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) =
         }
     }, [web3, chainId])
 
+    const { ethereum } = window
+    const isMinipay = ethereum?.isMiniPay
+
     const { tillClaim } = useClaiming()
     const showUsdPrice = useFeatureFlag('show-gd-price') as boolean | undefined
 
@@ -91,7 +94,7 @@ export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) =
                 <BalanceGD gdPrice={G$Price} refresh={refresh} showUsd={showUsdPrice} />
             </Box>
             <Box alignItems="center">
-                {!isSimpleApp && !claimedAlt && (
+                {!isSimpleApp && !isMinipay && !claimedAlt && (
                     <ArrowButton
                         borderWidth="1"
                         borderColor="borderBlue"
