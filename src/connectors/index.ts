@@ -1,6 +1,7 @@
 import LogoSmall from '../assets/images/logo_primary_small.png'
 import { torus as torusModule } from '@gooddollar/web3sdk-v2'
 import { getNetworkEnv } from 'utils/env'
+import { sample } from 'lodash'
 
 const network = getNetworkEnv()
 
@@ -29,7 +30,7 @@ export const connectOptions = {
             id: '0xa4ec',
             token: 'CELO',
             label: 'Celo',
-            rpcUrl: process.env.REACT_APP_CELO_RPC ?? 'https://rpc.ankr.com/celo',
+            rpcUrl: sample(process.env.REACT_APP_CELO_RPC?.split(',')) ?? 'https://rpc.ankr.com/celo',
         },
         {
             id: '0x1',
@@ -42,7 +43,7 @@ export const connectOptions = {
             id: '0x7a',
             token: 'FUSE',
             label: 'Fuse Network',
-            rpcUrl: process.env.REACT_APP_FUSE_RPC ?? 'https://rpc.fuse.io',
+            rpcUrl: sample(process.env.REACT_APP_FUSE_RPC?.split(',')) ?? 'https://rpc.fuse.io',
         },
     ],
     appMetadata: {

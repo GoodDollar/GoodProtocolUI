@@ -6,6 +6,7 @@ import { Mainnet } from '@usedapp/core'
 import { ChainId } from '@sushiswap/sdk'
 import { DAO_NETWORK, GdSdkContext, useEnvWeb3 } from '@gooddollar/web3sdk'
 import { AsyncStorage, Celo, Fuse, Web3Provider } from '@gooddollar/web3sdk-v2'
+import { sample } from 'lodash'
 
 import useActiveWeb3React from './useActiveWeb3React'
 import { getEnv } from 'utils/env'
@@ -22,6 +23,8 @@ type NetworkSettings = {
 }
 
 export function useNetwork(): NetworkSettings {
+    const celoRpcList = sample(process.env.REACT_APP_CELO_RPC?.split(',')) ?? ''
+    const fuseRpcList = sample(process.env.REACT_APP_FUSE_RPC?.split(',')) ?? 'https://rpc.fuse.io'
     const [currentNetwork, rpcs] = useMemo(
         () => [
             process.env.REACT_APP_NETWORK || 'fuse',
@@ -29,8 +32,8 @@ export function useNetwork(): NetworkSettings {
                 MAINNET_RPC:
                     process.env.REACT_APP_MAINNET_RPC ||
                     (ethers.getDefaultProvider('mainnet') as any).providerConfigs[0].provider.connection.url,
-                FUSE_RPC: process.env.REACT_APP_FUSE_RPC || 'https://rpc.fuse.io',
-                CELO_RPC: process.env.REACT_APP_CELO_RPC || 'https://forno.celo.org',
+                FUSE_RPC: fuseRpcList || 'https://rpc.fuse.io',
+                CELO_RPC: celoRpcList || 'https://forno.celo.org',
                 KOVAN_RPC: undefined,
                 ROPSTEN_RPC: undefined,
             },
@@ -88,8 +91,8 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                     readOnlyChainId: undefined,
                     readOnlyUrls: {
                         1: 'https://rpc.ankr.com/eth',
-                        122: 'https://rpc.fuse.io',
-                        42220: import.meta.env.REACT_APP_CELO_RPC || 'https://forno.celo.org',
+                        122: sample(process.env.REACT_APP_FUSE_RPC?.split(',')) || 'https://rpc.fuse.io',
+                        42220: sample(process.env.REACT_APP_CELO_RPC?.split(',')) || 'https://forno.celo.org',
                     },
                 }}
             >
