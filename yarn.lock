@@ -4831,9 +4831,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.1.47":
-  version: 0.1.47
-  resolution: "@gooddollar/good-design@npm:0.1.47"
+"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 0.1.48-beta.20492eb6
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=4e5dc9&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4842,6 +4842,7 @@ __metadata:
     "@lingui/react": ^3.14.0
     "@magiklabs/react-sdk": ^1.0.8
     "@uniswap/sdk-core": ^3.1.0
+    async-await-mutex-lock: ^1.0.11
     buffer: ^6.0.3
     ethers: 5.7.2
     metro-react-native-babel-preset: ^0.72.0
@@ -4864,8 +4865,9 @@ __metadata:
     react-native-webview: ^13.2.2
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
+    react-use-wizard: ^2.3.0
     require-from-string: ^2.0.2
-  checksum: 0024f5dd410ff21e10e307fdfd29b21e70105136e11e21f10ba64fa46cdc6914adefddaa982c21b0679c0a8e402efd079b44f42947112f2f46c0605c48b8c586
+  checksum: 7c671a0ec507c81359b4602dc2ba917ec7d98af16a5d83e3120731a65f1abc4bafb863e245b3dbe674f753a235c81d0ed0a3bece2007f9d015116bc0a2f985c4
   languageName: node
   linkType: hard
 
@@ -4917,10 +4919,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.1.47
+    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
     "@gooddollar/goodprotocol": ^2.0.24
     "@gooddollar/web3sdk": ^0.1.33
-    "@gooddollar/web3sdk-v2": ^0.2.20
+    "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2"
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^4.0.0
@@ -5099,9 +5101,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.2.20":
-  version: 0.2.22
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.22"
+"@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 0.2.23-beta.20492eb6
+  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=6b84e7&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5148,7 +5150,7 @@ __metadata:
     "@react-native-async-storage/async-storage": 1.17.10
     react-native: "*"
     react-native-web: "*"
-  checksum: 2f410e624288bedcf90eb1cb7b1e4b0ea700fe4dd735f2bd3558a82643fa39c24408fd2d7747136a250fc478fcfa6bca5640e47fe0d5b5c7f4830493637fe615
+  checksum: cb467f465cfd4cda95133c5612dd480b936f2165aceabe4d8e2063b21791f227b6bcefbf6ed32243c3b66a016ea4b3a8a155977144290a20a9487ae5c6180db3
   languageName: node
   linkType: hard
 
@@ -15305,6 +15307,13 @@ __metadata:
   version: 2.0.0
   resolution: "astral-regex@npm:2.0.0"
   checksum: 876231688c66400473ba505731df37ea436e574dd524520294cc3bbc54ea40334865e01fa0d074d74d036ee874ee7e62f486ea38bc421ee8e6a871c06f011766
+  languageName: node
+  linkType: hard
+
+"async-await-mutex-lock@npm:^1.0.11":
+  version: 1.0.11
+  resolution: "async-await-mutex-lock@npm:1.0.11"
+  checksum: 90dcedd4c9846109ac157ddf33087130b90b31d310469cfe19cf0f068497f8aa199196a36d35b8086dcffc44cd8cdb16f7da879141cbc1520f049931711ee20c
   languageName: node
   linkType: hard
 
@@ -35700,6 +35709,16 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.2 || ^18.0.0
   checksum: 369dd981b3b1af69cbe8835a2f79083e3471eacf511f6f232a304ef4617b3dbb174e008061830c31b141cc58e3e1b739368ec61a58f64592753f30171eb4bc4e
+  languageName: node
+  linkType: hard
+
+"react-use-wizard@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "react-use-wizard@npm:2.3.0"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: cb17577c90001d56c244b248ed3f51d8c92b26c5ec2438d0c61c352c9087d63789beb9412219022513b9a9b8161acbdaf793e427c1f3e43d4daba1397f7bf080
   languageName: node
   linkType: hard
 
