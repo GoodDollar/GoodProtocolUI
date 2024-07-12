@@ -4831,9 +4831,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:0.1.48-beta.1d93a6d4":
-  version: 0.1.48-beta.1d93a6d4
-  resolution: "@gooddollar/good-design@npm:0.1.48-beta.1d93a6d4"
+"@gooddollar/good-design@npm:0.1.48-beta.e5dee765":
+  version: 0.1.48-beta.e5dee765
+  resolution: "@gooddollar/good-design@npm:0.1.48-beta.e5dee765"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4867,7 +4867,7 @@ __metadata:
     react-use-promise: ^0.5.0
     react-use-wizard: ^2.3.0
     require-from-string: ^2.0.2
-  checksum: 5d2649b936afc8ca7ab1d76ace413f6ad5a79afa27bd805d3afc5d8fc4094a18ed006ff7babfcd6aae5378b6684073d97a7ac252952a7ad2d49607c1a6537520
+  checksum: 18f9a10691c5454458015bab17099beeb1025b950d784b6d382b6a95e464bbc18096ea4ce2083bbbdd339417076ee527697afafb7dc10bf5d592ccd5c03c1566
   languageName: node
   linkType: hard
 
@@ -4919,10 +4919,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": 0.1.48-beta.1d93a6d4
+    "@gooddollar/good-design": 0.1.48-beta.e5dee765
     "@gooddollar/goodprotocol": ^2.0.24
     "@gooddollar/web3sdk": ^0.1.33
-    "@gooddollar/web3sdk-v2": 0.2.23-beta.1d93a6d4
+    "@gooddollar/web3sdk-v2": 0.2.23-beta.e5dee765
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^4.0.0
@@ -5101,9 +5101,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:0.2.23-beta.1d93a6d4":
-  version: 0.2.23-beta.1d93a6d4
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.23-beta.1d93a6d4"
+"@gooddollar/web3sdk-v2@npm:0.2.23-beta.e5dee765":
+  version: 0.2.23-beta.e5dee765
+  resolution: "@gooddollar/web3sdk-v2@npm:0.2.23-beta.e5dee765"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5150,7 +5150,7 @@ __metadata:
     "@react-native-async-storage/async-storage": 1.17.10
     react-native: "*"
     react-native-web: "*"
-  checksum: e6af8cf46d7f8a2e25041c930952da895b681dba1c9cf598f7d96a975cd63192698ace00ee3aa4dfc2d9ddb52ec3de3cfe287e90d30f195dc5155b57c4fabc4e
+  checksum: ac1d8ea749ed875b74b39d9ca5cd57c893660436e328f033dd3b845b06bc7ef1f36f36094840f3a7be6887d17e525ff7969aee86d4dd3447e5df1af3a14f91e7
   languageName: node
   linkType: hard
 
