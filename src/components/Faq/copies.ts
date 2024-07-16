@@ -78,6 +78,45 @@ const faqSwapCopy: FaqItemCopy[] = [
     },
 ]
 
+const faqBridgeCopy: FaqItemCopy[] = [
+    {
+        id: 'whatismicrobridge',
+        question: `What is the MicroBridge?`,
+        answer: `A bridge is a tool built to transfer assets from one network to another. It’s also a verb, used to describe that action: “I bridged my G$ from Fuse to Celo.” \n\nGoodDollar operates across Ethereum, Celo and Fuse networks, and G$ tokens can be bridged across those networks. \n\nThanks to the MicroBridge you can easily move G$ on Fuse to G$ on Celo and vice versa. Other GoodDollar bridges are visible on`,
+        links: [
+            {
+                href: 'http://gooddapp.org',
+                linkText: 'Gooddapp.org',
+            },
+        ],
+    },
+    {
+        id: 'whocanuse',
+        question: `Who can use it?`,
+        answer: `Anyone can use the MicroBridge, but there are a few requirements to ensure a smooth transfer of your G$ tokens:\n\n1. Wallet Compatibility: Verify that your wallet is compatible with both the Fuse and Celo networks. Sending G$ to incompatible wallets will result in the loss of funds.\n\n2. Fees and Gas: Using the MicroBridge requires G$ tokens for fees and native tokens to cover gas fees on these networks. Make sure you have sufficient balances. See below “What are the fees for using the MicroBridge?” for more details.\n\n3. Transaction Limits: You may bridge up to 5M G$ per transaction, with a daily limit of 30M G$ per wallet.`,
+    },
+    {
+        id: 'howdoesitwork',
+        question: `How does it work?`,
+        answer: `The MicroBridge is a combination of 2 smart contracts: one deployed on each chain that allows for cross-chain transfers of value. Your funds are sent to one contract which burns them on the source chain and mints them on the destination chain.`,
+    },
+    {
+        id: 'whatfeesmicrobridge',
+        question: `What are the fees for using the MicroBridge?`,
+        answer: `The fee for using the MicroBridge is 0.15% per transaction (minimum 10 G$, maximum 1M G$), which covers operation of the MicroBridge node. All MicroBridge transactions incur gas fees in the native network tokens (Fuse or Celo).\n\nIf you choose to Self-Relay to expedite your transaction, 50% of the MicroBridge fee will be refunded. However please note that Self-Relaying will cause you to incur additional gas fees.`,
+    },
+    {
+        id: 'whatarethelimits',
+        question: `What are the limits?`,
+        answer: `You may bridge up to 5M G$ per transaction, with a daily limit of 30M G$ per wallet.`,
+    },
+    {
+        id: 'trackbridge',
+        question: `Can I track the status of my bridge transaction?`,
+        answer: `The MicroBridge interface provides information about your bridge transaction in “Recent Transactions.”`,
+    },
+]
+
 const faqBuyCopy: FaqItemCopy[] = [
     {
         id: 'whatthis',
@@ -123,4 +162,4 @@ If you’ve paid with a bank transfer, the most common reasons for failed orders
     },
 ]
 
-export { faqBuyCopy, faqSwapCopy }
+export { faqBuyCopy, faqBridgeCopy, faqSwapCopy }

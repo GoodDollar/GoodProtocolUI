@@ -4,7 +4,13 @@ import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { SlideDownTab, useScreenSize } from '@gooddollar/good-design'
 
-import { faqBuyCopy, faqSwapCopy } from './copies'
+import { faqBuyCopy, faqBridgeCopy, faqSwapCopy } from './copies'
+
+const faqs = {
+    swap: faqSwapCopy,
+    buy: faqBuyCopy,
+    bridge: faqBridgeCopy,
+}
 
 const FaqItem = ({ id, question, answer, links }) => {
     const { isDesktopView } = useScreenSize()
@@ -68,8 +74,8 @@ const FaqItem = ({ id, question, answer, links }) => {
     )
 }
 
-export const Faq = ({ type }: { type: 'swap' | 'buy' }) => {
-    const copies = type === 'buy' ? faqBuyCopy : faqSwapCopy
+export const Faq = ({ type }: { type: 'swap' | 'buy' | 'bridge' }) => {
+    const copies = faqs[type]
 
     return (
         <SlideDownTab
