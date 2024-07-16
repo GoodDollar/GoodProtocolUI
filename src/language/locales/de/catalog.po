@@ -3209,7 +3209,7 @@ msgstr ""
 msgid "Savings"
 msgstr ""
 
-#: src/pages/gd/MicroBridge/index.tsx:24
+#: src/pages/gd/MicroBridge/index.tsx:21
 msgid ""
 "Seamlessly convert between Fuse G$ tokens to Celo and vice versa, \n"
 "enabling versatile use of G$ tokens across various platforms and \n"
