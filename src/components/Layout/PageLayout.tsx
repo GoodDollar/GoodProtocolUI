@@ -8,7 +8,7 @@ import { Faq } from 'components/Faq/Faq'
 
 interface PageLayoutProps {
     title: string
-    faqType?: 'buy' | 'swap'
+    faqType?: 'buy' | 'swap' | 'bridge'
     customTabs?: JSX.Element[]
 }
 

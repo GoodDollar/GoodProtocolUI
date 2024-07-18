@@ -2670,15 +2670,15 @@ msgstr ""
 msgid "{amount} {0}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:45
+#: src/components/Faq/Faq.tsx:51
 msgid "{answer}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:61
+#: src/components/Faq/Faq.tsx:67
 msgid "{linkText}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:13
+#: src/components/Faq/Faq.tsx:19
 msgid "{question}"
 msgstr ""
 
@@ -3203,6 +3203,13 @@ msgstr ""
 #: src/components/Savings/SavingsCard/SavingsCardRow/index.tsx:36
 #: src/pages/gd/Stake/Savings/index.tsx:151
 msgid "Savings"
+msgstr ""
+
+#: src/pages/gd/MicroBridge/index.tsx:21
+msgid ""
+"Seamlessly convert between Fuse G$ tokens to Celo and vice versa, \n"
+"enabling versatile use of G$ tokens across various platforms and \n"
+"ecosystems"
 msgstr ""
 
 #: src/pages/gd/Swap/SwapTokensModal/index.tsx:53

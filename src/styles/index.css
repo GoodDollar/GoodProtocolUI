@@ -85,7 +85,10 @@ https://tailwindcss.com/docs/adding-custom-styles#adding-base-styles
     border-color: unset;
     border-width: unset;
     border: none;
-    font-size: 24px;
+    font-size: 18px;
+    line-height: unset;
+    overflow: hidden;
+    padding: 8px 12px;
   }
   [type='checkbox']:checked {
     background-image: none
