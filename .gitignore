@@ -54,3 +54,4 @@ deploy.sh
 
 .certs
 yalc.lock
+.continueignore
