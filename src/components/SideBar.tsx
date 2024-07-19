@@ -222,12 +222,6 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 text: 'GoodID',
                 show: isWhitelisted,
             },
-
-            {
-                route: '/bridge',
-                text: 'Bridge',
-                show: process.env.REACT_APP_CELO_PHASE_3 && !isMinipay,
-            },
             {
                 route: '/microbridge',
                 text: 'Micro Bridge',
