@@ -4921,7 +4921,7 @@ __metadata:
     "@fullhuman/postcss-purgecss": ^4.0.3
     "@gooddollar/good-design": ^0.1.49
     "@gooddollar/goodprotocol": ^2.0.24
-    "@gooddollar/web3sdk": ^0.1.34
+    "@gooddollar/web3sdk": ^0.1.35
     "@gooddollar/web3sdk-v2": ^0.2.24
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
@@ -5102,8 +5102,8 @@ __metadata:
   linkType: soft
 
 "@gooddollar/web3sdk-v2@npm:^0.2.24":
-  version: 0.2.24
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.24"
+  version: 0.2.25
+  resolution: "@gooddollar/web3sdk-v2@npm:0.2.25"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5150,13 +5150,13 @@ __metadata:
     "@react-native-async-storage/async-storage": 1.17.10
     react-native: "*"
     react-native-web: "*"
-  checksum: 37f001ee95af8b29f94dcaaab76a7bf3792855d73c0a38733e35e332a2f836cefc3d503eb88955a45efce09d949a4d8a8580570533a2c91b92b3e96345d33338
+  checksum: bf79e10545f3605b3dc0c44a345083e966ac453cf3cfa18380bbf41bf657b53916c9166dcb369776f23f69d2d34e06dd4bb51795a05e0232d0d44d9a1fb26388
   languageName: node
   linkType: hard
 
-"@gooddollar/web3sdk@npm:^0.1.34":
-  version: 0.1.34
-  resolution: "@gooddollar/web3sdk@npm:0.1.34"
+"@gooddollar/web3sdk@npm:^0.1.35":
+  version: 0.1.35
+  resolution: "@gooddollar/web3sdk@npm:0.1.35"
   dependencies:
     "@apollo/client": ^3.2.0
     "@gooddollar/goodprotocol": ^2.0.22
@@ -5178,7 +5178,7 @@ __metadata:
     web3-eth: 1.8.2
     web3-eth-contract: 1.8.2
     web3-utils: 1.8.2
-  checksum: 346e8c785d6e59e3efb90268354684916f2dbbda686d3cad2a642ee4ef29f5436f179a57a5be9bf8fcfedc51e7c68d87f61c28f51f8d8d21cdd8110c94b5ff12
+  checksum: db992d3cd86bce5bebf0d9bbd42cedea1ff09115717cbf84fb8541a4c1f4204fe950d08072a3a8740349985b747fa4a57e402b77fffb53d43583b6f22550cc02
   languageName: node
   linkType: hard
 
