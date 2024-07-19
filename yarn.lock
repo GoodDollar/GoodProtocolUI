@@ -4831,9 +4831,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.1.49":
+"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.1.49
-  resolution: "@gooddollar/good-design@npm:0.1.49"
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=115d6e&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4867,7 +4867,7 @@ __metadata:
     react-use-promise: ^0.5.0
     react-use-wizard: ^2.3.0
     require-from-string: ^2.0.2
-  checksum: ca953922382547921b39f6b95e3e6b28dba600ebc8cec5608b635d800fd0b49b75ec2fdbeebb91c04ab3eaf25d72713e5042143c6f12665557f14be565a1b4cc
+  checksum: 005fa5b45b213bc49ef982f2e76918040031b2cdcf97ee9df228500584035d0cc58c17f2338093ee80a0a3dfe500d703692c0ef8448ccb0d86a9cf1d59f56feb
   languageName: node
   linkType: hard
 
@@ -4919,10 +4919,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.1.49
+    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
     "@gooddollar/goodprotocol": ^2.0.24
     "@gooddollar/web3sdk": ^0.1.34
-    "@gooddollar/web3sdk-v2": ^0.2.23
+    "@gooddollar/web3sdk-v2": ^0.2.24
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^4.0.0
@@ -5101,9 +5101,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.2.23":
-  version: 0.2.23
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.23"
+"@gooddollar/web3sdk-v2@npm:^0.2.24":
+  version: 0.2.24
+  resolution: "@gooddollar/web3sdk-v2@npm:0.2.24"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5150,7 +5150,7 @@ __metadata:
     "@react-native-async-storage/async-storage": 1.17.10
     react-native: "*"
     react-native-web: "*"
-  checksum: 693f101b5a589482695cb6de219193e03acaeb95668e0ad7d432681d20daa4f5e8632604271bd5d2d3a72db0816c15617f7eeba2571b1ec53482212b8144f75a
+  checksum: 37f001ee95af8b29f94dcaaab76a7bf3792855d73c0a38733e35e332a2f836cefc3d503eb88955a45efce09d949a4d8a8580570533a2c91b92b3e96345d33338
   languageName: node
   linkType: hard
 
