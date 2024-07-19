@@ -4922,7 +4922,7 @@ __metadata:
     "@gooddollar/good-design": ^0.1.49
     "@gooddollar/goodprotocol": ^2.0.24
     "@gooddollar/web3sdk": ^0.1.35
-    "@gooddollar/web3sdk-v2": ^0.2.24
+    "@gooddollar/web3sdk-v2": ^0.2.25
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^4.0.0
@@ -5101,7 +5101,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.2.24":
+"@gooddollar/web3sdk-v2@npm:^0.2.25":
   version: 0.2.25
   resolution: "@gooddollar/web3sdk-v2@npm:0.2.25"
   dependencies:
