@@ -4831,9 +4831,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.1.44":
-  version: 0.1.46
-  resolution: "@gooddollar/good-design@npm:0.1.46"
+"@gooddollar/good-design@npm:^0.1.49":
+  version: 0.1.49
+  resolution: "@gooddollar/good-design@npm:0.1.49"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4842,6 +4842,7 @@ __metadata:
     "@lingui/react": ^3.14.0
     "@magiklabs/react-sdk": ^1.0.8
     "@uniswap/sdk-core": ^3.1.0
+    async-await-mutex-lock: ^1.0.11
     buffer: ^6.0.3
     ethers: 5.7.2
     metro-react-native-babel-preset: ^0.72.0
@@ -4864,8 +4865,9 @@ __metadata:
     react-native-webview: ^13.2.2
     react-number-format: ^5.1.1
     react-use-promise: ^0.5.0
+    react-use-wizard: ^2.3.0
     require-from-string: ^2.0.2
-  checksum: 57435c91ba15fbdd40aed260cbf79f814d9965c6f1801ed37fc2c94bd7b59ebf36aefca7278c1b5b3bdde6e87737905a8a33e6db89238608d1cd2fe5d4cbe4b1
+  checksum: ca953922382547921b39f6b95e3e6b28dba600ebc8cec5608b635d800fd0b49b75ec2fdbeebb91c04ab3eaf25d72713e5042143c6f12665557f14be565a1b4cc
   languageName: node
   linkType: hard
 
@@ -4917,10 +4919,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.1.44
+    "@gooddollar/good-design": ^0.1.49
     "@gooddollar/goodprotocol": ^2.0.24
-    "@gooddollar/web3sdk": ^0.1.34
-    "@gooddollar/web3sdk-v2": ^0.2.20
+    "@gooddollar/web3sdk": ^0.1.35
+    "@gooddollar/web3sdk-v2": ^0.2.24
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^4.0.0
@@ -5099,9 +5101,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.2.20":
-  version: 0.2.22
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.22"
+"@gooddollar/web3sdk-v2@npm:^0.2.24":
+  version: 0.2.25
+  resolution: "@gooddollar/web3sdk-v2@npm:0.2.25"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5148,13 +5150,13 @@ __metadata:
     "@react-native-async-storage/async-storage": 1.17.10
     react-native: "*"
     react-native-web: "*"
-  checksum: 2f410e624288bedcf90eb1cb7b1e4b0ea700fe4dd735f2bd3558a82643fa39c24408fd2d7747136a250fc478fcfa6bca5640e47fe0d5b5c7f4830493637fe615
+  checksum: bf79e10545f3605b3dc0c44a345083e966ac453cf3cfa18380bbf41bf657b53916c9166dcb369776f23f69d2d34e06dd4bb51795a05e0232d0d44d9a1fb26388
   languageName: node
   linkType: hard
 
-"@gooddollar/web3sdk@npm:^0.1.34":
-  version: 0.1.34
-  resolution: "@gooddollar/web3sdk@npm:0.1.34"
+"@gooddollar/web3sdk@npm:^0.1.35":
+  version: 0.1.35
+  resolution: "@gooddollar/web3sdk@npm:0.1.35"
   dependencies:
     "@apollo/client": ^3.2.0
     "@gooddollar/goodprotocol": ^2.0.22
@@ -5176,7 +5178,7 @@ __metadata:
     web3-eth: 1.8.2
     web3-eth-contract: 1.8.2
     web3-utils: 1.8.2
-  checksum: 346e8c785d6e59e3efb90268354684916f2dbbda686d3cad2a642ee4ef29f5436f179a57a5be9bf8fcfedc51e7c68d87f61c28f51f8d8d21cdd8110c94b5ff12
+  checksum: db992d3cd86bce5bebf0d9bbd42cedea1ff09115717cbf84fb8541a4c1f4204fe950d08072a3a8740349985b747fa4a57e402b77fffb53d43583b6f22550cc02
   languageName: node
   linkType: hard
 
@@ -15305,6 +15307,13 @@ __metadata:
   version: 2.0.0
   resolution: "astral-regex@npm:2.0.0"
   checksum: 876231688c66400473ba505731df37ea436e574dd524520294cc3bbc54ea40334865e01fa0d074d74d036ee874ee7e62f486ea38bc421ee8e6a871c06f011766
+  languageName: node
+  linkType: hard
+
+"async-await-mutex-lock@npm:^1.0.11":
+  version: 1.0.11
+  resolution: "async-await-mutex-lock@npm:1.0.11"
+  checksum: 90dcedd4c9846109ac157ddf33087130b90b31d310469cfe19cf0f068497f8aa199196a36d35b8086dcffc44cd8cdb16f7da879141cbc1520f049931711ee20c
   languageName: node
   linkType: hard
 
@@ -35700,6 +35709,16 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.2 || ^18.0.0
   checksum: 369dd981b3b1af69cbe8835a2f79083e3471eacf511f6f232a304ef4617b3dbb174e008061830c31b141cc58e3e1b739368ec61a58f64592753f30171eb4bc4e
+  languageName: node
+  linkType: hard
+
+"react-use-wizard@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "react-use-wizard@npm:2.3.0"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: cb17577c90001d56c244b248ed3f51d8c92b26c5ec2438d0c61c352c9087d63789beb9412219022513b9a9b8161acbdaf793e427c1f3e43d4daba1397f7bf080
   languageName: node
   linkType: hard
 
