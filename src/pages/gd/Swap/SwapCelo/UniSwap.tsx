@@ -186,6 +186,10 @@ export const UniSwap = (): JSX.Element => {
         [network]
     )
 
+    const { ethereum } = window
+
+    const isMinipay = ethereum?.isMiniPay
+
     return (
         <Center w={'auto'} maxW="550" alignSelf="center">
             <SwapWidget
@@ -198,7 +202,7 @@ export const UniSwap = (): JSX.Element => {
                     routerPreference: RouterPreference.CLIENT,
                     transactionTtl: 30,
                 }}
-                permit2={true}
+                permit2={!isMinipay} // disable for minipay?
                 jsonRpcUrlMap={jsonRpcUrlMap}
                 provider={web3Provider}
                 theme={customTheme}

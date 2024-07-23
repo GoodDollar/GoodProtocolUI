@@ -5,7 +5,7 @@
     "homepage": ".",
     "private": true,
     "scripts": {
-        "analyze": "source-map-explorer 'build/static/js/*.js' --only-mapped --html analysis/index.html",
+        "analyze": "source-map-explorer 'dist/static/*.js' --only-mapped --html analysis/index.html",
         "prebuild": "yarn install --immutable && lingui compile",
         "prestart": "lingui compile",
         "startS": "cross-env HTTPS=true SSL_CRT_FILE='./.certs/ssl.crt' SSL_KEY_FILE='./.certs/ssl.key' PORT=1122 vite --port 1122",
@@ -216,7 +216,7 @@
         "@types/react-text-mask": "^5.4.8",
         "@types/text-mask-addons": "^3.8.1",
         "@uniswap/sdk-core": "^4.0.9",
-        "@uniswap/widgets": "^2.53.0",
+        "@uniswap/widgets": "^2.59.0",
         "@usedapp/core": "^1.2.6",
         "@web3-onboard/coinbase": "^2.2.6",
         "@web3-onboard/core": "^2.21.2",
