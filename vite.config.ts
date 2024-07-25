@@ -5,6 +5,7 @@ import svgrPlugin from 'vite-plugin-svgr'
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
 import { lingui } from '@lingui/vite-plugin'
 import dynamicImports from 'vite-plugin-dynamic-import'
+import { visualizer } from 'rollup-plugin-visualizer'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -32,13 +33,13 @@ export default defineConfig(({ command, mode }) => {
             https,
         },
         plugins: [
-            // visualizer({
-            //     template: 'treemap', // or sunburst
-            //     open: true,
-            //     gzipSize: true,
-            //     brotliSize: true,
-            //     filename: 'analice.html',
-            // }) as PluginOption,
+            visualizer({
+                template: 'treemap', // or sunburst
+                open: false,
+                gzipSize: true,
+                brotliSize: true,
+                filename: 'analice.html',
+            }),
             dynamicImports(), //for lingui dynamic import lang files
             // checker({
             //     // e.g. use TypeScript check

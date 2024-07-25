@@ -33,11 +33,10 @@ import { tokens } from './celo-tokenlist.json'
 const jsonRpcUrlMap = {
     122: ['https://rpc.fuse.io', 'https://fuse-pokt.nodies.app', 'https://fuse.liquify.com'],
     42220: [
-        'https://forno.celo.org',
+        // 'https://forno.celo.org', // forno is causing gas issues with uniswap
         'https://rpc.ankr.com/celo',
         'https://1rpc.io/celo',
         'https://celo.drpc.org',
-        'https://celo-mainnet.g.allthatnode.com/full/evm',
     ],
 }
 

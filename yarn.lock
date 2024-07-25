@@ -4921,8 +4921,8 @@ __metadata:
     "@fullhuman/postcss-purgecss": ^4.0.3
     "@gooddollar/good-design": ^0.1.49
     "@gooddollar/goodprotocol": ^2.0.24
-    "@gooddollar/web3sdk": ^0.1.35
-    "@gooddollar/web3sdk-v2": ^0.2.25
+    "@gooddollar/web3sdk": ^0.1.36
+    "@gooddollar/web3sdk-v2": ^0.2.26
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^4.0.0
@@ -5101,9 +5101,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.2.25":
-  version: 0.2.25
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.25"
+"@gooddollar/web3sdk-v2@npm:^0.2.26":
+  version: 0.2.26
+  resolution: "@gooddollar/web3sdk-v2@npm:0.2.26"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5148,15 +5148,16 @@ __metadata:
     wagmi: ^1.3.8
   peerDependencies:
     "@react-native-async-storage/async-storage": 1.17.10
+    "@usedapp/core": "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: bf79e10545f3605b3dc0c44a345083e966ac453cf3cfa18380bbf41bf657b53916c9166dcb369776f23f69d2d34e06dd4bb51795a05e0232d0d44d9a1fb26388
+  checksum: 276c7c68400510ca33c49988957d8af8bc2c88a58d83a51a2763f901ad94f3bb57ec90d46a2e4ee75aee02c0a65eed9720bf547429c85119e15f905dafc2bc0b
   languageName: node
   linkType: hard
 
-"@gooddollar/web3sdk@npm:^0.1.35":
-  version: 0.1.35
-  resolution: "@gooddollar/web3sdk@npm:0.1.35"
+"@gooddollar/web3sdk@npm:^0.1.36":
+  version: 0.1.36
+  resolution: "@gooddollar/web3sdk@npm:0.1.36"
   dependencies:
     "@apollo/client": ^3.2.0
     "@gooddollar/goodprotocol": ^2.0.22
@@ -5172,13 +5173,12 @@ __metadata:
     lodash: 4.17.21
     lodash.flatmap: ^4.5.0
     numeral: ^2.0.6
-    rollup-plugin-multi-input: ^1.3.1
     web3: 1.8.2
     web3-core-method: 1.8.2
     web3-eth: 1.8.2
     web3-eth-contract: 1.8.2
     web3-utils: 1.8.2
-  checksum: db992d3cd86bce5bebf0d9bbd42cedea1ff09115717cbf84fb8541a4c1f4204fe950d08072a3a8740349985b747fa4a57e402b77fffb53d43583b6f22550cc02
+  checksum: deb1c58b472f1fd79e2cbacfdd07b0b5c467f3eac274b822bdcccf361cfe1d66a0e8319153e2b11a0be66a55542f877d0399ff05b2d5a19686835530fc8fbf56
   languageName: node
   linkType: hard
 
@@ -22851,19 +22851,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:3.2.12":
-  version: 3.2.12
-  resolution: "fast-glob@npm:3.2.12"
-  dependencies:
-    "@nodelib/fs.stat": ^2.0.2
-    "@nodelib/fs.walk": ^1.2.3
-    glob-parent: ^5.1.2
-    merge2: ^1.3.0
-    micromatch: ^4.0.4
-  checksum: 0b1990f6ce831c7e28c4d505edcdaad8e27e88ab9fa65eedadb730438cfc7cde4910d6c975d6b7b8dc8a73da4773702ebcfcd6e3518e73938bb1383badfe01c2
-  languageName: node
-  linkType: hard
-
 "fast-glob@npm:^3.1.1, fast-glob@npm:^3.2.12, fast-glob@npm:^3.2.7, fast-glob@npm:^3.2.9":
   version: 3.3.2
   resolution: "fast-glob@npm:3.3.2"
@@ -36759,15 +36746,6 @@ __metadata:
     "@babel/core": 7 || ^7.0.0-rc.2
     rollup: ">=0.60.0 <3"
   checksum: 5b8ed7c0a4192d7c74689074c910c1670eb07dfc875b1f4af5694a94c46bcb168ba85e2c9753030131efd6261ece7c252b9695953d0ea96d944977c6e79930d3
-  languageName: node
-  linkType: hard
-
-"rollup-plugin-multi-input@npm:^1.3.1":
-  version: 1.4.1
-  resolution: "rollup-plugin-multi-input@npm:1.4.1"
-  dependencies:
-    fast-glob: 3.2.12
-  checksum: cbb3b44e9ff70915ca3f6cbfe5dc87a38099046d8333f3af8ee5184e9b51d3bc164321d77300737c1966a33e8c80ea0e43e5579a6237bb233b7fe54eeed1aeea
   languageName: node
   linkType: hard
 
