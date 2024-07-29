@@ -12421,7 +12421,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniswap/widgets@npm:^2.59.0":
+"@uniswap/widgets@npm:2.59.0":
   version: 2.59.0
   resolution: "@uniswap/widgets@npm:2.59.0"
   dependencies:
@@ -12497,6 +12497,85 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: 6f7af1153f3bf1619e633fbee7ae40f7ba23b24a5526f3ae06e22bcedc50ca636648a51f51259b4cafe7dcd2270235de306c10528731ea08f82de61942a98e28
+  languageName: node
+  linkType: hard
+
+"@uniswap/widgets@patch:@uniswap/widgets@npm%3A2.59.0#./.yarn/patches/@uniswap-widgets-npm-2.59.0-6bf5828475.patch::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 2.59.0
+  resolution: "@uniswap/widgets@patch:@uniswap/widgets@npm%3A2.59.0#./.yarn/patches/@uniswap-widgets-npm-2.59.0-6bf5828475.patch::version=2.59.0&hash=06d1f6&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  dependencies:
+    "@babel/runtime": ">=7.17.0"
+    "@fontsource/ibm-plex-mono": ^4.5.1
+    "@fontsource/inter": ^4.5.1
+    "@popperjs/core": ^2.4.4
+    "@reduxjs/toolkit": ^1.6.1
+    "@uniswap/conedison": ^1.8.0
+    "@uniswap/permit2-sdk": ^1.2.0
+    "@uniswap/redux-multicall": ^1.1.8
+    "@uniswap/router-sdk": ^1.6.0
+    "@uniswap/sdk-core": ^4.0.7
+    "@uniswap/smart-order-router": ^3.16.25
+    "@uniswap/token-lists": ^1.0.0-beta.30
+    "@uniswap/universal-router-sdk": ^1.5.7
+    "@uniswap/v2-sdk": ^3.2.1
+    "@uniswap/v3-sdk": ^3.10.0
+    "@web3-react/core": ^8.2.0
+    "@web3-react/eip1193": ^8.2.0
+    "@web3-react/empty": ^8.2.0
+    "@web3-react/metamask": ^8.2.0
+    "@web3-react/network": ^8.2.0
+    "@web3-react/types": ^8.2.0
+    "@web3-react/url": ^8.2.0
+    "@web3-react/walletconnect-v2": ^8.3.6
+    ajv: ^8.11.0
+    ajv-formats: ^2.1.1
+    bufferutil: ^4.0.6
+    cids: ^1.0.0
+    encoding: ^0.1.13
+    ethers: ^5.7.2
+    immer: ^9.0.6
+    jotai: 1.4.0
+    jsbi: ^3.1.4
+    make-plural: ^7.0.0
+    ms.macro: ^2.0.0
+    multicodec: ^3.0.1
+    multihashes: ^4.0.2
+    node-vibrant: ^3.2.1-alpha.1
+    polished: ^3.7.2
+    popper-max-size-modifier: ^0.2.0
+    qrcode: ^1.5.0
+    react: ">=17.0.1"
+    react-dom: ">=17.0.1"
+    react-feather: ^2.0.8
+    react-popper: ^2.2.3
+    react-redux: ">=7.2.2"
+    react-virtualized-auto-sizer: ^1.0.2
+    react-window: ^1.8.5
+    rebass: ^4.0.7
+    redux: ">=4.1.2"
+    resize-observer-polyfill: ^1.5.1
+    setimmediate: ^1.0.5
+    styled-components: ">=5"
+    tiny-invariant: ^1.2.0
+    utf-8-validate: ^5.0.8
+    wcag-contrast: ^3.0.0
+    wicg-inert: ^3.1.1
+  peerDependencies:
+    "@babel/runtime": ">=7.17.0"
+    ethers: ^5.7.2
+    react: ">=17.0.1"
+    react-dom: ">=17.0.1"
+    react-redux: ">=7.2.2"
+    redux: ">=4.1.2"
+    styled-components: ">=5"
+  dependenciesMeta:
+    bufferutil:
+      optional: true
+    encoding:
+      optional: true
+    utf-8-validate:
+      optional: true
+  checksum: 7474e738d76586d9afd07f877eb43c6bab64934a394fc9ed2cf72b78e22f3399a1fe03dcd6f4c8d0950f0de56a9ee692799fc8d1d1f484795cb1e417fb71b165
   languageName: node
   linkType: hard
 
