@@ -2750,7 +2750,7 @@ msgstr "Echilibru"
 msgid "Blocked address"
 msgstr "Adresa blocată"
 
-#: src/components/SideBar.tsx:108
+#: src/components/SideBar.tsx:112
 msgid "Buy G$"
 msgstr ""
 
@@ -2889,11 +2889,11 @@ msgstr "Adresa de copiere"
 #~ msgid "Current Rate"
 #~ msgstr "Rata curenta"
 
-#: src/components/SideBar.tsx:129
+#: src/components/SideBar.tsx:133
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:167
+#: src/components/SideBar.tsx:171
 msgid "Dashboard"
 msgstr ""
 
@@ -2916,11 +2916,11 @@ msgstr "Depozit Privire de ansamblu"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:174
+#: src/components/SideBar.tsx:178
 msgid "Docs"
 msgstr "Documente"
 
-#: src/components/SideBar.tsx:115
+#: src/components/SideBar.tsx:119
 msgid "Donate"
 msgstr ""
 
@@ -2932,7 +2932,7 @@ msgstr "incarcarea a esuat"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:148
+#: src/components/SideBar.tsx:152
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2965,7 +2965,7 @@ msgstr "Du-te la portofoliu."
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:181
+#: src/components/SideBar.tsx:185
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2994,7 +2994,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:160
+#: src/components/SideBar.tsx:164
 msgid "GoodWallet"
 msgstr ""
 
@@ -3200,7 +3200,7 @@ msgstr "Traseu"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "Trecerea prin aceste jetoane a dus la cel mai bun preț pentru tranzacția dvs."
 
-#: src/components/SideBar.tsx:122
+#: src/components/SideBar.tsx:126
 msgid "Save G$"
 msgstr ""
 
@@ -3234,7 +3234,7 @@ msgstr "Toleranță la alunecare"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:141
+#: src/components/SideBar.tsx:145
 msgid "Squid Router"
 msgstr ""
 

@@ -2734,7 +2734,7 @@ msgstr "残高"
 msgid "Blocked address"
 msgstr ""
 
-#: src/components/SideBar.tsx:108
+#: src/components/SideBar.tsx:112
 msgid "Buy G$"
 msgstr ""
 
@@ -2873,11 +2873,11 @@ msgstr ""
 #~ msgid "Current Rate"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:129
+#: src/components/SideBar.tsx:133
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:167
+#: src/components/SideBar.tsx:171
 msgid "Dashboard"
 msgstr ""
 
@@ -2900,11 +2900,11 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:174
+#: src/components/SideBar.tsx:178
 msgid "Docs"
 msgstr "ドキュメント"
 
-#: src/components/SideBar.tsx:115
+#: src/components/SideBar.tsx:119
 msgid "Donate"
 msgstr ""
 
@@ -2916,7 +2916,7 @@ msgstr "読み込みに失敗しました"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:148
+#: src/components/SideBar.tsx:152
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2949,7 +2949,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:181
+#: src/components/SideBar.tsx:185
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2978,7 +2978,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:160
+#: src/components/SideBar.tsx:164
 msgid "GoodWallet"
 msgstr ""
 
@@ -3184,7 +3184,7 @@ msgstr "ルート"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "これらのトークンを介してルーティングすると、取引に最適な価格が得られました。"
 
-#: src/components/SideBar.tsx:122
+#: src/components/SideBar.tsx:126
 msgid "Save G$"
 msgstr ""
 
@@ -3218,7 +3218,7 @@ msgstr "スリッページ許容値"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:141
+#: src/components/SideBar.tsx:145
 msgid "Squid Router"
 msgstr ""
 

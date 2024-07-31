@@ -2744,7 +2744,7 @@ msgstr "Saldo"
 msgid "Blocked address"
 msgstr "Indirizzo bloccato"
 
-#: src/components/SideBar.tsx:108
+#: src/components/SideBar.tsx:112
 msgid "Buy G$"
 msgstr ""
 
@@ -2883,11 +2883,11 @@ msgstr "Copia indirizzo"
 #~ msgid "Current Rate"
 #~ msgstr "Tasso attuale"
 
-#: src/components/SideBar.tsx:129
+#: src/components/SideBar.tsx:133
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:167
+#: src/components/SideBar.tsx:171
 msgid "Dashboard"
 msgstr ""
 
@@ -2910,11 +2910,11 @@ msgstr "Panoramica del deposito"
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/SideBar.tsx:174
+#: src/components/SideBar.tsx:178
 msgid "Docs"
 msgstr "Documenti"
 
-#: src/components/SideBar.tsx:115
+#: src/components/SideBar.tsx:119
 msgid "Donate"
 msgstr ""
 
@@ -2926,7 +2926,7 @@ msgstr "impossibile caricare"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:148
+#: src/components/SideBar.tsx:152
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2959,7 +2959,7 @@ msgstr "Vai al portfolio."
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:181
+#: src/components/SideBar.tsx:185
 msgid "Good Airdrop"
 msgstr ""
 
@@ -2988,7 +2988,7 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:160
+#: src/components/SideBar.tsx:164
 msgid "GoodWallet"
 msgstr ""
 
@@ -3194,7 +3194,7 @@ msgstr "Percorso"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "Il routing attraverso questi token è risultato nel prezzo migliore per la tua operazione."
 
-#: src/components/SideBar.tsx:122
+#: src/components/SideBar.tsx:126
 msgid "Save G$"
 msgstr ""
 
@@ -3228,7 +3228,7 @@ msgstr "Tolleranza slippage"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:141
+#: src/components/SideBar.tsx:145
 msgid "Squid Router"
 msgstr ""
 
