@@ -209,7 +209,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             {
                 route: '/swap',
                 text: 'Swap',
-                show: (isMinipay && swapEnabled) || !isMinipay,
+                show: process.env.REACT_APP_CELO_PHASE_3 || (isMinipay && swapEnabled) || !isMinipay,
             },
             {
                 route: '/stakes',
