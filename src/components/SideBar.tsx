@@ -5,6 +5,7 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useLocation } from 'react-router-dom'
 import { SlideDownTab, useRedirectNotice, useScreenSize } from '@gooddollar/good-design'
+import { useFeatureFlagWithPayload } from 'posthog-react-native'
 
 import { useApplicationTheme } from '../state/application/hooks'
 import LanguageSwitch from './LanguageSwitch'
@@ -63,6 +64,8 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const firstRowItems = socialItems.slice(0, 4)
     const secondRowItems = socialItems.slice(4)
 
+    const [, payload] = useFeatureFlagWithPayload('advanced-minipay-enabled')
+
     const containerStyles = useBreakpointValue({
         base: {
             width: '100%',
@@ -98,6 +101,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
 
     const { ethereum } = window
     const isMinipay = ethereum?.isMiniPay
+    const { bridgeEnabled = false, swapEnabled = false } = payload || {}
 
     const externalLinks = useMemo(
         () => [
@@ -205,7 +209,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             {
                 route: '/swap',
                 text: 'Swap',
-                show: true,
+                show: (isMinipay && swapEnabled) || !isMinipay,
             },
             {
                 route: '/stakes',
@@ -225,7 +229,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             {
                 route: '/microbridge',
                 text: 'Micro Bridge',
-                show: process.env.REACT_APP_CELO_PHASE_3 && !isMinipay,
+                show: process.env.REACT_APP_CELO_PHASE_3 || !isMinipay || (isMinipay && bridgeEnabled),
             },
             {
                 route: '/dashboard',
