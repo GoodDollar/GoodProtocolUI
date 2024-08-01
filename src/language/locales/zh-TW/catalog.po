@@ -2741,7 +2741,7 @@ msgstr ""
 msgid "Change"
 msgstr "改變"
 
-#: src/pages/gd/BuyGD/index.tsx:94
+#: src/pages/gd/BuyGD/index.tsx:91
 msgid "Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$."
 msgstr ""
 
@@ -3107,7 +3107,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "糟糕！出現未知錯誤。請刷新頁面，或從其他瀏覽器或設備訪問"
 
-#: src/components/AppBar.tsx:342
+#: src/components/AppBar.tsx:341
 msgid "Open main menu"
 msgstr "打開主菜單"
 
@@ -3254,7 +3254,7 @@ msgstr "從1.0開始，您的乘數將增加到2.0，在一個月的綁定到信
 msgid "Success!"
 msgstr "成功！"
 
-#: src/pages/gd/BuyGD/index.tsx:81
+#: src/pages/gd/BuyGD/index.tsx:78
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
