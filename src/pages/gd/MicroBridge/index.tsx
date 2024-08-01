@@ -25,7 +25,7 @@ ecosystems`
                 </Text>
             </VStack>
             <div className="rounded max-w-3xl min-w-96 w-full mx-auto">
-                <VStack maxWidth="800" minWidth="384" width="100%" alignItems="center" justifyContent="center">
+                <VStack maxWidth="800" minWidth="344" width="100%" alignItems="center" justifyContent="center">
                     <SwitchChainModal>
                         <WalletAndChainGuard validChains={[122, 42220]}>
                             <MicroBridgeController withRelay={false} />
