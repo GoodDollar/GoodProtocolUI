@@ -3,7 +3,7 @@ import { Fraction } from '@uniswap/sdk-core'
 import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
-import { g$ReservePrice, useGdContextProvider } from '@gooddollar/web3sdk'
+import { g$ReservePrice } from '@gooddollar/web3sdk'
 import { Box, ITextProps, Pressable, PresenceTransition, Text, useBreakpointValue } from 'native-base'
 import { useFeatureFlag, useFeatureFlagWithPayload } from 'posthog-react-native'
 import { BasePressable, CentreBox, useScreenSize } from '@gooddollar/good-design'
@@ -184,10 +184,9 @@ const Web3Bar = () => {
 function AppBar({ sideBar, walletBalance }): JSX.Element {
     const [theme] = useApplicationTheme()
     const { i18n } = useLingui()
-    const { account, chainId } = useActiveWeb3React()
+    const { account } = useActiveWeb3React()
     const isSimpleApp = useIsSimpleApp()
     const showPrice = useFeatureFlag('show-gd-price')
-    const { web3 } = useGdContextProvider()
 
     const { ethereum } = window
     const isMinipay = ethereum?.isMiniPay
@@ -202,13 +201,13 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
 
     const [G$Price] = usePromise(async () => {
         try {
-            const data = await g$ReservePrice(web3, 1)
+            const data = await g$ReservePrice()
 
             return data.DAI.asFraction
         } catch {
             return undefined
         }
-    }, [chainId, web3])
+    }, [])
 
     const gdBalance = useMemo(
         () =>

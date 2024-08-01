@@ -4831,9 +4831,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.1.52":
-  version: 0.1.52
-  resolution: "@gooddollar/good-design@npm:0.1.52"
+"@gooddollar/good-design@npm:^0.1.53":
+  version: 0.1.53
+  resolution: "@gooddollar/good-design@npm:0.1.53"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4867,7 +4867,7 @@ __metadata:
     react-use-promise: ^0.5.0
     react-use-wizard: ^2.3.0
     require-from-string: ^2.0.2
-  checksum: 59079be457950f917e0dd6cd24ac82410cd3ed13042ab2a89d2efceb828bafa7ddde4d56f8726e59760b071cada487ab178b3a56ce237221756506a70b13a75a
+  checksum: 872e2cbd53bf29a970c345465c26d48cbf74799e74c4082f02a6c1918e32d70fec90a0b00775e8d6651dfae4483056a0416b4c9d14270a59e786415f9afd08ee
   languageName: node
   linkType: hard
 
@@ -4919,10 +4919,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.1.52
+    "@gooddollar/good-design": ^0.1.53
     "@gooddollar/goodprotocol": ^2.0.24
-    "@gooddollar/web3sdk": ^0.1.36
-    "@gooddollar/web3sdk-v2": ^0.2.27
+    "@gooddollar/web3sdk": ^0.1.39
+    "@gooddollar/web3sdk-v2": ^0.2.28
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^4.0.0
@@ -5101,9 +5101,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.2.27":
-  version: 0.2.27
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.27"
+"@gooddollar/web3sdk-v2@npm:^0.2.28":
+  version: 0.2.28
+  resolution: "@gooddollar/web3sdk-v2@npm:0.2.28"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5151,13 +5151,13 @@ __metadata:
     "@usedapp/core": "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 97b7c1345ab31543ed69fc50bd0704c5a3d1e9f3af016fdb129cae33c4b3a7d7c8512b5c14168cfa48d9ef616409b3d0d77516f790779ae5702c6e2be1bd3d31
+  checksum: b7580a7171eb437d5618ce5c61c1595257249cf25dc051f9d0fb462638ffa932662a42819969c75ed94fffbe36ae3c60f945a342b6f4f6c8d2ec0d4bb492c16d
   languageName: node
   linkType: hard
 
-"@gooddollar/web3sdk@npm:^0.1.36":
-  version: 0.1.36
-  resolution: "@gooddollar/web3sdk@npm:0.1.36"
+"@gooddollar/web3sdk@npm:^0.1.39":
+  version: 0.1.39
+  resolution: "@gooddollar/web3sdk@npm:0.1.39"
   dependencies:
     "@apollo/client": ^3.2.0
     "@gooddollar/goodprotocol": ^2.0.22
@@ -5178,7 +5178,7 @@ __metadata:
     web3-eth: 1.8.2
     web3-eth-contract: 1.8.2
     web3-utils: 1.8.2
-  checksum: deb1c58b472f1fd79e2cbacfdd07b0b5c467f3eac274b822bdcccf361cfe1d66a0e8319153e2b11a0be66a55542f877d0399ff05b2d5a19686835530fc8fbf56
+  checksum: 1a548e01ad793b4fe59d427eb25f071d327a63275c0b842fc801499cc47d17097d9c8f526b6b181891c7433ba50ff747b301ac05e6e9fdd9b68e48f49b7c719f
   languageName: node
   linkType: hard
 

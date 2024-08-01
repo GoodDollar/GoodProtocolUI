@@ -209,17 +209,17 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             {
                 route: '/swap',
                 text: 'Swap',
-                show: process.env.REACT_APP_CELO_PHASE_3 || (isMinipay && swapEnabled) || !isMinipay,
+                show: (isMinipay && swapEnabled) || !isMinipay,
             },
             {
                 route: '/stakes',
                 text: 'Stake',
-                show: true && !isMinipay,
+                show: !isMinipay,
             },
             {
                 route: '/portfolio',
                 text: 'Portfolio',
-                show: true && !isMinipay,
+                show: !isMinipay,
             },
             {
                 route: '/goodid',
@@ -229,7 +229,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
             {
                 route: '/microbridge',
                 text: 'Micro Bridge',
-                show: process.env.REACT_APP_CELO_PHASE_3 || !isMinipay || (isMinipay && bridgeEnabled),
+                show: !isMinipay || (isMinipay && bridgeEnabled),
             },
             {
                 route: '/dashboard',

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { View, Box, Text } from 'native-base'
 import { ArrowButton, BalanceGD } from '@gooddollar/good-design'
 import { SupportedChains, useHasClaimed, useSwitchNetwork } from '@gooddollar/web3sdk-v2'
-import { g$ReservePrice, useGdContextProvider } from '@gooddollar/web3sdk'
+import { g$ReservePrice } from '@gooddollar/web3sdk'
 import { useFeatureFlag } from 'posthog-react-native'
 
 import usePromise from 'hooks/usePromise'
@@ -22,16 +22,15 @@ const NextClaim = ({ time }: { time: string }) => (
 
 export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) => {
     const { chainId } = useActiveWeb3React()
-    const { web3 } = useGdContextProvider()
     const [G$Price] = usePromise(async () => {
         try {
-            const reservePrice = await g$ReservePrice(web3, 1)
+            const reservePrice = await g$ReservePrice()
 
             return +reservePrice?.DAI?.asFraction.toSignificant(6)
         } catch {
             return undefined
         }
-    }, [web3, chainId])
+    }, [])
 
     const { ethereum } = window
     const isMinipay = ethereum?.isMiniPay
