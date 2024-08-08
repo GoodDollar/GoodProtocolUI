@@ -68,7 +68,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
             }
 
             if (chainId === (122 as ChainId) && method === 'eth_sendTransaction') {
-                params[0].gasPrice = BigNumber.from(20e9).toHexString()
+                params[0].gasPrice = BigNumber.from(11e9).toHexString()
             }
             return webprovider.jsonRpcFetchFunc(method, params)
         }
