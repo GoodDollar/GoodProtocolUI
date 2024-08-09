@@ -4831,9 +4831,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.1.54":
-  version: 0.1.54
-  resolution: "@gooddollar/good-design@npm:0.1.54"
+"@gooddollar/good-design@npm:^0.1.55":
+  version: 0.1.55
+  resolution: "@gooddollar/good-design@npm:0.1.55"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4867,7 +4867,7 @@ __metadata:
     react-use-promise: ^0.5.0
     react-use-wizard: ^2.3.0
     require-from-string: ^2.0.2
-  checksum: 327d5b733786d90b9e27c197c29e75b429da2fb8cefac26d941d11c39052d7e360e07e06778634421a8d36b19a443fbccbe361fd5f08c3c068e6b56f42eb2c82
+  checksum: e55a26f9e7fe696acbd5122e92db304a0d432d26d0dcb69220b92f2ddecf00994bb29bda0f5ed75b9eb6c88c74186dd4d018850ced5f8c7b2df3f610dc89aae8
   languageName: node
   linkType: hard
 
@@ -4919,10 +4919,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.1.54
+    "@gooddollar/good-design": ^0.1.55
     "@gooddollar/goodprotocol": ^2.0.24
-    "@gooddollar/web3sdk": ^0.1.40
-    "@gooddollar/web3sdk-v2": ^0.2.29
+    "@gooddollar/web3sdk": ^0.1.42
+    "@gooddollar/web3sdk-v2": ^0.2.31
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^4.0.0
@@ -5101,9 +5101,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.2.29":
-  version: 0.2.29
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.29"
+"@gooddollar/web3sdk-v2@npm:^0.2.31":
+  version: 0.2.31
+  resolution: "@gooddollar/web3sdk-v2@npm:0.2.31"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5151,13 +5151,13 @@ __metadata:
     "@usedapp/core": "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 2a94c550d25ae46d226a450b0a9aeaf1fbf0d9165bedd8a3fcd9e555f9236765f6f4f96de4306463c6438308963b5e9d281d87f746090d36f09d7fcc04d4ca87
+  checksum: 8c1f97a3fac92294f570d252247c8cc94003ddda5597ebaca25d91562de171099751e0db2c14ca979990eaafef5198a90352838f2655fde48d4e67549aca92ba
   languageName: node
   linkType: hard
 
-"@gooddollar/web3sdk@npm:^0.1.40":
-  version: 0.1.40
-  resolution: "@gooddollar/web3sdk@npm:0.1.40"
+"@gooddollar/web3sdk@npm:^0.1.42":
+  version: 0.1.42
+  resolution: "@gooddollar/web3sdk@npm:0.1.42"
   dependencies:
     "@apollo/client": ^3.2.0
     "@gooddollar/goodprotocol": ^2.0.22
@@ -5178,7 +5178,7 @@ __metadata:
     web3-eth: 1.8.2
     web3-eth-contract: 1.8.2
     web3-utils: 1.8.2
-  checksum: 930179eaf897ec95c55854e6934aecac151ad686044398f8b99dd0a224eba9f66c352e6bdb37868da5de527e6fcd243954f5c9644aaaff27993bfdda1e144954
+  checksum: 62914af2eb804c6a68a1bfd7d387d5ab33c9d192536655f5802f7a3ef0573d62ffc9f3395072ffb5778d3e5b1799af9ee33865bb05738272cb0cf91a98979a97
   languageName: node
   linkType: hard
 
@@ -12502,7 +12502,7 @@ __metadata:
 
 "@uniswap/widgets@patch:@uniswap/widgets@npm%3A2.59.0#./.yarn/patches/@uniswap-widgets-npm-2.59.0-6bf5828475.patch::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 2.59.0
-  resolution: "@uniswap/widgets@patch:@uniswap/widgets@npm%3A2.59.0#./.yarn/patches/@uniswap-widgets-npm-2.59.0-6bf5828475.patch::version=2.59.0&hash=06d1f6&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  resolution: "@uniswap/widgets@patch:@uniswap/widgets@npm%3A2.59.0#./.yarn/patches/@uniswap-widgets-npm-2.59.0-6bf5828475.patch::version=2.59.0&hash=2fee72&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/runtime": ">=7.17.0"
     "@fontsource/ibm-plex-mono": ^4.5.1
@@ -12575,7 +12575,7 @@ __metadata:
       optional: true
     utf-8-validate:
       optional: true
-  checksum: 7474e738d76586d9afd07f877eb43c6bab64934a394fc9ed2cf72b78e22f3399a1fe03dcd6f4c8d0950f0de56a9ee692799fc8d1d1f484795cb1e417fb71b165
+  checksum: 6ede2cfbf6633dda76d66925de64ac603f40af5b1d71697d9f46546def67717571f0126fb550c806803b04096e46d18e30310ed036a7def98dae4fed0d652c4f
   languageName: node
   linkType: hard
 
