@@ -198,7 +198,7 @@ export const UniSwap = (): JSX.Element => {
                 defaultOutputTokenAddress={gdTokenAddress}
                 settings={{
                     slippage: { auto: false, max: '0.3' },
-                    routerPreference: RouterPreference.CLIENT,
+                    routerPreference: RouterPreference.API,
                     transactionTtl: 30,
                 }}
                 permit2={!isMinipay} // disable for minipay?
