@@ -203,6 +203,7 @@ export const UniSwap = (): JSX.Element => {
                 }}
                 permit2={!isMinipay} // disable for minipay?
                 jsonRpcUrlMap={jsonRpcUrlMap}
+                routerUrl={'https://api.uniswap.org/v1/'}
                 provider={web3Provider}
                 theme={customTheme}
                 onConnectWalletClick={connectOnboard}
