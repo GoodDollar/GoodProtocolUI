@@ -206,6 +206,7 @@ export const UniSwap = (): JSX.Element => {
                 routerUrl={'https://api.uniswap.org/v1/'}
                 provider={web3Provider}
                 theme={customTheme}
+                hideConnectionUI
                 onConnectWalletClick={connectOnboard}
                 onError={handleError}
                 onTxFail={handleTxFailed}
