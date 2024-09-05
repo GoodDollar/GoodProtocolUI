@@ -207,6 +207,11 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 show: true,
             },
             {
+                route: '/news',
+                text: 'News',
+                show: true,
+            },
+            {
                 route: '/swap',
                 text: 'Swap',
                 show: process.env.REACT_APP_CELO_PHASE_3 || (isMinipay && swapEnabled) || !isMinipay,
