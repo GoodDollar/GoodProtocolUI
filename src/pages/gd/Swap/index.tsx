@@ -62,8 +62,9 @@ const Swap = memo(() => {
                 <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={8}>
                     <Text fontFamily="subheading" fontSize="sm" color="goodGrey.600" pt={4} pb={8} textAlign="center">
                         {i18n._(
-                            t`On this page, you can convert your digital assets. 
-Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!`
+                            t`Convert your digital assets using the Uniswap protocol! 
+Please be patient, loading information may take some time. 
+Take note of indicators in the widget below for price slippage and liquidity.`
                         )}
                     </Text>
                 </VStack>
