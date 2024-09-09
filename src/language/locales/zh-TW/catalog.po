@@ -2860,6 +2860,13 @@ msgstr ""
 msgid "Connected with"
 msgstr "與"
 
+#: src/pages/gd/Swap/index.tsx:65
+msgid ""
+"Convert your digital assets using the Uniswap protocol! \n"
+"Please be patient, loading information may take some time. \n"
+"Take note of indicators in the widget below for price slippage and liquidity."
+msgstr ""
+
 #: src/components/AccountDetails/Copy.tsx:24
 msgid "Copied"
 msgstr "已復制"
@@ -3098,10 +3105,10 @@ msgid "on the"
 msgstr "在這一點"
 
 #: src/pages/gd/Swap/index.tsx:65
-msgid ""
-"On this page, you can convert your digital assets. \n"
-"Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
-msgstr ""
+#~ msgid ""
+#~ "On this page, you can convert your digital assets. \n"
+#~ "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
+#~ msgstr ""
 
 #: src/components/Web3ReactManager/index.tsx:61
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
