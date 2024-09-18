@@ -1680,8 +1680,8 @@ msgid "Disconnect"
 msgstr ""
 
 #: src/components/SideBar.tsx:178
-msgid "Docs"
-msgstr "डॉक्स"
+#~ msgid "Docs"
+#~ msgstr "डॉक्स"
 
 #: src/components/SideBar.tsx:119
 msgid "Donate"
@@ -1759,6 +1759,10 @@ msgstr ""
 
 #: src/components/SideBar.tsx:164
 msgid "GoodWallet"
+msgstr ""
+
+#: src/components/SideBar.tsx:178
+msgid "Help & Documentation"
 msgstr ""
 
 #: src/pages/gd/Portfolio/index.tsx:333
