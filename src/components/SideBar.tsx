@@ -175,7 +175,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                         show: true,
                     },
                     {
-                        label: i18n._(t`Docs`),
+                        label: i18n._(t`Help & Documentation`),
                         url: 'https://docs.gooddollar.org',
                         dataAttr: 'docs',
                         withIcon: true,
