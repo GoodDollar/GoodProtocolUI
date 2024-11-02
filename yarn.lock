@@ -4831,9 +4831,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.1.57":
-  version: 0.1.57
-  resolution: "@gooddollar/good-design@npm:0.1.57"
+"@gooddollar/good-design@npm:^0.1.59":
+  version: 0.1.59
+  resolution: "@gooddollar/good-design@npm:0.1.59"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4867,7 +4867,7 @@ __metadata:
     react-use-promise: ^0.5.0
     react-use-wizard: ^2.3.0
     require-from-string: ^2.0.2
-  checksum: 4b5f1ab41f2913d0465f1bc02b19635876231c6f9a6931ef704cdf6c575632ef1742dcacd74a75dd8a863f8e9bb0f617cb926bbef88bde5580f8183a3f9ae44b
+  checksum: c3943e5d0d9daa485cc4cc2e0d3bb6f210efe1e0f4a9114b88ceca0531f3f8f87f4fc9f15ebaf7d6cfad81fffed89305b7b7c2a94f31547758d6d2cdb116f2d6
   languageName: node
   linkType: hard
 
@@ -4919,10 +4919,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.1.57
+    "@gooddollar/good-design": ^0.1.59
     "@gooddollar/goodprotocol": ^2.0.24
     "@gooddollar/web3sdk": ^0.1.42
-    "@gooddollar/web3sdk-v2": ^0.2.31
+    "@gooddollar/web3sdk-v2": ^0.2.34
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^4.0.0
@@ -5101,9 +5101,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.2.31":
-  version: 0.2.31
-  resolution: "@gooddollar/web3sdk-v2@npm:0.2.31"
+"@gooddollar/web3sdk-v2@npm:^0.2.34":
+  version: 0.2.34
+  resolution: "@gooddollar/web3sdk-v2@npm:0.2.34"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5136,8 +5136,6 @@ __metadata:
     dexie: ^3.2.4
     ethers: 5.7.2
     eventemitter3: ^4.0.7
-    mixpanel-browser: ^2.45.0
-    mixpanel-react-native: ^2.1.0
     moment: 2.29.4
     multiformats: 9.9.0
     posthog-react-native: 2.8.1
@@ -5151,7 +5149,7 @@ __metadata:
     "@usedapp/core": "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 8c1f97a3fac92294f570d252247c8cc94003ddda5597ebaca25d91562de171099751e0db2c14ca979990eaafef5198a90352838f2655fde48d4e67549aca92ba
+  checksum: 7fe5d5d9d2d8e4f270542b02bc59154684a2178854b4642b0fa0f25740e81e7987c6a862661d428439fc127b67a05d6177385ea0df78534dc320fb6032d15f41
   languageName: node
   linkType: hard
 
@@ -30134,20 +30132,6 @@ __metadata:
     for-in: ^1.0.2
     is-extendable: ^1.0.1
   checksum: 820d5a51fcb7479f2926b97f2c3bb223546bc915e6b3a3eb5d906dda871bba569863595424a76682f2b15718252954644f3891437cb7e3f220949bed54b1750d
-  languageName: node
-  linkType: hard
-
-"mixpanel-browser@npm:^2.45.0":
-  version: 2.48.1
-  resolution: "mixpanel-browser@npm:2.48.1"
-  checksum: c423c4170e6bfe776f6cef4c59a998cf3f51eb1b7aeec5e695fb13a9a9a463abca3945770ae7429184ffe18706b62dbd0be2c4ac55766f7e2f82f74517b1c2cc
-  languageName: node
-  linkType: hard
-
-"mixpanel-react-native@npm:^2.1.0":
-  version: 2.4.0
-  resolution: "mixpanel-react-native@npm:2.4.0"
-  checksum: 9976e3d03d0fcad0d30da1dcef261c01d91adaa689c936c45f3ad881f5bcfae1f2916482128f980fd073cdc71bb6b1f632792971673f63173d565c1329ea7e30
   languageName: node
   linkType: hard
 
