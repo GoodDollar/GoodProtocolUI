@@ -51,6 +51,7 @@ export default function usePromise<T>(getPromise: () => Promise<T>, deps: any[] 
                 dispatch({ type: 'ERROR', payload: e })
             }
         )
+        // eslint-disable-next-line react-hooks-addons/no-unused-deps
     }, [...deps, dependency])
 
     return [state.value, state.loading, state.error, useCallback(() => setDependency({}), [])] as const

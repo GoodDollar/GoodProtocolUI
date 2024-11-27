@@ -16,6 +16,7 @@ const FaqItem = ({ id, question, answer, links }) => {
     const { isDesktopView } = useScreenSize()
     return (
         <SlideDownTab
+            key={question}
             tabTitle={i18n._(t`${question}`)}
             mb={2}
             viewInteraction={{
@@ -89,7 +90,7 @@ export const Faq = ({ type }: { type: 'swap' | 'buy' | 'bridge' }) => {
             }}
         >
             {copies.map(({ id, question, answer, links }) => (
-                <FaqItem id={id} question={question} answer={answer} links={links} />
+                <FaqItem key={id} id={id} question={question} answer={answer} links={links} />
             ))}
         </SlideDownTab>
     )

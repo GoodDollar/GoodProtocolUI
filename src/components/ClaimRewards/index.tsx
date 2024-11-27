@@ -168,6 +168,7 @@ const ClaimRewards = memo(({ protocol, open, setOpen, onClaim, stake, ...rest }:
 
     useEffect(() => {
         if ((chainId as any) === SupportedChainId.FUSE) setSelectedReward('claimGOOD')
+        // eslint-disable-next-line react-hooks-addons/no-unused-deps
     }, [selectedReward, chainId])
 
     const handleClaim = useCallback(async () => {

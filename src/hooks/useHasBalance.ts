@@ -17,6 +17,7 @@ export default function useHasBalance(account: string, requiredChain: ChainId): 
         hasSavingsBalance({ account, provider, defaultEnv })
             .then(setHasBalance)
             .catch((e) => console.log('checking savings balance error', { e }))
+        // eslint-disable-next-line react-hooks-addons/no-unused-deps
     }, [account, setHasBalance, provider, defaultEnv, requiredChain])
 
     return hasBalance
