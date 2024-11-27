@@ -91,7 +91,7 @@ const PortfolioTableRow = memo(({ stake, onUpdate, isMobile }: PortfolioTableRow
                     </td>
                     <td>
                         {stake.tokens.A.symbol}
-                        {stake.tokens.A.address !== stake.tokens.B.address ?? `/ ${stake.tokens.B.symbol}`}
+                        {stake.tokens.A.address !== stake.tokens.B.address && `/ ${stake.tokens.B.symbol}`}
                     </td>
                     <td>{stake.protocol}</td>
                     <td>

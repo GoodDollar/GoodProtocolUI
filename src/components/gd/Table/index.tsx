@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import React, { ComponentType, HTMLAttributes, memo } from 'react'
+import React, { ComponentType, HTMLAttributes, memo, ReactNode } from 'react'
 import cn from 'classnames'
 
 export interface TableProps extends HTMLAttributes<HTMLTableElement> {
     type?: 'default'
     as?: keyof JSX.IntrinsicElements | ComponentType<Partial<Omit<TableProps, 'as'>>>
-    header?: JSX.IntrinsicElements['tr']
-    footer?: JSX.IntrinsicElements['tr']
+    header?: ReactNode
+    footer?: ReactNode
 }
 
 export const TableSC = styled.table`

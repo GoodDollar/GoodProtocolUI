@@ -5,7 +5,7 @@ import { t } from '@lingui/macro'
 import { Fragment } from 'react'
 import { noop } from 'lodash'
 import { LoadingPlaceHolder } from 'theme/components'
-import { AsyncStorage, G$Balances, SupportedV2Networks, useG$Balance, useG$Tokens } from '@gooddollar/web3sdk-v2'
+import { AsyncStorage, G$Balances, useG$Balance, useG$Tokens } from '@gooddollar/web3sdk-v2'
 import { Box, Text, useColorModeValue } from 'native-base'
 import { BasePressable, CentreBox } from '@gooddollar/good-design'
 import { isMobile } from 'react-device-detect'
@@ -33,7 +33,7 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
     const { chainId } = useActiveWeb3React()
     const metaMaskInfo = useMetaMask()
     const balances = useG$Balance(5)
-    const [G$, GOOD, GDX] = useG$Tokens()
+    const [G$, GOOD] = useG$Tokens()
     const bgWalletBalance = useColorModeValue('goodWhite.100', '#1a1f38')
     const textColor = useColorModeValue('goodGrey.700', 'goodGrey.300')
     const [imported, setImported] = useState<boolean>(false)
@@ -63,16 +63,16 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
             },
         ]
 
-        if (!SupportedV2Networks[chainId] && balances.GDX)
-            allTokens.push({
-                type: 'ERC20',
-                options: {
-                    address: GDX.address,
-                    symbol: GDX.ticker,
-                    decimals: GDX.decimals,
-                    image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gdx-logo.png',
-                },
-            })
+        // if (!SupportedV2Networks[chainId] && balances.GDX)
+        //     allTokens.push({
+        //         type: 'ERC20',
+        //         options: {
+        //             address: GDX.address,
+        //             symbol: GDX.ticker,
+        //             decimals: GDX.decimals,
+        //             image: 'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/gdx-logo.png',
+        //         },
+        //     })
 
         void Promise.all(
             allTokens.map(async (token) => {

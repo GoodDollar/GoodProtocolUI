@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from 'react'
+import React, { FC, PropsWithChildren, useCallback, useEffect, useState } from 'react'
 import { I18nProvider } from '@lingui/react'
 import { i18n } from '@lingui/core'
 import { Helmet } from 'react-helmet'
@@ -31,7 +31,7 @@ export const LanguageContext = React.createContext<{
     language: '',
 })
 
-const LanguageProvider: FC = ({ children }) => {
+const LanguageProvider: FC<PropsWithChildren> = ({ children }) => {
     const [language, setLanguage] = useState(getInitialLocale)
     const [init, setInit] = useState(true)
 
