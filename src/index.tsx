@@ -4,7 +4,7 @@ import 'react-tabs/style/react-tabs.css'
 import './bootstrap'
 
 import React, { StrictMode } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { HashRouter as Router } from 'react-router-dom'
 import { AnalyticsProvider } from '@gooddollar/web3sdk-v2'
@@ -80,7 +80,9 @@ const enableServiceWorker =
 const networkEnv = getNetworkEnv()
 const prodOrQa = /\b(production|staging)\b/.test(networkEnv)
 
-ReactDOM.render(
+const container = document.getElementById('root')
+const root = createRoot(container!)
+root.render(
     <StrictMode>
         <HttpsProvider enabled={enableHttpsRedirect}>
             <Provider store={store}>
@@ -121,8 +123,7 @@ ReactDOM.render(
                 </NewsFeedProvider>
             </Provider>
         </HttpsProvider>
-    </StrictMode>,
-    document.getElementById('root')
+    </StrictMode>
 )
 
 console.log('service worker options', {

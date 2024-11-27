@@ -21,8 +21,9 @@ const QuestionWrapper = styled.div<{ noPadding?: boolean }>`
         opacity: 0.7;
     }
 `
+type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>
 
-const QuestionHelper: FC<Omit<TooltipProps, 'show' | 'children'>> = ({ children, text, ...rest }) => {
+const QuestionHelper: FC<Optional<Omit<TooltipProps, 'show'>, 'children'>> = ({ children, text, ...rest }) => {
     const [show, setShow] = useState<boolean>(false)
 
     const open = useCallback(() => setShow(true), [setShow])

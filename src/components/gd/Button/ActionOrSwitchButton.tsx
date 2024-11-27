@@ -1,7 +1,7 @@
 /***
  * Button to request network switch if not on correct network, or perform an action if on correct network
  */
-import React, { FC } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { ButtonAction } from './index'
 import { useLingui } from '@lingui/react'
@@ -10,7 +10,7 @@ import { useNetworkModalToggle } from 'state/application/hooks'
 import { SupportedChains } from '@gooddollar/web3sdk-v2'
 import { useGdContextProvider } from '@gooddollar/web3sdk'
 
-export interface ActionOrSwitchButtonProps {
+export interface ActionOrSwitchButtonProps extends PropsWithChildren {
     width?: string
     borderRadius?: string
     error?: boolean
