@@ -8,19 +8,18 @@ import { version } from '../../package.json'
 
 const indicativeKey = process.env.REACT_APP_INDICATIVE_KEY
 const posthogKey = process.env.REACT_APP_POSTHOG_KEY
-const mixpanelKey = process.env.REACT_APP_MIXPANEL_KEY
 
 export const analyticsConfig: IAnalyticsConfig = {
     google: { enabled: true },
     indicative: { apiKey: indicativeKey, enabled: !!indicativeKey },
     posthog: { apiKey: posthogKey, enabled: false },
-    mixpanel: { apiKey: mixpanelKey, enabled: !!mixpanelKey },
 }
 
 export const appInfo: IAppProps = {
     env: getEnv(),
     version,
     osVersion,
+    productEnv: 'gooddapp',
 }
 
 export interface IAnalyticsData {
@@ -36,7 +35,7 @@ export interface IAnalyticsData {
 }
 
 function useSendAnalyticsData(): (data: IAnalyticsData) => void {
-    const send = useSendAnalytics()
+    const { track } = useSendAnalytics()
 
     return useCallback(
         (data: IAnalyticsData): void => {
@@ -46,9 +45,9 @@ function useSendAnalyticsData(): (data: IAnalyticsData) => void {
                 assign(trackData, { tokens: [...tokens] })
             }
 
-            send(event, trackData)
+            track(event, trackData)
         },
-        [send]
+        [track]
     )
 }
 

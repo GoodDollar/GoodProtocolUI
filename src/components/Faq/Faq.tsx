@@ -5,11 +5,14 @@ import { t } from '@lingui/macro'
 import { SlideDownTab, useScreenSize } from '@gooddollar/good-design'
 
 import { faqBuyCopy, faqBridgeCopy, faqSwapCopy } from './copies'
+import type { FaqItemCopy } from './copies'
 
 const faqs = {
     swap: faqSwapCopy,
     buy: faqBuyCopy,
     bridge: faqBridgeCopy,
+    goodid: [] as FaqItemCopy[],
+    claim: [] as FaqItemCopy[],
 }
 
 const FaqItem = ({ id, question, answer, links }) => {
@@ -74,7 +77,7 @@ const FaqItem = ({ id, question, answer, links }) => {
     )
 }
 
-export const Faq = ({ type }: { type: 'swap' | 'buy' | 'bridge' }) => {
+export const Faq = ({ type }: { type: 'swap' | 'buy' | 'bridge' | 'goodid' | 'claim' }) => {
     const copies = faqs[type]
 
     return (

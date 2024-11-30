@@ -19,12 +19,12 @@ export const useClaiming = (): UseClaimReturn => {
     const network = SupportedChainId[chainId]
     const { web3 } = useGdContextProvider()
     const sendData = useSendAnalyticsData()
-    const { claimTime } = useClaim()
+    const { nextClaimTime } = useClaim()
 
     const [claimed, setIsClaimed] = useState(false)
-    const [nextClaim, , setClaimTime] = useTimer(claimTime)
+    const [nextClaim, , setClaimTime] = useTimer(nextClaimTime)
 
-    useEffect(() => setClaimTime(claimTime), [claimTime.toString()])
+    useEffect(() => setClaimTime(nextClaimTime), [nextClaimTime.toString()])
 
     const [claimable, , , refetch] = usePromise(async () => {
         if (!account || !web3 || (chainId as any) !== SupportedChainId.FUSE) return false
@@ -71,5 +71,12 @@ export const useClaiming = (): UseClaimReturn => {
 
     const isFuse = (chainId as any) === SupportedChainId.FUSE
 
-    return { claimed, claimable, tillClaim: nextClaim, isFuse, claimActive: isFuse && claimable === true, handleClaim }
+    return {
+        claimed,
+        claimable,
+        tillClaim: nextClaim ?? '',
+        isFuse,
+        claimActive: isFuse && claimable === true,
+        handleClaim,
+    }
 }

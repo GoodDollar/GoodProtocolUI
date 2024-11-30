@@ -9,7 +9,7 @@ import { noop } from 'lodash'
 
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 
-import { connectOptions, torus } from 'connectors'
+import { connectOptions } from 'connectors'
 
 /**
  * Just a button to trigger the onboard connect modal.
@@ -81,7 +81,7 @@ export const OnboardProviderWrapper = ({ children }) => {
     return (
         <OnboardProvider
             options={connectOptions}
-            wallets={{ custom: [torus] }}
+            // wallets={{ custom: [torus] }}
             // wc2Options={{ requiredChains: [selectedChain] }} // advised not to use this option. ref: https://docs.walletconnect.com/advanced/migration-from-v1.x/namespaces#technical-implementation-guide-for-apps
             gdEnv={connectedEnv}
         >

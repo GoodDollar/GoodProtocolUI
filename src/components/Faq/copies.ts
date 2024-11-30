@@ -1,4 +1,4 @@
-type FaqItemCopy = {
+export type FaqItemCopy = {
     id: string
     question: string
     answer: string
