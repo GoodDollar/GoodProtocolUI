@@ -23,7 +23,7 @@ const FaqItem = ({ id, question, answer, links }) => {
             mb={2}
             viewInteraction={{
                 hover: {
-                    backgroundColor: 'primary:alpha.10',
+                    backgroundColor: 'gdPrimary:alpha.10',
                     borderRadius: 6,
                 },
             }}
@@ -66,7 +66,7 @@ const FaqItem = ({ id, question, answer, links }) => {
                             fontSize="sm"
                         >
                             {text}
-                            <Link key={id} isExternal href={href} color="primary">
+                            <Link key={id} isExternal href={href} color="main">
                                 {i18n._(t` ${linkText}`)}
                             </Link>
                         </Text>
@@ -83,7 +83,7 @@ export const Faq = ({ type }: { type: 'swap' | 'buy' | 'bridge' | 'goodid' | 'cl
     return (
         <SlideDownTab
             tabTitle="FAQ"
-            viewInteraction={{ hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 } }}
+            viewInteraction={{ hover: { backgroundColor: 'main:alpha.10', borderRadius: 6 } }}
             styles={{
                 titleFont: { fontSize: 'l', fontFamily: 'heading', fontWeight: '700', paddingLeft: 2 },
                 button: { marginBottom: 25, borderRadius: 12 },

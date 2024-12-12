@@ -29,8 +29,8 @@ export default Link
 export const SideBarMenuItem = ({ children, onPress, textColor }) => (
     <Pressable
         onPress={onPress}
-        _hover={{ bg: 'primary:alpha.10' }}
-        _pressed={{ bg: 'primary' }}
+        _hover={{ bg: 'gdPrimary:alpha.10' }}
+        _pressed={{ bg: 'gdPrimary' }}
         py={1}
         px={2}
         borderRadius="12px"

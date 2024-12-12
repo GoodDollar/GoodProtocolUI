@@ -228,7 +228,7 @@ const OldClaim = memo(() => {
             id: 'how-does-work',
             title: {
                 text: 'How does it work?',
-                color: 'primary',
+                color: 'gdPrimary',
             },
             content: [
                 {
@@ -265,13 +265,13 @@ Learn how here`,
                 },
             ],
             externalLink: 'https://www.notion.so/gooddollar/Use-G-8639553aa7214590a70afec91a7d9e73',
-            bgColor: 'primary',
+            bgColor: 'gdPrimary',
         },
         {
             id: 'how-to-collect',
             title: {
                 text: 'How to collect G$',
-                color: 'primary',
+                color: 'gdPrimary',
             },
             content: [
                 {

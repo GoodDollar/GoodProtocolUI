@@ -91,7 +91,7 @@ function Web3Network(): JSX.Element | null {
                             className="mr-2 rounded-md"
                             style={{ width: 22, height: 22 }}
                         />
-                        <Text fontFamily="subheading" color="primary" fontSize="sm">
+                        <Text fontFamily="subheading" color="gdPrimary" fontSize="sm">
                             {NETWORK_LABEL[displayChain]}
                         </Text>
                     </div>

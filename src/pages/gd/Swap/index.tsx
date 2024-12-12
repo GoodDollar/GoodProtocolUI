@@ -43,7 +43,7 @@ const Swap = memo(() => {
                         fontSize="sm"
                         isExternal={false}
                         onPress={toggleNetworkModal}
-                        _text={{ color: 'primary' }}
+                        _text={{ color: 'gdPrimary' }}
                     >
                         {i18n._(t`Please switch your network to Fuse or Celo to Swap.`)}
                     </Link>
@@ -53,7 +53,7 @@ const Swap = memo(() => {
                                 t`Click here to learn more about GoodDollar liquidity, including how to provide liquidity.`
                             )}
                         </Text>
-                        <Link isExternal _text={{ color: 'primary' }} href="https://docs.gooddollar.org/liquidity">
+                        <Link isExternal _text={{ color: 'gdPrimary' }} href="https://docs.gooddollar.org/liquidity">
                             {i18n._(t`Learn more`)}
                         </Link>
                     </HStack>
