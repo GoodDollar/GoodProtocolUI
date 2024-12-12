@@ -8,7 +8,7 @@ import { useFeatureFlagWithPayload } from 'posthog-react-native'
 
 import { getNetworkEnv } from 'utils/env'
 
-export const Onboard = () => {
+export const Onboard = ({ onExit }: { onExit: () => void }) => {
     const { account } = useEthers()
     const [, payload] = useFeatureFlagWithPayload('uat-goodid-flow')
     const { whitelist } = payload ?? {}
@@ -16,12 +16,8 @@ export const Onboard = () => {
     const history = useHistory()
 
     const goToClaim = async () => {
-        history.push('/claim')
-    }
-
-    const onUpgraded = async () => {
         await AsyncStorage.setItem('goodid_upgraded', 'true')
-        void goToClaim()
+        history.push('/claim')
     }
 
     if (account === undefined) return <Spinner variant="page-loader" size="lg" />
@@ -29,9 +25,9 @@ export const Onboard = () => {
         <VStack margin="auto">
             <OnboardController
                 account={account}
-                onSkip={goToClaim}
-                onDone={onUpgraded}
-                onExit={goToClaim}
+                onSkip={onExit}
+                onDone={goToClaim}
+                onExit={onExit}
                 isDev={networkEnv === 'development' || whitelist?.includes(account)}
                 isWallet={true}
                 withNavBar={false}
