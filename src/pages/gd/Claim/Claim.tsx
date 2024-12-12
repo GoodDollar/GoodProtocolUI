@@ -68,7 +68,11 @@ const ClaimPage = () => {
             <Dialog />
             <VStack maxWidth="500" margin="auto">
                 <ClaimProvider
-                    activePoolAddresses={process.env.REACT_APP_UBIPOOL_ADDRESSES?.split(',') ?? ['']}
+                    activePoolAddresses={
+                        process.env.REACT_APP_UBIPOOL_ADDRESSES
+                            ? JSON.parse(process.env.REACT_APP_UBIPOOL_ADDRESSES)
+                            : {}
+                    }
                     explorerEndPoints={goodIdExplorerUrls}
                     supportedChains={[SupportedChains.CELO, SupportedChains.FUSE]}
                     onNews={onNews}
