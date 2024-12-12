@@ -4,19 +4,19 @@ import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { SlideDownTab, useScreenSize } from '@gooddollar/good-design'
 
-import { faqBuyCopy, faqBridgeCopy, faqSwapCopy } from './copies'
-import type { FaqItemCopy } from './copies'
+import { faqBuyCopy, faqBridgeCopy, faqSwapCopy, faqGoodIDCopy, faqClaimCopy } from './copies'
 
 const faqs = {
     swap: faqSwapCopy,
     buy: faqBuyCopy,
     bridge: faqBridgeCopy,
-    goodid: [] as FaqItemCopy[],
-    claim: [] as FaqItemCopy[],
+    goodid: faqGoodIDCopy,
+    claim: faqClaimCopy,
 }
 
-const FaqItem = ({ id, question, answer, links }) => {
+const FaqItem = ({ id, question, answer, links, AltLink }) => {
     const { isDesktopView } = useScreenSize()
+
     return (
         <SlideDownTab
             tabTitle={i18n._(t`${question}`)}
@@ -73,6 +73,7 @@ const FaqItem = ({ id, question, answer, links }) => {
                     ))}
                 </VStack>
             ) : null}
+            {AltLink ? <AltLink /> : null}
         </SlideDownTab>
     )
 }
@@ -91,8 +92,8 @@ export const Faq = ({ type }: { type: 'swap' | 'buy' | 'bridge' | 'goodid' | 'cl
                 container: { marginTop: 16, marginBottom: 100 },
             }}
         >
-            {copies.map(({ id, question, answer, links }) => (
-                <FaqItem id={id} question={question} answer={answer} links={links} />
+            {copies.map(({ id, question, answer, links, AltLink }) => (
+                <FaqItem {...{ id, question, answer, links, AltLink }} />
             ))}
         </SlideDownTab>
     )

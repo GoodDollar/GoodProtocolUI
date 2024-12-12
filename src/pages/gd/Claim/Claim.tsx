@@ -66,7 +66,7 @@ const ClaimPage = () => {
     return (
         <PageLayout title="Claim" faqType="claim">
             <Dialog />
-            <VStack maxWidth="500" margin="auto">
+            <VStack maxWidth="500" margin="auto" mt={0}>
                 <ClaimProvider
                     activePoolAddresses={
                         process.env.REACT_APP_UBIPOOL_ADDRESSES
