@@ -11,8 +11,8 @@ export const feedConfig = {
     },
 }
 
-export const NewsFeedWidget = ({ variant }: { variant?: string }) => {
+export const NewsFeedWidget = ({ variant, direction = 'row' }: { variant?: string; direction?: 'row' | 'column' }) => {
     const { feed } = useContext(NewsFeedContext)
 
-    return <NewsFeed feed={feed} variant={variant} direction="column" />
+    return <NewsFeed {...{ feed, variant, direction }} />
 }
