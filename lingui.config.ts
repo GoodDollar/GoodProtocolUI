@@ -2,8 +2,8 @@ export default {
     catalogs: [
         {
             path: '<rootDir>/src/language/locales/{locale}/catalog',
-            include: ['<rootDir>/src']
-        }
+            include: ['<rootDir>/src'],
+        },
     ],
     locales: [
         'af',
@@ -14,7 +14,7 @@ export default {
         'de',
         'el',
         'en',
-        'es-AR',
+        'es-419',
         'es',
         'fi',
         'fr',
@@ -38,6 +38,6 @@ export default {
         'zh',
         'zh-CN',
         'zh-TW',
-        'ko'
-    ]
+        'ko',
+    ],
 }

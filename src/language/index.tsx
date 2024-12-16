@@ -3,9 +3,10 @@ import { I18nProvider } from '@lingui/react'
 import { i18n } from '@lingui/core'
 import { Helmet } from 'react-helmet'
 import { AsyncStorage } from '@gooddollar/web3sdk-v2'
+import { useGoodUILanguage } from '@gooddollar/good-design'
 
 // This array should equal the array set in .linguirc
-export const locales = ['de', 'en', 'es-AR', 'es', 'it', 'he', 'ro', 'ru', 'uk', 'vi', 'zh-CN', 'zh-TW', 'ko', 'ja']
+export const locales = ['de', 'en', 'es-419', 'es', 'it', 'he', 'ro', 'ru', 'uk', 'vi', 'zh-CN', 'zh-TW', 'ko', 'ja']
 export const defaultLocale = 'en'
 
 const getInitialLocale = () => {
@@ -34,12 +35,15 @@ export const LanguageContext = React.createContext<{
 const LanguageProvider: FC = ({ children }) => {
     const [language, setLanguage] = useState(getInitialLocale)
     const [init, setInit] = useState(true)
+    const { setLanguage: setGoodUILanguage } = useGoodUILanguage()
 
     const _setLanguage = useCallback(
         (language: string): void => {
             const switchLocale = (): void => {
                 AsyncStorage.safeSet('lang', language)
                 setLanguage(language)
+                console.log('set language', language)
+                setGoodUILanguage(language)
             }
 
             if (init) {

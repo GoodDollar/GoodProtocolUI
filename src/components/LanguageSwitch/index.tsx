@@ -1,16 +1,17 @@
 import { MenuFlyout, StyledMenu, StyledMenuButton } from 'components/StyledMenu'
 import React, { memo, useRef } from 'react'
 import styled from 'styled-components'
-import ChFlag from '../../assets/images/ch-flag.png'
-import DeFlag from '../../assets/images/de-flag.png'
-import EnFlag from '../../assets/images/en-flag.png'
-import EsFlag from '../../assets/images/es-flag.png'
-import HeFlag from '../../assets/images/he-flag.png'
-import ItFlag from '../../assets/images/it-flag.png'
-import RoFlag from '../../assets/images/ro-flag.png'
-import RuFlag from '../../assets/images/ru-flag.png'
-import UkFlag from '../../assets/images/uk-flag.png'
-import ViFlag from '../../assets/images/vi-flag.png'
+import ArFlag from '../../assets/images/countries/ar-flag.png'
+import ChFlag from '../../assets/images/countries/ch-flag.png'
+import DeFlag from '../../assets/images/countries/de-flag.png'
+import EnFlag from '../../assets/images/countries/en-flag.png'
+import EsFlag from '../../assets/images/countries/es-flag.png'
+import HeFlag from '../../assets/images/countries/he-flag.png'
+import ItFlag from '../../assets/images/countries/it-flag.png'
+import RoFlag from '../../assets/images/countries/ro-flag.png'
+import RuFlag from '../../assets/images/countries/ru-flag.png'
+import UkFlag from '../../assets/images/countries/uk-flag.png'
+import ViFlag from '../../assets/images/countries/vi-flag.png'
 import { useLanguageData } from '../../language/hooks'
 import { useModalOpen, useToggleModal } from '../../state/application/hooks'
 import { ApplicationModal } from '../../state/application/types'
@@ -116,8 +117,8 @@ const LANGUAGES: { [x: string]: { flag: string; language: string; dialect?: stri
         flag: EsFlag,
         language: 'Spanish',
     },
-    'es-AR': {
-        flag: EsFlag,
+    'es-419': {
+        flag: ArFlag,
         language: 'Spanish',
         dialect: 'AR',
     },
