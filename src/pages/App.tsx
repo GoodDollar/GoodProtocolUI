@@ -179,7 +179,7 @@ function App(): JSX.Element {
                 />
                 <Wrapper isSimpleApp className="flex flex-grow overflow-hidden">
                     {isDesktopView && <SideBar />}
-                    <MainPageContainer isFv={isFV} isDashboard={isDash}>
+                    <MainPageContainer isFv={isFV} isDashboard={isDash} isClaim={isClaim}>
                         <Popups />
                         <Web3ReactManager>
                             <div className={routerContainerClasses}>

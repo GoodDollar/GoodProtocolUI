@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useGoodId } from '@gooddollar/good-design'
 import { Spinner, VStack } from 'native-base'
 import { useEthers } from '@usedapp/core'
@@ -14,7 +14,7 @@ import usePromise from 'hooks/usePromise'
 const GoodId = () => {
     const { account = '' } = useEthers()
     const { certificateSubjects, isWhitelisted } = useGoodId(account)
-    const [skipSegmentation, setSkipSegmentation] = useState(false)
+    const [skipSegmentation, setSkipSegmentation] = useState<boolean | undefined>(false)
     const [, payload] = useFeatureFlagWithPayload('goodid')
     const { enabled = false, whitelist } = payload ?? {}
 
@@ -24,8 +24,12 @@ const GoodId = () => {
             return false
         }
 
-        return AsyncStorage.getItem('goodid_upgraded')
+        return await AsyncStorage.getItem('goodid_upgraded')
     }, [certificateSubjects, isWhitelisted])
+
+    const onExit = useCallback(() => {
+        setSkipSegmentation(isUpgraded === true)
+    }, [isUpgraded])
 
     if (isWhitelisted === undefined || isUpgraded === undefined) return <Spinner variant="page-loader" size="lg" />
 
@@ -46,7 +50,7 @@ const GoodId = () => {
                 {(isWhitelisted && !isEmpty(certificateSubjects) && isUpgraded) || skipSegmentation ? (
                     <GoodIdDetails />
                 ) : (
-                    <Onboard onExit={() => setSkipSegmentation(true)} />
+                    <Onboard onExit={onExit} />
                 )}
             </VStack>
         </PageLayout>

@@ -6,6 +6,7 @@ interface IMainPageContainerProps {
     children: ReactNode
     isFv: boolean
     isDashboard: boolean
+    isClaim: boolean
     mainBody?: object
     flexStart?: object
     justifyBetween?: object
@@ -43,13 +44,22 @@ export const mpContainerTheme = {
 }
 
 const MainPageContainer = withTheme({ name: 'MainPageContainer' })(
-    ({ children, mainBody, flexStart, justifyBetween, dashboardBody, isFv, isDashboard }: IMainPageContainerProps) => {
+    ({
+        children,
+        mainBody,
+        flexStart,
+        justifyBetween,
+        dashboardBody,
+        isFv,
+        isDashboard,
+        isClaim,
+    }: IMainPageContainerProps) => {
         const bgColor = useColorModeValue('white', '#222B45')
         const styles = useBreakpointValue({
             base: {
                 ...mainBody,
                 ...(isFv ? justifyBetween : flexStart),
-                ...(isDashboard ? dashboardBody : { paddingRight: 16, paddingLeft: 16 }),
+                ...(isDashboard ? dashboardBody : isFv || isClaim ? {} : { paddingRight: 16, paddingLeft: 16 }),
             },
             lg: {
                 ...mainBody,

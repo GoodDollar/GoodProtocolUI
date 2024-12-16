@@ -11,7 +11,7 @@ const Claim = () => {
     const { enabled = false, whitelist } = payload ?? {}
     //todo: add country check, but not required for initial UAT
 
-    return <>{!enabled && whitelist?.includes(account) ? <NewClaim /> : <OldClaim />}</>
+    return <>{(!enabled && whitelist?.includes(account)) || true ? <NewClaim /> : <OldClaim />}</>
 }
 
 export default Claim
