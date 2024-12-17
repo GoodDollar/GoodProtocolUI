@@ -28,7 +28,7 @@ export const Onboard = ({ onExit }: { onExit: () => void }) => {
                 onSkip={onExit}
                 onDone={goToClaim}
                 onExit={onExit}
-                isDev={networkEnv === 'development' || whitelist?.includes(account)}
+                isDev={networkEnv !== 'production' || whitelist?.includes(account)}
                 isWallet={true}
                 withNavBar={false}
             />

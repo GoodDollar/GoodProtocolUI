@@ -27,8 +27,10 @@ const ClaimPage = () => {
     const [, connect] = useConnectWallet()
     const history = useHistory()
     const networkEnv = getNetworkEnv()
-    const [, payload] = useFeatureFlagWithPayload('claim-feature')
-    const { enabled: claimEnabled, disabledMessage = '' } = (payload as any) || {}
+    const [, claimPayload] = useFeatureFlagWithPayload('claim-feature')
+    const [, goodidPayload] = useFeatureFlagWithPayload('goodid')
+    const { enabled: claimEnabled, disabledMessage = '' } = (claimPayload as any) || {}
+    const { whitelist } = (goodidPayload as any) || {}
     const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
 
     // const { tasks } = nxTasks
@@ -92,7 +94,7 @@ const ClaimPage = () => {
                             account={account ?? ''}
                             chainId={chainId}
                             onExit={noop}
-                            isDev={networkEnv === 'development'}
+                            isDev={networkEnv === 'development' || whitelist?.includes(account)}
                             withNavBar={false}
                         />
                     </NewsFeedProvider>
