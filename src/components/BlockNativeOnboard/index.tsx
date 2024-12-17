@@ -2,14 +2,13 @@ import React, { FC, useEffect, useRef } from 'react'
 import { useConnectWallet } from '@web3-onboard/react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { OnboardProvider, useGetEnvChainId } from '@gooddollar/web3sdk-v2'
+import { AsyncStorage, getDevice, OnboardProvider, SupportedChains, useGetEnvChainId } from '@gooddollar/web3sdk-v2'
 import { Web3ActionButton } from '@gooddollar/good-design'
-import { SupportedChains, AsyncStorage, getDevice } from '@gooddollar/web3sdk-v2'
 import { noop } from 'lodash'
 
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 
-import { connectOptions } from 'connectors'
+import { connectOptions, torus } from 'connectors'
 
 /**
  * Just a button to trigger the onboard connect modal.
@@ -81,7 +80,7 @@ export const OnboardProviderWrapper = ({ children }) => {
     return (
         <OnboardProvider
             options={connectOptions}
-            // wallets={{ custom: [torus] }}
+            wallets={{ custom: [torus] }}
             // wc2Options={{ requiredChains: [selectedChain] }} // advised not to use this option. ref: https://docs.walletconnect.com/advanced/migration-from-v1.x/namespaces#technical-implementation-guide-for-apps
             gdEnv={connectedEnv}
         >
