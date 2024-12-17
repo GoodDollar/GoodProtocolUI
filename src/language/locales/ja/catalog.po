@@ -2849,7 +2849,7 @@ msgstr "おめでとう！"
 msgid "Connect a wallet to see your portfolio"
 msgstr ""
 
-#: src/components/BlockNativeOnboard/index.tsx:33
+#: src/components/BlockNativeOnboard/index.tsx:32
 msgid "Connect to a wallet"
 msgstr "ウォレットに接続する"
 
