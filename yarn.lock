@@ -15438,7 +15438,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@web3-onboard/core@npm:2.23.0, @web3-onboard/core@npm:^2.22.2":
+"@web3-onboard/core@npm:2.23.0":
   version: 2.23.0
   resolution: "@web3-onboard/core@npm:2.23.0"
   dependencies:
@@ -15455,6 +15455,26 @@ __metadata:
     svelte-i18n: ^3.3.13
     viem: 2.12.0
   checksum: 26f931ab6b9e991aafd2653f4b110eb679b2eed60c219d359911d9cc23cce959e1cafb72198067a25ae9d112d223190e3be499acfcda11ed44410183c336ae5f
+  languageName: node
+  linkType: hard
+
+"@web3-onboard/core@patch:@web3-onboard/core@npm%3A2.23.0#./.yarn/patches/@web3-onboard-core-npm-2.23.0-1e9c87f982.patch::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
+  version: 2.23.0
+  resolution: "@web3-onboard/core@patch:@web3-onboard/core@npm%3A2.23.0#./.yarn/patches/@web3-onboard-core-npm-2.23.0-1e9c87f982.patch::version=2.23.0&hash=0d589a&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  dependencies:
+    "@web3-onboard/common": ^2.4.1
+    bnc-sdk: ^4.6.7
+    bowser: ^2.11.0
+    eventemitter3: ^4.0.7
+    joi: 17.9.1
+    lodash.merge: ^4.6.2
+    lodash.partition: ^4.6.0
+    nanoid: ^4.0.0
+    rxjs: ^7.5.5
+    svelte: ^3.49.0
+    svelte-i18n: ^3.3.13
+    viem: 2.12.0
+  checksum: 5d1500ab828108c754cc8ebaec8fe101f33d3638d25165ec37e0ba92801bbf058f0172cd86e0dba701ee9732734fd80035f6990e7141e46da4173f2ed6d01b5b
   languageName: node
   linkType: hard
 
