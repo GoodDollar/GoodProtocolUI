@@ -42,7 +42,7 @@ const LanguageProvider: FC = ({ children }) => {
             const switchLocale = (): void => {
                 AsyncStorage.safeSet('lang', language)
                 setLanguage(language)
-                console.log('set language', language)
+
                 setGoodUILanguage(language)
             }
 
