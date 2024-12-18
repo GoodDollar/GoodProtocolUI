@@ -7,17 +7,14 @@ import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { HashRouter as Router } from 'react-router-dom'
-import { AnalyticsProvider, GoodIdContextProvider } from '@gooddollar/web3sdk-v2'
-import { NewsFeedProvider } from '@gooddollar/web3sdk-v2'
+import { AnalyticsProvider } from '@gooddollar/web3sdk-v2'
 import { PostHogProvider } from 'posthog-react-native'
 import { Provider as PaperProvider } from 'react-native-paper'
-import { GoodIdProvider, GoodUIi18nProvider, NativeBaseProvider, RedirectNoticeProvider } from '@gooddollar/good-design'
+import { GoodXProvider } from '@gooddollar/good-design'
 
 import Blocklist from './components/Blocklist'
 import App from './pages/App'
 import store from './state'
-import { feedConfig } from 'components/NewsFeed'
-import { getNetworkEnv } from 'utils/env'
 import ApplicationUpdater from './state/application/updater'
 import MulticallUpdater from './state/multicall/updater'
 import UserUpdater from './state/user/updater'
@@ -77,38 +74,25 @@ const enableHttpsRedirect = String(process.env.REACT_APP_ENABLE_HTTPS_REDIRECT) 
 const enableServiceWorker =
     window.location.hostname !== 'localhost' && String(process.env.REACT_APP_ENABLE_SERVICE_WORKER) === '1'
 
-const networkEnv = getNetworkEnv()
-const prodOrQa = /\b(production|staging)\b/.test(networkEnv)
-
 const ProviderWrapper = ({ children }) => (
     <Provider store={store}>
-        <NewsFeedProvider {...(prodOrQa ? { feedFilter: feedConfig.production.feedFilter } : { env: 'qa' })}>
-            <RedirectNoticeProvider>
-                <OnboardProviderWrapper>
-                    <GoodIdContextProvider>
-                        <GoodIdProvider>
-                            <Web3ContextProvider>
-                                <GoodUIi18nProvider>
-                                    <LanguageProvider>
-                                        <PostHogProvider
-                                            apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
-                                            options={{
-                                                host:
-                                                    import.meta.env.REACT_APP_POSTHOG_PROXY ??
-                                                    'https://app.posthog.com',
-                                            }}
-                                            autocapture={false}
-                                        >
-                                            {children}
-                                        </PostHogProvider>
-                                    </LanguageProvider>
-                                </GoodUIi18nProvider>
-                            </Web3ContextProvider>
-                        </GoodIdProvider>
-                    </GoodIdContextProvider>
-                </OnboardProviderWrapper>
-            </RedirectNoticeProvider>
-        </NewsFeedProvider>
+        <OnboardProviderWrapper>
+            <GoodXProvider nativeBaseProps={{ config: { suppressColorAccessibilityWarning: true }, theme: nbTheme }}>
+                <Web3ContextProvider>
+                    <LanguageProvider>
+                        <PostHogProvider
+                            apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
+                            options={{
+                                host: import.meta.env.REACT_APP_POSTHOG_PROXY ?? 'https://app.posthog.com',
+                            }}
+                            autocapture={false}
+                        >
+                            {children}
+                        </PostHogProvider>
+                    </LanguageProvider>
+                </Web3ContextProvider>
+            </GoodXProvider>
+        </OnboardProviderWrapper>
     </Provider>
 )
 
@@ -121,18 +105,16 @@ ReactDOM.render(
                         <UserUpdater />
                         <ApplicationUpdater />
                         <MulticallUpdater />
-                        <NativeBaseProvider config={{ suppressColorAccessibilityWarning: true }} theme={nbTheme}>
-                            <ThemeProvider>
-                                <PaperProvider>
-                                    <GlobalStyle />
-                                    <Router>
-                                        <SimpleAppProvider>
-                                            <App />
-                                        </SimpleAppProvider>
-                                    </Router>
-                                </PaperProvider>
-                            </ThemeProvider>
-                        </NativeBaseProvider>
+                        <ThemeProvider>
+                            <PaperProvider>
+                                <GlobalStyle />
+                                <Router>
+                                    <SimpleAppProvider>
+                                        <App />
+                                    </SimpleAppProvider>
+                                </Router>
+                            </PaperProvider>
+                        </ThemeProvider>
                     </Blocklist>
                 </AnalyticsProvider>
             </ProviderWrapper>
