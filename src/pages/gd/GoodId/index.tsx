@@ -46,7 +46,7 @@ const GoodId = () => {
 
     return (
         <PageLayout faqType="goodid">
-            <VStack margin="auto" mt="0">
+            <VStack margin="auto" mt="0" maxW="650">
                 {(isWhitelisted && !isEmpty(certificateSubjects) && isUpgraded) || skipSegmentation ? (
                     <GoodIdDetails />
                 ) : (
