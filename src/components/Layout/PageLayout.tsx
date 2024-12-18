@@ -7,8 +7,8 @@ import { CentreBox, Title } from '@gooddollar/good-design'
 import { Faq } from 'components/Faq/Faq'
 
 interface PageLayoutProps {
-    title: string
-    faqType?: 'buy' | 'swap' | 'bridge'
+    title?: string
+    faqType?: 'buy' | 'swap' | 'bridge' | 'goodid' | 'claim'
     customTabs?: JSX.Element[]
 }
 
@@ -26,6 +26,7 @@ export const PageLayout: FC<PropsWithChildren<PageLayoutProps>> = ({ title, faqT
         lg: {
             flexDirection: 'row',
             justifyContent: 'justify-evenly',
+            paddingTop: 10,
         },
     })
 
@@ -42,7 +43,7 @@ export const PageLayout: FC<PropsWithChildren<PageLayoutProps>> = ({ title, faqT
             borderRightWidth: 1,
             flexGrow: 1,
             justifyContent: 'flex-start',
-            textAlign: 'center',
+            paddingTop: 40,
         },
     })
 
@@ -74,9 +75,11 @@ export const PageLayout: FC<PropsWithChildren<PageLayoutProps>> = ({ title, faqT
     return (
         <Box w="100%" mb="8" style={mainView}>
             <CentreBox borderColor="borderGrey" style={leftContainer}>
-                <Title fontFamily="heading" fontSize="2xl" fontWeight="extrabold" pb="2" textAlign="center">
-                    {i18n._(t`${title}`)}
-                </Title>
+                {title ? (
+                    <Title fontFamily="heading" fontSize="2xl" fontWeight="extrabold" pb="2" textAlign="center">
+                        {i18n._(t`${title}`)}
+                    </Title>
+                ) : null}
                 {children}
             </CentreBox>
             <CentreBox w="100%" justifyContent="flex-start" style={rightContainer}>

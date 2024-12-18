@@ -69,6 +69,7 @@ export default defineConfig(({ command, mode }) => {
                 'react-native-svg': 'react-native-svg-web',
                 'react-native-webview': 'react-native-web-webview',
                 'lottie-react-native': 'react-native-web-lottie',
+                '@react-native-clipboard/clipboard': 'react-native-web-clipboard',
                 jsbi: path.resolve(__dirname, '.', 'node_modules', 'jsbi', 'dist', 'jsbi-cjs.js'), // https://github.com/Uniswap/sdk-core/issues/20#issuecomment-1559863408
             },
             dedupe: ['react', 'ethers', 'react-dom', 'native-base'],

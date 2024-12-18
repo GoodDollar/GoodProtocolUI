@@ -4,23 +4,26 @@ import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { SlideDownTab, useScreenSize } from '@gooddollar/good-design'
 
-import { faqBuyCopy, faqBridgeCopy, faqSwapCopy } from './copies'
+import { faqBuyCopy, faqBridgeCopy, faqSwapCopy, faqGoodIDCopy, faqClaimCopy } from './copies'
 
 const faqs = {
     swap: faqSwapCopy,
     buy: faqBuyCopy,
     bridge: faqBridgeCopy,
+    goodid: faqGoodIDCopy,
+    claim: faqClaimCopy,
 }
 
-const FaqItem = ({ id, question, answer, links }) => {
+const FaqItem = ({ id, question, answer, links, AltLink }) => {
     const { isDesktopView } = useScreenSize()
+
     return (
         <SlideDownTab
             tabTitle={i18n._(t`${question}`)}
             mb={2}
             viewInteraction={{
                 hover: {
-                    backgroundColor: 'primary:alpha.10',
+                    backgroundColor: 'gdPrimary:alpha.10',
                     borderRadius: 6,
                 },
             }}
@@ -63,24 +66,25 @@ const FaqItem = ({ id, question, answer, links }) => {
                             fontSize="sm"
                         >
                             {text}
-                            <Link key={id} isExternal href={href} color="primary">
+                            <Link key={id} isExternal href={href} color="main">
                                 {i18n._(t` ${linkText}`)}
                             </Link>
                         </Text>
                     ))}
                 </VStack>
             ) : null}
+            {AltLink ? <AltLink /> : null}
         </SlideDownTab>
     )
 }
 
-export const Faq = ({ type }: { type: 'swap' | 'buy' | 'bridge' }) => {
+export const Faq = ({ type }: { type: 'swap' | 'buy' | 'bridge' | 'goodid' | 'claim' }) => {
     const copies = faqs[type]
 
     return (
         <SlideDownTab
             tabTitle="FAQ"
-            viewInteraction={{ hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 } }}
+            viewInteraction={{ hover: { backgroundColor: 'main:alpha.10', borderRadius: 6 } }}
             styles={{
                 titleFont: { fontSize: 'l', fontFamily: 'heading', fontWeight: '700', paddingLeft: 2 },
                 button: { marginBottom: 25, borderRadius: 12 },
@@ -88,8 +92,8 @@ export const Faq = ({ type }: { type: 'swap' | 'buy' | 'bridge' }) => {
                 container: { marginTop: 16, marginBottom: 100 },
             }}
         >
-            {copies.map(({ id, question, answer, links }) => (
-                <FaqItem id={id} question={question} answer={answer} links={links} />
+            {copies.map(({ id, question, answer, links, AltLink }) => (
+                <FaqItem {...{ id, question, answer, links, AltLink }} />
             ))}
         </SlideDownTab>
     )

@@ -46,7 +46,7 @@ function Web3StatusInner() {
             {account && (
                 <div className="flex flex-row gap-4">
                     {nativeBalance && (
-                        <Text fontSize="sm" fontFamily="subheading" fontWeight="normal" color="primary">
+                        <Text fontSize="sm" fontFamily="subheading" fontWeight="normal" color="gdPrimary">
                             {parseFloat(nativeBalance).toFixed(4)} {Currency.getNativeCurrencySymbol(chainId)}
                         </Text>
                     )}

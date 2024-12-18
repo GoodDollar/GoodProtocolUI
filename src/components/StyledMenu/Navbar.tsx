@@ -7,7 +7,7 @@ export const navbarTheme = {
     baseStyle: {
         display: 'flex',
         width: '100%',
-        backgroundColor: 'primary',
+        backgroundColor: 'gdPrimary',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',

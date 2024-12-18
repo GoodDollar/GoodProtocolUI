@@ -284,7 +284,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                                     key={subMenu.subMenuTitle}
                                     tabTitle={subMenu.subMenuTitle}
                                     viewInteraction={{
-                                        hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 },
+                                        hover: { backgroundColor: 'main:alpha.10', borderRadius: 6 },
                                     }}
                                     styles={{
                                         button: {
