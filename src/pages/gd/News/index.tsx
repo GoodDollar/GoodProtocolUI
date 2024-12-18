@@ -1,5 +1,9 @@
-import { NewsFeedWidget } from 'components/NewsFeed'
+import { NewsFeedWidget, NewsFeedWrapper } from 'components/NewsFeed'
 
-const NewsFeedPage = () => <NewsFeedWidget variant="multiRow" direction="row" />
+const NewsFeedPage = () => (
+    <NewsFeedWrapper>
+        <NewsFeedWidget variant="multiRow" direction="row" />
+    </NewsFeedWrapper>
+)
 
 export default NewsFeedPage

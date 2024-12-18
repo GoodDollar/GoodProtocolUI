@@ -1,7 +1,6 @@
 import { useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
 import { ClaimProvider, ClaimWizard } from '@gooddollar/good-design'
-import { NewsFeedProvider, SupportedChains } from '@gooddollar/web3sdk-v2'
 import { noop } from 'lodash'
 import { useEthers } from '@usedapp/core'
 import { useConnectWallet } from '@web3-onboard/react'
@@ -10,7 +9,7 @@ import { useFeatureFlagWithPayload } from 'posthog-react-native'
 
 import { getNetworkEnv } from 'utils/env'
 
-import { feedConfig } from 'components/NewsFeed'
+import { feedConfig } from 'constants/config'
 
 import { PageLayout } from 'components/Layout/PageLayout'
 import { useDisabledClaimingModal } from './useDisabledClaimModal'
@@ -19,7 +18,6 @@ const goodIdExplorerUrls = {
     CELO: process.env.REACT_APP_GOODID_CELO_EXPLORER ?? 'https://api.celoscan.io/api?&',
     FUSE: process.env.REACT_APP_GOODID_FUSE_EXPLORER ?? 'https://explorer.fuse.org/api?&',
     MAINNET: process.env.REACT_APP_GOODID_MAINNET_EXPLORER ?? '',
-    GOODCOLLECTIVE: process.env.REACT_APP_GOOD_GOODCOLLECTIVE_EXPLORER ?? '',
 }
 
 const ClaimPage = () => {
@@ -76,28 +74,25 @@ const ClaimPage = () => {
                             : {}
                     }
                     explorerEndPoints={goodIdExplorerUrls}
-                    supportedChains={[SupportedChains.CELO, SupportedChains.FUSE]}
                     onNews={onNews}
                     withNewsFeed
+                    newsProps={{
+                        ...(networkEnv !== 'development'
+                            ? { feedFilter: feedConfig.production.feedFilter }
+                            : { env: 'qa' }),
+                    }}
                     onConnect={handleConnect}
                     // onSuccess={onClaimSuccess}
                     onUpgrade={onUpgrade}
                     withSignModals
                 >
-                    <NewsFeedProvider
-                        {...(networkEnv !== 'development'
-                            ? { feedFilter: feedConfig.production.feedFilter }
-                            : { env: 'qa' })}
-                        limit={1}
-                    >
-                        <ClaimWizard
-                            account={account ?? ''}
-                            chainId={chainId}
-                            onExit={noop}
-                            isDev={networkEnv === 'development' || whitelist?.includes(account)}
-                            withNavBar={false}
-                        />
-                    </NewsFeedProvider>
+                    <ClaimWizard
+                        account={account ?? ''}
+                        chainId={chainId}
+                        onExit={noop}
+                        isDev={networkEnv === 'development' || whitelist?.includes(account)}
+                        withNavBar={false}
+                    />
                 </ClaimProvider>
             </VStack>
         </PageLayout>

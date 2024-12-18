@@ -21,7 +21,7 @@ import { ClaimBalance } from './ClaimBalance'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
-import { NewsFeedWidget } from '../../../components/NewsFeed'
+import { NewsFeedWidget, NewsFeedWrapper } from '../../../components/NewsFeed'
 
 import BillyHappy from 'assets/images/claim/billysmile.png'
 import BillyGrin from 'assets/images/claim/billygrin.png'
@@ -340,7 +340,9 @@ Learn how here`,
                     </CentreBox>
                 </CentreBox>
                 <CentreBox style={newsFeedView}>
-                    <NewsFeedWidget />
+                    <NewsFeedWrapper>
+                        <NewsFeedWidget direction="column" />
+                    </NewsFeedWrapper>
                 </CentreBox>
             </Box>
         </>
