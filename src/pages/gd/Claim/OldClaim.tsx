@@ -6,17 +6,20 @@ import {
     ClaimButton,
     ClaimCarousel,
     IClaimCard,
+    Image,
     Title,
     useScreenSize,
     ClaimSuccessModal,
 } from '@gooddollar/good-design'
-import { Box, Text, useBreakpointValue } from 'native-base'
+import { Box, Center, Text, useBreakpointValue } from 'native-base'
 import { useConnectWallet } from '@web3-onboard/react'
 import { useClaim, SupportedV2Networks, useContractFunctionWithDefaultGasFees } from '@gooddollar/web3sdk-v2'
 import { QueryParams } from '@usedapp/core'
 import { noop } from 'lodash'
 import { useFeatureFlagWithPayload } from 'posthog-react-native'
+import moment from 'moment'
 
+import ClaimFooterCelebration from 'assets/images/claim/claim-footer-celebration.png'
 import { ClaimBalance } from './ClaimBalance'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 
@@ -47,6 +50,8 @@ const OldClaim = memo(() => {
     const [, payload] = useFeatureFlagWithPayload('claim-feature')
     const { enabled: claimEnabled, disabledMessage = '' } = (payload as any) || {}
     const { isSmallTabletView } = useScreenSize()
+    const holiday = moment().format('MM-DD')
+    const isHoliday = holiday >= '12-24' || holiday <= '01-01'
 
     const isSimpleApp = useIsSimpleApp()
     const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
@@ -331,6 +336,16 @@ Learn how here`,
                                         chainId={chainId}
                                         onEvent={handleEvents}
                                     />
+                                    {isHoliday ? (
+                                        <Center maxW="390" width="100%" mb={8}>
+                                            <Image
+                                                source={ClaimFooterCelebration as any}
+                                                w="100%"
+                                                h={isHoliday ? 190 : 140}
+                                                style={{ resizeMode: isHoliday ? 'cover' : 'contain' }}
+                                            />
+                                        </Center>
+                                    ) : null}
                                 </>
                             )}
                         </Box>
