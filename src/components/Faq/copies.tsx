@@ -259,14 +259,14 @@ const faqClaimCopy: FaqItemCopy[] = [
     {
         id: 'whichBlockchainsG',
         question: `What blockchains and networks does G$ operate on?`,
-        answer: `GoodDollar is deployed on Ethereum, Fuse and Celo.\n\nDaily distribution happens on sidechains: Fuse and Celo.`,
+        answer: `GoodDollar is deployed on Ethereum, Fuse and Celo.\n\nDaily distribution happens on `,
         links: [],
         AltLink: () => (
-            <Text variant="sm-grey-400" lineHeight="20">
+            <Text variant="sm-grey-400" lineHeight="20" width="100%" textAlign="left" pl="2">
                 <Link href="https://docs.gooddollar.org/frequently-asked-questions/web3-basic-knowledge-and-security-tips-by-consensys#what-are-sidechains">
-                    <Text>sidechains: </Text>
+                    <Text textDecorationLine="underline">sidechains</Text>
                 </Link>
-                Celo and Fuse.
+                : Celo and Fuse.
             </Text>
         ),
     },
