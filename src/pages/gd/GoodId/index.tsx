@@ -5,11 +5,11 @@ import { useEthers } from '@usedapp/core'
 import { isEmpty } from 'lodash'
 import { AsyncStorage } from '@gooddollar/web3sdk-v2'
 import { useFeatureFlagWithPayload } from 'posthog-react-native'
+import usePromise from 'react-use-promise'
 
 import GoodIdDetails from './GoodIdDetails'
 import { Onboard } from './Onboard'
 import { PageLayout } from 'components/Layout/PageLayout'
-import usePromise from 'hooks/usePromise'
 import { retry } from 'utils/retry'
 
 export const isSupportedCountry = async (supportedCountries = '') => {
