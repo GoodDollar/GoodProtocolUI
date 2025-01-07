@@ -32,7 +32,7 @@ const GoodId = () => {
     const { certificateSubjects, isWhitelisted } = useGoodId(account)
     const [skipSegmentation, setSkipSegmentation] = useState<boolean | undefined>(false)
     const [, payload] = useFeatureFlagWithPayload('goodid')
-    const { enabled = false, whitelist = [], countries = '' } = payload ?? {}
+    const { enabled = false, whitelist = undefined, countries = '' } = payload ?? {}
 
     const [isUpgraded] = usePromise(async () => {
         if (isEmpty(certificateSubjects) && isWhitelisted !== undefined) {
