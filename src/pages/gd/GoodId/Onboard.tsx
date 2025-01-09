@@ -29,7 +29,7 @@ export const Onboard = ({ onExit }: { onExit: () => void }) => {
                 onDone={goToClaim}
                 onExit={onExit}
                 isDev={networkEnv !== 'production' || whitelist?.includes(account)}
-                isWallet={true}
+                isWallet={false}
                 withNavBar={false}
             />
         </VStack>
