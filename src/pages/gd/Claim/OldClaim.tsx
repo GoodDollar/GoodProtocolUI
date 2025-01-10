@@ -48,7 +48,7 @@ const OldClaim = memo(() => {
     const network = SupportedV2Networks[chainId]
     const sendData = useSendAnalyticsData()
     const [, payload] = useFeatureFlagWithPayload('claim-feature')
-    const { enabled: claimEnabled, disabledMessage = '' } = (payload as any) || {}
+    const { enabled: claimEnabled = true, disabledMessage = '' } = (payload as any) || {}
     const { isSmallTabletView } = useScreenSize()
     const holiday = moment().format('MM-DD')
     const isHoliday = holiday >= '12-24' || holiday <= '01-01'
