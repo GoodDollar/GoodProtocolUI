@@ -21,7 +21,7 @@ const Claim = () => {
 
     if (payload === undefined) return <Spinner variant="page-loader" size="lg" />
 
-    return <>{goodIdEnabled ? <NewClaim /> : <OldClaim />}</>
+    return goodIdEnabled ? <NewClaim /> : <OldClaim />
 }
 
 export default Claim
