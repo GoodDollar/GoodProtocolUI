@@ -1,5 +1,8 @@
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { usePostHog } from 'posthog-react-native'
+import { Spinner } from 'native-base'
+
 import { RedirectHashRoutes } from 'pages/routes/redirects'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { CustomLightSpinner } from 'theme'
@@ -14,6 +17,34 @@ const Claim = lazy(() => import('./pages/gd/Claim/'))
 const GoodId = lazy(() => import('./pages/gd/GoodId'))
 const BuyGd = lazy(() => import('./pages/gd/BuyGD'))
 const NewsFeedPage = lazy(() => import('./pages/gd/News'))
+
+const RoutesWrapper = () => {
+    const posthog = usePostHog()
+    const [posthogInitialized, setPosthogInitialized] = useState(false)
+
+    useEffect(() => {
+        let debounceTimer: any
+
+        const retryFeatureFlags = () => {
+            clearTimeout(debounceTimer)
+            debounceTimer = setTimeout(() => {
+                if (posthog?.getFeatureFlag('goodid')) {
+                    setPosthogInitialized(true)
+                } else {
+                    retryFeatureFlags()
+                }
+            }, 300)
+        }
+
+        retryFeatureFlags()
+
+        return () => {
+            clearTimeout(debounceTimer)
+        }
+    }, [posthog])
+
+    return posthogInitialized ? <Routes /> : <Spinner variant="page-loader" size="lg" />
+}
 
 function Routes(): JSX.Element {
     const { chainId } = useActiveWeb3React()
@@ -36,4 +67,4 @@ function Routes(): JSX.Element {
     )
 }
 
-export default Routes
+export default RoutesWrapper
