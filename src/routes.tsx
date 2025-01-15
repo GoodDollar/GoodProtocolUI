@@ -23,23 +23,8 @@ const RoutesWrapper = () => {
     const [posthogInitialized, setPosthogInitialized] = useState(false)
 
     useEffect(() => {
-        let debounceTimer: any
-
-        const retryFeatureFlags = () => {
-            clearTimeout(debounceTimer)
-            debounceTimer = setTimeout(() => {
-                if (posthog?.getFeatureFlag('goodid')) {
-                    setPosthogInitialized(true)
-                } else {
-                    retryFeatureFlags()
-                }
-            }, 300)
-        }
-
-        retryFeatureFlags()
-
-        return () => {
-            clearTimeout(debounceTimer)
+        if (posthog) {
+            posthog.onFeatureFlags(() => setPosthogInitialized(true))
         }
     }, [posthog])
 
