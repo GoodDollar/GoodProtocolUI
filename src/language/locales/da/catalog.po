@@ -2,16 +2,21 @@ msgid ""
 msgstr ""
 "POT-Creation-Date: 2023-05-31 12:45+0300\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
-"Project-Id-Version: \n"
+"Project-Id-Version: goodprotocolui\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2025-01-12 10:27\n"
 "Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
-"Plural-Forms: \n"
+"Language: da_DK\n"
+"Language-Team: Danish\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: goodprotocolui\n"
+"X-Crowdin-Project-ID: 481161\n"
+"X-Crowdin-Language: da\n"
+"X-Crowdin-File: /master/src/language/locales/en/catalog.po\n"
+"X-Crowdin-File-ID: 24\n"
 
 #: src/components/Savings/SavingsCard/index.tsx:48
 msgid ""
@@ -127,6 +132,10 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
+#~ msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "A portion of each trade (0.25%) goes to liquidity providers as a protocol incentive."
 #~ msgstr "A portion of each trade (0.25%) goes to liquidity providers as a protocol incentive."
 
@@ -227,6 +236,10 @@ msgstr ""
 #~ msgstr "Analytics"
 
 #. js-lingui-explicit-id
+#~ msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects."
 #~ msgstr "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects."
 
@@ -261,6 +274,10 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "Available"
 #~ msgstr "Available"
+
+#. js-lingui-explicit-id
+#~ msgid "Awesome!"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Back"
@@ -357,6 +374,10 @@ msgstr ""
 #~ msgstr "Bypasses confirmation modals and allows high slippage trades. Use at your own risk."
 
 #. js-lingui-explicit-id
+#~ msgid "CLAIMABLE REWARDS"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "CONFIRM SWAP"
 #~ msgstr "CONFIRM SWAP"
 
@@ -373,12 +394,44 @@ msgstr ""
 #~ msgstr "Claim"
 
 #. js-lingui-explicit-id
+#~ msgid "Claim All"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Claim G$"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Claim G$ rewards"
+#~ msgstr "Claim G$ rewards"
+
+#. js-lingui-explicit-id
+#~ msgid "Claim GOOD"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Claim GOOD rewards"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Claim Rewards"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "Claim SUSHI"
 #~ msgstr "Claim SUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "Claim UBI"
 #~ msgstr "Claim UBI"
+
+#. js-lingui-explicit-id
+#~ msgid "Claim reward"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Claim rewards"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Claim your test tokens here..."
@@ -395,6 +448,26 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "Claimed"
 #~ msgstr "Claimed"
+
+#. js-lingui-explicit-id
+#~ msgid "Claimed G$ Rewards"
+#~ msgstr "Claimed G$ Rewards"
+
+#. js-lingui-explicit-id
+#~ msgid "Claimed GOOD Rewards"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Claiming the following rewards:"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Claiming your rewards will reset your multiplier"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Claiming your rewards will reset your multiplier."
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Clear History"
@@ -427,6 +500,10 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "Collateral"
 #~ msgstr "Collateral"
+
+#. js-lingui-explicit-id
+#~ msgid "Collect G$"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Common bases"
@@ -469,8 +546,16 @@ msgstr ""
 #~ msgstr "Confirm this transaction in your wallet"
 
 #. js-lingui-explicit-id
+#~ msgid "Congratulations!"
+#~ msgstr "Congratulations!"
+
+#. js-lingui-explicit-id
 #~ msgid "Connect Wallet"
 #~ msgstr "Connect Wallet"
+
+#. js-lingui-explicit-id
+#~ msgid "Connect a wallet to see your portfolio"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Connect to a wallet"
@@ -525,12 +610,20 @@ msgstr ""
 #~ msgstr "DEPOSIT"
 
 #. js-lingui-explicit-id
+#~ msgid "Dashboard"
+#~ msgstr "Dashboard"
+
+#. js-lingui-explicit-id
 #~ msgid "Date"
 #~ msgstr "Date"
 
 #. js-lingui-explicit-id
 #~ msgid "Deposit"
 #~ msgstr "Deposit"
+
+#. js-lingui-explicit-id
+#~ msgid "Deposit G$"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Deposit SUSHI into BentoBox"
@@ -553,8 +646,20 @@ msgstr ""
 #~ msgstr "Dev"
 
 #. js-lingui-explicit-id
+#~ msgid "Did you just create UBI for thousands of people around the world?"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "Disable Multihops"
 #~ msgstr "Disable Multihops"
+
+#. js-lingui-explicit-id
+#~ msgid "Disconnect"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Discontinued"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Discord"
@@ -595,6 +700,10 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "Double Yield Farms"
 #~ msgstr "Double Yield Farms"
+
+#. js-lingui-explicit-id
+#~ msgid "ETHEREUM"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Enjoy the lowest slippage on Polygon"
@@ -661,6 +770,10 @@ msgstr ""
 #~ "that often result in bad rates and lost funds."
 
 #. js-lingui-explicit-id
+#~ msgid "FUSE"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "Fetching Farms"
 #~ msgstr "Fetching Farms"
 
@@ -671,6 +784,10 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "Find Pool"
 #~ msgstr "Find Pool"
+
+#. js-lingui-explicit-id
+#~ msgid "Fixed Apy"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid ""
@@ -695,7 +812,37 @@ msgstr ""
 #~ msgstr "From (estimated)"
 
 #. js-lingui-explicit-id
+#~ msgid "Fuse Bridge"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "G$"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "GDX"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "GDX is a token earned by directly buying G$ from the Reserve. Members with GDX do not pay the\n"
+#~ "contribution exit."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "GDX is a token earned by directly buying G$ from the Reserve. Members with GDX do not pay the contribution exit."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "GOO"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "GOOD"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "GOOD Airdrop"
 #~ msgstr ""
 
 #. js-lingui-explicit-id
@@ -715,8 +862,36 @@ msgstr ""
 #~ msgstr "Go Back"
 
 #. js-lingui-explicit-id
+#~ msgid "Go to Portfolio"
+#~ msgstr "Go to Portfolio"
+
+#. js-lingui-explicit-id
+#~ msgid "Good Airdrop"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "GoodDAO"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "GoodDAO Staking"
+#~ msgstr "GoodDAO Staking"
+
+#. js-lingui-explicit-id
+#~ msgid "GoodDollar"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "GoodDollar is a supporter of open source"
 #~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "GoodStakes"
+#~ msgstr "GoodStakes"
 
 #. js-lingui-explicit-id
 #~ msgid "Hardware Wallet"
@@ -765,6 +940,22 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "Holding"
 #~ msgstr "Holding"
+
+#. js-lingui-explicit-id
+#~ msgid "How many GOOD tokens you are accumulating by this stake position."
+#~ msgstr "How many GOOD tokens you are accumulating by this stake position."
+
+#. js-lingui-explicit-id
+#~ msgid "How much rewards would you like to donate"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "How much tokens your deposits have accumulated so far."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "How much value your stake has accumulated so far."
+#~ msgstr "How much value your stake has accumulated so far."
 
 #. js-lingui-explicit-id
 #~ msgid "How much would you like to deposit?"
@@ -931,6 +1122,10 @@ msgstr ""
 #~ msgstr "Liquidity Yield Farms"
 
 #. js-lingui-explicit-id
+#~ msgid "Liquidity is the total value staked in the GoodDollar Trust staking contract (USD)."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid ""
 #~ "Liquidity providers earn a 0.25% fee on all trades proportional to their share of\n"
 #~ "the pool. Fees are added to the pool, accrue in real time and can be claimed by\n"
@@ -1049,8 +1244,20 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
+#~ msgid "Multichain Bridge"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "My Stake"
 #~ msgstr "My Stake"
+
+#. js-lingui-explicit-id
+#~ msgid "NETWORK"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Network"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Network Fee"
@@ -1213,12 +1420,20 @@ msgstr ""
 #~ msgstr "Please connect to the appropriate Ethereum network."
 
 #. js-lingui-explicit-id
+#~ msgid "Please connect to the appropriate network."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "Please connect your Web3 wallet to the Fuse Network to Claim UBI."
 #~ msgstr "Please connect your Web3 wallet to the Fuse Network to Claim UBI."
 
 #. js-lingui-explicit-id
 #~ msgid "Please type the word \"confirm\" to enable expert mode."
 #~ msgstr "Please type the word \"confirm\" to enable expert mode."
+
+#. js-lingui-explicit-id
+#~ msgid "Please wait"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Polygon subgraphs are currently experiencing high loads. The APY displayed are based on lagging fees. Funds are safe, we are working on resolving and providing accurate consolidated APY information."
@@ -1417,6 +1632,10 @@ msgstr ""
 #~ msgstr "Share of Pool:"
 
 #. js-lingui-explicit-id
+#~ msgid "Share with friends"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "Slippage Tolerance"
 #~ msgstr "Slippage Tolerance"
 
@@ -1473,6 +1692,10 @@ msgstr ""
 #~ "Continuously compounding."
 
 #. js-lingui-explicit-id
+#~ msgid "Staked {0} at {1}"
+#~ msgstr "Staked {0} at {1}"
+
+#. js-lingui-explicit-id
 #~ msgid "Stakes"
 #~ msgstr "Stakes"
 
@@ -1483,6 +1706,14 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "Staking APR"
 #~ msgstr "Staking APR"
+
+#. js-lingui-explicit-id
+#~ msgid "Staking could be of two types: UBI for funds staked on the GoodDollar trust for the generation of new G$ for universal income distribution, or Governance (to be enabled) for staking G$s for GOOD Rewards."
+#~ msgstr "Staking could be of two types: UBI for funds staked on the GoodDollar trust for the generation of new G$ for universal income distribution, or Governance (to be enabled) for staking G$s for GOOD Rewards."
+
+#. js-lingui-explicit-id
+#~ msgid "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can be rewarded with more G$ every day!"
+#~ msgstr "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can be rewarded with more G$ every day!"
 
 #. js-lingui-explicit-id
 #~ msgid "Submit Tool"
@@ -1525,6 +1756,10 @@ msgstr ""
 #~ msgstr "Swap Anyway"
 
 #. js-lingui-explicit-id
+#~ msgid "Swap Completed"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "Swap From (est.):"
 #~ msgstr "Swap From (est.):"
 
@@ -1553,8 +1788,50 @@ msgstr ""
 #~ msgstr "Swap to"
 
 #. js-lingui-explicit-id
+#~ msgid ""
+#~ "Swapped  {0} {1}\n"
+#~ "to {2} {3}"
+#~ msgstr ""
+#~ "Swapped  {0} {1}\n"
+#~ "to {2} {3}"
+
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Swapped {inputSig} {0}\n"
+#~ "to a minimum of {minimumOutputSig} {1}"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Swapped {inputSig} {0} \n"
+#~ "to a minimum of {minimumOutputSig} {1}"
+#~ msgstr ""
+#~ "Swapped {inputSig} {0} \n"
+#~ "to a minimum of {minimumOutputSig} {1}"
+
+#. js-lingui-explicit-id
 #~ msgid "Swapping"
 #~ msgstr "Swapping"
+
+#. js-lingui-explicit-id
+#~ msgid "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers."
+#~ msgstr "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers."
+
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Swapping {inputSig} {0} \n"
+#~ "to a minimum of {minimumOutputSig} {1}"
+#~ msgstr ""
+#~ "Swapping {inputSig} {0} \n"
+#~ "to a minimum of {minimumOutputSig} {1}"
+
+#. js-lingui-explicit-id
+#~ msgid "Switch to {network}"
+#~ msgstr "Switch to {network}"
+
+#. js-lingui-explicit-id
+#~ msgid "Switch to {requireChain}"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Switch your network to {0} to work with Portfolio"
@@ -1573,12 +1850,42 @@ msgstr ""
 #~ msgstr "TVL"
 
 #. js-lingui-explicit-id
+#~ msgid "TYPE"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "The GoodReserve is a Bancor-V1 Automated Market Maker (AMM) that operates on Ethereum.\n"
+#~ "This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
+#~ "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "The GoodReserve is a Bancor-V1 Automated Market Maker (AMM) that operates on Ethereum. \n"
+#~ "This contract is able to mint and burn G$s according to the increase or decrease of it's demand. \n"
+#~ "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "The difference between the market price and estimated price due to trade size."
 #~ msgstr "The difference between the market price and estimated price due to trade size."
 
 #. js-lingui-explicit-id
 #~ msgid "The difference between the market price and your price due to trade size."
 #~ msgstr "The difference between the market price and your price due to trade size."
+
+#. js-lingui-explicit-id
+#~ msgid "The fixed annual interest."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "The minimum amount of tokens to receive."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "The network this savings account belongs to"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "The onchain oracle that tracks the pricing for this pair"
@@ -1589,8 +1896,16 @@ msgstr ""
 #~ msgstr "The token list"
 
 #. js-lingui-explicit-id
+#~ msgid "The total of your deposits which accumulates the rewards."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "The transaction cannot succeed due to error: {0}. This is probably an issue with one of the tokens you are swapping."
 #~ msgstr "The transaction cannot succeed due to error: {0}. This is probably an issue with one of the tokens you are swapping."
+
+#. js-lingui-explicit-id
+#~ msgid "These are the total yearly rewards in G$ and GOOD."
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "These tokens are commonly paired with other tokens."
@@ -1601,12 +1916,28 @@ msgstr ""
 #~ msgstr "Things you can do with your SUSHI"
 
 #. js-lingui-explicit-id
+#~ msgid "This is the annual percentage of UBI your stake will create."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "This is the protocol that the token is staked to."
 #~ msgstr "This is the protocol that the token is staked to."
 
 #. js-lingui-explicit-id
+#~ msgid "This is the protocol that the token will be staked to."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "This is the token that is currently available to stake to the Fund."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "This is the token that is currently being staked."
 #~ msgstr "This is the token that is currently being staked."
+
+#. js-lingui-explicit-id
+#~ msgid "This is the token that you can deposit into the savings contract."
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "This month"
@@ -1677,6 +2008,26 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
+#~ msgid "Total Rewards Paid"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Total Staked"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Total amount on value staked."
+#~ msgstr "Total amount on value staked."
+
+#. js-lingui-explicit-id
+#~ msgid "Total currently saved."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Total rewards claimed."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "Total stake"
 #~ msgstr "Total stake"
 
@@ -1741,6 +2092,14 @@ msgstr ""
 #~ msgstr "Type"
 
 #. js-lingui-explicit-id
+#~ msgid "UBI is your fair share of G$ tokens, which you can claim daily on CELO."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "UBI is your fair share of G$ tokens, which you can claim daily on {network}."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "Uh Oh!"
 #~ msgstr "Uh Oh!"
 
@@ -1767,6 +2126,10 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "Unsupported Assets"
 #~ msgstr "Unsupported Assets"
+
+#. js-lingui-explicit-id
+#~ msgid "Unsupported network"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Unwrap"
@@ -1841,6 +2204,22 @@ msgstr ""
 #~ msgstr "View your SushiBar Portfolio"
 
 #. js-lingui-explicit-id
+#~ msgid ""
+#~ "Voltage is an UNI-V2 Automated Market Maker (AMM)\n"
+#~ "that operates on Fuse Network where G$ is paired to other market tokens such as FUSE or USDC.\n"
+#~ "The liquidity relies on Liquidity Providers that aggregate paired tokens to a pool.\n"
+#~ "Price impact might be too high when the swapping volume of one transaction is relatively high to the total liquidity in the pool."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Voltage is an UNI-V2 Automated Market Maker (AMM) \n"
+#~ "that operates on Fuse Network where G$ is paired to other market tokens such as FUSE or USDC. \n"
+#~ "The liquidity relies on Liquidity Providers that aggregate paired tokens to a pool. \n"
+#~ "Price impact might be too high when the swapping volume of one transaction is relatively high to the total liquidity in the pool."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "WITHDRAW"
 #~ msgstr "WITHDRAW"
 
@@ -1865,6 +2244,10 @@ msgstr ""
 #~ msgstr "Wallet balance"
 
 #. js-lingui-explicit-id
+#~ msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "Welcome to Sushi on Polygon (Matic)"
 #~ msgstr "Welcome to Sushi on Polygon (Matic)"
 
@@ -1881,8 +2264,28 @@ msgstr ""
 #~ msgstr "Withdraw"
 
 #. js-lingui-explicit-id
+#~ msgid "Withdraw G$"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Withdraw Liquidity"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Withdraw as {0}?"
+#~ msgstr "Withdraw as {0}?"
+
+#. js-lingui-explicit-id
 #~ msgid "Withdraw {assetSymbol}"
 #~ msgstr "Withdraw {assetSymbol}"
+
+#. js-lingui-explicit-id
+#~ msgid "Withdrawing your stake will reset your multiplier."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Withdrew funds from {0}"
+#~ msgstr "Withdrew funds from {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "Wrap"
@@ -1891,6 +2294,10 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "Wrong Network"
 #~ msgstr "Wrong Network"
+
+#. js-lingui-explicit-id
+#~ msgid "Yes, I did!"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Yesterday's APR"
@@ -1917,6 +2324,10 @@ msgstr ""
 #~ msgstr "You Will Receive:"
 
 #. js-lingui-explicit-id
+#~ msgid "You are creating UBI to thousands of people around the world."
+#~ msgstr "You are creating UBI to thousands of people around the world."
+
+#. js-lingui-explicit-id
 #~ msgid "You are creating a pool"
 #~ msgstr "You are creating a pool"
 
@@ -1941,6 +2352,38 @@ msgstr ""
 #~ msgstr "You don’t have liquidity in this pool yet"
 
 #. js-lingui-explicit-id
+#~ msgid ""
+#~ "You have just staked your G$s towards our GoodDAO,\n"
+#~ "this action is gonna reward you with GOOD governance tokens,\n"
+#~ "which are non-transferable so can't be traded."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "You have just staked your G$s towards our GoodDAO, \n"
+#~ "this action is gonna reward you with GOOD governance tokens, \n"
+#~ "which are non-transferable so can't be traded."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded."
+#~ msgstr "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded."
+
+#. js-lingui-explicit-id
+#~ msgid "You have successfully claimed your rewards"
+#~ msgstr "You have successfully claimed your rewards"
+
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "You just used your crypto for good to help fund crypto UBI \n"
+#~ "for all with GoodDollar!"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "You just used your crypto for good to help fund crypto UBI for all with GoodDollar!"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "You need to first approve LP tokens and then migrate it"
 #~ msgstr "You need to first approve LP tokens and then migrate it"
 
@@ -1951,6 +2394,10 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "You will receive"
 #~ msgstr "You will receive"
+
+#. js-lingui-explicit-id
+#~ msgid "You've already claimed today. Come back in {tillClaim}"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Your Claimable SUSHI this Week"
@@ -2009,12 +2456,42 @@ msgstr ""
 #~ msgstr "Your Yields"
 
 #. js-lingui-explicit-id
+#~ msgid "Your current network."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "Your current savings balance."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "Your pool share"
 #~ msgstr "Your pool share"
 
 #. js-lingui-explicit-id
 #~ msgid "Your social contribution from:"
 #~ msgstr "Your social contribution from:"
+
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Your staking transaction which will generate UBI for thousands of people around\n"
+#~ "the world has just been broadcasted to the network."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Your staking transaction which will generate UBI for thousands of people around \n"
+#~ "the world has just been broadcasted to the network."
+#~ msgstr ""
+#~ "Your staking transaction which will generate UBI for thousands of people around \n"
+#~ "the world has just been broadcasted to the network."
+
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Your staking transaction will generate UBI for thousands of people around \n"
+#~ "the world has just been broadcasted to the network."
+#~ msgstr ""
+#~ "Your staking transaction will generate UBI for thousands of people around \n"
+#~ "the world has just been broadcasted to the network."
 
 #. js-lingui-explicit-id
 #~ msgid "Your total pool tokens"
@@ -2037,6 +2514,10 @@ msgstr ""
 #~ msgstr "Your transaction will revert if it is pending for more than this long."
 
 #. js-lingui-explicit-id
+#~ msgid "Your transaction will revert if it is pending for more than this time."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "Your transaction will revert if the price changes unfavorably by more than this percentage."
 #~ msgstr "Your transaction will revert if the price changes unfavorably by more than this percentage."
 
@@ -2051,6 +2532,10 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "Your {exchange} {0}/{1} liquidity will become SushiSwap {2}/{3} liquidity."
 #~ msgstr "Your {exchange} {0}/{1} liquidity will become SushiSwap {2}/{3} liquidity."
+
+#. js-lingui-explicit-id
+#~ msgid "Your {type} transaction has been confirmed!"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "added"
@@ -2145,6 +2630,10 @@ msgstr ""
 #~ "to your share of the SushiBar."
 
 #. js-lingui-explicit-id
+#~ msgid "{0}"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #~ msgid "{0} <0>{1} {2}</0> {3}"
 #~ msgstr ""
 
@@ -2163,6 +2652,14 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "{0} per {1}"
 #~ msgstr "{0} per {1}"
+
+#. js-lingui-explicit-id
+#~ msgid "{amount} {0}"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#~ msgid "{label}"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "• Added by user"
