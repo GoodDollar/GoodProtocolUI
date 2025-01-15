@@ -76,23 +76,23 @@ const enableServiceWorker =
 
 const ProviderWrapper = ({ children }) => (
     <Provider store={store}>
-        <OnboardProviderWrapper>
-            <GoodXProvider nativeBaseProps={{ config: { suppressColorAccessibilityWarning: true }, theme: nbTheme }}>
-                <Web3ContextProvider>
-                    <LanguageProvider>
-                        <PostHogProvider
-                            apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
-                            options={{
-                                host: import.meta.env.REACT_APP_POSTHOG_PROXY ?? 'https://app.posthog.com',
-                            }}
-                            autocapture={false}
-                        >
-                            {children}
-                        </PostHogProvider>
-                    </LanguageProvider>
-                </Web3ContextProvider>
-            </GoodXProvider>
-        </OnboardProviderWrapper>
+        <PostHogProvider
+            apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
+            options={{
+                host: import.meta.env.REACT_APP_POSTHOG_PROXY ?? 'https://app.posthog.com',
+            }}
+            autocapture={false}
+        >
+            <OnboardProviderWrapper>
+                <GoodXProvider
+                    nativeBaseProps={{ config: { suppressColorAccessibilityWarning: true }, theme: nbTheme }}
+                >
+                    <Web3ContextProvider>
+                        <LanguageProvider>{children}</LanguageProvider>
+                    </Web3ContextProvider>
+                </GoodXProvider>
+            </OnboardProviderWrapper>
+        </PostHogProvider>
     </Provider>
 )
 
