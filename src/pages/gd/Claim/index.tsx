@@ -1,29 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useFeatureFlagWithPayload } from 'posthog-react-native'
 import { useEthers } from '@usedapp/core'
+import { Spinner } from 'native-base'
+import usePromise from 'react-use-promise'
 
 import OldClaim from './OldClaim'
 import NewClaim from './Claim'
-import { Spinner } from 'native-base'
+import { isSupportedCountry } from '../GoodId'
 
 const Claim = () => {
     const { account } = useEthers()
     const [, payload] = useFeatureFlagWithPayload('goodid')
-    const { enabled = false, whitelist } = payload ?? {}
-    const [goodIdEnabled, setGoodIdEnabled] = useState<boolean | undefined>(false)
+    const { enabled = false, whitelist, countries = '' } = payload ?? {}
     const { ethereum } = window
     const isMiniPay = ethereum?.isMiniPay
-    //todo: add country check, but not required for initial UAT
 
-    useEffect(() => {
-        if (enabled || whitelist?.includes(account)) {
-            setGoodIdEnabled(true)
-        }
-    }, [whitelist, enabled, account])
+    const [isGoodIdEnabled] = usePromise(async () => {
+        if (isMiniPay) return false
+        if (enabled || whitelist?.includes(account)) return true
 
-    if (payload === undefined) return <Spinner variant="page-loader" size="lg" />
+        return isSupportedCountry(countries)
+    }, [enabled, whitelist, countries, account, isMiniPay])
 
-    return goodIdEnabled && !isMiniPay ? <NewClaim /> : <OldClaim />
+    if (payload === undefined || isGoodIdEnabled === undefined) return <Spinner variant="page-loader" size="lg" />
+
+    return isGoodIdEnabled && !isMiniPay ? <NewClaim /> : <OldClaim />
 }
 
 export default Claim
