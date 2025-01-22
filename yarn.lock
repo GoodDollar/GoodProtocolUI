@@ -5205,9 +5205,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:0.4.1-beta.0be3b9e7":
-  version: 0.4.1-beta.0be3b9e7
-  resolution: "@gooddollar/good-design@npm:0.4.1-beta.0be3b9e7"
+"@gooddollar/good-design@npm:0.4.1-beta.a4fdd345":
+  version: 0.4.1-beta.a4fdd345
+  resolution: "@gooddollar/good-design@npm:0.4.1-beta.a4fdd345"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -5250,7 +5250,7 @@ __metadata:
     react-use-promise: ^0.5.0
     react-use-wizard: ^2.3.0
     require-from-string: ^2.0.2
-  checksum: 181c0008b7f0f46c73a5e8d09bb4d1aba9e7243ae9315741e8714f08ab3766a765d98f0909a857465414f44d6faa360b190977f95e35f5340dbbb5e17792018d
+  checksum: 4b3a2e90b877f085cc01cf01948ed27caa0489acad2db6bfb852168321f260c4f9a5ddd82cb6a1004ce21c85e5f08f10e76bc9fefa06782cdc693780e44d4c10
   languageName: node
   linkType: hard
 
@@ -5324,10 +5324,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": 0.4.1-beta.0be3b9e7
+    "@gooddollar/good-design": 0.4.1-beta.a4fdd345
     "@gooddollar/goodprotocol": ^2.0.24
     "@gooddollar/web3sdk": ^0.1.42
-    "@gooddollar/web3sdk-v2": 0.4.1-beta.0be3b9e7
+    "@gooddollar/web3sdk-v2": 0.4.1-beta.a4fdd345
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^4.0.0
@@ -5507,9 +5507,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:0.4.1-beta.0be3b9e7":
-  version: 0.4.1-beta.0be3b9e7
-  resolution: "@gooddollar/web3sdk-v2@npm:0.4.1-beta.0be3b9e7"
+"@gooddollar/web3sdk-v2@npm:0.4.1-beta.a4fdd345":
+  version: 0.4.1-beta.a4fdd345
+  resolution: "@gooddollar/web3sdk-v2@npm:0.4.1-beta.a4fdd345"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5560,7 +5560,7 @@ __metadata:
     "@usedapp/core": "*"
     react-native: "*"
     react-native-web: "*"
-  checksum: 400d5cf33947a8744704242582932fe12e7935abec3399ecf101d916c11965c3ebb26efd97dd3b79c71c9be5ed5934b598b94949ef3480226e6197833c792882
+  checksum: 98192f0bc9a32b9bd7bcf2dfcc0e9c4746e98d1f3350d4bba62a3365428f641e66cc42f0b4a2a7a4b2f080eb081f532188039005063db76eb1d8ca42df472ee7
   languageName: node
   linkType: hard
 

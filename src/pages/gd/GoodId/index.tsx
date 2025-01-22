@@ -33,6 +33,8 @@ const GoodId = () => {
     const [skipSegmentation, setSkipSegmentation] = useState<boolean | undefined>(false)
     const [, payload] = useFeatureFlagWithPayload('goodid')
     const { enabled = false, whitelist = undefined, countries = '' } = payload ?? {}
+    const { ethereum } = window
+    const isMiniPay = ethereum?.isMiniPay
 
     const [isUpgraded] = usePromise(async () => {
         if (isEmpty(certificateSubjects) && isWhitelisted !== undefined) {
@@ -44,10 +46,11 @@ const GoodId = () => {
     }, [certificateSubjects, isWhitelisted])
 
     const [isGoodIdEnabled] = usePromise(async () => {
+        if (isMiniPay) return false
         if (enabled || whitelist?.includes(account)) return true
 
         return isSupportedCountry(countries)
-    }, [enabled, whitelist, countries, account])
+    }, [enabled, whitelist, countries, account, isMiniPay])
 
     const onExit = useCallback(() => {
         setSkipSegmentation(isUpgraded === true)

@@ -11,6 +11,8 @@ const Claim = () => {
     const [, payload] = useFeatureFlagWithPayload('goodid')
     const { enabled = false, whitelist } = payload ?? {}
     const [goodIdEnabled, setGoodIdEnabled] = useState<boolean | undefined>(false)
+    const { ethereum } = window
+    const isMiniPay = ethereum?.isMiniPay
     //todo: add country check, but not required for initial UAT
 
     useEffect(() => {
@@ -21,7 +23,7 @@ const Claim = () => {
 
     if (payload === undefined) return <Spinner variant="page-loader" size="lg" />
 
-    return goodIdEnabled ? <NewClaim /> : <OldClaim />
+    return goodIdEnabled && !isMiniPay ? <NewClaim /> : <OldClaim />
 }
 
 export default Claim
