@@ -36,7 +36,7 @@ const faqSwapCopy: FaqItemCopy[] = [
         answer: `You can track the status of your swap transaction with your transaction hash and through the blockchain explorer.`,
         links: [
             {
-                href: 'https://explorer.celo.org/',
+                href: 'https://celo.blockscout.com/',
                 text: 'To check transactions on Celo, check the',
                 linkText: 'Celo Explorer',
             },
@@ -172,6 +172,17 @@ const faqGoodIDCopy: FaqItemCopy[] = [
         question: `What is GoodID?`,
         answer: `GoodID is currently in its pilot stage, and therefore has limited functionality.\n\nGoodID is a decentralized identification solution (DID). This means that you own your data and credentials, and decide who can “write” new data and credentials, as well as who can “read” your data and credentials. We built GoodID to allow partners an easy access to GoodDollar's community and to distribute campaigns, funds, and other opportunities to members of the GoodDollar protocol.`,
         links: [],
+    },
+    {
+        id: 'ConnectOtherWallet',
+        question: 'How do I connect additional addresses to my GoodID?',
+        answer: `If you want to claim from a different address, its possible to connect other addresses to your GoodID`,
+        links: [
+            {
+                href: 'https://docs.gooddollar.org/user-guides/connect-another-wallet-address-to-identity',
+                linkText: 'You can do this with the help of this guide.',
+            },
+        ],
     },
     {
         id: 'whatIsGoodOffers',
