@@ -109,6 +109,13 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 subMenuTitle: 'Regular',
                 items: [
                     {
+                        label: i18n._(t`GoodCollective`),
+                        url: 'https://goodcollective.xyz/',
+                        dataAttr: 'goodcollective',
+                        withIcon: true,
+                        show: true,
+                    },
+                    {
                         label: i18n._(t`Buy G$`),
                         url: 'https://v2.app.squidrouter.com/',
                         dataAttr: 'buygd_squid',
