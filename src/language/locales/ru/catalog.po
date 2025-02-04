@@ -7,7 +7,7 @@ msgstr ""
 "X-Generator: @lingui/cli\n"
 "Project-Id-Version: goodprotocolui\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-01-12 10:27\n"
+"PO-Revision-Date: 2025-02-04 07:11\n"
 "Last-Translator: \n"
 "Language: ru_RU\n"
 "Language-Team: Russian\n"
@@ -21,6 +21,7 @@ msgstr ""
 #: src/components/Savings/SavingsCard/index.tsx:48
 msgid ""
 msgstr ""
+""
 
 #. js-lingui-explicit-id
 #: src/pages/gd/Portfolio/index.tsx:397
@@ -2879,8 +2880,7 @@ msgid "Connected with"
 msgstr "Связаны с"
 
 #: src/pages/gd/Swap/index.tsx:65
-msgid ""
-"Convert your digital assets using the Uniswap protocol! \n"
+msgid "Convert your digital assets using the Uniswap protocol! \n"
 "Please be patient, loading information may take some time. \n"
 "Take note of indicators in the widget below for price slippage and liquidity."
 msgstr ""
@@ -2955,8 +2955,7 @@ msgid "GDX"
 msgstr ""
 
 #: src/pages/gd/Swap/SwapDescriptions/index.tsx:22
-msgid ""
-"GDX is a token earned by directly buying G$ from the Reserve. Members with GDX do not pay the\n"
+msgid "GDX is a token earned by directly buying G$ from the Reserve. Members with GDX do not pay the\n"
 "contribution exit."
 msgstr ""
 
@@ -3226,8 +3225,7 @@ msgid "Savings"
 msgstr ""
 
 #: src/pages/gd/MicroBridge/index.tsx:21
-msgid ""
-"Seamlessly convert between Fuse G$ tokens to Celo and vice versa, \n"
+msgid "Seamlessly convert between Fuse G$ tokens to Celo and vice versa, \n"
 "enabling versatile use of G$ tokens across various platforms and \n"
 "ecosystems"
 msgstr ""
@@ -3310,8 +3308,7 @@ msgid "Swap to"
 msgstr "Охватить"
 
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:100
-msgid ""
-"Swapped {inputSig} {0}\n"
+msgid "Swapped {inputSig} {0}\n"
 "to a minimum of {minimumOutputSig} {1}"
 msgstr ""
 
@@ -3333,8 +3330,7 @@ msgid "The fixed annual interest."
 msgstr ""
 
 #: src/pages/gd/Swap/SwapCore/index.tsx:255
-msgid ""
-"The GoodReserve is a Bancor-V1 Automated Market Maker (AMM) that operates on Ethereum.\n"
+msgid "The GoodReserve is a Bancor-V1 Automated Market Maker (AMM) that operates on Ethereum.\n"
 "This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
 "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
 msgstr ""
@@ -3477,8 +3473,7 @@ msgstr "Посмотреть в проводнике"
 #~ msgstr ""
 
 #: src/pages/gd/Swap/SwapCore/index.tsx:249
-msgid ""
-"Voltage is an UNI-V2 Automated Market Maker (AMM)\n"
+msgid "Voltage is an UNI-V2 Automated Market Maker (AMM)\n"
 "that operates on Fuse Network where G$ is paired to other market tokens such as FUSE or USDC.\n"
 "The liquidity relies on Liquidity Providers that aggregate paired tokens to a pool.\n"
 "Price impact might be too high when the swapping volume of one transaction is relatively high to the total liquidity in the pool."
@@ -3566,8 +3561,7 @@ msgid "You are currently browsing"
 msgstr "Вы просматриваете в настоящее время"
 
 #: src/pages/gd/Stake/StakeDeposit/index.tsx:380
-msgid ""
-"You have just staked your G$s towards our GoodDAO,\n"
+msgid "You have just staked your G$s towards our GoodDAO,\n"
 "this action is gonna reward you with GOOD governance tokens,\n"
 "which are non-transferable so can't be traded."
 msgstr ""
@@ -3616,8 +3610,7 @@ msgid "Your social contribution from:"
 msgstr "Ваш социальный вклад от:"
 
 #: src/pages/gd/Stake/StakeDeposit/index.tsx:387
-msgid ""
-"Your staking transaction which will generate UBI for thousands of people around\n"
+msgid "Your staking transaction which will generate UBI for thousands of people around\n"
 "the world has just been broadcasted to the network."
 msgstr ""
 
@@ -3646,3 +3639,4 @@ msgstr "Ваша транзакция будет отменена, если пр
 #: src/components/AccountDetails/index.tsx:322
 msgid "Your transactions will appear here..."
 msgstr "Ваши транзакции появятся здесь ..."
+
