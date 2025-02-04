@@ -7,7 +7,7 @@ msgstr ""
 "X-Generator: @lingui/cli\n"
 "Project-Id-Version: goodprotocolui\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-01-12 10:27\n"
+"PO-Revision-Date: 2025-02-04 07:11\n"
 "Last-Translator: \n"
 "Language: es_AR\n"
 "Language-Team: Spanish, Argentina\n"
@@ -2752,7 +2752,7 @@ msgstr "Equilibrio"
 msgid "Blocked address"
 msgstr "Dirección bloqueada"
 
-#: src/components/SideBar.tsx:112
+#: src/components/SideBar.tsx:119
 msgid "Buy G$"
 msgstr ""
 
@@ -2897,11 +2897,11 @@ msgstr "Dirección de copia"
 #~ msgid "Current Rate"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:133
+#: src/components/SideBar.tsx:140
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:171
+#: src/components/SideBar.tsx:178
 msgid "Dashboard"
 msgstr ""
 
@@ -2928,7 +2928,7 @@ msgstr ""
 #~ msgid "Docs"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:119
+#: src/components/SideBar.tsx:126
 msgid "Donate"
 msgstr ""
 
@@ -2940,7 +2940,7 @@ msgstr "falló al cargar"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:152
+#: src/components/SideBar.tsx:159
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2972,8 +2972,12 @@ msgstr "Ir a la cartera"
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:185
+#: src/components/SideBar.tsx:192
 msgid "Good Airdrop"
+msgstr ""
+
+#: src/components/SideBar.tsx:112
+msgid "GoodCollective"
 msgstr ""
 
 #: src/components/Savings/SavingsCard/SavingsCardRow/index.tsx:38
@@ -3001,11 +3005,11 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:164
+#: src/components/SideBar.tsx:171
 msgid "GoodWallet"
 msgstr ""
 
-#: src/components/SideBar.tsx:178
+#: src/components/SideBar.tsx:185
 msgid "Help & Documentation"
 msgstr ""
 
@@ -3211,7 +3215,7 @@ msgstr "Ruta"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "El enrutamiento a través de estos tokens resultó en el mejor precio para su comercio."
 
-#: src/components/SideBar.tsx:126
+#: src/components/SideBar.tsx:133
 msgid "Save G$"
 msgstr ""
 
@@ -3244,7 +3248,7 @@ msgstr "Tolerancia al deslizamiento"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:145
+#: src/components/SideBar.tsx:152
 msgid "Squid Router"
 msgstr ""
 
