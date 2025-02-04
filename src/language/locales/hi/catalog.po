@@ -1652,11 +1652,11 @@ msgstr ""
 #~ msgid "Current Rate"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:140
+#: src/components/SideBar.tsx:133
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:178
+#: src/components/SideBar.tsx:171
 msgid "Dashboard"
 msgstr ""
 
@@ -1684,8 +1684,8 @@ msgstr ""
 #~ msgstr "डॉक्स"
 
 #: src/components/SideBar.tsx:126
-msgid "Donate"
-msgstr ""
+#~ msgid "Donate"
+#~ msgstr ""
 
 #: src/components/Gas/index.tsx:12
 msgid "failed to load"
@@ -1695,7 +1695,7 @@ msgstr "लोड करने में विफल"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:159
+#: src/components/SideBar.tsx:152
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -1728,7 +1728,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:192
+#: src/components/SideBar.tsx:185
 msgid "Good Airdrop"
 msgstr ""
 
@@ -1761,11 +1761,11 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:171
+#: src/components/SideBar.tsx:164
 msgid "GoodWallet"
 msgstr ""
 
-#: src/components/SideBar.tsx:185
+#: src/components/SideBar.tsx:178
 msgid "Help & Documentation"
 msgstr ""
 
@@ -1971,7 +1971,7 @@ msgstr "मार्ग"
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "इन टोकन के माध्यम से रूटिंग करने से आपके व्यापार के लिए सबसे अच्छी कीमत मिली।"
 
-#: src/components/SideBar.tsx:133
+#: src/components/SideBar.tsx:126
 msgid "Save G$"
 msgstr ""
 
@@ -2005,7 +2005,7 @@ msgstr "स्लिपेज टॉलरेंस"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:152
+#: src/components/SideBar.tsx:145
 msgid "Squid Router"
 msgstr ""
 

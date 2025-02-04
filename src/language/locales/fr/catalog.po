@@ -2897,11 +2897,11 @@ msgstr ""
 #~ msgid "Current Rate"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:140
+#: src/components/SideBar.tsx:133
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:178
+#: src/components/SideBar.tsx:171
 msgid "Dashboard"
 msgstr ""
 
@@ -2929,8 +2929,8 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/SideBar.tsx:126
-msgid "Donate"
-msgstr ""
+#~ msgid "Donate"
+#~ msgstr ""
 
 #: src/components/Gas/index.tsx:12
 msgid "failed to load"
@@ -2940,7 +2940,7 @@ msgstr "échec du chargement"
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:159
+#: src/components/SideBar.tsx:152
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2973,7 +2973,7 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:192
+#: src/components/SideBar.tsx:185
 msgid "Good Airdrop"
 msgstr ""
 
@@ -3006,11 +3006,11 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:171
+#: src/components/SideBar.tsx:164
 msgid "GoodWallet"
 msgstr ""
 
-#: src/components/SideBar.tsx:185
+#: src/components/SideBar.tsx:178
 msgid "Help & Documentation"
 msgstr ""
 
@@ -3216,7 +3216,7 @@ msgstr ""
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr "Le routage à travers ces tokens vous a permis d'obtenir le meilleur prix pour votre trade."
 
-#: src/components/SideBar.tsx:133
+#: src/components/SideBar.tsx:126
 msgid "Save G$"
 msgstr ""
 
@@ -3250,7 +3250,7 @@ msgstr "Tolérance de slippage"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:152
+#: src/components/SideBar.tsx:145
 msgid "Squid Router"
 msgstr ""
 
