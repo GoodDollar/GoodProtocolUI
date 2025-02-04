@@ -123,13 +123,6 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                         show: true,
                     },
                     {
-                        label: i18n._(t`Donate`),
-                        url: 'https://gooddollar.notion.site/Donate-to-a-G-Cause-e7d31fb67bb8494abb3a7989ebe6f181',
-                        dataAttr: 'donate',
-                        withIcon: true,
-                        show: true,
-                    },
-                    {
                         label: i18n._(t`Save G$`),
                         url: 'https://app.halofi.me/#/challenges?tokensymbol=gd',
                         dataAttr: 'save',
