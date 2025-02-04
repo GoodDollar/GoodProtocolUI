@@ -2222,7 +2222,7 @@ msgstr ""
 msgid "Blocked address"
 msgstr ""
 
-#: src/components/SideBar.tsx:112
+#: src/components/SideBar.tsx:119
 msgid "Buy G$"
 msgstr ""
 
@@ -2368,11 +2368,11 @@ msgstr ""
 #~ msgid "Current Rate"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:133
+#: src/components/SideBar.tsx:140
 msgid "Dapps"
 msgstr ""
 
-#: src/components/SideBar.tsx:171
+#: src/components/SideBar.tsx:178
 msgid "Dashboard"
 msgstr ""
 
@@ -2399,7 +2399,7 @@ msgstr ""
 #~ msgid "Docs"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:119
+#: src/components/SideBar.tsx:126
 msgid "Donate"
 msgstr ""
 
@@ -2411,7 +2411,7 @@ msgstr ""
 msgid "Fixed Apy"
 msgstr ""
 
-#: src/components/SideBar.tsx:152
+#: src/components/SideBar.tsx:159
 msgid "Fuse Bridge"
 msgstr ""
 
@@ -2444,8 +2444,12 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:185
+#: src/components/SideBar.tsx:192
 msgid "Good Airdrop"
+msgstr ""
+
+#: src/components/SideBar.tsx:112
+msgid "GoodCollective"
 msgstr ""
 
 #: src/components/Savings/SavingsCard/SavingsCardRow/index.tsx:38
@@ -2473,11 +2477,11 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:164
+#: src/components/SideBar.tsx:171
 msgid "GoodWallet"
 msgstr ""
 
-#: src/components/SideBar.tsx:178
+#: src/components/SideBar.tsx:185
 msgid "Help & Documentation"
 msgstr ""
 
@@ -2683,7 +2687,7 @@ msgstr ""
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr ""
 
-#: src/components/SideBar.tsx:126
+#: src/components/SideBar.tsx:133
 msgid "Save G$"
 msgstr ""
 
@@ -2717,7 +2721,7 @@ msgstr ""
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:145
+#: src/components/SideBar.tsx:152
 msgid "Squid Router"
 msgstr ""
 
