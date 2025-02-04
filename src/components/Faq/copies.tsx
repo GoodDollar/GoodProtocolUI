@@ -174,17 +174,6 @@ const faqGoodIDCopy: FaqItemCopy[] = [
         links: [],
     },
     {
-        id: 'ConnectOtherWallet',
-        question: 'How do I connect additional addresses to my GoodID?',
-        answer: `If you want to claim from a different address, its possible to connect other addresses to your GoodID`,
-        links: [
-            {
-                href: 'https://docs.gooddollar.org/user-guides/connect-another-wallet-address-to-identity',
-                linkText: 'You can do this with the help of this guide.',
-            },
-        ],
-    },
-    {
         id: 'whatIsGoodOffers',
         question: `What is GoodOffers?`,
         answer: `GoodOffers are opportunities to earn additional income, available to you based on your GoodID information. Note that you will only see GoodOffers if you said “Yes, I accept” to the screen “You might qualify for extra money disbursements.”`,
