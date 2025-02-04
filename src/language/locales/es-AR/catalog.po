@@ -7,7 +7,7 @@ msgstr ""
 "X-Generator: @lingui/cli\n"
 "Project-Id-Version: goodprotocolui\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-01-12 10:27\n"
+"PO-Revision-Date: 2025-02-04 14:03\n"
 "Last-Translator: \n"
 "Language: es_AR\n"
 "Language-Team: Spanish, Argentina\n"
@@ -2752,7 +2752,7 @@ msgstr "Equilibrio"
 msgid "Blocked address"
 msgstr "Dirección bloqueada"
 
-#: src/components/SideBar.tsx:112
+#: src/components/SideBar.tsx:119
 msgid "Buy G$"
 msgstr ""
 
@@ -2928,9 +2928,9 @@ msgstr ""
 #~ msgid "Docs"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:119
-msgid "Donate"
-msgstr ""
+#: src/components/SideBar.tsx:126
+#~ msgid "Donate"
+#~ msgstr ""
 
 #: src/components/Gas/index.tsx:12
 msgid "failed to load"
@@ -2974,6 +2974,10 @@ msgstr ""
 
 #: src/components/SideBar.tsx:185
 msgid "Good Airdrop"
+msgstr ""
+
+#: src/components/SideBar.tsx:112
+msgid "GoodCollective"
 msgstr ""
 
 #: src/components/Savings/SavingsCard/SavingsCardRow/index.tsx:38
