@@ -1,0 +1,48 @@
+diff --git a/dist/Index-6c094240.js b/dist/Index-6c094240.js
+index 0e05ac603bc99a6f1bd3c7eaa011902fd767db40..025c8396f67cf8d3e425080001b34890d963b8b8 100644
+--- a/dist/Index-6c094240.js
++++ b/dist/Index-6c094240.js
+@@ -1202,7 +1202,8 @@ function create_default_slot$1(ctx) {
+ 			t6 = space();
+ 			button1 = element("button");
+ 			t7 = text(t7_value);
+-			attr(div0, "class", "icon-container flex justify-center items-center svelte-1ubxcdp");
++      attr(div0, "class", "icon-container flex justify-center items-center svelte-1ubxcdp");
++      attr(div0, "part", "mobile-icon-container");
+ 			attr(h4, "class", "svelte-1ubxcdp");
+ 			attr(p, "class", "svelte-1ubxcdp");
+ 			attr(button0, "class", "button-neutral-solid-b rounded svelte-1ubxcdp");
+diff --git a/dist/index-8eb0493f.js b/dist/index-8eb0493f.js
+index 9d1bfdbb9015bbcc28196098715c697e676f3752..efeaeb9062f4728317ffb78c2a08c3a5811b26a8 100644
+--- a/dist/index-8eb0493f.js
++++ b/dist/index-8eb0493f.js
+@@ -4329,7 +4329,8 @@ function create_else_block_1$2(ctx) {
+ 		c() {
+ 			img = element("img");
+ 			if (!src_url_equal(img.src, img_src_value = /*iconLoaded*/ ctx[13])) attr(img, "src", img_src_value);
+-			attr(img, "alt", "logo");
++      attr(img, "alt", "logo");
++      attr(img, "part", "mobile-icon-img");
+ 			attr(img, "class", "svelte-i129jl");
+ 		},
+ 		m(target, anchor) {
+@@ -6338,7 +6339,8 @@ function create_if_block_3$2(ctx) {
+ 			t = space();
+ 			if (if_block1) if_block1.c();
+ 			if_block1_anchor = empty();
+-			attr(div, "class", "icon-container svelte-obaru3");
++      attr(div, "class", "icon-container svelte-obaru3");
++      attr(div, "part", "sidebar-heading-img");
+ 		},
+ 		m(target, anchor) {
+ 			insert(target, div, anchor);
+@@ -7150,7 +7152,8 @@ function create_if_block_6$1(ctx) {
+ 			t2 = space();
+ 			div2 = element("div");
+ 			t3 = text(t3_value);
+-			attr(div0, "class", "icon-container svelte-1qwmck3");
++      attr(div0, "class", "icon-container svelte-1qwmck3");
++      attr(div0, "part", "mobile-icon-container");
+ 			attr(div1, "class", "header-heading svelte-1qwmck3");
+ 			attr(div2, "class", "mobile-subheader svelte-1qwmck3");
+ 			attr(div3, "class", "flex flex-column justify-center w-full svelte-1qwmck3");

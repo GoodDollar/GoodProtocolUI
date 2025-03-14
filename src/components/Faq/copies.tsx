@@ -1,8 +1,12 @@
-type FaqItemCopy = {
+import { Link, Text } from 'native-base'
+import React from 'react'
+
+export type FaqItemCopy = {
     id: string
     question: string
     answer: string
     links?: { text?: string; href: string; linkText: string }[]
+    AltLink?: () => React.JSX.Element
 }
 
 const faqSwapCopy: FaqItemCopy[] = [
@@ -32,7 +36,7 @@ const faqSwapCopy: FaqItemCopy[] = [
         answer: `You can track the status of your swap transaction with your transaction hash and through the blockchain explorer.`,
         links: [
             {
-                href: 'https://explorer.celo.org/',
+                href: 'https://celo.blockscout.com/',
                 text: 'To check transactions on Celo, check the',
                 linkText: 'Celo Explorer',
             },
@@ -162,4 +166,127 @@ If you’ve paid with a bank transfer, the most common reasons for failed orders
     },
 ]
 
-export { faqBuyCopy, faqBridgeCopy, faqSwapCopy }
+const faqGoodIDCopy: FaqItemCopy[] = [
+    {
+        id: 'whatIsGoodID',
+        question: `What is GoodID?`,
+        answer: `GoodID is currently in its pilot stage, and therefore has limited functionality.\n\nGoodID is a decentralized identification solution (DID). This means that you own your data and credentials, and decide who can “write” new data and credentials, as well as who can “read” your data and credentials. We built GoodID to allow partners an easy access to GoodDollar's community and to distribute campaigns, funds, and other opportunities to members of the GoodDollar protocol.`,
+        links: [],
+    },
+    {
+        id: 'whatIsGoodOffers',
+        question: `What is GoodOffers?`,
+        answer: `GoodOffers are opportunities to earn additional income, available to you based on your GoodID information. Note that you will only see GoodOffers if you said “Yes, I accept” to the screen “You might qualify for extra money disbursements.”`,
+        links: [],
+    },
+    {
+        id: 'disputedPartOfGoodID',
+        question: `What happens if I’ve disputed part of my GoodID?`,
+        answer: `Information you've marked as incorrect will show as "Unverified" on your GoodID.\n\nThis will not affect your ability to claim GoodDollar UBI, but may affect your ability to receive some GoodOffers.`,
+        links: [],
+    },
+    {
+        id: 'acceptSkippedOffer',
+        question: `Can I accept an offer I’ve skipped in the past?`,
+        answer: `When you skip an offer, you can choose to see that offer again. It will show up next time you claim. If you chose to not be shown the offer again, you will need to delete and then redo your Face ID / GoodID upgrade to see the offer again.`,
+        links: [],
+    },
+    {
+        id: 'whyNotAllInfoDevice',
+        question: `Why don’t I see all my GoodID information on my device?`,
+        answer: `You will only see all GoodID upgrade info on the device you used to make the upgrade.\n\nIf you want to use another device or dapp, you can upgrade again on that device. For GoodDapp, this can simply be done by going to the claim page and click the claim button.”`,
+        links: [],
+    },
+    {
+        id: 'ageGenderDetermination',
+        question: `How are my age and gender determined?`,
+        answer: ``,
+        AltLink: () => (
+            <Text variant="sm-grey-400" lineHeight="20" mt={1}>
+                We use
+                <Link href="https://docs.aws.amazon.com/rekognition/latest/APIReference/API_Gender.html">
+                    <Text textDecorationLine="underline"> Amazon Rekognition </Text>
+                </Link>
+                to predict your age and gender.
+            </Text>
+        ),
+    },
+    {
+        id: 'howLocationKnown',
+        question: `How do you know my location?`,
+        answer: `There are two different ways that we determine location:\n\n- Using your IP address (the location through which you are accessing the internet).\n- (If you sign into GoodWallet via your mobile number) the country code of your phone number.`,
+        links: [],
+    },
+    {
+        id: 'unverifiedLocation',
+        question: `Why does my location show as Unverified?`,
+        answer: `There are a few reasons your location may show as Unverified:\n\n- You did not give device permissions\n- You are using a VPN\n- Due to another error, for example if we could not match your location with a country\n\nIf you would like your location to show in the future, please resolve the issue above and delete then redo your FaceID / GoodID upgrade by using another device or deleting your device or browser’s local storage.`,
+        links: [],
+    },
+    {
+        id: 'collectingMyVideo',
+        question: `Why are you collecting my video?`,
+        answer: `Red Tent’s offers are the first (pilot) offers utilizing GoodID and GoodOffers. As such, we are collecting some information for this short pilot period for the purpose of internal learning & refinement.\n\nYour video may be reviewed by the GoodLabs or partner teams for verification purposes. Your video will not be shared or used publicly, and will be erased after a period of time.`,
+        links: [],
+    },
+]
+
+const faqClaimCopy: FaqItemCopy[] = [
+    {
+        id: 'howToClaimGUBI',
+        question: `How do I claim G$ UBI?`,
+        answer: `Open GoodWallet or GoodDapp and click on “Claim”! Your newly claimed G$ will appear in your wallet. A countdown will indicate the time remaining until your next opportunity to claim.`,
+        links: [],
+    },
+    {
+        id: 'whyWaitNextClaim',
+        question: `Why do I have to wait for my next claim?`,
+        answer: `The claiming window resets every day at 12pm UTC. After you claim, you'll need to wait until the same time the following day to claim again. A countdown will indicate the time remaining until your next opportunity to claim.`,
+        links: [],
+    },
+    {
+        id: 'howManyGdaily',
+        question: `How many G$ do I get every day (24 hours)?`,
+        answer: `While G$ is distributed every day, there is no way of knowing in advance how much a GoodDollar claimer will receive on any given day.\n\nThe daily distribution of G$ is determined by the average number of active users over the past 14 days. A fixed amount of G$ is allocated as daily basic income and distributed evenly among claimers. If there are fewer claimers, each individual gets more G$, and if there are more claimers, each gets less. Any unclaimed G$ is rolled over, increasing the following day’s distribution pool.`,
+        links: [
+            {
+                href: 'https://docs.gooddollar.org/protocol-v3-documentation/core-contracts-and-api/ubischeme',
+                linkText: 'GoodDollar Documentation',
+                text: '',
+            },
+        ],
+    },
+    {
+        id: 'whichBlockchainsG',
+        question: `What blockchains and networks does G$ operate on?`,
+        answer: `GoodDollar is deployed on Ethereum, Fuse and Celo.\n\nDaily distribution happens on `,
+        links: [],
+        AltLink: () => (
+            <Text variant="sm-grey-400" lineHeight="20" width="100%" textAlign="left" pl="2">
+                <Link href="https://docs.gooddollar.org/frequently-asked-questions/web3-basic-knowledge-and-security-tips-by-consensys#what-are-sidechains">
+                    <Text textDecorationLine="underline">sidechains</Text>
+                </Link>
+                : Celo and Fuse.
+            </Text>
+        ),
+    },
+    {
+        id: 'useGdInDapps',
+        question: `How do I use my G$ in dApps?`,
+        answer: `G$ is a standard ERC-20 token deployed on Ethereum, Fuse, and Celo. You can use your G$ in various dApps within these ecosystems. Remember, if you want to use G$ from one chain in another, you will need to bridge them.\n\nFor a list of dApps, please consult the GoodDollar community or ecosystem resources.`,
+        links: [],
+    },
+    {
+        id: 'additionalFaqs',
+        question: `Additional FAQs`,
+        answer: `For more information about GoodDollar and how to use your G$`,
+        links: [
+            {
+                href: 'https://docs.gooddollar.org/frequently-asked-questions/using-gooddollar',
+                linkText: 'Please click here.',
+            },
+        ],
+    },
+]
+
+export { faqBuyCopy, faqBridgeCopy, faqClaimCopy, faqGoodIDCopy, faqSwapCopy }

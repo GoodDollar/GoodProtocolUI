@@ -82,21 +82,25 @@ export const Share = memo(({ show = true, title, copyText, ...rest }: ShareProps
             <Row align="center" justify="center" gap="24px">
                 {linkedin && (
                     <LinkedinShareButton className="shareButton" {...linkedin}>
+                        {/* @ts-ignore */}
                         <LinkedinIcon height="32px" />
                     </LinkedinShareButton>
                 )}
                 {twitter && (
                     <TwitterShareButton className="shareButton" {...twitter}>
+                        {/* @ts-ignore */}
                         <TwitterIcon height="26px" />
                     </TwitterShareButton>
                 )}
                 {facebook && (
                     <FacebookShareButton className="shareButton" {...facebook}>
+                        {/* @ts-ignore */}
                         <FacebookIcon height="32px" />
                     </FacebookShareButton>
                 )}
                 {copyText && (
                     <ButtonOutlined onClick={copy} className="pl-3 pr-3 copyButton" disabled={textCopied}>
+                        {/* @ts-ignore */}
                         <CopyIcon height="24px" />
                     </ButtonOutlined>
                 )}

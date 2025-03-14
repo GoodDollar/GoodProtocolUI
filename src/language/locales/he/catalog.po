@@ -2,16 +2,21 @@ msgid ""
 msgstr ""
 "POT-Creation-Date: 2023-05-31 12:45+0300\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
-"Project-Id-Version: \n"
+"Project-Id-Version: goodprotocolui\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2025-01-12 10:27\n"
 "Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
-"Plural-Forms: \n"
+"Language: he_IL\n"
+"Language-Team: Hebrew\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;\n"
+"X-Crowdin-Project: goodprotocolui\n"
+"X-Crowdin-Project-ID: 481161\n"
+"X-Crowdin-Language: he\n"
+"X-Crowdin-File: /master/src/language/locales/en/catalog.po\n"
+"X-Crowdin-File-ID: 24\n"
 
 #: src/components/Savings/SavingsCard/index.tsx:48
 msgid ""
@@ -79,48 +84,48 @@ msgstr ""
 #~ "(COMING SOON) Accrue automatic yield through flash loans and\n"
 #~ "SUSHI strategies"
 #~ msgstr ""
-#~ "(בקרוב) לצבור תשואה אוטומטית באמצעות הלוואות פלאש\n"
-#~ "אסטרטגיות סושי"
+#~ "(COMING SOON) Accrue automatic yield through flash loans and\n"
+#~ "SUSHI strategies"
 
 #. js-lingui-explicit-id
 #~ msgid "(View on explorer)"
-#~ msgstr "(הצג על Explorer)"
+#~ msgstr "(View on explorer)"
 
 #. js-lingui-explicit-id
 #~ msgid "+ Add a send (optional)"
-#~ msgstr "+ הוסף שליחה (אופציונלי)"
+#~ msgstr "+ Add a send (optional)"
 
 #. js-lingui-explicit-id
 #~ msgid "+ Create a new market"
-#~ msgstr "+ צור שוק חדש"
+#~ msgstr "+ Create a new market"
 
 #. js-lingui-explicit-id
 #~ msgid "- Remove send"
-#~ msgstr "- הסר שליחה"
+#~ msgstr "- Remove send"
 
 #. js-lingui-explicit-id
 #~ msgid "300M+ TVL on Polygon! Optimized routing enabled"
-#~ msgstr "300M+ TVL על מצולע! ניתוב ממוטב מופעל"
+#~ msgstr "300M+ TVL on Polygon! Optimized routing enabled"
 
 #. js-lingui-explicit-id
 #~ msgid "<0>Tip:</0> In order to start earning rewards, you will need to first acquire some SLP by adding liquidity to the specified pair or <1>migrating existing liquidity.</1> Once you have SLP you can stake it into this yield farm to start earning rewards. Unstake anytime and then you can convert your SLP back to base tokens by clicking Remove Liquidity. Click Harvest to receive your rewards at any time."
-#~ msgstr "<0>טיפ:</0> כדי להתחיל להרוויח תגמולים, יהיה עליך לרכוש תחילה כמה SLP על ידי הוספת נזילות לזוג שצוין או <1>העברת נזילות קיימת.</1> ברגע שיש לך SLP אתה יכול לתקוע אותו בחוות תשואה זו כדי להתחיל להרוויח תגמולים. ללא יתד בכל עת ולאחר מכן תוכל להמיר SLP שלך בחזרה אסימוני בסיס על ידי לחיצה על הסר נזילות. לחץ על קציר כדי לקבל את התגמולים שלך בכל עת."
+#~ msgstr "<0>Tip:</0> In order to start earning rewards, you will need to first acquire some SLP by adding liquidity to the specified pair or <1>migrating existing liquidity.</1> Once you have SLP you can stake it into this yield farm to start earning rewards. Unstake anytime and then you can convert your SLP back to base tokens by clicking Remove Liquidity. Click Harvest to receive your rewards at any time."
 
 #. js-lingui-explicit-id
 #~ msgid "<0>Tip:</0> Removing pool tokens converts your position back into underlying tokens at the current rate, proportional to your share of the pool. Accrued fees are included in the amounts you receive."
-#~ msgstr "<0>טיפ:</0> הסרת אסימוני ברכה ממירה את עמדתך בחזרה לאסימונים שבבסיס בקצב הנוכחי, פרופורציונלי לחלק שלך בבריכה. עמלות שנצברו נכללות בסכומים שאתה מקבל."
+#~ msgstr "<0>Tip:</0> Removing pool tokens converts your position back into underlying tokens at the current rate, proportional to your share of the pool. Accrued fees are included in the amounts you receive."
 
 #. js-lingui-explicit-id
 #~ msgid "<0>Tip:</0> Use this tool to find pairs that don't automatically appear in the interface"
-#~ msgstr "<0>עצה:</0> השתמש בכלי זה כדי למצוא זוגות שאינם מופיעים באופן אוטומטי בממשק"
+#~ msgstr "<0>Tip:</0> Use this tool to find pairs that don't automatically appear in the interface"
 
 #. js-lingui-explicit-id
 #~ msgid "<0>Tip:</0> When you add liquidity, you will receive pool tokens representing your position. These tokens automatically earn fees proportional to your share of the pool, and can be redeemed at any time."
-#~ msgstr "<0>טיפ:</0> כאשר אתה מוסיף נזילות, תקבל אסימוני ברכה המייצגים את עמדתך. אסימונים אלה מרוויחים עמלות באופן אוטומטי ביחס לחלק שלך של הבריכה, וניתן לפדות בכל עת."
+#~ msgstr "<0>Tip:</0> When you add liquidity, you will receive pool tokens representing your position. These tokens automatically earn fees proportional to your share of the pool, and can be redeemed at any time."
 
 #. js-lingui-explicit-id
 #~ msgid "<0>Your</0> Positions"
-#~ msgstr "העמדות<0>שלך</0>"
+#~ msgstr "<0>Your</0> Positions"
 
 #. js-lingui-explicit-id
 #~ msgid "<0>{0}:</0> {1}"
@@ -132,11 +137,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "A portion of each trade (0.25%) goes to liquidity providers as a protocol incentive."
-#~ msgstr "חלק מכל סחר (0.25%) עובר לספקי נזילות כתמריץ פרוטוקול."
+#~ msgstr "A portion of each trade (0.25%) goes to liquidity providers as a protocol incentive."
 
 #. js-lingui-explicit-id
 #~ msgid "APPROVE"
-#~ msgstr "לְאַשֵׁר"
+#~ msgstr "APPROVE"
 
 #. js-lingui-explicit-id
 #~ msgid "APPROVED"
@@ -144,15 +149,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "APPROVING"
-#~ msgstr "אישור"
+#~ msgstr "APPROVING"
 
 #. js-lingui-explicit-id
 #~ msgid "APR"
-#~ msgstr "אפריל"
+#~ msgstr "APR"
 
 #. js-lingui-explicit-id
 #~ msgid "APR (incl. Fees)"
-#~ msgstr "אפריל (כולל עמלות)"
+#~ msgstr "APR (incl. Fees)"
 
 #. js-lingui-explicit-id
 #~ msgid "APY"
@@ -160,31 +165,31 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "APY (incl. Fees)"
-#~ msgstr "APY (כולל עמלות)"
+#~ msgstr "APY (incl. Fees)"
 
 #. js-lingui-explicit-id
 #~ msgid "Accept"
-#~ msgstr "קבל"
+#~ msgstr "Accept"
 
 #. js-lingui-explicit-id
 #~ msgid "Accept update"
-#~ msgstr "קבל עדכון"
+#~ msgstr "Accept update"
 
 #. js-lingui-explicit-id
 #~ msgid "Account"
-#~ msgstr "חֶשְׁבּוֹן"
+#~ msgstr "Account"
 
 #. js-lingui-explicit-id
 #~ msgid "Active"
-#~ msgstr "פָּעִיל"
+#~ msgstr "Active"
 
 #. js-lingui-explicit-id
 #~ msgid "Add"
-#~ msgstr "הוסף"
+#~ msgstr "Add"
 
 #. js-lingui-explicit-id
 #~ msgid "Add Liquidity"
-#~ msgstr "הוסף נזילות"
+#~ msgstr "Add Liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Add SAK3 to your Metamask wallet"
@@ -192,43 +197,43 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Add Sushi to your Metamask wallet"
-#~ msgstr "הוסף סושי לארנק Metamask"
+#~ msgstr "Add Sushi to your Metamask wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Add collateral in order to borrow assets"
-#~ msgstr "הוסף בטחונות כדי ללוות נכסים"
+#~ msgstr "Add collateral in order to borrow assets"
 
 #. js-lingui-explicit-id
 #~ msgid "Add liquidity"
-#~ msgstr "הוסף נזילות"
+#~ msgstr "Add liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Add xSushi to your Metamask wallet"
-#~ msgstr "הוסף XSushi לארנק Metamask"
+#~ msgstr "Add xSushi to your Metamask wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "All Yield Farms"
-#~ msgstr "כל חוות התשואה"
+#~ msgstr "All Yield Farms"
 
 #. js-lingui-explicit-id
 #~ msgid "Amount"
-#~ msgstr "כמות"
+#~ msgstr "Amount"
 
 #. js-lingui-explicit-id
 #~ msgid "Amount of Tokens"
-#~ msgstr "כמות האסימונים"
+#~ msgstr "Amount of Tokens"
 
 #. js-lingui-explicit-id
 #~ msgid "Amount to Remove"
-#~ msgstr "סכום להסרה"
+#~ msgstr "Amount to Remove"
 
 #. js-lingui-explicit-id
 #~ msgid "An update is available for the token list"
-#~ msgstr "עדכון זמין לרשימת האסימון"
+#~ msgstr "An update is available for the token list"
 
 #. js-lingui-explicit-id
 #~ msgid "Analytics"
-#~ msgstr "ניתוח"
+#~ msgstr "Analytics"
 
 #. js-lingui-explicit-id
 #~ msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
@@ -236,39 +241,39 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects."
-#~ msgstr "כל אחד יכול ליצור אסימון, כולל יצירת גרסאות מזויפות של אסימונים קיימים הטוענים לייצג פרויקטים."
+#~ msgstr "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects."
 
 #. js-lingui-explicit-id
 #~ msgid "Approve"
-#~ msgstr "לאשׁר"
+#~ msgstr "Approve"
 
 #. js-lingui-explicit-id
 #~ msgid "Approve Kashi"
-#~ msgstr "אשר קאשי"
+#~ msgstr "Approve Kashi"
 
 #. js-lingui-explicit-id
 #~ msgid "Approve {0}"
-#~ msgstr "אשר {0}"
+#~ msgstr "Approve {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "Approved"
-#~ msgstr "מאושר"
+#~ msgstr "Approved"
 
 #. js-lingui-explicit-id
 #~ msgid "Approving"
-#~ msgstr "אישור"
+#~ msgstr "Approving"
 
 #. js-lingui-explicit-id
 #~ msgid "Approving {0}"
-#~ msgstr "אישור {0}"
+#~ msgstr "Approving {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "Are you sure?"
-#~ msgstr "האם אתה בטוח?"
+#~ msgstr "Are you sure?"
 
 #. js-lingui-explicit-id
 #~ msgid "Available"
-#~ msgstr "זמין"
+#~ msgstr "Available"
 
 #. js-lingui-explicit-id
 #~ msgid "Awesome!"
@@ -276,79 +281,79 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Back"
-#~ msgstr "חזור"
+#~ msgstr "Back"
 
 #. js-lingui-explicit-id
 #~ msgid "Back to portfolio"
-#~ msgstr "חזרה לתיק הפורפוליו"
+#~ msgstr "Back to portfolio"
 
 #. js-lingui-explicit-id
 #~ msgid "Balance"
-#~ msgstr "יתרה"
+#~ msgstr "Balance"
 
 #. js-lingui-explicit-id
 #~ msgid "Bento Balance: {0}"
-#~ msgstr "מאזן בנטו: {0}"
+#~ msgstr "Bento Balance: {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "BentoBox"
-#~ msgstr "בנטובוקס"
+#~ msgstr "BentoBox"
 
 #. js-lingui-explicit-id
 #~ msgid "BentoBox Apps"
-#~ msgstr "אפליקציות בנטובוקס"
+#~ msgstr "BentoBox Apps"
 
 #. js-lingui-explicit-id
 #~ msgid "BentoBox is an innovative way to use dapps gas-efficiently and gain extra yield."
-#~ msgstr "BentoBox הוא דרך חדשה להשתמש בדאפים ביעילות גזית ולהשיג תשואה נוספת."
+#~ msgstr "BentoBox is an innovative way to use dapps gas-efficiently and gain extra yield."
 
 #. js-lingui-explicit-id
 #~ msgid "BentoBox provides extra yield on deposits with flash lending, strategies, and fixed, low-gas transfers among integrated dapps, like Kashi markets"
-#~ msgstr "BentoBox מספק תפוקה נוספת על הפקדות עם הלוואות Flash, אסטרטגיות והעברות קבועות בגז נמוך בין רכיבי Dapps משולבים, כגון שווקי Kashi"
+#~ msgstr "BentoBox provides extra yield on deposits with flash lending, strategies, and fixed, low-gas transfers among integrated dapps, like Kashi markets"
 
 #. js-lingui-explicit-id
 #~ msgid "BentoBox strategies can create yield for your collateral tokens. This token does not yet have a strategy in the BentoBox."
-#~ msgstr "אסטרטגיות BentoBox יכולות ליצור תשואה עבור אסימוני הביטחונות שלך. אסימון זה עדיין לא צריך אסטרטגיה BentoBox."
+#~ msgstr "BentoBox strategies can create yield for your collateral tokens. This token does not yet have a strategy in the BentoBox."
 
 #. js-lingui-explicit-id
 #~ msgid "BentoBox strategies can create yield for your liquidity while it is not lent out. This token does not yet have a strategy in the BentoBox."
-#~ msgstr "אסטרטגיות BentoBox יכולות ליצור תשואה עבור הנזילות שלך בזמן שהוא לא השאיל החוצה. אסימון זה עדיין לא צריך אסטרטגיה BentoBox."
+#~ msgstr "BentoBox strategies can create yield for your liquidity while it is not lent out. This token does not yet have a strategy in the BentoBox."
 
 #. js-lingui-explicit-id
 #~ msgid "Blocked address"
-#~ msgstr "כתובת חסומה"
+#~ msgstr "Blocked address"
 
 #. js-lingui-explicit-id
 #~ msgid "Borrow"
-#~ msgstr "ללוות"
+#~ msgstr "Borrow"
 
 #. js-lingui-explicit-id
 #~ msgid "Borrow APR"
-#~ msgstr "לווה APR"
+#~ msgstr "Borrow APR"
 
 #. js-lingui-explicit-id
 #~ msgid "Borrow assets and leverage up"
-#~ msgstr "ללוות נכסים ולהקלף את המינוף"
+#~ msgstr "Borrow assets and leverage up"
 
 #. js-lingui-explicit-id
 #~ msgid "Borrow {0}"
-#~ msgstr "ללוות {0}"
+#~ msgstr "Borrow {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "Borrow {0}-{1}"
-#~ msgstr "ללוות {0}-{1}"
+#~ msgstr "Borrow {0}-{1}"
 
 #. js-lingui-explicit-id
 #~ msgid "Borrowed"
-#~ msgstr "מושאל"
+#~ msgstr "Borrowed"
 
 #. js-lingui-explicit-id
 #~ msgid "Borrowing allows you to obtain liquidity without selling. Your borrow limit depends on the amount of deposited collateral. You will be able to borrow up to 75% of your collateral and repay at any time with accrued interest."
-#~ msgstr "גיוס ההון מאפשר לך להשיג נזילות מבלי למכור. מגבלת ההשאלה שלך תלויה בכמות הבטחונות שהופקדו. תוכל ללוות עד 75% מהביטחונות שלך לפרוע בכל עת עם ריבית שנצברה."
+#~ msgstr "Borrowing allows you to obtain liquidity without selling. Your borrow limit depends on the amount of deposited collateral. You will be able to borrow up to 75% of your collateral and repay at any time with accrued interest."
 
 #. js-lingui-explicit-id
 #~ msgid "Bridge Assets"
-#~ msgstr "נכסי גשר"
+#~ msgstr "Bridge Assets"
 
 #. js-lingui-explicit-id
 #~ msgid ""
@@ -356,17 +361,17 @@ msgstr ""
 #~ "of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing\n"
 #~ "your liquidity."
 #~ msgstr ""
-#~ "על ידי הוספת נזילות אתה תרוויח 0.25% מכלל העסקאות על זוג זה ביחס לחלק שלך\n"
-#~ "של הבריכה. אגרות מתווספות לבריכה, צוברים בזמן אמת וניתן לטעון על ידי משיכת\n"
-#~ "הנזילות שלך."
+#~ "By adding liquidity you'll earn 0.25% of all trades on this pair proportional to your share\n"
+#~ "of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing\n"
+#~ "your liquidity."
 
 #. js-lingui-explicit-id
 #~ msgid "By adding this list you are implicitly trusting that the data is correct. Anyone can create a list, including creating fake versions of existing lists and lists that claim to represent projects that do not have one."
-#~ msgstr "על ידי הוספת רשימה זו אתה אמון במרומז כי הנתונים נכונים. כל אחד יכול ליצור רשימה, כולל יצירת גרסאות מזויפות של רשימות קיימות ורשימות הטוענות לייצג פרויקטים שאין להם אחד."
+#~ msgstr "By adding this list you are implicitly trusting that the data is correct. Anyone can create a list, including creating fake versions of existing lists and lists that claim to represent projects that do not have one."
 
 #. js-lingui-explicit-id
 #~ msgid "Bypasses confirmation modals and allows high slippage trades. Use at your own risk."
-#~ msgstr "עוקף מודלי אישור ומאפשר עסקאות החלקה גבוהות. השתמש על אחריותך בלבד."
+#~ msgstr "Bypasses confirmation modals and allows high slippage trades. Use at your own risk."
 
 #. js-lingui-explicit-id
 #~ msgid "CLAIMABLE REWARDS"
@@ -374,19 +379,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "CONFIRM SWAP"
-#~ msgstr "אשר להחליף"
+#~ msgstr "CONFIRM SWAP"
 
 #. js-lingui-explicit-id
 #~ msgid "Change"
-#~ msgstr "שינוי"
+#~ msgstr "Change"
 
 #. js-lingui-explicit-id
 #~ msgid "Check out Sushi on Polygon (Matic)"
-#~ msgstr "עזיבה סושי על מצולע (Matic)"
+#~ msgstr "Check out Sushi on Polygon (Matic)"
 
 #. js-lingui-explicit-id
 #~ msgid "Claim"
-#~ msgstr "תביעה"
+#~ msgstr "Claim"
 
 #. js-lingui-explicit-id
 #~ msgid "Claim All"
@@ -398,7 +403,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Claim G$ rewards"
-#~ msgstr "תביעה G $ Rewards"
+#~ msgstr "Claim G$ rewards"
 
 #. js-lingui-explicit-id
 #~ msgid "Claim GOOD"
@@ -414,11 +419,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Claim SUSHI"
-#~ msgstr "תביעה סושי"
+#~ msgstr "Claim SUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "Claim UBI"
-#~ msgstr "תביעה UBI"
+#~ msgstr "Claim UBI"
 
 #. js-lingui-explicit-id
 #~ msgid "Claim reward"
@@ -430,23 +435,23 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Claim your test tokens here..."
-#~ msgstr "תביעה שלך מבחן אסימונים כאן ..."
+#~ msgstr "Claim your test tokens here..."
 
 #. js-lingui-explicit-id
 #~ msgid "Claimable"
-#~ msgstr "נכלל"
+#~ msgstr "Claimable"
 
 #. js-lingui-explicit-id
 #~ msgid "Claimable Rewards"
-#~ msgstr "טען טענה"
+#~ msgstr "Claimable Rewards"
 
 #. js-lingui-explicit-id
 #~ msgid "Claimed"
-#~ msgstr "טען"
+#~ msgstr "Claimed"
 
 #. js-lingui-explicit-id
 #~ msgid "Claimed G$ Rewards"
-#~ msgstr "טען G $ rewards"
+#~ msgstr "Claimed G$ Rewards"
 
 #. js-lingui-explicit-id
 #~ msgid "Claimed GOOD Rewards"
@@ -466,35 +471,35 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Clear History"
-#~ msgstr "נקה היסטוריה"
+#~ msgstr "Clear History"
 
 #. js-lingui-explicit-id
 #~ msgid "Clear all"
-#~ msgstr "נקה את כל"
+#~ msgstr "Clear all"
 
 #. js-lingui-explicit-id
 #~ msgid "Click here to switch to Polygon using Metamask"
-#~ msgstr "לחץ כאן כדי לעבור למצולע באמצעות Metamask"
+#~ msgstr "Click here to switch to Polygon using Metamask"
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Click on a pool below, input the amount you wish to migrate or select max, and click\n"
 #~ "migrate"
 #~ msgstr ""
-#~ "לחץ על מאגר למטה, קלט את הסכום שברצונך להעביר או לבחור מקסימום, ולחץ\n"
-#~ "להעביר"
+#~ "Click on a pool below, input the amount you wish to migrate or select max, and click\n"
+#~ "migrate"
 
 #. js-lingui-explicit-id
 #~ msgid "Click this button to Claim your Daily UBI in"
-#~ msgstr "לחץ על לחצן זה כדי לתבוע את UBI היומי שלך ב"
+#~ msgstr "Click this button to Claim your Daily UBI in"
 
 #. js-lingui-explicit-id
 #~ msgid "Close"
-#~ msgstr "סגור"
+#~ msgstr "Close"
 
 #. js-lingui-explicit-id
 #~ msgid "Collateral"
-#~ msgstr "בטחונות"
+#~ msgstr "Collateral"
 
 #. js-lingui-explicit-id
 #~ msgid "Collect G$"
@@ -502,51 +507,51 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Common bases"
-#~ msgstr "בסיסים נפוצים"
+#~ msgstr "Common bases"
 
 #. js-lingui-explicit-id
 #~ msgid "Community Approval"
-#~ msgstr "אישור קהילה"
+#~ msgstr "Community Approval"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm"
-#~ msgstr "אשר"
+#~ msgstr "Confirm"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm Adding Liquidity"
-#~ msgstr "אשר הוספת נזילות"
+#~ msgstr "Confirm Adding Liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm Staking"
-#~ msgstr "אשר את הצבת ההימור"
+#~ msgstr "Confirm Staking"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm Supply"
-#~ msgstr "אשר הספקה"
+#~ msgstr "Confirm Supply"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm Swap"
-#~ msgstr "אשר החלפה"
+#~ msgstr "Confirm Swap"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm Withdrawal"
-#~ msgstr "אשר נסיגה"
+#~ msgstr "Confirm Withdrawal"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm swap"
-#~ msgstr "אשר להחליף"
+#~ msgstr "Confirm swap"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm this transaction in your wallet"
-#~ msgstr "אשר את העסקה הזו בארנק שלך"
+#~ msgstr "Confirm this transaction in your wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Congratulations!"
-#~ msgstr "מזל טוב!"
+#~ msgstr "Congratulations!"
 
 #. js-lingui-explicit-id
 #~ msgid "Connect Wallet"
-#~ msgstr "חבר ארנק"
+#~ msgstr "Connect Wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Connect a wallet to see your portfolio"
@@ -554,15 +559,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Connect to a wallet"
-#~ msgstr "התחבר לארנק"
+#~ msgstr "Connect to a wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Connect to a wallet to find pools"
-#~ msgstr "התחבר לארנק כדי למצוא בריכות"
+#~ msgstr "Connect to a wallet to find pools"
 
 #. js-lingui-explicit-id
 #~ msgid "Connect to a wallet to view your liquidity"
-#~ msgstr "התחבר לארנק כדי להציג את הנזילות שלך"
+#~ msgstr "Connect to a wallet to view your liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Connect wallet"
@@ -570,7 +575,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Connected with"
-#~ msgstr "מחובר עם"
+#~ msgstr "Connected with"
 
 #. js-lingui-explicit-id
 #~ msgid "Copied"
@@ -578,43 +583,43 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Copy address"
-#~ msgstr "העתקת העתקה"
+#~ msgstr "Copy address"
 
 #. js-lingui-explicit-id
 #~ msgid "Create Pool & Supply"
-#~ msgstr "צור מאגר ואספקה"
+#~ msgstr "Create Pool & Supply"
 
 #. js-lingui-explicit-id
 #~ msgid "Create a Pair"
-#~ msgstr "יצירת זוג"
+#~ msgstr "Create a Pair"
 
 #. js-lingui-explicit-id
 #~ msgid "Create a pair"
-#~ msgstr "צור זוג"
+#~ msgstr "Create a pair"
 
 #. js-lingui-explicit-id
 #~ msgid "Create pool"
-#~ msgstr "צור מאגר"
+#~ msgstr "Create pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Current Rate"
-#~ msgstr "שער הנוכחי"
+#~ msgstr "Current Rate"
 
 #. js-lingui-explicit-id
 #~ msgid "DEPOSIT"
-#~ msgstr "לְהַפְקִיד"
+#~ msgstr "DEPOSIT"
 
 #. js-lingui-explicit-id
 #~ msgid "Dashboard"
-#~ msgstr "לוּחַ מַחווָנִים"
+#~ msgstr "Dashboard"
 
 #. js-lingui-explicit-id
 #~ msgid "Date"
-#~ msgstr "תַאֲרִיך"
+#~ msgstr "Date"
 
 #. js-lingui-explicit-id
 #~ msgid "Deposit"
-#~ msgstr "פיקדון"
+#~ msgstr "Deposit"
 
 #. js-lingui-explicit-id
 #~ msgid "Deposit G$"
@@ -622,19 +627,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Deposit SUSHI into BentoBox"
-#~ msgstr "הפקדה סושי לתוך BentoBox"
+#~ msgstr "Deposit SUSHI into BentoBox"
 
 #. js-lingui-explicit-id
 #~ msgid "Deposit overview"
-#~ msgstr "סקירה פיקדון"
+#~ msgstr "Deposit overview"
 
 #. js-lingui-explicit-id
 #~ msgid "Deposit tokens into BentoBox for all the yields"
-#~ msgstr "הפקדה אסימונים לתוך BentoBox עבור כל התשואות"
+#~ msgstr "Deposit tokens into BentoBox for all the yields"
 
 #. js-lingui-explicit-id
 #~ msgid "Deposited"
-#~ msgstr "שהופקד"
+#~ msgstr "Deposited"
 
 #. js-lingui-explicit-id
 #~ msgid "Dev"
@@ -646,7 +651,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Disable Multihops"
-#~ msgstr "השבת  Multihops"
+#~ msgstr "Disable Multihops"
 
 #. js-lingui-explicit-id
 #~ msgid "Disconnect"
@@ -658,15 +663,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Discord"
-#~ msgstr "מחלוקת"
+#~ msgstr "Discord"
 
 #. js-lingui-explicit-id
 #~ msgid "Dismiss"
-#~ msgstr "לפטר"
+#~ msgstr "Dismiss"
 
 #. js-lingui-explicit-id
 #~ msgid "Docs"
-#~ msgstr "מסמכים"
+#~ msgstr "Docs"
 
 #. js-lingui-explicit-id
 #~ msgid "Documentation for developers"
@@ -674,7 +679,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Documentation for developers of Sushi."
-#~ msgstr "תיעוד למפתחים של סושי."
+#~ msgstr "Documentation for developers of Sushi."
 
 #. js-lingui-explicit-id
 #~ msgid "Documentation for users"
@@ -682,19 +687,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Documentation for users of Sushi."
-#~ msgstr "תיעוד עבור משתמשי סושי."
+#~ msgstr "Documentation for users of Sushi."
 
 #. js-lingui-explicit-id
 #~ msgid "Don't see a pool you joined? <0>Import it.</0>"
-#~ msgstr "אתה לא רואה בריכה שהצטרפת אליה? <0>לייבא אותו.</0>"
+#~ msgstr "Don't see a pool you joined? <0>Import it.</0>"
 
 #. js-lingui-explicit-id
 #~ msgid "Dont see a pool you joined?"
-#~ msgstr "לא רואה בריכה שהצטרפת אליה?"
+#~ msgstr "Dont see a pool you joined?"
 
 #. js-lingui-explicit-id
 #~ msgid "Double Yield Farms"
-#~ msgstr "חוות תשואה כפולה"
+#~ msgstr "Double Yield Farms"
 
 #. js-lingui-explicit-id
 #~ msgid "ETHEREUM"
@@ -702,67 +707,67 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Enjoy the lowest slippage on Polygon"
-#~ msgstr "באפשרותך ליהנות מהחלקה הנמוכה ביותר ב-Polygon"
+#~ msgstr "Enjoy the lowest slippage on Polygon"
 
 #. js-lingui-explicit-id
 #~ msgid "Enter"
-#~ msgstr "הזן"
+#~ msgstr "Enter"
 
 #. js-lingui-explicit-id
 #~ msgid "Enter Amount"
-#~ msgstr "הזן סכום"
+#~ msgstr "Enter Amount"
 
 #. js-lingui-explicit-id
 #~ msgid "Enter a recipient"
-#~ msgstr "הזן נמען"
+#~ msgstr "Enter a recipient"
 
 #. js-lingui-explicit-id
 #~ msgid "Enter a valid slippage percentage"
-#~ msgstr "הזן אחוזי החלקה חוקיים"
+#~ msgstr "Enter a valid slippage percentage"
 
 #. js-lingui-explicit-id
 #~ msgid "Enter an amount"
-#~ msgstr "הזן סכום"
+#~ msgstr "Enter an amount"
 
 #. js-lingui-explicit-id
 #~ msgid "Enter valid list location"
-#~ msgstr "הזן מיקום רשימות חוקי"
+#~ msgstr "Enter valid list location"
 
 #. js-lingui-explicit-id
 #~ msgid "Enter valid token address"
-#~ msgstr "הזן כתובת אסימון חוקית"
+#~ msgstr "Enter valid token address"
 
 #. js-lingui-explicit-id
 #~ msgid "Error"
-#~ msgstr "שגיאה"
+#~ msgstr "Error"
 
 #. js-lingui-explicit-id
 #~ msgid "Error connecting"
-#~ msgstr "שגיאה בחיבור"
+#~ msgstr "Error connecting"
 
 #. js-lingui-explicit-id
 #~ msgid "Error connecting."
-#~ msgstr "שגיאה חיבור."
+#~ msgstr "Error connecting."
 
 #. js-lingui-explicit-id
 #~ msgid "Error connecting. Try refreshing the page."
-#~ msgstr "שגיאה חיבור. נסה לרענן את הדף."
+#~ msgstr "Error connecting. Try refreshing the page."
 
 #. js-lingui-explicit-id
 #~ msgid "Error importing list"
-#~ msgstr "שגיאה בייבוא רשימה."
+#~ msgstr "Error importing list"
 
 #. js-lingui-explicit-id
 #~ msgid "Expanded results from inactive Token Lists"
-#~ msgstr "תוצאות מורחבות מ רשימות אסימון לא פעילים"
+#~ msgstr "Expanded results from inactive Token Lists"
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Expert mode turns off the confirm transaction prompt and allows high slippage trades\n"
 #~ "that often result in bad rates and lost funds."
 #~ msgstr ""
-#~ "מצב מומחה מכבה את הפקודה לעסקה לאשר ומאפשר עסקאות החלקה גבוהות\n"
-#~ "כי לעתים קרובות לגרום לשיעורים גרועים וקרנות אבדו."
+#~ "Expert mode turns off the confirm transaction prompt and allows high slippage trades\n"
+#~ "that often result in bad rates and lost funds."
 
 #. js-lingui-explicit-id
 #~ msgid "FUSE"
@@ -770,15 +775,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Fetching Farms"
-#~ msgstr "מביאים חוות."
+#~ msgstr "Fetching Farms"
 
 #. js-lingui-explicit-id
 #~ msgid "Fetching Instruments"
-#~ msgstr "מכשירים להביא"
+#~ msgstr "Fetching Instruments"
 
 #. js-lingui-explicit-id
 #~ msgid "Find Pool"
-#~ msgstr "מצא בריכה"
+#~ msgstr "Find Pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Fixed Apy"
@@ -800,11 +805,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "From"
-#~ msgstr "מ"
+#~ msgstr "From"
 
 #. js-lingui-explicit-id
 #~ msgid "From (estimated)"
-#~ msgstr "מ (משוער)"
+#~ msgstr "From (estimated)"
 
 #. js-lingui-explicit-id
 #~ msgid "Fuse Bridge"
@@ -842,23 +847,23 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Gain exposure to tokens without reducing your assets. Leverage will enable you to take short positions against assets and earn from downside movements."
-#~ msgstr "השג חשיפה לאסימונים מבלי להקטין את הנכסים שלך. מינוף יאפשר לך לנקוט עמדות קצרות נגד נכסים ולהרוויח מתנועות חסרון."
+#~ msgstr "Gain exposure to tokens without reducing your assets. Leverage will enable you to take short positions against assets and earn from downside movements."
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Gain governance rights with xSUSHI and earn 5% APR (0.05% of\n"
 #~ "all swaps from all chains)"
 #~ msgstr ""
-#~ "קבל זכויות ממשל באמצעות XSushi והרוויח 5% באפריל (0.05% של\n"
-#~ "כל החילופים מכל הרשתות)"
+#~ "Gain governance rights with xSUSHI and earn 5% APR (0.05% of\n"
+#~ "all swaps from all chains)"
 
 #. js-lingui-explicit-id
 #~ msgid "Go Back"
-#~ msgstr "תחזור"
+#~ msgstr "Go Back"
 
 #. js-lingui-explicit-id
 #~ msgid "Go to Portfolio"
-#~ msgstr "עבור אל תיק הפורפוליו"
+#~ msgstr "Go to Portfolio"
 
 #. js-lingui-explicit-id
 #~ msgid "Good Airdrop"
@@ -890,11 +895,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Hardware Wallet"
-#~ msgstr "ארנק חומרה"
+#~ msgstr "Hardware Wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Harvest {0} SUSHI"
-#~ msgstr "קציר {0} סושי"
+#~ msgstr "Harvest {0} SUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "Harvest {0} SUSHI & {1} ALCX"
@@ -902,43 +907,43 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Harvest {0} SUSHI & {1} MATIC"
-#~ msgstr "קציר {0} סושי & {1} מאטי"
+#~ msgstr "Harvest {0} SUSHI & {1} MATIC"
 
 #. js-lingui-explicit-id
 #~ msgid "Have Liquidity on {0}?"
-#~ msgstr "יש נזילות על {0}?"
+#~ msgstr "Have Liquidity on {0}?"
 
 #. js-lingui-explicit-id
 #~ msgid "Have assets you want to earn additional interest on? Lend them in isolated markets and earn interest from borrowers. It's as easy as deposit and withdraw whenever you want."
-#~ msgstr "יש לך נכסים שאתה רוצה להרוויח ריבית נוספת על? להשאיל אותם בשווקים מבודדים ולהרוויח ריבית מצד לווים. זה קל כמו הפקדה ולמשוך בכל פעם שאתה רוצה."
+#~ msgstr "Have assets you want to earn additional interest on? Lend them in isolated markets and earn interest from borrowers. It's as easy as deposit and withdraw whenever you want."
 
 #. js-lingui-explicit-id
 #~ msgid "Health"
-#~ msgstr "בריאות"
+#~ msgstr "Health"
 
 #. js-lingui-explicit-id
 #~ msgid "Helpful Sushi Tools"
-#~ msgstr "כלי Sushi מועילים"
+#~ msgstr "Helpful Sushi Tools"
 
 #. js-lingui-explicit-id
 #~ msgid "Historical Total Locked: Connect Wallet"
-#~ msgstr "כולל היסטורי נעול: חבר ארנק"
+#~ msgstr "Historical Total Locked: Connect Wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Historical Total Locked: Fetching Total"
-#~ msgstr "סך הכל היסטורי נעול: סך הכל מביא"
+#~ msgstr "Historical Total Locked: Fetching Total"
 
 #. js-lingui-explicit-id
 #~ msgid "Historical Total Locked: {0} SUSHI"
-#~ msgstr "סך הכל היסטורי נעול: {0} סושי"
+#~ msgstr "Historical Total Locked: {0} SUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "Holding"
-#~ msgstr "הַחזָקָה"
+#~ msgstr "Holding"
 
 #. js-lingui-explicit-id
 #~ msgid "How many GOOD tokens you are accumulating by this stake position."
-#~ msgstr ""
+#~ msgstr "How many GOOD tokens you are accumulating by this stake position."
 
 #. js-lingui-explicit-id
 #~ msgid "How much rewards would you like to donate"
@@ -950,95 +955,95 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "How much value your stake has accumulated so far."
-#~ msgstr "כמה ערך המוקד שלך צבר עד כה."
+#~ msgstr "How much value your stake has accumulated so far."
 
 #. js-lingui-explicit-id
 #~ msgid "How much would you like to deposit?"
-#~ msgstr "כמה אתה רוצה להפקיד?"
+#~ msgstr "How much would you like to deposit?"
 
 #. js-lingui-explicit-id
 #~ msgid "How much would you like to withdraw?"
-#~ msgstr "כמה אתה רוצה לסגת?"
+#~ msgstr "How much would you like to withdraw?"
 
 #. js-lingui-explicit-id
 #~ msgid "I understand"
-#~ msgstr "אני מבין"
+#~ msgstr "I understand"
 
 #. js-lingui-explicit-id
 #~ msgid "If you purchase a token from this list, you may not be able to sell it back."
-#~ msgstr "אם אתה רוכש אסימון מהרשימה הזו, ייתכן שלא תוכל למכור אותו בחזרה."
+#~ msgstr "If you purchase a token from this list, you may not be able to sell it back."
 
 #. js-lingui-explicit-id
 #~ msgid "If you purchase this token, you may not be able to sell it back."
-#~ msgstr "אם אתה רוכש את האסימון הזה, ייתכן שלא תוכל למכור אותו בחזרה."
+#~ msgstr "If you purchase this token, you may not be able to sell it back."
 
 #. js-lingui-explicit-id
 #~ msgid "Import"
-#~ msgstr "יְבוּא"
+#~ msgstr "Import"
 
 #. js-lingui-explicit-id
 #~ msgid "Import List"
-#~ msgstr "רשימת ייבוא"
+#~ msgstr "Import List"
 
 #. js-lingui-explicit-id
 #~ msgid "Import Pool"
-#~ msgstr "יבוא פול"
+#~ msgstr "Import Pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Import at your own risk"
-#~ msgstr "ייבוא על אחריותך"
+#~ msgstr "Import at your own risk"
 
 #. js-lingui-explicit-id
 #~ msgid "Import it"
-#~ msgstr "ייבא אותו"
+#~ msgstr "Import it"
 
 #. js-lingui-explicit-id
 #~ msgid "Initializing..."
-#~ msgstr "מאתחל ..."
+#~ msgstr "Initializing..."
 
 #. js-lingui-explicit-id
 #~ msgid "Input is estimated. You will sell at most"
-#~ msgstr "קלט מוערך. אתה תמכור לכל היותר"
+#~ msgstr "Input is estimated. You will sell at most"
 
 #. js-lingui-explicit-id
 #~ msgid "Input is estimated. You will sell at most <0>{0} {1}</0> or the transaction will revert."
-#~ msgstr "הקלט מוערך. אתה תמכור לכל היותר <0>{0} {1}</0> או העסקה תחזור."
+#~ msgstr "Input is estimated. You will sell at most <0>{0} {1}</0> or the transaction will revert."
 
 #. js-lingui-explicit-id
 #~ msgid "Instruments"
-#~ msgstr "מכשירים"
+#~ msgstr "Instruments"
 
 #. js-lingui-explicit-id
 #~ msgid "Insufficient Balance"
-#~ msgstr "איזון לא מספיק"
+#~ msgstr "Insufficient Balance"
 
 #. js-lingui-explicit-id
 #~ msgid "Insufficient WETH balance"
-#~ msgstr "חוסר איזון WETH"
+#~ msgstr "Insufficient WETH balance"
 
 #. js-lingui-explicit-id
 #~ msgid "Insufficient liquidity for this trade"
-#~ msgstr "נזילות מספקת עבור סחר זה"
+#~ msgstr "Insufficient liquidity for this trade"
 
 #. js-lingui-explicit-id
 #~ msgid "Insufficient {0} balance"
-#~ msgstr "יתרה {0} לא מספיקה"
+#~ msgstr "Insufficient {0} balance"
 
 #. js-lingui-explicit-id
 #~ msgid "Interface Settings"
-#~ msgstr "הגדרות ממשק"
+#~ msgstr "Interface Settings"
 
 #. js-lingui-explicit-id
 #~ msgid "Invalid pair"
-#~ msgstr "זוג לא חוקי"
+#~ msgstr "Invalid pair"
 
 #. js-lingui-explicit-id
 #~ msgid "Invalid recipient"
-#~ msgstr "נמען לא חוקי"
+#~ msgstr "Invalid recipient"
 
 #. js-lingui-explicit-id
 #~ msgid "Isolated lending markets mitigate your risks as an asset lender. Know exactly what collateral is available to you in the event of counter party insolvency."
-#~ msgstr "שווקי ההלוואות המבודדים מקטינים את הסיכונים שלך כמלווה נכסים. לדעת בדיוק מה בטחונות זמין לך במקרה של חדלות פירעון צד נגדי."
+#~ msgstr "Isolated lending markets mitigate your risks as an asset lender. Know exactly what collateral is available to you in the event of counter party insolvency."
 
 #. js-lingui-explicit-id
 #~ msgid "Join the community of discord"
@@ -1046,75 +1051,75 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Join the community on Discord."
-#~ msgstr "הצטרף לקהילה על דיסקורד."
+#~ msgstr "Join the community on Discord."
 
 #. js-lingui-explicit-id
 #~ msgid "Kashi Lending"
-#~ msgstr "הלוואות קאשי"
+#~ msgstr "Kashi Lending"
 
 #. js-lingui-explicit-id
 #~ msgid "Keys Burned: 2022.03.04 at 22:05"
-#~ msgstr "המפתחות שנשרפו: 2022.03.04 בשעה 22:05"
+#~ msgstr "Keys Burned: 2022.03.04 at 22:05"
 
 #. js-lingui-explicit-id
 #~ msgid "Learn More"
-#~ msgstr "למד עוד"
+#~ msgstr "Learn More"
 
 #. js-lingui-explicit-id
 #~ msgid "Learn more about wallets"
-#~ msgstr "למידע נוסף על ארנקים"
+#~ msgstr "Learn more about wallets"
 
 #. js-lingui-explicit-id
 #~ msgid "Lend"
-#~ msgstr "להשאיל"
+#~ msgstr "Lend"
 
 #. js-lingui-explicit-id
 #~ msgid "Lend assets for interest from borrowers."
-#~ msgstr "להשאיל נכסים לריבית מצד לווים."
+#~ msgstr "Lend assets for interest from borrowers."
 
 #. js-lingui-explicit-id
 #~ msgid "Lend your assets, earn yield with no impermanent loss"
-#~ msgstr "להשאיל את הנכסים שלך, להרוויח תשואה ללא הפסד ארעי"
+#~ msgstr "Lend your assets, earn yield with no impermanent loss"
 
 #. js-lingui-explicit-id
 #~ msgid "Lend {assetSymbol}"
-#~ msgstr "להשאיל {assetSymbol}"
+#~ msgstr "Lend {assetSymbol}"
 
 #. js-lingui-explicit-id
 #~ msgid "Lending"
-#~ msgstr "הלוואות"
+#~ msgstr "Lending"
 
 #. js-lingui-explicit-id
 #~ msgid "Lending Yield Farms"
-#~ msgstr "חוות תשואה ההלוואות"
+#~ msgstr "Lending Yield Farms"
 
 #. js-lingui-explicit-id
 #~ msgid "Lent"
-#~ msgstr "מושאל"
+#~ msgstr "Lent"
 
 #. js-lingui-explicit-id
 #~ msgid "Limit <0>Used</0>"
-#~ msgstr "הגבל <0>בשימוש</0>"
+#~ msgstr "Limit <0>Used</0>"
 
 #. js-lingui-explicit-id
 #~ msgid "Liquidity"
-#~ msgstr "נזילות"
+#~ msgstr "Liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Liquidity Positions"
-#~ msgstr "עמדות נזילות"
+#~ msgstr "Liquidity Positions"
 
 #. js-lingui-explicit-id
 #~ msgid "Liquidity Provider Fee"
-#~ msgstr "דמי ספק נזילות"
+#~ msgstr "Liquidity Provider Fee"
 
 #. js-lingui-explicit-id
 #~ msgid "Liquidity Provider Rewards"
-#~ msgstr "תגמולים של ספק נזילות"
+#~ msgstr "Liquidity Provider Rewards"
 
 #. js-lingui-explicit-id
 #~ msgid "Liquidity Yield Farms"
-#~ msgstr "חוות תשואה נזילות"
+#~ msgstr "Liquidity Yield Farms"
 
 #. js-lingui-explicit-id
 #~ msgid "Liquidity is the total value staked in the GoodDollar Trust staking contract (USD)."
@@ -1126,109 +1131,109 @@ msgstr ""
 #~ "the pool. Fees are added to the pool, accrue in real time and can be claimed by\n"
 #~ "withdrawing your liquidity"
 #~ msgstr ""
-#~ "ספקי נזילות מרוויחים עמלה של 0.25% על כל העסקאות ביחס לחלקם של\n"
-#~ "הברכה. אגרות מתווספות לבריכה, לצבור בזמן אמת וניתן לטעון על ידי\n"
-#~ "משיכת הנזילות שלך"
+#~ "Liquidity providers earn a 0.25% fee on all trades proportional to their share of\n"
+#~ "the pool. Fees are added to the pool, accrue in real time and can be claimed by\n"
+#~ "withdrawing your liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Lists"
-#~ msgstr "רשימות"
+#~ msgstr "Lists"
 
 #. js-lingui-explicit-id
 #~ msgid "Loaded"
-#~ msgstr "עמוס"
+#~ msgstr "Loaded"
 
 #. js-lingui-explicit-id
 #~ msgid "Loading"
-#~ msgstr "טוען"
+#~ msgstr "Loading"
 
 #. js-lingui-explicit-id
 #~ msgid "Loading your {exchange} liquidity positions"
-#~ msgstr "טעינת {exchange} עמדות הנזילות שלך"
+#~ msgstr "Loading your {exchange} liquidity positions"
 
 #. js-lingui-explicit-id
 #~ msgid "Loading..."
-#~ msgstr "טוען..."
+#~ msgstr "Loading..."
 
 #. js-lingui-explicit-id
 #~ msgid "Loan to Value"
-#~ msgstr "הלוואה לערך"
+#~ msgstr "Loan to Value"
 
 #. js-lingui-explicit-id
 #~ msgid "MAX"
-#~ msgstr "מקסימום"
+#~ msgstr "MAX"
 
 #. js-lingui-explicit-id
 #~ msgid "MULTIPLIER"
-#~ msgstr "מַכפִּיל"
+#~ msgstr "MULTIPLIER"
 
 #. js-lingui-explicit-id
 #~ msgid "Make the most of your"
-#~ msgstr "להפיק את המרב שלך"
+#~ msgstr "Make the most of your"
 
 #. js-lingui-explicit-id
 #~ msgid "Manage"
-#~ msgstr "נהל"
+#~ msgstr "Manage"
 
 #. js-lingui-explicit-id
 #~ msgid "Manage Liquidity in Rewards Pool"
-#~ msgstr "ניהול נזילות בבריכת Rewards"
+#~ msgstr "Manage Liquidity in Rewards Pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Manage this pool"
-#~ msgstr "ניהול מאגר זה"
+#~ msgstr "Manage this pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Market Info"
-#~ msgstr "מידע על השוק"
+#~ msgstr "Market Info"
 
 #. js-lingui-explicit-id
 #~ msgid "Market Staked"
-#~ msgstr "שוק סימר"
+#~ msgstr "Market Staked"
 
 #. js-lingui-explicit-id
 #~ msgid "Markets"
-#~ msgstr "שווקים"
+#~ msgstr "Markets"
 
 #. js-lingui-explicit-id
 #~ msgid "Max"
-#~ msgstr "מקסימום"
+#~ msgstr "Max"
 
 #. js-lingui-explicit-id
 #~ msgid "Maximize yield by staking SUSHI for xSUSHI"
-#~ msgstr "הגדל את התפוקה על ידי הגדלת עומס ההימור של SUSHI עבור X"
+#~ msgstr "Maximize yield by staking SUSHI for xSUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "Maximum sold"
-#~ msgstr "מקסימום נמכר"
+#~ msgstr "Maximum sold"
 
 #. js-lingui-explicit-id
 #~ msgid "Migrate"
-#~ msgstr "להגר"
+#~ msgstr "Migrate"
 
 #. js-lingui-explicit-id
 #~ msgid "Migrate Now"
-#~ msgstr "נודדים כעת"
+#~ msgstr "Migrate Now"
 
 #. js-lingui-explicit-id
 #~ msgid "Migrate Now."
-#~ msgstr "להעביר עכשיו."
+#~ msgstr "Migrate Now."
 
 #. js-lingui-explicit-id
 #~ msgid "Migrate {exchange} Liquidity"
-#~ msgstr "הגירה {exchange} נזילות"
+#~ msgstr "Migrate {exchange} Liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Migrating"
-#~ msgstr "נודדות"
+#~ msgstr "Migrating"
 
 #. js-lingui-explicit-id
 #~ msgid "Migration is done in one-click using your signature (permit)"
-#~ msgstr "ההעברה מתבצעת בלחיצה אחת באמצעות החתימה שלך (היתר)"
+#~ msgstr "Migration is done in one-click using your signature (permit)"
 
 #. js-lingui-explicit-id
 #~ msgid "Minimum received"
-#~ msgstr "מינימום שהתקבל"
+#~ msgstr "Minimum received"
 
 #. js-lingui-explicit-id
 #~ msgid "Miso"
@@ -1244,7 +1249,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "My Stake"
-#~ msgstr "החלק שלי"
+#~ msgstr "My Stake"
 
 #. js-lingui-explicit-id
 #~ msgid "NETWORK"
@@ -1256,127 +1261,127 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Network Fee"
-#~ msgstr "דמי רשת"
+#~ msgstr "Network Fee"
 
 #. js-lingui-explicit-id
 #~ msgid "New"
-#~ msgstr "חָדָשׁ"
+#~ msgstr "New"
 
 #. js-lingui-explicit-id
 #~ msgid "New network, new features"
-#~ msgstr "רשת חדשה, תכונות חדשות"
+#~ msgstr "New network, new features"
 
 #. js-lingui-explicit-id
 #~ msgid "New to Ethereum?"
-#~ msgstr "חדש לאתמרום?"
+#~ msgstr "New to Ethereum?"
 
 #. js-lingui-explicit-id
 #~ msgid "Next month:"
-#~ msgstr "חודש הבא:"
+#~ msgstr "Next month:"
 
 #. js-lingui-explicit-id
 #~ msgid "No LP tokens found"
-#~ msgstr "לא נמצאו אסימונים LP"
+#~ msgstr "No LP tokens found"
 
 #. js-lingui-explicit-id
 #~ msgid "No Liquidity found"
-#~ msgstr "לא נמצאה נזילות"
+#~ msgstr "No Liquidity found"
 
 #. js-lingui-explicit-id
 #~ msgid "No Results"
-#~ msgstr "אין תוצאות"
+#~ msgstr "No Results"
 
 #. js-lingui-explicit-id
 #~ msgid "No Results."
-#~ msgstr "אין תוצאות."
+#~ msgstr "No Results."
 
 #. js-lingui-explicit-id
 #~ msgid "No data."
-#~ msgstr "אין מידע."
+#~ msgstr "No data."
 
 #. js-lingui-explicit-id
 #~ msgid "No liquidity found"
-#~ msgstr "לא נמצאה נזילות."
+#~ msgstr "No liquidity found"
 
 #. js-lingui-explicit-id
 #~ msgid "No liquidity found to do swap"
-#~ msgstr "לא נמצאו נזילות לעשות swap"
+#~ msgstr "No liquidity found to do swap"
 
 #. js-lingui-explicit-id
 #~ msgid "No liquidity positions found"
-#~ msgstr "לא נמצאו עמדות נזילות"
+#~ msgstr "No liquidity positions found"
 
 #. js-lingui-explicit-id
 #~ msgid "No pool found"
-#~ msgstr "לא נמצאה בריכה"
+#~ msgstr "No pool found"
 
 #. js-lingui-explicit-id
 #~ msgid "No results found"
-#~ msgstr "לא נמצאו תוצאות"
+#~ msgstr "No results found"
 
 #. js-lingui-explicit-id
 #~ msgid "Non-hardware Wallet"
-#~ msgstr "ארנק ללא חומרה"
+#~ msgstr "Non-hardware Wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "None"
-#~ msgstr "אף אחד"
+#~ msgstr "None"
 
 #. js-lingui-explicit-id
 #~ msgid "OFF"
-#~ msgstr "כבוי"
+#~ msgstr "OFF"
 
 #. js-lingui-explicit-id
 #~ msgid "ON"
-#~ msgstr "עַל"
+#~ msgstr "ON"
 
 #. js-lingui-explicit-id
 #~ msgid "ONLY USE THIS MODE IF YOU KNOW WHAT YOU ARE DOING."
-#~ msgstr "השתמש במצב זה רק אם אתה יודע מה אתה עושה."
+#~ msgstr "ONLY USE THIS MODE IF YOU KNOW WHAT YOU ARE DOING."
 
 #. js-lingui-explicit-id
 #~ msgid "Off"
-#~ msgstr "כבוי"
+#~ msgstr "Off"
 
 #. js-lingui-explicit-id
 #~ msgid "On"
-#~ msgstr "עַל"
+#~ msgstr "On"
 
 #. js-lingui-explicit-id
 #~ msgid "One click SUSHI → xSUSHI → aXSUSHI"
-#~ msgstr "סושי בלחיצה אחת → Xsushi → Axsushi"
+#~ msgstr "One click SUSHI → xSUSHI → aXSUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
-#~ msgstr "אופס! אירעה שגיאה לא ידועה. נא לרענן את הדף, או לבקר בדפדפן או במכשיר אחר"
+#~ msgstr "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 
 #. js-lingui-explicit-id
 #~ msgid "Open Source"
-#~ msgstr "קוד פתוח"
+#~ msgstr "Open Source"
 
 #. js-lingui-explicit-id
 #~ msgid "Open main menu"
-#~ msgstr "פתח תפריט ראשי"
+#~ msgstr "Open main menu"
 
 #. js-lingui-explicit-id
 #~ msgid "Oracle"
-#~ msgstr "חוזה עתידות"
+#~ msgstr "Oracle"
 
 #. js-lingui-explicit-id
 #~ msgid "Output is estimated. If the price changes by more than {0}% your transaction will revert."
-#~ msgstr "התפוקה מוערכת. אם המחיר משתנה על ידי יותר מ {0}% העסקה שלך תחזור."
+#~ msgstr "Output is estimated. If the price changes by more than {0}% your transaction will revert."
 
 #. js-lingui-explicit-id
 #~ msgid "Output is estimated. You will receive at least"
-#~ msgstr "הפלט נאמד. תקבל לפחות"
+#~ msgstr "Output is estimated. You will receive at least"
 
 #. js-lingui-explicit-id
 #~ msgid "Output is estimated. You will receive at least <0>{0} {1}</0> or the transaction will revert."
-#~ msgstr "התפוקה מוערכת. תקבל לפחות <0>{0} {1}</0> או שהעסקה תחזור."
+#~ msgstr "Output is estimated. You will receive at least <0>{0} {1}</0> or the transaction will revert."
 
 #. js-lingui-explicit-id
 #~ msgid "Output is estimated. You will receive at least {0} or the transaction will revert"
-#~ msgstr "הפלט נאמד. תקבל לפחות {0} או שהעסקה תחזור"
+#~ msgstr "Output is estimated. You will receive at least {0} or the transaction will revert"
 
 #. js-lingui-explicit-id
 #~ msgid "Output is estimated. You will receive at least {minimumReceived} or the transaction will revert"
@@ -1384,35 +1389,35 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Output will be sent to"
-#~ msgstr "התפוקה תישלח אל"
+#~ msgstr "Output will be sent to"
 
 #. js-lingui-explicit-id
 #~ msgid "Output will be sent to <0>{0}</0>"
-#~ msgstr "הפלט יישלח ל- <0>{0}</0>"
+#~ msgstr "Output will be sent to <0>{0}</0>"
 
 #. js-lingui-explicit-id
 #~ msgid "PENDING SIGN..."
-#~ msgstr "כניסה ממתינה ..."
+#~ msgstr "PENDING SIGN..."
 
 #. js-lingui-explicit-id
 #~ msgid "PROTOCOL"
-#~ msgstr "נוהל"
+#~ msgstr "PROTOCOL"
 
 #. js-lingui-explicit-id
 #~ msgid "Pending"
-#~ msgstr "ממתין לאישור"
+#~ msgstr "Pending"
 
 #. js-lingui-explicit-id
 #~ msgid "Pending Treasury Transfer"
-#~ msgstr "העברה ממתינה לאוצר"
+#~ msgstr "Pending Treasury Transfer"
 
 #. js-lingui-explicit-id
 #~ msgid "Please confirm you would like to remove this list by typing"
-#~ msgstr "אשר באפשרותך להסיר רשימה זו על ידי הקלדת"
+#~ msgstr "Please confirm you would like to remove this list by typing"
 
 #. js-lingui-explicit-id
 #~ msgid "Please connect to the appropriate Ethereum network."
-#~ msgstr "אנא התחבר לרשת האתמרום המתאימה."
+#~ msgstr "Please connect to the appropriate Ethereum network."
 
 #. js-lingui-explicit-id
 #~ msgid "Please connect to the appropriate network."
@@ -1420,11 +1425,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Please connect your Web3 wallet to the Fuse Network to Claim UBI."
-#~ msgstr "חבר את ארנק Web3 שלך לרשת Fuse כדי לתבוע UBI."
+#~ msgstr "Please connect your Web3 wallet to the Fuse Network to Claim UBI."
 
 #. js-lingui-explicit-id
 #~ msgid "Please type the word \"confirm\" to enable expert mode."
-#~ msgstr "אנא הקלד את המילה \"לאשר\" כדי לאפשר מצב מומחה."
+#~ msgstr "Please type the word \"confirm\" to enable expert mode."
 
 #. js-lingui-explicit-id
 #~ msgid "Please wait"
@@ -1432,39 +1437,39 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Polygon subgraphs are currently experiencing high loads. The APY displayed are based on lagging fees. Funds are safe, we are working on resolving and providing accurate consolidated APY information."
-#~ msgstr "Subgraphs מצולע חווים כיום עומסים גבוהים. המוצג APY מבוססים על דמי הפיגור. כספים בטוחים, אנו עובדים על פתרון ומתן מידע APY מאוחד מדויק."
+#~ msgstr "Polygon subgraphs are currently experiencing high loads. The APY displayed are based on lagging fees. Funds are safe, we are working on resolving and providing accurate consolidated APY information."
 
 #. js-lingui-explicit-id
 #~ msgid "Pool"
-#~ msgstr "בריכה"
+#~ msgstr "Pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Pool Found!"
-#~ msgstr "הבריכה נמצאה!"
+#~ msgstr "Pool Found!"
 
 #. js-lingui-explicit-id
 #~ msgid "Pool Rewards"
-#~ msgstr "תגמולים בבריכה"
+#~ msgstr "Pool Rewards"
 
 #. js-lingui-explicit-id
 #~ msgid "Pool Tokens"
-#~ msgstr "אסימונים לבריכה"
+#~ msgstr "Pool Tokens"
 
 #. js-lingui-explicit-id
 #~ msgid "Pool tokens in rewards pool"
-#~ msgstr "אסימוני ברכה בברכה תגמולים"
+#~ msgstr "Pool tokens in rewards pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Pooled {0}"
-#~ msgstr "בפול {0}"
+#~ msgstr "Pooled {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "Portfolio"
-#~ msgstr "תיק עבודות"
+#~ msgstr "Portfolio"
 
 #. js-lingui-explicit-id
 #~ msgid "Positions"
-#~ msgstr "שווקים"
+#~ msgstr "Positions"
 
 #. js-lingui-explicit-id
 #~ msgid "Pour a hot bowl of MISO, the new <0>token launchpad</0> from SUSHI"
@@ -1472,123 +1477,123 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Price"
-#~ msgstr "מחיר"
+#~ msgstr "Price"
 
 #. js-lingui-explicit-id
 #~ msgid "Price Impact"
-#~ msgstr "השפעת מחיר"
+#~ msgstr "Price Impact"
 
 #. js-lingui-explicit-id
 #~ msgid "Price Impact High"
-#~ msgstr "מחיר השפעה גבוהה"
+#~ msgstr "Price Impact High"
 
 #. js-lingui-explicit-id
 #~ msgid "Price Impact Too High"
-#~ msgstr "מחיר השפעה גבוהה מדי"
+#~ msgstr "Price Impact Too High"
 
 #. js-lingui-explicit-id
 #~ msgid "Price Updated"
-#~ msgstr "מחיר מעודכן"
+#~ msgstr "Price Updated"
 
 #. js-lingui-explicit-id
 #~ msgid "Protocol"
-#~ msgstr "נוהל"
+#~ msgstr "Protocol"
 
 #. js-lingui-explicit-id
 #~ msgid "REWARDS"
-#~ msgstr "תגמולים"
+#~ msgstr "REWARDS"
 
 #. js-lingui-explicit-id
 #~ msgid "Rates"
-#~ msgstr "מחירים"
+#~ msgstr "Rates"
 
 #. js-lingui-explicit-id
 #~ msgid "Read Tutorial"
-#~ msgstr "קרא את ערכת הלימוד"
+#~ msgstr "Read Tutorial"
 
 #. js-lingui-explicit-id
 #~ msgid "Read more about unsupported assets"
-#~ msgstr "קרא עוד על נכסים לא נתמכים"
+#~ msgstr "Read more about unsupported assets"
 
 #. js-lingui-explicit-id
 #~ msgid "Read the contract"
-#~ msgstr "קרא את החוזה"
+#~ msgstr "Read the contract"
 
 #. js-lingui-explicit-id
 #~ msgid "Recent Transactions"
-#~ msgstr "תנועות אחרונות"
+#~ msgstr "Recent Transactions"
 
 #. js-lingui-explicit-id
 #~ msgid "Recipient"
-#~ msgstr "מקבל"
+#~ msgstr "Recipient"
 
 #. js-lingui-explicit-id
 #~ msgid "Remove"
-#~ msgstr "הסר"
+#~ msgstr "Remove"
 
 #. js-lingui-explicit-id
 #~ msgid "Remove Liquidity"
-#~ msgstr "הוצאה של נזילות"
+#~ msgstr "Remove Liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Remove list"
-#~ msgstr "הסר רשימה."
+#~ msgstr "Remove list"
 
 #. js-lingui-explicit-id
 #~ msgid "Remove send"
-#~ msgstr "הסר שליחה"
+#~ msgstr "Remove send"
 
 #. js-lingui-explicit-id
 #~ msgid "Removing {0} {1} and {2} {3}"
-#~ msgstr "הסר {0} {1} ו- {2} {3}"
+#~ msgstr "Removing {0} {1} and {2} {3}"
 
 #. js-lingui-explicit-id
 #~ msgid "Repay"
-#~ msgstr "להחזיר"
+#~ msgstr "Repay"
 
 #. js-lingui-explicit-id
 #~ msgid "Request Tool"
-#~ msgstr "כלי בקשה"
+#~ msgstr "Request Tool"
 
 #. js-lingui-explicit-id
 #~ msgid "Restricts swaps to direct pairs only."
-#~ msgstr "מגביל החלפות לזוגות ישירים בלבד."
+#~ msgstr "Restricts swaps to direct pairs only."
 
 #. js-lingui-explicit-id
 #~ msgid "Rewards"
-#~ msgstr "תגמולים"
+#~ msgstr "Rewards"
 
 #. js-lingui-explicit-id
 #~ msgid "Route"
-#~ msgstr "מסלול"
+#~ msgstr "Route"
 
 #. js-lingui-explicit-id
 #~ msgid "Routing through these tokens resulted in the best price for your trade."
-#~ msgstr "ניתוב באמצעות אסימונים אלה הביא את המחיר הטוב ביותר עבור הסחר שלך."
+#~ msgstr "Routing through these tokens resulted in the best price for your trade."
 
 #. js-lingui-explicit-id
 #~ msgid "SAAVE"
-#~ msgstr "סוויה"
+#~ msgstr "SAAVE"
 
 #. js-lingui-explicit-id
 #~ msgid "SAAVE: Stack your yields in one transaction"
-#~ msgstr "SAAVE: סטאק התשואות שלך בעסקה אחת"
+#~ msgstr "SAAVE: Stack your yields in one transaction"
 
 #. js-lingui-explicit-id
 #~ msgid "STAKE"
-#~ msgstr "לְהַמֵר"
+#~ msgstr "STAKE"
 
 #. js-lingui-explicit-id
 #~ msgid "SUSHI Balance"
-#~ msgstr "מאזן סושי"
+#~ msgstr "SUSHI Balance"
 
 #. js-lingui-explicit-id
 #~ msgid "SUSHI Balance: {sushiBalance}"
-#~ msgstr "מאזן סושי: {sushiBalance}"
+#~ msgstr "SUSHI Balance: {sushiBalance}"
 
 #. js-lingui-explicit-id
 #~ msgid "SUSHI {0}/{1} Burned"
-#~ msgstr "סושי {0}/{1} נשרף"
+#~ msgstr "SUSHI {0}/{1} Burned"
 
 #. js-lingui-explicit-id
 #~ msgid "SWAP"
@@ -1596,35 +1601,35 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Search by name, symbol, address"
-#~ msgstr "חפש לפי שם, סמל, כתובת"
+#~ msgstr "Search by name, symbol, address"
 
 #. js-lingui-explicit-id
 #~ msgid "Search name or paste address"
-#~ msgstr "שם חיפוש או כתובת הדבק"
+#~ msgstr "Search name or paste address"
 
 #. js-lingui-explicit-id
 #~ msgid "Search name or paste the address"
-#~ msgstr "שם חיפוש או הדבק את הכתובת"
+#~ msgstr "Search name or paste the address"
 
 #. js-lingui-explicit-id
 #~ msgid "Select a token"
-#~ msgstr "בחר טוקן"
+#~ msgstr "Select a token"
 
 #. js-lingui-explicit-id
 #~ msgid "Select a token to find your liquidity"
-#~ msgstr "בחר טוקונים כדי למצוא את הנזילות שלך."
+#~ msgstr "Select a token to find your liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Select an LP Token"
-#~ msgstr "בחר אסימון LP"
+#~ msgstr "Select an LP Token"
 
 #. js-lingui-explicit-id
 #~ msgid "Share of Pool"
-#~ msgstr "חלקו של הבריכה"
+#~ msgstr "Share of Pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Share of Pool:"
-#~ msgstr "נתח של בריכה:"
+#~ msgstr "Share of Pool:"
 
 #. js-lingui-explicit-id
 #~ msgid "Share with friends"
@@ -1632,11 +1637,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Slippage Tolerance"
-#~ msgstr "תנודת מחיר מקובלת"
+#~ msgstr "Slippage Tolerance"
 
 #. js-lingui-explicit-id
 #~ msgid "Slippage tolerance"
-#~ msgstr "תנודת מחיר מקובלת"
+#~ msgstr "Slippage tolerance"
 
 #. js-lingui-explicit-id
 #~ msgid "Social APY"
@@ -1644,111 +1649,111 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Some assets are not available through this interface because they may not work well with our smart contract or we are unable to allow trading for legal reasons."
-#~ msgstr "כמה נכסים אינם זמינים באמצעות ממשק זה, כי הם לא יכולים לעבוד טוב עם החוזה החכם שלנו או שאנחנו לא יכולים לאפשר מסיבות משפטיות."
+#~ msgstr "Some assets are not available through this interface because they may not work well with our smart contract or we are unable to allow trading for legal reasons."
 
 #. js-lingui-explicit-id
 #~ msgid "Something went wrong during signing of the approval. This is expected for hardware wallets, such as Trezor and Ledger. Click again and the fallback method will be used"
-#~ msgstr "משהו השתבש במהלך החתימה על האישור. זה צפוי עבור ארנקי חומרה, כגון Trezor ו Ledger. לחץ שוב ושיטת החזרה תשמש"
+#~ msgstr "Something went wrong during signing of the approval. This is expected for hardware wallets, such as Trezor and Ledger. Click again and the fallback method will be used"
 
 #. js-lingui-explicit-id
 #~ msgid "Stack Yields with SAAVE"
-#~ msgstr "מחסנית תשואות עם SAAVE"
+#~ msgstr "Stack Yields with SAAVE"
 
 #. js-lingui-explicit-id
 #~ msgid "Stake"
-#~ msgstr "יתד"
+#~ msgstr "Stake"
 
 #. js-lingui-explicit-id
 #~ msgid "Stake SUSHI"
-#~ msgstr "סושי יתד"
+#~ msgstr "Stake SUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "Stake SUSHI for xSUSHI"
-#~ msgstr "יתד סושי עבור XSushi"
+#~ msgstr "Stake SUSHI for xSUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Stake into xSUSHI add collateral as axSUSHI on Aave all in\n"
 #~ "one click"
 #~ msgstr ""
-#~ "יתד לתוך XSushi להוסיף בטחונות כמו Axsushi על Aave כל\n"
-#~ "קליק אחד"
+#~ "Stake into xSUSHI add collateral as axSUSHI on Aave all in\n"
+#~ "one click"
 
 #. js-lingui-explicit-id
 #~ msgid "Stake your SUSHI into xSUSHI for ~5% APY. Deposit your xSUSHI into Aave as aXSUSHI to earn collateral interest and borrowing power. All in one click."
-#~ msgstr "Stake סושי שלך לתוך XSushi עבור ~ 5% APY. להפקיד XSushi שלך לתוך Aave כמו Axsushi כדי להרוויח ריבית בטחונות כוח ההשאלה. הכל בלחיצה אחת."
+#~ msgstr "Stake your SUSHI into xSUSHI for ~5% APY. Deposit your xSUSHI into Aave as aXSUSHI to earn collateral interest and borrowing power. All in one click."
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Stake your SUSHI into xSUSHI for ~5% APY. No impermanent loss, no loss of governance rights.\n"
 #~ "Continuously compounding."
 #~ msgstr ""
-#~ "Stake סושי שלך לתוך XSushi עבור ~ 5% APY. אין אובדן ארעי, אין אובדן זכויות ממשל.\n"
-#~ "ברציפות הרכבה."
+#~ "Stake your SUSHI into xSUSHI for ~5% APY. No impermanent loss, no loss of governance rights.\n"
+#~ "Continuously compounding."
 
 #. js-lingui-explicit-id
 #~ msgid "Staked {0} at {1}"
-#~ msgstr "Staked {0} ב {1}"
+#~ msgstr "Staked {0} at {1}"
 
 #. js-lingui-explicit-id
 #~ msgid "Stakes"
-#~ msgstr "ההימור"
+#~ msgstr "Stakes"
 
 #. js-lingui-explicit-id
 #~ msgid "Staking"
-#~ msgstr "סטרינג"
+#~ msgstr "Staking"
 
 #. js-lingui-explicit-id
 #~ msgid "Staking APR"
-#~ msgstr "הימור בהימור של אפריל"
+#~ msgstr "Staking APR"
 
 #. js-lingui-explicit-id
 #~ msgid "Staking could be of two types: UBI for funds staked on the GoodDollar trust for the generation of new G$ for universal income distribution, or Governance (to be enabled) for staking G$s for GOOD Rewards."
-#~ msgstr ""
+#~ msgstr "Staking could be of two types: UBI for funds staked on the GoodDollar trust for the generation of new G$ for universal income distribution, or Governance (to be enabled) for staking G$s for GOOD Rewards."
 
 #. js-lingui-explicit-id
 #~ msgid "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can be rewarded with more G$ every day!"
-#~ msgstr "החל מ 1.0, מכפיל שלך יגדל ל 2.0 לאחר חודש אחד של staking לאמון, באיזו נקודה אתה יכול להיות מתוגמל עם יותר G $ כל יום!"
+#~ msgstr "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can be rewarded with more G$ every day!"
 
 #. js-lingui-explicit-id
 #~ msgid "Submit Tool"
-#~ msgstr "הגש את הכלי"
+#~ msgstr "Submit Tool"
 
 #. js-lingui-explicit-id
 #~ msgid "Success!"
-#~ msgstr "הַצלָחָה!"
+#~ msgstr "Success!"
 
 #. js-lingui-explicit-id
 #~ msgid "Supply APR"
-#~ msgstr "ספק APR"
+#~ msgstr "Supply APR"
 
 #. js-lingui-explicit-id
 #~ msgid "Supplying {0} {1} and {2} {3}"
-#~ msgstr "הוסף {0} {1} ו- {2} {3}"
+#~ msgstr "Supplying {0} {1} and {2} {3}"
 
 #. js-lingui-explicit-id
 #~ msgid "Sushi allows for swapping of ERC20 compatible tokens across multiple networks"
-#~ msgstr "סושי מאפשר החלפה של אסימונים תואמי ERC20 ברשתות מרובות"
+#~ msgstr "Sushi allows for swapping of ERC20 compatible tokens across multiple networks"
 
 #. js-lingui-explicit-id
 #~ msgid "Sushi is a supporter of Open Source."
-#~ msgstr "סושי הוא תומך בקוד פתוח."
+#~ msgstr "Sushi is a supporter of Open Source."
 
 #. js-lingui-explicit-id
 #~ msgid "SushiBar"
-#~ msgstr "סושיבר"
+#~ msgstr "SushiBar"
 
 #. js-lingui-explicit-id
 #~ msgid "SushiBar: Make SUSHI work for you"
-#~ msgstr "SushiBar: תן ל- SUSHI לעבוד בשבילך"
+#~ msgstr "SushiBar: Make SUSHI work for you"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap"
-#~ msgstr "להחלִיף"
+#~ msgstr "Swap"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap Anyway"
-#~ msgstr "החלפה בכל מקרה"
+#~ msgstr "Swap Anyway"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap Completed"
@@ -1756,19 +1761,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Swap From (est.):"
-#~ msgstr "החלפה מ (est. ):"
+#~ msgstr "Swap From (est.):"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap From:"
-#~ msgstr "החלפה מ:"
+#~ msgstr "Swap From:"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap To (est.):"
-#~ msgstr "החלפה כדי (est. ):"
+#~ msgstr "Swap To (est.):"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap To:"
-#~ msgstr "החלפה ל:"
+#~ msgstr "Swap To:"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap for SAK3 token on SUSHI now. Click here to swap."
@@ -1776,19 +1781,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Swap from"
-#~ msgstr "החלפה מ"
+#~ msgstr "Swap from"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap to"
-#~ msgstr "להחליף ל"
+#~ msgstr "Swap to"
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Swapped  {0} {1}\n"
 #~ "to {2} {3}"
 #~ msgstr ""
-#~ "החליפו {0} {1} \n"
-#~ " ל {2} {3}"
+#~ "Swapped  {0} {1}\n"
+#~ "to {2} {3}"
 
 #. js-lingui-explicit-id
 #~ msgid ""
@@ -1801,28 +1806,28 @@ msgstr ""
 #~ "Swapped {inputSig} {0} \n"
 #~ "to a minimum of {minimumOutputSig} {1}"
 #~ msgstr ""
-#~ "החליפו {inputSig} {0} \n"
-#~ " למינימום של {minimumOutputSig} {1}"
+#~ "Swapped {inputSig} {0} \n"
+#~ "to a minimum of {minimumOutputSig} {1}"
 
 #. js-lingui-explicit-id
 #~ msgid "Swapping"
-#~ msgstr "מתפתל"
+#~ msgstr "Swapping"
 
 #. js-lingui-explicit-id
 #~ msgid "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers."
-#~ msgstr "החלפת G $ נגד Goodreserve אין דמי צד שלישי אם אתה להחליף מ / אל CDAI כפי שהוא האסימון שלנו מילואים. החלפת G $ S מ / אל נכסים אחרים מרמז על 0.3% של אגרה הולך 3 של ספקי נזילות AMM."
+#~ msgstr "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers."
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Swapping {inputSig} {0} \n"
 #~ "to a minimum of {minimumOutputSig} {1}"
 #~ msgstr ""
-#~ "להחליף {inputSig} {0} \n"
-#~ " למינימום של {minimumOutputSig} {1}"
+#~ "Swapping {inputSig} {0} \n"
+#~ "to a minimum of {minimumOutputSig} {1}"
 
 #. js-lingui-explicit-id
 #~ msgid "Switch to {network}"
-#~ msgstr "לעבור ל {network}"
+#~ msgstr "Switch to {network}"
 
 #. js-lingui-explicit-id
 #~ msgid "Switch to {requireChain}"
@@ -1830,15 +1835,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Switch your network to {0} to work with Portfolio"
-#~ msgstr "החלף את הרשת שלך ל- {0} לעבודה עם תיק"
+#~ msgstr "Switch your network to {0} to work with Portfolio"
 
 #. js-lingui-explicit-id
 #~ msgid "Switch your network to {0} to work with Stakes"
-#~ msgstr "החלף את הרשת שלך ל- {0} לעבודה עם ההימור"
+#~ msgstr "Switch your network to {0} to work with Stakes"
 
 #. js-lingui-explicit-id
 #~ msgid "TOKEN"
-#~ msgstr "אֲסִימוֹן"
+#~ msgstr "TOKEN"
 
 #. js-lingui-explicit-id
 #~ msgid "TVL"
@@ -1864,11 +1869,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "The difference between the market price and estimated price due to trade size."
-#~ msgstr "ההבדל בין מחיר השוק לבין המחיר המשוער בשל גודל המסחר."
+#~ msgstr "The difference between the market price and estimated price due to trade size."
 
 #. js-lingui-explicit-id
 #~ msgid "The difference between the market price and your price due to trade size."
-#~ msgstr "ההבדל בין מחיר השוק לבין המחיר שלך בשל גודל המסחר."
+#~ msgstr "The difference between the market price and your price due to trade size."
 
 #. js-lingui-explicit-id
 #~ msgid "The fixed annual interest."
@@ -1884,11 +1889,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "The onchain oracle that tracks the pricing for this pair"
-#~ msgstr "אורקל onchain העוקב אחר התמחור עבור זוג זה"
+#~ msgstr "The onchain oracle that tracks the pricing for this pair"
 
 #. js-lingui-explicit-id
 #~ msgid "The token list"
-#~ msgstr "רשימת האסימון"
+#~ msgstr "The token list"
 
 #. js-lingui-explicit-id
 #~ msgid "The total of your deposits which accumulates the rewards."
@@ -1896,7 +1901,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "The transaction cannot succeed due to error: {0}. This is probably an issue with one of the tokens you are swapping."
-#~ msgstr "אין אפשרות לבצע את העסקה עקב שגיאה: {0}. זו כנראה בעיה עם אחד האסימונים שאתה מחליף."
+#~ msgstr "The transaction cannot succeed due to error: {0}. This is probably an issue with one of the tokens you are swapping."
 
 #. js-lingui-explicit-id
 #~ msgid "These are the total yearly rewards in G$ and GOOD."
@@ -1904,11 +1909,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "These tokens are commonly paired with other tokens."
-#~ msgstr "אסימונים אלה משויכים בדרך כלל עם אסימונים אחרים."
+#~ msgstr "These tokens are commonly paired with other tokens."
 
 #. js-lingui-explicit-id
 #~ msgid "Things you can do with your SUSHI"
-#~ msgstr "דברים שאתה יכול לעשות עם סושי שלך"
+#~ msgstr "Things you can do with your SUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "This is the annual percentage of UBI your stake will create."
@@ -1916,7 +1921,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "This is the protocol that the token is staked to."
-#~ msgstr "זהו הפרוטוקול כי האסימון הוא staked."
+#~ msgstr "This is the protocol that the token is staked to."
 
 #. js-lingui-explicit-id
 #~ msgid "This is the protocol that the token will be staked to."
@@ -1928,7 +1933,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "This is the token that is currently being staked."
-#~ msgstr "זהו האסימון כי כרגע להיות staked."
+#~ msgstr "This is the token that is currently being staked."
 
 #. js-lingui-explicit-id
 #~ msgid "This is the token that you can deposit into the savings contract."
@@ -1936,55 +1941,55 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "This month"
-#~ msgstr "החודש"
+#~ msgstr "This month"
 
 #. js-lingui-explicit-id
 #~ msgid "This project is in beta. Use at your own risk"
-#~ msgstr "הפרויקט הזה נמצא בגרסת בטא. השתמש באחריותך בלבד"
+#~ msgstr "This project is in beta. Use at your own risk"
 
 #. js-lingui-explicit-id
 #~ msgid "This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance."
-#~ msgstr "עסקה זו לא תצליח גם בשל תנועת מחיר או תשלום על ההעברה. נסה להגדיל את סובלנות ההחלקה שלך."
+#~ msgstr "This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance."
 
 #. js-lingui-explicit-id
 #~ msgid "Tip"
-#~ msgstr "עֵצָה"
+#~ msgstr "Tip"
 
 #. js-lingui-explicit-id
 #~ msgid "Tip: Custom tokens are stored locally in your browser"
-#~ msgstr "עצה: אסימונים מותאמים אישית מאוחסנים באופן מקומי בדפדפן שלך"
+#~ msgstr "Tip: Custom tokens are stored locally in your browser"
 
 #. js-lingui-explicit-id
 #~ msgid "To"
-#~ msgstr "ל"
+#~ msgstr "To"
 
 #. js-lingui-explicit-id
 #~ msgid "To (estimated)"
-#~ msgstr "כדי (משוער)"
+#~ msgstr "To (estimated)"
 
 #. js-lingui-explicit-id
 #~ msgid "To withdraw into SUSHI, go to Aave and remove axSUSHI as collateral and then to SushiBar to unstake. A full unwind will be avaialble soon."
-#~ msgstr "כדי לסגת לתוך סושי, ללכת Aave ולהסיר Axsushi כבטוחה ולאחר מכן כדי Sushibar כדי unkate. להירגע מלא יהיה avaialble בקרוב."
+#~ msgstr "To withdraw into SUSHI, go to Aave and remove axSUSHI as collateral and then to SushiBar to unstake. A full unwind will be avaialble soon."
 
 #. js-lingui-explicit-id
 #~ msgid "Toggle Expert Mode"
-#~ msgstr "החלף מצב מומחה"
+#~ msgstr "Toggle Expert Mode"
 
 #. js-lingui-explicit-id
 #~ msgid "Token"
-#~ msgstr "אסימון"
+#~ msgstr "Token"
 
 #. js-lingui-explicit-id
 #~ msgid "Tokens"
-#~ msgstr "אסימונים"
+#~ msgstr "Tokens"
 
 #. js-lingui-explicit-id
 #~ msgid "Tokens from inactive lists. Import specific tokens below or click 'Manage' to activate more lists."
-#~ msgstr "אסימונים מ רשימות לא פעילה. ייבא אסימונים ספציפיים להלן או לחץ על 'נהל' כדי להפעיל רשימות נוספות."
+#~ msgstr "Tokens from inactive lists. Import specific tokens below or click 'Manage' to activate more lists."
 
 #. js-lingui-explicit-id
 #~ msgid "Tools"
-#~ msgstr "כלים"
+#~ msgstr "Tools"
 
 #. js-lingui-explicit-id
 #~ msgid "Tools to optimize workflow"
@@ -1992,11 +1997,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Tools to optimize your workflow."
-#~ msgstr "כלים למטב את זרימת העבודה שלך."
+#~ msgstr "Tools to optimize your workflow."
 
 #. js-lingui-explicit-id
 #~ msgid "Total"
-#~ msgstr "סך הכל"
+#~ msgstr "Total"
 
 #. js-lingui-explicit-id
 #~ msgid "Total Rewards"
@@ -2012,7 +2017,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Total amount on value staked."
-#~ msgstr "הסכום הכולל על ערך staked."
+#~ msgstr "Total amount on value staked."
 
 #. js-lingui-explicit-id
 #~ msgid "Total currently saved."
@@ -2024,67 +2029,67 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Total stake"
-#~ msgstr "סך כל ההימור"
+#~ msgstr "Total stake"
 
 #. js-lingui-explicit-id
 #~ msgid "Trade"
-#~ msgstr "מסחר"
+#~ msgstr "Trade"
 
 #. js-lingui-explicit-id
 #~ msgid "Trade at your own risk!"
-#~ msgstr "סחר על אחריותך!"
+#~ msgstr "Trade at your own risk!"
 
 #. js-lingui-explicit-id
 #~ msgid "Transaction History"
-#~ msgstr "היסטוריית עסקאות"
+#~ msgstr "Transaction History"
 
 #. js-lingui-explicit-id
 #~ msgid "Transaction Settings"
-#~ msgstr "הגדרות עסקה"
+#~ msgstr "Transaction Settings"
 
 #. js-lingui-explicit-id
 #~ msgid "Transaction Submitted"
-#~ msgstr "העסקה הוגשה"
+#~ msgstr "Transaction Submitted"
 
 #. js-lingui-explicit-id
 #~ msgid "Transaction deadline"
-#~ msgstr "מועד אחרון לעסקה"
+#~ msgstr "Transaction deadline"
 
 #. js-lingui-explicit-id
 #~ msgid "Transaction rejected."
-#~ msgstr "העסקה נדחתה."
+#~ msgstr "Transaction rejected."
 
 #. js-lingui-explicit-id
 #~ msgid "Transaction settings"
-#~ msgstr "הגדרות עסקאות"
+#~ msgstr "Transaction settings"
 
 #. js-lingui-explicit-id
 #~ msgid "Transaction was sent to the blockchain"
-#~ msgstr "העסקה נשלחה אל בלוקשין"
+#~ msgstr "Transaction was sent to the blockchain"
 
 #. js-lingui-explicit-id
 #~ msgid "Transactions"
-#~ msgstr "עסקאות"
+#~ msgstr "Transactions"
 
 #. js-lingui-explicit-id
 #~ msgid "Transfer Type"
-#~ msgstr "סוג העברה"
+#~ msgstr "Transfer Type"
 
 #. js-lingui-explicit-id
 #~ msgid "Try Again"
-#~ msgstr "נסה שוב"
+#~ msgstr "Try Again"
 
 #. js-lingui-explicit-id
 #~ msgid "Try enabling multi-hop trades"
-#~ msgstr "נסה לאפשר עסקאות מרובות הופ"
+#~ msgstr "Try enabling multi-hop trades"
 
 #. js-lingui-explicit-id
 #~ msgid "Turn On Expert Mode"
-#~ msgstr "הפעל מצב מומחה"
+#~ msgstr "Turn On Expert Mode"
 
 #. js-lingui-explicit-id
 #~ msgid "Type"
-#~ msgstr "סוּג"
+#~ msgstr "Type"
 
 #. js-lingui-explicit-id
 #~ msgid "UBI is your fair share of G$ tokens, which you can claim daily on CELO."
@@ -2096,31 +2101,31 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Uh Oh!"
-#~ msgstr "או - או!"
+#~ msgstr "Uh Oh!"
 
 #. js-lingui-explicit-id
 #~ msgid "Unknown Source"
-#~ msgstr "מקור לא ידוע"
+#~ msgstr "Unknown Source"
 
 #. js-lingui-explicit-id
 #~ msgid "Unknown error"
-#~ msgstr "שגיאה לא ידועה"
+#~ msgstr "Unknown error"
 
 #. js-lingui-explicit-id
 #~ msgid "Unstake"
-#~ msgstr "ללא יתד"
+#~ msgstr "Unstake"
 
 #. js-lingui-explicit-id
 #~ msgid "Unstaked"
-#~ msgstr "לא מסויים"
+#~ msgstr "Unstaked"
 
 #. js-lingui-explicit-id
 #~ msgid "Unsupported Asset"
-#~ msgstr "נכס לא נתמך"
+#~ msgstr "Unsupported Asset"
 
 #. js-lingui-explicit-id
 #~ msgid "Unsupported Assets"
-#~ msgstr "נכסים לא נתמכים"
+#~ msgstr "Unsupported Assets"
 
 #. js-lingui-explicit-id
 #~ msgid "Unsupported network"
@@ -2128,67 +2133,67 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Unwrap"
-#~ msgstr "הסרת עטיפה"
+#~ msgstr "Unwrap"
 
 #. js-lingui-explicit-id
 #~ msgid "Unwrap {0} W{1} to {2}"
-#~ msgstr "הסרת גלישת {0} W{1} עד {2}"
+#~ msgstr "Unwrap {0} W{1} to {2}"
 
 #. js-lingui-explicit-id
 #~ msgid "Update list"
-#~ msgstr "רשימת העדכון"
+#~ msgstr "Update list"
 
 #. js-lingui-explicit-id
 #~ msgid "Use any tool below to optimize your workflow. Please note, some tools are experimental so use with discretion. If theres a smart contract involved for the tool, read the code and confirm the keys have been burned."
-#~ msgstr "השתמש בכל כלי למטה כדי לייעל את תהליכי העבודה שלך. שים לב, כמה כלים הם ניסיוניים, לכן השתמש בשיקול דעת. אם יש חוזה חכם הכרוך בכלי, קרא את הקוד וודא שהמפתחות נשרפו."
+#~ msgstr "Use any tool below to optimize your workflow. Please note, some tools are experimental so use with discretion. If theres a smart contract involved for the tool, read the code and confirm the keys have been burned."
 
 #. js-lingui-explicit-id
 #~ msgid "Use this tool to find pairs that don't automatically appear in the interface"
-#~ msgstr "השתמש בכלי זה כדי למצוא זוגות שאינם מופיעים באופן אוטומטי בממשק"
+#~ msgstr "Use this tool to find pairs that don't automatically appear in the interface"
 
 #. js-lingui-explicit-id
 #~ msgid "V2 Rewarder"
-#~ msgstr "מתגמל V2"
+#~ msgstr "V2 Rewarder"
 
 #. js-lingui-explicit-id
 #~ msgid "Vesting"
-#~ msgstr "הבשלה"
+#~ msgstr "Vesting"
 
 #. js-lingui-explicit-id
 #~ msgid "Vesting is executed within the guidelines selected by the community in <0>SIMP3</0>.<1/><2/>Please refer to the <3>forum discussion</3> for deliberations on additional points.<4/><5/>Additional records and weekly merkle updates can be found on <6>Github</6>"
-#~ msgstr "הבשלה מתבצעת במסגרת ההנחיות שנבחרו על ידי הקהילה ב- <0>SIMP3</0>,<1/><2/>עיין <3>בדיון בפורום לדיונים</3> על נקודות נוספות, ניתן למצוא רשומות<4/><5/>נוספות ועדכוני מרקל שבועיים ב- <6>Github</6>"
+#~ msgstr "Vesting is executed within the guidelines selected by the community in <0>SIMP3</0>.<1/><2/>Please refer to the <3>forum discussion</3> for deliberations on additional points.<4/><5/>Additional records and weekly merkle updates can be found on <6>Github</6>"
 
 #. js-lingui-explicit-id
 #~ msgid "View On"
-#~ msgstr "לצפות על"
+#~ msgstr "View On"
 
 #. js-lingui-explicit-id
 #~ msgid "View Stats"
-#~ msgstr "הצג נתונים סטטיסטיים"
+#~ msgstr "View Stats"
 
 #. js-lingui-explicit-id
 #~ msgid "View SushiBar Stats"
-#~ msgstr "צפו בסטטיסטיקות של SushiBar"
+#~ msgstr "View SushiBar Stats"
 
 #. js-lingui-explicit-id
 #~ msgid "View Your Liquidity Positions"
-#~ msgstr "הצג את עמדות הנזילות שלך"
+#~ msgstr "View Your Liquidity Positions"
 
 #. js-lingui-explicit-id
 #~ msgid "View Your Liquidity Positions >"
-#~ msgstr "צפה בעמדות הנזילות שלך >"
+#~ msgstr "View Your Liquidity Positions >"
 
 #. js-lingui-explicit-id
 #~ msgid "View list"
-#~ msgstr "רשימת צפיה"
+#~ msgstr "View list"
 
 #. js-lingui-explicit-id
 #~ msgid "View on explorer"
-#~ msgstr "הצג על אקספלורר"
+#~ msgstr "View on explorer"
 
 #. js-lingui-explicit-id
 #~ msgid "View pair analytics"
-#~ msgstr "הצג ניתוח זוגות"
+#~ msgstr "View pair analytics"
 
 #. js-lingui-explicit-id
 #~ msgid "View transaction on explorer"
@@ -2196,7 +2201,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "View your SushiBar Portfolio"
-#~ msgstr "צפו בתיק העבודות של SushiBar"
+#~ msgstr "View your SushiBar Portfolio"
 
 #. js-lingui-explicit-id
 #~ msgid ""
@@ -2216,27 +2221,27 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "WITHDRAW"
-#~ msgstr "לָסֶגֶת"
+#~ msgstr "WITHDRAW"
 
 #. js-lingui-explicit-id
 #~ msgid "Waiting For Confirmation"
-#~ msgstr "מחכה לאישור"
+#~ msgstr "Waiting For Confirmation"
 
 #. js-lingui-explicit-id
 #~ msgid "Waiting for Confirmation"
-#~ msgstr "מחכה לאישור"
+#~ msgstr "Waiting for Confirmation"
 
 #. js-lingui-explicit-id
 #~ msgid "Wallet"
-#~ msgstr "ארנק"
+#~ msgstr "Wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Wallet Balance"
-#~ msgstr "יתרת הארנק"
+#~ msgstr "Wallet Balance"
 
 #. js-lingui-explicit-id
 #~ msgid "Wallet balance"
-#~ msgstr "מאזן ארנק"
+#~ msgstr "Wallet balance"
 
 #. js-lingui-explicit-id
 #~ msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
@@ -2244,19 +2249,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Welcome to Sushi on Polygon (Matic)"
-#~ msgstr "ברוכים הבאים לסושי על מצולע (Matic)"
+#~ msgstr "Welcome to Sushi on Polygon (Matic)"
 
 #. js-lingui-explicit-id
 #~ msgid "What's an exit contribution?"
-#~ msgstr "מהי תרומת יציאה?"
+#~ msgstr "What's an exit contribution?"
 
 #. js-lingui-explicit-id
 #~ msgid "When creating a pair you are the first liquidity provider. The ratio of tokens you add will set the price of this pool. Once you are happy with the rate, click supply to review"
-#~ msgstr "בעת יצירת זוג אתה ספק הנזילות הראשון. היחס בין אסימונים שתוסיף יקבע את המחיר של ברכה זו. ברגע שאתה מרוצה עם שיעור, לחץ על האספקה כדי לסקור"
+#~ msgstr "When creating a pair you are the first liquidity provider. The ratio of tokens you add will set the price of this pool. Once you are happy with the rate, click supply to review"
 
 #. js-lingui-explicit-id
 #~ msgid "Withdraw"
-#~ msgstr "לסגת"
+#~ msgstr "Withdraw"
 
 #. js-lingui-explicit-id
 #~ msgid "Withdraw G$"
@@ -2268,11 +2273,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Withdraw as {0}?"
-#~ msgstr ""
+#~ msgstr "Withdraw as {0}?"
 
 #. js-lingui-explicit-id
 #~ msgid "Withdraw {assetSymbol}"
-#~ msgstr "משוך {assetSymbol}"
+#~ msgstr "Withdraw {assetSymbol}"
 
 #. js-lingui-explicit-id
 #~ msgid "Withdrawing your stake will reset your multiplier."
@@ -2280,15 +2285,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Withdrew funds from {0}"
-#~ msgstr "משכו כספים מ {0}"
+#~ msgstr "Withdrew funds from {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "Wrap"
-#~ msgstr "לעטוף"
+#~ msgstr "Wrap"
 
 #. js-lingui-explicit-id
 #~ msgid "Wrong Network"
-#~ msgstr "רשת שגויה"
+#~ msgstr "Wrong Network"
 
 #. js-lingui-explicit-id
 #~ msgid "Yes, I did!"
@@ -2296,11 +2301,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Yesterday's APR"
-#~ msgstr "אפריל של אתמול"
+#~ msgstr "Yesterday's APR"
 
 #. js-lingui-explicit-id
 #~ msgid "Yield"
-#~ msgstr "תשואה"
+#~ msgstr "Yield"
 
 #. js-lingui-explicit-id
 #~ msgid "Yield Debugger"
@@ -2312,27 +2317,27 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Yield Instruments"
-#~ msgstr "מכשירי תשואה"
+#~ msgstr "Yield Instruments"
 
 #. js-lingui-explicit-id
 #~ msgid "You Will Receive:"
-#~ msgstr "אתה תקבל:"
+#~ msgstr "You Will Receive:"
 
 #. js-lingui-explicit-id
 #~ msgid "You are creating UBI to thousands of people around the world."
-#~ msgstr "אתה יוצר UBI לאלפי אנשים ברחבי העולם."
+#~ msgstr "You are creating UBI to thousands of people around the world."
 
 #. js-lingui-explicit-id
 #~ msgid "You are creating a pool"
-#~ msgstr "אתה יוצר מאגר"
+#~ msgstr "You are creating a pool"
 
 #. js-lingui-explicit-id
 #~ msgid "You are currently browsing"
-#~ msgstr "אתה כרגע גלישה"
+#~ msgstr "You are currently browsing"
 
 #. js-lingui-explicit-id
 #~ msgid "You are on the wrong network"
-#~ msgstr "נבחרה רשת לא נכונה"
+#~ msgstr "You are on the wrong network"
 
 #. js-lingui-explicit-id
 #~ msgid "You can leave the bar and exchange your xSUSHI for SUSHI (as well as collect any earned interest) at any time. However, there are more ways to use xSUSHI to maximize your yield potential!"
@@ -2340,11 +2345,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "You can leave the bar and exchange your {0} for {1} (as well as collect any earned interest) at any time. However, there are more ways to use {2} to maximize your yield potential!"
-#~ msgstr "אתה יכול לעזוב את הבר ולהחליף את {0} עבור {1} (כמו גם לאסוף כל ריבית שנצברו) בכל עת. עם זאת, ישנן דרכים נוספות להשתמש {2} כדי למקסם את פוטנציאל התשואה שלך!"
+#~ msgstr "You can leave the bar and exchange your {0} for {1} (as well as collect any earned interest) at any time. However, there are more ways to use {2} to maximize your yield potential!"
 
 #. js-lingui-explicit-id
 #~ msgid "You don’t have liquidity in this pool yet"
-#~ msgstr "אין לך נזילות בבריכה הזאת עדיין"
+#~ msgstr "You don’t have liquidity in this pool yet"
 
 #. js-lingui-explicit-id
 #~ msgid ""
@@ -2362,11 +2367,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded."
-#~ msgstr ""
+#~ msgstr "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded."
 
 #. js-lingui-explicit-id
 #~ msgid "You have successfully claimed your rewards"
-#~ msgstr "יש לך בהצלחה טענו את rewards שלך"
+#~ msgstr "You have successfully claimed your rewards"
 
 #. js-lingui-explicit-id
 #~ msgid ""
@@ -2380,15 +2385,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "You need to first approve LP tokens and then migrate it"
-#~ msgstr "עליך לאשר תחילה אסימוני LP ולאחר מכן להעביר אותם"
+#~ msgstr "You need to first approve LP tokens and then migrate it"
 
 #. js-lingui-explicit-id
 #~ msgid "You need to sign the transaction in your wallet"
-#~ msgstr "אתה צריך לחתום על העסקה בארנק שלך"
+#~ msgstr "You need to sign the transaction in your wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "You will receive"
-#~ msgstr "אתה תקבל"
+#~ msgstr "You will receive"
 
 #. js-lingui-explicit-id
 #~ msgid "You've already claimed today. Come back in {tillClaim}"
@@ -2396,59 +2401,59 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Your Claimable SUSHI this Week"
-#~ msgstr "סושי הניתן לתבוע שלך השבוע"
+#~ msgstr "Your Claimable SUSHI this Week"
 
 #. js-lingui-explicit-id
 #~ msgid "Your History"
-#~ msgstr "ההיסטוריה שלך"
+#~ msgstr "Your History"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Liquidity"
-#~ msgstr "הנזילות שלך"
+#~ msgstr "Your Liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Liquidity Positions"
-#~ msgstr "עמדות הנזילות שלך"
+#~ msgstr "Your Liquidity Positions"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Pool Share"
-#~ msgstr "נתח הפול שלך"
+#~ msgstr "Your Pool Share"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Pool Tokens"
-#~ msgstr "אסימוני הבריכה שלך"
+#~ msgstr "Your Pool Tokens"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Staked"
-#~ msgstr "שלך סיכן"
+#~ msgstr "Your Staked"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Staked Farms"
-#~ msgstr "החוות שלך staked."
+#~ msgstr "Your Staked Farms"
 
 #. js-lingui-explicit-id
 #~ msgid "Your SushiBar Stats"
-#~ msgstr "סטטיסטיקות סושיבר שלך"
+#~ msgstr "Your SushiBar Stats"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Transaction History"
-#~ msgstr "היסטוריית העסקה שלך"
+#~ msgstr "Your Transaction History"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Transaction History on {0}"
-#~ msgstr "היסטוריית העסקה שלך על {0}"
+#~ msgstr "Your Transaction History on {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Vested SUSHI will be released each week for the next 6 months. The amount released each week is determined by your historical farming rewards. You do not need to harvest each week as unclaimed amounts from each week will continue to accrue onto the next."
-#~ msgstr "הסושי המוקדש שלך ישוחרר מדי שבוע במשך 6 החודשים הבאים. הסכום שפורסם בכל שבוע נקבע על ידי תגמולים החקלאות ההיסטוריים שלך. אתה לא צריך לקצור כל שבוע כמו כמויות unclaimed מכל שבוע ימשיך לצבור על הבא."
+#~ msgstr "Your Vested SUSHI will be released each week for the next 6 months. The amount released each week is determined by your historical farming rewards. You do not need to harvest each week as unclaimed amounts from each week will continue to accrue onto the next."
 
 #. js-lingui-explicit-id
 #~ msgid "Your Wallet"
-#~ msgstr "הארנק שלך"
+#~ msgstr "Your Wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Yields"
-#~ msgstr "התשואות שלך"
+#~ msgstr "Your Yields"
 
 #. js-lingui-explicit-id
 #~ msgid "Your current network."
@@ -2460,11 +2465,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Your pool share"
-#~ msgstr "נתח הפול שלך"
+#~ msgstr "Your pool share"
 
 #. js-lingui-explicit-id
 #~ msgid "Your social contribution from:"
-#~ msgstr "התרומה החברתית שלך מ:"
+#~ msgstr "Your social contribution from:"
 
 #. js-lingui-explicit-id
 #~ msgid ""
@@ -2477,36 +2482,36 @@ msgstr ""
 #~ "Your staking transaction which will generate UBI for thousands of people around \n"
 #~ "the world has just been broadcasted to the network."
 #~ msgstr ""
-#~ "העסקה שלך staking אשר יפיק UBI עבור אלפי אנשים מסביב \n"
-#~ " העולם רק שודר לרשת."
+#~ "Your staking transaction which will generate UBI for thousands of people around \n"
+#~ "the world has just been broadcasted to the network."
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Your staking transaction will generate UBI for thousands of people around \n"
 #~ "the world has just been broadcasted to the network."
 #~ msgstr ""
-#~ "העסקה שלך staking יפיק UBI עבור אלפי אנשים מסביב \n"
-#~ " העולם רק שודר לרשת."
+#~ "Your staking transaction will generate UBI for thousands of people around \n"
+#~ "the world has just been broadcasted to the network."
 
 #. js-lingui-explicit-id
 #~ msgid "Your total pool tokens"
-#~ msgstr "סך כל טוקוני הפול שלך"
+#~ msgstr "Your total pool tokens"
 
 #. js-lingui-explicit-id
 #~ msgid "Your total pool tokens:"
-#~ msgstr "סך כל הבריכה אסימונים:"
+#~ msgstr "Your total pool tokens:"
 
 #. js-lingui-explicit-id
 #~ msgid "Your transaction may be frontrun"
-#~ msgstr "העסקה שלך עשויה להיות frontrun"
+#~ msgstr "Your transaction may be frontrun"
 
 #. js-lingui-explicit-id
 #~ msgid "Your transaction may fail"
-#~ msgstr "העסקה שלך עלולה להיכשל"
+#~ msgstr "Your transaction may fail"
 
 #. js-lingui-explicit-id
 #~ msgid "Your transaction will revert if it is pending for more than this long."
-#~ msgstr "העסקה שלך תחזור אם היא ממתינה ליותר מזה זמן."
+#~ msgstr "Your transaction will revert if it is pending for more than this long."
 
 #. js-lingui-explicit-id
 #~ msgid "Your transaction will revert if it is pending for more than this time."
@@ -2514,19 +2519,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Your transaction will revert if the price changes unfavorably by more than this percentage."
-#~ msgstr "העסקה שלך תחזור אם המחיר משתנה בצורה שלילית ביותר מאחוז זה."
+#~ msgstr "Your transaction will revert if the price changes unfavorably by more than this percentage."
 
 #. js-lingui-explicit-id
 #~ msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
-#~ msgstr "העסקה שלך תחזור אם יש תנועה גדולה, מחיר שלילי לפני שהיא תאושר."
+#~ msgstr "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 
 #. js-lingui-explicit-id
 #~ msgid "Your transactions will appear here..."
-#~ msgstr "העסקאות שלך יופיעו כאן ..."
+#~ msgstr "Your transactions will appear here..."
 
 #. js-lingui-explicit-id
 #~ msgid "Your {exchange} {0}/{1} liquidity will become SushiSwap {2}/{3} liquidity."
-#~ msgstr "נזילות {exchange} {0}/{1} שלך תהפוך SushiSwap {2}/{3} נזילות."
+#~ msgstr "Your {exchange} {0}/{1} liquidity will become SushiSwap {2}/{3} liquidity."
 
 #. js-lingui-explicit-id
 #~ msgid "Your {type} transaction has been confirmed!"
@@ -2534,95 +2539,95 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "added"
-#~ msgstr "נוסף"
+#~ msgstr "added"
 
 #. js-lingui-explicit-id
 #~ msgid "amount"
-#~ msgstr "כמות"
+#~ msgstr "amount"
 
 #. js-lingui-explicit-id
 #~ msgid "annualized"
-#~ msgstr "שנתי"
+#~ msgstr "annualized"
 
 #. js-lingui-explicit-id
 #~ msgid "failed to load"
-#~ msgstr "נכשלה בטעינה"
+#~ msgstr "failed to load"
 
 #. js-lingui-explicit-id
 #~ msgid "has been updated to"
-#~ msgstr "עודכן"
+#~ msgstr "has been updated to"
 
 #. js-lingui-explicit-id
 #~ msgid "import it"
-#~ msgstr "לייבא אותו"
+#~ msgstr "import it"
 
 #. js-lingui-explicit-id
 #~ msgid "loading..."
-#~ msgstr "טוען..."
+#~ msgstr "loading..."
 
 #. js-lingui-explicit-id
 #~ msgid "max"
-#~ msgstr "מקס"
+#~ msgstr "max"
 
 #. js-lingui-explicit-id
 #~ msgid "minutes"
-#~ msgstr "דקות"
+#~ msgstr "minutes"
 
 #. js-lingui-explicit-id
 #~ msgid "network"
-#~ msgstr "רֶשֶׁת"
+#~ msgstr "network"
 
 #. js-lingui-explicit-id
 #~ msgid "on the"
-#~ msgstr "על ה"
+#~ msgstr "on the"
 
 #. js-lingui-explicit-id
 #~ msgid "or the transaction will revert."
-#~ msgstr "או שהעסקה תחזור."
+#~ msgstr "or the transaction will revert."
 
 #. js-lingui-explicit-id
 #~ msgid "per day"
-#~ msgstr "ליום"
+#~ msgstr "per day"
 
 #. js-lingui-explicit-id
 #~ msgid "per month"
-#~ msgstr "לחודש"
+#~ msgstr "per month"
 
 #. js-lingui-explicit-id
 #~ msgid "removed"
-#~ msgstr "הוסר"
+#~ msgstr "removed"
 
 #. js-lingui-explicit-id
 #~ msgid "rewards"
-#~ msgstr "תגמולים"
+#~ msgstr "rewards"
 
 #. js-lingui-explicit-id
 #~ msgid "to"
-#~ msgstr "ל"
+#~ msgstr "to"
 
 #. js-lingui-explicit-id
 #~ msgid "tokens"
-#~ msgstr "אסימונים"
+#~ msgstr "tokens"
 
 #. js-lingui-explicit-id
 #~ msgid "tokens updated"
-#~ msgstr "אסימונים עודכנו"
+#~ msgstr "tokens updated"
 
 #. js-lingui-explicit-id
 #~ msgid "via"
-#~ msgstr "באמצעות"
+#~ msgstr "via"
 
 #. js-lingui-explicit-id
 #~ msgid "xSUSHI Balance"
-#~ msgstr "מאזן Xסושי"
+#~ msgstr "xSUSHI Balance"
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "xSUSHI automatically earn fees (0.05% of all swaps, including multichain swaps) proportional\n"
 #~ "to your share of the SushiBar."
 #~ msgstr ""
-#~ "XSushi מרוויח באופן אוטומטי עמלות (0.05% מכל החילופים, כולל החלפות מרובות) ביחס\n"
-#~ "לחלק שלך ב-Sushibar."
+#~ "xSUSHI automatically earn fees (0.05% of all swaps, including multichain swaps) proportional\n"
+#~ "to your share of the SushiBar."
 
 #. js-lingui-explicit-id
 #~ msgid "{0}"
@@ -2638,15 +2643,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "{0} Deposited"
-#~ msgstr "{0} שהופקדו"
+#~ msgstr "{0} Deposited"
 
 #. js-lingui-explicit-id
 #~ msgid "{0} Strategy"
-#~ msgstr "{0} אסטרטגיה"
+#~ msgstr "{0} Strategy"
 
 #. js-lingui-explicit-id
 #~ msgid "{0} per {1}"
-#~ msgstr "{0} לכל {1}"
+#~ msgstr "{0} per {1}"
 
 #. js-lingui-explicit-id
 #~ msgid "{amount} {0}"
@@ -2658,7 +2663,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "• Added by user"
-#~ msgstr "• נוסף על ידי המשתמש"
+#~ msgstr "• Added by user"
 
 #: src/components/Savings/SavingsModal/index.tsx:280
 #: src/components/Savings/SavingsModal/index.tsx:282
@@ -2670,19 +2675,19 @@ msgstr ""
 msgid "{amount} {0}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:51
+#: src/components/Faq/Faq.tsx:54
 msgid "{answer}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:67
+#: src/components/Faq/Faq.tsx:70
 msgid "{linkText}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:19
+#: src/components/Faq/Faq.tsx:22
 msgid "{question}"
 msgstr ""
 
-#: src/components/Layout/PageLayout.tsx:78
+#: src/components/Layout/PageLayout.tsx:80
 msgid "{title}"
 msgstr ""
 
@@ -2746,7 +2751,7 @@ msgstr "יתרה"
 msgid "Blocked address"
 msgstr "כתובת חסומה"
 
-#: src/components/SideBar.tsx:112
+#: src/components/SideBar.tsx:119
 msgid "Buy G$"
 msgstr ""
 
@@ -2836,7 +2841,7 @@ msgstr ""
 msgid "Close"
 msgstr "סגור"
 
-#: src/pages/gd/Claim/index.tsx:348
+#: src/pages/gd/Claim/OldClaim.tsx:315
 msgid "Collect G$"
 msgstr ""
 
@@ -2861,7 +2866,7 @@ msgstr "מזל טוב!"
 msgid "Connect a wallet to see your portfolio"
 msgstr ""
 
-#: src/components/BlockNativeOnboard/index.tsx:33
+#: src/components/BlockNativeOnboard/index.tsx:32
 msgid "Connect to a wallet"
 msgstr "התחבר לארנק"
 
@@ -2890,7 +2895,7 @@ msgstr "העתקת העתקה"
 
 #: src/components/Liquidity/LiquidityPrice.tsx:22
 #~ msgid "Current Rate"
-#~ msgstr "שער הנוכחי"
+#~ msgstr ""
 
 #: src/components/SideBar.tsx:133
 msgid "Dapps"
@@ -2921,11 +2926,11 @@ msgstr ""
 
 #: src/components/SideBar.tsx:178
 #~ msgid "Docs"
-#~ msgstr "מסמכים"
+#~ msgstr ""
 
-#: src/components/SideBar.tsx:119
-msgid "Donate"
-msgstr ""
+#: src/components/SideBar.tsx:126
+#~ msgid "Donate"
+#~ msgstr ""
 
 #: src/components/Gas/index.tsx:12
 msgid "failed to load"
@@ -2972,6 +2977,10 @@ msgstr ""
 msgid "Good Airdrop"
 msgstr ""
 
+#: src/components/SideBar.tsx:112
+msgid "GoodCollective"
+msgstr ""
+
 #: src/components/Savings/SavingsCard/SavingsCardRow/index.tsx:38
 msgid "GoodDAO"
 msgstr ""
@@ -2988,7 +2997,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:359
+#: src/pages/gd/Claim/OldClaim.tsx:326
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -3389,7 +3398,7 @@ msgstr "החודש"
 
 #: src/pages/App.tsx:145
 #~ msgid "This project is in beta. Use at your own risk"
-#~ msgstr "הפרויקט הזה נמצא בגרסת בטא. השתמש באחריותך בלבד"
+#~ msgstr ""
 
 #: src/components/Withdraw/index.tsx:142
 #: src/pages/gd/Stake/index.tsx:66
@@ -3481,11 +3490,11 @@ msgstr "מחכה לאישור"
 
 #: src/components/TransactionConfirmationModal/index.tsx:49
 #~ msgid "Waiting For Confirmation"
-#~ msgstr "מחכה לאישור"
+#~ msgstr ""
 
 #: src/components/SideBar.tsx:154
 #~ msgid "Wallet"
-#~ msgstr "ארנק"
+#~ msgstr ""
 
 #: src/components/WalletBalance/index.tsx:136
 msgid "Wallet balance"

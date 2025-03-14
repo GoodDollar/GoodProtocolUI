@@ -303,7 +303,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                             <Box flexDirection="row" alignItems="center">
                                 <BasePressable onPress={toggleWalletBalance} innerView={{ flexDirection: 'row' }}>
                                     <Text
-                                        color={walletBalanceOpen ? 'primary' : 'goodGrey.700'}
+                                        color={walletBalanceOpen ? 'gdPrimary' : 'goodGrey.700'}
                                         selectable={false}
                                         pr={1}
                                         fontFamily="subheading"

@@ -2,16 +2,21 @@ msgid ""
 msgstr ""
 "POT-Creation-Date: 2023-05-31 12:45+0300\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
-"Project-Id-Version: \n"
+"Project-Id-Version: goodprotocolui\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2025-01-12 10:27\n"
 "Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
-"Plural-Forms: \n"
+"Language: ro_RO\n"
+"Language-Team: Romanian\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+"X-Crowdin-Project: goodprotocolui\n"
+"X-Crowdin-Project-ID: 481161\n"
+"X-Crowdin-Language: ro\n"
+"X-Crowdin-File: /master/src/language/locales/en/catalog.po\n"
+"X-Crowdin-File-ID: 24\n"
 
 #: src/components/Savings/SavingsCard/index.tsx:48
 msgid ""
@@ -79,24 +84,24 @@ msgstr ""
 #~ "(COMING SOON) Accrue automatic yield through flash loans and\n"
 #~ "SUSHI strategies"
 #~ msgstr ""
-#~ "(CURENT) Acumulează randament automat prin împrumuturi flash și \n"
-#~ " strategii SUSHI"
+#~ "(COMING SOON) Accrue automatic yield through flash loans and\n"
+#~ "SUSHI strategies"
 
 #. js-lingui-explicit-id
 #~ msgid "(View on explorer)"
-#~ msgstr "(Vizualizați pe Explorer)"
+#~ msgstr "(View on explorer)"
 
 #. js-lingui-explicit-id
 #~ msgid "+ Add a send (optional)"
-#~ msgstr "+ Adăugați o trimitere (opțional)"
+#~ msgstr "+ Add a send (optional)"
 
 #. js-lingui-explicit-id
 #~ msgid "+ Create a new market"
-#~ msgstr "+ Creați o piață nouă"
+#~ msgstr "+ Create a new market"
 
 #. js-lingui-explicit-id
 #~ msgid "- Remove send"
-#~ msgstr "- Eliminați trimiterea"
+#~ msgstr "- Remove send"
 
 #. js-lingui-explicit-id
 #~ msgid "300M+ TVL on Polygon! Optimized routing enabled"
@@ -104,23 +109,23 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "<0>Tip:</0> In order to start earning rewards, you will need to first acquire some SLP by adding liquidity to the specified pair or <1>migrating existing liquidity.</1> Once you have SLP you can stake it into this yield farm to start earning rewards. Unstake anytime and then you can convert your SLP back to base tokens by clicking Remove Liquidity. Click Harvest to receive your rewards at any time."
-#~ msgstr "<0> Sfat: </0> Pentru a începe să câștigați recompense, va trebui mai întâi să achiziționați SLP adăugând lichiditate la perechea specificată sau <1> migrând lichiditatea existentă. </1> Odată ce ai SLP, îl poți miza în această fermă de producție pentru a începe să câștigi recompense. Deconectați-vă oricând și apoi vă puteți converti SLP-ul în jetoane de bază făcând clic pe Eliminare lichiditate. Faceți clic pe Recoltare pentru a primi recompense în orice moment."
+#~ msgstr "<0>Tip:</0> In order to start earning rewards, you will need to first acquire some SLP by adding liquidity to the specified pair or <1>migrating existing liquidity.</1> Once you have SLP you can stake it into this yield farm to start earning rewards. Unstake anytime and then you can convert your SLP back to base tokens by clicking Remove Liquidity. Click Harvest to receive your rewards at any time."
 
 #. js-lingui-explicit-id
 #~ msgid "<0>Tip:</0> Removing pool tokens converts your position back into underlying tokens at the current rate, proportional to your share of the pool. Accrued fees are included in the amounts you receive."
-#~ msgstr "<0> Sfat: </0> Dacă eliminați jetoanele pool vă convertiți din nou poziția în jetoane subiacente la rata actuală, proporțional cu cota dvs. din pool. Taxele acumulate sunt incluse în sumele pe care le primiți."
+#~ msgstr "<0>Tip:</0> Removing pool tokens converts your position back into underlying tokens at the current rate, proportional to your share of the pool. Accrued fees are included in the amounts you receive."
 
 #. js-lingui-explicit-id
 #~ msgid "<0>Tip:</0> Use this tool to find pairs that don't automatically appear in the interface"
-#~ msgstr "<0> Sfat: </0> Utilizați acest instrument pentru a găsi perechi care nu apar automat în interfață"
+#~ msgstr "<0>Tip:</0> Use this tool to find pairs that don't automatically appear in the interface"
 
 #. js-lingui-explicit-id
 #~ msgid "<0>Tip:</0> When you add liquidity, you will receive pool tokens representing your position. These tokens automatically earn fees proportional to your share of the pool, and can be redeemed at any time."
-#~ msgstr "<0> Sfat: </0> Când adăugați lichiditate, veți primi jetoane de pool care reprezintă poziția dvs. Aceste jetoane câștigă automat comisioane proporționale cu cota dvs. din pool și pot fi răscumpărate oricând."
+#~ msgstr "<0>Tip:</0> When you add liquidity, you will receive pool tokens representing your position. These tokens automatically earn fees proportional to your share of the pool, and can be redeemed at any time."
 
 #. js-lingui-explicit-id
 #~ msgid "<0>Your</0> Positions"
-#~ msgstr "<0> dvs. </0> Pozitii"
+#~ msgstr "<0>Your</0> Positions"
 
 #. js-lingui-explicit-id
 #~ msgid "<0>{0}:</0> {1}"
@@ -132,11 +137,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "A portion of each trade (0.25%) goes to liquidity providers as a protocol incentive."
-#~ msgstr "O parte din fiecare tranzacție (0,25%) se îndreaptă către furnizorii de lichidități ca stimulent protocolar."
+#~ msgstr "A portion of each trade (0.25%) goes to liquidity providers as a protocol incentive."
 
 #. js-lingui-explicit-id
 #~ msgid "APPROVE"
-#~ msgstr "APROBA"
+#~ msgstr "APPROVE"
 
 #. js-lingui-explicit-id
 #~ msgid "APPROVED"
@@ -144,11 +149,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "APPROVING"
-#~ msgstr "Aprobând."
+#~ msgstr "APPROVING"
 
 #. js-lingui-explicit-id
 #~ msgid "APR"
-#~ msgstr "APRILIE"
+#~ msgstr "APR"
 
 #. js-lingui-explicit-id
 #~ msgid "APR (incl. Fees)"
@@ -168,23 +173,23 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Accept update"
-#~ msgstr "Acceptați actualizare"
+#~ msgstr "Accept update"
 
 #. js-lingui-explicit-id
 #~ msgid "Account"
-#~ msgstr "Cont"
+#~ msgstr "Account"
 
 #. js-lingui-explicit-id
 #~ msgid "Active"
-#~ msgstr "Activ"
+#~ msgstr "Active"
 
 #. js-lingui-explicit-id
 #~ msgid "Add"
-#~ msgstr "Adăuga"
+#~ msgstr "Add"
 
 #. js-lingui-explicit-id
 #~ msgid "Add Liquidity"
-#~ msgstr "Adăugați lichiditate"
+#~ msgstr "Add Liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Add SAK3 to your Metamask wallet"
@@ -192,43 +197,43 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Add Sushi to your Metamask wallet"
-#~ msgstr "Adăugați sushi în portofelul dvs. Metamask"
+#~ msgstr "Add Sushi to your Metamask wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Add collateral in order to borrow assets"
-#~ msgstr "Adăugați garanții pentru a împrumuta active"
+#~ msgstr "Add collateral in order to borrow assets"
 
 #. js-lingui-explicit-id
 #~ msgid "Add liquidity"
-#~ msgstr "Adăugați lichiditate"
+#~ msgstr "Add liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Add xSushi to your Metamask wallet"
-#~ msgstr "Adăugați xSushi la portofelul dvs. Metamask"
+#~ msgstr "Add xSushi to your Metamask wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "All Yield Farms"
-#~ msgstr "Toate fermele de randament"
+#~ msgstr "All Yield Farms"
 
 #. js-lingui-explicit-id
 #~ msgid "Amount"
-#~ msgstr "Cantitate"
+#~ msgstr "Amount"
 
 #. js-lingui-explicit-id
 #~ msgid "Amount of Tokens"
-#~ msgstr "Cantitatea de jetoane"
+#~ msgstr "Amount of Tokens"
 
 #. js-lingui-explicit-id
 #~ msgid "Amount to Remove"
-#~ msgstr "Suma pentru a elimina"
+#~ msgstr "Amount to Remove"
 
 #. js-lingui-explicit-id
 #~ msgid "An update is available for the token list"
-#~ msgstr "O actualizare este disponibilă pentru lista de jetoane"
+#~ msgstr "An update is available for the token list"
 
 #. js-lingui-explicit-id
 #~ msgid "Analytics"
-#~ msgstr "Analize"
+#~ msgstr "Analytics"
 
 #. js-lingui-explicit-id
 #~ msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
@@ -236,39 +241,39 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects."
-#~ msgstr "Oricine poate crea un simbol, inclusiv crearea unor versiuni false ale jetoanelor existente care pretind că reprezintă proiecte."
+#~ msgstr "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects."
 
 #. js-lingui-explicit-id
 #~ msgid "Approve"
-#~ msgstr "Aproba"
+#~ msgstr "Approve"
 
 #. js-lingui-explicit-id
 #~ msgid "Approve Kashi"
-#~ msgstr "Aprobă Kashi"
+#~ msgstr "Approve Kashi"
 
 #. js-lingui-explicit-id
 #~ msgid "Approve {0}"
-#~ msgstr "Aprobă {0}"
+#~ msgstr "Approve {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "Approved"
-#~ msgstr "Aprobat"
+#~ msgstr "Approved"
 
 #. js-lingui-explicit-id
 #~ msgid "Approving"
-#~ msgstr "Aprobând"
+#~ msgstr "Approving"
 
 #. js-lingui-explicit-id
 #~ msgid "Approving {0}"
-#~ msgstr "Se aprobă {0}"
+#~ msgstr "Approving {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "Are you sure?"
-#~ msgstr "Esti sigur?"
+#~ msgstr "Are you sure?"
 
 #. js-lingui-explicit-id
 #~ msgid "Available"
-#~ msgstr "Disponibil"
+#~ msgstr "Available"
 
 #. js-lingui-explicit-id
 #~ msgid "Awesome!"
@@ -276,79 +281,79 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Back"
-#~ msgstr "Înapoi"
+#~ msgstr "Back"
 
 #. js-lingui-explicit-id
 #~ msgid "Back to portfolio"
-#~ msgstr "Înapoi la portofoliu."
+#~ msgstr "Back to portfolio"
 
 #. js-lingui-explicit-id
 #~ msgid "Balance"
-#~ msgstr "Echilibru"
+#~ msgstr "Balance"
 
 #. js-lingui-explicit-id
 #~ msgid "Bento Balance: {0}"
-#~ msgstr "Sold Bento: {0}"
+#~ msgstr "Bento Balance: {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "BentoBox"
-#~ msgstr "Cutie bento"
+#~ msgstr "BentoBox"
 
 #. js-lingui-explicit-id
 #~ msgid "BentoBox Apps"
-#~ msgstr "Aplicații BentoBox"
+#~ msgstr "BentoBox Apps"
 
 #. js-lingui-explicit-id
 #~ msgid "BentoBox is an innovative way to use dapps gas-efficiently and gain extra yield."
-#~ msgstr "BentoBox este un mod inovator de a utiliza dapps eficient din punct de vedere al gazului și de a câștiga un randament suplimentar."
+#~ msgstr "BentoBox is an innovative way to use dapps gas-efficiently and gain extra yield."
 
 #. js-lingui-explicit-id
 #~ msgid "BentoBox provides extra yield on deposits with flash lending, strategies, and fixed, low-gas transfers among integrated dapps, like Kashi markets"
-#~ msgstr "BentoBox oferă un randament suplimentar la depozite cu împrumuturi flash, strategii și transferuri fixe, cu consum redus de gaze între dap-uri integrate, cum ar fi piețele Kashi"
+#~ msgstr "BentoBox provides extra yield on deposits with flash lending, strategies, and fixed, low-gas transfers among integrated dapps, like Kashi markets"
 
 #. js-lingui-explicit-id
 #~ msgid "BentoBox strategies can create yield for your collateral tokens. This token does not yet have a strategy in the BentoBox."
-#~ msgstr "Strategiile BentoBox pot crea randament pentru jetoanele dvs. colaterale. Acest simbol nu are încă o strategie în BentoBox."
+#~ msgstr "BentoBox strategies can create yield for your collateral tokens. This token does not yet have a strategy in the BentoBox."
 
 #. js-lingui-explicit-id
 #~ msgid "BentoBox strategies can create yield for your liquidity while it is not lent out. This token does not yet have a strategy in the BentoBox."
-#~ msgstr "Strategiile BentoBox pot crea randament pentru lichiditatea dvs., în timp ce nu este împrumutat. Acest simbol nu are încă o strategie în BentoBox."
+#~ msgstr "BentoBox strategies can create yield for your liquidity while it is not lent out. This token does not yet have a strategy in the BentoBox."
 
 #. js-lingui-explicit-id
 #~ msgid "Blocked address"
-#~ msgstr "Adresa blocată"
+#~ msgstr "Blocked address"
 
 #. js-lingui-explicit-id
 #~ msgid "Borrow"
-#~ msgstr "Împrumuta"
+#~ msgstr "Borrow"
 
 #. js-lingui-explicit-id
 #~ msgid "Borrow APR"
-#~ msgstr "Împrumută APR"
+#~ msgstr "Borrow APR"
 
 #. js-lingui-explicit-id
 #~ msgid "Borrow assets and leverage up"
-#~ msgstr "Împrumutați active și efectuați efectul de levier"
+#~ msgstr "Borrow assets and leverage up"
 
 #. js-lingui-explicit-id
 #~ msgid "Borrow {0}"
-#~ msgstr "Împrumută {0}"
+#~ msgstr "Borrow {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "Borrow {0}-{1}"
-#~ msgstr "Împrumută {0} - {1}"
+#~ msgstr "Borrow {0}-{1}"
 
 #. js-lingui-explicit-id
 #~ msgid "Borrowed"
-#~ msgstr "Împrumutat"
+#~ msgstr "Borrowed"
 
 #. js-lingui-explicit-id
 #~ msgid "Borrowing allows you to obtain liquidity without selling. Your borrow limit depends on the amount of deposited collateral. You will be able to borrow up to 75% of your collateral and repay at any time with accrued interest."
-#~ msgstr "Împrumutul vă permite să obțineți lichidități fără a vinde. Limita dvs. de împrumut depinde de suma garanției depuse. Veți putea să împrumutați până la 75% din garanția dvs. și să rambursați în orice moment cu dobânda acumulată."
+#~ msgstr "Borrowing allows you to obtain liquidity without selling. Your borrow limit depends on the amount of deposited collateral. You will be able to borrow up to 75% of your collateral and repay at any time with accrued interest."
 
 #. js-lingui-explicit-id
 #~ msgid "Bridge Assets"
-#~ msgstr "Activele podului"
+#~ msgstr "Bridge Assets"
 
 #. js-lingui-explicit-id
 #~ msgid ""
@@ -356,17 +361,17 @@ msgstr ""
 #~ "of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing\n"
 #~ "your liquidity."
 #~ msgstr ""
-#~ "Prin adăugarea de lichiditate, veți câștiga 0,25% din toate tranzacțiile pe această pereche proporțional cu cota dvs. \n"
-#~ " din pool. Taxele sunt adăugate la fond, se acumulează în timp real și pot fi solicitate prin retragerea \n"
-#~ " lichidității dvs."
+#~ "By adding liquidity you'll earn 0.25% of all trades on this pair proportional to your share\n"
+#~ "of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing\n"
+#~ "your liquidity."
 
 #. js-lingui-explicit-id
 #~ msgid "By adding this list you are implicitly trusting that the data is correct. Anyone can create a list, including creating fake versions of existing lists and lists that claim to represent projects that do not have one."
-#~ msgstr "Prin adăugarea acestei liste, aveți în vedere implicit că datele sunt corecte. Oricine poate crea o listă, inclusiv crearea unor versiuni false ale listelor existente și listele care solicită să reprezinte proiecte care nu au una."
+#~ msgstr "By adding this list you are implicitly trusting that the data is correct. Anyone can create a list, including creating fake versions of existing lists and lists that claim to represent projects that do not have one."
 
 #. js-lingui-explicit-id
 #~ msgid "Bypasses confirmation modals and allows high slippage trades. Use at your own risk."
-#~ msgstr "Ocolește modurile de confirmare și permite tranzacții cu alunecare ridicată. Folosiți pe propria răspundere."
+#~ msgstr "Bypasses confirmation modals and allows high slippage trades. Use at your own risk."
 
 #. js-lingui-explicit-id
 #~ msgid "CLAIMABLE REWARDS"
@@ -374,11 +379,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "CONFIRM SWAP"
-#~ msgstr "Confirmați swap."
+#~ msgstr "CONFIRM SWAP"
 
 #. js-lingui-explicit-id
 #~ msgid "Change"
-#~ msgstr "Schimbare"
+#~ msgstr "Change"
 
 #. js-lingui-explicit-id
 #~ msgid "Check out Sushi on Polygon (Matic)"
@@ -386,7 +391,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Claim"
-#~ msgstr "Revendicare"
+#~ msgstr "Claim"
 
 #. js-lingui-explicit-id
 #~ msgid "Claim All"
@@ -398,7 +403,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Claim G$ rewards"
-#~ msgstr "Revendicați G $ Recompense"
+#~ msgstr "Claim G$ rewards"
 
 #. js-lingui-explicit-id
 #~ msgid "Claim GOOD"
@@ -414,11 +419,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Claim SUSHI"
-#~ msgstr "Revendicați SUSHI"
+#~ msgstr "Claim SUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "Claim UBI"
-#~ msgstr "Revendicați UBI."
+#~ msgstr "Claim UBI"
 
 #. js-lingui-explicit-id
 #~ msgid "Claim reward"
@@ -430,23 +435,23 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Claim your test tokens here..."
-#~ msgstr "Revendicați jetoanele de testare aici ..."
+#~ msgstr "Claim your test tokens here..."
 
 #. js-lingui-explicit-id
 #~ msgid "Claimable"
-#~ msgstr "Invocate"
+#~ msgstr "Claimable"
 
 #. js-lingui-explicit-id
 #~ msgid "Claimable Rewards"
-#~ msgstr "Recompense solicitate"
+#~ msgstr "Claimable Rewards"
 
 #. js-lingui-explicit-id
 #~ msgid "Claimed"
-#~ msgstr "Revendicat"
+#~ msgstr "Claimed"
 
 #. js-lingui-explicit-id
 #~ msgid "Claimed G$ Rewards"
-#~ msgstr "A revendicat G $ Recompense"
+#~ msgstr "Claimed G$ Rewards"
 
 #. js-lingui-explicit-id
 #~ msgid "Claimed GOOD Rewards"
@@ -466,39 +471,35 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Clear History"
-#~ msgstr "Sterge istoricul"
+#~ msgstr "Clear History"
 
 #. js-lingui-explicit-id
 #~ msgid "Clear all"
-#~ msgstr "Curata tot"
+#~ msgstr "Clear all"
 
 #. js-lingui-explicit-id
 #~ msgid "Click here to switch to Polygon using Metamask"
-#~ msgstr "Faceți clic aici pentru a comuta la Poligon utilizând Metamask"
+#~ msgstr "Click here to switch to Polygon using Metamask"
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Click on a pool below, input the amount you wish to migrate or select max, and click\n"
 #~ "migrate"
 #~ msgstr ""
-#~ "Faceți clic pe un pool de mai jos, introduceți suma pe care doriți să o migrați sau selectați maxim și faceți clic pe \n"
-#~ " migrați"
+#~ "Click on a pool below, input the amount you wish to migrate or select max, and click\n"
+#~ "migrate"
 
 #. js-lingui-explicit-id
 #~ msgid "Click this button to Claim your Daily UBI in"
-#~ msgstr "Faceți clic pe acest buton pentru a revendica UBI-ul zilnic în"
-
-#. js-lingui-explicit-id
-#~ msgid "Click this button to Claim your Daily UBI in G$"
-#~ msgstr "Faceți clic pe acest buton pentru a revendica UBI-ul zilnic în g $"
+#~ msgstr "Click this button to Claim your Daily UBI in"
 
 #. js-lingui-explicit-id
 #~ msgid "Close"
-#~ msgstr "Închide"
+#~ msgstr "Close"
 
 #. js-lingui-explicit-id
 #~ msgid "Collateral"
-#~ msgstr "Colateral"
+#~ msgstr "Collateral"
 
 #. js-lingui-explicit-id
 #~ msgid "Collect G$"
@@ -506,51 +507,51 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Common bases"
-#~ msgstr "Bazele comune"
+#~ msgstr "Common bases"
 
 #. js-lingui-explicit-id
 #~ msgid "Community Approval"
-#~ msgstr "Aprobare comunitară"
+#~ msgstr "Community Approval"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm"
-#~ msgstr "A confirma"
+#~ msgstr "Confirm"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm Adding Liquidity"
-#~ msgstr "Confirmați adăugarea lichidității"
+#~ msgstr "Confirm Adding Liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm Staking"
-#~ msgstr "Confirmați miza"
+#~ msgstr "Confirm Staking"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm Supply"
-#~ msgstr "Confirmați aprovizionarea"
+#~ msgstr "Confirm Supply"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm Swap"
-#~ msgstr "Confirmați Swap"
+#~ msgstr "Confirm Swap"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm Withdrawal"
-#~ msgstr "Confirmați retragerea"
+#~ msgstr "Confirm Withdrawal"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm swap"
-#~ msgstr "Confirmați swap."
+#~ msgstr "Confirm swap"
 
 #. js-lingui-explicit-id
 #~ msgid "Confirm this transaction in your wallet"
-#~ msgstr "Confirmați această tranzacție în portofel"
+#~ msgstr "Confirm this transaction in your wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Congratulations!"
-#~ msgstr "Felicitări!"
+#~ msgstr "Congratulations!"
 
 #. js-lingui-explicit-id
 #~ msgid "Connect Wallet"
-#~ msgstr "Conectează portofelul"
+#~ msgstr "Connect Wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Connect a wallet to see your portfolio"
@@ -558,15 +559,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Connect to a wallet"
-#~ msgstr "Conectați-vă la un portofel"
+#~ msgstr "Connect to a wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Connect to a wallet to find pools"
-#~ msgstr "Conectați-vă la un portofel pentru a găsi piscine"
+#~ msgstr "Connect to a wallet to find pools"
 
 #. js-lingui-explicit-id
 #~ msgid "Connect to a wallet to view your liquidity"
-#~ msgstr "Conectați-vă la un portofel pentru a vă vedea lichiditatea"
+#~ msgstr "Connect to a wallet to view your liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Connect wallet"
@@ -574,51 +575,51 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Connected with"
-#~ msgstr "Conectat cu"
+#~ msgstr "Connected with"
 
 #. js-lingui-explicit-id
 #~ msgid "Copied"
-#~ msgstr "Copiat"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Copy address"
-#~ msgstr "Adresa de copiere"
+#~ msgstr "Copy address"
 
 #. js-lingui-explicit-id
 #~ msgid "Create Pool & Supply"
-#~ msgstr "Creați Pool & Supply"
+#~ msgstr "Create Pool & Supply"
 
 #. js-lingui-explicit-id
 #~ msgid "Create a Pair"
-#~ msgstr "Creați o pereche"
+#~ msgstr "Create a Pair"
 
 #. js-lingui-explicit-id
 #~ msgid "Create a pair"
-#~ msgstr "Creați o pereche"
+#~ msgstr "Create a pair"
 
 #. js-lingui-explicit-id
 #~ msgid "Create pool"
-#~ msgstr "Creați un pool"
+#~ msgstr "Create pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Current Rate"
-#~ msgstr "Rata curenta"
+#~ msgstr "Current Rate"
 
 #. js-lingui-explicit-id
 #~ msgid "DEPOSIT"
-#~ msgstr "DEPOZIT"
+#~ msgstr "DEPOSIT"
 
 #. js-lingui-explicit-id
 #~ msgid "Dashboard"
-#~ msgstr "Bord"
+#~ msgstr "Dashboard"
 
 #. js-lingui-explicit-id
 #~ msgid "Date"
-#~ msgstr "Data"
+#~ msgstr "Date"
 
 #. js-lingui-explicit-id
 #~ msgid "Deposit"
-#~ msgstr "Depozit"
+#~ msgstr "Deposit"
 
 #. js-lingui-explicit-id
 #~ msgid "Deposit G$"
@@ -626,19 +627,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Deposit SUSHI into BentoBox"
-#~ msgstr "Depuneți SUSHI în BentoBox"
+#~ msgstr "Deposit SUSHI into BentoBox"
 
 #. js-lingui-explicit-id
 #~ msgid "Deposit overview"
-#~ msgstr "Depozit Privire de ansamblu"
+#~ msgstr "Deposit overview"
 
 #. js-lingui-explicit-id
 #~ msgid "Deposit tokens into BentoBox for all the yields"
-#~ msgstr "Depuneți jetoane în BentoBox pentru toate randamentele"
+#~ msgstr "Deposit tokens into BentoBox for all the yields"
 
 #. js-lingui-explicit-id
 #~ msgid "Deposited"
-#~ msgstr "Depus"
+#~ msgstr "Deposited"
 
 #. js-lingui-explicit-id
 #~ msgid "Dev"
@@ -650,7 +651,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Disable Multihops"
-#~ msgstr "Dezactivează Multihops"
+#~ msgstr "Disable Multihops"
 
 #. js-lingui-explicit-id
 #~ msgid "Disconnect"
@@ -662,15 +663,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Discord"
-#~ msgstr "Discordie"
+#~ msgstr "Discord"
 
 #. js-lingui-explicit-id
 #~ msgid "Dismiss"
-#~ msgstr "Renunță"
+#~ msgstr "Dismiss"
 
 #. js-lingui-explicit-id
 #~ msgid "Docs"
-#~ msgstr "Documente"
+#~ msgstr "Docs"
 
 #. js-lingui-explicit-id
 #~ msgid "Documentation for developers"
@@ -678,7 +679,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Documentation for developers of Sushi."
-#~ msgstr "Documentație pentru dezvoltatorii de Sushi."
+#~ msgstr "Documentation for developers of Sushi."
 
 #. js-lingui-explicit-id
 #~ msgid "Documentation for users"
@@ -686,19 +687,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Documentation for users of Sushi."
-#~ msgstr "Documentație pentru utilizatorii de sushi."
+#~ msgstr "Documentation for users of Sushi."
 
 #. js-lingui-explicit-id
 #~ msgid "Don't see a pool you joined? <0>Import it.</0>"
-#~ msgstr "Nu vedeți o piscină la care v-ați alăturat? <0> Importați-l. </0>"
+#~ msgstr "Don't see a pool you joined? <0>Import it.</0>"
 
 #. js-lingui-explicit-id
 #~ msgid "Dont see a pool you joined?"
-#~ msgstr "Nu vezi o piscină la care te-ai alăturat?"
+#~ msgstr "Dont see a pool you joined?"
 
 #. js-lingui-explicit-id
 #~ msgid "Double Yield Farms"
-#~ msgstr "Ferme de randament dublu"
+#~ msgstr "Double Yield Farms"
 
 #. js-lingui-explicit-id
 #~ msgid "ETHEREUM"
@@ -706,67 +707,67 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Enjoy the lowest slippage on Polygon"
-#~ msgstr ""
+#~ msgstr "Enjoy the lowest slippage on Polygon"
 
 #. js-lingui-explicit-id
 #~ msgid "Enter"
-#~ msgstr "introduce"
+#~ msgstr "Enter"
 
 #. js-lingui-explicit-id
 #~ msgid "Enter Amount"
-#~ msgstr "Introduceți suma"
+#~ msgstr "Enter Amount"
 
 #. js-lingui-explicit-id
 #~ msgid "Enter a recipient"
-#~ msgstr "Introduceți un destinatar"
+#~ msgstr "Enter a recipient"
 
 #. js-lingui-explicit-id
 #~ msgid "Enter a valid slippage percentage"
-#~ msgstr "Introduceți un procent valid de derapaj"
+#~ msgstr "Enter a valid slippage percentage"
 
 #. js-lingui-explicit-id
 #~ msgid "Enter an amount"
-#~ msgstr "Introduceți o sumă"
+#~ msgstr "Enter an amount"
 
 #. js-lingui-explicit-id
 #~ msgid "Enter valid list location"
-#~ msgstr "Introduceți locația Listă validă"
+#~ msgstr "Enter valid list location"
 
 #. js-lingui-explicit-id
 #~ msgid "Enter valid token address"
-#~ msgstr "Introduceți adresa validă a tokenului"
+#~ msgstr "Enter valid token address"
 
 #. js-lingui-explicit-id
 #~ msgid "Error"
-#~ msgstr "Eroare"
+#~ msgstr "Error"
 
 #. js-lingui-explicit-id
 #~ msgid "Error connecting"
-#~ msgstr "Eroare la conectare"
+#~ msgstr "Error connecting"
 
 #. js-lingui-explicit-id
 #~ msgid "Error connecting."
-#~ msgstr "Eroare la conectare."
+#~ msgstr "Error connecting."
 
 #. js-lingui-explicit-id
 #~ msgid "Error connecting. Try refreshing the page."
-#~ msgstr "Eroare la conectare. Încercați să răcoriți pagina."
+#~ msgstr "Error connecting. Try refreshing the page."
 
 #. js-lingui-explicit-id
 #~ msgid "Error importing list"
-#~ msgstr "Eroare la importul de eroare"
+#~ msgstr "Error importing list"
 
 #. js-lingui-explicit-id
 #~ msgid "Expanded results from inactive Token Lists"
-#~ msgstr "Rezultatele extinse din listele de token inactive"
+#~ msgstr "Expanded results from inactive Token Lists"
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Expert mode turns off the confirm transaction prompt and allows high slippage trades\n"
 #~ "that often result in bad rates and lost funds."
 #~ msgstr ""
-#~ "Modul Expert dezactivează solicitarea de confirmare a tranzacției și permite tranzacții cu alunecare ridicată \n"
-#~ " care duc adesea la rate nepotrivite și la pierderea fondurilor."
+#~ "Expert mode turns off the confirm transaction prompt and allows high slippage trades\n"
+#~ "that often result in bad rates and lost funds."
 
 #. js-lingui-explicit-id
 #~ msgid "FUSE"
@@ -774,15 +775,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Fetching Farms"
-#~ msgstr "Preluarea fermelor"
+#~ msgstr "Fetching Farms"
 
 #. js-lingui-explicit-id
 #~ msgid "Fetching Instruments"
-#~ msgstr "Instrumente de preluare"
+#~ msgstr "Fetching Instruments"
 
 #. js-lingui-explicit-id
 #~ msgid "Find Pool"
-#~ msgstr "Găsiți piscina"
+#~ msgstr "Find Pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Fixed Apy"
@@ -796,19 +797,19 @@ msgstr ""
 #~ "Your xSUSHI is continuously compounding, when you unstake you will receive all the originally deposited\n"
 #~ "SUSHI and any additional from fees."
 #~ msgstr ""
-#~ "Pentru fiecare schimb pe schimb pe fiecare lanț, 0,05% din taxele de swap sunt distribuite ca SUSHI \n"
-#~ " proporțional cu cota dvs. de SushiBar. Când SUSHI este mizat în SushiBar, primiți \n"
-#~ " xSUSHI în schimbul drepturilor de vot și a unui simbol complet compozibil care poate interacționa cu alte protocoale. \n"
-#~ " Dispozitivul dvs. xSUSHI se compune în mod continuu, atunci când vă dezactivați, veți primi toate depozitele inițiale \n"
-#~ " SUSHI și orice cost suplimentar din taxe."
+#~ "For every swap on the exchange on every chain, 0.05% of the swap fees are distributed as SUSHI\n"
+#~ "proportional to your share of the SushiBar. When your SUSHI is staked into the SushiBar, you recieve\n"
+#~ "xSUSHI in return for voting rights and a fully composable token that can interact with other protocols.\n"
+#~ "Your xSUSHI is continuously compounding, when you unstake you will receive all the originally deposited\n"
+#~ "SUSHI and any additional from fees."
 
 #. js-lingui-explicit-id
 #~ msgid "From"
-#~ msgstr "Din"
+#~ msgstr "From"
 
 #. js-lingui-explicit-id
 #~ msgid "From (estimated)"
-#~ msgstr "De la (estimat)"
+#~ msgstr "From (estimated)"
 
 #. js-lingui-explicit-id
 #~ msgid "Fuse Bridge"
@@ -846,23 +847,23 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Gain exposure to tokens without reducing your assets. Leverage will enable you to take short positions against assets and earn from downside movements."
-#~ msgstr "Obțineți expunere la jetoane fără a vă reduce activele. Pârghia vă va permite să luați poziții scurte împotriva activelor și să câștigați din mișcări de dezavantaj."
+#~ msgstr "Gain exposure to tokens without reducing your assets. Leverage will enable you to take short positions against assets and earn from downside movements."
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Gain governance rights with xSUSHI and earn 5% APR (0.05% of\n"
 #~ "all swaps from all chains)"
 #~ msgstr ""
-#~ "Obțineți drepturi de guvernanță cu xSUSHI și câștigați 5% APR (0,05% din \n"
-#~ " toate swap-urile din toate lanțurile)"
+#~ "Gain governance rights with xSUSHI and earn 5% APR (0.05% of\n"
+#~ "all swaps from all chains)"
 
 #. js-lingui-explicit-id
 #~ msgid "Go Back"
-#~ msgstr "Întoarce-te"
+#~ msgstr "Go Back"
 
 #. js-lingui-explicit-id
 #~ msgid "Go to Portfolio"
-#~ msgstr "Du-te la portofoliu."
+#~ msgstr "Go to Portfolio"
 
 #. js-lingui-explicit-id
 #~ msgid "Good Airdrop"
@@ -894,11 +895,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Hardware Wallet"
-#~ msgstr "Portofel hardware"
+#~ msgstr "Hardware Wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Harvest {0} SUSHI"
-#~ msgstr "Recoltați {0} SUSHI"
+#~ msgstr "Harvest {0} SUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "Harvest {0} SUSHI & {1} ALCX"
@@ -906,43 +907,43 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Harvest {0} SUSHI & {1} MATIC"
-#~ msgstr "Recoltați {0} SUSHI și {1} MATIC"
+#~ msgstr "Harvest {0} SUSHI & {1} MATIC"
 
 #. js-lingui-explicit-id
 #~ msgid "Have Liquidity on {0}?"
-#~ msgstr "Aveți lichiditate pe {0} ?"
+#~ msgstr "Have Liquidity on {0}?"
 
 #. js-lingui-explicit-id
 #~ msgid "Have assets you want to earn additional interest on? Lend them in isolated markets and earn interest from borrowers. It's as easy as deposit and withdraw whenever you want."
-#~ msgstr "Aveți active pe care doriți să câștigați dobândă suplimentară? Împrumutați-le pe piețe izolate și câștigați dobânzi de la împrumutați. Este la fel de ușor ca depunerea și retragerea oricând doriți."
+#~ msgstr "Have assets you want to earn additional interest on? Lend them in isolated markets and earn interest from borrowers. It's as easy as deposit and withdraw whenever you want."
 
 #. js-lingui-explicit-id
 #~ msgid "Health"
-#~ msgstr "Sănătate"
+#~ msgstr "Health"
 
 #. js-lingui-explicit-id
 #~ msgid "Helpful Sushi Tools"
-#~ msgstr "Instrumente utile pentru sushi"
+#~ msgstr "Helpful Sushi Tools"
 
 #. js-lingui-explicit-id
 #~ msgid "Historical Total Locked: Connect Wallet"
-#~ msgstr "Istoric blocat total: conectați portofelul"
+#~ msgstr "Historical Total Locked: Connect Wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Historical Total Locked: Fetching Total"
-#~ msgstr "Total istoric blocat: preluare total"
+#~ msgstr "Historical Total Locked: Fetching Total"
 
 #. js-lingui-explicit-id
 #~ msgid "Historical Total Locked: {0} SUSHI"
-#~ msgstr "Istoric blocat total: {0} SUSHI"
+#~ msgstr "Historical Total Locked: {0} SUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "Holding"
-#~ msgstr "Deținere"
+#~ msgstr "Holding"
 
 #. js-lingui-explicit-id
 #~ msgid "How many GOOD tokens you are accumulating by this stake position."
-#~ msgstr ""
+#~ msgstr "How many GOOD tokens you are accumulating by this stake position."
 
 #. js-lingui-explicit-id
 #~ msgid "How much rewards would you like to donate"
@@ -954,27 +955,27 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "How much value your stake has accumulated so far."
-#~ msgstr "Cât de mult valoarea dvs. sa acumulat până acum."
+#~ msgstr "How much value your stake has accumulated so far."
 
 #. js-lingui-explicit-id
 #~ msgid "How much would you like to deposit?"
-#~ msgstr "Cât de mult doriți să depuneți?"
+#~ msgstr "How much would you like to deposit?"
 
 #. js-lingui-explicit-id
 #~ msgid "How much would you like to withdraw?"
-#~ msgstr "Cât de mult doriți să vă retrageți?"
+#~ msgstr "How much would you like to withdraw?"
 
 #. js-lingui-explicit-id
 #~ msgid "I understand"
-#~ msgstr "Am înțeles"
+#~ msgstr "I understand"
 
 #. js-lingui-explicit-id
 #~ msgid "If you purchase a token from this list, you may not be able to sell it back."
-#~ msgstr "Dacă achiziționați un jeton din această listă, este posibil să nu puteți să-l vindeți înapoi."
+#~ msgstr "If you purchase a token from this list, you may not be able to sell it back."
 
 #. js-lingui-explicit-id
 #~ msgid "If you purchase this token, you may not be able to sell it back."
-#~ msgstr "Dacă achiziționați acest jeton, este posibil să nu puteți să-l vindeți înapoi."
+#~ msgstr "If you purchase this token, you may not be able to sell it back."
 
 #. js-lingui-explicit-id
 #~ msgid "Import"
@@ -982,7 +983,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Import List"
-#~ msgstr "Lista de import"
+#~ msgstr "Import List"
 
 #. js-lingui-explicit-id
 #~ msgid "Import Pool"
@@ -990,59 +991,59 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Import at your own risk"
-#~ msgstr "Importul pe propriul dvs. risc"
+#~ msgstr "Import at your own risk"
 
 #. js-lingui-explicit-id
 #~ msgid "Import it"
-#~ msgstr ""
+#~ msgstr "Import it"
 
 #. js-lingui-explicit-id
 #~ msgid "Initializing..."
-#~ msgstr "Inițializarea ..."
+#~ msgstr "Initializing..."
 
 #. js-lingui-explicit-id
 #~ msgid "Input is estimated. You will sell at most"
-#~ msgstr "Intrarea este estimată. Veți vinde cel mult"
+#~ msgstr "Input is estimated. You will sell at most"
 
 #. js-lingui-explicit-id
 #~ msgid "Input is estimated. You will sell at most <0>{0} {1}</0> or the transaction will revert."
-#~ msgstr "Intrarea este estimată. Veți vinde cel mult <0> {0} {1} </0> sau tranzacția va reveni."
+#~ msgstr "Input is estimated. You will sell at most <0>{0} {1}</0> or the transaction will revert."
 
 #. js-lingui-explicit-id
 #~ msgid "Instruments"
-#~ msgstr "Instrumente"
+#~ msgstr "Instruments"
 
 #. js-lingui-explicit-id
 #~ msgid "Insufficient Balance"
-#~ msgstr "Echilibru insuficient"
+#~ msgstr "Insufficient Balance"
 
 #. js-lingui-explicit-id
 #~ msgid "Insufficient WETH balance"
-#~ msgstr "Sold insuficient WETH"
+#~ msgstr "Insufficient WETH balance"
 
 #. js-lingui-explicit-id
 #~ msgid "Insufficient liquidity for this trade"
-#~ msgstr "Lichiditate insuficientă pentru această tranzacție"
+#~ msgstr "Insufficient liquidity for this trade"
 
 #. js-lingui-explicit-id
 #~ msgid "Insufficient {0} balance"
-#~ msgstr "Sold {0} insuficient"
+#~ msgstr "Insufficient {0} balance"
 
 #. js-lingui-explicit-id
 #~ msgid "Interface Settings"
-#~ msgstr "Setări interfață"
+#~ msgstr "Interface Settings"
 
 #. js-lingui-explicit-id
 #~ msgid "Invalid pair"
-#~ msgstr "Pereche nevalidă"
+#~ msgstr "Invalid pair"
 
 #. js-lingui-explicit-id
 #~ msgid "Invalid recipient"
-#~ msgstr "Destinatar nevalid"
+#~ msgstr "Invalid recipient"
 
 #. js-lingui-explicit-id
 #~ msgid "Isolated lending markets mitigate your risks as an asset lender. Know exactly what collateral is available to you in the event of counter party insolvency."
-#~ msgstr "Piețele de creditare izolate vă reduc riscurile în calitate de creditor de active. Aflați exact ce garanție vă este disponibilă în caz de insolvență a contrapărții."
+#~ msgstr "Isolated lending markets mitigate your risks as an asset lender. Know exactly what collateral is available to you in the event of counter party insolvency."
 
 #. js-lingui-explicit-id
 #~ msgid "Join the community of discord"
@@ -1050,7 +1051,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Join the community on Discord."
-#~ msgstr "Alăturați-vă comunității pe Discord."
+#~ msgstr "Join the community on Discord."
 
 #. js-lingui-explicit-id
 #~ msgid "Kashi Lending"
@@ -1058,47 +1059,47 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Keys Burned: 2022.03.04 at 22:05"
-#~ msgstr "Taste arse: 2022.03.04 la 22:05"
+#~ msgstr "Keys Burned: 2022.03.04 at 22:05"
 
 #. js-lingui-explicit-id
 #~ msgid "Learn More"
-#~ msgstr "Aflați mai multe"
+#~ msgstr "Learn More"
 
 #. js-lingui-explicit-id
 #~ msgid "Learn more about wallets"
-#~ msgstr "Aflați mai multe despre portofelele"
+#~ msgstr "Learn more about wallets"
 
 #. js-lingui-explicit-id
 #~ msgid "Lend"
-#~ msgstr "A împrumuta"
+#~ msgstr "Lend"
 
 #. js-lingui-explicit-id
 #~ msgid "Lend assets for interest from borrowers."
-#~ msgstr "Împrumutați active pentru dobânzi de la împrumutați."
+#~ msgstr "Lend assets for interest from borrowers."
 
 #. js-lingui-explicit-id
 #~ msgid "Lend your assets, earn yield with no impermanent loss"
-#~ msgstr "Împrumutați-vă activele, câștigați randament fără pierderi impermanente"
+#~ msgstr "Lend your assets, earn yield with no impermanent loss"
 
 #. js-lingui-explicit-id
 #~ msgid "Lend {assetSymbol}"
-#~ msgstr "Împrumută {assetSymbol}"
+#~ msgstr "Lend {assetSymbol}"
 
 #. js-lingui-explicit-id
 #~ msgid "Lending"
-#~ msgstr "Împrumut"
+#~ msgstr "Lending"
 
 #. js-lingui-explicit-id
 #~ msgid "Lending Yield Farms"
-#~ msgstr "Împrumuturile de producție"
+#~ msgstr "Lending Yield Farms"
 
 #. js-lingui-explicit-id
 #~ msgid "Lent"
-#~ msgstr "Postul Mare"
+#~ msgstr "Lent"
 
 #. js-lingui-explicit-id
 #~ msgid "Limit <0>Used</0>"
-#~ msgstr "Limită <0> Folosit </0>"
+#~ msgstr "Limit <0>Used</0>"
 
 #. js-lingui-explicit-id
 #~ msgid "Liquidity"
@@ -1106,19 +1107,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Liquidity Positions"
-#~ msgstr "Poziții de lichiditate"
+#~ msgstr "Liquidity Positions"
 
 #. js-lingui-explicit-id
 #~ msgid "Liquidity Provider Fee"
-#~ msgstr "Taxa furnizorului de lichiditate"
+#~ msgstr "Liquidity Provider Fee"
 
 #. js-lingui-explicit-id
 #~ msgid "Liquidity Provider Rewards"
-#~ msgstr "Recompense pentru furnizorul de lichiditate"
+#~ msgstr "Liquidity Provider Rewards"
 
 #. js-lingui-explicit-id
 #~ msgid "Liquidity Yield Farms"
-#~ msgstr "Farmele de producere a lichidității"
+#~ msgstr "Liquidity Yield Farms"
 
 #. js-lingui-explicit-id
 #~ msgid "Liquidity is the total value staked in the GoodDollar Trust staking contract (USD)."
@@ -1130,33 +1131,33 @@ msgstr ""
 #~ "the pool. Fees are added to the pool, accrue in real time and can be claimed by\n"
 #~ "withdrawing your liquidity"
 #~ msgstr ""
-#~ "Furnizorii de lichiditate câștigă o taxă de 0,25% pentru toate tranzacțiile proporțional cu ponderea lor din \n"
-#~ " pool. Taxele sunt adăugate la piscina, acumulați în timp real și poate fi revendicat de \n"
-#~ " retragere lichiditatea"
+#~ "Liquidity providers earn a 0.25% fee on all trades proportional to their share of\n"
+#~ "the pool. Fees are added to the pool, accrue in real time and can be claimed by\n"
+#~ "withdrawing your liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Lists"
-#~ msgstr "Liste"
+#~ msgstr "Lists"
 
 #. js-lingui-explicit-id
 #~ msgid "Loaded"
-#~ msgstr "Încărcat"
+#~ msgstr "Loaded"
 
 #. js-lingui-explicit-id
 #~ msgid "Loading"
-#~ msgstr "Se încarcă"
+#~ msgstr "Loading"
 
 #. js-lingui-explicit-id
 #~ msgid "Loading your {exchange} liquidity positions"
-#~ msgstr "Încărcarea pozițiilor de lichiditate {exchange}"
+#~ msgstr "Loading your {exchange} liquidity positions"
 
 #. js-lingui-explicit-id
 #~ msgid "Loading..."
-#~ msgstr "Se încarcă..."
+#~ msgstr "Loading..."
 
 #. js-lingui-explicit-id
 #~ msgid "Loan to Value"
-#~ msgstr "Împrumut pentru valoare"
+#~ msgstr "Loan to Value"
 
 #. js-lingui-explicit-id
 #~ msgid "MAX"
@@ -1164,27 +1165,27 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "MULTIPLIER"
-#~ msgstr "Multiplicator."
+#~ msgstr "MULTIPLIER"
 
 #. js-lingui-explicit-id
 #~ msgid "Make the most of your"
-#~ msgstr "Profitați la maximum de dvs."
+#~ msgstr "Make the most of your"
 
 #. js-lingui-explicit-id
 #~ msgid "Manage"
-#~ msgstr "Administra"
+#~ msgstr "Manage"
 
 #. js-lingui-explicit-id
 #~ msgid "Manage Liquidity in Rewards Pool"
-#~ msgstr "Gestionați lichiditatea în grupul de recompense"
+#~ msgstr "Manage Liquidity in Rewards Pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Manage this pool"
-#~ msgstr "Gestionați acest pool"
+#~ msgstr "Manage this pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Market Info"
-#~ msgstr "Informații despre piață"
+#~ msgstr "Market Info"
 
 #. js-lingui-explicit-id
 #~ msgid "Market Staked"
@@ -1192,7 +1193,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Markets"
-#~ msgstr "Piețe"
+#~ msgstr "Markets"
 
 #. js-lingui-explicit-id
 #~ msgid "Max"
@@ -1200,39 +1201,39 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Maximize yield by staking SUSHI for xSUSHI"
-#~ msgstr "Maximizați randamentul mizând SUSHI pentru xSUSHI"
+#~ msgstr "Maximize yield by staking SUSHI for xSUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "Maximum sold"
-#~ msgstr "Maxim vândut"
+#~ msgstr "Maximum sold"
 
 #. js-lingui-explicit-id
 #~ msgid "Migrate"
-#~ msgstr "Migra"
+#~ msgstr "Migrate"
 
 #. js-lingui-explicit-id
 #~ msgid "Migrate Now"
-#~ msgstr "Migrați acum"
+#~ msgstr "Migrate Now"
 
 #. js-lingui-explicit-id
 #~ msgid "Migrate Now."
-#~ msgstr "Migrați acum."
+#~ msgstr "Migrate Now."
 
 #. js-lingui-explicit-id
 #~ msgid "Migrate {exchange} Liquidity"
-#~ msgstr "Migrați {exchange} Lichiditate"
+#~ msgstr "Migrate {exchange} Liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Migrating"
-#~ msgstr "Se migrează"
+#~ msgstr "Migrating"
 
 #. js-lingui-explicit-id
 #~ msgid "Migration is done in one-click using your signature (permit)"
-#~ msgstr "Migrarea se face cu un singur clic folosind semnătura dvs. (permis)"
+#~ msgstr "Migration is done in one-click using your signature (permit)"
 
 #. js-lingui-explicit-id
 #~ msgid "Minimum received"
-#~ msgstr "Minim primit"
+#~ msgstr "Minimum received"
 
 #. js-lingui-explicit-id
 #~ msgid "Miso"
@@ -1248,7 +1249,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "My Stake"
-#~ msgstr "Miza mea"
+#~ msgstr "My Stake"
 
 #. js-lingui-explicit-id
 #~ msgid "NETWORK"
@@ -1260,127 +1261,127 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Network Fee"
-#~ msgstr "Taxa de rețea"
+#~ msgstr "Network Fee"
 
 #. js-lingui-explicit-id
 #~ msgid "New"
-#~ msgstr "Nou"
+#~ msgstr "New"
 
 #. js-lingui-explicit-id
 #~ msgid "New network, new features"
-#~ msgstr "Rețea nouă, funcții noi"
+#~ msgstr "New network, new features"
 
 #. js-lingui-explicit-id
 #~ msgid "New to Ethereum?"
-#~ msgstr "Nou la Ethereum?"
+#~ msgstr "New to Ethereum?"
 
 #. js-lingui-explicit-id
 #~ msgid "Next month:"
-#~ msgstr "Luna viitoare:"
+#~ msgstr "Next month:"
 
 #. js-lingui-explicit-id
 #~ msgid "No LP tokens found"
-#~ msgstr "Nu au fost găsite jetoane LP"
+#~ msgstr "No LP tokens found"
 
 #. js-lingui-explicit-id
 #~ msgid "No Liquidity found"
-#~ msgstr "Nu s-a găsit lichiditate"
+#~ msgstr "No Liquidity found"
 
 #. js-lingui-explicit-id
 #~ msgid "No Results"
-#~ msgstr "Fara rezultate"
+#~ msgstr "No Results"
 
 #. js-lingui-explicit-id
 #~ msgid "No Results."
-#~ msgstr "Fara rezultate."
+#~ msgstr "No Results."
 
 #. js-lingui-explicit-id
 #~ msgid "No data."
-#~ msgstr "Nu există date."
+#~ msgstr "No data."
 
 #. js-lingui-explicit-id
 #~ msgid "No liquidity found"
-#~ msgstr "Nu s-a găsit lichiditate"
+#~ msgstr "No liquidity found"
 
 #. js-lingui-explicit-id
 #~ msgid "No liquidity found to do swap"
-#~ msgstr "Nu s-a găsit nicio lichiditate care să facă schimb"
+#~ msgstr "No liquidity found to do swap"
 
 #. js-lingui-explicit-id
 #~ msgid "No liquidity positions found"
-#~ msgstr "Nu s-au găsit poziții de lichiditate"
+#~ msgstr "No liquidity positions found"
 
 #. js-lingui-explicit-id
 #~ msgid "No pool found"
-#~ msgstr "Nu a fost găsită nicio piscină"
+#~ msgstr "No pool found"
 
 #. js-lingui-explicit-id
 #~ msgid "No results found"
-#~ msgstr "Nici un rezultat gasit"
+#~ msgstr "No results found"
 
 #. js-lingui-explicit-id
 #~ msgid "Non-hardware Wallet"
-#~ msgstr "Portofel non-hardware"
+#~ msgstr "Non-hardware Wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "None"
-#~ msgstr "Nici unul"
+#~ msgstr "None"
 
 #. js-lingui-explicit-id
 #~ msgid "OFF"
-#~ msgstr "Off."
+#~ msgstr "OFF"
 
 #. js-lingui-explicit-id
 #~ msgid "ON"
-#~ msgstr "PE"
+#~ msgstr "ON"
 
 #. js-lingui-explicit-id
 #~ msgid "ONLY USE THIS MODE IF YOU KNOW WHAT YOU ARE DOING."
-#~ msgstr "FOLOSIȚI ACEST MOD DACĂ ȘTIȚI CE FĂCIȚI."
+#~ msgstr "ONLY USE THIS MODE IF YOU KNOW WHAT YOU ARE DOING."
 
 #. js-lingui-explicit-id
 #~ msgid "Off"
-#~ msgstr "Off."
+#~ msgstr "Off"
 
 #. js-lingui-explicit-id
 #~ msgid "On"
-#~ msgstr "Pe"
+#~ msgstr "On"
 
 #. js-lingui-explicit-id
 #~ msgid "One click SUSHI → xSUSHI → aXSUSHI"
-#~ msgstr "Un singur clic SUSHI → xSUSHI → aXSUSHI"
+#~ msgstr "One click SUSHI → xSUSHI → aXSUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
-#~ msgstr "Hopa! O eroare necunoscută s-a întamplat. Vă rugăm să reîmprospătați pagina sau să vizitați un alt browser sau dispozitiv"
+#~ msgstr "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 
 #. js-lingui-explicit-id
 #~ msgid "Open Source"
-#~ msgstr "Sursa deschisa"
+#~ msgstr "Open Source"
 
 #. js-lingui-explicit-id
 #~ msgid "Open main menu"
-#~ msgstr "Deschideți meniul principal"
+#~ msgstr "Open main menu"
 
 #. js-lingui-explicit-id
 #~ msgid "Oracle"
-#~ msgstr "Oracol"
+#~ msgstr "Oracle"
 
 #. js-lingui-explicit-id
 #~ msgid "Output is estimated. If the price changes by more than {0}% your transaction will revert."
-#~ msgstr "Producția este estimată. Dacă prețul se modifică cu mai mult de {0} % tranzacția dvs. va reveni."
+#~ msgstr "Output is estimated. If the price changes by more than {0}% your transaction will revert."
 
 #. js-lingui-explicit-id
 #~ msgid "Output is estimated. You will receive at least"
-#~ msgstr "Ieșirea este estimată. Veți primi cel puțin"
+#~ msgstr "Output is estimated. You will receive at least"
 
 #. js-lingui-explicit-id
 #~ msgid "Output is estimated. You will receive at least <0>{0} {1}</0> or the transaction will revert."
-#~ msgstr "Producția este estimată. Veți primi cel puțin <0> {0} {1} </0> sau tranzacția va reveni."
+#~ msgstr "Output is estimated. You will receive at least <0>{0} {1}</0> or the transaction will revert."
 
 #. js-lingui-explicit-id
 #~ msgid "Output is estimated. You will receive at least {0} or the transaction will revert"
-#~ msgstr "Ieșirea este estimată. Veți primi cel puțin {0} sau tranzacția va reveni"
+#~ msgstr "Output is estimated. You will receive at least {0} or the transaction will revert"
 
 #. js-lingui-explicit-id
 #~ msgid "Output is estimated. You will receive at least {minimumReceived} or the transaction will revert"
@@ -1388,15 +1389,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Output will be sent to"
-#~ msgstr "Ieșirea va fi trimisă la"
+#~ msgstr "Output will be sent to"
 
 #. js-lingui-explicit-id
 #~ msgid "Output will be sent to <0>{0}</0>"
-#~ msgstr "Ieșirea va fi trimisă la <0> {0} </0>"
+#~ msgstr "Output will be sent to <0>{0}</0>"
 
 #. js-lingui-explicit-id
 #~ msgid "PENDING SIGN..."
-#~ msgstr "În așteptare semn ..."
+#~ msgstr "PENDING SIGN..."
 
 #. js-lingui-explicit-id
 #~ msgid "PROTOCOL"
@@ -1404,19 +1405,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Pending"
-#~ msgstr "In asteptarea"
+#~ msgstr "Pending"
 
 #. js-lingui-explicit-id
 #~ msgid "Pending Treasury Transfer"
-#~ msgstr "Transfer de trezorerie în așteptare"
+#~ msgstr "Pending Treasury Transfer"
 
 #. js-lingui-explicit-id
 #~ msgid "Please confirm you would like to remove this list by typing"
-#~ msgstr "Vă rugăm să confirmați că doriți să eliminați această listă prin tastarea"
+#~ msgstr "Please confirm you would like to remove this list by typing"
 
 #. js-lingui-explicit-id
 #~ msgid "Please connect to the appropriate Ethereum network."
-#~ msgstr "Conectați-vă la rețeaua Ethereum corespunzătoare."
+#~ msgstr "Please connect to the appropriate Ethereum network."
 
 #. js-lingui-explicit-id
 #~ msgid "Please connect to the appropriate network."
@@ -1424,11 +1425,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Please connect your Web3 wallet to the Fuse Network to Claim UBI."
-#~ msgstr "Vă rugăm să vă conectați portofelul Web3 la Rețeaua de siguranțe pentru a revendica UBI."
+#~ msgstr "Please connect your Web3 wallet to the Fuse Network to Claim UBI."
 
 #. js-lingui-explicit-id
 #~ msgid "Please type the word \"confirm\" to enable expert mode."
-#~ msgstr "Introduceți cuvântul „confirmare” pentru a activa modul expert."
+#~ msgstr "Please type the word \"confirm\" to enable expert mode."
 
 #. js-lingui-explicit-id
 #~ msgid "Please wait"
@@ -1436,39 +1437,39 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Polygon subgraphs are currently experiencing high loads. The APY displayed are based on lagging fees. Funds are safe, we are working on resolving and providing accurate consolidated APY information."
-#~ msgstr "Poligonul Subgraps se confruntă în prezent cu încărcături mari. Afișajul afișat se bazează pe taxe de întârziere. Fondurile sunt sigure, lucrăm la rezolvarea și furnizarea de informații specifice consolidate."
+#~ msgstr "Polygon subgraphs are currently experiencing high loads. The APY displayed are based on lagging fees. Funds are safe, we are working on resolving and providing accurate consolidated APY information."
 
 #. js-lingui-explicit-id
 #~ msgid "Pool"
-#~ msgstr "Bazin"
+#~ msgstr "Pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Pool Found!"
-#~ msgstr "Piscină găsită!"
+#~ msgstr "Pool Found!"
 
 #. js-lingui-explicit-id
 #~ msgid "Pool Rewards"
-#~ msgstr "Recompense pentru piscină"
+#~ msgstr "Pool Rewards"
 
 #. js-lingui-explicit-id
 #~ msgid "Pool Tokens"
-#~ msgstr "Jetoane pentru piscină"
+#~ msgstr "Pool Tokens"
 
 #. js-lingui-explicit-id
 #~ msgid "Pool tokens in rewards pool"
-#~ msgstr "Jetoane de biliard în bazin de recompense"
+#~ msgstr "Pool tokens in rewards pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Pooled {0}"
-#~ msgstr "Grupat {0}"
+#~ msgstr "Pooled {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "Portfolio"
-#~ msgstr "Portofoliu."
+#~ msgstr "Portfolio"
 
 #. js-lingui-explicit-id
 #~ msgid "Positions"
-#~ msgstr "Poziții"
+#~ msgstr "Positions"
 
 #. js-lingui-explicit-id
 #~ msgid "Pour a hot bowl of MISO, the new <0>token launchpad</0> from SUSHI"
@@ -1476,23 +1477,23 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Price"
-#~ msgstr "Preț"
+#~ msgstr "Price"
 
 #. js-lingui-explicit-id
 #~ msgid "Price Impact"
-#~ msgstr "Impactul prețului"
+#~ msgstr "Price Impact"
 
 #. js-lingui-explicit-id
 #~ msgid "Price Impact High"
-#~ msgstr "Impact asupra prețului ridicat"
+#~ msgstr "Price Impact High"
 
 #. js-lingui-explicit-id
 #~ msgid "Price Impact Too High"
-#~ msgstr "Impactul prețului este prea mare"
+#~ msgstr "Price Impact Too High"
 
 #. js-lingui-explicit-id
 #~ msgid "Price Updated"
-#~ msgstr "Preț actualizat"
+#~ msgstr "Price Updated"
 
 #. js-lingui-explicit-id
 #~ msgid "Protocol"
@@ -1500,99 +1501,99 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "REWARDS"
-#~ msgstr "Recompense"
+#~ msgstr "REWARDS"
 
 #. js-lingui-explicit-id
 #~ msgid "Rates"
-#~ msgstr "Tarife"
+#~ msgstr "Rates"
 
 #. js-lingui-explicit-id
 #~ msgid "Read Tutorial"
-#~ msgstr "Citiți Tutorial"
+#~ msgstr "Read Tutorial"
 
 #. js-lingui-explicit-id
 #~ msgid "Read more about unsupported assets"
-#~ msgstr "Citiți mai multe despre activele neacceptate"
+#~ msgstr "Read more about unsupported assets"
 
 #. js-lingui-explicit-id
 #~ msgid "Read the contract"
-#~ msgstr "Citiți contractul"
+#~ msgstr "Read the contract"
 
 #. js-lingui-explicit-id
 #~ msgid "Recent Transactions"
-#~ msgstr "tranzactii recente"
+#~ msgstr "Recent Transactions"
 
 #. js-lingui-explicit-id
 #~ msgid "Recipient"
-#~ msgstr "Destinatar"
+#~ msgstr "Recipient"
 
 #. js-lingui-explicit-id
 #~ msgid "Remove"
-#~ msgstr "Elimina"
+#~ msgstr "Remove"
 
 #. js-lingui-explicit-id
 #~ msgid "Remove Liquidity"
-#~ msgstr "Îndepărtați lichiditatea"
+#~ msgstr "Remove Liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Remove list"
-#~ msgstr "Eliminați lista"
+#~ msgstr "Remove list"
 
 #. js-lingui-explicit-id
 #~ msgid "Remove send"
-#~ msgstr "Eliminați trimiterea"
+#~ msgstr "Remove send"
 
 #. js-lingui-explicit-id
 #~ msgid "Removing {0} {1} and {2} {3}"
-#~ msgstr "Se elimină {0} {1} și {2} {3}"
+#~ msgstr "Removing {0} {1} and {2} {3}"
 
 #. js-lingui-explicit-id
 #~ msgid "Repay"
-#~ msgstr "Rambursa"
+#~ msgstr "Repay"
 
 #. js-lingui-explicit-id
 #~ msgid "Request Tool"
-#~ msgstr "Instrument de solicitare"
+#~ msgstr "Request Tool"
 
 #. js-lingui-explicit-id
 #~ msgid "Restricts swaps to direct pairs only."
-#~ msgstr "Restricționează swap-urile doar la perechile directe."
+#~ msgstr "Restricts swaps to direct pairs only."
 
 #. js-lingui-explicit-id
 #~ msgid "Rewards"
-#~ msgstr "Recompense"
+#~ msgstr "Rewards"
 
 #. js-lingui-explicit-id
 #~ msgid "Route"
-#~ msgstr "Traseu"
+#~ msgstr "Route"
 
 #. js-lingui-explicit-id
 #~ msgid "Routing through these tokens resulted in the best price for your trade."
-#~ msgstr "Trecerea prin aceste jetoane a dus la cel mai bun preț pentru tranzacția dvs."
+#~ msgstr "Routing through these tokens resulted in the best price for your trade."
 
 #. js-lingui-explicit-id
 #~ msgid "SAAVE"
-#~ msgstr "Saaaave"
+#~ msgstr "SAAVE"
 
 #. js-lingui-explicit-id
 #~ msgid "SAAVE: Stack your yields in one transaction"
-#~ msgstr "SAAVE: Stivați randamentele într-o singură tranzacție"
+#~ msgstr "SAAVE: Stack your yields in one transaction"
 
 #. js-lingui-explicit-id
 #~ msgid "STAKE"
-#~ msgstr "Miză"
+#~ msgstr "STAKE"
 
 #. js-lingui-explicit-id
 #~ msgid "SUSHI Balance"
-#~ msgstr "Echilibru SUSHI"
+#~ msgstr "SUSHI Balance"
 
 #. js-lingui-explicit-id
 #~ msgid "SUSHI Balance: {sushiBalance}"
-#~ msgstr "Sold SUSHI: {sushiBalance}"
+#~ msgstr "SUSHI Balance: {sushiBalance}"
 
 #. js-lingui-explicit-id
 #~ msgid "SUSHI {0}/{1} Burned"
-#~ msgstr "SUSHI {0} / {1} Ars"
+#~ msgstr "SUSHI {0}/{1} Burned"
 
 #. js-lingui-explicit-id
 #~ msgid "SWAP"
@@ -1600,35 +1601,35 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Search by name, symbol, address"
-#~ msgstr "Căutați după nume, simbol, adresă"
+#~ msgstr "Search by name, symbol, address"
 
 #. js-lingui-explicit-id
 #~ msgid "Search name or paste address"
-#~ msgstr "Căutați numele sau lipiți adresa"
+#~ msgstr "Search name or paste address"
 
 #. js-lingui-explicit-id
 #~ msgid "Search name or paste the address"
-#~ msgstr "Numele de căutare sau lipiți adresa"
+#~ msgstr "Search name or paste the address"
 
 #. js-lingui-explicit-id
 #~ msgid "Select a token"
-#~ msgstr "Selectați un simbol"
+#~ msgstr "Select a token"
 
 #. js-lingui-explicit-id
 #~ msgid "Select a token to find your liquidity"
-#~ msgstr "Selectați un simbol pentru a vă găsi lichiditatea"
+#~ msgstr "Select a token to find your liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Select an LP Token"
-#~ msgstr "Selectați un jeton LP"
+#~ msgstr "Select an LP Token"
 
 #. js-lingui-explicit-id
 #~ msgid "Share of Pool"
-#~ msgstr "Cota din Pool"
+#~ msgstr "Share of Pool"
 
 #. js-lingui-explicit-id
 #~ msgid "Share of Pool:"
-#~ msgstr "Ponderea pool-ului:"
+#~ msgstr "Share of Pool:"
 
 #. js-lingui-explicit-id
 #~ msgid "Share with friends"
@@ -1636,11 +1637,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Slippage Tolerance"
-#~ msgstr "Toleranță la alunecare"
+#~ msgstr "Slippage Tolerance"
 
 #. js-lingui-explicit-id
 #~ msgid "Slippage tolerance"
-#~ msgstr "Toleranță la alunecare"
+#~ msgstr "Slippage tolerance"
 
 #. js-lingui-explicit-id
 #~ msgid "Social APY"
@@ -1648,95 +1649,95 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Some assets are not available through this interface because they may not work well with our smart contract or we are unable to allow trading for legal reasons."
-#~ msgstr "Unele active nu sunt disponibile prin această interfață deoarece acestea nu pot funcționa bine cu contractul nostru inteligent sau nu putem permite tranzacționarea din motive legale."
+#~ msgstr "Some assets are not available through this interface because they may not work well with our smart contract or we are unable to allow trading for legal reasons."
 
 #. js-lingui-explicit-id
 #~ msgid "Something went wrong during signing of the approval. This is expected for hardware wallets, such as Trezor and Ledger. Click again and the fallback method will be used"
-#~ msgstr "Ceva nu a funcționat în timpul semnării aprobării. Acest lucru este de așteptat pentru portofelele hardware, cum ar fi Trezor și Ledger. Faceți clic din nou și va fi utilizată metoda de rezervă"
+#~ msgstr "Something went wrong during signing of the approval. This is expected for hardware wallets, such as Trezor and Ledger. Click again and the fallback method will be used"
 
 #. js-lingui-explicit-id
 #~ msgid "Stack Yields with SAAVE"
-#~ msgstr "Stivați randamentele cu SAAVE"
+#~ msgstr "Stack Yields with SAAVE"
 
 #. js-lingui-explicit-id
 #~ msgid "Stake"
-#~ msgstr "Miza"
+#~ msgstr "Stake"
 
 #. js-lingui-explicit-id
 #~ msgid "Stake SUSHI"
-#~ msgstr "Miza SUSHI"
+#~ msgstr "Stake SUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "Stake SUSHI for xSUSHI"
-#~ msgstr "Miza SUSHI pentru xSUSHI"
+#~ msgstr "Stake SUSHI for xSUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Stake into xSUSHI add collateral as axSUSHI on Aave all in\n"
 #~ "one click"
 #~ msgstr ""
-#~ "Miza în xSUSHI adăugați garanții ca axSUSHI pe Aave toate în \n"
-#~ " un singur clic"
+#~ "Stake into xSUSHI add collateral as axSUSHI on Aave all in\n"
+#~ "one click"
 
 #. js-lingui-explicit-id
 #~ msgid "Stake your SUSHI into xSUSHI for ~5% APY. Deposit your xSUSHI into Aave as aXSUSHI to earn collateral interest and borrowing power. All in one click."
-#~ msgstr "Mizați-vă SUSHI în xSUSHI pentru ~ 5% APY. Depuneți xSUSHI în Aave ca aXSUSHI pentru a câștiga dobânzi colaterale și putere de împrumut. Toate într-un singur clic."
+#~ msgstr "Stake your SUSHI into xSUSHI for ~5% APY. Deposit your xSUSHI into Aave as aXSUSHI to earn collateral interest and borrowing power. All in one click."
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Stake your SUSHI into xSUSHI for ~5% APY. No impermanent loss, no loss of governance rights.\n"
 #~ "Continuously compounding."
 #~ msgstr ""
-#~ "Mizați-vă SUSHI în xSUSHI pentru ~ 5% APY. Nicio pierdere impermanentă, nici o pierdere a drepturilor de guvernanță. \n"
-#~ " Compunere continuă."
+#~ "Stake your SUSHI into xSUSHI for ~5% APY. No impermanent loss, no loss of governance rights.\n"
+#~ "Continuously compounding."
 
 #. js-lingui-explicit-id
 #~ msgid "Staked {0} at {1}"
-#~ msgstr "{0} la {1}"
+#~ msgstr "Staked {0} at {1}"
 
 #. js-lingui-explicit-id
 #~ msgid "Stakes"
-#~ msgstr "Miză"
+#~ msgstr "Stakes"
 
 #. js-lingui-explicit-id
 #~ msgid "Staking"
-#~ msgstr "Staking."
+#~ msgstr "Staking"
 
 #. js-lingui-explicit-id
 #~ msgid "Staking APR"
-#~ msgstr "Aprovizionare APR"
+#~ msgstr "Staking APR"
 
 #. js-lingui-explicit-id
 #~ msgid "Staking could be of two types: UBI for funds staked on the GoodDollar trust for the generation of new G$ for universal income distribution, or Governance (to be enabled) for staking G$s for GOOD Rewards."
-#~ msgstr ""
+#~ msgstr "Staking could be of two types: UBI for funds staked on the GoodDollar trust for the generation of new G$ for universal income distribution, or Governance (to be enabled) for staking G$s for GOOD Rewards."
 
 #. js-lingui-explicit-id
 #~ msgid "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can be rewarded with more G$ every day!"
-#~ msgstr "Începând cu 1.0, multiplicatorul dvs. va crește la 2.0 după o lună de a se ține la încredere, moment în care puteți fi recompensați cu mai mult G $ în fiecare zi!"
+#~ msgstr "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can be rewarded with more G$ every day!"
 
 #. js-lingui-explicit-id
 #~ msgid "Submit Tool"
-#~ msgstr "Instrumentul de trimitere"
+#~ msgstr "Submit Tool"
 
 #. js-lingui-explicit-id
 #~ msgid "Success!"
-#~ msgstr "Succes!"
+#~ msgstr "Success!"
 
 #. js-lingui-explicit-id
 #~ msgid "Supply APR"
-#~ msgstr "Aprovizionare aprilie"
+#~ msgstr "Supply APR"
 
 #. js-lingui-explicit-id
 #~ msgid "Supplying {0} {1} and {2} {3}"
-#~ msgstr "Furnizare {0} {1} și {2} {3}"
+#~ msgstr "Supplying {0} {1} and {2} {3}"
 
 #. js-lingui-explicit-id
 #~ msgid "Sushi allows for swapping of ERC20 compatible tokens across multiple networks"
-#~ msgstr "Sushi permite schimbul de jetoane compatibile ERC20 pe mai multe rețele"
+#~ msgstr "Sushi allows for swapping of ERC20 compatible tokens across multiple networks"
 
 #. js-lingui-explicit-id
 #~ msgid "Sushi is a supporter of Open Source."
-#~ msgstr "Sushi susține Open Source."
+#~ msgstr "Sushi is a supporter of Open Source."
 
 #. js-lingui-explicit-id
 #~ msgid "SushiBar"
@@ -1744,7 +1745,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "SushiBar: Make SUSHI work for you"
-#~ msgstr "SushiBar: Fă SUSHI să funcționeze pentru tine"
+#~ msgstr "SushiBar: Make SUSHI work for you"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap"
@@ -1752,7 +1753,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Swap Anyway"
-#~ msgstr "Swap Oricum"
+#~ msgstr "Swap Anyway"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap Completed"
@@ -1760,19 +1761,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Swap From (est.):"
-#~ msgstr "Schimbați de la (est.):"
+#~ msgstr "Swap From (est.):"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap From:"
-#~ msgstr "Schimbați de la:"
+#~ msgstr "Swap From:"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap To (est.):"
-#~ msgstr "Schimbați către (est.):"
+#~ msgstr "Swap To (est.):"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap To:"
-#~ msgstr "Schimbați la:"
+#~ msgstr "Swap To:"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap for SAK3 token on SUSHI now. Click here to swap."
@@ -1780,19 +1781,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Swap from"
-#~ msgstr "Swap de la"
+#~ msgstr "Swap from"
 
 #. js-lingui-explicit-id
 #~ msgid "Swap to"
-#~ msgstr "Swap la."
+#~ msgstr "Swap to"
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Swapped  {0} {1}\n"
 #~ "to {2} {3}"
 #~ msgstr ""
-#~ "Swapped {0} {1} \n"
-#~ " la {2} {3}"
+#~ "Swapped  {0} {1}\n"
+#~ "to {2} {3}"
 
 #. js-lingui-explicit-id
 #~ msgid ""
@@ -1806,15 +1807,15 @@ msgstr ""
 #~ "to a minimum of {minimumOutputSig} {1}"
 #~ msgstr ""
 #~ "Swapped {inputSig} {0} \n"
-#~ " la un minim de {minimumOutputSig} {1}"
+#~ "to a minimum of {minimumOutputSig} {1}"
 
 #. js-lingui-explicit-id
 #~ msgid "Swapping"
-#~ msgstr "Swapping."
+#~ msgstr "Swapping"
 
 #. js-lingui-explicit-id
 #~ msgid "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers."
-#~ msgstr "Swapping G $ împotriva Goodreservelor nu are taxe terțe dacă faceți schimb de la / la CDAI, deoarece este jetonul nostru de rezervă. Schimbarea G $ S de la / către alte active implică o taxă de 0,3%, ajungând la furnizorii de lichidități AMM terță parte."
+#~ msgstr "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers."
 
 #. js-lingui-explicit-id
 #~ msgid ""
@@ -1822,11 +1823,11 @@ msgstr ""
 #~ "to a minimum of {minimumOutputSig} {1}"
 #~ msgstr ""
 #~ "Swapping {inputSig} {0} \n"
-#~ " la un minim de {minimumOutputSig} {1}"
+#~ "to a minimum of {minimumOutputSig} {1}"
 
 #. js-lingui-explicit-id
 #~ msgid "Switch to {network}"
-#~ msgstr "Schimba cu {network}"
+#~ msgstr "Switch to {network}"
 
 #. js-lingui-explicit-id
 #~ msgid "Switch to {requireChain}"
@@ -1834,15 +1835,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Switch your network to {0} to work with Portfolio"
-#~ msgstr "Schimbați rețeaua dvs. la {0} pentru a lucra cu portofoliu"
+#~ msgstr "Switch your network to {0} to work with Portfolio"
 
 #. js-lingui-explicit-id
 #~ msgid "Switch your network to {0} to work with Stakes"
-#~ msgstr "Schimbați rețeaua dvs. la {0} pentru a lucra cu mizele"
+#~ msgstr "Switch your network to {0} to work with Stakes"
 
 #. js-lingui-explicit-id
 #~ msgid "TOKEN"
-#~ msgstr "JETON"
+#~ msgstr "TOKEN"
 
 #. js-lingui-explicit-id
 #~ msgid "TVL"
@@ -1868,11 +1869,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "The difference between the market price and estimated price due to trade size."
-#~ msgstr "Diferența dintre prețul pieței și prețul estimat datorită dimensiunii comerțului."
+#~ msgstr "The difference between the market price and estimated price due to trade size."
 
 #. js-lingui-explicit-id
 #~ msgid "The difference between the market price and your price due to trade size."
-#~ msgstr "Diferența dintre prețul pieței și prețul dvs. datorită dimensiunii comerțului."
+#~ msgstr "The difference between the market price and your price due to trade size."
 
 #. js-lingui-explicit-id
 #~ msgid "The fixed annual interest."
@@ -1888,11 +1889,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "The onchain oracle that tracks the pricing for this pair"
-#~ msgstr "Oracolul onchain care urmărește prețurile pentru această pereche"
+#~ msgstr "The onchain oracle that tracks the pricing for this pair"
 
 #. js-lingui-explicit-id
 #~ msgid "The token list"
-#~ msgstr "Lista de token"
+#~ msgstr "The token list"
 
 #. js-lingui-explicit-id
 #~ msgid "The total of your deposits which accumulates the rewards."
@@ -1900,7 +1901,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "The transaction cannot succeed due to error: {0}. This is probably an issue with one of the tokens you are swapping."
-#~ msgstr "Tranzacția nu poate reuși din cauza erorii: {0} . Aceasta este probabil o problemă cu unul dintre jetoanele pe care le schimbați."
+#~ msgstr "The transaction cannot succeed due to error: {0}. This is probably an issue with one of the tokens you are swapping."
 
 #. js-lingui-explicit-id
 #~ msgid "These are the total yearly rewards in G$ and GOOD."
@@ -1908,11 +1909,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "These tokens are commonly paired with other tokens."
-#~ msgstr "Aceste jetoane sunt asociate frecvent cu alte jetoane."
+#~ msgstr "These tokens are commonly paired with other tokens."
 
 #. js-lingui-explicit-id
 #~ msgid "Things you can do with your SUSHI"
-#~ msgstr "Lucruri pe care le poți face cu SUSHI"
+#~ msgstr "Things you can do with your SUSHI"
 
 #. js-lingui-explicit-id
 #~ msgid "This is the annual percentage of UBI your stake will create."
@@ -1920,7 +1921,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "This is the protocol that the token is staked to."
-#~ msgstr "Acesta este protocolul pe care jetonul este împachetat la."
+#~ msgstr "This is the protocol that the token is staked to."
 
 #. js-lingui-explicit-id
 #~ msgid "This is the protocol that the token will be staked to."
@@ -1932,7 +1933,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "This is the token that is currently being staked."
-#~ msgstr "Acesta este jetonul care este în prezent pus în prezent."
+#~ msgstr "This is the token that is currently being staked."
 
 #. js-lingui-explicit-id
 #~ msgid "This is the token that you can deposit into the savings contract."
@@ -1940,55 +1941,55 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "This month"
-#~ msgstr "Luna aceasta"
+#~ msgstr "This month"
 
 #. js-lingui-explicit-id
 #~ msgid "This project is in beta. Use at your own risk"
-#~ msgstr "Acest proiect este în versiune beta. Folosiți pe propria răspundere"
+#~ msgstr "This project is in beta. Use at your own risk"
 
 #. js-lingui-explicit-id
 #~ msgid "This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance."
-#~ msgstr "Această tranzacție nu va reuși nici din cauza mișcării prețului, nici a comisioanelor la transfer. Încercați să vă măriți toleranța la alunecare."
+#~ msgstr "This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance."
 
 #. js-lingui-explicit-id
 #~ msgid "Tip"
-#~ msgstr "Bacsis"
+#~ msgstr "Tip"
 
 #. js-lingui-explicit-id
 #~ msgid "Tip: Custom tokens are stored locally in your browser"
-#~ msgstr "Sfat: Tokenii personalizați sunt stocați la nivel local în browserul dvs."
+#~ msgstr "Tip: Custom tokens are stored locally in your browser"
 
 #. js-lingui-explicit-id
 #~ msgid "To"
-#~ msgstr "La"
+#~ msgstr "To"
 
 #. js-lingui-explicit-id
 #~ msgid "To (estimated)"
-#~ msgstr "Către (estimat)"
+#~ msgstr "To (estimated)"
 
 #. js-lingui-explicit-id
 #~ msgid "To withdraw into SUSHI, go to Aave and remove axSUSHI as collateral and then to SushiBar to unstake. A full unwind will be avaialble soon."
-#~ msgstr "Pentru a vă retrage în SUSHI, mergeți la Aave și eliminați axSUSHI ca garanție și apoi la SushiBar pentru a-l desface. O relaxare completă va fi disponibilă în curând."
+#~ msgstr "To withdraw into SUSHI, go to Aave and remove axSUSHI as collateral and then to SushiBar to unstake. A full unwind will be avaialble soon."
 
 #. js-lingui-explicit-id
 #~ msgid "Toggle Expert Mode"
-#~ msgstr "Comutați modul expert"
+#~ msgstr "Toggle Expert Mode"
 
 #. js-lingui-explicit-id
 #~ msgid "Token"
-#~ msgstr "Jeton"
+#~ msgstr "Token"
 
 #. js-lingui-explicit-id
 #~ msgid "Tokens"
-#~ msgstr "Jetoane"
+#~ msgstr "Tokens"
 
 #. js-lingui-explicit-id
 #~ msgid "Tokens from inactive lists. Import specific tokens below or click 'Manage' to activate more lists."
-#~ msgstr "Jetoane din listele inactive. Importați jetoanele specifice de mai jos sau faceți clic pe 'Gestionați' pentru a activa mai multe liste."
+#~ msgstr "Tokens from inactive lists. Import specific tokens below or click 'Manage' to activate more lists."
 
 #. js-lingui-explicit-id
 #~ msgid "Tools"
-#~ msgstr "Instrumente"
+#~ msgstr "Tools"
 
 #. js-lingui-explicit-id
 #~ msgid "Tools to optimize workflow"
@@ -1996,7 +1997,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Tools to optimize your workflow."
-#~ msgstr "Instrumente pentru optimizarea fluxului de lucru."
+#~ msgstr "Tools to optimize your workflow."
 
 #. js-lingui-explicit-id
 #~ msgid "Total"
@@ -2016,7 +2017,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Total amount on value staked."
-#~ msgstr "Suma totală pe valoarea stabilită."
+#~ msgstr "Total amount on value staked."
 
 #. js-lingui-explicit-id
 #~ msgid "Total currently saved."
@@ -2028,67 +2029,67 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Total stake"
-#~ msgstr "Miza totală"
+#~ msgstr "Total stake"
 
 #. js-lingui-explicit-id
 #~ msgid "Trade"
-#~ msgstr "Comerț"
+#~ msgstr "Trade"
 
 #. js-lingui-explicit-id
 #~ msgid "Trade at your own risk!"
-#~ msgstr "Comerțul pe propriul dvs. risc!"
+#~ msgstr "Trade at your own risk!"
 
 #. js-lingui-explicit-id
 #~ msgid "Transaction History"
-#~ msgstr "Istoricul tranzactiilor"
+#~ msgstr "Transaction History"
 
 #. js-lingui-explicit-id
 #~ msgid "Transaction Settings"
-#~ msgstr "Setări tranzacție"
+#~ msgstr "Transaction Settings"
 
 #. js-lingui-explicit-id
 #~ msgid "Transaction Submitted"
-#~ msgstr "Tranzacție trimisă"
+#~ msgstr "Transaction Submitted"
 
 #. js-lingui-explicit-id
 #~ msgid "Transaction deadline"
-#~ msgstr "Termen limită de tranzacție"
+#~ msgstr "Transaction deadline"
 
 #. js-lingui-explicit-id
 #~ msgid "Transaction rejected."
-#~ msgstr "Tranzacția a respins."
+#~ msgstr "Transaction rejected."
 
 #. js-lingui-explicit-id
 #~ msgid "Transaction settings"
-#~ msgstr "Setări de tranzacție"
+#~ msgstr "Transaction settings"
 
 #. js-lingui-explicit-id
 #~ msgid "Transaction was sent to the blockchain"
-#~ msgstr "Tranzacția a fost trimisă la blockchain"
+#~ msgstr "Transaction was sent to the blockchain"
 
 #. js-lingui-explicit-id
 #~ msgid "Transactions"
-#~ msgstr "Tranzacții"
+#~ msgstr "Transactions"
 
 #. js-lingui-explicit-id
 #~ msgid "Transfer Type"
-#~ msgstr "Tipul de transfer"
+#~ msgstr "Transfer Type"
 
 #. js-lingui-explicit-id
 #~ msgid "Try Again"
-#~ msgstr "Încearcă din nou"
+#~ msgstr "Try Again"
 
 #. js-lingui-explicit-id
 #~ msgid "Try enabling multi-hop trades"
-#~ msgstr "Încercați să activați tranzacțiile multi-hop"
+#~ msgstr "Try enabling multi-hop trades"
 
 #. js-lingui-explicit-id
 #~ msgid "Turn On Expert Mode"
-#~ msgstr "Activați modul expert"
+#~ msgstr "Turn On Expert Mode"
 
 #. js-lingui-explicit-id
 #~ msgid "Type"
-#~ msgstr "Tip"
+#~ msgstr "Type"
 
 #. js-lingui-explicit-id
 #~ msgid "UBI is your fair share of G$ tokens, which you can claim daily on CELO."
@@ -2104,27 +2105,27 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Unknown Source"
-#~ msgstr "Sursa necunoscuta"
+#~ msgstr "Unknown Source"
 
 #. js-lingui-explicit-id
 #~ msgid "Unknown error"
-#~ msgstr "Eroare necunoscută"
+#~ msgstr "Unknown error"
 
 #. js-lingui-explicit-id
 #~ msgid "Unstake"
-#~ msgstr "Deblocați"
+#~ msgstr "Unstake"
 
 #. js-lingui-explicit-id
 #~ msgid "Unstaked"
-#~ msgstr "Nedispus"
+#~ msgstr "Unstaked"
 
 #. js-lingui-explicit-id
 #~ msgid "Unsupported Asset"
-#~ msgstr "Activ neacceptat"
+#~ msgstr "Unsupported Asset"
 
 #. js-lingui-explicit-id
 #~ msgid "Unsupported Assets"
-#~ msgstr "Active neacceptate"
+#~ msgstr "Unsupported Assets"
 
 #. js-lingui-explicit-id
 #~ msgid "Unsupported network"
@@ -2132,67 +2133,67 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Unwrap"
-#~ msgstr "Desfaceți"
+#~ msgstr "Unwrap"
 
 #. js-lingui-explicit-id
 #~ msgid "Unwrap {0} W{1} to {2}"
-#~ msgstr "Desfaceți {0} W {1} la {2}"
+#~ msgstr "Unwrap {0} W{1} to {2}"
 
 #. js-lingui-explicit-id
 #~ msgid "Update list"
-#~ msgstr "Lista de actualizare"
+#~ msgstr "Update list"
 
 #. js-lingui-explicit-id
 #~ msgid "Use any tool below to optimize your workflow. Please note, some tools are experimental so use with discretion. If theres a smart contract involved for the tool, read the code and confirm the keys have been burned."
-#~ msgstr "Utilizați orice instrument de mai jos pentru a vă optimiza fluxul de lucru. Vă rugăm să rețineți, unele instrumente sunt experimentale, așa că utilizați-le cu discreție. Dacă există un contract inteligent pentru instrument, citiți codul și confirmați că cheile au fost arse."
+#~ msgstr "Use any tool below to optimize your workflow. Please note, some tools are experimental so use with discretion. If theres a smart contract involved for the tool, read the code and confirm the keys have been burned."
 
 #. js-lingui-explicit-id
 #~ msgid "Use this tool to find pairs that don't automatically appear in the interface"
-#~ msgstr "Utilizați acest instrument pentru a găsi perechi care nu apar automat în interfață"
+#~ msgstr "Use this tool to find pairs that don't automatically appear in the interface"
 
 #. js-lingui-explicit-id
 #~ msgid "V2 Rewarder"
-#~ msgstr "Recompensă V2"
+#~ msgstr "V2 Rewarder"
 
 #. js-lingui-explicit-id
 #~ msgid "Vesting"
-#~ msgstr "Vestire"
+#~ msgstr "Vesting"
 
 #. js-lingui-explicit-id
 #~ msgid "Vesting is executed within the guidelines selected by the community in <0>SIMP3</0>.<1/><2/>Please refer to the <3>forum discussion</3> for deliberations on additional points.<4/><5/>Additional records and weekly merkle updates can be found on <6>Github</6>"
-#~ msgstr "Vestirea este executată în conformitate cu liniile directoare selectate de comunitate în <0> SIMP3 </0> . <1/> <2/> Vă rugăm să consultați <3> discuția pe forum </3> pentru deliberări cu privire la puncte suplimentare. <4/> <5/> Înregistrările suplimentare și actualizările săptămânale ale merkle pot fi găsite pe <6> Github </6>"
+#~ msgstr "Vesting is executed within the guidelines selected by the community in <0>SIMP3</0>.<1/><2/>Please refer to the <3>forum discussion</3> for deliberations on additional points.<4/><5/>Additional records and weekly merkle updates can be found on <6>Github</6>"
 
 #. js-lingui-explicit-id
 #~ msgid "View On"
-#~ msgstr "Vedere"
+#~ msgstr "View On"
 
 #. js-lingui-explicit-id
 #~ msgid "View Stats"
-#~ msgstr "Vizualizați statistici"
+#~ msgstr "View Stats"
 
 #. js-lingui-explicit-id
 #~ msgid "View SushiBar Stats"
-#~ msgstr "Vizualizați statistici SushiBar"
+#~ msgstr "View SushiBar Stats"
 
 #. js-lingui-explicit-id
 #~ msgid "View Your Liquidity Positions"
-#~ msgstr "Vizualizați pozițiile dvs. de lichiditate"
+#~ msgstr "View Your Liquidity Positions"
 
 #. js-lingui-explicit-id
 #~ msgid "View Your Liquidity Positions >"
-#~ msgstr "Vizualizați pozițiile dvs. de lichiditate >"
+#~ msgstr "View Your Liquidity Positions >"
 
 #. js-lingui-explicit-id
 #~ msgid "View list"
-#~ msgstr "Vizualizați lista"
+#~ msgstr "View list"
 
 #. js-lingui-explicit-id
 #~ msgid "View on explorer"
-#~ msgstr "Vizualizare pe explorator"
+#~ msgstr "View on explorer"
 
 #. js-lingui-explicit-id
 #~ msgid "View pair analytics"
-#~ msgstr "Vizualizați analiza perechii"
+#~ msgstr "View pair analytics"
 
 #. js-lingui-explicit-id
 #~ msgid "View transaction on explorer"
@@ -2200,7 +2201,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "View your SushiBar Portfolio"
-#~ msgstr "Vizualizați portofoliul dvs. SushiBar"
+#~ msgstr "View your SushiBar Portfolio"
 
 #. js-lingui-explicit-id
 #~ msgid ""
@@ -2220,27 +2221,27 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "WITHDRAW"
-#~ msgstr "RETRAGE"
+#~ msgstr "WITHDRAW"
 
 #. js-lingui-explicit-id
 #~ msgid "Waiting For Confirmation"
-#~ msgstr "Așteptați confirmarea"
+#~ msgstr "Waiting For Confirmation"
 
 #. js-lingui-explicit-id
 #~ msgid "Waiting for Confirmation"
-#~ msgstr "Așteptați confirmarea"
+#~ msgstr "Waiting for Confirmation"
 
 #. js-lingui-explicit-id
 #~ msgid "Wallet"
-#~ msgstr "Portofel"
+#~ msgstr "Wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Wallet Balance"
-#~ msgstr "Soldul portofelului"
+#~ msgstr "Wallet Balance"
 
 #. js-lingui-explicit-id
 #~ msgid "Wallet balance"
-#~ msgstr "Balanța portofelului"
+#~ msgstr "Wallet balance"
 
 #. js-lingui-explicit-id
 #~ msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
@@ -2248,19 +2249,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Welcome to Sushi on Polygon (Matic)"
-#~ msgstr "Bine ați venit la Sushi on Polygon (Matic)"
+#~ msgstr "Welcome to Sushi on Polygon (Matic)"
 
 #. js-lingui-explicit-id
 #~ msgid "What's an exit contribution?"
-#~ msgstr "Care este o contribuție de ieșire?"
+#~ msgstr "What's an exit contribution?"
 
 #. js-lingui-explicit-id
 #~ msgid "When creating a pair you are the first liquidity provider. The ratio of tokens you add will set the price of this pool. Once you are happy with the rate, click supply to review"
-#~ msgstr "Când creați o pereche, sunteți primul furnizor de lichidități. Raportul de jetoane pe care îl adăugați va stabili prețul acestui pool. După ce sunteți mulțumit de tarif, faceți clic pe furnizare pentru a examina"
+#~ msgstr "When creating a pair you are the first liquidity provider. The ratio of tokens you add will set the price of this pool. Once you are happy with the rate, click supply to review"
 
 #. js-lingui-explicit-id
 #~ msgid "Withdraw"
-#~ msgstr "Retrage"
+#~ msgstr "Withdraw"
 
 #. js-lingui-explicit-id
 #~ msgid "Withdraw G$"
@@ -2272,11 +2273,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Withdraw as {0}?"
-#~ msgstr ""
+#~ msgstr "Withdraw as {0}?"
 
 #. js-lingui-explicit-id
 #~ msgid "Withdraw {assetSymbol}"
-#~ msgstr "Retrase {assetSymbol}"
+#~ msgstr "Withdraw {assetSymbol}"
 
 #. js-lingui-explicit-id
 #~ msgid "Withdrawing your stake will reset your multiplier."
@@ -2284,15 +2285,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Withdrew funds from {0}"
-#~ msgstr "A retras fonduri de la {0}"
+#~ msgstr "Withdrew funds from {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "Wrap"
-#~ msgstr "Înfășurați"
+#~ msgstr "Wrap"
 
 #. js-lingui-explicit-id
 #~ msgid "Wrong Network"
-#~ msgstr "Rețea greșită"
+#~ msgstr "Wrong Network"
 
 #. js-lingui-explicit-id
 #~ msgid "Yes, I did!"
@@ -2300,11 +2301,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Yesterday's APR"
-#~ msgstr "APR de ieri"
+#~ msgstr "Yesterday's APR"
 
 #. js-lingui-explicit-id
 #~ msgid "Yield"
-#~ msgstr "Randament"
+#~ msgstr "Yield"
 
 #. js-lingui-explicit-id
 #~ msgid "Yield Debugger"
@@ -2316,27 +2317,27 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Yield Instruments"
-#~ msgstr "Instrumente de randament"
+#~ msgstr "Yield Instruments"
 
 #. js-lingui-explicit-id
 #~ msgid "You Will Receive:"
-#~ msgstr "Vei primi:"
+#~ msgstr "You Will Receive:"
 
 #. js-lingui-explicit-id
 #~ msgid "You are creating UBI to thousands of people around the world."
-#~ msgstr "Creați UBI la mii de oameni din întreaga lume."
+#~ msgstr "You are creating UBI to thousands of people around the world."
 
 #. js-lingui-explicit-id
 #~ msgid "You are creating a pool"
-#~ msgstr "Creați o piscină"
+#~ msgstr "You are creating a pool"
 
 #. js-lingui-explicit-id
 #~ msgid "You are currently browsing"
-#~ msgstr "În prezent, navigați"
+#~ msgstr "You are currently browsing"
 
 #. js-lingui-explicit-id
 #~ msgid "You are on the wrong network"
-#~ msgstr "Ești într-o rețea greșită"
+#~ msgstr "You are on the wrong network"
 
 #. js-lingui-explicit-id
 #~ msgid "You can leave the bar and exchange your xSUSHI for SUSHI (as well as collect any earned interest) at any time. However, there are more ways to use xSUSHI to maximize your yield potential!"
@@ -2344,11 +2345,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "You can leave the bar and exchange your {0} for {1} (as well as collect any earned interest) at any time. However, there are more ways to use {2} to maximize your yield potential!"
-#~ msgstr "Puteți părăsi barul și puteți schimba {0} pentru {1} (precum și colectați orice interes câștigat) în orice moment. Cu toate acestea, există mai multe modalități de a utiliza {2} pentru a maximiza potențialul de randament!"
+#~ msgstr "You can leave the bar and exchange your {0} for {1} (as well as collect any earned interest) at any time. However, there are more ways to use {2} to maximize your yield potential!"
 
 #. js-lingui-explicit-id
 #~ msgid "You don’t have liquidity in this pool yet"
-#~ msgstr "În acest fond nu aveți încă lichidități"
+#~ msgstr "You don’t have liquidity in this pool yet"
 
 #. js-lingui-explicit-id
 #~ msgid ""
@@ -2366,11 +2367,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded."
-#~ msgstr ""
+#~ msgstr "You have just staked your G$s towards our GoodDAO, this action is gonna reward you with GOOD governance tokens, which are non-transferable so can't be traded."
 
 #. js-lingui-explicit-id
 #~ msgid "You have successfully claimed your rewards"
-#~ msgstr "V-ați revendicat cu succes recompensele"
+#~ msgstr "You have successfully claimed your rewards"
 
 #. js-lingui-explicit-id
 #~ msgid ""
@@ -2384,15 +2385,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "You need to first approve LP tokens and then migrate it"
-#~ msgstr "Mai întâi trebuie să aprobați jetoanele LP și apoi să le migrați"
+#~ msgstr "You need to first approve LP tokens and then migrate it"
 
 #. js-lingui-explicit-id
 #~ msgid "You need to sign the transaction in your wallet"
-#~ msgstr "Trebuie să semnați tranzacția în portofel"
+#~ msgstr "You need to sign the transaction in your wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "You will receive"
-#~ msgstr "Vei primi"
+#~ msgstr "You will receive"
 
 #. js-lingui-explicit-id
 #~ msgid "You've already claimed today. Come back in {tillClaim}"
@@ -2400,59 +2401,59 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Your Claimable SUSHI this Week"
-#~ msgstr "SUSHI-ul tău revendicat săptămâna aceasta"
+#~ msgstr "Your Claimable SUSHI this Week"
 
 #. js-lingui-explicit-id
 #~ msgid "Your History"
-#~ msgstr "Istoria ta."
+#~ msgstr "Your History"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Liquidity"
-#~ msgstr "Lichiditatea ta"
+#~ msgstr "Your Liquidity"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Liquidity Positions"
-#~ msgstr "Pozițiile dvs. de lichiditate"
+#~ msgstr "Your Liquidity Positions"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Pool Share"
-#~ msgstr "Cota dvs. din piscină"
+#~ msgstr "Your Pool Share"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Pool Tokens"
-#~ msgstr "Jetoanele de biliard"
+#~ msgstr "Your Pool Tokens"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Staked"
-#~ msgstr "Miza ta"
+#~ msgstr "Your Staked"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Staked Farms"
-#~ msgstr "Fermele tale comise"
+#~ msgstr "Your Staked Farms"
 
 #. js-lingui-explicit-id
 #~ msgid "Your SushiBar Stats"
-#~ msgstr "Statisticile dvs. SushiBar"
+#~ msgstr "Your SushiBar Stats"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Transaction History"
-#~ msgstr "Istoricul tranzacțiilor dvs."
+#~ msgstr "Your Transaction History"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Transaction History on {0}"
-#~ msgstr ""
+#~ msgstr "Your Transaction History on {0}"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Vested SUSHI will be released each week for the next 6 months. The amount released each week is determined by your historical farming rewards. You do not need to harvest each week as unclaimed amounts from each week will continue to accrue onto the next."
-#~ msgstr "Sushiul dvs. vizibil va fi lansat în fiecare săptămână pentru următoarele 6 luni. Suma eliberată în fiecare săptămână este determinată de recompensele dvs. istorice ale agriculturii. Nu este nevoie să recoltați în fiecare săptămână, deoarece sumele nerevendicate din fiecare săptămână vor continua să se acumuleze pe următorul."
+#~ msgstr "Your Vested SUSHI will be released each week for the next 6 months. The amount released each week is determined by your historical farming rewards. You do not need to harvest each week as unclaimed amounts from each week will continue to accrue onto the next."
 
 #. js-lingui-explicit-id
 #~ msgid "Your Wallet"
-#~ msgstr "Portofelul tau"
+#~ msgstr "Your Wallet"
 
 #. js-lingui-explicit-id
 #~ msgid "Your Yields"
-#~ msgstr "Randamentele tale"
+#~ msgstr "Your Yields"
 
 #. js-lingui-explicit-id
 #~ msgid "Your current network."
@@ -2464,11 +2465,11 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Your pool share"
-#~ msgstr "Cota dvs. din piscină"
+#~ msgstr "Your pool share"
 
 #. js-lingui-explicit-id
 #~ msgid "Your social contribution from:"
-#~ msgstr "Contribuția dvs. socială din:"
+#~ msgstr "Your social contribution from:"
 
 #. js-lingui-explicit-id
 #~ msgid ""
@@ -2481,36 +2482,36 @@ msgstr ""
 #~ "Your staking transaction which will generate UBI for thousands of people around \n"
 #~ "the world has just been broadcasted to the network."
 #~ msgstr ""
-#~ "Tranzacția voastră care va genera UBI pentru mii de oameni din jur \n"
-#~ " Lumea tocmai a fost difuzată în rețea."
+#~ "Your staking transaction which will generate UBI for thousands of people around \n"
+#~ "the world has just been broadcasted to the network."
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "Your staking transaction will generate UBI for thousands of people around \n"
 #~ "the world has just been broadcasted to the network."
 #~ msgstr ""
-#~ "Tranzacția dvs. de apă va genera UBI pentru mii de oameni din jur \n"
-#~ " Lumea tocmai a fost difuzată în rețea."
+#~ "Your staking transaction will generate UBI for thousands of people around \n"
+#~ "the world has just been broadcasted to the network."
 
 #. js-lingui-explicit-id
 #~ msgid "Your total pool tokens"
-#~ msgstr "Numărul total de jetoane"
+#~ msgstr "Your total pool tokens"
 
 #. js-lingui-explicit-id
 #~ msgid "Your total pool tokens:"
-#~ msgstr "Tokenurile totale de piscină:"
+#~ msgstr "Your total pool tokens:"
 
 #. js-lingui-explicit-id
 #~ msgid "Your transaction may be frontrun"
-#~ msgstr "Tranzacția dvs. poate fi fruntun"
+#~ msgstr "Your transaction may be frontrun"
 
 #. js-lingui-explicit-id
 #~ msgid "Your transaction may fail"
-#~ msgstr "Tranzacția dvs. poate eșua"
+#~ msgstr "Your transaction may fail"
 
 #. js-lingui-explicit-id
 #~ msgid "Your transaction will revert if it is pending for more than this long."
-#~ msgstr "Tranzacția dvs. se va reveni dacă este în așteptare mai mult de atât de mult."
+#~ msgstr "Your transaction will revert if it is pending for more than this long."
 
 #. js-lingui-explicit-id
 #~ msgid "Your transaction will revert if it is pending for more than this time."
@@ -2518,19 +2519,19 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "Your transaction will revert if the price changes unfavorably by more than this percentage."
-#~ msgstr "Tranzacția dvs. va reveni dacă prețul se modifică nefavorabil cu mai mult de acest procent."
+#~ msgstr "Your transaction will revert if the price changes unfavorably by more than this percentage."
 
 #. js-lingui-explicit-id
 #~ msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
-#~ msgstr "Tranzacția dvs. se va reveni dacă există o mișcare de preț mare și nefavorabilă înainte de a fi confirmată."
+#~ msgstr "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 
 #. js-lingui-explicit-id
 #~ msgid "Your transactions will appear here..."
-#~ msgstr "Tranzacțiile dvs. vor apărea aici ..."
+#~ msgstr "Your transactions will appear here..."
 
 #. js-lingui-explicit-id
 #~ msgid "Your {exchange} {0}/{1} liquidity will become SushiSwap {2}/{3} liquidity."
-#~ msgstr "Lichiditatea dvs. {exchange} {0} / {1} va deveni lichiditate SushiSwap {2} / {3} ."
+#~ msgstr "Your {exchange} {0}/{1} liquidity will become SushiSwap {2}/{3} liquidity."
 
 #. js-lingui-explicit-id
 #~ msgid "Your {type} transaction has been confirmed!"
@@ -2538,95 +2539,95 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "added"
-#~ msgstr "adăugat"
+#~ msgstr "added"
 
 #. js-lingui-explicit-id
 #~ msgid "amount"
-#~ msgstr "Cantitate"
+#~ msgstr "amount"
 
 #. js-lingui-explicit-id
 #~ msgid "annualized"
-#~ msgstr ""
+#~ msgstr "annualized"
 
 #. js-lingui-explicit-id
 #~ msgid "failed to load"
-#~ msgstr "incarcarea a esuat"
+#~ msgstr "failed to load"
 
 #. js-lingui-explicit-id
 #~ msgid "has been updated to"
-#~ msgstr "a fost actualizat la"
+#~ msgstr "has been updated to"
 
 #. js-lingui-explicit-id
 #~ msgid "import it"
-#~ msgstr "importă-l"
+#~ msgstr "import it"
 
 #. js-lingui-explicit-id
 #~ msgid "loading..."
-#~ msgstr "Se încarcă..."
+#~ msgstr "loading..."
 
 #. js-lingui-explicit-id
 #~ msgid "max"
-#~ msgstr "Max."
+#~ msgstr "max"
 
 #. js-lingui-explicit-id
 #~ msgid "minutes"
-#~ msgstr "minute"
+#~ msgstr "minutes"
 
 #. js-lingui-explicit-id
 #~ msgid "network"
-#~ msgstr "reţea"
+#~ msgstr "network"
 
 #. js-lingui-explicit-id
 #~ msgid "on the"
-#~ msgstr "pe"
+#~ msgstr "on the"
 
 #. js-lingui-explicit-id
 #~ msgid "or the transaction will revert."
-#~ msgstr "sau tranzacția va reveni."
+#~ msgstr "or the transaction will revert."
 
 #. js-lingui-explicit-id
 #~ msgid "per day"
-#~ msgstr "pe zi"
+#~ msgstr "per day"
 
 #. js-lingui-explicit-id
 #~ msgid "per month"
-#~ msgstr "pe luna"
+#~ msgstr "per month"
 
 #. js-lingui-explicit-id
 #~ msgid "removed"
-#~ msgstr "îndepărtat"
+#~ msgstr "removed"
 
 #. js-lingui-explicit-id
 #~ msgid "rewards"
-#~ msgstr "recompense"
+#~ msgstr "rewards"
 
 #. js-lingui-explicit-id
 #~ msgid "to"
-#~ msgstr "la"
+#~ msgstr "to"
 
 #. js-lingui-explicit-id
 #~ msgid "tokens"
-#~ msgstr "tokens."
+#~ msgstr "tokens"
 
 #. js-lingui-explicit-id
 #~ msgid "tokens updated"
-#~ msgstr "Tokens actualizat"
+#~ msgstr "tokens updated"
 
 #. js-lingui-explicit-id
 #~ msgid "via"
-#~ msgstr "prin intermediul"
+#~ msgstr "via"
 
 #. js-lingui-explicit-id
 #~ msgid "xSUSHI Balance"
-#~ msgstr "Echilibru xSUSHI"
+#~ msgstr "xSUSHI Balance"
 
 #. js-lingui-explicit-id
 #~ msgid ""
 #~ "xSUSHI automatically earn fees (0.05% of all swaps, including multichain swaps) proportional\n"
 #~ "to your share of the SushiBar."
 #~ msgstr ""
-#~ "xSUSHI câștigă automat comisioane (0,05% din toate swap-urile, inclusiv swap-urile multi- \n"
-#~ " cu cota dvs. din SushiBar."
+#~ "xSUSHI automatically earn fees (0.05% of all swaps, including multichain swaps) proportional\n"
+#~ "to your share of the SushiBar."
 
 #. js-lingui-explicit-id
 #~ msgid "{0}"
@@ -2642,15 +2643,15 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "{0} Deposited"
-#~ msgstr "{0} Depus"
+#~ msgstr "{0} Deposited"
 
 #. js-lingui-explicit-id
 #~ msgid "{0} Strategy"
-#~ msgstr "{0} Strategie"
+#~ msgstr "{0} Strategy"
 
 #. js-lingui-explicit-id
 #~ msgid "{0} per {1}"
-#~ msgstr "{0} pe {1}"
+#~ msgstr "{0} per {1}"
 
 #. js-lingui-explicit-id
 #~ msgid "{amount} {0}"
@@ -2662,7 +2663,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #~ msgid "• Added by user"
-#~ msgstr "• Adăugat de către utilizator"
+#~ msgstr "• Added by user"
 
 #: src/components/Savings/SavingsModal/index.tsx:280
 #: src/components/Savings/SavingsModal/index.tsx:282
@@ -2674,19 +2675,19 @@ msgstr ""
 msgid "{amount} {0}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:51
+#: src/components/Faq/Faq.tsx:54
 msgid "{answer}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:67
+#: src/components/Faq/Faq.tsx:70
 msgid "{linkText}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:19
+#: src/components/Faq/Faq.tsx:22
 msgid "{question}"
 msgstr ""
 
-#: src/components/Layout/PageLayout.tsx:78
+#: src/components/Layout/PageLayout.tsx:80
 msgid "{title}"
 msgstr ""
 
@@ -2750,7 +2751,7 @@ msgstr "Echilibru"
 msgid "Blocked address"
 msgstr "Adresa blocată"
 
-#: src/components/SideBar.tsx:112
+#: src/components/SideBar.tsx:119
 msgid "Buy G$"
 msgstr ""
 
@@ -2840,7 +2841,7 @@ msgstr ""
 msgid "Close"
 msgstr "Închide"
 
-#: src/pages/gd/Claim/index.tsx:348
+#: src/pages/gd/Claim/OldClaim.tsx:315
 msgid "Collect G$"
 msgstr ""
 
@@ -2865,7 +2866,7 @@ msgstr "Felicitări!"
 msgid "Connect a wallet to see your portfolio"
 msgstr ""
 
-#: src/components/BlockNativeOnboard/index.tsx:33
+#: src/components/BlockNativeOnboard/index.tsx:32
 msgid "Connect to a wallet"
 msgstr "Conectați-vă la un portofel"
 
@@ -2894,7 +2895,7 @@ msgstr "Adresa de copiere"
 
 #: src/components/Liquidity/LiquidityPrice.tsx:22
 #~ msgid "Current Rate"
-#~ msgstr "Rata curenta"
+#~ msgstr ""
 
 #: src/components/SideBar.tsx:133
 msgid "Dapps"
@@ -2925,11 +2926,11 @@ msgstr ""
 
 #: src/components/SideBar.tsx:178
 #~ msgid "Docs"
-#~ msgstr "Documente"
+#~ msgstr ""
 
-#: src/components/SideBar.tsx:119
-msgid "Donate"
-msgstr ""
+#: src/components/SideBar.tsx:126
+#~ msgid "Donate"
+#~ msgstr ""
 
 #: src/components/Gas/index.tsx:12
 msgid "failed to load"
@@ -2976,6 +2977,10 @@ msgstr ""
 msgid "Good Airdrop"
 msgstr ""
 
+#: src/components/SideBar.tsx:112
+msgid "GoodCollective"
+msgstr ""
+
 #: src/components/Savings/SavingsCard/SavingsCardRow/index.tsx:38
 msgid "GoodDAO"
 msgstr ""
@@ -2992,7 +2997,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/index.tsx:359
+#: src/pages/gd/Claim/OldClaim.tsx:326
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -3393,7 +3398,7 @@ msgstr "Luna aceasta"
 
 #: src/pages/App.tsx:145
 #~ msgid "This project is in beta. Use at your own risk"
-#~ msgstr "Acest proiect este în versiune beta. Folosiți pe propria răspundere"
+#~ msgstr ""
 
 #: src/components/Withdraw/index.tsx:142
 #: src/pages/gd/Stake/index.tsx:66
@@ -3485,11 +3490,11 @@ msgstr "Așteptați confirmarea"
 
 #: src/components/TransactionConfirmationModal/index.tsx:49
 #~ msgid "Waiting For Confirmation"
-#~ msgstr "Așteptați confirmarea"
+#~ msgstr ""
 
 #: src/components/SideBar.tsx:154
 #~ msgid "Wallet"
-#~ msgstr "Portofel"
+#~ msgstr ""
 
 #: src/components/WalletBalance/index.tsx:136
 msgid "Wallet balance"

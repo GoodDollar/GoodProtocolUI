@@ -1,7 +1,6 @@
 import React, { memo } from 'react'
 import {
     SwitchChainModal,
-    WalletAndChainGuard,
     // ClaimCarousel,
     MicroBridgeController,
     // IClaimCard,
@@ -11,8 +10,11 @@ import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 
 import { PageLayout } from 'components/Layout/PageLayout'
+import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
+import Placeholder from 'components/gd/Placeholder'
 
 const MicroBridge = memo(() => {
+    const { account } = useActiveWeb3React()
     return (
         <PageLayout title="Micro Bridge" faqType="bridge">
             <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={2}>
@@ -27,9 +29,13 @@ ecosystems`
             <div className="rounded max-w-3xl min-w-96 w-full mx-auto">
                 <VStack maxWidth="800" minWidth="344" width="100%" alignItems="center" justifyContent="center">
                     <SwitchChainModal>
-                        <WalletAndChainGuard validChains={[122, 42220]}>
+                        {account ? (
                             <MicroBridgeController withRelay={false} />
-                        </WalletAndChainGuard>
+                        ) : (
+                            <Placeholder className="mx-4">
+                                {i18n._(t`Connect a wallet to see your portfolio`)}
+                            </Placeholder>
+                        )}
                     </SwitchChainModal>
                 </VStack>
             </div>

@@ -21,7 +21,7 @@ const CalculatorTab = () => {
     return (
         <SlideDownTab
             tabTitle="G$ Calculator"
-            viewInteraction={{ hover: { backgroundColor: 'primary:alpha.10', borderRadius: 6 } }}
+            viewInteraction={{ hover: { backgroundColor: 'gdPrimary:alpha.10', borderRadius: 6 } }}
             styles={{
                 titleFont: { fontSize: 'l', fontFamily: 'heading', fontWeight: '700', paddingLeft: 2 },
             }}

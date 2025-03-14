@@ -150,7 +150,7 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
                 {!loading && !imported && !isMinipay && (
                     <Box flexDir="row" mt={4}>
                         <MetaMaskIcon />
-                        <Text pl={2} fontFamily="subheading" fontSize="xs" onPress={importToMetamask} color="primary">
+                        <Text pl={2} fontFamily="subheading" fontSize="xs" onPress={importToMetamask} color="gdPrimary">
                             Import to Metamask
                         </Text>
                     </Box>

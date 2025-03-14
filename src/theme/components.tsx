@@ -216,8 +216,8 @@ export const ExternalLink: React.FC<{
 
     return (
         <Pressable
-            _hover={{ bg: 'primary:alpha.10' }}
-            _pressed={{ bg: 'primary', color: 'white' }}
+            _hover={{ bg: 'gdPrimary:alpha.10' }}
+            _pressed={{ bg: 'gdPrimary', color: 'white' }}
             bg="transparent"
             py={2}
             px={2}

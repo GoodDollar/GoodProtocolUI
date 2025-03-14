@@ -1,7 +1,8 @@
-import LogoSmall from '../assets/images/logo_primary_small.png'
 import { torus as torusModule } from '@gooddollar/web3sdk-v2'
 import { getNetworkEnv } from 'utils/env'
 import { sample } from 'lodash'
+
+import LogoSmall from '../assets/images/logo_primary_small.png'
 
 const network = getNetworkEnv()
 

@@ -8,14 +8,13 @@ import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { HashRouter as Router } from 'react-router-dom'
 import { AnalyticsProvider } from '@gooddollar/web3sdk-v2'
-import { NewsFeedProvider } from '@gooddollar/web3sdk-v2'
 import { PostHogProvider } from 'posthog-react-native'
+import { Provider as PaperProvider } from 'react-native-paper'
+import { GoodXProvider } from '@gooddollar/good-design'
 
 import Blocklist from './components/Blocklist'
 import App from './pages/App'
 import store from './state'
-import { feedConfig } from 'components/NewsFeed'
-import { getNetworkEnv } from 'utils/env'
 import ApplicationUpdater from './state/application/updater'
 import MulticallUpdater from './state/multicall/updater'
 import UserUpdater from './state/user/updater'
@@ -23,14 +22,12 @@ import ThemeProvider, { TwTheme } from './theme'
 import LanguageProvider from 'language'
 import { createGlobalStyle } from 'styled-components'
 import { Web3ContextProvider } from './hooks/useWeb3'
-import { NativeBaseProvider } from '@gooddollar/good-design'
 import { analyticsConfig, appInfo } from 'hooks/useSendAnalyticsData'
 import { HttpsProvider } from 'utils/HttpsProvider'
 import { registerServiceWorker } from './serviceWorker'
 import { OnboardProviderWrapper } from 'components/BlockNativeOnboard'
 import { SimpleAppProvider } from 'state/simpleapp/simpleapp'
 import { nbTheme } from './theme/nbtheme'
-import { RedirectNoticeProvider } from '@gooddollar/good-design'
 
 if (window.ethereum) {
     window.ethereum.autoRefreshOnNetworkChange = false
@@ -77,51 +74,52 @@ const enableHttpsRedirect = String(process.env.REACT_APP_ENABLE_HTTPS_REDIRECT) 
 const enableServiceWorker =
     window.location.hostname !== 'localhost' && String(process.env.REACT_APP_ENABLE_SERVICE_WORKER) === '1'
 
-const networkEnv = getNetworkEnv()
-const prodOrQa = /\b(production|staging)\b/.test(networkEnv)
+const ProviderWrapper = ({ children }) => (
+    <Provider store={store}>
+        <PostHogProvider
+            apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
+            options={{
+                host: import.meta.env.REACT_APP_POSTHOG_PROXY ?? 'https://app.posthog.com',
+            }}
+            autocapture={false}
+        >
+            <OnboardProviderWrapper>
+                <GoodXProvider
+                    nativeBaseProps={{ config: { suppressColorAccessibilityWarning: true }, theme: nbTheme }}
+                >
+                    <Web3ContextProvider>
+                        <LanguageProvider>{children}</LanguageProvider>
+                    </Web3ContextProvider>
+                </GoodXProvider>
+            </OnboardProviderWrapper>
+        </PostHogProvider>
+    </Provider>
+)
 
 const container = document.getElementById('root')
 const root = createRoot(container!)
 root.render(
     <StrictMode>
         <HttpsProvider enabled={enableHttpsRedirect}>
-            <Provider store={store}>
-                <NewsFeedProvider {...(prodOrQa ? { feedFilter: feedConfig.production.feedFilter } : { env: 'qa' })}>
-                    <RedirectNoticeProvider>
-                        <OnboardProviderWrapper>
-                            <Web3ContextProvider>
-                                <LanguageProvider>
-                                    <PostHogProvider
-                                        apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
-                                        options={{
-                                            host: import.meta.env.REACT_APP_POSTHOG_PROXY ?? 'https://app.posthog.com',
-                                        }}
-                                        autocapture={false}
-                                    >
-                                        <AnalyticsProvider config={analyticsConfig} appProps={appInfo}>
-                                            <Blocklist>
-                                                <UserUpdater />
-                                                <ApplicationUpdater />
-                                                <MulticallUpdater />
-                                                <ThemeProvider>
-                                                    <NativeBaseProvider theme={nbTheme}>
-                                                        <GlobalStyle />
-                                                        <Router>
-                                                            <SimpleAppProvider>
-                                                                <App />
-                                                            </SimpleAppProvider>
-                                                        </Router>
-                                                    </NativeBaseProvider>
-                                                </ThemeProvider>
-                                            </Blocklist>
-                                        </AnalyticsProvider>
-                                    </PostHogProvider>
-                                </LanguageProvider>
-                            </Web3ContextProvider>
-                        </OnboardProviderWrapper>
-                    </RedirectNoticeProvider>
-                </NewsFeedProvider>
-            </Provider>
+            <ProviderWrapper>
+                <AnalyticsProvider config={analyticsConfig} appProps={appInfo}>
+                    <Blocklist>
+                        <UserUpdater />
+                        <ApplicationUpdater />
+                        <MulticallUpdater />
+                        <ThemeProvider>
+                            <PaperProvider>
+                                <GlobalStyle />
+                                <Router>
+                                    <SimpleAppProvider>
+                                        <App />
+                                    </SimpleAppProvider>
+                                </Router>
+                            </PaperProvider>
+                        </ThemeProvider>
+                    </Blocklist>
+                </AnalyticsProvider>
+            </ProviderWrapper>
         </HttpsProvider>
     </StrictMode>
 )
