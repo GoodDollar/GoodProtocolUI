@@ -2146,15 +2146,15 @@ msgstr ""
 msgid "{amount} {0}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:54
+#: src/components/Faq/Faq.tsx:55
 msgid "{answer}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:70
+#: src/components/Faq/Faq.tsx:71
 msgid "{linkText}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:22
+#: src/components/Faq/Faq.tsx:23
 msgid "{question}"
 msgstr ""
 
@@ -2274,12 +2274,12 @@ msgstr ""
 msgid "CLAIMABLE REWARDS"
 msgstr ""
 
-#: src/components/ClaimRewards/index.tsx:192
+#: src/components/ClaimRewards/index.tsx:193
 #: src/components/WithdrawRewards/index.tsx:50
 msgid "Claimed G$ Rewards"
 msgstr ""
 
-#: src/components/ClaimRewards/index.tsx:191
+#: src/components/ClaimRewards/index.tsx:192
 #: src/components/WithdrawRewards/index.tsx:50
 msgid "Claimed GOOD Rewards"
 msgstr ""
@@ -2333,6 +2333,7 @@ msgstr ""
 msgid "Congratulations!"
 msgstr ""
 
+#: src/pages/gd/MicroBridge/index.tsx:36
 #: src/pages/gd/Portfolio/index.tsx:458
 msgid "Connect a wallet to see your portfolio"
 msgstr ""
@@ -2696,7 +2697,7 @@ msgstr ""
 msgid "Savings"
 msgstr ""
 
-#: src/pages/gd/MicroBridge/index.tsx:21
+#: src/pages/gd/MicroBridge/index.tsx:23
 msgid ""
 "Seamlessly convert between Fuse G$ tokens to Celo and vice versa, \n"
 "enabling versatile use of G$ tokens across various platforms and \n"
