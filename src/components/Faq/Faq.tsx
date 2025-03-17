@@ -19,6 +19,7 @@ const FaqItem = ({ id, question, answer, links, AltLink }) => {
 
     return (
         <SlideDownTab
+            key={question}
             tabTitle={i18n._(t`${question}`)}
             mb={2}
             viewInteraction={{

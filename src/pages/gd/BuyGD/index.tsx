@@ -11,7 +11,7 @@ import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { PageLayout } from 'components/Layout/PageLayout'
 
 const CalculatorTab = () => {
-    const [G$Price] = usePromise(
+    const [G$Price] = usePromise<number | undefined>(
         () =>
             g$ReservePrice()
                 .then(({ DAI }) => +DAI.toSignificant(6))
