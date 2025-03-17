@@ -6,7 +6,7 @@ export type FaqItemCopy = {
     question: string
     answer: string
     links?: { text?: string; href: string; linkText: string }[]
-    AltLink?: () => React.JSX.Element
+    AltLink?: () => React.ReactNode
 }
 
 const faqSwapCopy: FaqItemCopy[] = [
