@@ -308,12 +308,6 @@ const SwapCore = memo(() => {
             value={{
                 slippageTolerance,
                 setSlippageTolerance,
-                tokenList: tokenList ?? [],
-                tokenListLoading: tokenList == null,
-                swapPair,
-                setSwapPair: handleSetPair,
-                buying,
-                setBuying,
             }}
         >
             <SwapCardSC open={Boolean(meta)}>
