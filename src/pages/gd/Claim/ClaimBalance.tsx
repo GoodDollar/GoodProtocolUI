@@ -2,17 +2,14 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { View, Box, Text } from 'native-base'
 import { ArrowButton, BalanceGD } from '@gooddollar/good-design'
 import { SupportedChains, useHasClaimed, useSwitchNetwork } from '@gooddollar/web3sdk-v2'
-import { g$ReservePrice } from '@gooddollar/web3sdk'
-import { useFeatureFlag } from 'posthog-react-native'
-
-import usePromise from 'hooks/usePromise'
-
+import { useG$Price } from '@gooddollar/web3sdk-v2'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useClaiming } from 'hooks/useClaiming'
 import { useNetworkModalToggle } from 'state/application/hooks'
 import { BigNumber } from '@ethersproject/bignumber'
 import { QueryParams } from '@usedapp/core'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
+import { Fraction } from '@uniswap/sdk-core'
 
 const NextClaim = ({ time }: { time: string }) => (
     <Text fontFamily="subheading" fontWeight="normal" fontSize="xs" color="main">
@@ -22,21 +19,14 @@ const NextClaim = ({ time }: { time: string }) => (
 
 export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) => {
     const { chainId } = useActiveWeb3React()
-    const [G$Price] = usePromise(async () => {
-        try {
-            const reservePrice = await g$ReservePrice()
-
-            return +reservePrice?.DAI?.asFraction.toSignificant(6)
-        } catch {
-            return undefined
-        }
-    }, [])
+    const rawPrice = useG$Price()
+    const G$Price = +new Fraction(rawPrice?.toString() || 0, 1e18).toSignificant(6)
 
     const { ethereum } = window
     const isMinipay = ethereum?.isMiniPay
 
     const { tillClaim } = useClaiming()
-    const showUsdPrice = useFeatureFlag('show-gd-price') as boolean | undefined
+    const showUsdPrice = true // (useFeatureFlag('show-gd-price') as boolean | undefined)
 
     const claimedCelo = useHasClaimed('CELO')
     const claimedFuse = useHasClaimed('FUSE')

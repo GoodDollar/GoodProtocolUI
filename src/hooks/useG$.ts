@@ -3,13 +3,13 @@ import useActiveWeb3React from './useActiveWeb3React'
 import { useEffect, useState } from 'react'
 import { Token } from '@sushiswap/sdk'
 import { Token as UToken } from '@uniswap/sdk-core'
+import { ethers } from 'ethers'
 
 export default function useG$() {
-    const [token, setToken] = useState<Token | undefined>()
     const { chainId } = useActiveWeb3React()
+    const [token, setToken] = useState<Token>(new Token(chainId, ethers.constants.AddressZero, 18, 'G$', 'GoodDollar'))
 
     useEffect(() => {
-        setToken(undefined)
         if (!chainId) return
         void (async () => {
             const [tokens] = await getTokens(chainId as any)
