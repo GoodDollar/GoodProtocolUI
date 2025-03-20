@@ -207,7 +207,7 @@
         "@babel/runtime": "^7.18.9",
         "@gooddollar/good-design": "^0.4.7",
         "@gooddollar/goodprotocol": "^2.0.24",
-        "@gooddollar/web3sdk": "^0.1.44",
+        "@gooddollar/web3sdk": "^0.1.45",
         "@gooddollar/web3sdk-v2": "^0.4.3",
         "@headlessui/react": "1.5.0",
         "@lingui/format-json": "^4.0.0",
