@@ -31,9 +31,10 @@ export const SideBarMenuItem = ({ children, onPress, textColor }) => (
         onPress={onPress}
         _hover={{ bg: 'gdPrimary:alpha.10' }}
         _pressed={{ bg: 'gdPrimary' }}
-        py={1}
-        px={2}
+        // py={1}
+        // px={2}
         borderRadius="12px"
+        // w={'100%'}
     >
         {({ isPressed }) => (
             <Text fontFamily="subheading" fontSize="sm" color={isPressed ? 'white' : textColor}>
@@ -51,7 +52,7 @@ interface NavLinkProps extends React.PropsWithoutRef<ReactRouterNavLinkProps>, R
 export function NavLink({
     href = '#',
     children,
-    className = 'w-full pt-2 pr-2 rounded-xl line xl:pr-3 whitespace-nowrap',
+    className = 'w-full rounded-xl line xl:pr-3 whitespace-nowrap',
     isNavBar = false,
     onPress,
     ...rest
