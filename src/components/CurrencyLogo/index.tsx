@@ -73,7 +73,7 @@ export default function CurrencyLogo({
 }) {
     const { chainId } = useActiveWeb3React()
     const uriLocations = useHttpLocations(currency instanceof WrappedTokenInfo ? currency.logoURI : undefined)
-    const [tokenList] = usePromise<[Map<string, Currency>, Map<string, string>]>(() => getTokens(chainId))
+    const [tokenList] = usePromise<[Map<string, Currency>, Map<string, string>]>(() => getTokens(chainId) as any) // solve uniswap/sushiswap type issue
 
     const srcs: string[] = useMemo(() => {
         if (currency === ETHER) return []

@@ -71,7 +71,7 @@ const SwapCore = memo(() => {
     const tokenList = useTokens()
     const G$ = useG$()
     const [swapValue, setSwapValue] = useState('')
-    const [meta, setMeta] = useState<undefined | null | BuyInfo | SellInfo>()
+    const [meta, setMeta] = useState<undefined | BuyInfo | SellInfo>()
     const pairBalance = useCurrencyBalance(account ?? undefined, swapPair.token)
     const swapBalance = useCurrencyBalance(account ?? undefined, G$)
     const { web3 } = useGdContextProvider()
@@ -115,7 +115,7 @@ const SwapCore = memo(() => {
                 return null
             })
             if (metaTimer.current !== timer) return
-            if (!meta) return setMeta(null)
+            if (!meta) return setMeta(undefined)
             setOtherValue(
                 buying
                     ? field === 'external'

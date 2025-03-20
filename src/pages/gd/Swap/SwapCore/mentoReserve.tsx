@@ -27,7 +27,7 @@ import { useSwapMeta, useSwap } from '@gooddollar/web3sdk-v2'
 import { SupportedChainId } from '@gooddollar/web3sdk'
 import { debounce } from 'lodash'
 import { BigNumber, ethers } from 'ethers'
-import { Percent } from '@uniswap/sdk-core'
+import { Token, Percent, CurrencyAmount } from '@uniswap/sdk-core'
 
 const MentoSwap = memo(() => {
     const { i18n } = useLingui()
@@ -412,9 +412,36 @@ const MentoSwap = memo(() => {
                 pair={pair}
                 meta={{
                     priceImpact: priceImpact ? new Percent((priceImpact * 100).toFixed(), 100) : new Percent(0, 1),
-                    inputAmount: new TokenAmount(swapPair.input, inputAmountBig.toString()),
-                    outputAmount: new TokenAmount(swapPair.output, outputAmountBig.toString()),
-                    minimumOutputAmount: new TokenAmount(swapPair.output, swapMeta.minAmountOut.toString()),
+                    inputAmount: CurrencyAmount.fromRawAmount(
+                        new Token(
+                            42220,
+                            swapPair.input.address,
+                            swapPair.input.decimals,
+                            swapPair.input.symbol,
+                            swapPair.input.name
+                        ),
+                        inputAmountBig.toString()
+                    ),
+                    outputAmount: CurrencyAmount.fromRawAmount(
+                        new Token(
+                            42220,
+                            swapPair.output.address,
+                            swapPair.output.decimals,
+                            swapPair.output.symbol,
+                            swapPair.output.name
+                        ),
+                        outputAmountBig.toString()
+                    ),
+                    minimumOutputAmount: CurrencyAmount.fromRawAmount(
+                        new Token(
+                            42220,
+                            swapPair.output.address,
+                            swapPair.output.decimals,
+                            swapPair.output.symbol,
+                            swapPair.output.name
+                        ),
+                        swapMeta.minAmountOut.toString()
+                    ),
                 }}
                 buying={buying}
                 onConfirm={onSwapConfirmed}

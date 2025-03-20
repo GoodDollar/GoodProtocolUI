@@ -1,6 +1,14 @@
 import { ChainId, Currency, JSBI, Percent, Token, WETH } from '@sushiswap/sdk'
-
+import { G$ContractAddresses, SupportedChainId } from '@gooddollar/web3sdk'
 export const POOL_DENY = ['14', '29', '45', '30']
+
+export const CUSD = new Token(
+    ChainId.CELO,
+    G$ContractAddresses(SupportedChainId.CELO, 'CUSD') || '0xeed145D8d962146AFc568E9579948576f63D5Dc2',
+    18,
+    'cUSD',
+    'Celo USD'
+)
 
 export const FUSE = Object.assign({}, Currency, {
     decimals: 18,
