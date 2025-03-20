@@ -38,7 +38,7 @@ function Routes(): JSX.Element {
         <Suspense fallback={<CustomLightSpinner src={Circle} alt="loader" size={'48px'} />}>
             <Switch>
                 <Route exact strict path="/dashboard" component={Dashboard} />
-                <Route exact strict path="/swap" component={Swap} key={chainId} />
+                <Route exact strict path="/swap/:widget" component={Swap} key={chainId} />
                 <Route exact strict path="/stakes" component={Stakes} />
                 <Route exact strict path="/portfolio" component={Portfolio} />
                 <Route exact strict path="/goodid" component={GoodId} />
