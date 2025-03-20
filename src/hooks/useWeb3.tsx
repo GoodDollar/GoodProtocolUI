@@ -94,7 +94,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                     networks: [Mainnet, Fuse, Celo],
                     readOnlyChainId: undefined,
                     readOnlyUrls: {
-                        1: process.env.REACT_APP_MAINNET_RPC ?? 'https://rpc.ankr.com/eth',
+                        1: process.env.REACT_APP_MAINNET_RPC ?? 'https://eth.llamarpc.com',
                         122: sample(process.env.REACT_APP_FUSE_RPC?.split(',')) || 'https://rpc.fuse.io',
                         42220: sample(process.env.REACT_APP_CELO_RPC?.split(',')) || 'https://forno.celo.org',
                     },
