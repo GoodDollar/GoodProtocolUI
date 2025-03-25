@@ -25,11 +25,13 @@ type NetworkSettings = {
 export function useNetwork(): NetworkSettings {
     const celoRpcList = sample(process.env.REACT_APP_CELO_RPC?.split(',')) ?? ''
     const fuseRpcList = sample(process.env.REACT_APP_FUSE_RPC?.split(',')) ?? 'https://rpc.fuse.io'
+    const mainnetList = sample(['https://cloudflare-eth.com', 'https://eth.llamarpc.com', 'https://1rpc.io/eth'])
     const [currentNetwork, rpcs] = useMemo(
         () => [
             process.env.REACT_APP_NETWORK || 'fuse',
             {
                 MAINNET_RPC:
+                    mainnetList ||
                     process.env.REACT_APP_MAINNET_RPC ||
                     (ethers.getDefaultProvider('mainnet') as any).providerConfigs[0].provider.connection.url,
                 FUSE_RPC: fuseRpcList || 'https://rpc.fuse.io',
@@ -94,7 +96,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                     networks: [Mainnet, Fuse, Celo],
                     readOnlyChainId: undefined,
                     readOnlyUrls: {
-                        1: process.env.REACT_APP_MAINNET_RPC ?? 'https://rpc.ankr.com/eth',
+                        1: sample(process.env.REACT_APP_MAINNET_RPC?.split(',')) ?? 'https://eth.llamarpc.com',
                         122: sample(process.env.REACT_APP_FUSE_RPC?.split(',')) || 'https://rpc.fuse.io',
                         42220: sample(process.env.REACT_APP_CELO_RPC?.split(',')) || 'https://forno.celo.org',
                     },
