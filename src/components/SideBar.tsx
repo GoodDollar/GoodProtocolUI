@@ -277,6 +277,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 justifyContent="center"
                 flexDirection="column"
                 px="6"
+                paddingRight="2"
                 py="4"
                 bg={bgContainer}
             >

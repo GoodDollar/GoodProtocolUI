@@ -305,10 +305,10 @@ Learn how here`,
                     <div className="flex flex-col items-center text-center lg:w-1/2">
                         <Box style={balanceContainer}>
                             {claimed ? (
-                                <>
+                                <Box justifyContent="center" display="flex" alignItems="center" textAlign="center">
                                     <ClaimBalance refresh={refreshRate} />
                                     <ClaimSuccessModal open={state?.status === 'Success'} />
-                                </>
+                                </Box>
                             ) : (
                                 <>
                                     <Title fontFamily="heading" fontSize="2xl" fontWeight="extrabold" pb="2">

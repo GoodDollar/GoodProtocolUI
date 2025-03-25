@@ -25,7 +25,7 @@ export const SubMenuItems = ({
                         url={url}
                         dataAttr={dataAttr}
                         withIcon={withIcon}
-                        customStyles={{ px: 2, py: 1, ...styles }}
+                        customStyles={{ px: 2, py: 1, height: 10, justifyContent: 'center', ...styles }}
                         // customStyles={styles}
                         onPress={handleExternal}
                     />
@@ -33,7 +33,7 @@ export const SubMenuItems = ({
             }
             if (route) {
                 return (
-                    <View style={{ margin: 8, ...styles }}>
+                    <View style={{ ...styles }}>
                         <NavLink key={route} to={route} onPress={handleInternal}>
                             <Text>{text}</Text>
                         </NavLink>

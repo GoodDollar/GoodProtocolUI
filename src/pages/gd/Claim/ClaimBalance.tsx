@@ -76,10 +76,11 @@ export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) =
                 w="90%"
                 h="34"
                 justifyContent="center"
+                alignItems="center"
             >
                 <NextClaim time={tillClaim || ''} />
             </Box>
-            <Box>
+            <Box alignItems="center" textAlign="center">
                 <BalanceGD gdPrice={G$Price} refresh={refresh} showUsd={showUsdPrice} />
             </Box>
             <Box alignItems="center">

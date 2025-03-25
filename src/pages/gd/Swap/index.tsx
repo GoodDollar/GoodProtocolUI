@@ -3,7 +3,7 @@ import { SupportedChains } from '@gooddollar/web3sdk-v2'
 import { useFeatureFlagWithPayload } from 'posthog-react-native'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
-import { HStack, Link, Text, VStack } from 'native-base'
+import { Link, Text, useBreakpointValue, VStack } from 'native-base'
 
 import { useNetworkModalToggle } from 'state/application/hooks'
 import { UniSwap } from './SwapCelo/UniSwap'
@@ -13,6 +13,20 @@ import { PageLayout } from 'components/Layout/PageLayout'
 import { getEnv } from 'utils/env'
 import { NETWORK_LABEL } from '../../../constants/networks'
 
+const SwapExplanationFooter = () => (
+    <VStack space={1} textAlign="center">
+        <Text textAlign="center">
+            <Text fontFamily="subheading" fontSize="sm" color="goodGrey.600">
+                {i18n._(t`Click here to learn more about GoodDollar liquidity, including how to provide liquidity.`)}
+            </Text>
+            {` `}
+            <Link isExternal _text={{ color: 'gdPrimary' }} href="https://docs.gooddollar.org/liquidity">
+                {i18n._(t`Learn more`)}
+            </Link>
+        </Text>
+    </VStack>
+)
+
 const SwapExplanation = ({ swapWidget }) => {
     if (swapWidget === 'celoReserve') {
         return (
@@ -20,12 +34,13 @@ const SwapExplanation = ({ swapWidget }) => {
                 <Text fontFamily="subheading" fontSize="sm" color="goodGrey.600" pt={4} pb={8} textAlign="center">
                     {i18n._(
                         t`Buy or sell GoodDollars using the GoodReserve directly!
-                        The reserve creates new GoodDollars when you buy them and destroys GoodDollars when you sell them back.
-                        You will usually get the best price to buy GoodDollars from the reserve.
+The reserve creates new GoodDollars when you buy them and destroys GoodDollars when you sell them back.
+You will usually get the best price to buy GoodDollars from the reserve.
 Please be patient, loading information may take some time. 
 Take note of indicators in the widget below for exit contribtution, price slippage and liquidity.`
                     )}
                 </Text>
+                <SwapExplanationFooter />
             </VStack>
         )
     }
@@ -39,6 +54,7 @@ Please be patient, loading information may take some time.
 Take note of indicators in the widget below for price slippage and liquidity.`
                     )}
                 </Text>
+                <SwapExplanationFooter />
             </VStack>
         )
     }
@@ -50,6 +66,15 @@ const Swap = memo((props: any) => {
     const [, payload] = useFeatureFlagWithPayload('swap-feature')
     const { celoEnabled, reserveEnabled } = (payload as any) || {}
     const toggleNetworkModal = useNetworkModalToggle()
+
+    const containerStyles = useBreakpointValue({
+        base: {
+            maxWidth: 350,
+        },
+        sm: {
+            maxWidth: '100%',
+        },
+    })
 
     const swapComponentMapping = {
         celoReserve: {
@@ -85,18 +110,8 @@ const Swap = memo((props: any) => {
                     </Link>
                 </VStack>
             ) : (
-                <VStack>
+                <VStack style={containerStyles}>
                     <SwapExplanation swapWidget={swapWidget} />
-                    <HStack space={1}>
-                        <Text fontFamily="subheading" fontSize="sm" color="goodGrey.600">
-                            {i18n._(
-                                t`Click here to learn more about GoodDollar liquidity, including how to provide liquidity.`
-                            )}
-                        </Text>
-                        <Link isExternal _text={{ color: 'gdPrimary' }} href="https://docs.gooddollar.org/liquidity">
-                            {i18n._(t`Learn more`)}
-                        </Link>
-                    </HStack>
                     {chainConfig.enabled ? chainConfig.component : null}
                 </VStack>
             )}

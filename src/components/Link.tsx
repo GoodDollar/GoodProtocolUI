@@ -31,8 +31,10 @@ export const SideBarMenuItem = ({ children, onPress, textColor }) => (
         onPress={onPress}
         _hover={{ bg: 'gdPrimary:alpha.10' }}
         _pressed={{ bg: 'gdPrimary' }}
-        // py={1}
-        // px={2}
+        py={1}
+        px={2}
+        height="10"
+        justifyContent="center"
         borderRadius="12px"
         // w={'100%'}
     >

@@ -286,6 +286,12 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                                 <LogoPrimary className="w-auto site-logo lg:block" />
                             )}
                         </LogoWrapper>
+                        {/* desktop price view */}
+                        {isTabletView ? (
+                            <div className="">
+                                <G$Balance price={g$Price} color={fontColor} />
+                            </div>
+                        ) : null}
                     </div>
 
                     <div className="relative flex flex-row items-center">
@@ -345,7 +351,8 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                         )}
                     </div>
                 </CentreBox>
-                <div className="px-4 pb-2">
+                {/* mobile view price */}
+                <div className="px-4 pb-2 lg:hidden">
                     {showPrice && <G$Balance price={g$Price} color={fontColor} padding="0" />}
                 </div>
                 {!isDesktopView && (

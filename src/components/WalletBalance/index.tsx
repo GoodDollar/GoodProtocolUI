@@ -106,11 +106,11 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
         <Box
             px={4}
             paddingBottom={2}
-            paddingTop={4}
+            paddingTop={30}
             w={isMobile ? scrWidth : 375}
             position="absolute"
             right={0}
-            top={isMinipay ? 25 : 30}
+            top={isMinipay ? 25 : 4}
             bg={bgWalletBalance}
             borderRadius="12px"
             borderBottomLeftRadius={12}
