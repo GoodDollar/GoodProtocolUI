@@ -3,21 +3,14 @@ import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { Converter, GdOnramperWidget, SlideDownTab } from '@gooddollar/good-design'
 import { Box, Text, useBreakpointValue } from 'native-base'
-import { useGetEnvChainId } from '@gooddollar/web3sdk-v2'
-import { g$ReservePrice } from '@gooddollar/web3sdk'
+import { useG$Price, useGetEnvChainId } from '@gooddollar/web3sdk-v2'
 
-import usePromise from 'hooks/usePromise'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { PageLayout } from 'components/Layout/PageLayout'
 
 const CalculatorTab = () => {
-    const [G$Price] = usePromise<number | undefined>(
-        () =>
-            g$ReservePrice()
-                .then(({ DAI }) => +DAI.toSignificant(6))
-                .catch(() => undefined),
-        []
-    )
+    const G$Price = useG$Price(3)
+
     return (
         <SlideDownTab
             tabTitle="G$ Calculator"
@@ -26,7 +19,7 @@ const CalculatorTab = () => {
                 titleFont: { fontSize: 'l', fontFamily: 'heading', fontWeight: '700', paddingLeft: 2 },
             }}
         >
-            <Converter gdPrice={G$Price} />
+            <Converter gdPrice={Number(G$Price?.toString()) / 1e18} />
         </SlideDownTab>
     )
 }

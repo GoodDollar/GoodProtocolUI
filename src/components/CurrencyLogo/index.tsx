@@ -1,5 +1,7 @@
 import { ChainId, Currency, ETHER, Token } from '@sushiswap/sdk'
 import React, { useMemo } from 'react'
+import { getTokens } from '@gooddollar/web3sdk'
+import usePromise from 'hooks/usePromise'
 
 import styled from 'styled-components'
 import AvalancheLogo from '../../assets/images/avalanche-logo.png'
@@ -25,12 +27,7 @@ export const getTokenLogoURL = (address: string, chainId: any) => {
         imageURL = `https://v1exchange.pancakeswap.finance/images/coins/${address}.png`
     } else if (chainId === AdditionalChainId.FUSE) {
         imageURL = getFuseTokenLogoURL(address)
-    }
-    //  else if (chainId === AdditionalChainId.CELO) {
-    //TODO: Need to define token list for CELO
-
-    // }
-    else {
+    } else {
         imageURL = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`
     }
     return imageURL
@@ -76,10 +73,14 @@ export default function CurrencyLogo({
 }) {
     const { chainId } = useActiveWeb3React()
     const uriLocations = useHttpLocations(currency instanceof WrappedTokenInfo ? currency.logoURI : undefined)
+    const [tokenList] = usePromise<[Map<string, Currency>, Map<string, string>]>(() => getTokens(chainId) as any) // solve uniswap/sushiswap type issue
 
     const srcs: string[] = useMemo(() => {
         if (currency === ETHER) return []
 
+        if (tokenList?.[1] && tokenList?.[1].has(currency?.symbol || '')) {
+            return [tokenList[1].get(currency?.symbol || '')]
+        }
         if (currency instanceof Token) {
             if (currency instanceof WrappedTokenInfo) {
                 return [...uriLocations, getTokenLogoURL(currency.address, chainId)]
@@ -88,7 +89,7 @@ export default function CurrencyLogo({
             return [getTokenLogoURL(currency.address, chainId)]
         }
         return []
-    }, [chainId, currency, uriLocations])
+    }, [chainId, currency, uriLocations, tokenList])
 
     if ((currency === ETHER || currency === FUSE) && chainId) {
         return <StyledNativeCurrencyLogo src={logo[chainId] ?? logo[ChainId.MAINNET]} size={size} style={style} />

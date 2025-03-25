@@ -3,9 +3,9 @@ import { Fraction } from '@uniswap/sdk-core'
 import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
-import { g$ReservePrice } from '@gooddollar/web3sdk'
+import { useG$Price } from '@gooddollar/web3sdk-v2'
 import { Box, ITextProps, Pressable, PresenceTransition, Text, useBreakpointValue } from 'native-base'
-import { useFeatureFlag, useFeatureFlagWithPayload } from 'posthog-react-native'
+import { useFeatureFlagWithPayload } from 'posthog-react-native'
 import { BasePressable, CentreBox, useScreenSize } from '@gooddollar/good-design'
 import { useG$Balance } from '@gooddollar/web3sdk-v2'
 
@@ -14,8 +14,6 @@ import Web3Network from './Web3Network'
 import Web3Status from './Web3Status'
 import { useWalletModalToggle } from '../state/application/hooks'
 import SideBar from './SideBar'
-// import { NavBar } from './StyledMenu/Navbar'
-import usePromise from '../hooks/usePromise'
 import NetworkModal from './NetworkModal'
 import AppNotice from './AppNotice'
 import { OnboardConnectButton } from './BlockNativeOnboard'
@@ -186,7 +184,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
     const { i18n } = useLingui()
     const { account } = useActiveWeb3React()
     const isSimpleApp = useIsSimpleApp()
-    const showPrice = useFeatureFlag('show-gd-price')
+    const showPrice = true // useFeatureFlag('show-gd-price')
 
     const { ethereum } = window
     const isMinipay = ethereum?.isMiniPay
@@ -199,16 +197,8 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
 
     const { G$ } = useG$Balance(5)
 
-    const [G$Price] = usePromise(async () => {
-        try {
-            const data = await g$ReservePrice()
-
-            return data.DAI.asFraction
-        } catch {
-            return undefined
-        }
-    }, [])
-
+    const G$Price = useG$Price()
+    const g$Price = new Fraction(G$Price?.toString() || 0, 1e18)
     const gdBalance = useMemo(
         () =>
             G$?.format({
@@ -296,6 +286,12 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                                 <LogoPrimary className="w-auto site-logo lg:block" />
                             )}
                         </LogoWrapper>
+                        {/* desktop price view */}
+                        {isTabletView ? (
+                            <div className="">
+                                <G$Balance price={g$Price} color={fontColor} />
+                            </div>
+                        ) : null}
                     </div>
 
                     <div className="relative flex flex-row items-center">
@@ -355,8 +351,9 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                         )}
                     </div>
                 </CentreBox>
+                {/* mobile view price */}
                 <div className="px-4 pb-2 lg:hidden">
-                    {showPrice && <G$Balance price={G$Price} color={fontColor} padding="0" />}
+                    {showPrice && <G$Balance price={g$Price} color={fontColor} padding="0" />}
                 </div>
                 {!isDesktopView && (
                     <>

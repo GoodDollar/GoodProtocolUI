@@ -17,12 +17,6 @@ interface SlippageTolerance {
 export interface ISwapContext {
     slippageTolerance: SlippageTolerance
     setSlippageTolerance: (value: SlippageTolerance) => void
-    tokenList: Currency[]
-    tokenListLoading: boolean
-    swapPair: SwapVariant
-    setSwapPair: (value: Partial<SwapVariant>) => void
-    buying: boolean
-    setBuying: (value: boolean) => void
 }
 
 export const SwapContext = createContext<ISwapContext>(null as any)

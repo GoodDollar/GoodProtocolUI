@@ -72,9 +72,7 @@ export default function NetworkModal(): JSX.Element | null {
     const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[chainId]
     const network = getEnv()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    const prodNetworks = process.env.REACT_APP_CELO_PHASE_1
-        ? [AdditionalChainId.CELO, ChainId.MAINNET, AdditionalChainId.FUSE]
-        : [ChainId.MAINNET, AdditionalChainId.FUSE]
+    const prodNetworks = [AdditionalChainId.CELO, ChainId.MAINNET, AdditionalChainId.FUSE]
 
     const allowedNetworks = useMemo(() => {
         switch (true) {
@@ -138,9 +136,9 @@ export default function NetworkModal(): JSX.Element | null {
                         <ModalHeader className="mb-1" onClose={toggleNetworkModal} title="Select network" />
                         <TextWrapper>
                             {i18n._(t`You are currently browsing`)} <span className="site">GOOD DOLLAR</span>
-                            <br />{' '}
                             {networkLabel && (
                                 <>
+                                    {` `}
                                     {i18n._(t`on the`)} <span className="network">{networkLabel}</span>{' '}
                                     {i18n._(t`network`)}
                                 </>
@@ -187,9 +185,9 @@ export default function NetworkModal(): JSX.Element | null {
                         <ModalHeader className="mb-1" onClose={toggleNetworkModal} title="Select network" />
                         <TextWrapper>
                             {i18n._(t`You are currently browsing`)} <span className="site">GOOD DOLLAR</span>
-                            <br />{' '}
                             {networkLabel && (
                                 <>
+                                    {` `}
                                     {i18n._(t`on the`)} <span className="network">{networkLabel}</span>{' '}
                                     {i18n._(t`network`)}
                                 </>

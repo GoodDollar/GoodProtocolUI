@@ -19,7 +19,9 @@ import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 
 import ShareTransaction from 'components/ShareTransaction'
 
-import { buy, SwapInfo as BuyInfo, sell, SellInfo, useGdContextProvider, SupportedChainId } from '@gooddollar/web3sdk'
+import { buy, SwapInfo as BuyInfo, sell, useGdContextProvider, SupportedChainId } from '@gooddollar/web3sdk'
+
+import { TransactionStatus } from '@usedapp/core'
 
 export interface SwapConfirmModalProps extends SwapDetailsFields {
     className?: string
@@ -39,13 +41,13 @@ export interface SwapConfirmModalProps extends SwapDetailsFields {
     open: boolean
     onClose: () => void
     setOpen: (value: boolean) => void
-    meta: BuyInfo | SellInfo | null | undefined
+    swap?: { send: () => Promise<any>; state: TransactionStatus }
+    meta: BuyInfo | undefined
     buying: boolean
 }
 
 const SwapConfirmModal = memo(
     ({
-        GDX,
         meta,
         style,
         route,
@@ -56,10 +58,12 @@ const SwapConfirmModal = memo(
         onClose,
         setOpen,
         onConfirm,
+        swap,
         className,
         priceImpact,
         liquidityFee,
         minimumReceived,
+        maxPaid,
         exitContribution,
     }: SwapConfirmModalProps) => {
         const { i18n } = useLingui()
@@ -68,9 +72,54 @@ const SwapConfirmModal = memo(
         const { chainId } = useActiveWeb3React()
         const network = SupportedChainId[chainId]
         const { web3 } = useGdContextProvider()
-        const [status, setStatus] = useState<'PREVIEW' | 'CONFIRM' | 'SENT' | 'SUCCESS'>('SENT')
+        const [status, setStatus] = useState<'PREVIEW' | 'CONFIRM' | 'SENT' | 'SUCCESS' | 'REJECTED'>('SENT')
         const [hash, setHash] = useState('')
         const sendData = useSendAnalyticsData()
+
+        const onSent = (hash: string, from: string) => {
+            const inputSig = meta?.inputAmount.toSignificant(6)
+            const minimumOutputSig = meta?.minimumOutputAmount.toSignificant(6)
+
+            setStatus('SENT')
+            setHash(hash)
+            const tradeInfo = {
+                input: {
+                    decimals: meta?.inputAmount.currency.decimals,
+                    symbol: meta?.inputAmount.currency.symbol,
+                },
+                output: {
+                    decimals: meta?.outputAmount.currency.decimals,
+                    symbol: meta?.outputAmount.currency.symbol,
+                },
+            }
+            const summary = i18n._(t`Swapped ${inputSig} ${meta?.inputAmount.currency.symbol}
+                          to a minimum of ${minimumOutputSig} ${meta?.outputAmount.currency.symbol}`)
+
+            globalDispatch(
+                addTransaction({
+                    chainId: chainId!,
+                    hash: hash,
+                    from: from,
+                    summary: summary,
+                    tradeInfo: tradeInfo,
+                })
+            )
+            sendData({ event: 'swap', action: 'swap_confirm', network })
+            if (onConfirm) onConfirm()
+        }
+
+        useEffect(() => {
+            console.log({ state: swap?.state })
+            if (swap?.state?.status === 'Mining') {
+                setStatus('SENT')
+                onSent(swap.state.transaction?.hash || '', swap.state.transaction?.from || '')
+            } else if (swap?.state?.status === 'Exception') {
+                onClose()
+                setStatus('REJECTED')
+            } else if (swap?.state?.status === 'Success') {
+                setStatus('SUCCESS')
+            }
+        }, [swap?.state])
 
         const handleSwap = async () => {
             if (meta && meta.priceImpact && !confirmPriceImpactWithoutFee(meta.priceImpact as unknown as Percent)) {
@@ -79,39 +128,10 @@ const SwapConfirmModal = memo(
 
             setStatus('CONFIRM')
 
-            const inputSig = meta?.inputAmount.toSignificant(5)
-            const minimumOutputSig = meta?.minimumOutputAmount.toSignificant(5)
+            const inputSig = meta?.inputAmount.toSignificant(2)
+            const minimumOutputSig = meta?.minimumOutputAmount.toSignificant(2)
             const inputSymbol = meta?.inputAmount.currency.symbol
             const outputSymbol = meta?.outputAmount.currency.symbol
-
-            const onSent = (hash: string, from: string) => {
-                setStatus('SENT')
-                setHash(hash)
-                const tradeInfo = {
-                    input: {
-                        decimals: meta?.inputAmount.currency.decimals,
-                        symbol: meta?.inputAmount.currency.symbol,
-                    },
-                    output: {
-                        decimals: meta?.outputAmount.currency.decimals,
-                        symbol: meta?.outputAmount.currency.symbol,
-                    },
-                }
-                const summary = i18n._(t`Swapped ${inputSig} ${meta?.inputAmount.currency.symbol}
-                              to a minimum of ${minimumOutputSig} ${meta?.outputAmount.currency.symbol}`)
-
-                globalDispatch(
-                    addTransaction({
-                        chainId: chainId!,
-                        hash: hash,
-                        from: from,
-                        summary: summary,
-                        tradeInfo: tradeInfo,
-                    })
-                )
-                sendData({ event: 'swap', action: 'swap_confirm', network })
-                if (onConfirm) onConfirm()
-            }
 
             try {
                 sendData({
@@ -122,12 +142,18 @@ const SwapConfirmModal = memo(
                     type: buying ? 'buy' : 'sell',
                     network,
                 })
-
-                buying ? await buy(web3!, meta!, onSent) : await sell(web3!, meta!, onSent)
+                //mento reserve
+                if (swap) {
+                    await swap.send()
+                }
+                // old reserve/voltage
+                else {
+                    buying ? await buy(web3!, meta!, onSent) : await sell(web3!, meta!, onSent)
+                    setStatus('SUCCESS') // for mento success is via swap.state effect
+                }
 
                 if (meta?.outputAmount.currency.name === 'GoodDollar') {
                     setOpen(true)
-                    setStatus('SUCCESS')
                 }
 
                 // let transactionDetails = buying ? await buy(web3!, meta!, prepareTx, onSent) : await sell(web3!, meta!, prepareTx, onSent)
@@ -139,8 +165,7 @@ const SwapConfirmModal = memo(
                 //     })
                 // )
             } catch (e) {
-                console.error(e)
-                setStatus('PREVIEW')
+                onClose()
             }
         }
 
@@ -162,7 +187,7 @@ const SwapConfirmModal = memo(
                             <div className="icon">
                                 <CurrencyLogo currency={from?.token} size={'54px'} />
                             </div>
-                            <div className="value">{from?.value}</div>
+                            <div className="value">{meta?.inputAmount.toSignificant(6)}</div>
                             <div className="symbol">{from?.token?.getSymbol()}</div>
                             <div className="direction">
                                 <svg
@@ -191,7 +216,7 @@ const SwapConfirmModal = memo(
                             <div className="icon">
                                 <CurrencyLogo currency={to?.token} size={'54px'} />
                             </div>
-                            <div className="value">{to?.value}</div>
+                            <div className="value">{meta?.outputAmount.toSignificant(6)}</div>
                             <div className="symbol">{to?.token?.getSymbol()}</div>
                         </div>
                         <div className="description">
@@ -201,39 +226,41 @@ const SwapConfirmModal = memo(
                         </div>
                         <div className="mt-8 mb-8">
                             <SwapInfo title="Price" value={price} />
-                            <SwapInfo
-                                title={i18n._(t`Minimum received`)}
-                                value={minimumReceived}
-                                tip={i18n._(
-                                    t`Your transaction will revert if there is a large, unfavorable price movement before it is confirmed.`
-                                )}
-                            />
+                            {minimumReceived && (
+                                <SwapInfo
+                                    title={i18n._(t`Minimum received`)}
+                                    value={minimumReceived}
+                                    tip={i18n._(t`The minimum amount of tokens to receive.`)}
+                                />
+                            )}
+                            {maxPaid && (
+                                <SwapInfo
+                                    title={i18n._(t`Maximum sold`)}
+                                    value={maxPaid}
+                                    tip={i18n._(t`The maximum amount of tokens to sell.`)}
+                                />
+                            )}
                             <SwapInfo
                                 title={i18n._(t`Price Impact`)}
                                 value={priceImpact}
-                                tip={i18n._(
-                                    t`Your transaction will revert if there is a large, unfavorable price movement before it is confirmed.`
-                                )}
+                                tip={i18n._(t`The change from the market price to the actual price you are paying.`)}
                             />
-                            <SwapInfo
-                                title={i18n._(t`Liquidity Provider Fee`)}
-                                value={liquidityFee}
-                                tip={i18n._(
-                                    t`Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers.`
-                                )}
-                            />
-                            <SwapInfo
-                                title={i18n._(t`Route`)}
-                                value={route}
-                                tip={i18n._(t`Routing through these tokens resulted in the best price for your trade.`)}
-                            />
-                            {GDX && (
+                            {liquidityFee && (
                                 <SwapInfo
+                                    title={i18n._(t`Liquidity Provider Fee`)}
+                                    value={liquidityFee}
                                     tip={i18n._(
-                                        t`GDX is a token earned by directly buying G$ from the Reserve. Members with GDX do not pay the contribution exit.`
+                                        t`Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers.`
                                     )}
-                                    title="GDX"
-                                    value={GDX}
+                                />
+                            )}
+                            {route && (
+                                <SwapInfo
+                                    title={i18n._(t`Route`)}
+                                    value={route}
+                                    tip={i18n._(
+                                        t`Routing through these tokens resulted in the best price for your trade.`
+                                    )}
                                 />
                             )}
                             {exitContribution && exitContribution !== undefined && (
@@ -257,7 +284,8 @@ const SwapConfirmModal = memo(
                     <>
                         <Title className="mt-6 mb-6 text-center">{i18n._(t`Waiting for Confirmation`)}</Title>
                         <div className="text-center">
-                            {i18n._(t`Swapping`)} {price}
+                            {i18n._(t`Swapping`)} {maxPaid || meta?.inputAmount.toSignificant(6)}{' '}
+                            {meta?.inputAmount.currency.symbol} At {price}
                         </div>
                         <div className="text-center description">
                             {i18n._(t`Confirm this transaction in your wallet`)}
