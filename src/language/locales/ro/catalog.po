@@ -2762,7 +2762,7 @@ msgstr "Adresa blocată"
 msgid "Buy G$"
 msgstr ""
 
-#: src/pages/gd/Swap/index.tsx:22
+#: src/pages/gd/Swap/index.tsx:36
 msgid ""
 "Buy or sell GoodDollars using the GoodReserve directly!\n"
 "The reserve creates new GoodDollars when you buy them and destroys GoodDollars when you sell them back.\n"
@@ -2849,7 +2849,7 @@ msgstr "Curata tot"
 #~ msgid "Click here to learn how to switch your network."
 #~ msgstr ""
 
-#: src/pages/gd/Swap/index.tsx:93
+#: src/pages/gd/Swap/index.tsx:20
 msgid "Click here to learn more about GoodDollar liquidity, including how to provide liquidity."
 msgstr ""
 
@@ -2895,7 +2895,7 @@ msgstr ""
 msgid "Connected with"
 msgstr "Conectat cu"
 
-#: src/pages/gd/Swap/index.tsx:37
+#: src/pages/gd/Swap/index.tsx:52
 msgid ""
 "Convert your digital assets using the Uniswap protocol! \n"
 "Please be patient, loading information may take some time. \n"
@@ -3067,7 +3067,7 @@ msgstr "Cât de mult doriți să depuneți?"
 msgid "How much would you like to withdraw?"
 msgstr "Cât de mult doriți să vă retrageți?"
 
-#: src/pages/gd/Swap/index.tsx:97
+#: src/pages/gd/Swap/index.tsx:24
 msgid "Learn more"
 msgstr ""
 
@@ -3166,7 +3166,7 @@ msgstr "pe"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Hopa! O eroare necunoscută s-a întamplat. Vă rugăm să reîmprospătați pagina sau să vizitați un alt browser sau dispozitiv"
 
-#: src/components/AppBar.tsx:331
+#: src/components/AppBar.tsx:337
 msgid "Open main menu"
 msgstr "Deschideți meniul principal"
 
@@ -3187,7 +3187,7 @@ msgstr "În așteptare semn ..."
 #~ msgid "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
 #~ msgstr ""
 
-#: src/pages/gd/Swap/index.tsx:84
+#: src/pages/gd/Swap/index.tsx:109
 msgid "Please switch your network to {0} to Swap."
 msgstr ""
 
