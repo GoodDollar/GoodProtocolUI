@@ -35,8 +35,6 @@ const jsonRpcUrlMap = {
     42220: [
         // 'https://forno.celo.org', // forno is causing gas issues with uniswap
         'https://rpc.ankr.com/celo',
-        'https://1rpc.io/celo',
-        'https://celo.drpc.org',
     ],
 }
 
