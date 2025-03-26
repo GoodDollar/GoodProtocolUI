@@ -31,7 +31,7 @@ export const connectOptions = {
             id: '0xa4ec',
             token: 'CELO',
             label: 'Celo',
-            rpcUrl: sample(process.env.REACT_APP_CELO_RPC?.split(',')) ?? 'https://forno.celo.org',
+            rpcUrl: sample(process.env.REACT_APP_CELO_RPC?.split(',')) ?? 'https://rpc.ankr.com/celo',
         },
         {
             id: '0x1',

@@ -35,7 +35,7 @@ export function useNetwork(): NetworkSettings {
                     process.env.REACT_APP_MAINNET_RPC ||
                     (ethers.getDefaultProvider('mainnet') as any).providerConfigs[0].provider.connection.url,
                 FUSE_RPC: fuseRpcList || 'https://rpc.fuse.io',
-                CELO_RPC: celoRpcList || 'https://forno.celo.org',
+                CELO_RPC: celoRpcList || 'https://rpc.ankr.com/celo',
                 KOVAN_RPC: undefined,
                 ROPSTEN_RPC: undefined,
             },
@@ -98,7 +98,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                     readOnlyUrls: {
                         1: sample(process.env.REACT_APP_MAINNET_RPC?.split(',')) ?? 'https://eth.llamarpc.com',
                         122: sample(process.env.REACT_APP_FUSE_RPC?.split(',')) || 'https://rpc.fuse.io',
-                        42220: sample(process.env.REACT_APP_CELO_RPC?.split(',')) || 'https://forno.celo.org',
+                        42220: sample(process.env.REACT_APP_CELO_RPC?.split(',')) || 'https://rpc.ankr.com/celo',
                     },
                 }}
             >
