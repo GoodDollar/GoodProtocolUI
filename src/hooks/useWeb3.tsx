@@ -66,7 +66,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
         webprovider.send = async (method: string, params: any) => {
             // for celo force gasPrice to 5 gwei
             if (!isMiniPay && chainId === (42220 as ChainId) && method === 'eth_sendTransaction') {
-                params[0].gasPrice = BigNumber.from(25e9).toHexString()
+                params[0].gasPrice = BigNumber.from(25.001e9).toHexString()
             }
 
             if (chainId === (122 as ChainId) && method === 'eth_sendTransaction') {
