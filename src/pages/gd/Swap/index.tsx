@@ -79,12 +79,12 @@ const Swap = memo((props: any) => {
     const swapComponentMapping = {
         celoReserve: {
             component: <SwapMento />,
-            enabled: !isProd || celoEnabled !== false,
+            enabled: !isProd || reserveEnabled !== false,
             chainId: SupportedChains.CELO,
         },
         celoUniswap: {
             component: <UniSwap />,
-            enabled: !isProd || reserveEnabled !== false,
+            enabled: !isProd || celoEnabled !== false,
             chainId: SupportedChains.CELO,
         },
     }
