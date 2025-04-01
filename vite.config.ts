@@ -7,6 +7,7 @@ import { lingui } from '@lingui/vite-plugin'
 import dynamicImports from 'vite-plugin-dynamic-import'
 import { visualizer } from 'rollup-plugin-visualizer'
 import dotenv from 'dotenv'
+import * as esbuild from 'esbuild'
 
 dotenv.config()
 
@@ -25,6 +26,17 @@ if (process.env.HTTPS === 'true') {
 } else {
     https = false
 }
+
+const jsxTransform = (matchers: RegExp[]) => ({
+    name: 'js-in-jsx',
+    load(id: string) {
+        if (matchers.some((matcher) => matcher.test(id)) && id.endsWith('.js')) {
+            const file = fs.readFileSync(id, { encoding: 'utf-8' })
+            return esbuild.transformSync(file, { loader: 'jsx', jsx: 'transform' })
+        }
+    },
+})
+
 export default defineConfig(({ command, mode }) => {
     process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
     return {
@@ -62,6 +74,7 @@ export default defineConfig(({ command, mode }) => {
             lingui(),
             viteTsconfigPaths(),
             svgrPlugin(),
+            jsxTransform([/node_modules[\\/]@ronradtke[\\/]react-native-markdown-display[\\/].*\.js$/]),
         ],
         resolve: {
             alias: {
@@ -84,6 +97,7 @@ export default defineConfig(({ command, mode }) => {
             'process.env': process.env,
         },
         optimizeDeps: {
+            include: ['@ronradtke/react-native-markdown-display'],
             esbuildOptions: {
                 loader: {
                     '.html': 'text', // allow import or require of html files
