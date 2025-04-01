@@ -4,11 +4,11 @@ import { t } from '@lingui/macro'
 
 import { Box, useBreakpointValue } from 'native-base'
 import { CentreBox, Title } from '@gooddollar/good-design'
-import { Faq } from 'components/Faq/Faq'
+import { Faq, FaqType } from 'components/Faq/Faq'
 
 interface PageLayoutProps {
     title?: string
-    faqType?: 'buy' | 'swap' | 'bridge' | 'goodid' | 'claim'
+    faqType?: FaqType
     customTabs?: JSX.Element[]
 }
 

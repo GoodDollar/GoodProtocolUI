@@ -3,16 +3,11 @@ import { Link, Text, VStack } from 'native-base'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { SlideDownTab, useScreenSize } from '@gooddollar/good-design'
+import MarkDown from '@ronradtke/react-native-markdown-display'
 
-import { faqBuyCopy, faqBridgeCopy, faqSwapCopy, faqGoodIDCopy, faqClaimCopy } from './copies'
+import { faqs } from './copies'
 
-const faqs = {
-    swap: faqSwapCopy,
-    buy: faqBuyCopy,
-    bridge: faqBridgeCopy,
-    goodid: faqGoodIDCopy,
-    claim: faqClaimCopy,
-}
+export type FaqType = 'swap' | 'buy' | 'bridge' | 'goodid' | 'claim' | 'reserve'
 
 const FaqItem = ({ id, question, answer, links, AltLink }) => {
     const { isDesktopView } = useScreenSize()
@@ -52,7 +47,7 @@ const FaqItem = ({ id, question, answer, links, AltLink }) => {
                 color="goodGrey.400"
                 fontSize="sm"
             >
-                {i18n._(t`${answer}`)}
+                <MarkDown>{i18n._(t`${answer}`)}</MarkDown>
             </Text>
             {links ? (
                 <VStack w="100%">
@@ -79,7 +74,7 @@ const FaqItem = ({ id, question, answer, links, AltLink }) => {
     )
 }
 
-export const Faq = ({ type }: { type: 'swap' | 'buy' | 'bridge' | 'goodid' | 'claim' }) => {
+export const Faq = ({ type }: { type: FaqType }) => {
     const copies = faqs[type]
 
     return (

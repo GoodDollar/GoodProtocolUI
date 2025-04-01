@@ -67,6 +67,8 @@ const Swap = memo((props: any) => {
     const { celoEnabled, reserveEnabled } = (payload as any) || {}
     const toggleNetworkModal = useNetworkModalToggle()
 
+    const faqType = swapWidget === 'celoUniswap' ? 'swap' : 'reserve'
+
     const containerStyles = useBreakpointValue({
         base: {
             maxWidth: 350,
@@ -96,7 +98,7 @@ const Swap = memo((props: any) => {
     }
 
     return (
-        <PageLayout title="Swap" faqType="swap">
+        <PageLayout title="Swap" faqType={faqType}>
             {(chainId as Number) !== chainConfig.chainId ? (
                 <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={8}>
                     <Link
