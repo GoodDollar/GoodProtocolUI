@@ -2675,15 +2675,15 @@ msgstr ""
 msgid "{amount} {0}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:55
+#: src/components/Faq/Faq.tsx:50
 msgid "{answer}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:71
+#: src/components/Faq/Faq.tsx:66
 msgid "{linkText}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:23
+#: src/components/Faq/Faq.tsx:18
 msgid "{question}"
 msgstr ""
 
@@ -3184,7 +3184,7 @@ msgstr "Ожиданный знак ..."
 #~ msgid "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
 #~ msgstr ""
 
-#: src/pages/gd/Swap/index.tsx:109
+#: src/pages/gd/Swap/index.tsx:111
 msgid "Please switch your network to {0} to Swap."
 msgstr ""
 
