@@ -1,4 +1,16 @@
 import React, { cloneElement, memo, useCallback, useEffect, useMemo, useState } from 'react'
+import { ErrorModal } from '@gooddollar/good-design'
+import { t } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
+import { Spinner } from 'native-base'
+import { useSwapMeta, useSwap } from '@gooddollar/web3sdk-v2'
+import { SupportedChainId } from '@gooddollar/web3sdk'
+import { debounce } from 'lodash'
+import { BigNumber, ethers } from 'ethers'
+import { Token, Percent, CurrencyAmount } from '@uniswap/sdk-core'
+import { Currency, TokenAmount } from '@sushiswap/sdk'
+import { Info } from 'react-feather'
+
 import { SwapCardSC, SwapContentWrapperSC, SwapWrapperSC } from '../styled'
 import SwapRow from '../SwapRow'
 import { ButtonAction } from 'components/gd/Button'
@@ -7,27 +19,18 @@ import SwapInfo from '../SwapInfo'
 import SwapDetails from '../SwapDetails'
 import SwapSettings from '../SwapSettings'
 import { SwapContext } from '../hooks'
-import { Currency, TokenAmount } from '@sushiswap/sdk'
 import { useCurrencyBalance } from 'state/wallet/hooks'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useG$ from 'hooks/useG$'
 
 import SwapConfirmModal from '../SwapConfirmModal'
-import { ErrorModal } from '@gooddollar/good-design'
-import { CUSD } from 'constants/index'
-import { t } from '@lingui/macro'
-import { useLingui } from '@lingui/react'
 
-import { Info } from 'react-feather'
+import { CUSD } from 'constants/index'
+
 import QuestionHelper from 'components/QuestionHelper'
 
 import GoodReserveLogo from 'assets/images/goodreserve-logo.png'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
-import { useSwapMeta, useSwap } from '@gooddollar/web3sdk-v2'
-import { SupportedChainId } from '@gooddollar/web3sdk'
-import { debounce } from 'lodash'
-import { BigNumber, ethers } from 'ethers'
-import { Token, Percent, CurrencyAmount } from '@uniswap/sdk-core'
 
 const MentoSwap = memo(() => {
     const { i18n } = useLingui()
@@ -202,9 +205,12 @@ const MentoSwap = memo(() => {
 
     const effectivePrice = Number(inputAmount) > 0 ? Number(outputAmount) / Number(inputAmount) : 0
     const curPrice = (swapMeta.g$Price || BigNumber.from(0)).toNumber() / 10 ** G$.decimals
-    const priceImpact = buying
-        ? (1 / curPrice - effectivePrice) * curPrice
-        : (curPrice - effectivePrice) / curPrice - swapMeta.exitContribution
+
+    const priceImpact = useMemo(() => {
+        return buying
+            ? (1 / curPrice - effectivePrice) * curPrice
+            : (curPrice - effectivePrice) / curPrice - swapMeta.exitContribution
+    }, [buying, curPrice, effectivePrice, swapMeta.exitContribution])
 
     const swapFields = {
         minimumReceived:
@@ -355,7 +361,11 @@ const MentoSwap = memo(() => {
                             {swapMeta && <SwapInfo title="Price" value={swapFields.price} />}
                         </div>
 
-                        {!account ? (
+                        {Number.isNaN(priceImpact) ? (
+                            <ButtonAction style={{ marginTop: 22, justifyContent: 'center' }} disabled>
+                                <Spinner variant="page-loader" size="sm" color="white" paddingBottom="0" />
+                            </ButtonAction>
+                        ) : !account ? (
                             <ButtonAction style={{ marginTop: 22 }} disabled>
                                 Connect wallet
                             </ButtonAction>
