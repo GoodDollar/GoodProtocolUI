@@ -1464,7 +1464,7 @@ msgstr ""
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:383
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:393
 msgid "Approve"
 msgstr "मंजूर"
 
@@ -1472,15 +1472,15 @@ msgstr "मंजूर"
 msgid "APPROVE"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:108
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:111
 msgid "Approve transaction failed, please try again."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:382
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:392
 msgid "Approved"
 msgstr "मंजूर की"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:380
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:390
 msgid "Approving"
 msgstr "का अनुमोदन"
 
@@ -2023,7 +2023,7 @@ msgstr ""
 msgid "Share with friends"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:350
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:356
 #: src/pages/gd/Swap/SwapSettings/index.tsx:80
 msgid "Slippage Tolerance"
 msgstr "स्लिपेज टॉलरेंस"
@@ -2073,7 +2073,7 @@ msgstr ""
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:392
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:402
 msgid "Swap"
 msgstr "विनिमय"
 
@@ -2081,15 +2081,15 @@ msgstr "विनिमय"
 msgid "Swap Completed"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:323
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:329
 msgid "Swap from"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:337
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:343
 msgid "Swap to"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:102
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:105
 msgid "Swap transaction failed, please try again."
 msgstr ""
 
@@ -2131,7 +2131,7 @@ msgstr ""
 #~ "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
 #~ msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:239
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:245
 msgid ""
 "The GoodReserve is a Bancor-V1 Automated Market Maker (AMM) that operates on Celo.\n"
 "This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
@@ -2255,7 +2255,7 @@ msgstr ""
 msgid "Transaction deadline"
 msgstr "लेन-देन की समय सीमा"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:136
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:139
 msgid "Transaction failed, please try again"
 msgstr ""
 
