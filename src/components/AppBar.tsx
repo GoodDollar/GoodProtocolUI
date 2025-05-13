@@ -16,7 +16,6 @@ import { useWalletModalToggle } from '../state/application/hooks'
 import SideBar from './SideBar'
 import NetworkModal from './NetworkModal'
 import AppNotice from './AppNotice'
-import { OnboardConnectButton } from './BlockNativeOnboard'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 import WalletBalanceWrapper from './WalletBalance'
 import { MenuContainer } from './Layout/MenuContainer'
@@ -172,7 +171,7 @@ const Web3Bar = () => {
                     <Web3Status />
                 </Pressable>
             ) : (
-                <OnboardConnectButton />
+                <appkit-button />
             )}
             <NetworkModal />
         </>

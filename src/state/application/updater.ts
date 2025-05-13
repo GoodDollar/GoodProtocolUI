@@ -1,15 +1,14 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Web3Provider } from '@ethersproject/providers'
-import { useWeb3Context } from '@gooddollar/web3sdk-v2'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import useDebounce from '../../hooks/useDebounce'
 import useIsWindowVisible from '../../hooks/useIsWindowVisible'
 import { updateBlockNumber } from './actions'
+import { useAccount, usePublicClient, useChainId } from 'wagmi'
 
 export default function Updater(): null {
-    const { chainId, account } = useActiveWeb3React()
-    const { web3Provider: library } = useWeb3Context() as { web3Provider: Web3Provider }
+    const { address: account } = useAccount()
+    const chainId = useChainId()
+    const publicClient = usePublicClient()
     const dispatch = useDispatch()
 
     const windowVisible = useIsWindowVisible()
@@ -32,21 +31,25 @@ export default function Updater(): null {
         [chainId, setState]
     )
 
-    // attach/detach listeners
     useEffect(() => {
-        if (!account || !library || !chainId || !windowVisible) return undefined
+        if (!account || !publicClient || !chainId || !windowVisible) return undefined
 
-        setState({ chainId, blockNumber: null })
-        library
-            .getBlockNumber()
-            .then(blockNumberCallback)
-            .catch((error) => console.error(`Failed to get block number for chainId: ${chainId}`, error))
-
-        library.on('block', blockNumberCallback)
-        return () => {
-            library.removeListener('block', blockNumberCallback)
+        const fetchBlockNumber = async () => {
+            try {
+                const blockNumber = await publicClient.getBlockNumber()
+                blockNumberCallback(Number(blockNumber))
+            } catch (error) {
+                console.error(`Failed to get block number for chainId: ${chainId}`, error)
+            }
         }
-    }, [/*used */ dispatch, chainId, library, blockNumberCallback, windowVisible, account])
+
+        void fetchBlockNumber()
+        const intervalId = setInterval(fetchBlockNumber, 15000)
+
+        return () => {
+            clearInterval(intervalId)
+        }
+    }, [account, publicClient, chainId, windowVisible, blockNumberCallback])
 
     const debouncedState = useDebounce(state, 100)
 

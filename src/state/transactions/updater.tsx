@@ -1,11 +1,17 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useWeb3Context } from '@gooddollar/web3sdk-v2'
-import { Web3Provider } from '@ethersproject/providers'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
-import { useAddPopup, useBlockNumber } from '../application/hooks'
+import { useAddPopup } from '../application/hooks'
 import { AppDispatch, AppState } from '../index'
 import { checkedTransaction, finalizeTransaction } from './actions'
+import { useChainId, usePublicClient, useBlockNumber } from 'wagmi'
+
+interface TransactionDetails {
+    hash: string
+    addedTime: number
+    receipt?: object
+    lastCheckedBlockNumber?: number
+    summary?: string
+}
 
 export function shouldCheck(
     lastBlockNumber: number,
@@ -29,26 +35,26 @@ export function shouldCheck(
 }
 
 export default function Updater(): null {
-    const { chainId } = useActiveWeb3React()
-    const { web3Provider: library } = useWeb3Context() as { web3Provider: Web3Provider }
-
-    const lastBlockNumber = useBlockNumber()
+    const chainId = useChainId()
+    const publicClient = usePublicClient()
+    const { data: lastBlockNumber } = useBlockNumber({ watch: true })
 
     const dispatch = useDispatch<AppDispatch>()
-    const state = useSelector<AppState, AppState['transactions']>((state) => state.transactions)
 
-    const transactions = chainId ? state[chainId] ?? {} : {}
+    const transactions = useSelector<AppState, { [txHash: string]: TransactionDetails }>((state) =>
+        chainId ? state.transactions[chainId] ?? {} : {}
+    )
 
-    // show popup on confirm
     const addPopup = useAddPopup()
 
     useEffect(() => {
-        if (!chainId || !library || !lastBlockNumber) return
+        if (!chainId || !publicClient || !lastBlockNumber) return
+
         Object.keys(transactions)
-            .filter((hash) => shouldCheck(lastBlockNumber, transactions[hash]))
+            .filter((hash) => shouldCheck(Number(lastBlockNumber), transactions[hash]))
             .forEach((hash) => {
-                library
-                    .getTransactionReceipt(hash)
+                publicClient
+                    .getTransactionReceipt({ hash: hash as `0x${string}` })
                     .then((receipt) => {
                         const confirmedSummary = transactions[hash]?.summary
                         if (receipt) {
@@ -58,11 +64,16 @@ export default function Updater(): null {
                                     hash,
                                     receipt: {
                                         blockHash: receipt.blockHash,
-                                        blockNumber: receipt.blockNumber,
-                                        contractAddress: receipt.contractAddress,
+                                        blockNumber: Number(receipt.blockNumber),
+                                        contractAddress: receipt.contractAddress ?? '',
                                         from: receipt.from,
-                                        status: receipt.status,
-                                        to: receipt.to,
+                                        status:
+                                            receipt.status === 'success'
+                                                ? 1
+                                                : receipt.status === 'reverted'
+                                                ? 0
+                                                : undefined,
+                                        to: receipt.to ?? '',
                                         transactionHash: receipt.transactionHash,
                                         transactionIndex: receipt.transactionIndex,
                                     },
@@ -74,21 +85,21 @@ export default function Updater(): null {
                                 {
                                     txn: {
                                         hash,
-                                        success: receipt.status === 1,
+                                        success: Number(receipt.status) === 1,
                                         summary: confirmedSummary,
                                     },
                                 },
                                 hash
                             )
                         } else {
-                            dispatch(checkedTransaction({ chainId, hash, blockNumber: lastBlockNumber }))
+                            dispatch(checkedTransaction({ chainId, hash, blockNumber: Number(lastBlockNumber) }))
                         }
                     })
                     .catch((error) => {
-                        console.error(`failed to check transaction hash: ${hash}`, error)
+                        console.error(`Failed to check transaction hash: ${hash}`, error)
                     })
             })
-    }, [chainId, library, transactions, lastBlockNumber, dispatch, addPopup])
+    }, [chainId, publicClient, transactions, lastBlockNumber, dispatch, addPopup])
 
     return null
 }
