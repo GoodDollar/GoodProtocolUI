@@ -136,7 +136,7 @@ const OldClaim = memo(() => {
 
             const isDivviDone = await AsyncStorage.getItem('GD_divvi')
 
-            if (!isDivviDone) {
+            if (!isDivviDone && chainId === 42220) {
                 await AsyncStorage.setItem('GD_divvi', 'true')
                 await submitReferral({ txHash: claim.transactionHash, chainId })
             }
