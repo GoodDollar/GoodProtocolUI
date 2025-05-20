@@ -51,7 +51,7 @@ const OldClaim = memo(() => {
 
     const [claimed, setClaimed] = useState<boolean | undefined>(undefined)
     const [, connect] = useConnectWallet()
-    const { chainId } = useActiveWeb3React()
+    const { account, chainId } = useActiveWeb3React()
     const network = SupportedV2Networks[chainId]
     const sendData = useSendAnalyticsData()
     const [, payload] = useFeatureFlagWithPayload('claim-feature')
@@ -137,9 +137,11 @@ const OldClaim = memo(() => {
             const isDivviDone = await AsyncStorage.getItem('GD_divvi')
 
             if (!isDivviDone && chainId === 42220) {
-                await submitReferral({ txHash: claim.transactionHash, chainId }).then(async () => {
-                    await AsyncStorage.setItem('GD_divvi', 'true')
-                })
+                void submitReferral({ txHash: claim.transactionHash, chainId })
+                    .then(async () => {
+                        await AsyncStorage.setItem(`GD_divvi_${account}`, 'true')
+                    })
+                    .catch((e) => console.error('divvi failed', { e }))
             }
 
             sendData({ event: 'claim', action: 'claim_success', network })
