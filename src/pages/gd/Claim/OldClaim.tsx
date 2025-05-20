@@ -13,7 +13,13 @@ import {
 } from '@gooddollar/good-design'
 import { Box, Center, Text, useBreakpointValue } from 'native-base'
 import { useConnectWallet } from '@web3-onboard/react'
-import { useClaim, SupportedV2Networks, useContractFunctionWithDefaultGasFees } from '@gooddollar/web3sdk-v2'
+import {
+    useClaim,
+    SupportedV2Networks,
+    useContractFunctionWithDefaultGasFees,
+    submitReferral,
+    AsyncStorage,
+} from '@gooddollar/web3sdk-v2'
 import { QueryParams } from '@usedapp/core'
 import { noop } from 'lodash'
 import { useFeatureFlagWithPayload } from 'posthog-react-native'
@@ -42,6 +48,7 @@ const OldClaim = memo(() => {
     const { resetState, state, send } = useContractFunctionWithDefaultGasFees(claimDetails.contract, 'claim', {
         transactionName: 'Claimed UBI',
     })
+
     const [claimed, setClaimed] = useState<boolean | undefined>(undefined)
     const [, connect] = useConnectWallet()
     const { chainId } = useActiveWeb3React()
@@ -122,9 +129,18 @@ const OldClaim = memo(() => {
         if (claimEnabled || isMinipay) {
             // minipay doesnt handle gasPrice correctly, so we let it decide
             const claim = await send(isMinipay ? { gasPrice: undefined } : {})
+
             if (!claim) {
                 return false
             }
+
+            const isDivviDone = await AsyncStorage.getItem('GD_divvi')
+
+            if (!isDivviDone) {
+                await AsyncStorage.setItem('GD_divvi', 'true')
+                await submitReferral({ txHash: claim.transactionHash, chainId })
+            }
+
             sendData({ event: 'claim', action: 'claim_success', network })
             return true
         } else {
