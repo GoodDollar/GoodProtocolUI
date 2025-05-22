@@ -34,7 +34,7 @@ const jsonRpcUrlMap = {
     122: ['https://rpc.fuse.io', 'https://fuse-pokt.nodies.app', 'https://fuse.liquify.com'],
     42220: [
         // 'https://forno.celo.org', // forno is causing gas issues with uniswap
-        'https://rpc.ankr.com/celo',
+        'https://forno.celo.org',
     ],
 }
 
