@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useState } from 'react'
 import { DAO_NETWORK, getMyList, LIQUIDITY_PROTOCOL, MyStake, useEnvWeb3 } from '@gooddollar/web3sdk'
-import { SupportedChains } from '@gooddollar/web3sdk-v2'
+import { SupportedChains, useG$Price } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
@@ -81,7 +81,7 @@ const MobileCell = ({
                         network={stake.protocol}
                     />
                     {stake.tokens.A.symbol}
-                    {stake.tokens.A.address !== stake.tokens.B.address ?? `/ ${stake.tokens.B.symbol}`}
+                    {stake.tokens.A.address !== stake.tokens.B.address ? `/ ${stake.tokens.B.symbol}` : ''}
                 </div>
                 <div className="part protocol">
                     <Title type="category" className="flex items-center key">
@@ -195,7 +195,7 @@ const MobileTable = ({ stakes, cells, onUpdate }: { stakes?: MyStake[]; cells: a
 const Portfolio = memo(() => {
     const { i18n } = useLingui()
     const { account, chainId } = useActiveWeb3React()
-
+    const gdPrice = useG$Price()
     const [mainnetWeb3, mainnetChainId] = useEnvWeb3(DAO_NETWORK.MAINNET)
     const [fuseWeb3, fuseChainId] = useEnvWeb3(DAO_NETWORK.FUSE)
     const { width } = useWindowSize()
@@ -240,7 +240,7 @@ const Portfolio = memo(() => {
     const [data, , , update] = usePromise(async () => {
         const list =
             account && mainnetWeb3 && fuseWeb3 && !disableTestnetMain.includes(chainId)
-                ? await getMyList(mainnetWeb3, fuseWeb3, account)
+                ? await getMyList(mainnetWeb3, fuseWeb3, account, gdPrice)
                 : []
         return {
             list,
@@ -285,7 +285,7 @@ const Portfolio = memo(() => {
                       }
             ),
         }
-    }, [account, mainnetChainId, fuseChainId])
+    }, [account, mainnetChainId, fuseChainId, gdPrice])
 
     const showNotice = data?.list.find((stake) => stake.isDeprecated)
 
