@@ -1,7 +1,7 @@
 {
     "name": "@gooddollar/protocol-ui",
     "description": "GoodProtocol Interface",
-    "version": "1.95.0",
+    "version": "1.97.0",
     "homepage": ".",
     "private": true,
     "scripts": {

@@ -25,7 +25,7 @@ type NetworkSettings = {
 export function useNetwork(): NetworkSettings {
     const celoRpcList = sample(process.env.REACT_APP_CELO_RPC?.split(',')) ?? ''
     const fuseRpcList = sample(process.env.REACT_APP_FUSE_RPC?.split(',')) ?? 'https://rpc.fuse.io'
-    const mainnetList = sample(['https://cloudflare-eth.com', 'https://eth.llamarpc.com', 'https://1rpc.io/eth'])
+    const mainnetList = sample(['https://eth.llamarpc.com', 'https://1rpc.io/eth'])
     const [currentNetwork, rpcs] = useMemo(
         () => [
             process.env.REACT_APP_NETWORK || 'fuse',
