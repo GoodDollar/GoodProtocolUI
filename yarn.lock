@@ -4706,9 +4706,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.4.17":
-  version: 0.4.17
-  resolution: "@gooddollar/good-design@npm:0.4.17"
+"@gooddollar/good-design@npm:^0.4.21":
+  version: 0.4.21
+  resolution: "@gooddollar/good-design@npm:0.4.21"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4752,7 +4752,7 @@ __metadata:
     react-use-promise: ^0.5.0
     react-use-wizard: ^2.3.0
     require-from-string: ^2.0.2
-  checksum: 0d0e20a03beff5f04faa99088dd2a2772a92de391a51ac7e501af43205674f45ec25161750a711bad33a50a484a631b9a1c762d3612ed8be857bf703e9b0ec6c
+  checksum: 00c5bd5905f3dfa2e6895990dd4448d1c99d857e53ce6dcaf65b362bca543061b0237c80af7b284d8cd620a8e9dd618de7cebc672708cb783b9282dee21d9bb3
   languageName: node
   linkType: hard
 
@@ -4801,10 +4801,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.4.17
+    "@gooddollar/good-design": ^0.4.21
     "@gooddollar/goodprotocol": 2.0.32
     "@gooddollar/web3sdk": ^0.1.50
-    "@gooddollar/web3sdk-v2": ^0.4.13
+    "@gooddollar/web3sdk-v2": ^0.4.16
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^4.0.0
@@ -4987,9 +4987,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.4.13":
-  version: 0.4.13
-  resolution: "@gooddollar/web3sdk-v2@npm:0.4.13"
+"@gooddollar/web3sdk-v2@npm:^0.4.16":
+  version: 0.4.16
+  resolution: "@gooddollar/web3sdk-v2@npm:0.4.16"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5042,7 +5042,7 @@ __metadata:
     react-native-web: "*"
     viem: 2.*
     wagmi: 2.*
-  checksum: 0f62555218850cea4e514a96df6f44d909013edfbdbcaaa8d99ebb6ae7a3dad2eb3468ad84187535a95688217db82e073d84eca83da924e48bef97212a060f83
+  checksum: bd7d94e115687e99a35b7a526386edf22cd16f865066bfd596ce3e745cdef30fa5c4944daee5aa6b173cbc40329e1b7b718c1e092f5a3a217085a75444741bf1
   languageName: node
   linkType: hard
 
