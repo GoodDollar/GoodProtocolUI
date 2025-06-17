@@ -23,13 +23,15 @@ const RoutesWrapper = () => {
     const [posthogInitialized, setPosthogInitialized] = useState(false)
 
     useEffect(() => {
-        console.log('posthog initializing -->', { posthog })
         if (posthog) {
             posthog.onFeatureFlags(() => {
-                console.log('posthog feature flags updated')
                 setPosthogInitialized(true)
                 return
             })
+
+            if (!posthogInitialized) {
+                posthog.reloadFeatureFlags()
+            }
         }
     }, [posthog])
 
