@@ -28,10 +28,6 @@ const RoutesWrapper = () => {
                 setPosthogInitialized(true)
                 return
             })
-
-            if (!posthogInitialized) {
-                posthog.reloadFeatureFlags()
-            }
         }
     }, [posthog])
 
