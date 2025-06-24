@@ -1754,7 +1754,7 @@ msgstr ""
 msgid "GoodDAO"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:484
+#: src/pages/gd/Stake/index.tsx:443
 msgid "GoodDAO Staking"
 msgstr ""
 
@@ -1774,8 +1774,8 @@ msgstr ""
 msgid "GoodDollar Main Bridge"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:466
-#: src/pages/gd/Stake/index.tsx:470
+#: src/pages/gd/Stake/index.tsx:425
+#: src/pages/gd/Stake/index.tsx:429
 msgid "GoodStakes"
 msgstr ""
 
@@ -1842,7 +1842,7 @@ msgid "loading..."
 msgstr "लोड हो रहा है..."
 
 #: src/pages/gd/Stake/index.tsx:98
-#: src/pages/gd/Stake/index.tsx:284
+#: src/pages/gd/Stake/index.tsx:262
 msgid "Loading..."
 msgstr "लोड हो रहा है..."
 
@@ -1899,7 +1899,7 @@ msgid "Next month:"
 msgstr ""
 
 #: src/pages/gd/Stake/index.tsx:103
-#: src/pages/gd/Stake/index.tsx:291
+#: src/pages/gd/Stake/index.tsx:269
 msgid "No data."
 msgstr ""
 
@@ -2036,10 +2036,8 @@ msgstr ""
 msgid "Squid Router"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:216
-#: src/pages/gd/Stake/index.tsx:320
-#: src/pages/gd/Stake/index.tsx:398
-#: src/pages/gd/Stake/index.tsx:466
+#: src/pages/gd/Stake/index.tsx:298
+#: src/pages/gd/Stake/index.tsx:425
 msgid "Stake"
 msgstr "दाँव"
 
