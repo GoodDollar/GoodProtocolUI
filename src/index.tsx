@@ -21,11 +21,10 @@ import UserUpdater from './state/user/updater'
 import ThemeProvider, { TwTheme } from './theme'
 import LanguageProvider from 'language'
 import { createGlobalStyle } from 'styled-components'
-import { Web3ContextProvider } from './hooks/useWeb3'
 import { analyticsConfig, appInfo } from 'hooks/useSendAnalyticsData'
 import { HttpsProvider } from 'utils/HttpsProvider'
 import { registerServiceWorker } from './serviceWorker'
-import { OnboardProviderWrapper } from 'components/BlockNativeOnboard'
+import { AppKitProvider } from './reown/reownprovider'
 import { SimpleAppProvider } from 'state/simpleapp/simpleapp'
 import { nbTheme } from './theme/nbtheme'
 
@@ -83,15 +82,13 @@ const ProviderWrapper = ({ children }) => (
             }}
             autocapture={false}
         >
-            <OnboardProviderWrapper>
+            <AppKitProvider>
                 <GoodXProvider
                     nativeBaseProps={{ config: { suppressColorAccessibilityWarning: true }, theme: nbTheme }}
                 >
-                    <Web3ContextProvider>
-                        <LanguageProvider>{children}</LanguageProvider>
-                    </Web3ContextProvider>
+                    <LanguageProvider>{children}</LanguageProvider>
                 </GoodXProvider>
-            </OnboardProviderWrapper>
+            </AppKitProvider>
         </PostHogProvider>
     </Provider>
 )

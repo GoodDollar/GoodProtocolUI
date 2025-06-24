@@ -1,13 +1,16 @@
 import React, { ReactNode, useMemo } from 'react'
 import { BLOCKED_ADDRESSES } from '../../constants'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
+import { useAccount } from 'wagmi'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 
 export default function Blocklist({ children }: { children: ReactNode }) {
     const { i18n } = useLingui()
-    const { account } = useActiveWeb3React()
-    const blocked: boolean = useMemo(() => Boolean(account && BLOCKED_ADDRESSES.indexOf(account) !== -1), [account])
+    const { address } = useAccount()
+    const blocked: boolean = useMemo(
+        () => Boolean(address && BLOCKED_ADDRESSES.includes(address.toLowerCase())),
+        [address]
+    )
     if (blocked) {
         return <div>{i18n._(t`Blocked address`)}</div>
     }
