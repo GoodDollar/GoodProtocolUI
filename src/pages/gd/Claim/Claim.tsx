@@ -15,7 +15,9 @@ import { PageLayout } from 'components/Layout/PageLayout'
 import { useDisabledClaimingModal } from './useDisabledClaimModal'
 
 const goodIdExplorerUrls = {
-    CELO: process.env.REACT_APP_GOODID_CELO_EXPLORER ?? 'https://celo.blockscout.com/api?&',
+    CELO:
+        process.env.REACT_APP_GOODID_CELO_EXPLORER ??
+        `https://api.etherscan.io/v2/api?chainid=42220&apikey=${process.env.REACT_APP_ETHERSCAN_KEY}&`,
     FUSE: process.env.REACT_APP_GOODID_FUSE_EXPLORER ?? 'https://explorer.fuse.org/api?&',
     MAINNET: process.env.REACT_APP_GOODID_MAINNET_EXPLORER ?? '',
 }
