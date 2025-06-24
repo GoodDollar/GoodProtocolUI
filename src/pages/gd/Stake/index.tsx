@@ -10,7 +10,6 @@ import useSearchAndSort from 'hooks/useSearchAndSort'
 import { useLingui } from '@lingui/react'
 import Modal from 'components/Modal'
 import { ActionOrSwitchButton } from 'components/gd/Button/ActionOrSwitchButton'
-import { ButtonOutlined } from 'components/gd/Button'
 import Table from 'components/gd/Table'
 import { Wrapper, CellSC } from './styled'
 import StakeDeposit from './StakeDeposit'
@@ -18,6 +17,7 @@ import usePromise from 'hooks/usePromise'
 import { QuestionHelper } from 'components'
 import { Savings } from './Savings'
 import { disableTestnetMain } from 'constants/index'
+import AppNotice from 'components/AppNotice'
 
 import {
     LIQUIDITY_PROTOCOL,
@@ -194,28 +194,6 @@ const StakeTable = ({
                                 </div>
                             </div>
                         </div>
-                        <div className="stake">
-                            <ActionOrSwitchButton
-                                size="sm"
-                                borderRadius="6px"
-                                noShadow={true}
-                                requireChain={network.toUpperCase() as keyof typeof SupportedChains}
-                                onClick={() => {
-                                    sendData({
-                                        event: 'stake',
-                                        action: 'stake_start',
-                                        token: stake.tokens.A.symbol,
-                                        type: stake.protocol,
-                                        network,
-                                    })
-                                    setActiveStake(stake)
-                                    setActiveTableName()
-                                }}
-                                ButtonEl={ButtonOutlined}
-                            >
-                                {i18n._(t`Stake`)}
-                            </ActionOrSwitchButton>
-                        </div>
                     </CellSC>
                 ))}
         </>
@@ -374,30 +352,6 @@ const StakeTable = ({
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
-                                            <ActionOrSwitchButton
-                                                size="sm"
-                                                width="78px"
-                                                borderRadius="6px"
-                                                noShadow={true}
-                                                requireChain={network.toUpperCase() as keyof typeof SupportedChains}
-                                                page="Stake"
-                                                onClick={() => {
-                                                    sendData({
-                                                        event: 'stake',
-                                                        action: 'stake_start',
-                                                        token: stake.tokens.A.symbol,
-                                                        type: stake.protocol,
-                                                        network: network,
-                                                    })
-                                                    setActiveStake(stake)
-                                                    setActiveTableName()
-                                                }}
-                                            >
-                                                {' '}
-                                                {i18n._(t`Stake`)}
-                                            </ActionOrSwitchButton>
-                                        </td>
                                     </tr>
                                 )}
                             </Fragment>
@@ -462,6 +416,11 @@ export default function Stakes(): JSX.Element | null {
             <StakesSC>
                 {mainnetStakesEnabled && (
                     <>
+                        <AppNotice
+                            bg="#00b0ff4d"
+                            text="Staking on Ethereum Mainnet has been deprecated. Please withdraw your funds if you have an active stake on Ethereum Mainnet. You can do this in your portfolio."
+                            show={true}
+                        />
                         <MarketHeader
                             title={isMobile ? i18n._(t`Stake`) : i18n._(t`GoodStakes`)}
                             lists={sorted}
