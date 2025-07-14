@@ -12204,7 +12204,7 @@ __metadata:
 
 "@uniswap/widgets@patch:@uniswap/widgets@npm%3A2.59.0#./.yarn/patches/@uniswap-widgets-npm-2.59.0-6bf5828475.patch::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 2.59.0
-  resolution: "@uniswap/widgets@patch:@uniswap/widgets@npm%3A2.59.0#./.yarn/patches/@uniswap-widgets-npm-2.59.0-6bf5828475.patch::version=2.59.0&hash=2fee72&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  resolution: "@uniswap/widgets@patch:@uniswap/widgets@npm%3A2.59.0#./.yarn/patches/@uniswap-widgets-npm-2.59.0-6bf5828475.patch::version=2.59.0&hash=37910f&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/runtime": ">=7.17.0"
     "@fontsource/ibm-plex-mono": ^4.5.1
@@ -12277,7 +12277,7 @@ __metadata:
       optional: true
     utf-8-validate:
       optional: true
-  checksum: 6ede2cfbf6633dda76d66925de64ac603f40af5b1d71697d9f46546def67717571f0126fb550c806803b04096e46d18e30310ed036a7def98dae4fed0d652c4f
+  checksum: 6460a84a8f6147c00d3e240aabb6632773c6ebf621db0136474c7e9be21b42da6e1bacf13c757b2a1a2ff3f70573ccf6451c29673cc95577b680e73de90c2a5c
   languageName: node
   linkType: hard
 
@@ -16432,9 +16432,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001464, caniuse-lite@npm:^1.0.30001587":
-  version: 1.0.30001600
-  resolution: "caniuse-lite@npm:1.0.30001600"
-  checksum: 1aae03be0e9f96163e88b9305531ef8db0e01f224aff545c61a32ce0b0ca323e22531bf680bacac3e34f98e23f71ac31a21b328fa0fcbbecea65a2c2638c70c4
+  version: 1.0.30001727
+  resolution: "caniuse-lite@npm:1.0.30001727"
+  checksum: 2bc6112f242701198a99c17713d4409be9b404d09005f34f351ec29a4ea46c054e7aa4982bc16f06b81b7a375cbc61c937e89650170cbce84db772a376ed3963
   languageName: node
   linkType: hard
 
