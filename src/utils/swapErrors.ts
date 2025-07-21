@@ -1,9 +1,9 @@
 export function isDivisionByZero(msg: string): boolean {
-    return /division by zero|Infinity|NaN/i.test(msg)
+    return /(division\s+by\s+zero|divided\s+by\s+zero|\bInfinity\b|\bNaN\b)/i.test(msg)
 }
 
 export function isPriceImpactError(msg: string): boolean {
-    return /price impact|impact/i.test(msg)
+    return /price\s+impact/i.test(msg)
 }
 
 export function classifySwapError(raw: string) {
