@@ -9,10 +9,10 @@ import { AsyncStorage, G$Balances, useG$Balance, useG$Tokens } from '@gooddollar
 import { Box, Text, useColorModeValue } from 'native-base'
 import { BasePressable, CentreBox } from '@gooddollar/good-design'
 import { isMobile } from 'react-device-detect'
+import { useAppKitNetwork } from '@reown/appkit/react'
 
 import usePromise from 'hooks/usePromise'
 import { getScreenWidth } from 'utils/screenSizes'
-import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { AdditionalChainId } from '../../constants'
 import useMetaMask from 'hooks/useMetaMask'
 
@@ -30,7 +30,7 @@ const chains = Object.values(AdditionalChainId)
 
 export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }) => {
     const { ethereum } = window
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const metaMaskInfo = useMetaMask()
     const balances = useG$Balance(5)
     const [G$, GOOD] = useG$Tokens()
@@ -145,7 +145,7 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
                 borderBottomLeftRadius={12}
                 borderBottomRightRadius={12}
             >
-                <WalletBalance balances={balances} chainId={chainId} />
+                <WalletBalance balances={balances} chainId={+(chainId ?? 1)} />
                 {/* todo: retest this flow */}
                 {!loading && !imported && !isMinipay && (
                     <Box flexDir="row" mt={4}>

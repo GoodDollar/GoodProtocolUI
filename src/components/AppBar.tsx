@@ -9,14 +9,12 @@ import { useFeatureFlagWithPayload } from 'posthog-react-native'
 import { BasePressable, CentreBox, useScreenSize } from '@gooddollar/good-design'
 import { useG$Balance } from '@gooddollar/web3sdk-v2'
 
-import { useActiveWeb3React } from '../hooks/useActiveWeb3React'
 import Web3Network from './Web3Network'
 import Web3Status from './Web3Status'
 import { useWalletModalToggle } from '../state/application/hooks'
 import SideBar from './SideBar'
 import NetworkModal from './NetworkModal'
 import AppNotice from './AppNotice'
-import { OnboardConnectButton } from './BlockNativeOnboard'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 import WalletBalanceWrapper from './WalletBalance'
 import { MenuContainer } from './Layout/MenuContainer'
@@ -27,6 +25,7 @@ import { ReactComponent as LogoWhite } from '../assets/svg/logo_white_2023.svg'
 import { useApplicationTheme } from '../state/application/hooks'
 import { ReactComponent as Burger } from '../assets/images/burger.svg'
 import { ReactComponent as X } from '../assets/images/x.svg'
+import { useAppKitAccount } from '@reown/appkit/react'
 
 const AppBarWrapper = styled.header`
     background: ${({ theme }) => theme.color.secondaryBg};
@@ -149,15 +148,15 @@ const G$Balance = ({
 )
 
 const Web3Bar = () => {
-    const { account } = useActiveWeb3React()
     const toggleWalletModal = useWalletModalToggle()
+    const { isConnected } = useAppKitAccount()
 
     return (
         <>
             <div className="hidden xs:inline-block">
                 <Web3Network />
             </div>
-            {account ? (
+            {isConnected ? (
                 <Pressable
                     onPress={toggleWalletModal}
                     h={10}
@@ -172,7 +171,10 @@ const Web3Bar = () => {
                     <Web3Status />
                 </Pressable>
             ) : (
-                <OnboardConnectButton />
+                <>
+                    <appkit-button></appkit-button>
+                    {/* <OnboardConnectButton /> */}
+                </>
             )}
             <NetworkModal />
         </>
@@ -182,9 +184,9 @@ const Web3Bar = () => {
 function AppBar({ sideBar, walletBalance }): JSX.Element {
     const [theme] = useApplicationTheme()
     const { i18n } = useLingui()
-    const { account } = useActiveWeb3React()
     const isSimpleApp = useIsSimpleApp()
     const showPrice = true // useFeatureFlag('show-gd-price')
+    const { isConnected } = useAppKitAccount()
 
     const { ethereum } = window
     const isMinipay = ethereum?.isMiniPay
@@ -295,7 +297,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
                     </div>
 
                     <div className="relative flex flex-row items-center">
-                        {account && (
+                        {isConnected && (
                             <Box flexDirection="row" alignItems="center">
                                 <BasePressable onPress={toggleWalletBalance} innerView={{ flexDirection: 'row' }}>
                                     <Text

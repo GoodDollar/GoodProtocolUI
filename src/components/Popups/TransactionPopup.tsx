@@ -1,7 +1,8 @@
 import React from 'react'
 import { AlertCircle, CheckCircle } from 'react-feather'
 import styled, { useTheme } from 'styled-components'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
+import { useAppKitNetwork } from '@reown/appkit/react'
+
 import { TYPE, TwTheme } from '../../theme'
 import { ExternalLink } from '../../theme/components'
 import { getExplorerLink } from '../../utils'
@@ -24,7 +25,7 @@ export default function TransactionPopup({
     summary?: string
 }) {
     const { i18n } = useLingui()
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
 
     const theme = useTheme() as TwTheme
 
@@ -44,7 +45,7 @@ export default function TransactionPopup({
                 {chainId && (
                     <ExternalLink
                         label={i18n._(t`View on explorer`)}
-                        url={getExplorerLink(chainId, hash, 'transaction')}
+                        url={getExplorerLink(+(chainId ?? 1), hash, 'transaction')}
                         dataAttr="external_explorer"
                         withDefaultStyles
                     />

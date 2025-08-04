@@ -2,22 +2,27 @@ import React from 'react'
 
 import { WalletChatWidget } from 'react-wallet-chat-gd'
 import { useScreenSize } from '@gooddollar/good-design'
-
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
+import { useAppKitAccount, useAppKitNetwork, useWalletInfo } from '@reown/appkit/react'
+import { useAppKitProvider } from '@reown/appkit/react'
+import type { Provider } from '@reown/appkit/react'
 
 const WalletChat = () => {
-    const { account, chainId, label, eipProvider } = useActiveWeb3React()
+    const { walletProvider } = useAppKitProvider<Provider>('eip155')
+    const { address } = useAppKitAccount()
+    const { chainId } = useAppKitNetwork()
+    const { walletInfo } = useWalletInfo()
+
     const { isDesktopView } = useScreenSize()
     return (
         <WalletChatWidget
             style={{ marginBottom: !isDesktopView ? 50 : '0px' }}
             connectedWallet={
-                account && chainId
+                address && chainId
                     ? {
-                          walletName: label || '',
-                          account: account,
-                          chainId,
-                          provider: eipProvider,
+                          walletName: walletInfo?.name || '',
+                          account: address,
+                          chainId: +(chainId ?? 1),
+                          provider: walletProvider,
                       }
                     : undefined
             }

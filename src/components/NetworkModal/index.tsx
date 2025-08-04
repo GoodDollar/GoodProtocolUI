@@ -12,13 +12,13 @@ import Option from '../WalletModal/Option'
 import styled from 'styled-components'
 import { AdditionalChainId } from '../../constants'
 
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { NETWORK_ICON, NETWORK_LABEL } from '../../constants/networks'
 import { useModalOpen, useNetworkModalToggle, useSelectedChain } from '../../state/application/hooks'
 import { ApplicationModal } from '../../state/application/types'
 
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 import { getEnv } from 'utils/env'
+import { useAppKitNetwork, useAppKitState } from '@reown/appkit/react'
 
 const TextWrapper = styled.div`
     font-style: normal;
@@ -62,14 +62,17 @@ const ChainOption = ({ chainId, chain, toggleNetworkModal, switchChain, labels, 
 export default function NetworkModal(): JSX.Element | null {
     const { i18n } = useLingui()
     const { setSelectedChain } = useSelectedChain()
-    const { chainId, error, active } = useActiveWeb3React()
+    const { initialized } = useAppKitState()
+    const { chainId } = useAppKitNetwork()
+    // TODO
+    const error = false
     const sendData = useSendAnalyticsData()
     const { switchNetwork } = useSwitchNetwork()
     const networkModalOpen = useModalOpen(ApplicationModal.NETWORK)
     const toggleNetworkModal = useNetworkModalToggle()
     const [toAddNetwork, setToAddNetwork] = useState<ChainId | AdditionalChainId | undefined>()
 
-    const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[chainId]
+    const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[+(chainId ?? 1)]
     const network = getEnv()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const prodNetworks = [AdditionalChainId.CELO, ChainId.MAINNET, AdditionalChainId.FUSE]
@@ -92,7 +95,7 @@ export default function NetworkModal(): JSX.Element | null {
     const switchChain = useCallback(
         async (chain: ChainId | AdditionalChainId) => {
             try {
-                if (active) await switchNetwork(chain)
+                if (initialized) await switchNetwork(chain)
                 else setSelectedChain(chain) // only change chain to trigger onboard re-init if not already connected
             } catch (e: any) {
                 if (e.code === 4902) {

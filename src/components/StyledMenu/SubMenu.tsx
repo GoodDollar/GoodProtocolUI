@@ -16,11 +16,11 @@ export const SubMenuItems = ({
 }) =>
     items
         .filter((ext) => ext.show)
-        .map(({ label, url, dataAttr, withIcon, route, text }) => {
+        .map(({ label, url, dataAttr, withIcon, route, text }, index) => {
             if (url) {
                 return (
                     <ExternalLink
-                        key={label}
+                        key={index}
                         label={label}
                         url={url}
                         dataAttr={dataAttr}
@@ -34,7 +34,7 @@ export const SubMenuItems = ({
             if (route) {
                 return (
                     <View style={{ ...styles }}>
-                        <NavLink key={route} to={route} onPress={handleInternal}>
+                        <NavLink key={index} to={route} onPress={handleInternal}>
                             <Text>{text}</Text>
                         </NavLink>
                     </View>
