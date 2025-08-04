@@ -1,12 +1,11 @@
 diff --git a/dist/cjs/index-24665584.cjs b/dist/cjs/index-24665584.cjs
-index 4f3b34eb3c85a3337f61ee7b21b029da1b9a4123..8716448296acae74e7dfbe6894eaa5296db8315f 100644
+index 4f3b34eb3c85a3337f61ee7b21b029da1b9a4123..da5c6008e08add51da22413501edfafbf7c28dbf 100644
 --- a/dist/cjs/index-24665584.cjs
 +++ b/dist/cjs/index-24665584.cjs
-@@ -10410,6 +10410,16 @@ function computeRealizedPriceImpact(trade) {
+@@ -10410,6 +10410,15 @@ function computeRealizedPriceImpact(trade) {
    return trade.priceImpact.subtract(realizedLpFeePercent);
  }
  function getPriceImpactWarning(priceImpact) {
-+  // Add defensive check for invalid price impact values
 +  if (
 +    !priceImpact ||
 +    priceImpact.toSignificant() === 'NaN' ||
@@ -19,12 +18,11 @@ index 4f3b34eb3c85a3337f61ee7b21b029da1b9a4123..8716448296acae74e7dfbe6894eaa529
    if (priceImpact.greaterThan(ALLOWED_PRICE_IMPACT_HIGH)) return 'error';
    if (priceImpact.greaterThan(ALLOWED_PRICE_IMPACT_MEDIUM)) return 'warning';
    return;
-@@ -10554,6 +10564,23 @@ function useUSDCValue(currencyAmount) {
+@@ -10554,6 +10563,22 @@ function useUSDCValue(currencyAmount) {
  function usePriceImpact(trade) {
    return React.useMemo(function () {
      var marketPriceImpact = trade ? computeRealizedPriceImpact(trade) : undefined;
 +
-+    // Defensive check for invalid or negative price impact
 +    if (
 +      marketPriceImpact &&
 +      (
@@ -44,14 +42,13 @@ index 4f3b34eb3c85a3337f61ee7b21b029da1b9a4123..8716448296acae74e7dfbe6894eaa529
        percent: marketPriceImpact,
        warning: getPriceImpactWarning(marketPriceImpact)
 diff --git a/dist/index-53ec290b.js b/dist/index-53ec290b.js
-index e7da428525171db63ee79a0b73e18aeb3bcad3b4..a5e480db3492b54fc45e4ce88f08e00c018e54a1 100644
+index e7da428525171db63ee79a0b73e18aeb3bcad3b4..f4eff4b27f503fe2f4caf32f985b3759c0e8b339 100644
 --- a/dist/index-53ec290b.js
 +++ b/dist/index-53ec290b.js
-@@ -10359,6 +10359,16 @@ function computeRealizedPriceImpact(trade) {
+@@ -10359,6 +10359,15 @@ function computeRealizedPriceImpact(trade) {
    return trade.priceImpact.subtract(realizedLpFeePercent);
  }
  function getPriceImpactWarning(priceImpact) {
-+  // Add defensive check for invalid price impact values
 +  if (
 +    !priceImpact ||
 +    priceImpact.toSignificant() === 'NaN' ||
@@ -64,7 +61,7 @@ index e7da428525171db63ee79a0b73e18aeb3bcad3b4..a5e480db3492b54fc45e4ce88f08e00c
    if (priceImpact.greaterThan(ALLOWED_PRICE_IMPACT_HIGH)) return 'error';
    if (priceImpact.greaterThan(ALLOWED_PRICE_IMPACT_MEDIUM)) return 'warning';
    return;
-@@ -10501,8 +10511,25 @@ function useUSDCValue(currencyAmount) {
+@@ -10501,8 +10510,24 @@ function useUSDCValue(currencyAmount) {
  }
  
  function usePriceImpact(trade) {
@@ -72,7 +69,6 @@ index e7da428525171db63ee79a0b73e18aeb3bcad3b4..a5e480db3492b54fc45e4ce88f08e00c
 +  return React.useMemo(function () {
      var marketPriceImpact = trade ? computeRealizedPriceImpact(trade) : undefined;
 +
-+    // Defensive check for invalid or negative price impact
 +    if (
 +      marketPriceImpact &&
 +      (
