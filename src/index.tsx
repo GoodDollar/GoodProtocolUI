@@ -25,7 +25,6 @@ import { Web3ContextProvider } from './hooks/useWeb3'
 import { analyticsConfig, appInfo } from 'hooks/useSendAnalyticsData'
 import { HttpsProvider } from 'utils/HttpsProvider'
 import { registerServiceWorker } from './serviceWorker'
-import { OnboardProviderWrapper } from 'components/BlockNativeOnboard'
 import { SimpleAppProvider } from 'state/simpleapp/simpleapp'
 import { nbTheme } from './theme/nbtheme'
 
@@ -83,15 +82,11 @@ const ProviderWrapper = ({ children }) => (
             }}
             autocapture={false}
         >
-            <OnboardProviderWrapper>
-                <GoodXProvider
-                    nativeBaseProps={{ config: { suppressColorAccessibilityWarning: true }, theme: nbTheme }}
-                >
-                    <Web3ContextProvider>
-                        <LanguageProvider>{children}</LanguageProvider>
-                    </Web3ContextProvider>
-                </GoodXProvider>
-            </OnboardProviderWrapper>
+            <GoodXProvider nativeBaseProps={{ config: { suppressColorAccessibilityWarning: true }, theme: nbTheme }}>
+                <Web3ContextProvider>
+                    <LanguageProvider>{children}</LanguageProvider>
+                </Web3ContextProvider>
+            </GoodXProvider>
         </PostHogProvider>
     </Provider>
 )
