@@ -56,4 +56,5 @@ deploy.sh
 yalc.lock
 .continueignore
 analice.html
-e2e.logdist/
+e2e.log
+dist/
