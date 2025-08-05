@@ -103,7 +103,15 @@ export const UniSwap = (): JSX.Element => {
             console.error('Uniswap widget error:', e)
             const raw = e.message || String(e)
             const { type, message } = classifySwapError(raw)
-            sendData({ event: 'swap', action: 'swap_failed', error: message })
+            const errorContext: Record<string, any> = {
+                error: message,
+                errorType: type,
+                originalErrorType: e?.name || typeof e,
+            }
+            if (e?.stack) {
+                errorContext.stack = e.stack
+            }
+            sendData({ event: 'swap', action: 'swap_failed', ...errorContext })
             if (type === 'price_impact_error') {
                 console.warn('Extreme price impact detected:', message)
             }

@@ -1,8 +1,10 @@
 import React from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Text, Button, Box } from 'native-base'
+import { classifySwapError } from '../utils/swapErrors'
 
-function SwapErrorFallback({ resetErrorBoundary }: { error: Error; resetErrorBoundary: () => void }) {
+function SwapErrorFallback({ resetErrorBoundary, error }: { error: Error; resetErrorBoundary: () => void }) {
+    const { message } = classifySwapError(error?.message || 'Unknown error')
     return (
         <Box
             padding="20px"
@@ -19,6 +21,9 @@ function SwapErrorFallback({ resetErrorBoundary }: { error: Error; resetErrorBou
             <Text fontSize="md" color="gray.600" mb={4}>
                 The swap widget encountered an error. This might be due to extreme price impact or insufficient
                 liquidity.
+            </Text>
+            <Text fontSize="sm" color="red.400" mb={4}>
+                {message}
             </Text>
             <Button colorScheme="blue" size="sm" onPress={resetErrorBoundary}>
                 Try Again
