@@ -231,6 +231,7 @@
         "mobile-device-detect": "^0.4.3",
         "native-base": "^3.4.28",
         "posthog-react-native": "^4.1.0",
+        "react-error-boundary": "^6.0.0",
         "react-native": "0.70.4",
         "react-native-device-info": "^10.12.0",
         "react-native-paper": "4.12.8",
