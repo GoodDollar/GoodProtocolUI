@@ -2,6 +2,7 @@ import { ChainId, Currency, ETHER, Token } from '@sushiswap/sdk'
 import React, { useMemo } from 'react'
 import { getTokens } from '@gooddollar/web3sdk'
 import usePromise from 'hooks/usePromise'
+import { useAppKitNetwork } from '@reown/appkit/react'
 
 import styled from 'styled-components'
 import AvalancheLogo from '../../assets/images/avalanche-logo.png'
@@ -14,7 +15,6 @@ import MaticLogo from '../../assets/images/matic-logo.png'
 import xDaiLogo from '../../assets/images/xdai-logo.png'
 import { AdditionalChainId, FUSE } from '../../constants'
 import { getFuseTokenLogoURL } from '../../constants/fuseTokenMapping'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import useHttpLocations from '../../hooks/useHttpLocations'
 import { WrappedTokenInfo } from 'types/WrappedTokenInfo'
 import Logo from '../Logo'
@@ -71,7 +71,7 @@ export default function CurrencyLogo({
     size?: string
     style?: React.CSSProperties
 }) {
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const uriLocations = useHttpLocations(currency instanceof WrappedTokenInfo ? currency.logoURI : undefined)
     const [tokenList] = usePromise<[Map<string, Currency>, Map<string, string>]>(() => getTokens(chainId) as any) // solve uniswap/sushiswap type issue
 
@@ -95,5 +95,12 @@ export default function CurrencyLogo({
         return <StyledNativeCurrencyLogo src={logo[chainId] ?? logo[ChainId.MAINNET]} size={size} style={style} />
     }
 
-    return <StyledLogo size={size} srcs={srcs} alt={`${currency?.getSymbol(chainId) ?? 'token'} logo`} style={style} />
+    return (
+        <StyledLogo
+            size={size}
+            srcs={srcs}
+            alt={`${currency?.getSymbol(+(chainId ?? 1)) ?? 'token'} logo`}
+            style={style}
+        />
+    )
 }

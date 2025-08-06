@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useAppKitAccount } from '@reown/appkit/react'
+
 import usePrevious from '../../hooks/usePrevious'
 import { ApplicationModal } from '../../state/application/types'
 import { useModalOpen, useWalletModalToggle } from '../../state/application/hooks'
@@ -7,7 +9,6 @@ import AccountDetails from '../AccountDetails'
 import Modal from '../Modal'
 import { useLingui } from '@lingui/react'
 import NetworkModal from 'components/NetworkModal'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 
 const Wrapper = styled.div`
     ${({ theme }) => theme.flexColumnNoWrap}
@@ -59,7 +60,9 @@ export default function WalletModal({
 }): React.ReactElement {
     const { i18n } = useLingui()
 
-    const { account, error } = useActiveWeb3React()
+    const { address } = useAppKitAccount()
+    // TODO
+    const error = false
 
     const [walletView, setWalletView] = useState(WALLET_VIEWS.ACCOUNT)
 
@@ -67,14 +70,14 @@ export default function WalletModal({
 
     const toggleWalletModal = useWalletModalToggle()
 
-    const previousAccount = usePrevious(account)
+    const previousAccount = usePrevious(address)
 
     // close on connection, when logged out before
     useEffect(() => {
-        if (account && !previousAccount && walletModalOpen) {
+        if (address && !previousAccount && walletModalOpen) {
             toggleWalletModal()
         }
-    }, [account, previousAccount, toggleWalletModal, walletModalOpen])
+    }, [address, previousAccount, toggleWalletModal, walletModalOpen])
 
     // always reset to account view
     useEffect(() => {
@@ -89,7 +92,7 @@ export default function WalletModal({
                 <Wrapper>
                     <ModalContent
                         error={error}
-                        account={account}
+                        account={address}
                         toggleWalletModal={toggleWalletModal}
                         i18n={i18n}
                         walletView={walletView}

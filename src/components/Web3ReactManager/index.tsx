@@ -3,10 +3,8 @@ import { useAnalytics } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
+import { useAppKitAccount, useAppKitState } from '@reown/appkit/react'
 
-import Loader from '../Loader'
-import { useOnboardConnect } from 'hooks/useActiveOnboard'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 
 const MessageWrapper = styled.div`
     display: flex;
@@ -21,9 +19,11 @@ const Message = styled.h2`
 
 export default function Web3ReactManager({ children }: { children: JSX.Element }) {
     const { i18n } = useLingui()
-    const { tried } = useOnboardConnect()
-    const [showLoader, setShowLoader] = useState(false) // handle delayed loader state
-    const { active: networkActive, error: networkError, account } = useActiveWeb3React()
+    // const { tried } = useOnboardConnect()
+    const [, setShowLoader] = useState(false) // handle delayed loader state
+    const { initialized } = useAppKitState()
+    const { address } = useAppKitAccount()
+    const networkError = false
     const { identify } = useAnalytics()
 
     useEffect(() => {
@@ -38,22 +38,23 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
 
     useEffect(() => {
         // re-identify analytics when connected wallet changes
-        if (networkActive && account) {
-            identify(account)
+        if (initialized && address) {
+            identify(address)
         }
-    }, [networkActive, account])
+    }, [initialized, address])
 
+    // TODO
     // on page load, do nothing until we've tried to connect a previously connected wallet
-    if (!tried) {
-        return showLoader ? (
-            <MessageWrapper>
-                <Loader />
-            </MessageWrapper>
-        ) : null
-    }
+    // if (!tried) {
+    //     return showLoader ? (
+    //         <MessageWrapper>
+    //             <Loader />
+    //         </MessageWrapper>
+    //     ) : null
+    // }
 
     // if the account context isn't active, and there's an error on the network context, it's an irrecoverable error
-    if (!networkActive && networkError) {
+    if (!initialized && networkError) {
         return (
             <MessageWrapper>
                 <Message>

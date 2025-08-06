@@ -3,12 +3,13 @@ import { useLingui } from '@lingui/react'
 import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { useConnectWallet } from '@web3-onboard/react'
+import { useAppKit, useAppKitNetwork } from '@reown/appkit/react'
+import { useAppKitAccount } from '@reown/appkit/react'
 import { useRedirectNotice } from '@gooddollar/good-design'
+import { useWalletInfo } from '@reown/appkit/react'
 
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { WalletLabels } from '../../hooks/useActiveOnboard'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { AppDispatch } from '../../state'
 import { clearAllTransactions } from '../../state/transactions/actions'
 import { ExternalLink } from 'theme'
@@ -21,6 +22,7 @@ import Transaction from './Transaction'
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 
 import { getEnv } from 'utils/env'
+import { useConnectWallet } from '@web3-onboard/react'
 
 const UpperSection = styled.div`
     position: relative;
@@ -209,13 +211,28 @@ export default function AccountDetails({
     ENSName,
 }: AccountDetailsProps): any {
     const { i18n } = useLingui()
-    const { chainId, account } = useActiveWeb3React()
     const dispatch = useDispatch<AppDispatch>()
     const network = getEnv()
-    //eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
+
+    const { address } = useAppKitAccount()
+    const { chainId } = useAppKitNetwork()
+
+    const { open } = useAppKit()
+
+    const click = async () => {
+        await open({ view: 'Account' })
+    }
+
+    const [{ wallet }, connect, disconnect] = useConnectWallet()
+    // const { disconnect } = useDisconnect()
+    // useAppKitWallet({
+    //     namespace: 'eip155',
+    //     onSuccess: (address) => console.log('Connected to EVM:', address),
+    // })
     const sendData = useSendAnalyticsData()
     const { goToExternal } = useRedirectNotice()
+
+    const { walletInfo } = useWalletInfo()
 
     function formatConnectorName() {
         return `${i18n._(t`Connected with`)} ${wallet?.label}`
@@ -236,7 +253,7 @@ export default function AccountDetails({
     }, [toggleWalletModal, connect, disconnect, wallet])
 
     const clearAllTransactionsCallback = useCallback(() => {
-        if (chainId) dispatch(clearAllTransactions({ chainId }))
+        if (chainId) dispatch(clearAllTransactions({ chainId: +(chainId ?? 1) }))
     }, [dispatch, chainId])
 
     const goToExplorer = (e: any, url: string) => {
@@ -250,6 +267,7 @@ export default function AccountDetails({
                 <CloseIcon onClick={toggleWalletModal}>
                     <CloseColor />
                 </CloseIcon>
+                <button onClick={click}>click me</button>
                 <Title className="mb-8 text-center">{i18n._(t`Account`)}</Title>
                 <AccountSection>
                     <YourAccount>
@@ -257,7 +275,7 @@ export default function AccountDetails({
                             <AccountGroupingRow>
                                 {formatConnectorName()}
                                 <div className="mt-3.5 mb-3.5">
-                                    {wallet?.label && WalletLabels.includes(wallet.label) && (
+                                    {walletInfo?.name && WalletLabels.includes(walletInfo.name) && (
                                         <WalletAction
                                             width={'85px'}
                                             size="sm"
@@ -271,7 +289,7 @@ export default function AccountDetails({
                                         width={'75px'}
                                         size="sm"
                                         style={{ marginRight: '-5px' }}
-                                        onClick={wallet?.label === 'MetaMask' ? disconnectWallet : changeWallet}
+                                        onClick={walletInfo?.label === 'MetaMask' ? disconnectWallet : changeWallet}
                                     >
                                         {i18n._(t`Change`)}
                                     </WalletAction>
@@ -280,21 +298,21 @@ export default function AccountDetails({
                             <AccountGroupingRow id="web3-account-identifier-row">
                                 <AccountControl>
                                     <div className="justify-center text-center">
-                                        <p> {ENSName ?? shortenAddress(account ?? '')}</p>
+                                        <p> {ENSName ?? shortenAddress(address ?? '')}</p>
                                     </div>
                                 </AccountControl>
                             </AccountGroupingRow>
                             <AccountGroupingRow className="mt-4">
                                 <AccountControl>
                                     <div>
-                                        {account && (
-                                            <Copy toCopy={account}>
+                                        {address && (
+                                            <Copy toCopy={address}>
                                                 <span style={{ marginLeft: '4px' }}>{i18n._(t`Copy address`)}</span>
                                             </Copy>
                                         )}
-                                        {chainId && account && (
+                                        {chainId && address && (
                                             <ExternalLink
-                                                url={getExplorerLink(chainId, account, 'address')}
+                                                url={getExplorerLink(+(chainId ?? 1), address, 'address')}
                                                 label={i18n._(t`View on explorer`)}
                                                 dataAttr="external_explorer"
                                                 onPress={goToExplorer}

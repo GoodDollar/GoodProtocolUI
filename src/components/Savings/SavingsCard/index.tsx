@@ -3,8 +3,9 @@ import Card from 'components/gd/Card'
 import Title from 'components/gd/Title'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import SavingsModal, { ModalType } from 'components/Savings/SavingsModal'
+import { useAppKitNetwork } from '@reown/appkit/react'
 
+import SavingsModal, { ModalType } from 'components/Savings/SavingsModal'
 import Table from 'components/gd/Table'
 import { QuestionHelper } from 'components'
 import { useWindowSize } from 'hooks/useWindowSize'
@@ -12,7 +13,6 @@ import { useWindowSize } from 'hooks/useWindowSize'
 import { SavingsCardRow } from 'components/Savings/SavingsCard/SavingsCardRow'
 import { SavingsCardTableMobile } from './SavingsCardTableMobile'
 import Web3SupportedNetworks, { IWeb3SupportedNetworksProps } from 'components/Web3SupportedNetworks'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 
 export type HeadingCopy = {
     title: string
@@ -23,7 +23,7 @@ export type HeadingCopy = {
 //todo: SavingsCard can be merged into 1 component together with Savings
 export const SavingsCard = ({ account }: { account: string }): JSX.Element => {
     const { i18n } = useLingui()
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [type, setType] = useState<ModalType>()
     const { width } = useWindowSize()
@@ -96,7 +96,12 @@ export const SavingsCard = ({ account }: { account: string }): JSX.Element => {
         <>
             {type && (
                 //TODO: fix when no account connected
-                <SavingsModal type={type} onDismiss={toggleModal} isOpen={isModalOpen} requiredChain={chainId} />
+                <SavingsModal
+                    type={type}
+                    onDismiss={toggleModal}
+                    isOpen={isModalOpen}
+                    requiredChain={+(chainId ?? 1)}
+                />
             )}
             {isMobile ? (
                 <Web3SupportedNetworks onItem={MobileCardRow} />
