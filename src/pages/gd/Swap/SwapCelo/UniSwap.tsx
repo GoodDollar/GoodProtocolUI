@@ -29,6 +29,8 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
 import useSendAnalytics from 'hooks/useSendAnalyticsData'
 import { tokens } from './celo-tokenlist.json'
+import { SwapWidgetErrorBoundary } from 'components/SwapErrorBoundary'
+import { classifySwapError } from 'utils/swapErrors'
 
 const jsonRpcUrlMap = {
     122: ['https://rpc.fuse.io', 'https://fuse-pokt.nodies.app', 'https://fuse.liquify.com'],
@@ -96,9 +98,26 @@ export const UniSwap = (): JSX.Element => {
         return true
     }, [connect])
 
-    const handleError = useCallback(async (e) => {
-        sendData({ event: 'swap', action: 'swap_failed', error: e.message })
-    }, [])
+    const handleError = useCallback(
+        async (e) => {
+            console.error('Uniswap widget error:', e)
+            const raw = e.message || String(e)
+            const { type, message } = classifySwapError(raw)
+            const errorContext: Record<string, any> = {
+                error: message,
+                errorType: type,
+                originalErrorType: e?.name || typeof e,
+            }
+            if (e?.stack) {
+                errorContext.stack = e.stack
+            }
+            sendData({ event: 'swap', action: 'swap_failed', ...errorContext })
+            if (type === 'price_impact_error') {
+                console.warn('Extreme price impact detected:', message)
+            }
+        },
+        [sendData]
+    )
 
     const handleTxFailed: OnTxFail = useCallback(async (error: string, data: any) => {
         console.log('handleTxFailed -->', { error, data })
@@ -189,29 +208,31 @@ export const UniSwap = (): JSX.Element => {
 
     return (
         <Center w={'auto'} maxW="550" alignSelf="center">
-            <SwapWidget
-                width={'auto'}
-                tokenList={tokens}
-                defaultInputTokenAddress={cusdTokenAddress}
-                defaultOutputTokenAddress={gdTokenAddress}
-                settings={{
-                    slippage: { auto: false, max: '0.3' },
-                    routerPreference: RouterPreference.API,
-                    transactionTtl: 30,
-                }}
-                permit2={!isMinipay} // disable for minipay?
-                jsonRpcUrlMap={jsonRpcUrlMap}
-                routerUrl={'https://api.uniswap.org/v1/'}
-                provider={web3Provider}
-                theme={customTheme}
-                hideConnectionUI
-                onConnectWalletClick={connectOnboard}
-                onError={handleError}
-                onTxFail={handleTxFailed}
-                onTxSubmit={handleTxSubmit}
-                onTxSuccess={handleTxSuccess}
-                dialogOptions={{ pageCentered: !!isMobile }}
-            />
+            <SwapWidgetErrorBoundary>
+                <SwapWidget
+                    width={'auto'}
+                    tokenList={tokens}
+                    defaultInputTokenAddress={cusdTokenAddress}
+                    defaultOutputTokenAddress={gdTokenAddress}
+                    settings={{
+                        slippage: { auto: false, max: '0.3' },
+                        routerPreference: RouterPreference.API,
+                        transactionTtl: 30,
+                    }}
+                    permit2={!isMinipay} // disable for minipay?
+                    jsonRpcUrlMap={jsonRpcUrlMap}
+                    routerUrl={'https://api.uniswap.org/v1/'}
+                    provider={web3Provider}
+                    theme={customTheme}
+                    hideConnectionUI
+                    onConnectWalletClick={connectOnboard}
+                    onError={handleError}
+                    onTxFail={handleTxFailed}
+                    onTxSubmit={handleTxSubmit}
+                    onTxSuccess={handleTxSuccess}
+                    dialogOptions={{ pageCentered: !!isMobile }}
+                />
+            </SwapWidgetErrorBoundary>
         </Center>
     )
 }
