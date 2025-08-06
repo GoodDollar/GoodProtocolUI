@@ -3,7 +3,7 @@ import { parseUnits } from '@ethersproject/units'
 import { Currency, CurrencyAmount, JSBI, Token, TokenAmount } from '@sushiswap/sdk'
 import { ParsedQs } from 'qs'
 import { useDispatch } from 'react-redux'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
+import { useAppKitNetwork } from '@reown/appkit/react'
 import useParsedQueryString from '../../hooks/useParsedQueryString'
 import { isAddress } from '../../utils'
 import { AppDispatch } from '../index'
@@ -37,7 +37,7 @@ function parseCurrencyFromURLParameter(urlParam: any): string {
         if (urlParam.toUpperCase() === 'ETH') return 'ETH'
         if (valid === false) return 'ETH'
     }
-    return 'ETH' ?? ''
+    return 'ETH'
 }
 
 function parseTokenAmountURLParameter(urlParam: any): string {
@@ -89,7 +89,7 @@ export function queryParametersToSwapState(parsedQs: ParsedQs): SwapState {
 export function useDefaultsFromURLSearch():
     | { inputCurrencyId: string | undefined; outputCurrencyId: string | undefined }
     | undefined {
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const dispatch = useDispatch<AppDispatch>()
     const parsedQs = useParsedQueryString()
     const [result, setResult] = useState<

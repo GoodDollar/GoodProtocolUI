@@ -2,10 +2,10 @@ import { Layout, MarketHeader } from 'components/gd/sushi'
 import { t } from '@lingui/macro'
 import AsyncTokenIcon from 'components/gd/sushi/AsyncTokenIcon'
 import ListHeaderWithSort from 'components/gd/sushi/ListHeaderWithSort'
-import React, { Fragment, useState } from 'react'
+import { Fragment, useState } from 'react'
 import { useFeatureFlag } from 'posthog-react-native'
 
-import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
+import { useAppKitNetwork } from '@reown/appkit/react'
 import useSearchAndSort from 'hooks/useSearchAndSort'
 import { useLingui } from '@lingui/react'
 import Modal from 'components/Modal'
@@ -379,11 +379,11 @@ const StakesSC = styled.div`
 export default function Stakes(): JSX.Element | null {
     const { i18n } = useLingui()
     const { web3 } = useGdContextProvider()
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const governanceStaking = useGovernanceStaking(web3, 122)
-    const [mainnetWeb3] = useEnvWeb3(DAO_NETWORK.MAINNET, web3, chainId)
+    const [mainnetWeb3] = useEnvWeb3(DAO_NETWORK.MAINNET, web3, +(chainId ?? 1))
     const [stakes = [], loading, error, refetch] = usePromise(async () => {
-        const stakes = await (web3 && mainnetWeb3 && !disableTestnetMain.includes(chainId)
+        const stakes = await (web3 && mainnetWeb3 && !disableTestnetMain.includes(+(chainId ?? 1))
             ? getStakes(mainnetWeb3)
             : Promise.resolve([]))
 

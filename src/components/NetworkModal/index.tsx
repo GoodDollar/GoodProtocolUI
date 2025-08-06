@@ -11,6 +11,7 @@ import ModalHeader from '../ModalHeader'
 import Option from '../WalletModal/Option'
 import styled from 'styled-components'
 import { AdditionalChainId } from '../../constants'
+import { useAppKitNetwork, useAppKitState } from '@reown/appkit/react'
 
 import { NETWORK_ICON, NETWORK_LABEL } from '../../constants/networks'
 import { useModalOpen, useNetworkModalToggle, useSelectedChain } from '../../state/application/hooks'
@@ -18,7 +19,6 @@ import { ApplicationModal } from '../../state/application/types'
 
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 import { getEnv } from 'utils/env'
-import { useAppKitNetwork, useAppKitState } from '@reown/appkit/react'
 
 const TextWrapper = styled.div`
     font-style: normal;

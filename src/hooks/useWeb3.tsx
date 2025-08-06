@@ -7,8 +7,9 @@ import { ChainId } from '@sushiswap/sdk'
 import { DAO_NETWORK, GdSdkContext, useEnvWeb3 } from '@gooddollar/web3sdk'
 import { AsyncStorage, Celo, Fuse, Web3Provider } from '@gooddollar/web3sdk-v2'
 import { sample } from 'lodash'
+import { useAppKitNetwork, useAppKitProvider } from '@reown/appkit/react'
+import type { Provider } from '@reown/appkit/react'
 
-import useActiveWeb3React from './useActiveWeb3React'
 import { getEnv } from 'utils/env'
 
 type NetworkSettings = {
@@ -52,14 +53,18 @@ export function useNetwork(): NetworkSettings {
 
 export function Web3ContextProvider({ children }: { children: ReactNode | ReactNodeArray }): JSX.Element {
     const { rpcs } = useNetwork()
-    const { eipProvider, chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
+    const { walletProvider } = useAppKitProvider<Provider>('eip155')
     const isMiniPay = window?.ethereum?.isMiniPay
     const [mainnetWeb3] = useEnvWeb3(DAO_NETWORK.MAINNET)
 
-    const web3 = useMemo(() => (eipProvider ? new Web3(eipProvider as any) : mainnetWeb3), [eipProvider, mainnetWeb3])
+    const web3 = useMemo(
+        () => (walletProvider ? new Web3(walletProvider as any) : mainnetWeb3),
+        [walletProvider, mainnetWeb3]
+    )
     const webprovider = useMemo(
-        () => eipProvider && new ethers.providers.Web3Provider(eipProvider as ExternalProvider, 'any'),
-        [eipProvider]
+        () => walletProvider && new ethers.providers.Web3Provider(walletProvider as ExternalProvider, 'any'),
+        [walletProvider]
     )
 
     if (webprovider) {

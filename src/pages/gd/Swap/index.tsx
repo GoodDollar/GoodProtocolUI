@@ -4,10 +4,10 @@ import { useFeatureFlagWithPayload } from 'posthog-react-native'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { Link, Text, useBreakpointValue, VStack } from 'native-base'
+import { useAppKitNetwork } from '@reown/appkit/react'
 
 import { useNetworkModalToggle } from 'state/application/hooks'
 import { UniSwap } from './SwapCelo/UniSwap'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import SwapMento from './SwapCore/mentoReserve'
 import { PageLayout } from 'components/Layout/PageLayout'
 import { getEnv } from 'utils/env'
@@ -61,7 +61,7 @@ Take note of indicators in the widget below for price slippage and liquidity.`
 }
 const Swap = memo((props: any) => {
     const swapWidget = props.match.params.widget
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const isProd = getEnv() === 'production'
     const [, payload] = useFeatureFlagWithPayload('swap-feature')
     const { celoEnabled, reserveEnabled } = (payload as any) || {}

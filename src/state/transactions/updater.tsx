@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useWeb3Context } from '@gooddollar/web3sdk-v2'
 import { Web3Provider } from '@ethersproject/providers'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
+import { useAppKitNetwork } from '@reown/appkit/react'
 import { useAddPopup, useBlockNumber } from '../application/hooks'
 import { AppDispatch, AppState } from '../index'
 import { checkedTransaction, finalizeTransaction } from './actions'
@@ -29,7 +29,7 @@ export function shouldCheck(
 }
 
 export default function Updater(): null {
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const { web3Provider: library } = useWeb3Context() as { web3Provider: Web3Provider }
 
     const lastBlockNumber = useBlockNumber()
@@ -54,7 +54,7 @@ export default function Updater(): null {
                         if (receipt) {
                             dispatch(
                                 finalizeTransaction({
-                                    chainId,
+                                    chainId: +(chainId ?? 1),
                                     hash,
                                     receipt: {
                                         blockHash: receipt.blockHash,
@@ -81,7 +81,13 @@ export default function Updater(): null {
                                 hash
                             )
                         } else {
-                            dispatch(checkedTransaction({ chainId, hash, blockNumber: lastBlockNumber }))
+                            dispatch(
+                                checkedTransaction({
+                                    chainId: +(chainId ?? 1),
+                                    hash,
+                                    blockNumber: lastBlockNumber,
+                                })
+                            )
                         }
                     })
                     .catch((error) => {

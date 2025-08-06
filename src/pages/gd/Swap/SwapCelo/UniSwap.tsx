@@ -24,8 +24,8 @@ import { addTransaction } from 'state/transactions/actions'
 import { ChainId } from '@sushiswap/sdk'
 import { isMobile } from 'react-device-detect'
 import { Center } from 'native-base'
+import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
 
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
 import useSendAnalytics from 'hooks/useSendAnalyticsData'
 import { tokens } from './celo-tokenlist.json'
@@ -42,8 +42,9 @@ export const UniSwap = (): JSX.Element => {
     const [theme] = useApplicationTheme()
     const uniTheme = theme === 'dark' ? darkTheme : lightTheme
     const { web3Provider } = useWeb3Context()
-    const { account, chainId } = useActiveWeb3React()
-    const network = SupportedChains[chainId]
+    const { address } = useAppKitAccount()
+    const { chainId } = useAppKitNetwork()
+    const network = SupportedChains[+(chainId ?? 1)]
     const [, connect] = useConnectWallet()
     const globalDispatch = useDispatch()
     const sendData = useSendAnalytics()
@@ -80,7 +81,7 @@ export const UniSwap = (): JSX.Element => {
     tokens.push(gdToken)
 
     const connectOnboard = useCallback(async () => {
-        if (!account) {
+        if (!address) {
             // todo: make connect onboard a generic function/merge with: useOnboardConnect
             const osName = getDevice().os.name
             // temp solution for where it tries and open a deeplink for desktop app
@@ -119,7 +120,7 @@ export const UniSwap = (): JSX.Element => {
                         addTransaction({
                             chainId: 42220 as ChainId,
                             hash: txHash,
-                            from: account!,
+                            from: address!,
                             summary,
                         })
                     )
@@ -162,7 +163,7 @@ export const UniSwap = (): JSX.Element => {
                         addTransaction({
                             chainId: 42220 as ChainId,
                             hash: txHash,
-                            from: account!,
+                            from: address!,
                             summary: summary,
                             tradeInfo: tradeInfo,
                         })
@@ -171,7 +172,7 @@ export const UniSwap = (): JSX.Element => {
                 }
             }
         },
-        [account, network]
+        [address, network]
     )
 
     const handleTxSuccess: OnTxSuccess = useCallback(

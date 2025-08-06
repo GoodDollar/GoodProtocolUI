@@ -173,7 +173,6 @@ const Web3Bar = () => {
             ) : (
                 <>
                     <appkit-button></appkit-button>
-                    {/* <OnboardConnectButton /> */}
                 </>
             )}
             <NetworkModal />

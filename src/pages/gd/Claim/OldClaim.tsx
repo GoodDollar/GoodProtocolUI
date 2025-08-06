@@ -12,7 +12,7 @@ import {
     ClaimSuccessModal,
 } from '@gooddollar/good-design'
 import { Box, Center, Text, useBreakpointValue } from 'native-base'
-import { useConnectWallet } from '@web3-onboard/react'
+import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
 import {
     useClaim,
     SupportedV2Networks,
@@ -27,7 +27,6 @@ import moment from 'moment'
 
 import ClaimFooterCelebration from 'assets/images/claim/claim-footer-celebration.png'
 import { ClaimBalance } from './ClaimBalance'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { NewsFeedWidget, NewsFeedWrapper } from '../../../components/NewsFeed'
@@ -50,9 +49,10 @@ const OldClaim = memo(() => {
     })
 
     const [claimed, setClaimed] = useState<boolean | undefined>(undefined)
-    const [, connect] = useConnectWallet()
-    const { account, chainId } = useActiveWeb3React()
-    const network = SupportedV2Networks[chainId]
+    // const [, connect] = useConnectWallet()
+    const { address } = useAppKitAccount()
+    const { chainId } = useAppKitNetwork()
+    const network = SupportedV2Networks[+(chainId ?? 1)]
     const sendData = useSendAnalyticsData()
     const [, payload] = useFeatureFlagWithPayload('claim-feature')
     const { enabled: claimEnabled = true, disabledMessage = '' } = (payload as any) || {}
@@ -139,7 +139,7 @@ const OldClaim = memo(() => {
             if (!isDivviDone && chainId === 42220) {
                 void submitReferral({ txHash: claim.transactionHash, chainId })
                     .then(async () => {
-                        await AsyncStorage.setItem(`GD_divvi_${account}`, 'true')
+                        await AsyncStorage.setItem(`GD_divvi_${address}`, 'true')
                     })
                     .catch((e) => console.error('divvi failed', { e }))
             }
@@ -154,16 +154,20 @@ const OldClaim = memo(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [send, network, sendData, claimEnabled, isSimpleApp])
 
-    const handleConnect = useCallback(async () => {
-        if (claimEnabled) {
-            const state = await connect()
+    // const handleConnect = useCallback(async () => {
+    //     if (claimEnabled) {
+    //         const state = await connect()
 
-            return !!state.length
-        } else {
-            showModal()
-        }
-        return false
-    }, [connect, claimEnabled])
+    //         return !!state.length
+    //     } else {
+    //         showModal()
+    //     }
+    //     return false
+    // }, [connect, claimEnabled])
+    const handleConnect = async () => {
+        console.log('asd')
+        return true
+    }
 
     const mainView = useBreakpointValue({
         base: {
@@ -352,7 +356,7 @@ Learn how here`,
                                         claimed={claimed}
                                         claiming={state}
                                         handleConnect={handleConnect}
-                                        chainId={chainId}
+                                        chainId={+(chainId ?? 1)}
                                         onEvent={handleEvents}
                                     />
                                     {isHoliday ? (
