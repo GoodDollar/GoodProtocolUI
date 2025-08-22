@@ -68,11 +68,43 @@ export const CELO = Object.assign({}, Currency, {
     },
 }) as unknown as Currency
 
+export const XDC = Object.assign({}, Currency, {
+    decimals: 18,
+    symbol: 'XDC',
+    name: 'xDC',
+    getSymbol(chainId?: ChainId) {
+        if (!chainId) {
+            return this === null || this === void 0 ? void 0 : this.symbol
+        }
+
+        if ((this === null || this === void 0 ? void 0 : this.symbol) === 'XDC') {
+            return Currency.getNativeCurrencySymbol(chainId)
+        }
+
+        return this === null || this === void 0 ? void 0 : this.symbol
+    },
+
+    getName(chainId?: ChainId) {
+        if (!chainId) {
+            return this === null || this === void 0 ? void 0 : this.name
+        }
+
+        if ((this === null || this === void 0 ? void 0 : this.name) === 'XDC') {
+            return Currency.getNativeCurrencyName(chainId)
+        }
+
+        return this === null || this === void 0 ? void 0 : this.name
+    },
+}) as unknown as Currency
+
 Object.defineProperty(Currency.NATIVE, 122, { value: FUSE })
 Object.defineProperty(Currency, 'FUSE', { value: FUSE })
 
 Object.defineProperty(Currency.NATIVE, 42220, { value: CELO })
 Object.defineProperty(Currency, 'CELO', { value: CELO })
+
+Object.defineProperty(Currency.NATIVE, 50, { value: XDC })
+Object.defineProperty(Currency, 'XDC', { value: XDC })
 
 Object.defineProperty(ChainId, 'FUSE', { value: 122, writable: false, configurable: false })
 Object.defineProperty(ChainId, 122, { value: 'FUSE', writable: false, configurable: false })
@@ -89,10 +121,13 @@ Object.defineProperty(WETH, 42220, {
     writable: false,
     configurable: false,
 })
+Object.defineProperty(ChainId, 'XDC', { value: 50, writable: false, configurable: false })
+Object.defineProperty(ChainId, 50, { value: 'XDC', writable: false, configurable: false })
 
 export enum AdditionalChainId {
     FUSE = 122,
     CELO = 42220,
+    XDC = 50,
     //KOVAN = 42
 }
 
@@ -100,6 +135,7 @@ export enum ChainIdHex {
     '0x7a' = 122,
     '0xa4ec' = 42220,
     '0x1' = 1,
+    '0x32' = 50,
 }
 
 // TODO: specify merkle distributor for mainnet

@@ -27,6 +27,7 @@ const MULTICALL_NETWORKS: { [chainId in ChainId | AdditionalChainId]: string } =
     [ChainId.OKEX_TESTNET]: '0x0769fd68dFb93167989C6f7254cd0D766Fb2841F',
     [AdditionalChainId.FUSE]: '0x3CE6158b7278Bf6792e014FA7B4f3c6c46fe9410',
     [AdditionalChainId.CELO]: '0x75f59534dd892c1f8a7b172d639fa854d529ada3',
+    [AdditionalChainId.XDC]: '0x0B1795ccA8E4eC4df02346a082df54D437F8D9aF',
 }
 
 export { MULTICALL_ABI, MULTICALL_NETWORKS }

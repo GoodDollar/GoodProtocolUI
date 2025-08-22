@@ -209,6 +209,13 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                         withIcon: true,
                         show: true,
                     },
+                    {
+                        label: i18n._(t`Xswap (XDC)`),
+                        url: 'https://app.xspswap.finance/',
+                        dataAttr: 'xswap',
+                        withIcon: true,
+                        show: true,
+                    },
                 ],
             },
             {
