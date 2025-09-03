@@ -9,7 +9,7 @@ import NewClaim from './Claim'
 import { isSupportedCountry } from '../GoodId'
 
 const Claim = () => {
-    const { account } = useEthers()
+    const { account, chainId } = useEthers()
     const [, payload] = useFeatureFlagWithPayload('goodid')
     const { enabled = false, whitelist, countries = '' } = payload ?? {}
     const { ethereum } = window
@@ -24,7 +24,7 @@ const Claim = () => {
 
     if (payload === undefined || isGoodIdEnabled === undefined) return <Spinner variant="page-loader" size="lg" />
 
-    return isGoodIdEnabled && !isMiniPay ? <NewClaim /> : <OldClaim />
+    return isGoodIdEnabled && !isMiniPay && chainId !== 50 ? <NewClaim /> : <OldClaim />
 }
 
 export default Claim

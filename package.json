@@ -206,10 +206,10 @@
     },
     "dependencies": {
         "@babel/runtime": "^7.18.9",
-        "@gooddollar/good-design": "^0.4.22",
-        "@gooddollar/goodprotocol": "2.0.34-beta.0",
+        "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design",
+        "@gooddollar/goodprotocol": "2.0.34-beta.1",
         "@gooddollar/web3sdk": "^0.1.50",
-        "@gooddollar/web3sdk-v2": "^0.4.17",
+        "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2",
         "@headlessui/react": "1.5.0",
         "@lingui/format-json": "^4.0.0",
         "@lingui/macro": "^4.0.0",

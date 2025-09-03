@@ -39,15 +39,14 @@ export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) =
     // don't show claim on alternative chain for simple mode
     const isSimpleApp = useIsSimpleApp()
 
-    // if claimed on alt chain, don't show claim on other chain button
     useEffect(() => {
-        if (!claimedCelo && Number(chainId) !== SupportedChains.CELO) {
+        if (!claimedCelo?.isZero() && Number(chainId) !== SupportedChains.CELO) {
             return setClaimNext(SupportedChains.CELO)
         }
-        if (!claimedXdc && Number(chainId) !== SupportedChains.XDC) {
+        if (!claimedXdc?.isZero() && Number(chainId) !== SupportedChains.XDC) {
             return setClaimNext(SupportedChains.XDC)
         }
-        if (!claimedFuse && Number(chainId) !== SupportedChains.FUSE) {
+        if (!claimedFuse?.isZero() && Number(chainId) !== SupportedChains.FUSE) {
             return setClaimNext(SupportedChains.FUSE)
         } else setClaimNext(undefined)
     }, [chainId, claimedFuse, claimedCelo, claimedXdc])

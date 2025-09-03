@@ -9,14 +9,18 @@ export interface IWeb3SupportedNetworkRecord {
 
 export interface IWeb3SupportedNetworksProps {
     onItem: (item: IWeb3SupportedNetworkRecord) => JSX.Element
+    exclude?: string[]
 }
 
-export default function Web3SupportedNetworks({ onItem }: IWeb3SupportedNetworksProps): JSX.Element | null {
+export default function Web3SupportedNetworks({ onItem, exclude }: IWeb3SupportedNetworksProps): JSX.Element | null {
     const network = getEnv()
 
     const networks = useMemo(
-        () => Object.keys(SupportedV2Networks).filter((v) => isNaN(Number(v))) as SupportedV2Network[],
-        []
+        () =>
+            Object.keys(SupportedV2Networks)
+                .filter((v) => isNaN(Number(v)))
+                .filter((v) => !exclude?.includes(v)) as SupportedV2Network[],
+        [exclude]
     )
 
     if (network === 'production') {
