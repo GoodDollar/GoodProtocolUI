@@ -3015,7 +3015,7 @@ msgstr ""
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
-#: src/components/SideBar.tsx:223
+#: src/components/SideBar.tsx:230
 msgid "GoodDollar Main Bridge"
 msgstr ""
 
@@ -3277,7 +3277,7 @@ msgstr ""
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:230
+#: src/components/SideBar.tsx:237
 msgid "Squid Router"
 msgstr ""
 
@@ -3625,6 +3625,10 @@ msgstr ""
 
 #: src/components/Withdraw/index.tsx:90
 msgid "Withdrew funds from {0}"
+msgstr ""
+
+#: src/components/SideBar.tsx:213
+msgid "Xswap (XDC)"
 msgstr ""
 
 #: src/pages/gd/Stake/StakeDeposit/index.tsx:389
