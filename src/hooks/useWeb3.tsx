@@ -73,7 +73,9 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
         webprovider.send = async (method: string, params: any) => {
             if (method === 'eth_sendTransaction' && !isMiniPay && chainId in gasPriceSettings) {
                 if (!params[0].maxFeePerGas) {
-                    params[0].gasPrice = gasPriceSettings[chainId].maxFeePerGas
+                    // params[0].gasPrice = gasPriceSettings[chainId].maxFeePerGas
+                    delete params[0].gasPrice
+                    params[0] = { ...params[0], ...gasPriceSettings[chainId] }
                 } else {
                     params[0] = { ...params[0], ...gasPriceSettings[chainId] }
                 }
