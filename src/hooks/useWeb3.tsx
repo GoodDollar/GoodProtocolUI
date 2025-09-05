@@ -3,7 +3,6 @@ import { BigNumber, ethers } from 'ethers'
 import Web3 from 'web3'
 import { ExternalProvider } from '@ethersproject/providers'
 import { Mainnet } from '@usedapp/core'
-import { ChainId } from '@sushiswap/sdk'
 import { DAO_NETWORK, GdSdkContext, useEnvWeb3 } from '@gooddollar/web3sdk'
 import { AsyncStorage, Celo, Fuse, Xdc, Web3Provider } from '@gooddollar/web3sdk-v2'
 import { sample } from 'lodash'
@@ -19,6 +18,15 @@ type NetworkSettings = {
         CELO_RPC: string | undefined
         XDC_RPC: string | undefined
     }
+}
+
+const gasPriceSettings = {
+    42220: {
+        maxFeePerGas: BigNumber.from(25.001e9).toHexString(),
+        maxPriorityFeePerGas: BigNumber.from(2.5e9).toHexString(),
+    },
+    122: { maxFeePerGas: BigNumber.from(11e9).toHexString() },
+    50: { maxFeePerGas: BigNumber.from(12.5e9).toHexString() },
 }
 
 export function useNetwork(): NetworkSettings {
@@ -63,18 +71,12 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
 
     if (webprovider) {
         webprovider.send = async (method: string, params: any) => {
-            // for minimum gas price
-            // TODO: should we move to maxfeepergas?
-            if (!isMiniPay && chainId === (42220 as ChainId) && method === 'eth_sendTransaction') {
-                params[0].gasPrice = BigNumber.from(25.001e9).toHexString()
-            }
-
-            if (chainId === (122 as ChainId) && method === 'eth_sendTransaction') {
-                params[0].gasPrice = BigNumber.from(11e9).toHexString()
-            }
-
-            if (chainId === (50 as ChainId) && method === 'eth_sendTransaction') {
-                params[0].gasPrice = BigNumber.from(12.5e9).toHexString()
+            if (method === 'eth_sendTransaction' && !isMiniPay && chainId in gasPriceSettings) {
+                if (!params[0].maxFeePerGas) {
+                    params[0].gasPrice = gasPriceSettings[chainId].maxFeePerGas
+                } else {
+                    params[0] = { ...params[0], ...gasPriceSettings[chainId] }
+                }
             }
             return webprovider.jsonRpcFetchFunc(method, params)
         }
