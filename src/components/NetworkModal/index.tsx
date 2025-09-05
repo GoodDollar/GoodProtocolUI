@@ -72,13 +72,13 @@ export default function NetworkModal(): JSX.Element | null {
     const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[chainId]
     const network = getEnv()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    const prodNetworks = [AdditionalChainId.CELO, ChainId.MAINNET, AdditionalChainId.FUSE]
+    const prodNetworks = [AdditionalChainId.CELO, ChainId.MAINNET, AdditionalChainId.FUSE, AdditionalChainId.XDC]
 
     const allowedNetworks = useMemo(() => {
         switch (true) {
             case network === 'staging':
             case network === 'fuse':
-                return [AdditionalChainId.CELO, AdditionalChainId.FUSE]
+                return [AdditionalChainId.CELO, AdditionalChainId.FUSE, AdditionalChainId.XDC]
             default:
                 return prodNetworks
         }

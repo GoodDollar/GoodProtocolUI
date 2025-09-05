@@ -99,7 +99,7 @@ export const SavingsCard = ({ account }: { account: string }): JSX.Element => {
                 <SavingsModal type={type} onDismiss={toggleModal} isOpen={isModalOpen} requiredChain={chainId} />
             )}
             {isMobile ? (
-                <Web3SupportedNetworks onItem={MobileCardRow} />
+                <Web3SupportedNetworks exclude={['XDC']} onItem={MobileCardRow} />
             ) : (
                 <Card className="sm:mb-6 md:mb-4 card" contentWrapped={false} style={{ position: 'relative' }}>
                     <Table
@@ -115,7 +115,7 @@ export const SavingsCard = ({ account }: { account: string }): JSX.Element => {
                             </tr>
                         }
                     >
-                        <Web3SupportedNetworks onItem={CardRow} />
+                        <Web3SupportedNetworks exclude={['XDC']} onItem={CardRow} />
                     </Table>
                 </Card>
             )}
