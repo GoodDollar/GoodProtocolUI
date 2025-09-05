@@ -7,7 +7,7 @@ msgstr ""
 "X-Generator: @lingui/cli\n"
 "Project-Id-Version: goodprotocolui\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-03-31 19:03\n"
+"PO-Revision-Date: 2025-09-05 06:43\n"
 "Last-Translator: \n"
 "Language: sv_SE\n"
 "Language-Team: Swedish\n"
@@ -21,7 +21,6 @@ msgstr ""
 #: src/components/Savings/SavingsCard/index.tsx:48
 msgid ""
 msgstr ""
-""
 
 #. js-lingui-explicit-id
 #: src/pages/gd/Portfolio/index.tsx:397
@@ -2676,15 +2675,15 @@ msgstr ""
 msgid "{amount} {0}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:55
+#: src/components/Faq/Faq.tsx:50
 msgid "{answer}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:71
+#: src/components/Faq/Faq.tsx:66
 msgid "{linkText}"
 msgstr ""
 
-#: src/components/Faq/Faq.tsx:23
+#: src/components/Faq/Faq.tsx:18
 msgid "{question}"
 msgstr ""
 
@@ -2706,11 +2705,11 @@ msgstr ""
 msgid "amount"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:75
+#: src/pages/gd/Stake/index.tsx:78
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:383
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:393
 msgid "Approve"
 msgstr ""
 
@@ -2718,15 +2717,15 @@ msgstr ""
 msgid "APPROVE"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:108
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:111
 msgid "Approve transaction failed, please try again."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:382
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:392
 msgid "Approved"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:380
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:390
 msgid "Approving"
 msgstr ""
 
@@ -2734,7 +2733,7 @@ msgstr ""
 msgid "APPROVING"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:74
+#: src/pages/gd/Stake/index.tsx:77
 msgid "APY"
 msgstr ""
 
@@ -2854,7 +2853,7 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:315
+#: src/pages/gd/Claim/OldClaim.tsx:334
 msgid "Collect G$"
 msgstr ""
 
@@ -2997,7 +2996,7 @@ msgstr ""
 msgid "GoodDAO"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:484
+#: src/pages/gd/Stake/index.tsx:507
 msgid "GoodDAO Staking"
 msgstr ""
 
@@ -3009,16 +3008,16 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:326
+#: src/pages/gd/Claim/OldClaim.tsx:345
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
-#: src/components/SideBar.tsx:223
+#: src/components/SideBar.tsx:230
 msgid "GoodDollar Main Bridge"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:466
-#: src/pages/gd/Stake/index.tsx:470
+#: src/pages/gd/Stake/index.tsx:481
+#: src/pages/gd/Stake/index.tsx:485
 msgid "GoodStakes"
 msgstr ""
 
@@ -3066,11 +3065,11 @@ msgstr ""
 msgid "Learn more"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:82
+#: src/pages/gd/Stake/index.tsx:85
 msgid "Liquidity"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:83
+#: src/pages/gd/Stake/index.tsx:86
 msgid "Liquidity is the total value staked in the GoodDollar Trust staking contract (USD)."
 msgstr ""
 
@@ -3084,8 +3083,8 @@ msgstr ""
 msgid "loading..."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:98
-#: src/pages/gd/Stake/index.tsx:284
+#: src/pages/gd/Stake/index.tsx:101
+#: src/pages/gd/Stake/index.tsx:289
 msgid "Loading..."
 msgstr ""
 
@@ -3141,8 +3140,8 @@ msgstr ""
 msgid "Next month:"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:103
-#: src/pages/gd/Stake/index.tsx:291
+#: src/pages/gd/Stake/index.tsx:106
+#: src/pages/gd/Stake/index.tsx:296
 msgid "No data."
 msgstr ""
 
@@ -3182,7 +3181,7 @@ msgstr ""
 #~ msgid "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
 #~ msgstr ""
 
-#: src/pages/gd/Swap/index.tsx:109
+#: src/pages/gd/Swap/index.tsx:111
 msgid "Please switch your network to {0} to Swap."
 msgstr ""
 
@@ -3201,7 +3200,7 @@ msgid "Price Impact"
 msgstr ""
 
 #: src/components/Withdraw/index.tsx:146
-#: src/pages/gd/Stake/index.tsx:70
+#: src/pages/gd/Stake/index.tsx:73
 #: src/pages/gd/Stake/Savings/index.tsx:109
 msgid "Protocol"
 msgstr ""
@@ -3265,23 +3264,23 @@ msgstr ""
 msgid "Share with friends"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:350
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:356
 #: src/pages/gd/Swap/SwapSettings/index.tsx:80
 msgid "Slippage Tolerance"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:78
+#: src/pages/gd/Stake/index.tsx:81
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:230
+#: src/components/SideBar.tsx:237
 msgid "Squid Router"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:216
-#: src/pages/gd/Stake/index.tsx:320
-#: src/pages/gd/Stake/index.tsx:398
-#: src/pages/gd/Stake/index.tsx:466
+#: src/pages/gd/Stake/index.tsx:218
+#: src/pages/gd/Stake/index.tsx:325
+#: src/pages/gd/Stake/index.tsx:404
+#: src/pages/gd/Stake/index.tsx:481
 msgid "Stake"
 msgstr ""
 
@@ -3315,7 +3314,7 @@ msgstr ""
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:392
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:402
 msgid "Swap"
 msgstr ""
 
@@ -3323,15 +3322,15 @@ msgstr ""
 msgid "Swap Completed"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:323
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:329
 msgid "Swap from"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:337
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:343
 msgid "Swap to"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:102
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:105
 msgid "Swap transaction failed, please try again."
 msgstr ""
 
@@ -3372,7 +3371,7 @@ msgstr ""
 #~ "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
 #~ msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:239
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:245
 msgid "The GoodReserve is a Bancor-V1 Automated Market Maker (AMM) that operates on Celo.\n"
 "This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
 "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
@@ -3411,11 +3410,11 @@ msgstr ""
 #~ msgid "There has been a security breach. The app will be disabled until further notice"
 #~ msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:87
+#: src/pages/gd/Stake/index.tsx:90
 msgid "These are the total yearly rewards in G$ and GOOD."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:79
+#: src/pages/gd/Stake/index.tsx:82
 msgid "This is the annual percentage of UBI your stake will create."
 msgstr ""
 
@@ -3424,11 +3423,11 @@ msgstr ""
 msgid "This is the protocol that the token is staked to."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:71
+#: src/pages/gd/Stake/index.tsx:74
 msgid "This is the protocol that the token will be staked to."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:67
+#: src/pages/gd/Stake/index.tsx:70
 msgid "This is the token that is currently available to stake to the Fund."
 msgstr ""
 
@@ -3453,7 +3452,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/Withdraw/index.tsx:142
-#: src/pages/gd/Stake/index.tsx:66
+#: src/pages/gd/Stake/index.tsx:69
 #: src/pages/gd/Stake/Savings/index.tsx:104
 msgid "Token"
 msgstr ""
@@ -3471,7 +3470,7 @@ msgstr ""
 msgid "Total currently saved."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:86
+#: src/pages/gd/Stake/index.tsx:89
 msgid "Total Rewards"
 msgstr ""
 
@@ -3495,7 +3494,7 @@ msgstr ""
 msgid "Transaction deadline"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:136
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:139
 msgid "Transaction failed, please try again"
 msgstr ""
 
@@ -3622,6 +3621,10 @@ msgstr ""
 
 #: src/components/Withdraw/index.tsx:90
 msgid "Withdrew funds from {0}"
+msgstr ""
+
+#: src/components/SideBar.tsx:213
+msgid "Xswap (XDC)"
 msgstr ""
 
 #: src/pages/gd/Stake/StakeDeposit/index.tsx:389
