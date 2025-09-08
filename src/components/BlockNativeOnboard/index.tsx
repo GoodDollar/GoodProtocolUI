@@ -65,7 +65,7 @@ export const OnboardConnectButton: FC = () => {
         <Web3ActionButton
             text={buttonText}
             web3Action={noop}
-            supportedChains={[SupportedChains.CELO, SupportedChains.MAINNET, SupportedChains.FUSE]}
+            supportedChains={[SupportedChains.CELO, SupportedChains.MAINNET, SupportedChains.FUSE, SupportedChains.XDC]}
             handleConnect={onWalletConnect}
             variant={'outlined'}
             isDisabled={connecting}
