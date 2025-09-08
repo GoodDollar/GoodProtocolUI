@@ -1,14 +1,12 @@
 import React, { FC, useEffect, useRef } from 'react'
-import { useConnectWallet } from '@web3-onboard/react'
+import { useAppKit, useAppKitAccount } from '@reown/appkit/react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { AsyncStorage, getDevice, OnboardProvider, SupportedChains, useGetEnvChainId } from '@gooddollar/web3sdk-v2'
+import { AsyncStorage, getDevice, SupportedChains } from '@gooddollar/web3sdk-v2'
 import { Web3ActionButton } from '@gooddollar/good-design'
 import { noop } from 'lodash'
 
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
-
-import { connectOptions, torus } from 'connectors'
 
 /**
  * Just a button to trigger the onboard connect modal.
@@ -25,8 +23,8 @@ export const clearDeeplink = () => {
 }
 
 export const OnboardConnectButton: FC = () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
+    const { address } = useAppKitAccount()
+    const { open } = useAppKit()
     const sendData = useSendAnalyticsData()
     const { i18n } = useLingui()
     const buttonText = i18n._(t`Connect to a wallet`)
@@ -39,7 +37,7 @@ export const OnboardConnectButton: FC = () => {
 
         try {
             clearDeeplink()
-            await connect()
+            await open({ view: 'Connect' })
         } catch {
             connectionStartedRef.current = false
         }
@@ -52,12 +50,12 @@ export const OnboardConnectButton: FC = () => {
             return
         }
 
-        if (!connecting && wallet) {
+        if (address) {
             connectionStartedRef.current = false
         }
-    }, [connecting, wallet])
+    }, [address])
 
-    if (wallet) {
+    if (address) {
         return null
     }
 
@@ -68,23 +66,11 @@ export const OnboardConnectButton: FC = () => {
             supportedChains={[SupportedChains.CELO, SupportedChains.MAINNET, SupportedChains.FUSE]}
             handleConnect={onWalletConnect}
             variant={'outlined'}
-            isDisabled={connecting}
-            isLoading={connecting}
+            isDisabled={false}
+            isLoading={false}
         />
     )
 }
 
-// wrapper so we can pass the selected chain
-export const OnboardProviderWrapper = ({ children }) => {
-    const { connectedEnv } = useGetEnvChainId()
-    return (
-        <OnboardProvider
-            options={connectOptions}
-            wallets={{ custom: [torus] }}
-            // wc2Options={{ requiredChains: [selectedChain] }} // advised not to use this option. ref: https://docs.walletconnect.com/advanced/migration-from-v1.x/namespaces#technical-implementation-guide-for-apps
-            gdEnv={connectedEnv}
-        >
-            {children}
-        </OnboardProvider>
-    )
-}
+// Note: OnboardProviderWrapper is no longer needed as we're using AppKit
+// The AppKitProvider is already set up in src/index.tsx

@@ -7,9 +7,10 @@ import { useAppKit, useAppKitNetwork } from '@reown/appkit/react'
 import { useAppKitAccount } from '@reown/appkit/react'
 import { useRedirectNotice } from '@gooddollar/good-design'
 import { useWalletInfo } from '@reown/appkit/react'
+import { isMiniPay } from 'utils/minipay'
 
 import { ReactComponent as Close } from '../../assets/images/x.svg'
-import { WalletLabels } from '../../hooks/useActiveOnboard'
+import { WalletLabels } from '../../constants/wallets'
 import { AppDispatch } from '../../state'
 import { clearAllTransactions } from '../../state/transactions/actions'
 import { ExternalLink } from 'theme'
@@ -22,7 +23,7 @@ import Transaction from './Transaction'
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 
 import { getEnv } from 'utils/env'
-import { useConnectWallet } from '@web3-onboard/react'
+import { useDisconnect } from 'wagmi'
 
 const UpperSection = styled.div`
     position: relative;
@@ -218,39 +219,30 @@ export default function AccountDetails({
     const { chainId } = useAppKitNetwork()
 
     const { open } = useAppKit()
+    const { disconnect } = useDisconnect()
 
-    const click = async () => {
-        await open({ view: 'Account' })
-    }
-
-    const [{ wallet }, connect, disconnect] = useConnectWallet()
-    // const { disconnect } = useDisconnect()
-    // useAppKitWallet({
-    //     namespace: 'eip155',
-    //     onSuccess: (address) => console.log('Connected to EVM:', address),
-    // })
+    // Connection management handled by AppKit modal and wagmi disconnect
     const sendData = useSendAnalyticsData()
     const { goToExternal } = useRedirectNotice()
 
     const { walletInfo } = useWalletInfo()
 
     function formatConnectorName() {
-        return `${i18n._(t`Connected with`)} ${wallet?.label}`
+        const name = isMiniPay() ? 'MiniPay' : walletInfo?.name ?? ''
+        return `${i18n._(t`Connected with`)} ${name}`
     }
 
     const changeWallet = useCallback(async () => {
         toggleWalletModal()
-        await connect()
-    }, [toggleWalletModal, connect])
+        await open({ view: 'Connect' })
+    }, [toggleWalletModal, open])
 
-    const disconnectWallet = useCallback(async () => {
-        if (wallet) {
-            toggleWalletModal()
-            sendData({ event: 'account', action: 'address_disconnect_success', network: network })
-            await disconnect({ label: wallet.label })
-            await connect()
-        }
-    }, [toggleWalletModal, connect, disconnect, wallet])
+    const disconnectWallet = useCallback(() => {
+        toggleWalletModal()
+        sendData({ event: 'account', action: 'address_disconnect_success', network: network })
+        disconnect()
+        void open({ view: 'Connect' })
+    }, [toggleWalletModal, disconnect, open, network, sendData])
 
     const clearAllTransactionsCallback = useCallback(() => {
         if (chainId) dispatch(clearAllTransactions({ chainId: +(chainId ?? 1) }))
@@ -267,7 +259,7 @@ export default function AccountDetails({
                 <CloseIcon onClick={toggleWalletModal}>
                     <CloseColor />
                 </CloseIcon>
-                <button onClick={click}>click me</button>
+
                 <Title className="mb-8 text-center">{i18n._(t`Account`)}</Title>
                 <AccountSection>
                     <YourAccount>
@@ -275,16 +267,17 @@ export default function AccountDetails({
                             <AccountGroupingRow>
                                 {formatConnectorName()}
                                 <div className="mt-3.5 mb-3.5">
-                                    {walletInfo?.name && WalletLabels.includes(walletInfo.name) && (
-                                        <WalletAction
-                                            width={'85px'}
-                                            size="sm"
-                                            style={{ marginRight: '5px' }}
-                                            onClick={disconnectWallet}
-                                        >
-                                            {i18n._(t`Disconnect`)}
-                                        </WalletAction>
-                                    )}
+                                    {(walletInfo?.name || isMiniPay()) &&
+                                        WalletLabels.includes(isMiniPay() ? 'MiniPay' : walletInfo?.name ?? '') && (
+                                            <WalletAction
+                                                width={'85px'}
+                                                size="sm"
+                                                style={{ marginRight: '5px' }}
+                                                onClick={disconnectWallet}
+                                            >
+                                                {i18n._(t`Disconnect`)}
+                                            </WalletAction>
+                                        )}
                                     <WalletAction
                                         width={'75px'}
                                         size="sm"

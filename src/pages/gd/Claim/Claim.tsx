@@ -2,8 +2,7 @@ import { useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
 import { ClaimProvider, ClaimWizard } from '@gooddollar/good-design'
 import { noop } from 'lodash'
-import { useEthers } from '@usedapp/core'
-import { useConnectWallet } from '@web3-onboard/react'
+import { useAppKit, useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
 import { Spinner, VStack } from 'native-base'
 import { useFeatureFlagWithPayload } from 'posthog-react-native'
 
@@ -23,8 +22,9 @@ const goodIdExplorerUrls = {
 }
 
 const ClaimPage = () => {
-    const { account, chainId } = useEthers()
-    const [, connect] = useConnectWallet()
+    const { address: account } = useAppKitAccount()
+    const { chainId } = useAppKitNetwork()
+    const { open } = useAppKit()
     const history = useHistory()
     const networkEnv = getNetworkEnv()
     const [, claimPayload] = useFeatureFlagWithPayload('claim-feature')
@@ -50,14 +50,13 @@ const ClaimPage = () => {
 
     const handleConnect = useCallback(async () => {
         if (claimEnabled) {
-            const state = await connect()
-
-            return !!state.length
+            await open({ view: 'Connect' })
+            return true
         } else {
             showModal()
         }
         return false
-    }, [connect, claimEnabled])
+    }, [open, claimEnabled])
 
     const onUpgrade = () => history.push('/goodid')
 
@@ -90,7 +89,7 @@ const ClaimPage = () => {
                 >
                     <ClaimWizard
                         account={account ?? ''}
-                        chainId={chainId}
+                        chainId={+(chainId ?? 1)}
                         onExit={noop}
                         isDev={networkEnv === 'development' || whitelist?.includes(account)}
                         withNavBar={false}

@@ -4,6 +4,7 @@ import { WagmiProvider } from 'wagmi'
 import { celo, fuse } from '@reown/appkit/networks'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
+import { walletConnect, injected, coinbaseWallet } from 'wagmi/connectors'
 
 // 0. Setup queryClient
 const queryClient = new QueryClient()
@@ -25,11 +26,31 @@ const metadata = {
 // 3. Set the networks
 const networks = [celo, fuse]
 
-// 4. Create Wagmi Adapter
+// 4. Create custom connectors
+const connectors = [
+    walletConnect({
+        projectId,
+        showQrModal: false, // AppKit handles the modal
+        metadata: {
+            name: 'GoodProtocolUI',
+            description: 'Good Protocol UI',
+            url: '',
+            icons: [''],
+        },
+    }),
+    injected(),
+    coinbaseWallet({
+        appName: 'GoodProtocolUI',
+        appLogoUrl: '',
+    }),
+]
+
+// 5. Create Wagmi Adapter with connectors
 const wagmiAdapter = new WagmiAdapter({
     networks,
     projectId,
     ssr: true,
+    connectors,
 })
 
 createAppKit({
@@ -39,7 +60,9 @@ createAppKit({
     metadata,
     features: {
         analytics: true, // Optional - defaults to your Cloud configuration
+        socials: ['google'],
     },
+    // Note: AppKit modal wallet ordering is managed internally; socials and analytics are configured above
 })
 
 export function AppKitProvider({ children }) {

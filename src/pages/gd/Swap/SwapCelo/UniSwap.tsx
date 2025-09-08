@@ -10,15 +10,8 @@ import {
     SwapWidget,
 } from '@uniswap/widgets'
 import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
-import { useConnectWallet } from '@web3-onboard/react'
-import {
-    AsyncStorage,
-    getDevice,
-    G$ContractAddresses,
-    useGetEnvChainId,
-    useWeb3Context,
-    SupportedChains,
-} from '@gooddollar/web3sdk-v2'
+import { useAppKit } from '@reown/appkit/react'
+import { G$ContractAddresses, useGetEnvChainId, useWeb3Context, SupportedChains } from '@gooddollar/web3sdk-v2'
 import { useDispatch } from 'react-redux'
 import { addTransaction } from 'state/transactions/actions'
 import { ChainId } from '@sushiswap/sdk'
@@ -45,7 +38,7 @@ export const UniSwap = (): JSX.Element => {
     const { address } = useAppKitAccount()
     const { chainId } = useAppKitNetwork()
     const network = SupportedChains[+(chainId ?? 1)]
-    const [, connect] = useConnectWallet()
+    const { open } = useAppKit()
     const globalDispatch = useDispatch()
     const sendData = useSendAnalytics()
     const { connectedEnv } = useGetEnvChainId(42220)
@@ -82,20 +75,10 @@ export const UniSwap = (): JSX.Element => {
 
     const connectOnboard = useCallback(async () => {
         if (!address) {
-            // todo: make connect onboard a generic function/merge with: useOnboardConnect
-            const osName = getDevice().os.name
-            // temp solution for where it tries and open a deeplink for desktop app
-            if (['Linux', 'Windows', 'macOS'].includes(osName)) {
-                AsyncStorage.safeRemove('WALLETCONNECT_DEEPLINK_CHOICE')
-            }
-
-            const connected = await connect()
-            if (!connected) {
-                return false
-            }
+            await open({ view: 'Connect' })
         }
         return true
-    }, [connect])
+    }, [address, open])
 
     const handleError = useCallback(async (e) => {
         sendData({ event: 'swap', action: 'swap_failed', error: e.message })
