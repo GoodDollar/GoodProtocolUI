@@ -10,10 +10,11 @@ export enum AdditionalChainIds {
     FUSE = 122,
     ETH = 1,
     CELO = 42220,
+    XDC = 50,
 }
 
-const devEnv = ['development-celo', 'fuse', 'fuse-mainnet']
-const stagingEnv = ['staging-celo', 'staging', 'staging-mainnet']
+const devEnv = ['development-celo', 'fuse', 'fuse-mainnet', 'development-xdc']
+const stagingEnv = ['staging-celo', 'staging', 'staging-mainnet', 'staging-xdc']
 
 const getDappUrl = (env: string) => {
     const dappEnv = devEnv.includes(env) ? 'dev.' : stagingEnv.includes(env) ? 'qa.' : ''
@@ -45,6 +46,12 @@ export const connectOptions = {
             token: 'FUSE',
             label: 'Fuse Network',
             rpcUrl: sample(process.env.REACT_APP_FUSE_RPC?.split(',')) ?? 'https://rpc.fuse.io',
+        },
+        {
+            id: '0x32',
+            token: 'XDC',
+            label: 'XDC',
+            rpcUrl: sample(process.env.REACT_APP_XDC_RPC?.split(',')) ?? 'https://rpc.xdc.network',
         },
     ],
     appMetadata: {

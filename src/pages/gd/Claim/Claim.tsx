@@ -19,6 +19,7 @@ const goodIdExplorerUrls = {
         `https://api.etherscan.io/v2/api?chainid=42220&apikey=${process.env.REACT_APP_ETHERSCAN_KEY}&`,
     FUSE: process.env.REACT_APP_GOODID_FUSE_EXPLORER ?? 'https://explorer.fuse.org/api?&',
     MAINNET: process.env.REACT_APP_GOODID_MAINNET_EXPLORER ?? '',
+    XDC: process.env.REACT_APP_GOODID_XDC_EXPLORER ?? 'https://xdc.blocksscan.io/api?&',
 }
 
 const ClaimPage = () => {
