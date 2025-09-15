@@ -2772,9 +2772,9 @@ msgstr ""
 msgid "Change"
 msgstr "Schimbare"
 
-#: src/pages/gd/BuyGD/index.tsx:84
-#~ msgid "Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$."
-#~ msgstr ""
+#: src/pages/gd/BuyGD/index.tsx:141
+msgid "Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$."
+msgstr ""
 
 #: src/components/ClaimRewards/index.tsx:80
 msgid "Claim All"
