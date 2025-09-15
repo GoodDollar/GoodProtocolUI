@@ -56,4 +56,4 @@ deploy.sh
 yalc.lock
 .continueignore
 analice.html
-e2e.logbugs/
+e2e.log
