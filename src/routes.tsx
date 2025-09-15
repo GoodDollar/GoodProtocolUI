@@ -29,6 +29,13 @@ const RoutesWrapper = () => {
                 return
             })
         }
+
+        // Fallback: if PostHog doesn't initialize within 3 seconds, proceed anyway
+        const timeout = setTimeout(() => {
+            setPosthogInitialized(true)
+        }, 3000)
+
+        return () => clearTimeout(timeout)
     }, [posthog])
 
     return posthogInitialized ? <Routes /> : <Spinner variant="page-loader" size="lg" />

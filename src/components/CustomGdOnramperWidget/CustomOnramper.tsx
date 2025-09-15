@@ -37,7 +37,7 @@ export const CustomOnramper = ({
     }
     url.searchParams.set('networkWallets', `${targetNetwork}:${targetWallet}`)
     Object.entries(widgetParams).forEach(([k, v]: [string, any]) => {
-        url.searchParams.append(k, v)
+        url.searchParams.set(k, v)
     })
 
     const { title } = useWindowFocus()
@@ -102,10 +102,14 @@ export const CustomOnramper = ({
             onGdEvent('buy_start')
             setStep(1)
         }
-    }, [title, step])
+    }, [title, step, onGdEvent, setStep])
 
     if (!targetWallet) {
-        return <></>
+        return (
+            <div style={{ padding: '1rem', textAlign: 'center', color: 'red' }}>
+                Wallet not found. Please select a valid wallet to continue.
+            </div>
+        )
     }
 
     return (

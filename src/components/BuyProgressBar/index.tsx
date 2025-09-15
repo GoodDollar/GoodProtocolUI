@@ -20,6 +20,8 @@ const BuyProgressBar: React.FC<BuyProgressBarProps> = ({ currentStep, isLoading 
     // Handle animated progress line
     useEffect(() => {
         if (isLoading && currentStep > 1) {
+            // Explicitly reset animatedWidth to 0 at the start of a new loading phase
+            setAnimatedWidth(0)
             // Animate progress line when loading
             let progress = 0
             const interval = setInterval(() => {

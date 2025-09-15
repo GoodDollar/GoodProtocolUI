@@ -56,7 +56,16 @@ export const CustomGdOnramperWidget = ({
      * callback to get event from onramper iframe
      */
     const callback = useCallback(async (event: WebViewMessageEvent) => {
-        if ((event.nativeEvent.data as any).title === 'success') {
+        let eventData
+        try {
+            eventData =
+                typeof event.nativeEvent.data === 'string' ? JSON.parse(event.nativeEvent.data) : event.nativeEvent.data
+        } catch (error) {
+            // Optionally log error or handle it
+            return
+        }
+
+        if (eventData && eventData.title === 'success') {
             await AsyncStorage.setItem('gdOnrampSuccess', 'true')
             //start the stepper
             setStep(2)

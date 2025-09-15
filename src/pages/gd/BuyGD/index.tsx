@@ -137,7 +137,9 @@ const BuyGd = memo(() => {
                 textAlign="center"
                 mb={6}
             >
-                Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$.
+                {i18n._(
+                    t`Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$.`
+                )}
             </Text>
 
             <BuyProgressBar currentStep={currentStep} isLoading={isLoading} />

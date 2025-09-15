@@ -27,9 +27,18 @@ iframe[title="Onramper widget"] {
     display: none !important;
 }
 
-/* More specific targeting for Onramper built-in progress elements */
-div[style*="justify-content: space-between"]:has(div:contains("Buy cUSD")),
-div:has(div:contains("We swap cUSD to G$")),
-div:has(div:contains("Done")) {
+/* More specific targeting for Onramper built-in progress elements - using broader compatibility selectors */
+div[style*="justify-content: space-between"] div,
+div[style*="flex-direction: row"] div,
+div[style*="display: flex"] div {
+    /* Target potential progress elements - may need refinement based on actual Onramper structure */
+}
+
+/* Hide elements containing specific text using data attributes or classes if available */
+[data-step="1"],
+[data-step="2"], 
+[data-step="3"],
+.onramper-step,
+.onramper-progress {
     display: none !important;
 }
