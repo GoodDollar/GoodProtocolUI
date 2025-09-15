@@ -45,8 +45,8 @@ export const CustomGdOnramperWidget = ({
 
     const { SignWalletModal } = useSignWalletModal()
 
-    const celoBalance = useEtherBalance(gdHelperAddress, { refresh: 1 })
-    const cusdBalance = useTokenBalance(cusd, gdHelperAddress, { refresh: 1 })
+    const celoBalance = useEtherBalance(gdHelperAddress)
+    const cusdBalance = useTokenBalance(cusd, gdHelperAddress)
 
     const { showModal, Modal } = useModal()
 

@@ -32,24 +32,24 @@ const CalculatorTab = () => {
 
 const BuyGd = memo(() => {
     const sendData = useSendAnalyticsData()
-    const [currentStep, setCurrentStep] = useState<1 | 2 | 3>(1)
-    const [isLoading, setIsLoading] = useState(false)
+
+    // Batch state updates for better performance
+    const [buyState, setBuyState] = useState({ currentStep: 1 as 1 | 2 | 3, isLoading: false })
+    const { currentStep, isLoading } = buyState
 
     // Monitor smart contract wallet for funds and swap completion
     const handleFundsReceived = useCallback(() => {
         // Funds received: Move to step 2 without animation (static state)
-        setCurrentStep(2)
-        setIsLoading(false)
+        setBuyState({ currentStep: 2, isLoading: false })
         // Trigger the swap animation after a brief pause
         setTimeout(() => {
-            setIsLoading(true) // Start animating from step 2 to 3
+            setBuyState((prev) => ({ ...prev, isLoading: true })) // Start animating from step 2 to 3
         }, 1000)
     }, [])
 
     const handleSwapCompleted = useCallback(() => {
         // Swap completed: Move to step 3, stop animation
-        setCurrentStep(3)
-        setIsLoading(false)
+        setBuyState({ currentStep: 3, isLoading: false })
     }, [])
 
     useSmartContractWalletMonitor({
@@ -68,33 +68,27 @@ const BuyGd = memo(() => {
             switch (event) {
                 case 'widget_clicked':
                 case 'widget_opened':
-                    setCurrentStep(1)
-                    setIsLoading(true)
+                    setBuyState({ currentStep: 1, isLoading: true })
                     break
                 case 'transaction_started':
-                    setCurrentStep(1)
-                    setIsLoading(true)
+                    setBuyState({ currentStep: 1, isLoading: true })
                     break
                 case 'funds_received':
-                    setCurrentStep(2)
-                    setIsLoading(false)
+                    setBuyState({ currentStep: 2, isLoading: false })
                     break
                 case 'transaction_sent':
                 case 'swap_started':
-                    setCurrentStep(2)
-                    setIsLoading(true)
+                    setBuyState({ currentStep: 2, isLoading: true })
                     break
                 case 'swap_completed':
                 case 'transaction_completed':
-                    setCurrentStep(3)
-                    setIsLoading(false)
+                    setBuyState({ currentStep: 3, isLoading: false })
                     break
                 case 'error':
-                    setIsLoading(false)
+                    setBuyState((prev) => ({ ...prev, isLoading: false }))
                     break
                 case 'reset':
-                    setCurrentStep(1)
-                    setIsLoading(false)
+                    setBuyState({ currentStep: 1, isLoading: false })
                     break
                 default:
                     break
