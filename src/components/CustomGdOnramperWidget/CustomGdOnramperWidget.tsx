@@ -84,7 +84,6 @@ export const CustomGdOnramperWidget = ({
                 const code = await library.getCode(gdHelperAddress)
                 let swapTx
                 if (code.length <= 2) {
-                    console.log('deploying helper...')
                     swapTx = createAndSwap(minAmount)
                 } else {
                     swapTx = swap(minAmount)
@@ -93,7 +92,6 @@ export const CustomGdOnramperWidget = ({
                 setStep(4)
                 // after tx sent progress the stepper
                 const res = await swapTx
-                console.log('swap tx res:', res)
                 if (res?.status !== 1) throw Error('reverted')
             } else {
                 if (account) {
@@ -109,7 +107,6 @@ export const CustomGdOnramperWidget = ({
             swapLock.current = false
             onEvents('buy_success')
         } catch (e: any) {
-            console.log('swap error:', e.message, e)
             showModal()
             onEvents('buygd_swap_failed', e.message)
             setStep(0)
@@ -120,7 +117,6 @@ export const CustomGdOnramperWidget = ({
     useEffect(() => {
         if (cusdBalance?.gt(0) || celoBalance?.gt(0)) {
             void AsyncStorage.removeItem('gdOnrampSuccess')
-            console.log('starting swap:', cusdBalance?.toString(), celoBalance?.toString())
             triggerSwap().catch((e) => {
                 showModal()
                 onEvents('buygd_swap_failed', e.message)

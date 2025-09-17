@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react'
+import { memo, useCallback, useState } from 'react'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { Converter, SlideDownTab } from '@gooddollar/good-design'
@@ -6,7 +6,6 @@ import { Box, Text, useBreakpointValue } from 'native-base'
 import { useG$Price } from '@gooddollar/web3sdk-v2'
 
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
-import { useSmartContractWalletMonitor } from 'hooks/useSmartContractWalletMonitor'
 import { PageLayout } from 'components/Layout/PageLayout'
 import { CustomGdOnramperWidget } from 'components/CustomGdOnramperWidget'
 import { BuyProgressBar } from 'components/BuyProgressBar'
@@ -36,27 +35,6 @@ const BuyGd = memo(() => {
     // Batch state updates for better performance
     const [buyState, setBuyState] = useState({ currentStep: 1 as 1 | 2 | 3, isLoading: false })
     const { currentStep, isLoading } = buyState
-
-    // Monitor smart contract wallet for funds and swap completion
-    const handleFundsReceived = useCallback(() => {
-        // Funds received: Move to step 2 without animation (static state)
-        setBuyState({ currentStep: 2, isLoading: false })
-        // Trigger the swap animation after a brief pause
-        setTimeout(() => {
-            setBuyState((prev) => ({ ...prev, isLoading: true })) // Start animating from step 2 to 3
-        }, 1000)
-    }, [])
-
-    const handleSwapCompleted = useCallback(() => {
-        // Swap completed: Move to step 3, stop animation
-        setBuyState({ currentStep: 3, isLoading: false })
-    }, [])
-
-    useSmartContractWalletMonitor({
-        onFundsReceived: handleFundsReceived,
-        onSwapCompleted: handleSwapCompleted,
-        enabled: currentStep > 1, // Only monitor after step 1
-    })
 
     const handleEvents = useCallback(
         (event: string, data?: any, error?: string) => {

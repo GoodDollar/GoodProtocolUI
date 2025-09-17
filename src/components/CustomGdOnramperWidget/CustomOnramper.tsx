@@ -30,8 +30,12 @@ export const CustomOnramper = ({
     const url = new URL('https://buy.onramper.com/')
 
     // Always include API key for proper authentication
-    // Note: Onramper requires the API key in the URL as per their integration guide
-    // This is expected behavior for their widget - the key is client-safe
+    // SECURITY NOTE: Onramper API keys are designed for client-side use
+    // - These are PUBLIC API keys specifically intended for browser environments
+    // - They are NOT secret keys and are safe to expose in client-side code
+    // - Similar to Google Maps API keys, they're restricted by domain/referrer
+    // - This follows Onramper's official integration documentation
+    // - See: https://docs.onramper.com for official security guidelines
     if (apiKey) {
         url.searchParams.set('apiKey', apiKey)
     } else {
