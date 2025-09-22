@@ -153,7 +153,7 @@ export const Savings: FC = () => {
             <div className="mt-4"></div>
 
             {isMobile ? (
-                <Web3SupportedNetworks onItem={MobileRow} />
+                <Web3SupportedNetworks exclude={['XDC']} onItem={MobileRow} />
             ) : (
                 <Wrapper>
                     <Table
@@ -170,7 +170,7 @@ export const Savings: FC = () => {
                             </tr>
                         }
                     >
-                        <Web3SupportedNetworks onItem={Row} />
+                        <Web3SupportedNetworks exclude={['XDC']} onItem={Row} />
                     </Table>
                 </Wrapper>
             )}

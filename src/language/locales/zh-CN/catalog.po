@@ -2697,7 +2697,7 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:265
+#: src/components/AccountDetails/index.tsx:263
 msgid "Account"
 msgstr "帐户"
 
@@ -2705,7 +2705,7 @@ msgstr "帐户"
 msgid "amount"
 msgstr "数量"
 
-#: src/pages/gd/Stake/index.tsx:75
+#: src/pages/gd/Stake/index.tsx:78
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
@@ -2733,7 +2733,7 @@ msgstr "批准中"
 msgid "APPROVING"
 msgstr "批准"
 
-#: src/pages/gd/Stake/index.tsx:74
+#: src/pages/gd/Stake/index.tsx:77
 msgid "APY"
 msgstr ""
 
@@ -2768,7 +2768,7 @@ msgid ""
 "Take note of indicators in the widget below for exit contribtution, price slippage and liquidity."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:289
+#: src/components/AccountDetails/index.tsx:287
 msgid "Change"
 msgstr "改变"
 
@@ -2838,7 +2838,7 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:328
+#: src/components/AccountDetails/index.tsx:326
 msgid "Clear all"
 msgstr "清除所有"
 
@@ -2888,7 +2888,7 @@ msgstr "连接钱包"
 msgid "Connect wallet"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:234
+#: src/components/AccountDetails/index.tsx:232
 msgid "Connected with"
 msgstr "与"
 
@@ -2903,7 +2903,7 @@ msgstr ""
 msgid "Copied"
 msgstr "已复制"
 
-#: src/components/AccountDetails/index.tsx:305
+#: src/components/AccountDetails/index.tsx:303
 msgid "Copy address"
 msgstr "复制地址"
 
@@ -2934,7 +2934,7 @@ msgstr ""
 msgid "Deposit overview"
 msgstr "存款概述"
 
-#: src/components/AccountDetails/index.tsx:280
+#: src/components/AccountDetails/index.tsx:278
 msgid "Disconnect"
 msgstr ""
 
@@ -2999,7 +2999,7 @@ msgstr ""
 msgid "GoodDAO"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:443
+#: src/pages/gd/Stake/index.tsx:507
 msgid "GoodDAO Staking"
 msgstr ""
 
@@ -3015,12 +3015,12 @@ msgstr ""
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
-#: src/components/SideBar.tsx:223
+#: src/components/SideBar.tsx:230
 msgid "GoodDollar Main Bridge"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:425
-#: src/pages/gd/Stake/index.tsx:429
+#: src/pages/gd/Stake/index.tsx:481
+#: src/pages/gd/Stake/index.tsx:485
 msgid "GoodStakes"
 msgstr ""
 
@@ -3068,11 +3068,11 @@ msgstr "你想退出多少钱？"
 msgid "Learn more"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:82
+#: src/pages/gd/Stake/index.tsx:85
 msgid "Liquidity"
 msgstr "流动性"
 
-#: src/pages/gd/Stake/index.tsx:83
+#: src/pages/gd/Stake/index.tsx:86
 msgid "Liquidity is the total value staked in the GoodDollar Trust staking contract (USD)."
 msgstr ""
 
@@ -3086,8 +3086,8 @@ msgstr "LP奖励"
 msgid "loading..."
 msgstr "载入中..."
 
-#: src/pages/gd/Stake/index.tsx:98
-#: src/pages/gd/Stake/index.tsx:262
+#: src/pages/gd/Stake/index.tsx:101
+#: src/pages/gd/Stake/index.tsx:289
 msgid "Loading..."
 msgstr "载入中..."
 
@@ -3143,8 +3143,8 @@ msgstr "网络费用"
 msgid "Next month:"
 msgstr "下个月："
 
-#: src/pages/gd/Stake/index.tsx:103
-#: src/pages/gd/Stake/index.tsx:269
+#: src/pages/gd/Stake/index.tsx:106
+#: src/pages/gd/Stake/index.tsx:296
 msgid "No data."
 msgstr "没有数据。"
 
@@ -3203,7 +3203,7 @@ msgid "Price Impact"
 msgstr "价格影响"
 
 #: src/components/Withdraw/index.tsx:146
-#: src/pages/gd/Stake/index.tsx:70
+#: src/pages/gd/Stake/index.tsx:73
 #: src/pages/gd/Stake/Savings/index.tsx:110
 msgid "Protocol"
 msgstr "协议"
@@ -3213,7 +3213,7 @@ msgstr "协议"
 msgid "PROTOCOL"
 msgstr "协议"
 
-#: src/components/AccountDetails/index.tsx:326
+#: src/components/AccountDetails/index.tsx:324
 msgid "Recent Transactions"
 msgstr "最近的交易"
 
@@ -3273,16 +3273,18 @@ msgstr ""
 msgid "Slippage Tolerance"
 msgstr "可容忍滑点"
 
-#: src/pages/gd/Stake/index.tsx:78
+#: src/pages/gd/Stake/index.tsx:81
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:230
+#: src/components/SideBar.tsx:237
 msgid "Squid Router"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:298
-#: src/pages/gd/Stake/index.tsx:425
+#: src/pages/gd/Stake/index.tsx:218
+#: src/pages/gd/Stake/index.tsx:325
+#: src/pages/gd/Stake/index.tsx:404
+#: src/pages/gd/Stake/index.tsx:481
 msgid "Stake"
 msgstr "质押"
 
@@ -3414,11 +3416,11 @@ msgstr ""
 #~ msgid "There has been a security breach. The app will be disabled until further notice"
 #~ msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:87
+#: src/pages/gd/Stake/index.tsx:90
 msgid "These are the total yearly rewards in G$ and GOOD."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:79
+#: src/pages/gd/Stake/index.tsx:82
 msgid "This is the annual percentage of UBI your stake will create."
 msgstr ""
 
@@ -3427,11 +3429,11 @@ msgstr ""
 msgid "This is the protocol that the token is staked to."
 msgstr "这是令牌赌注的协议。"
 
-#: src/pages/gd/Stake/index.tsx:71
+#: src/pages/gd/Stake/index.tsx:74
 msgid "This is the protocol that the token will be staked to."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:67
+#: src/pages/gd/Stake/index.tsx:70
 msgid "This is the token that is currently available to stake to the Fund."
 msgstr ""
 
@@ -3456,7 +3458,7 @@ msgstr "这个月"
 #~ msgstr ""
 
 #: src/components/Withdraw/index.tsx:142
-#: src/pages/gd/Stake/index.tsx:66
+#: src/pages/gd/Stake/index.tsx:69
 #: src/pages/gd/Stake/Savings/index.tsx:105
 msgid "Token"
 msgstr "代币"
@@ -3474,7 +3476,7 @@ msgstr "价值总额托出来。"
 msgid "Total currently saved."
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:86
+#: src/pages/gd/Stake/index.tsx:89
 msgid "Total Rewards"
 msgstr ""
 
@@ -3533,7 +3535,7 @@ msgstr ""
 msgid "Unsupported network"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:311
+#: src/components/AccountDetails/index.tsx:309
 #: src/components/Popups/TransactionPopup.tsx:47
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:308
 msgid "View on explorer"
@@ -3627,6 +3629,10 @@ msgstr ""
 msgid "Withdrew funds from {0}"
 msgstr "退出{0}的资金"
 
+#: src/components/SideBar.tsx:213
+msgid "Xswap (XDC)"
+msgstr ""
+
 #: src/pages/gd/Stake/StakeDeposit/index.tsx:392
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "您正在为世界各地的数千人创建UBI。"
@@ -3714,6 +3720,6 @@ msgstr "如果价格的不利变化超过这个百分比，您的交易将被退
 #~ msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 #~ msgstr "如果交易在确认之前出现大的不利价格变动，则交易将恢复。"
 
-#: src/components/AccountDetails/index.tsx:335
+#: src/components/AccountDetails/index.tsx:333
 msgid "Your transactions will appear here..."
 msgstr "您的交易将出现在这里......"

@@ -9,11 +9,12 @@ export type FaqItemCopy = {
     AltLink?: () => React.ReactNode
 }
 
+//TODO: revise for XDC
 const faqSwapCopy: FaqItemCopy[] = [
     {
         id: 'whatsswap',
         question: `What is a Swap?`,
-        answer: `A swap is when you convert one digital asset for another, allowing people to diversify their cryptocurrency holdings. \n\nThe swap on this page happens through decentralized exchanges (DEXs). When you swap, your funds are sent directly to the DEX service (Voltage on Fuse Network or Uniswap on Celo Network).`,
+        answer: `A swap is when you convert one digital asset for another, allowing people to diversify their cryptocurrency holdings. \n\nThe swap on this page happens through decentralized exchanges (DEXs). When you swap, your funds are sent directly to the DEX service (such as Uniswap).`,
     },
     {
         id: 'whereliqfrom',

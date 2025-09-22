@@ -3,9 +3,8 @@ import { BigNumber, ethers } from 'ethers'
 import Web3 from 'web3'
 import { ExternalProvider } from '@ethersproject/providers'
 import { Mainnet } from '@usedapp/core'
-import { ChainId } from '@sushiswap/sdk'
 import { DAO_NETWORK, GdSdkContext, useEnvWeb3 } from '@gooddollar/web3sdk'
-import { AsyncStorage, Celo, Fuse, Web3Provider } from '@gooddollar/web3sdk-v2'
+import { AsyncStorage, Celo, Fuse, Xdc, Web3Provider } from '@gooddollar/web3sdk-v2'
 import { sample } from 'lodash'
 import { useAppKitNetwork, useAppKitProvider } from '@reown/appkit/react'
 import type { Provider } from '@reown/appkit/react'
@@ -18,14 +17,23 @@ type NetworkSettings = {
         MAINNET_RPC: string | undefined
         FUSE_RPC: string | undefined
         CELO_RPC: string | undefined
-        KOVAN_RPC: string | undefined
-        ROPSTEN_RPC: string | undefined
+        XDC_RPC: string | undefined
     }
+}
+
+const gasPriceSettings = {
+    42220: {
+        maxFeePerGas: BigNumber.from(25.001e9).toHexString(),
+        maxPriorityFeePerGas: BigNumber.from(2.5e9).toHexString(),
+    },
+    122: { maxFeePerGas: BigNumber.from(11e9).toHexString() },
+    50: { maxFeePerGas: BigNumber.from(12.5e9).toHexString() },
 }
 
 export function useNetwork(): NetworkSettings {
     const celoRpcList = sample(process.env.REACT_APP_CELO_RPC?.split(',')) ?? ''
     const fuseRpcList = sample(process.env.REACT_APP_FUSE_RPC?.split(',')) ?? 'https://rpc.fuse.io'
+    const xdcRpcList = sample(process.env.REACT_APP_XDC_RPC?.split(',')) ?? 'https://rpc.xdc.network'
     const mainnetList = sample(['https://eth.llamarpc.com', 'https://1rpc.io/eth'])
     const [currentNetwork, rpcs] = useMemo(
         () => [
@@ -37,8 +45,7 @@ export function useNetwork(): NetworkSettings {
                     (ethers.getDefaultProvider('mainnet') as any).providerConfigs[0].provider.connection.url,
                 FUSE_RPC: fuseRpcList || 'https://rpc.fuse.io',
                 CELO_RPC: celoRpcList || 'https://forno.celo.org',
-                KOVAN_RPC: undefined,
-                ROPSTEN_RPC: undefined,
+                XDC_RPC: xdcRpcList,
             },
         ],
         []
@@ -69,13 +76,15 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
 
     if (webprovider) {
         webprovider.send = async (method: string, params: any) => {
-            // for celo force gasPrice to 5 gwei
-            if (!isMiniPay && chainId === (42220 as ChainId) && method === 'eth_sendTransaction') {
-                params[0].gasPrice = BigNumber.from(25.001e9).toHexString()
-            }
-
-            if (chainId === (122 as ChainId) && method === 'eth_sendTransaction') {
-                params[0].gasPrice = BigNumber.from(11e9).toHexString()
+            if (method === 'eth_sendTransaction' && !isMiniPay && chainId && chainId in gasPriceSettings) {
+                const gasSettings = gasPriceSettings[chainId]
+                if (!params[0].maxFeePerGas) {
+                    // params[0].gasPrice = gasSettings.maxFeePerGas
+                    delete params[0].gasPrice
+                    params[0] = { ...params[0], ...gasSettings }
+                } else {
+                    params[0] = { ...params[0], ...gasSettings }
+                }
             }
             return webprovider.jsonRpcFetchFunc(method, params)
         }
@@ -98,12 +107,13 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                 env={contractsEnvV2}
                 config={{
                     pollingInterval: 15000,
-                    networks: [Mainnet, Fuse, Celo],
+                    networks: [Mainnet, Fuse, Celo, Xdc],
                     readOnlyChainId: undefined,
                     readOnlyUrls: {
                         1: sample(process.env.REACT_APP_MAINNET_RPC?.split(',')) ?? 'https://eth.llamarpc.com',
                         122: sample(process.env.REACT_APP_FUSE_RPC?.split(',')) || 'https://rpc.fuse.io',
                         42220: sample(process.env.REACT_APP_CELO_RPC?.split(',')) || 'https://forno.celo.org',
+                        50: sample(process.env.REACT_APP_XDC_RPC?.split(',')) || 'https://rpc.xdc.network',
                     },
                 }}
             >

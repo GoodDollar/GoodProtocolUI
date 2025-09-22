@@ -5,15 +5,11 @@ import usePromise from 'hooks/usePromise'
 import { useAppKitNetwork } from '@reown/appkit/react'
 
 import styled from 'styled-components'
-import AvalancheLogo from '../../assets/images/avalanche-logo.png'
-import BinanceCoinLogo from '../../assets/images/binance-coin-logo.png'
+import XdcLogo from '../../assets/images/xdc-logo.svg'
 import CeloLogo from '../../assets/images/celo-logo.png'
 import EthereumLogo from '../../assets/images/ethereum-logo.png'
-import FantomLogo from '../../assets/images/fantom-logo.png'
 import FuseLogo from '../../assets/images/fuse-logo.png'
-import MaticLogo from '../../assets/images/matic-logo.png'
-import xDaiLogo from '../../assets/images/xdai-logo.png'
-import { AdditionalChainId, FUSE } from '../../constants'
+import { AdditionalChainId, FUSE, CELO, XDC } from '../../constants'
 import { getFuseTokenLogoURL } from '../../constants/fuseTokenMapping'
 import useHttpLocations from '../../hooks/useHttpLocations'
 import { WrappedTokenInfo } from 'types/WrappedTokenInfo'
@@ -49,15 +45,7 @@ const StyledLogo = styled(Logo)<{ size: string }>`
 
 const logo: { readonly [chainId in ChainId | AdditionalChainId]?: string } = {
     [ChainId.MAINNET]: EthereumLogo,
-    [ChainId.FANTOM]: FantomLogo,
-    [ChainId.FANTOM_TESTNET]: FantomLogo,
-    [ChainId.MATIC]: MaticLogo,
-    [ChainId.MATIC_TESTNET]: MaticLogo,
-    [ChainId.XDAI]: xDaiLogo,
-    [ChainId.BSC]: BinanceCoinLogo,
-    [ChainId.BSC_TESTNET]: BinanceCoinLogo,
-    [ChainId.AVALANCHE]: AvalancheLogo,
-    [ChainId.FUJI]: AvalancheLogo,
+    [AdditionalChainId.XDC]: XdcLogo,
     [AdditionalChainId.FUSE]: FuseLogo,
     [AdditionalChainId.CELO]: CeloLogo,
 }
@@ -91,7 +79,7 @@ export default function CurrencyLogo({
         return []
     }, [chainId, currency, uriLocations, tokenList])
 
-    if ((currency === ETHER || currency === FUSE) && chainId) {
+    if ((currency === ETHER || currency === FUSE || currency === CELO || currency === XDC) && chainId) {
         return <StyledNativeCurrencyLogo src={logo[chainId] ?? logo[ChainId.MAINNET]} size={size} style={style} />
     }
 
