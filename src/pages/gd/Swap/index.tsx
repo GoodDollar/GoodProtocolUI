@@ -28,7 +28,7 @@ const SwapExplanationFooter = () => (
 )
 
 const SwapExplanation = ({ swapWidget }) => {
-    if (swapWidget === 'celoReserve') {
+    if (swapWidget === 'goodReserve') {
         return (
             <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={8}>
                 <Text fontFamily="subheading" fontSize="sm" color="goodGrey.600" pt={4} pb={8} textAlign="center">
@@ -79,10 +79,17 @@ const Swap = memo((props: any) => {
     })
 
     const swapComponentMapping = {
-        celoReserve: {
-            component: <SwapMento />,
-            enabled: !isProd || reserveEnabled !== false,
-            chainId: SupportedChains.CELO,
+        goodReserve: {
+            42220: {
+                component: <SwapMento />,
+                enabled: !isProd || reserveEnabled !== false,
+                chainId: SupportedChains.CELO,
+            },
+            50: {
+                component: <SwapMento />,
+                enabled: !isProd || reserveEnabled !== false,
+                chainId: SupportedChains.XDC,
+            },
         },
         celoUniswap: {
             component: <UniSwap />,
@@ -91,7 +98,9 @@ const Swap = memo((props: any) => {
         },
     }
 
-    const chainConfig = swapComponentMapping[swapWidget]
+    const chainConfig =
+        swapWidget === 'celoUniswap' ? swapComponentMapping[swapWidget] : swapComponentMapping[swapWidget][chainId]
+
     console.log({ props, chainConfig })
     if (!chainConfig) {
         return <></>
