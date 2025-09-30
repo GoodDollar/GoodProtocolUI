@@ -242,7 +242,7 @@ const MentoSwap = memo(() => {
     }
 
     const swapHelperText = i18n._(
-        t`The GoodReserve is a Bancor-V1 Automated Market Maker (AMM) that operates on Celo.
+        t`The GoodReserve is an Automated Market Maker (AMM) that operates on Celo and XDC.
               This contract is able to mint and burn G$s according to the increase or decrease of it's demand.
               Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio.`
     )
@@ -424,7 +424,7 @@ const MentoSwap = memo(() => {
                     priceImpact: priceImpact ? new Percent((priceImpact * 100).toFixed(), 100) : new Percent(0, 1),
                     inputAmount: CurrencyAmount.fromRawAmount(
                         new Token(
-                            42220,
+                            chainId,
                             swapPair.input.address,
                             swapPair.input.decimals,
                             swapPair.input.symbol,
@@ -434,7 +434,7 @@ const MentoSwap = memo(() => {
                     ),
                     outputAmount: CurrencyAmount.fromRawAmount(
                         new Token(
-                            42220,
+                            chainId,
                             swapPair.output.address,
                             swapPair.output.decimals,
                             swapPair.output.symbol,
@@ -444,7 +444,7 @@ const MentoSwap = memo(() => {
                     ),
                     minimumOutputAmount: CurrencyAmount.fromRawAmount(
                         new Token(
-                            42220,
+                            chainId,
                             swapPair.output.address,
                             swapPair.output.decimals,
                             swapPair.output.symbol,
