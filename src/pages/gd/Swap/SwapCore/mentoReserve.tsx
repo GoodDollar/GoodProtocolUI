@@ -24,13 +24,11 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useG$ from 'hooks/useG$'
 
 import SwapConfirmModal from '../SwapConfirmModal'
-
-import { CUSD } from 'constants/index'
-
 import QuestionHelper from 'components/QuestionHelper'
 
 import GoodReserveLogo from 'assets/images/goodreserve-logo.png'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
+import useCUSD from 'hooks/useCUSD'
 
 const MentoSwap = memo(() => {
     const { i18n } = useLingui()
@@ -49,6 +47,7 @@ const MentoSwap = memo(() => {
     const setInputAmountDebounced = useCallback(debounce(setInputAmount, 500), [])
     const setOutputAmountDebounced = useCallback(debounce(setOutputAmount, 500), [])
 
+    const CUSD = useCUSD()
     const G$ = useG$()
     const cusdBalance = useCurrencyBalance(account ?? undefined, CUSD)
     const g$Balance = useCurrencyBalance(account ?? undefined, G$)
