@@ -11,7 +11,7 @@ const tokenAbi = [
 ]
 export default function useCUSD() {
     const { connectedEnv, chainId } = useGetEnvChainId()
-    const CUSDAddress = contractAddresses[connectedEnv].CUSD || '0xeed145D8d962146AFc568E9579948576f63D5Dc2'
+    const CUSDAddress = contractAddresses[connectedEnv].CUSD || '0xCCE5f6B605164B7784b4719829d84b0f7493b906'
     const CUSDContract = new Contract(CUSDAddress, tokenAbi)
     const callResults = useCalls(
         [
@@ -36,9 +36,12 @@ export default function useCUSD() {
     const CUSD = new Token(
         chainId || 42220,
         CUSDAddress,
-        callResults[0]?.value[0] || 18,
-        callResults[1]?.value[0] || 'cUSD',
-        callResults[2]?.value[0] || 'Celo USD'
+        getFirstOr(callResults[0]?.value, 6),
+        getFirstOr(callResults[1]?.value, 'cUSD'),
+        getFirstOr(callResults[2]?.value, 'Celo USD')
     )
     return CUSD
+}
+function getFirstOr<T>(arr: any[] | undefined, fallback: T): T {
+    return arr?.[0] ?? fallback
 }

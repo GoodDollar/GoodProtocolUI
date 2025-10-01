@@ -22,13 +22,13 @@ import { SwapContext } from '../hooks'
 import { useCurrencyBalance } from 'state/wallet/hooks'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useG$ from 'hooks/useG$'
+import useCUSD from 'hooks/useCUSD'
 
 import SwapConfirmModal from '../SwapConfirmModal'
 import QuestionHelper from 'components/QuestionHelper'
 
 import GoodReserveLogo from 'assets/images/goodreserve-logo.png'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
-import useCUSD from 'hooks/useCUSD'
 
 const MentoSwap = memo(() => {
     const { i18n } = useLingui()
