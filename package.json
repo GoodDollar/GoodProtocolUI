@@ -206,8 +206,8 @@
     },
     "dependencies": {
         "@babel/runtime": "^7.18.9",
-        "@gooddollar/good-design": "^0.4.24",
-        "@gooddollar/goodprotocol": "2.0.34-beta.1",
+        "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design",
+        "@gooddollar/goodprotocol": "2.0.34-beta.2",
         "@gooddollar/web3sdk": "file:.yalc/@gooddollar/web3sdk",
         "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2",
         "@headlessui/react": "1.5.0",

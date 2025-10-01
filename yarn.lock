@@ -4706,16 +4706,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.4.24":
+"@gooddollar/good-design@file:.yalc/@gooddollar/good-design::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.4.25
-  resolution: "@gooddollar/good-design@npm:0.4.25"
+  resolution: "@gooddollar/good-design@file:.yalc/@gooddollar/good-design#.yalc/@gooddollar/good-design::hash=d73d20&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
     "@formatjs/intl-locale": ^4.0.0
     "@formatjs/intl-pluralrules": ^5.2.14
-    "@gooddollar/goodprotocol": ^2.0.34-beta.1
-    "@gooddollar/web3sdk-v2": "*"
+    "@gooddollar/goodprotocol": 2.0.34-beta.2
     "@lingui/core": ^4.11.2
     "@lingui/react": ^4.11.2
     "@magiklabs/react-sdk": ^1.0.8
@@ -4753,7 +4752,7 @@ __metadata:
     react-use-promise: ^0.5.0
     react-use-wizard: ^2.3.0
     require-from-string: ^2.0.2
-  checksum: f9acecee59a5392b871118b1402ef1388858ae4deb2e97b07b4afe3e6d3642b7abb21ad9b44ebb51bc65192866a2bd85dd484987488a73e4d8959e04c29d010c
+  checksum: 4ebf72f0b8ace5b19fe9d938883020970c95d6b22cd2a396c74ca4c26908fdae89ef5f0321dda5a81eb806a17b6ca095fb453559ff5a717d189fd50290963409
   languageName: node
   linkType: hard
 
@@ -4776,13 +4775,6 @@ __metadata:
   peerDependencies:
     ethers: ^5.*
   checksum: aab1f58619ccd022bf86094d34288a4905f32dde667bdc3b97b24d722c9fd8514071dc52c18e7b9ed45fd716280fa235f519799cfd41e3a8b5c2bf8554dce74f
-  languageName: node
-  linkType: hard
-
-"@gooddollar/goodprotocol@npm:2.0.34-beta.1, @gooddollar/goodprotocol@npm:^2.0.34-beta.1":
-  version: 2.0.34-beta.1
-  resolution: "@gooddollar/goodprotocol@npm:2.0.34-beta.1"
-  checksum: a86bd81d9eb3f350d1d3238dc95b60696f409d2ac8f0bea939838e6d8e371235483a6ccb150fb4c544ba3dacc5b76322ac3ce43b2e90a540cb094c5b022e5be4
   languageName: node
   linkType: hard
 
@@ -4809,8 +4801,8 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.4.24
-    "@gooddollar/goodprotocol": 2.0.34-beta.1
+    "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design"
+    "@gooddollar/goodprotocol": 2.0.34-beta.2
     "@gooddollar/web3sdk": "file:.yalc/@gooddollar/web3sdk"
     "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2"
     "@headlessui/react": 1.5.0
@@ -4998,7 +4990,7 @@ __metadata:
 
 "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.4.19
-  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=31969d&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  resolution: "@gooddollar/web3sdk-v2@file:.yalc/@gooddollar/web3sdk-v2#.yalc/@gooddollar/web3sdk-v2::hash=6384b9&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5051,72 +5043,13 @@ __metadata:
     react-native-web: "*"
     viem: 2.*
     wagmi: 2.*
-  checksum: e3e585e488d16355e02f7143d4359fd706b1a80418acbd39f4ef1b243d684df60716cc508cfe3e3e4ea7ddb890a692b8bc50e1b7ea04313842a4750e34b744f5
-  languageName: node
-  linkType: hard
-
-"@gooddollar/web3sdk-v2@npm:*":
-  version: 0.4.18
-  resolution: "@gooddollar/web3sdk-v2@npm:0.4.18"
-  dependencies:
-    "@amplitude/analytics-browser": ^1.6.4
-    "@amplitude/analytics-react-native": ^0.7.0
-    "@aws-sdk/client-s3": 3.572.0
-    "@ceramicnetwork/http-client": ^2.32.0
-    "@ceramicnetwork/stream-tile": ^2.31.0
-    "@gooddollar/bridge-app": ^1.5.0
-    "@gooddollar/bridge-contracts": ^1.0.17
-    "@gooddollar/goodcollective-contracts": ^1.3.0
-    "@gooddollar/goodcollective-sdk": ^1.3.3
-    "@gooddollar/goodprotocol": ^2.0.34-beta.1
-    "@orbisclub/orbis-sdk": ^0.4.87
-    "@react-native-community/geolocation": 3.1.0
-    "@react-native-firebase/analytics": ^16.4.6
-    "@sentry/browser": 7.16.0
-    "@sentry/react-native": ^5.15.1
-    "@solana/web3.js": ^1.72.0
-    "@walletconnect/client": ^1.8.0
-    "@walletconnect/qrcode-modal": ^1.8.0
-    "@web3-onboard/coinbase": ^2.4.1
-    "@web3-onboard/core": ^2.23.0
-    "@web3-onboard/injected-wallets": ^2.11.2
-    "@web3-onboard/react": ^2.10.0
-    "@web3-onboard/torus": ^2.3.1
-    "@web3-onboard/walletconnect": ^2.6.1
-    "@web3auth/base": ^4.0.0
-    "@web3auth/core": ^4.0.0
-    "@web3auth/openlogin-adapter": ^4.1.0
-    "@web3auth/torus-wallet-connector-plugin": ^4.0.0
-    base-64: ^1.0.0
-    dexie: ^3.2.4
-    dexie-react-hooks: ^1.1.7
-    ethers: 5.7.2
-    eventemitter3: ^4.0.7
-    lz-string: ^1.5.0
-    moment: 2.29.4
-    multiformats: 9.9.0
-    posthog-react-native: 2.8.1
-    react-native-indicative: ^0.2.1
-    react-native-restart: ^0.0.24
-    react-use-promise: ^0.5.0
-  peerDependencies:
-    "@react-native-async-storage/async-storage": 1.17.10
-    "@reown/appkit": 1.*
-    "@reown/appkit-adapter-wagmi": 1.*
-    "@tanstack/react-query": 5.*
-    "@usedapp/core": "*"
-    react: ">=17"
-    react-native: "*"
-    react-native-web: "*"
-    viem: 2.*
-    wagmi: 2.*
-  checksum: 84cde425a74bec314f148391eb8fdccf06d30b77da0e85cc12b4ca8f215333352fb013b6298b76651852f73ea82a285f60ff7d2a143d58d11425a287ba309794
+  checksum: b982adbcba0f7b002aefdf1f788d06e258dc30ce0fc82cfb88bcd7e1baa70687ea376b1d44f5b21fc4d13ce3c10bb4973d17652ee70c4d9b7290eb9c27c44345
   languageName: node
   linkType: hard
 
 "@gooddollar/web3sdk@file:.yalc/@gooddollar/web3sdk::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
   version: 0.1.51
-  resolution: "@gooddollar/web3sdk@file:.yalc/@gooddollar/web3sdk#.yalc/@gooddollar/web3sdk::hash=8ae771&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+  resolution: "@gooddollar/web3sdk@file:.yalc/@gooddollar/web3sdk#.yalc/@gooddollar/web3sdk::hash=db7db5&locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
   dependencies:
     "@apollo/client": ^3.2.0
     "@gooddollar/goodprotocol": ^2.0.34-beta.2
@@ -5139,7 +5072,7 @@ __metadata:
     web3-utils: 1.8.2
   peerDependencies:
     react: ">=17"
-  checksum: 0cb4b9aebdeeca3ff7c6a25f135d499278a97df44451e83b11c3bd91ba38f6b9438629f81c31b2c2984b7f95123047cf2b1695101347a8facf2c14a7cea9bd93
+  checksum: b4f8d52003f9c1956522914c3529cca2e94c35ec5a48663a5c2bed93016dc715dd035cce8abbc6e6bf280d99ccb0cf2cfbfded4a201a6e2428967e3f5d8b47c6
   languageName: node
   linkType: hard
 
