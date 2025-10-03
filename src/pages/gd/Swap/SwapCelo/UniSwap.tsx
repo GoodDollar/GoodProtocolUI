@@ -18,6 +18,7 @@ import { ChainId } from '@sushiswap/sdk'
 import { isMobile } from 'react-device-detect'
 import { Center } from 'native-base'
 import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
+import { getSafeChainId } from 'utils/chain'
 
 import { useApplicationTheme } from 'state/application/hooks'
 import useSendAnalytics from 'hooks/useSendAnalyticsData'
@@ -37,7 +38,7 @@ export const UniSwap = (): JSX.Element => {
     const { web3Provider } = useWeb3Context()
     const { address } = useAppKitAccount()
     const { chainId } = useAppKitNetwork()
-    const network = SupportedChains[+(chainId ?? 1)]
+    const network = SupportedChains[getSafeChainId(chainId)]
     const { open } = useAppKit()
     const globalDispatch = useDispatch()
     const sendData = useSendAnalytics()
@@ -80,9 +81,13 @@ export const UniSwap = (): JSX.Element => {
         return true
     }, [address, open])
 
-    const handleError = useCallback(async (e) => {
-        sendData({ event: 'swap', action: 'swap_failed', error: e.message })
-    }, [])
+    // Propagates swap errors to analytics; UI errors are already handled by the Uniswap widget
+    const handleError = useCallback(
+        async (e) => {
+            sendData({ event: 'swap', action: 'swap_failed', error: e?.message ?? String(e) })
+        },
+        [sendData]
+    )
 
     const handleTxFailed: OnTxFail = useCallback(async (error: string, data: any) => {
         console.log('handleTxFailed -->', { error, data })
