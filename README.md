@@ -1,4 +1,4 @@
-# GoodProtocol Interface
+# GoodProtocolUI (gooddapp.org) Interface
 
 [![Styled With Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 
@@ -45,4 +45,5 @@ Usages -->
 **Please open all pull requests against the `master` branch.**
 CI checks will run against all PRs.
 
-For more information please go to https://docs.gooddollar.org/
+Make sure to read up on our contribution guidelines and the different open-source contributors opportunities: https://github.com/GoodDollar/.github/blob/master/CONTRIBUTING.md
+For more information about the GoodDollar Protocol, please go to https://docs.gooddollar.org/
