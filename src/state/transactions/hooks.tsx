@@ -1,7 +1,7 @@
 import { TransactionResponse } from '@ethersproject/providers'
 import { useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
 import { AppDispatch, AppState } from '../index'
 import { addTransaction } from './actions'
 import { TransactionDetails } from './reducer'
@@ -15,8 +15,7 @@ export function useTransactionAdder(): (
         claim?: { recipient: string }
     }
 ) => void {
-    const { address } = useAppKitAccount()
-    const { chainId } = useAppKitNetwork()
+    const { address, chainId } = useConnectionInfo()
     const dispatch = useDispatch<AppDispatch>()
 
     return useCallback(
@@ -39,7 +38,7 @@ export function useTransactionAdder(): (
             if (!hash) {
                 throw Error('No transaction hash found.')
             }
-            dispatch(addTransaction({ hash, from: address, chainId: +(chainId ?? 1), approval, summary, claim }))
+            dispatch(addTransaction({ hash, from: address, chainId, approval, summary, claim }))
         },
         [dispatch, chainId, address]
     )
@@ -47,8 +46,7 @@ export function useTransactionAdder(): (
 
 // returns all the transactions for the current chain
 export function useAllTransactions(): { [txHash: string]: TransactionDetails } {
-    const { address } = useAppKitAccount()
-    const { chainId } = useAppKitNetwork()
+    const { address, chainId } = useConnectionInfo()
 
     const state = useSelector<AppState, AppState['transactions']>((state) => state.transactions)
     const filterTransactions = {}

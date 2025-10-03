@@ -2697,7 +2697,7 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:265
+#: src/components/AccountDetails/index.tsx:264
 msgid "Account"
 msgstr "חֶשְׁבּוֹן"
 
@@ -2768,7 +2768,7 @@ msgid ""
 "Take note of indicators in the widget below for exit contribtution, price slippage and liquidity."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:289
+#: src/components/AccountDetails/index.tsx:288
 msgid "Change"
 msgstr "שינוי"
 
@@ -2838,7 +2838,7 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:328
+#: src/components/AccountDetails/index.tsx:327
 msgid "Clear all"
 msgstr "נקה את כל"
 
@@ -2888,7 +2888,7 @@ msgstr "התחבר לארנק"
 msgid "Connect wallet"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:234
+#: src/components/AccountDetails/index.tsx:233
 msgid "Connected with"
 msgstr "מחובר עם"
 
@@ -2903,7 +2903,7 @@ msgstr ""
 msgid "Copied"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:305
+#: src/components/AccountDetails/index.tsx:304
 msgid "Copy address"
 msgstr "העתקת העתקה"
 
@@ -2934,7 +2934,7 @@ msgstr ""
 msgid "Deposit overview"
 msgstr "סקירה פיקדון"
 
-#: src/components/AccountDetails/index.tsx:280
+#: src/components/AccountDetails/index.tsx:279
 msgid "Disconnect"
 msgstr ""
 
@@ -3213,7 +3213,7 @@ msgstr "נוהל"
 msgid "PROTOCOL"
 msgstr "נוהל"
 
-#: src/components/AccountDetails/index.tsx:326
+#: src/components/AccountDetails/index.tsx:325
 msgid "Recent Transactions"
 msgstr "תנועות אחרונות"
 
@@ -3535,7 +3535,7 @@ msgstr ""
 msgid "Unsupported network"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:311
+#: src/components/AccountDetails/index.tsx:310
 #: src/components/Popups/TransactionPopup.tsx:48
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:308
 msgid "View on explorer"
@@ -3720,6 +3720,6 @@ msgstr "העסקה שלך תחזור אם המחיר משתנה בצורה של�
 #~ msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 #~ msgstr "העסקה שלך תחזור אם יש תנועה גדולה, מחיר שלילי לפני שהיא תאושר."
 
-#: src/components/AccountDetails/index.tsx:335
+#: src/components/AccountDetails/index.tsx:334
 msgid "Your transactions will appear here..."
 msgstr "העסקאות שלך יופיעו כאן ..."

@@ -2,7 +2,8 @@ import { useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
 import { ClaimProvider, ClaimWizard } from '@gooddollar/good-design'
 import { noop } from 'lodash'
-import { useAppKit, useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
+import { useAppKit } from '@reown/appkit/react'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
 import { Spinner, VStack } from 'native-base'
 import { useFeatureFlagWithPayload } from 'posthog-react-native'
 
@@ -23,8 +24,7 @@ const goodIdExplorerUrls = {
 }
 
 const ClaimPage = () => {
-    const { address: account } = useAppKitAccount()
-    const { chainId } = useAppKitNetwork()
+    const { address: account, chainId } = useConnectionInfo()
     const { open } = useAppKit()
     const history = useHistory()
     const networkEnv = getNetworkEnv()

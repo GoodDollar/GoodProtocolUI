@@ -62,7 +62,6 @@ createAppKit({
         analytics: true, // Optional - defaults to your Cloud configuration
         socials: ['google'],
     },
-    // Note: AppKit modal wallet ordering is managed internally; socials and analytics are configured above
 })
 
 export function AppKitProvider({ children }) {

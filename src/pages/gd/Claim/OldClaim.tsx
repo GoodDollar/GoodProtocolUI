@@ -12,7 +12,7 @@ import {
     ClaimSuccessModal,
 } from '@gooddollar/good-design'
 import { Box, Center, Text, useBreakpointValue } from 'native-base'
-import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
 import {
     useClaim,
     SupportedV2Networks,
@@ -50,9 +50,8 @@ const OldClaim = memo(() => {
 
     const [claimed, setClaimed] = useState<boolean | undefined>(undefined)
     // const [, connect] = useConnectWallet()
-    const { address } = useAppKitAccount()
-    const { chainId } = useAppKitNetwork()
-    const network = SupportedV2Networks[+(chainId ?? 1)]
+    const { address, chainId } = useConnectionInfo()
+    const network = SupportedV2Networks[chainId]
     const sendData = useSendAnalyticsData()
     const [, payload] = useFeatureFlagWithPayload('claim-feature')
     const { enabled: claimEnabled = true, disabledMessage = '' } = (payload as any) || {}

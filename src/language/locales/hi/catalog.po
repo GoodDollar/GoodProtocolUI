@@ -1452,7 +1452,7 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:265
+#: src/components/AccountDetails/index.tsx:264
 msgid "Account"
 msgstr ""
 
@@ -1523,7 +1523,7 @@ msgid ""
 "Take note of indicators in the widget below for exit contribtution, price slippage and liquidity."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:289
+#: src/components/AccountDetails/index.tsx:288
 msgid "Change"
 msgstr ""
 
@@ -1593,7 +1593,7 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:328
+#: src/components/AccountDetails/index.tsx:327
 msgid "Clear all"
 msgstr ""
 
@@ -1643,7 +1643,7 @@ msgstr "एक वॉलेट से कनेक्ट करें"
 msgid "Connect wallet"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:234
+#: src/components/AccountDetails/index.tsx:233
 msgid "Connected with"
 msgstr ""
 
@@ -1658,7 +1658,7 @@ msgstr ""
 msgid "Copied"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:305
+#: src/components/AccountDetails/index.tsx:304
 msgid "Copy address"
 msgstr ""
 
@@ -1689,7 +1689,7 @@ msgstr ""
 msgid "Deposit overview"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:280
+#: src/components/AccountDetails/index.tsx:279
 msgid "Disconnect"
 msgstr ""
 
@@ -1968,7 +1968,7 @@ msgstr ""
 msgid "PROTOCOL"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:326
+#: src/components/AccountDetails/index.tsx:325
 msgid "Recent Transactions"
 msgstr ""
 
@@ -2290,7 +2290,7 @@ msgstr ""
 msgid "Unsupported network"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:311
+#: src/components/AccountDetails/index.tsx:310
 #: src/components/Popups/TransactionPopup.tsx:48
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:308
 msgid "View on explorer"
@@ -2475,6 +2475,6 @@ msgstr "यदि इस प्रतिशत से अधिक मूल्�
 #~ msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 #~ msgstr "पुष्टि होने से पहले एक बड़ा, प्रतिकूल मूल्य आंदोलन होने पर आपका लेनदेन वापस हो जाएगा।"
 
-#: src/components/AccountDetails/index.tsx:335
+#: src/components/AccountDetails/index.tsx:334
 msgid "Your transactions will appear here..."
 msgstr ""

@@ -3,7 +3,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { Contract } from '@ethersproject/contracts'
 import { useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useAppKitNetwork } from '@reown/appkit/react'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
 
 import { useBlockNumber } from '../application/hooks'
 import { AppDispatch, AppState } from '../index'
@@ -51,7 +51,7 @@ export const NEVER_RELOAD: ListenerOptions = {
 
 // the lowest level call for subscribing to contract data
 function useCallsData(calls: (Call | undefined)[], options?: ListenerOptions): CallResult[] {
-    const { chainId } = useAppKitNetwork()
+    const { chainId } = useConnectionInfo()
     const callResults = useSelector<AppState, AppState['multicall']['callResults']>(
         (state) => state.multicall.callResults
     )
@@ -75,7 +75,7 @@ function useCallsData(calls: (Call | undefined)[], options?: ListenerOptions): C
         const calls = callKeys.map((key) => parseCallKey(key))
         dispatch(
             addMulticallListeners({
-                chainId: +(chainId ?? 1),
+                chainId,
                 calls,
                 options,
             })
@@ -84,7 +84,7 @@ function useCallsData(calls: (Call | undefined)[], options?: ListenerOptions): C
         return () => {
             dispatch(
                 removeMulticallListeners({
-                    chainId: +(chainId ?? 1),
+                    chainId,
                     calls,
                     options,
                 })

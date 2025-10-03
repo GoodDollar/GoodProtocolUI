@@ -8,7 +8,7 @@ import AsyncTokenIcon from 'components/gd/sushi/AsyncTokenIcon'
 import Title from 'components/gd/Title'
 import Loader from 'components/Loader'
 import Switch from 'components/Switch'
-import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import SwapInput from 'pages/gd/Swap/SwapInput'
 import { useDispatch } from 'react-redux'
@@ -61,8 +61,7 @@ const StakeDeposit = memo(({ stake, onDeposit, onClose, activeTableName }: Stake
     //note:
     // (bug-minor) chainId is cached here at default 1 when using an action button. Only seems to break loading icons on dev..
 
-    const { address } = useAppKitAccount()
-    const { chainId } = useAppKitNetwork()
+    const { address, chainId } = useConnectionInfo()
     const { web3 } = useGdContextProvider()
     const [state, dispatch] = useReducer(
         (
@@ -127,7 +126,6 @@ const StakeDeposit = memo(({ stake, onDeposit, onClose, activeTableName }: Stake
         address,
         useMemo(
             () =>
-                // TODO
                 (chainId as unknown as Token) &&
                 new Token(
                     +(chainId ?? 1),
