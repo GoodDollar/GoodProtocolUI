@@ -82,6 +82,8 @@ export default function CurrencyLogo({
     if ((currency === ETHER || currency === FUSE || currency === CELO || currency === XDC) && chainId) {
         return <StyledNativeCurrencyLogo src={logo[chainId] ?? logo[ChainId.MAINNET]} size={size} style={style} />
     }
+    if (currency?.name === 'GoodDollar')
+        srcs[0] = 'https://raw.githubusercontent.com/GoodDollar/GoodDAPP/master/src/assets/Splash/logo.svg'
 
     return <StyledLogo size={size} srcs={srcs} alt={`${currency?.getSymbol(chainId) ?? 'token'} logo`} style={style} />
 }
