@@ -2,15 +2,14 @@ import React from 'react'
 
 import { WalletChatWidget } from 'react-wallet-chat-gd'
 import { useScreenSize } from '@gooddollar/good-design'
-import { useAppKitAccount, useAppKitNetwork, useWalletInfo } from '@reown/appkit/react'
 import { useAppKitProvider } from '@reown/appkit/react'
 import type { Provider } from '@reown/appkit/react'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
+import { getSafeChainId } from 'utils/chain'
 
 const WalletChat = () => {
     const { walletProvider } = useAppKitProvider<Provider>('eip155')
-    const { address } = useAppKitAccount()
-    const { chainId } = useAppKitNetwork()
-    const { walletInfo } = useWalletInfo()
+    const { address, chainId, walletInfo } = useConnectionInfo()
 
     const { isDesktopView } = useScreenSize()
     return (
@@ -21,7 +20,7 @@ const WalletChat = () => {
                     ? {
                           walletName: walletInfo?.name || '',
                           account: address,
-                          chainId: +(chainId ?? 1),
+                          chainId: getSafeChainId(chainId),
                           provider: walletProvider,
                       }
                     : undefined

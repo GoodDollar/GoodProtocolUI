@@ -59,7 +59,7 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:266
+#: src/components/AccountDetails/index.tsx:265
 msgid "Account"
 msgstr ""
 
@@ -130,7 +130,7 @@ msgid ""
 "Take note of indicators in the widget below for exit contribtution, price slippage and liquidity."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:290
+#: src/components/AccountDetails/index.tsx:289
 msgid "Change"
 msgstr ""
 
@@ -200,7 +200,7 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:329
+#: src/components/AccountDetails/index.tsx:328
 msgid "Clear all"
 msgstr ""
 
@@ -246,7 +246,7 @@ msgstr ""
 msgid "Connect wallet"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:235
+#: src/components/AccountDetails/index.tsx:234
 msgid "Connected with"
 msgstr ""
 
@@ -261,7 +261,7 @@ msgstr ""
 msgid "Copied"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:306
+#: src/components/AccountDetails/index.tsx:305
 msgid "Copy address"
 msgstr ""
 
@@ -288,7 +288,7 @@ msgstr ""
 msgid "Deposit overview"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:281
+#: src/components/AccountDetails/index.tsx:280
 msgid "Disconnect"
 msgstr ""
 
@@ -495,7 +495,7 @@ msgstr ""
 msgid "on the"
 msgstr ""
 
-#: src/components/Web3ReactManager/index.tsx:62
+#: src/components/Web3ReactManager/index.tsx:63
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr ""
 
@@ -545,7 +545,7 @@ msgstr ""
 msgid "PROTOCOL"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:327
+#: src/components/AccountDetails/index.tsx:326
 msgid "Recent Transactions"
 msgstr ""
 
@@ -851,11 +851,11 @@ msgstr ""
 msgid "Uniswap (widget)"
 msgstr ""
 
-#: src/components/Web3Network/index.tsx:72
+#: src/components/Web3Network/index.tsx:73
 msgid "Unsupported network"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:312
+#: src/components/AccountDetails/index.tsx:311
 #: src/components/Popups/TransactionPopup.tsx:48
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:308
 msgid "View on explorer"
@@ -1012,6 +1012,6 @@ msgstr ""
 #~ msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 #~ msgstr ""
 
-#: src/components/AccountDetails/index.tsx:336
+#: src/components/AccountDetails/index.tsx:335
 msgid "Your transactions will appear here..."
 msgstr ""

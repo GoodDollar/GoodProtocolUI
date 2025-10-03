@@ -11,7 +11,8 @@ import { useLingui } from '@lingui/react'
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 import { ChainId } from '@sushiswap/sdk'
 import { Pressable, Text } from 'native-base'
-import { useAppKitNetwork, useAppKitState } from '@reown/appkit/react'
+import { useAppKitState } from '@reown/appkit/react'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
 
 const Web3StatusGeneric = styled(ButtonSecondary)`
     ${({ theme }) => theme.flexRowNoWrap}
@@ -49,7 +50,7 @@ const NetworkIcon = styled(Activity)`
 function Web3Network(): JSX.Element | null {
     // TODO active(initliazed)
     const { initialized } = useAppKitState()
-    const { chainId } = useAppKitNetwork()
+    const { chainId } = useConnectionInfo()
     const error = false
     const { selectedChain = 42220 } = useSelectedChain()
     const displayChain = initialized ? +(chainId ?? 42220) : selectedChain

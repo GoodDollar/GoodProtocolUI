@@ -3,8 +3,8 @@ import { useAnalytics } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
-import { useAppKitAccount, useAppKitState } from '@reown/appkit/react'
-
+import { useAppKitState } from '@reown/appkit/react'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
 
 const MessageWrapper = styled.div`
     display: flex;
@@ -22,7 +22,7 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
     // const { tried } = useOnboardConnect()
     const [, setShowLoader] = useState(false) // handle delayed loader state
     const { initialized } = useAppKitState()
-    const { address } = useAppKitAccount()
+    const { address } = useConnectionInfo()
     const networkError = false
     const { identify } = useAnalytics()
 

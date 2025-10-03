@@ -3,10 +3,8 @@ import { useLingui } from '@lingui/react'
 import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { useAppKit, useAppKitNetwork } from '@reown/appkit/react'
-import { useAppKitAccount } from '@reown/appkit/react'
+import { useAppKit } from '@reown/appkit/react'
 import { useRedirectNotice } from '@gooddollar/good-design'
-import { useWalletInfo } from '@reown/appkit/react'
 import { isMiniPay } from 'utils/minipay'
 
 import { ReactComponent as Close } from '../../assets/images/x.svg'
@@ -16,6 +14,7 @@ import { clearAllTransactions } from '../../state/transactions/actions'
 import { ExternalLink } from 'theme'
 import { getExplorerLink, shortenAddress } from '../../utils'
 import { getSafeChainId } from 'utils/chain'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
 import { ButtonOutlined } from '../gd/Button'
 import Title from '../gd/Title'
 import { AutoRow } from '../Row'
@@ -216,8 +215,7 @@ export default function AccountDetails({
     const dispatch = useDispatch<AppDispatch>()
     const network = getEnv()
 
-    const { address } = useAppKitAccount()
-    const { chainId } = useAppKitNetwork()
+    const { address, chainId, walletInfo } = useConnectionInfo()
 
     const { open } = useAppKit()
     const { disconnect } = useDisconnect()
@@ -226,7 +224,7 @@ export default function AccountDetails({
     const sendData = useSendAnalyticsData()
     const { goToExternal } = useRedirectNotice()
 
-    const { walletInfo } = useWalletInfo()
+    // walletInfo provided by useConnectionInfo
 
     const miniPay = React.useMemo(() => isMiniPay(), [])
 
