@@ -2697,7 +2697,7 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:263
+#: src/components/AccountDetails/index.tsx:266
 msgid "Account"
 msgstr "Konto"
 
@@ -2768,7 +2768,7 @@ msgid ""
 "Take note of indicators in the widget below for exit contribtution, price slippage and liquidity."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:287
+#: src/components/AccountDetails/index.tsx:290
 msgid "Change"
 msgstr "Ändern"
 
@@ -2838,7 +2838,7 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:326
+#: src/components/AccountDetails/index.tsx:329
 msgid "Clear all"
 msgstr "Alles löschen"
 
@@ -2888,7 +2888,7 @@ msgstr "Verbinden Sie sich mit einer Brieftasche"
 msgid "Connect wallet"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:232
+#: src/components/AccountDetails/index.tsx:235
 msgid "Connected with"
 msgstr "Verbunden mit"
 
@@ -2903,7 +2903,7 @@ msgstr ""
 msgid "Copied"
 msgstr "Kopiert"
 
-#: src/components/AccountDetails/index.tsx:303
+#: src/components/AccountDetails/index.tsx:306
 msgid "Copy address"
 msgstr "Adresse kopieren."
 
@@ -2934,7 +2934,7 @@ msgstr ""
 msgid "Deposit overview"
 msgstr "Übersicht einleiten."
 
-#: src/components/AccountDetails/index.tsx:278
+#: src/components/AccountDetails/index.tsx:281
 msgid "Disconnect"
 msgstr ""
 
@@ -3121,8 +3121,8 @@ msgstr "MULTIPLIKATOR"
 msgid "My Stake"
 msgstr "Mein Pfahl"
 
-#: src/components/NetworkModal/index.tsx:146
-#: src/components/NetworkModal/index.tsx:195
+#: src/components/NetworkModal/index.tsx:145
+#: src/components/NetworkModal/index.tsx:194
 msgid "network"
 msgstr "Netzwerk"
 
@@ -3148,8 +3148,8 @@ msgstr "Nächsten Monat:"
 msgid "No data."
 msgstr "Keine Daten."
 
-#: src/components/NetworkModal/index.tsx:145
-#: src/components/NetworkModal/index.tsx:194
+#: src/components/NetworkModal/index.tsx:144
+#: src/components/NetworkModal/index.tsx:193
 msgid "on the"
 msgstr "auf der"
 
@@ -3213,7 +3213,7 @@ msgstr "Protokoll"
 msgid "PROTOCOL"
 msgstr "PROTOKOLL"
 
-#: src/components/AccountDetails/index.tsx:324
+#: src/components/AccountDetails/index.tsx:327
 msgid "Recent Transactions"
 msgstr "kürzliche Transaktionen"
 
@@ -3535,8 +3535,8 @@ msgstr ""
 msgid "Unsupported network"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:309
-#: src/components/Popups/TransactionPopup.tsx:47
+#: src/components/AccountDetails/index.tsx:312
+#: src/components/Popups/TransactionPopup.tsx:48
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:308
 msgid "View on explorer"
 msgstr "Ansicht auf Explorer"
@@ -3573,8 +3573,8 @@ msgstr "Auf Bestätigung warten"
 msgid "Wallet balance"
 msgstr "Geldbörsenbetrag"
 
-#: src/components/NetworkModal/index.tsx:125
-#: src/components/NetworkModal/index.tsx:174
+#: src/components/NetworkModal/index.tsx:124
+#: src/components/NetworkModal/index.tsx:173
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3637,8 +3637,8 @@ msgstr ""
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "Sie schaffen UBI Tausende von Menschen auf der ganzen Welt."
 
-#: src/components/NetworkModal/index.tsx:141
-#: src/components/NetworkModal/index.tsx:190
+#: src/components/NetworkModal/index.tsx:140
+#: src/components/NetworkModal/index.tsx:189
 msgid "You are currently browsing"
 msgstr "Du surfe derzeit"
 
@@ -3664,7 +3664,7 @@ msgstr ""
 msgid "You need to sign the transaction in your wallet"
 msgstr "Sie müssen die Transaktion in Ihrer Brieftasche unterschreiben"
 
-#: src/components/Liquidity/RemoveLiquidityReceiveDetails.tsx:40
+#: src/components/Liquidity/RemoveLiquidityReceiveDetails.tsx:41
 msgid "You Will Receive:"
 msgstr "Du wirst erhalten:"
 
@@ -3720,6 +3720,6 @@ msgstr "Ihre Transaktion wird zurückgesetzt, wenn sich der Preis um mehr als di
 #~ msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 #~ msgstr "Ihre Transaktion wird zurückgesetzt, wenn eine große, ungünstige Preisbewegung vorliegt, bevor sie bestätigt wird."
 
-#: src/components/AccountDetails/index.tsx:333
+#: src/components/AccountDetails/index.tsx:336
 msgid "Your transactions will appear here..."
 msgstr "Ihre Transaktionen werden hier angezeigt ..."

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useAllTransactions } from '../../state/transactions/hooks'
 import { ExternalLink } from '../../theme'
 import { getExplorerLink } from '../../utils'
+import { getSafeChainId } from 'utils/chain'
 import Loader from '../Loader'
 import { RowFixed } from '../Row'
 import { useAppKitNetwork } from '@reown/appkit/react'
@@ -81,7 +82,10 @@ export default function Transaction({ hash }: { hash: string }): any {
 
     return (
         <TransactionWrapper>
-            <TransactionState url={getExplorerLink(+(chainId ?? 1), hash, 'transaction')} dataAttr="external_explorer">
+            <TransactionState
+                url={getExplorerLink(getSafeChainId(chainId), hash, 'transaction')}
+                dataAttr="external_explorer"
+            >
                 <RowFixed className="transition">
                     <TransactionStatusText>{summary} ↗</TransactionStatusText>
                 </RowFixed>

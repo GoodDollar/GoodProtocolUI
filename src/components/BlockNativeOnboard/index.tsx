@@ -63,7 +63,7 @@ export const OnboardConnectButton: FC = () => {
         <Web3ActionButton
             text={buttonText}
             web3Action={noop}
-            supportedChains={[SupportedChains.CELO, SupportedChains.MAINNET, SupportedChains.FUSE]}
+            supportedChains={[SupportedChains.CELO, SupportedChains.MAINNET, SupportedChains.FUSE, SupportedChains.XDC]}
             handleConnect={onWalletConnect}
             variant={'outlined'}
             isDisabled={false}
@@ -72,5 +72,4 @@ export const OnboardConnectButton: FC = () => {
     )
 }
 
-// Note: OnboardProviderWrapper is no longer needed as we're using AppKit
-// The AppKitProvider is already set up in src/index.tsx
+//

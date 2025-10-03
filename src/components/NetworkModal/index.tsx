@@ -64,7 +64,6 @@ export default function NetworkModal(): JSX.Element | null {
     const { setSelectedChain } = useSelectedChain()
     const { initialized } = useAppKitState()
     const { chainId } = useAppKitNetwork()
-    // TODO
     const error = false
     const sendData = useSendAnalyticsData()
     const { switchNetwork } = useSwitchNetwork()

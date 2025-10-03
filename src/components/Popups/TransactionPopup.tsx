@@ -6,6 +6,7 @@ import { useAppKitNetwork } from '@reown/appkit/react'
 import { TYPE, TwTheme } from '../../theme'
 import { ExternalLink } from '../../theme/components'
 import { getExplorerLink } from '../../utils'
+import { getSafeChainId } from 'utils/chain'
 import { AutoColumn } from '../Column'
 import { AutoRow } from '../Row'
 import { t } from '@lingui/macro'
@@ -45,7 +46,7 @@ export default function TransactionPopup({
                 {chainId && (
                     <ExternalLink
                         label={i18n._(t`View on explorer`)}
-                        url={getExplorerLink(+(chainId ?? 1), hash, 'transaction')}
+                        url={getExplorerLink(getSafeChainId(chainId), hash, 'transaction')}
                         dataAttr="external_explorer"
                         withDefaultStyles
                     />

@@ -2,6 +2,7 @@ import React from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { Currency, currencyEquals, ETHER, WETH } from '@sushiswap/sdk'
+import { getSafeChainId } from 'utils/chain'
 import { useAppKitNetwork } from '@reown/appkit/react'
 
 import { AutoColumn } from '../../components/Column'
@@ -45,7 +46,7 @@ export default function RemoveLiquidityReceiveDetails({
                                         currencyA === ETHER ? WETH[chainId].address : currencyId(currencyA)
                                     }/${currencyB === ETHER ? WETH[chainId].address : currencyId(currencyB)}`}
                                 >
-                                    Receive W{Currency.getNativeCurrencySymbol(+(chainId ?? 1))}
+                                    Receive W{Currency.getNativeCurrencySymbol(getSafeChainId(chainId))}
                                 </StyledInternalLink>
                             ) : hasETH ? (
                                 <StyledInternalLink
@@ -59,7 +60,7 @@ export default function RemoveLiquidityReceiveDetails({
                                             : currencyId(currencyB)
                                     }`}
                                 >
-                                    Receive {Currency.getNativeCurrencySymbol(+(chainId ?? 1))}
+                                    Receive {Currency.getNativeCurrencySymbol(getSafeChainId(chainId))}
                                 </StyledInternalLink>
                             ) : null}
                         </RowBetween>
@@ -71,14 +72,14 @@ export default function RemoveLiquidityReceiveDetails({
                         <CurrencyLogo currency={currencyA} size="46px" style={{ marginRight: '12px' }} />
                         <AutoColumn>
                             <div className="white">{amountA}</div>
-                            <div className="">{currencyA?.getSymbol(+(chainId ?? 1))}</div>
+                            <div className="">{currencyA?.getSymbol(getSafeChainId(chainId))}</div>
                         </AutoColumn>
                     </div>
                     <div className="flex flex-row items-center w-full p-3 rounded">
                         <CurrencyLogo currency={currencyB} size="46px" style={{ marginRight: '12px' }} />
                         <AutoColumn>
                             <div className="white">{amountB}</div>
-                            <div className="">{currencyB?.getSymbol(+(chainId ?? 1))}</div>
+                            <div className="">{currencyB?.getSymbol(getSafeChainId(chainId))}</div>
                         </AutoColumn>
                     </div>
                 </div>

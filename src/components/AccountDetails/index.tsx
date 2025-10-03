@@ -15,6 +15,7 @@ import { AppDispatch } from '../../state'
 import { clearAllTransactions } from '../../state/transactions/actions'
 import { ExternalLink } from 'theme'
 import { getExplorerLink, shortenAddress } from '../../utils'
+import { getSafeChainId } from 'utils/chain'
 import { ButtonOutlined } from '../gd/Button'
 import Title from '../gd/Title'
 import { AutoRow } from '../Row'
@@ -227,8 +228,10 @@ export default function AccountDetails({
 
     const { walletInfo } = useWalletInfo()
 
+    const miniPay = React.useMemo(() => isMiniPay(), [])
+
     function formatConnectorName() {
-        const name = isMiniPay() ? 'MiniPay' : walletInfo?.name ?? ''
+        const name = miniPay ? 'MiniPay' : walletInfo?.name ?? ''
         return `${i18n._(t`Connected with`)} ${name}`
     }
 
@@ -245,7 +248,7 @@ export default function AccountDetails({
     }, [toggleWalletModal, disconnect, open, network, sendData])
 
     const clearAllTransactionsCallback = useCallback(() => {
-        if (chainId) dispatch(clearAllTransactions({ chainId: +(chainId ?? 1) }))
+        if (chainId) dispatch(clearAllTransactions({ chainId: getSafeChainId(chainId) }))
     }, [dispatch, chainId])
 
     const goToExplorer = (e: any, url: string) => {
@@ -305,7 +308,7 @@ export default function AccountDetails({
                                         )}
                                         {chainId && address && (
                                             <ExternalLink
-                                                url={getExplorerLink(+(chainId ?? 1), address, 'address')}
+                                                url={getExplorerLink(getSafeChainId(chainId), address, 'address')}
                                                 label={i18n._(t`View on explorer`)}
                                                 dataAttr="external_explorer"
                                                 onPress={goToExplorer}

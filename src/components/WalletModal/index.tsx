@@ -61,7 +61,6 @@ export default function WalletModal({
     const { i18n } = useLingui()
 
     const { address } = useAppKitAccount()
-    // TODO
     const error = false
 
     const [walletView, setWalletView] = useState(WALLET_VIEWS.ACCOUNT)
