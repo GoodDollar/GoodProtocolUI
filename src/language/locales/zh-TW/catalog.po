@@ -2709,7 +2709,7 @@ msgstr "數量"
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:393
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:403
 msgid "Approve"
 msgstr "批准"
 
@@ -2717,15 +2717,15 @@ msgstr "批准"
 msgid "APPROVE"
 msgstr "批准"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:111
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:121
 msgid "Approve transaction failed, please try again."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:392
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:402
 msgid "Approved"
 msgstr "已批準"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:390
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:400
 msgid "Approving"
 msgstr "批準中"
 
@@ -3268,7 +3268,7 @@ msgstr "搜索名稱或粘貼地址"
 msgid "Share with friends"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:356
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:366
 #: src/pages/gd/Swap/SwapSettings/index.tsx:80
 msgid "Slippage Tolerance"
 msgstr "可容忍滑點"
@@ -3318,7 +3318,7 @@ msgstr "成功！"
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:402
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:412
 msgid "Swap"
 msgstr "代幣兌換"
 
@@ -3326,15 +3326,15 @@ msgstr "代幣兌換"
 msgid "Swap Completed"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:329
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:339
 msgid "Swap from"
 msgstr "換從"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:343
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:353
 msgid "Swap to"
 msgstr "交換到"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:105
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:115
 msgid "Swap transaction failed, please try again."
 msgstr ""
 
@@ -3377,11 +3377,11 @@ msgstr ""
 #~ msgstr ""
 
 #: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:245
-msgid ""
-"The GoodReserve is a Bancor-V1 Automated Market Maker (AMM) that operates on Celo.\n"
-"This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
-"Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
-msgstr ""
+#~ msgid ""
+#~ "The GoodReserve is a Bancor-V1 Automated Market Maker (AMM) that operates on Celo.\n"
+#~ "This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
+#~ "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
+#~ msgstr ""
 
 #: src/pages/gd/Swap/SwapCore/index.tsx:255
 #~ msgid ""
@@ -3389,6 +3389,13 @@ msgstr ""
 #~ "This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
 #~ "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
 #~ msgstr ""
+
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:255
+msgid ""
+"The GoodReserve is an Automated Market Maker (AMM) that operates on Celo and XDC.\n"
+"This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
+"Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
+msgstr ""
 
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:240
 #: src/pages/gd/Swap/SwapDetails/index.tsx:51
@@ -3500,7 +3507,7 @@ msgstr ""
 msgid "Transaction deadline"
 msgstr "交易期限"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:139
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:149
 msgid "Transaction failed, please try again"
 msgstr ""
 
