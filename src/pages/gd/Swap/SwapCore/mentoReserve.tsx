@@ -19,20 +19,20 @@ import SwapInfo from '../SwapInfo'
 import SwapDetails from '../SwapDetails'
 import SwapSettings from '../SwapSettings'
 import { SwapContext } from '../hooks'
-import { useCurrencyBalance } from 'state/wallet/hooks'
+import { useTokenBalance } from 'state/wallet/hooks'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useG$ from 'hooks/useG$'
 
 import SwapConfirmModal from '../SwapConfirmModal'
 
-import { CUSD } from 'constants/index'
-
 import QuestionHelper from 'components/QuestionHelper'
 
 import GoodReserveLogo from 'assets/images/goodreserve-logo.png'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
+import { useReserveToken } from 'hooks/useReserveToken'
 
 const MentoSwap = memo(() => {
+    const CUSD = useReserveToken()
     const { i18n } = useLingui()
     const [buying, setBuying] = useState(true)
     const [error, setError] = useState<{ message: string; reason?: string } | undefined>(undefined)
@@ -50,16 +50,22 @@ const MentoSwap = memo(() => {
     const setOutputAmountDebounced = useCallback(debounce(setOutputAmount, 500), [])
 
     const G$ = useG$()
-    const cusdBalance = useCurrencyBalance(account ?? undefined, CUSD)
-    const g$Balance = useCurrencyBalance(account ?? undefined, G$)
+    const cusdBalance = useTokenBalance(account ?? undefined, CUSD)
+    const g$Balance = useTokenBalance(account ?? undefined, G$)
 
     const [swapPair, setSwapPair] = useState({
         input: CUSD,
         output: G$,
     })
 
-    const inputAmountBig = ethers.utils.parseUnits(inputAmount || '0', swapPair.input.decimals)
-    const outputAmountBig = ethers.utils.parseUnits(outputAmount || '0', swapPair.output.decimals)
+    const inputAmountBig = useMemo(
+        () => ethers.utils.parseUnits(inputAmount || '0', swapPair.input.decimals),
+        [inputAmount]
+    )
+    const outputAmountBig = useMemo(
+        () => ethers.utils.parseUnits(outputAmount || '0', swapPair.output.decimals),
+        [outputAmount]
+    )
 
     const [lastEdited, setLastEdited] = useState<{ field: 'output' | 'input' }>()
 
@@ -71,28 +77,32 @@ const MentoSwap = memo(() => {
         lastEdited?.field === 'output' ? outputAmountBig : undefined
     )
 
-    const { swap, approve } = useSwap(
-        swapPair.input.address,
-        swapPair.output.address,
-        lastEdited?.field === 'input'
-            ? {
-                  input: inputAmountBig.toString(),
-                  minAmountOut: outputAmountBig
-                      .mul(10000 - +slippageTolerance.value * 100)
-                      .div(10000)
-                      .toString(),
-              }
-            : undefined,
-        lastEdited?.field === 'output'
-            ? {
-                  output: outputAmountBig.toString(),
-                  maxAmountIn: inputAmountBig
-                      .mul(10000 + +slippageTolerance.value * 100)
-                      .div(10000)
-                      .toString(),
-              }
-            : undefined
+    const swapInput: [string, string, any, any] = useMemo(
+        () => [
+            swapPair.input.address,
+            swapPair.output.address,
+            lastEdited?.field === 'input'
+                ? {
+                      input: inputAmountBig.toString(),
+                      minAmountOut: outputAmountBig
+                          .mul(10000 - +slippageTolerance.value * 100)
+                          .div(10000)
+                          .toString(),
+                  }
+                : undefined,
+            lastEdited?.field === 'output'
+                ? {
+                      output: outputAmountBig.toString(),
+                      maxAmountIn: inputAmountBig
+                          .mul(10000 + +slippageTolerance.value * 100)
+                          .div(10000)
+                          .toString(),
+                  }
+                : undefined,
+        ],
+        [outputAmountBig.toString(), inputAmountBig.toString(), slippageTolerance.value, swapPair.input.address]
     )
+    const { swap, approve } = useSwap(swapInput[0], swapInput[1], swapInput[2], swapInput[3])
 
     const [approving, setApproving] = useState(false)
     const [showConfirm, setShowConfirm] = useState(false)
@@ -100,25 +110,25 @@ const MentoSwap = memo(() => {
     const sendData = useSendAnalyticsData()
 
     useEffect(() => {
-        if (swap.state.status === 'Exception') {
+        if (swap?.state?.status === 'Exception') {
             setError({
                 message: i18n._(t`Swap transaction failed, please try again.`),
                 reason: swap.state.errorMessage,
             })
         }
-        if (approve.state.status === 'Exception') {
+        if (approve?.state?.status === 'Exception') {
             setError({
                 message: i18n._(t`Approve transaction failed, please try again.`),
                 reason: approve.state.errorMessage,
             })
         }
-    }, [swap.state.status, approve.state.status])
+    }, [swap?.state?.status, approve?.state?.status])
 
     useEffect(() => {
+        // console.log('swapPair:', swapPair)
         if (!(swapPair.input && swapPair.output)) {
             return
         }
-        console.log({ swapMeta, lastEdited })
         if (lastEdited?.field === 'input' && swapMeta?.amountOut) {
             const amount = new TokenAmount(swapPair.output, swapMeta.amountOut)
             setOutputAmount(amount.toExact())
@@ -128,7 +138,7 @@ const MentoSwap = memo(() => {
         }
     }, [swapMeta, lastEdited?.field, swapPair])
 
-    const handleApprove = async () => {
+    const handleApprove = useCallback(async () => {
         if (approved) return
         const type = buying ? 'buy' : 'sell'
         try {
@@ -140,7 +150,7 @@ const MentoSwap = memo(() => {
         } finally {
             setApproving(false)
         }
-    }
+    }, [approved, buying, network])
 
     useEffect(() => {
         approve.resetState()
@@ -163,19 +173,19 @@ const MentoSwap = memo(() => {
         ) {
             setApproved(true)
         } else setApproved(false)
-    }, [lastEdited, buying, swapMeta, approve.state])
+    }, [lastEdited, buying, swapMeta, approve?.state])
 
     useEffect(() => {
         if (buying) setSwapPair({ input: CUSD, output: G$ })
         else setSwapPair({ input: G$, output: CUSD })
-    }, [buying, G$])
+    }, [buying, G$, CUSD])
 
     const balanceNotEnough = useMemo(
         () =>
             buying
                 ? Number(cusdBalance?.toExact()) < Number(inputAmount)
                 : Number(g$Balance?.toExact()) < Number(inputAmount),
-        [inputAmount, cusdBalance, g$Balance, buying]
+        [inputAmount, cusdBalance?.toExact(), g$Balance?.toExact(), buying]
     )
 
     const metaSymbols = { input: buying ? CUSD.symbol : G$?.symbol, output: buying ? G$?.symbol : CUSD.symbol }
@@ -204,7 +214,7 @@ const MentoSwap = memo(() => {
     ]
 
     const effectivePrice = Number(inputAmount) > 0 ? Number(outputAmount) / Number(inputAmount) : 0
-    const curPrice = (swapMeta.g$Price || BigNumber.from(0)).toNumber() / 10 ** G$.decimals
+    const curPrice = (swapMeta?.g$Price || BigNumber.from(0)).toNumber() / 10 ** CUSD.decimals
 
     const priceImpact = useMemo(() => {
         return buying
