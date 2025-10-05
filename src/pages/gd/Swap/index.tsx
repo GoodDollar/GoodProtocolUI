@@ -28,7 +28,7 @@ const SwapExplanationFooter = () => (
 )
 
 const SwapExplanation = ({ swapWidget }) => {
-    if (swapWidget === 'mentoReserve') {
+    if (swapWidget === 'goodReserve') {
         return (
             <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={8}>
                 <Text fontFamily="subheading" fontSize="sm" color="goodGrey.600" pt={4} pb={8} textAlign="center">
@@ -79,7 +79,7 @@ const Swap = memo((props: any) => {
     })
 
     const swapComponentMapping = {
-        mentoReserve: {
+        goodReserve: {
             component: <SwapMento />,
             enabled: !isProd || reserveEnabled !== false,
             chainId: [SupportedChains.CELO, SupportedChains.XDC],
@@ -92,7 +92,6 @@ const Swap = memo((props: any) => {
     }
 
     const chainConfig = swapComponentMapping[swapWidget]
-    console.log({ props, chainConfig })
     if (!chainConfig) {
         return <></>
     }
