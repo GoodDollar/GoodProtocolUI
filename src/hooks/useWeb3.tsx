@@ -32,7 +32,7 @@ const gasPriceSettings = {
 export function useNetwork(): NetworkSettings {
     const celoRpcList = sample(process.env.REACT_APP_CELO_RPC?.split(',')) ?? ''
     const fuseRpcList = sample(process.env.REACT_APP_FUSE_RPC?.split(',')) ?? 'https://rpc.fuse.io'
-    const xdcRpcList = sample(process.env.REACT_APP_XDC_RPC?.split(',')) ?? 'https://rpc.xdc.network'
+    const xdcRpcList = sample(process.env.REACT_APP_XDC_RPC?.split(',')) ?? 'https://rpc.xinfin.network'
     const mainnetList = sample(['https://eth.llamarpc.com', 'https://1rpc.io/eth'])
     const [currentNetwork, rpcs] = useMemo(
         () => [
@@ -107,7 +107,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                         1: sample(process.env.REACT_APP_MAINNET_RPC?.split(',')) ?? 'https://eth.llamarpc.com',
                         122: sample(process.env.REACT_APP_FUSE_RPC?.split(',')) || 'https://rpc.fuse.io',
                         42220: sample(process.env.REACT_APP_CELO_RPC?.split(',')) || 'https://forno.celo.org',
-                        50: sample(process.env.REACT_APP_XDC_RPC?.split(',')) || 'https://rpc.xdc.network',
+                        50: sample(process.env.REACT_APP_XDC_RPC?.split(',')) || 'https://rpc.xinfin.network',
                     },
                 }}
             >
