@@ -1,25 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { Box, HStack, Circle, Text } from 'native-base'
 
 export type BuyStep = 1 | 2 | 3
 
+export interface StepConfig {
+    number: number
+    label: string
+}
+
 interface BuyProgressBarProps {
     currentStep: BuyStep
     isLoading?: boolean
+    steps?: StepConfig[]
 }
 
-const BuyProgressBar: React.FC<BuyProgressBarProps> = ({ currentStep, isLoading = false }) => {
-    const [animatedWidth, setAnimatedWidth] = useState(0)
-
-    const steps = [
+const BuyProgressBar: React.FC<BuyProgressBarProps> = ({
+    currentStep,
+    isLoading = false,
+    steps = [
         { number: 1, label: 'Buy cUSD' },
         { number: 2, label: 'We swap cUSD to G$' },
         { number: 3, label: 'Done' },
-    ]
+    ],
+}) => {
+    const [animatedWidth, setAnimatedWidth] = useState(0)
 
     // Handle animated progress line
     useEffect(() => {
-        if (isLoading && currentStep > 1) {
+        if (isLoading && currentStep >= 1) {
             // Explicitly reset animatedWidth to 0 at the start of a new loading phase
             setAnimatedWidth(0)
             // Animate progress line when loading
@@ -55,30 +63,46 @@ const BuyProgressBar: React.FC<BuyProgressBarProps> = ({ currentStep, isLoading 
         return 'pending'
     }
 
-    const getCircleProps = (status: string) => {
-        const baseProps = {
-            size: '12',
-            mb: 2,
-            justifyContent: 'center',
-            alignItems: 'center',
-        }
+    // Memoize circle props objects to avoid recreation on every render
+    const circlePropsMap = useMemo(
+        () => ({
+            completed: {
+                size: '12',
+                mb: 2,
+                justifyContent: 'center',
+                alignItems: 'center',
+                bg: 'blue.500',
+            },
+            active: {
+                size: '12',
+                mb: 2,
+                justifyContent: 'center',
+                alignItems: 'center',
+                bg: 'blue.500',
+            },
+            loading: {
+                size: '12',
+                mb: 2,
+                justifyContent: 'center',
+                alignItems: 'center',
+                bg: 'blue.500',
+                borderWidth: 3,
+                borderColor: 'blue.200',
+                animation: 'pulse 2s infinite',
+            },
+            pending: {
+                size: '12',
+                mb: 2,
+                justifyContent: 'center',
+                alignItems: 'center',
+                bg: 'gray.300',
+            },
+        }),
+        []
+    )
 
-        switch (status) {
-            case 'completed':
-                return { ...baseProps, bg: 'blue.500' }
-            case 'active':
-                return { ...baseProps, bg: 'blue.500' }
-            case 'loading':
-                return {
-                    ...baseProps,
-                    bg: 'blue.500',
-                    borderWidth: 3,
-                    borderColor: 'blue.200',
-                    animation: 'pulse 2s infinite',
-                }
-            default:
-                return { ...baseProps, bg: 'gray.300' }
-        }
+    const getCircleProps = (status: string) => {
+        return circlePropsMap[status as keyof typeof circlePropsMap] || circlePropsMap.pending
     }
 
     const getLineProps = (stepNumber: number, lineIndex: number) => {

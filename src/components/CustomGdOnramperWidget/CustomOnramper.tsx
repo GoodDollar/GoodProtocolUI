@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { WebView, WebViewMessageEvent } from 'react-native-webview'
 import { Box, Divider, useBreakpointValue } from 'native-base'
 import { AsyncStorage, isMobile as deviceDetect } from '@gooddollar/web3sdk-v2'
@@ -7,6 +7,14 @@ import { CentreBox } from '@gooddollar/good-design/dist/core/layout/CentreBox'
 import { useWindowFocus } from '@gooddollar/good-design/dist/hooks'
 
 export type OnramperCallback = (event: WebViewMessageEvent) => void
+
+export interface WidgetParams {
+    onlyCryptos?: string
+    isAddressEditable?: boolean
+    supportSell?: boolean
+    supportSwap?: boolean
+    [key: string]: string | boolean | undefined
+}
 
 export const CustomOnramper = ({
     onEvent,
@@ -22,33 +30,41 @@ export const CustomOnramper = ({
     onGdEvent: (action: string) => void
     step: number
     setStep: (step: number) => void
-    widgetParams?: any
+    widgetParams?: WidgetParams
     targetWallet?: string
     targetNetwork?: string
     apiKey?: string
 }) => {
-    const url = new URL('https://buy.onramper.com/')
+    // Memoize URL construction to avoid reconstruction on every render
+    const uri = useMemo(() => {
+        const url = new URL('https://buy.onramper.com/')
 
-    // Always include API key for proper authentication
-    // SECURITY NOTE: Onramper API keys are designed for client-side use
-    // - These are PUBLIC API keys specifically intended for browser environments
-    // - They are NOT secret keys and are safe to expose in client-side code
-    // - Similar to Google Maps API keys, they're restricted by domain/referrer
-    // - This follows Onramper's official integration documentation
-    // - See: https://docs.onramper.com for official security guidelines
-    if (apiKey) {
-        url.searchParams.set('apiKey', apiKey)
-    } else {
-        console.warn('Onramper: No API key provided')
-    }
-    url.searchParams.set('networkWallets', `${targetNetwork}:${targetWallet}`)
-    Object.entries(widgetParams).forEach(([k, v]: [string, any]) => {
-        url.searchParams.set(k, v)
-    })
+        // Always include API key for proper authentication
+        // SECURITY NOTE: Onramper API keys are designed for client-side use
+        // - These are PUBLIC API keys specifically intended for browser environments
+        // - They are NOT secret keys and are safe to expose in client-side code
+        // - Similar to Google Maps API keys, they're restricted by domain/referrer
+        // - This follows Onramper's official integration documentation
+        // - See: https://docs.onramper.com for official security guidelines
+        if (apiKey) {
+            url.searchParams.set('apiKey', apiKey)
+        } else {
+            console.warn('Onramper: No API key provided')
+        }
+        url.searchParams.set('networkWallets', `${targetNetwork}:${targetWallet}`)
+        Object.entries(widgetParams).forEach(([k, v]) => {
+            if (v !== undefined) {
+                url.searchParams.set(k, String(v))
+            }
+        })
+
+        return url.toString()
+    }, [apiKey, targetNetwork, targetWallet, widgetParams])
 
     const { title } = useWindowFocus()
 
-    const uri = url.toString()
+    // Cache AsyncStorage value to avoid repeated reads
+    const [cachedOnrampStatus, setCachedOnrampStatus] = useState<string | null>(null)
 
     const isMobile = deviceDetect()
 
@@ -92,16 +108,20 @@ export const CustomOnramper = ({
     })
 
     // on page load check if a returning user is awaiting funds
+    // Cache the value to avoid repeated AsyncStorage reads
     useEffect(() => {
         const isOnramping = async () => {
-            const isOnramping = await AsyncStorage.getItem('gdOnrampSuccess')
-            if (isOnramping === 'true') {
-                setStep(2)
+            if (cachedOnrampStatus === null) {
+                const status = await AsyncStorage.getItem('gdOnrampSuccess')
+                setCachedOnrampStatus(status)
+                if (status === 'true') {
+                    setStep(2)
+                }
             }
         }
 
         void isOnramping()
-    }, [])
+    }, [cachedOnrampStatus])
 
     useEffect(() => {
         if (title === 'Onramper widget' && step === 0) {

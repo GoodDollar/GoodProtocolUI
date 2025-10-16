@@ -10,9 +10,13 @@ import { WalletAndChainGuard } from '@gooddollar/good-design'
 import { useSignWalletModal } from '@gooddollar/good-design/dist/hooks/useSignWalletModal'
 import { CustomOnramper } from './CustomOnramper'
 
-const ErrorModal = () => (
+interface ErrorModalProps {
+    message?: string
+}
+
+const ErrorModal: React.FC<ErrorModalProps> = ({ message = 'Something went wrong.' }) => (
     <View>
-        <Text>Something went wrong.</Text>
+        <Text>{message}</Text>
     </View>
 )
 
@@ -54,20 +58,26 @@ export const CustomGdOnramperWidget = ({
 
     /**
      * callback to get event from onramper iframe
+     * Optimized to avoid unnecessary parsing and improve error handling
      */
     const callback = useCallback(async (event: WebViewMessageEvent) => {
+        const rawData = event.nativeEvent?.data
+        if (!rawData) return
+
         let eventData
         try {
-            eventData =
-                typeof event.nativeEvent.data === 'string' ? JSON.parse(event.nativeEvent.data) : event.nativeEvent.data
+            // Only parse if it's a string, otherwise use directly
+            eventData = typeof rawData === 'string' ? JSON.parse(rawData) : rawData
         } catch (error) {
-            // Optionally log error or handle it
+            // Silent fail for invalid JSON - expected for non-JSON messages
             return
         }
 
-        if (eventData && eventData.title === 'success') {
+        // Early return if no valid event data
+        if (!eventData?.title) return
+
+        if (eventData.title === 'success') {
             await AsyncStorage.setItem('gdOnrampSuccess', 'true')
-            //start the stepper
             setStep(2)
         }
     }, [])
