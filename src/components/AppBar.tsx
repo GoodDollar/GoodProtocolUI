@@ -182,7 +182,7 @@ const Web3Bar = () => {
 function AppBar({ sideBar, walletBalance }): JSX.Element {
     const [theme] = useApplicationTheme()
     const { i18n } = useLingui()
-    const { account } = useActiveWeb3React()
+    const { account, chainId } = useActiveWeb3React()
     const isSimpleApp = useIsSimpleApp()
     const showPrice = true // useFeatureFlag('show-gd-price')
 
@@ -195,7 +195,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
     const [walletBalanceOpen, setWalletBalanceOpen] = walletBalance
     const { isMobileView, isSmallTabletView, isTabletView, isDesktopView } = useScreenSize()
 
-    const { G$ } = useG$Balance(5)
+    const { G$ } = useG$Balance(5, chainId)
 
     const G$Price = useG$Price()
     const g$Price = new Fraction(G$Price?.toString() || 0, 1e18)
