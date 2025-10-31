@@ -4706,15 +4706,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.4.24":
-  version: 0.4.24
-  resolution: "@gooddollar/good-design@npm:0.4.24"
+"@gooddollar/good-design@npm:^0.4.26":
+  version: 0.4.26
+  resolution: "@gooddollar/good-design@npm:0.4.26"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
     "@formatjs/intl-locale": ^4.0.0
     "@formatjs/intl-pluralrules": ^5.2.14
-    "@gooddollar/goodprotocol": ^2.0.34-beta.1
+    "@gooddollar/goodprotocol": ^2.1.0
     "@gooddollar/web3sdk-v2": "*"
     "@lingui/core": ^4.11.2
     "@lingui/react": ^4.11.2
@@ -4753,7 +4753,13 @@ __metadata:
     react-use-promise: ^0.5.0
     react-use-wizard: ^2.3.0
     require-from-string: ^2.0.2
-  checksum: f71c7b27dba2c4e4adaf24030246bc43bb706dab49fc1e9071931c4d045781f1034973493d56f92b9d21ee7a4adcdc4b805dc77bca734e480cc9d216a6c8ba63
+  peerDependencies:
+    "@usedapp/core": "*"
+    ethers: 5.*
+    react: ^18.*
+    react-native-paper: "*"
+    uuid: "*"
+  checksum: ad9791b6e7ead7b5b895720d3dade82d595d11efd38c14bd355956843e3681302bc1be8331035f3f5edeb7425d96b861cae8744a146bfa9b5eca6690255a7988
   languageName: node
   linkType: hard
 
@@ -4779,17 +4785,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/goodprotocol@npm:2.0.34-beta.1, @gooddollar/goodprotocol@npm:^2.0.34-beta.1":
-  version: 2.0.34-beta.1
-  resolution: "@gooddollar/goodprotocol@npm:2.0.34-beta.1"
-  checksum: a86bd81d9eb3f350d1d3238dc95b60696f409d2ac8f0bea939838e6d8e371235483a6ccb150fb4c544ba3dacc5b76322ac3ce43b2e90a540cb094c5b022e5be4
-  languageName: node
-  linkType: hard
-
-"@gooddollar/goodprotocol@npm:^2.0.32":
-  version: 2.0.32
-  resolution: "@gooddollar/goodprotocol@npm:2.0.32"
-  checksum: aeb8e066c110f1167a29528610dfe57ee1a4ea9a7d7d45f84b1494fc002efc966032b0959ab524b404f212fcad2ebcc0c85b2b6154f9010b42c2ecb797daf6e2
+"@gooddollar/goodprotocol@npm:2.1.0, @gooddollar/goodprotocol@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@gooddollar/goodprotocol@npm:2.1.0"
+  checksum: c17efae892b2d6bd6a3a98eeaf40f3b4686a3b7b2985a1dedc6d61c946636511eaf9fae92401f9d914d39e883e69760a9a99f6e536393b62e164f958c687f046
   languageName: node
   linkType: hard
 
@@ -4809,10 +4808,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.4.24
-    "@gooddollar/goodprotocol": 2.0.34-beta.1
-    "@gooddollar/web3sdk": ^0.1.50
-    "@gooddollar/web3sdk-v2": ^0.4.18
+    "@gooddollar/good-design": ^0.4.26
+    "@gooddollar/goodprotocol": 2.1.0
+    "@gooddollar/web3sdk": ^0.1.52
+    "@gooddollar/web3sdk-v2": ^0.4.20
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^4.0.0
@@ -4874,7 +4873,7 @@ __metadata:
     "@uniswap/v2-periphery": ^1.1.0-beta.0
     "@uniswap/v2-sdk": ^3.0.0
     "@uniswap/widgets": ^2.59.0
-    "@usedapp/core": ^1.2.6
+    "@usedapp/core": ^1.2.16
     "@vitalets/google-translate-api": ^7.0.0
     "@vitejs/plugin-react": ^4.0.0
     "@web3-onboard/core": ^2.23.0
@@ -4996,9 +4995,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:*, @gooddollar/web3sdk-v2@npm:^0.4.18":
-  version: 0.4.18
-  resolution: "@gooddollar/web3sdk-v2@npm:0.4.18"
+"@gooddollar/web3sdk-v2@npm:*, @gooddollar/web3sdk-v2@npm:^0.4.20":
+  version: 0.4.20
+  resolution: "@gooddollar/web3sdk-v2@npm:0.4.20"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5009,7 +5008,7 @@ __metadata:
     "@gooddollar/bridge-contracts": ^1.0.17
     "@gooddollar/goodcollective-contracts": ^1.3.0
     "@gooddollar/goodcollective-sdk": ^1.3.3
-    "@gooddollar/goodprotocol": ^2.0.34-beta.1
+    "@gooddollar/goodprotocol": ^2.1.0
     "@orbisclub/orbis-sdk": ^0.4.87
     "@react-native-community/geolocation": 3.1.0
     "@react-native-firebase/analytics": ^16.4.6
@@ -5051,16 +5050,16 @@ __metadata:
     react-native-web: "*"
     viem: 2.*
     wagmi: 2.*
-  checksum: 84cde425a74bec314f148391eb8fdccf06d30b77da0e85cc12b4ca8f215333352fb013b6298b76651852f73ea82a285f60ff7d2a143d58d11425a287ba309794
+  checksum: 4fa8739a4a481482df4c4222664e5e4008ca224deee40566ea7843bfaa438e50e1a22e0db494edb397654f231331db5211da7132b627b62c6841d53876c7a680
   languageName: node
   linkType: hard
 
-"@gooddollar/web3sdk@npm:^0.1.50":
-  version: 0.1.50
-  resolution: "@gooddollar/web3sdk@npm:0.1.50"
+"@gooddollar/web3sdk@npm:^0.1.52":
+  version: 0.1.52
+  resolution: "@gooddollar/web3sdk@npm:0.1.52"
   dependencies:
     "@apollo/client": ^3.2.0
-    "@gooddollar/goodprotocol": ^2.0.32
+    "@gooddollar/goodprotocol": ^2.1.0
     "@sushiswap/sdk": 5.0.0-canary.7
     "@uniswap/sdk": ^3.0.3
     "@uniswap/token-lists": ^1.0.0-beta.28
@@ -5080,7 +5079,7 @@ __metadata:
     web3-utils: 1.8.2
   peerDependencies:
     react: ">=17"
-  checksum: be7e75778eb6bef1bd5ddfa7653082597009bfcc68968b31d2f1cbd0f4deb0604b778118f29c892b25422544fc2f82ff53ea608c0fe5e50694d2e4d8ae92379c
+  checksum: 7bb4b2bbcd952f2ba9ac7bc8398ece4cafa5b384352baf7a05c582327e36cbc37d9cd81164180d36e15c5a0723c8658a38913035a724c13159a96fccffbf34af
   languageName: node
   linkType: hard
 
@@ -12290,9 +12289,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@usedapp/core@npm:^1.2.6":
-  version: 1.2.13
-  resolution: "@usedapp/core@npm:1.2.13"
+"@usedapp/core@npm:^1.2.16":
+  version: 1.2.16
+  resolution: "@usedapp/core@npm:1.2.16"
   dependencies:
     "@metamask/detect-provider": ^2.0.0
     "@uniswap/token-lists": ^1.0.0-beta.27
@@ -12305,7 +12304,7 @@ __metadata:
     react: "*"
   bin:
     usedapp-generate-hooks: bin/usedapp-generate-hooks.js
-  checksum: 5c729092d32865acaaf5b2eca095d039ced3ecf72e2c5168483347981b6da6f6bc0b68becc270819ac397a285c8889fbee277b299a2b2b682b4bfab7da453b84
+  checksum: f9d8caba4c026fc3ac7efa9cf0c45adb71e3f2e484da798a5b0b3ebc6de3faeccb1541184ce42e66a5031053c85f857d9ed077451c82e3f6d0f22542e669e44b
   languageName: node
   linkType: hard
 
