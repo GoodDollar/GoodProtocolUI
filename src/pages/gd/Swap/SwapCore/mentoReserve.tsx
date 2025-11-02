@@ -60,11 +60,11 @@ const MentoSwap = memo(() => {
 
     const inputAmountBig = useMemo(
         () => ethers.utils.parseUnits(inputAmount || '0', swapPair.input.decimals),
-        [inputAmount]
+        [inputAmount, swapPair?.input?.decimals]
     )
     const outputAmountBig = useMemo(
         () => ethers.utils.parseUnits(outputAmount || '0', swapPair.output.decimals),
-        [outputAmount]
+        [outputAmount, swapPair?.output?.decimals]
     )
 
     const [lastEdited, setLastEdited] = useState<{ field: 'output' | 'input' }>()
@@ -125,7 +125,6 @@ const MentoSwap = memo(() => {
     }, [swap?.state?.status, approve?.state?.status])
 
     useEffect(() => {
-        // console.log('swapPair:', swapPair)
         if (!(swapPair.input && swapPair.output)) {
             return
         }
