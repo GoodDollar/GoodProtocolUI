@@ -2859,7 +2859,11 @@ msgid "Close"
 msgstr "Chiudere"
 
 #: src/pages/gd/Claim/OldClaim.tsx:385
-msgid "Collect G$"
+#~ msgid "Collect G$"
+#~ msgstr ""
+
+#: src/pages/gd/Claim/OldClaim.tsx:385
+msgid "Collect G$ on {network}"
 msgstr ""
 
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:185
@@ -3647,8 +3651,12 @@ msgid "You are currently browsing"
 msgstr "Stai attualmente navigando"
 
 #: src/pages/gd/Claim/OldClaim.tsx:361
-msgid "You can collect G$ on {supportedChainsDisplay}."
+msgid "You can collect G$ on {supportedChainsDisplay} networks."
 msgstr ""
+
+#: src/pages/gd/Claim/OldClaim.tsx:361
+#~ msgid "You can collect G$ on {supportedChainsDisplay}."
+#~ msgstr ""
 
 #: src/pages/gd/Stake/StakeDeposit/index.tsx:380
 msgid ""
