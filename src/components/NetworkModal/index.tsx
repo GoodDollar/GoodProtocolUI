@@ -77,7 +77,6 @@ export default function NetworkModal(): JSX.Element | null {
     const prodNetworks = activeNetworksByFeature['networkEnabled']
 
     const allowedNetworks = useMemo(() => {
-        console.log('currentNetwork -->', { network })
         switch (true) {
             case network === 'staging':
             case network === 'development': {

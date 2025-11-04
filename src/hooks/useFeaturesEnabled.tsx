@@ -85,11 +85,9 @@ export const GoodDappFeatureProvider: React.FC<{
 
     const contextValue: FeatureContextValue = useMemo(() => {
         const isGlobalFeatureSystemDisabled = featureConfig.globalDefaults.defaultEnabled === false
-        const productionNetworkIds = Object.values(SupportedChains).filter(
-            (id) => typeof id === 'number'
-        ) as SupportedChains[]
+        const productionNetworkIds = Object.values(SupportedChains).filter((id) => id)
 
-        const activeNetworksByFeature: Record<string, SupportedChains[]> = {}
+        const activeNetworksByFeature: Record<number, SupportedChains[]> = {}
 
         for (const featureName of supportedFeatureKeys) {
             const globalFeatureDefault =
