@@ -358,7 +358,7 @@ Learn how here`,
                                                 lineHeight="30"
                                                 textAlign="center"
                                             >
-                                                {i18n._(t`You can collect G$ on ${supportedChainsDisplay}.`)}
+                                                {i18n._(t`You can collect G$ on ${supportedChainsDisplay} networks.`)}
                                             </Title>
                                             <Text
                                                 w="340px"
@@ -382,7 +382,7 @@ Learn how here`,
                                                 pb="2"
                                                 textAlign="center"
                                             >
-                                                {i18n._(t`Collect G$`)}
+                                                {i18n._(t`Collect G$ on ${network}`)}
                                             </Title>
                                             <Text
                                                 w="340px"
