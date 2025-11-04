@@ -3125,8 +3125,8 @@ msgstr "MOLTIPLICATORE"
 msgid "My Stake"
 msgstr "Il mio palo"
 
-#: src/components/NetworkModal/index.tsx:150
-#: src/components/NetworkModal/index.tsx:199
+#: src/components/NetworkModal/index.tsx:149
+#: src/components/NetworkModal/index.tsx:198
 msgid "network"
 msgstr "Rete"
 
@@ -3152,8 +3152,8 @@ msgstr "Il prossimo mese:"
 msgid "No data."
 msgstr "Nessun dato."
 
-#: src/components/NetworkModal/index.tsx:149
-#: src/components/NetworkModal/index.tsx:198
+#: src/components/NetworkModal/index.tsx:148
+#: src/components/NetworkModal/index.tsx:197
 msgid "on the"
 msgstr "sul"
 
@@ -3577,8 +3577,8 @@ msgstr "Aspettando la conferma"
 msgid "Wallet balance"
 msgstr "Bilancia del portafoglio."
 
-#: src/components/NetworkModal/index.tsx:129
-#: src/components/NetworkModal/index.tsx:178
+#: src/components/NetworkModal/index.tsx:128
+#: src/components/NetworkModal/index.tsx:177
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3641,8 +3641,8 @@ msgstr ""
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "Stai creando UBI a migliaia di persone in tutto il mondo."
 
-#: src/components/NetworkModal/index.tsx:145
-#: src/components/NetworkModal/index.tsx:194
+#: src/components/NetworkModal/index.tsx:144
+#: src/components/NetworkModal/index.tsx:193
 msgid "You are currently browsing"
 msgstr "Stai attualmente navigando"
 
