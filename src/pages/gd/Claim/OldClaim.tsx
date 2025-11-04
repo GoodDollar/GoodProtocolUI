@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useState } from 'react'
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import {
@@ -22,9 +22,10 @@ import {
 } from '@gooddollar/web3sdk-v2'
 import { QueryParams } from '@usedapp/core'
 import { noop } from 'lodash'
-import { useFeatureFlagWithPayload } from 'posthog-react-native'
+// import { useFeatureFlagWithPayload } from 'posthog-react-native'
 import moment from 'moment'
 
+import { getEnv } from 'utils/env'
 import ClaimFooterCelebration from 'assets/images/claim/claim-footer-celebration.png'
 import { ClaimBalance } from './ClaimBalance'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -38,7 +39,8 @@ import BillyConfused from 'assets/images/claim/billyconfused.png'
 
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 
-import { useDisabledClaimingModal } from './useDisabledClaimModal'
+// import { useDisabledClaimingModal } from './useDisabledClaimModal'
+import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 
 const OldClaim = memo(() => {
     const { i18n } = useLingui()
@@ -54,17 +56,32 @@ const OldClaim = memo(() => {
     const { account, chainId } = useActiveWeb3React()
     const network = SupportedV2Networks[chainId]
     const sendData = useSendAnalyticsData()
-    const [, payload] = useFeatureFlagWithPayload('claim-feature')
-    const { enabled: claimEnabled = true, disabledMessage = '' } = (payload as any) || {}
+    // todo: fix UI for displaying claiming disabled modal
+    // const [, payload] = useFeatureFlagWithPayload('claim-feature')
+    // const { enabled: claimEnabled = true, disabledMessage = '' } = (payload as any) || {}
+    const { activeNetworksByFeature, activeChainFeatures } = useGoodDappFeatures()
+    const supportedChains = activeNetworksByFeature['claimEnabled'] || []
+    const isProd = getEnv() === 'production'
+
     const { isSmallTabletView } = useScreenSize()
     const holiday = moment().format('MM-DD')
     const isHoliday = holiday >= '12-24' || holiday <= '01-01'
 
     const isSimpleApp = useIsSimpleApp()
-    const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
+    // const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
 
     const { ethereum } = window
     const isMinipay = ethereum?.isMiniPay
+
+    const supportedChainsDisplay = useMemo(() => {
+        const chainNames = {
+            [SupportedV2Networks.CELO]: 'Celo',
+            [SupportedV2Networks.FUSE]: 'Fuse',
+            [SupportedV2Networks.XDC]: 'XDC',
+        }
+
+        return supportedChains.map((chainId) => chainNames[chainId] || `Chain ID: ${chainId}`).join(', ')
+    }, [supportedChains])
 
     // there are three possible scenarios
     // 1. claim amount is 0, meaning user has claimed that day
@@ -126,7 +143,7 @@ const OldClaim = memo(() => {
 
     const handleClaim = useCallback(async () => {
         setRefreshRate('everyBlock')
-        if (claimEnabled || isMinipay) {
+        if (activeChainFeatures['claimEnabled'] || !isProd || isMinipay) {
             // minipay doesnt handle gasPrice correctly, so we let it decide
             const claim = await send(isMinipay ? { gasPrice: undefined } : {})
 
@@ -147,23 +164,23 @@ const OldClaim = memo(() => {
             sendData({ event: 'claim', action: 'claim_success', network })
             return true
         } else {
-            showModal()
+            // showModal()
         }
 
         return false
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [send, network, sendData, claimEnabled, isSimpleApp])
+    }, [send, network, sendData, activeChainFeatures, isSimpleApp])
 
     const handleConnect = useCallback(async () => {
-        if (claimEnabled) {
+        if (activeChainFeatures['claimEnabled'] || !isProd) {
             const state = await connect()
 
             return !!state.length
         } else {
-            showModal()
+            // showModal()
         }
         return false
-    }, [connect, claimEnabled])
+    }, [connect, activeChainFeatures])
 
     const mainView = useBreakpointValue({
         base: {
@@ -319,7 +336,7 @@ Learn how here`,
     return (
         <>
             <Box w="100%" mb="8" style={mainView}>
-                <Dialog />
+                {/* <Dialog /> */}
                 <CentreBox style={claimView}>
                     <div className="flex flex-col items-center text-center lg:w-1/2">
                         <Box style={balanceContainer}>
@@ -330,21 +347,57 @@ Learn how here`,
                                 </Box>
                             ) : (
                                 <>
-                                    <Title fontFamily="heading" fontSize="2xl" fontWeight="extrabold" pb="2">
-                                        {i18n._(t`Collect G$`)}
-                                    </Title>
+                                    {!activeChainFeatures['claimEnabled'] && isProd ? (
+                                        <>
+                                            <Title
+                                                w="340px"
+                                                fontFamily="heading"
+                                                fontSize="2xl"
+                                                fontWeight="bold"
+                                                pb="2"
+                                                lineHeight="30"
+                                                textAlign="center"
+                                            >
+                                                {i18n._(t`You can collect G$ on ${supportedChainsDisplay}.`)}
+                                            </Title>
+                                            <Text
+                                                w="340px"
+                                                fontFamily="subheading"
+                                                fontWeight="normal"
+                                                color="goodGrey.500"
+                                                fontSize="sm"
+                                                textAlign="center"
+                                            >
+                                                {i18n._(
+                                                    t`Click on the Claim button below and you will be switched over the first available network to collect your G$'s.`
+                                                )}
+                                            </Text>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Title
+                                                fontFamily="heading"
+                                                fontSize="2xl"
+                                                fontWeight="extrabold"
+                                                pb="2"
+                                                textAlign="center"
+                                            >
+                                                {i18n._(t`Collect G$`)}
+                                            </Title>
+                                            <Text
+                                                w="340px"
+                                                fontFamily="subheading"
+                                                fontWeight="normal"
+                                                color="goodGrey.500"
+                                                fontSize="sm"
+                                            >
+                                                {i18n._(
+                                                    t`GoodDollar creates free money as a public good, G$ tokens, which you can collect daily.`
+                                                )}
+                                            </Text>
+                                        </>
+                                    )}
 
-                                    <Text
-                                        w="340px"
-                                        fontFamily="subheading"
-                                        fontWeight="normal"
-                                        color="goodGrey.500"
-                                        fontSize="sm"
-                                    >
-                                        {i18n._(
-                                            t`GoodDollar creates free money as a public good, G$ tokens, which you can collect daily.`
-                                        )}
-                                    </Text>
                                     <ClaimButton
                                         firstName="Test"
                                         method="redirect"
@@ -354,6 +407,7 @@ Learn how here`,
                                         handleConnect={handleConnect}
                                         chainId={chainId}
                                         onEvent={handleEvents}
+                                        supportedChains={supportedChains}
                                     />
                                     {isHoliday ? (
                                         <Center maxW="390" width="100%" mb={8}>
