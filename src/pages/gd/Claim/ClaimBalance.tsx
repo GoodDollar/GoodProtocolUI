@@ -5,6 +5,7 @@ import { SupportedChains, useHasClaimed, useSwitchNetwork } from '@gooddollar/we
 import { useG$Price } from '@gooddollar/web3sdk-v2'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useClaiming } from 'hooks/useClaiming'
+import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 import { useNetworkModalToggle } from 'state/application/hooks'
 import { QueryParams } from '@usedapp/core'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
@@ -38,18 +39,32 @@ export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) =
 
     // don't show claim on alternative chain for simple mode
     const isSimpleApp = useIsSimpleApp()
+    const { isFeatureActive } = useGoodDappFeatures()
 
     useEffect(() => {
-        if (!claimedCelo?.isZero() && Number(chainId) !== SupportedChains.CELO) {
-            return setClaimNext(SupportedChains.CELO)
+        const findNextClaimChain = () => {
+            const chains = [
+                { chain: SupportedChains.CELO, claimed: claimedCelo },
+                { chain: SupportedChains.XDC, claimed: claimedXdc },
+                { chain: SupportedChains.FUSE, claimed: claimedFuse },
+            ]
+
+            for (const { chain, claimed } of chains) {
+                if (
+                    Number(chainId) !== chain &&
+                    claimed &&
+                    !claimed.isZero() &&
+                    isFeatureActive('claimEnabled', chain)
+                ) {
+                    return chain
+                }
+            }
+
+            return undefined
         }
-        if (!claimedXdc?.isZero() && Number(chainId) !== SupportedChains.XDC) {
-            return setClaimNext(SupportedChains.XDC)
-        }
-        if (!claimedFuse?.isZero() && Number(chainId) !== SupportedChains.FUSE) {
-            return setClaimNext(SupportedChains.FUSE)
-        } else setClaimNext(undefined)
-    }, [chainId, claimedFuse, claimedCelo, claimedXdc])
+
+        setClaimNext(findNextClaimChain())
+    }, [chainId, claimedCelo, claimedFuse, claimedXdc, isFeatureActive])
 
     const switchChain = useCallback(() => {
         if (!claimNext) return
