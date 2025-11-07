@@ -19,7 +19,10 @@ const NextClaim = ({ time }: { time: string }) => (
 
 export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) => {
     const { chainId } = useActiveWeb3React()
-    const rawPrice = useG$Price()
+    const { isFeatureActive } = useGoodDappFeatures()
+    const reserveEnabled = isFeatureActive('reserveEnabled', Number(chainId))
+    const rawPrice = useG$Price(5, reserveEnabled ? Number(chainId) : 42220)
+
     const G$Price = +new Fraction(rawPrice?.toString() || 0, 1e18).toSignificant(6)
 
     const { ethereum } = window
@@ -39,7 +42,6 @@ export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) =
 
     // don't show claim on alternative chain for simple mode
     const isSimpleApp = useIsSimpleApp()
-    const { isFeatureActive } = useGoodDappFeatures()
 
     useEffect(() => {
         const findNextClaimChain = () => {
@@ -100,7 +102,12 @@ export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) =
                 <NextClaim time={tillClaim || ''} />
             </Box>
             <Box alignItems="center" textAlign="center">
-                <BalanceGD gdPrice={G$Price} refresh={refresh} showUsd={showUsdPrice} />
+                <BalanceGD
+                    gdPrice={G$Price}
+                    refresh={refresh}
+                    showUsd={showUsdPrice}
+                    requiredChainId={reserveEnabled ? chainId : 42220}
+                />
             </Box>
             <Box alignItems="center">
                 {!isSimpleApp && !isMinipay && claimNext && (
