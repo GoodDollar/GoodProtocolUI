@@ -3171,7 +3171,7 @@ msgstr "auf der"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Hoppla! Ein unbekannter Fehler ist aufgetreten. Bitte aktualisieren Sie die Seite oder besuchen Sie sie von einem anderen Browser oder Gerät aus"
 
-#: src/components/AppBar.tsx:337
+#: src/components/AppBar.tsx:340
 msgid "Open main menu"
 msgstr "Hauptmenü öffnen"
 

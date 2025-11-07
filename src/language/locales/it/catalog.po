@@ -3171,7 +3171,7 @@ msgstr "sul"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Oops! Si è verificato un Errore imprevisto. Aggiorna la pagina o visita da un altro browser o dispositivo"
 
-#: src/components/AppBar.tsx:337
+#: src/components/AppBar.tsx:340
 msgid "Open main menu"
 msgstr "Apri menù principale"
 

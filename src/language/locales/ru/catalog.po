@@ -3171,7 +3171,7 @@ msgstr "на"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Ой! Произошла неизвестная ошибка. Обновите страницу или перейдите в другой браузер или другое устройство."
 
-#: src/components/AppBar.tsx:337
+#: src/components/AppBar.tsx:340
 msgid "Open main menu"
 msgstr "Открыть главное меню"
 

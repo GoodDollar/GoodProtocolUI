@@ -3171,7 +3171,7 @@ msgstr "trên"
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Giáo sư! Đã xảy ra lỗi không xác định. Vui lòng làm mới trang hoặc truy cập từ trình duyệt hoặc thiết bị khác"
 
-#: src/components/AppBar.tsx:337
+#: src/components/AppBar.tsx:340
 msgid "Open main menu"
 msgstr "Mở menu chính"
 

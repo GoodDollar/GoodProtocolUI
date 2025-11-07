@@ -507,7 +507,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr ""
 
-#: src/components/AppBar.tsx:337
+#: src/components/AppBar.tsx:340
 msgid "Open main menu"
 msgstr ""
 
