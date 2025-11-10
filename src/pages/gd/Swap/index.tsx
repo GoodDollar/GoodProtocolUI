@@ -1,6 +1,5 @@
 import React, { memo } from 'react'
 import { SupportedChains } from '@gooddollar/web3sdk-v2'
-import { useFeatureFlagWithPayload } from 'posthog-react-native'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { Link, Text, useBreakpointValue, VStack } from 'native-base'
@@ -12,6 +11,7 @@ import SwapMento from './SwapCore/mentoReserve'
 import { PageLayout } from 'components/Layout/PageLayout'
 import { getEnv } from 'utils/env'
 import { NETWORK_LABEL } from '../../../constants/networks'
+import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 
 const SwapExplanationFooter = () => (
     <VStack space={1} textAlign="center">
@@ -63,9 +63,10 @@ const Swap = memo((props: any) => {
     const swapWidget = props.match.params.widget
     const { chainId } = useAppKitNetwork()
     const isProd = getEnv() === 'production'
-    const [, payload] = useFeatureFlagWithPayload('swap-feature')
-    const { celoEnabled, reserveEnabled } = (payload as any) || {}
     const toggleNetworkModal = useNetworkModalToggle()
+    const { activeChainFeatures } = useGoodDappFeatures()
+    const reserveEnabled = activeChainFeatures['reserveEnabled']
+    const dexSwapEnabled = activeChainFeatures['dexSwapEnabled']
 
     const faqType = swapWidget === 'celoUniswap' ? 'swap' : 'reserve'
 
@@ -81,18 +82,18 @@ const Swap = memo((props: any) => {
     const swapComponentMapping = {
         celoReserve: {
             component: <SwapMento />,
-            enabled: !isProd || reserveEnabled !== false,
+            enabled: !isProd || reserveEnabled,
             chainId: SupportedChains.CELO,
         },
         celoUniswap: {
             component: <UniSwap />,
-            enabled: !isProd || celoEnabled !== false,
+            enabled: !isProd || dexSwapEnabled,
             chainId: SupportedChains.CELO,
         },
     }
 
     const chainConfig = swapComponentMapping[swapWidget]
-    console.log({ props, chainConfig })
+
     if (!chainConfig) {
         return <></>
     }

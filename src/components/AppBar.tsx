@@ -25,7 +25,7 @@ import { ReactComponent as LogoWhite } from '../assets/svg/logo_white_2023.svg'
 import { useApplicationTheme } from '../state/application/hooks'
 import { ReactComponent as Burger } from '../assets/images/burger.svg'
 import { ReactComponent as X } from '../assets/images/x.svg'
-import { useAppKitAccount } from '@reown/appkit/react'
+import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
 
 const AppBarWrapper = styled.header`
     background: ${({ theme }) => theme.color.secondaryBg};
@@ -183,6 +183,7 @@ const Web3Bar = () => {
 function AppBar({ sideBar, walletBalance }): JSX.Element {
     const [theme] = useApplicationTheme()
     const { i18n } = useLingui()
+    const { chainId } = useAppKitNetwork()
     const isSimpleApp = useIsSimpleApp()
     const showPrice = true // useFeatureFlag('show-gd-price')
     const { isConnected } = useAppKitAccount()
@@ -196,9 +197,9 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
     const [walletBalanceOpen, setWalletBalanceOpen] = walletBalance
     const { isMobileView, isSmallTabletView, isTabletView, isDesktopView } = useScreenSize()
 
-    const { G$ } = useG$Balance(5)
+    const { G$ } = useG$Balance(5, Number(chainId))
 
-    const G$Price = useG$Price()
+    const G$Price = useG$Price(10)
     const g$Price = new Fraction(G$Price?.toString() || 0, 1e18)
     const gdBalance = useMemo(
         () =>
