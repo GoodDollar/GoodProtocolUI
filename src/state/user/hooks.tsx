@@ -2,7 +2,7 @@ import { ChainId, Pair, Token } from '@sushiswap/sdk'
 import { useCallback, useMemo } from 'react'
 
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
-import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
+import { useAppKitNetwork } from '@reown/appkit/react'
 import { AppDispatch, AppState } from '..'
 import {
     addSerializedPair,
@@ -148,7 +148,7 @@ export function useRemoveUserAddedToken(): (chainId: number, address: string) =>
 }
 
 export function useUserAddedTokens(): Token[] {
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const serializedTokensMap = useSelector<AppState, AppState['user']['tokens']>(({ user: { tokens } }) => tokens)
 
     return useMemo(() => {

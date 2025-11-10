@@ -10,6 +10,7 @@ import { BigNumber, ethers } from 'ethers'
 import { Token, Percent, CurrencyAmount } from '@uniswap/sdk-core'
 import { Currency, TokenAmount } from '@sushiswap/sdk'
 import { Info } from 'react-feather'
+import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
 
 import { SwapCardSC, SwapContentWrapperSC, SwapWrapperSC } from '../styled'
 import SwapRow from '../SwapRow'
@@ -20,7 +21,6 @@ import SwapDetails from '../SwapDetails'
 import SwapSettings from '../SwapSettings'
 import { SwapContext } from '../hooks'
 import { useCurrencyBalance } from 'state/wallet/hooks'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useG$ from 'hooks/useG$'
 
 import SwapConfirmModal from '../SwapConfirmModal'
@@ -41,8 +41,9 @@ const MentoSwap = memo(() => {
         value: '0.1',
     })
     // console.log('slippageTollerance -->', {slippageTolerance})
-    const { account, chainId } = useActiveWeb3React()
-    const network = SupportedChainId[chainId]
+    const { address } = useAppKitAccount()
+    const { chainId } = useAppKitNetwork()
+    const network = SupportedChainId[+(chainId ?? 1)]
     const [inputAmount, setInputAmount] = useState('')
     const [outputAmount, setOutputAmount] = useState('')
 
@@ -50,8 +51,8 @@ const MentoSwap = memo(() => {
     const setOutputAmountDebounced = useCallback(debounce(setOutputAmount, 500), [])
 
     const G$ = useG$()
-    const cusdBalance = useCurrencyBalance(account ?? undefined, CUSD)
-    const g$Balance = useCurrencyBalance(account ?? undefined, G$)
+    const cusdBalance = useCurrencyBalance(address ?? undefined, CUSD)
+    const g$Balance = useCurrencyBalance(address ?? undefined, G$)
 
     const [swapPair, setSwapPair] = useState({
         input: CUSD,
@@ -64,7 +65,7 @@ const MentoSwap = memo(() => {
     const [lastEdited, setLastEdited] = useState<{ field: 'output' | 'input' }>()
 
     const swapMeta = useSwapMeta(
-        account || '',
+        address || '',
         buying,
         Number(slippageTolerance.value),
         lastEdited?.field === 'input' ? inputAmountBig : undefined,
@@ -365,7 +366,7 @@ const MentoSwap = memo(() => {
                             <ButtonAction style={{ marginTop: 22, justifyContent: 'center' }} disabled>
                                 <Spinner variant="page-loader" size="sm" color="white" paddingBottom="0" />
                             </ButtonAction>
-                        ) : !account ? (
+                        ) : !address ? (
                             <ButtonAction style={{ marginTop: 22 }} disabled>
                                 Connect wallet
                             </ButtonAction>
