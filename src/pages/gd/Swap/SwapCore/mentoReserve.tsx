@@ -94,8 +94,8 @@ const MentoSwap = memo(() => {
                 ? {
                       output: outputAmountBig.toString(),
                       maxAmountIn: inputAmountBig
-                          .mul(10000 + +slippageTolerance.value * 100)
-                          .div(10000)
+                          .mul(10000)
+                          .div(10000 - +slippageTolerance.value * 100)
                           .toString(),
                   }
                 : undefined,
@@ -156,7 +156,7 @@ const MentoSwap = memo(() => {
     }, [/* used */ inputAmount])
 
     useEffect(() => {
-        const maxAmountIn = inputAmountBig.mul(10000 + +slippageTolerance.value * 100).div(10000)
+        const maxAmountIn = inputAmountBig.mul(10000).div(10000 - +slippageTolerance.value * 100)
         if (approve.state.status === 'Success') {
             setApproved(true)
             return
