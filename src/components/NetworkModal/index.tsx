@@ -81,7 +81,10 @@ export default function NetworkModal(): JSX.Element | null {
             case network === 'staging':
             case network === 'development': {
                 const devNetworks = [...prodNetworks]
-                devNetworks.push(SupportedChains.XDC)
+                if (devNetworks.indexOf(SupportedChains.XDC) === -1) {
+                    devNetworks.push(SupportedChains.XDC)
+                }
+
                 return devNetworks.filter((chain) => chain !== SupportedChains.MAINNET)
             }
 

@@ -102,12 +102,7 @@ export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) =
                 <NextClaim time={tillClaim || ''} />
             </Box>
             <Box alignItems="center" textAlign="center">
-                <BalanceGD
-                    gdPrice={G$Price}
-                    refresh={refresh}
-                    showUsd={showUsdPrice}
-                    requiredChainId={reserveEnabled ? chainId : 42220}
-                />
+                <BalanceGD gdPrice={G$Price} refresh={refresh} showUsd={showUsdPrice} requiredChainId={chainId} />
             </Box>
             <Box alignItems="center">
                 {!isSimpleApp && !isMinipay && claimNext && (
