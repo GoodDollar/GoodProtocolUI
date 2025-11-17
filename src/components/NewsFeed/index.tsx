@@ -3,7 +3,7 @@ import { NewsFeed } from '@gooddollar/good-design'
 import { NewsFeedContext, NewsFeedProvider } from '@gooddollar/web3sdk-v2'
 
 import { feedConfig } from 'constants/config'
-import { getNetworkEnv } from 'utils/env'
+import { getEnv } from 'utils/env'
 
 export const NewsFeedWidget = ({ variant, direction = 'row' }: { variant?: string; direction?: 'row' | 'column' }) => {
     const { feed } = useContext(NewsFeedContext)
@@ -12,11 +12,11 @@ export const NewsFeedWidget = ({ variant, direction = 'row' }: { variant?: strin
 }
 
 export const NewsFeedWrapper = ({ children }) => {
-    const network = getNetworkEnv()
-    const prodOrQa = /\b(production|staging)\b/.test(network)
+    const env = getEnv()
+    const prod = /production/.test(env)
 
     return (
-        <NewsFeedProvider {...(prodOrQa ? { feedFilter: feedConfig.production.feedFilter } : { env: 'qa' })}>
+        <NewsFeedProvider {...{ feedFilter: prod ? feedConfig.production.feedFilter : undefined, env }}>
             {children}
         </NewsFeedProvider>
     )

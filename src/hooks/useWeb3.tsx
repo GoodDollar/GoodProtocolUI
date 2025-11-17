@@ -21,13 +21,13 @@ type NetworkSettings = {
     }
 }
 
-const gasPriceSettings = {
+const gasSettings = {
     42220: {
         maxFeePerGas: BigNumber.from(25.001e9).toHexString(),
         maxPriorityFeePerGas: BigNumber.from(2.5e9).toHexString(),
     },
     122: { maxFeePerGas: BigNumber.from(11e9).toHexString() },
-    50: { maxFeePerGas: BigNumber.from(12.5e9).toHexString() },
+    // 50: { maxFeePerGas: BigNumber.from(12.5e9).toHexString() }, // eip-1559 is only supported on XDC testnet. Last checked 15 november 2025.
 }
 
 export function useNetwork(): NetworkSettings {
@@ -76,10 +76,9 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
 
     if (webprovider) {
         webprovider.send = async (method: string, params: any) => {
-            if (method === 'eth_sendTransaction' && !isMiniPay && chainId && chainId in gasPriceSettings) {
-                const gasSettings = gasPriceSettings[chainId]
-                if (!params[0].maxFeePerGas) {
-                    // params[0].gasPrice = gasSettings.maxFeePerGas
+            if (method === 'eth_sendTransaction' && !isMiniPay && chainId && chainId in gasSettings) {
+                if (!params[0].maxFeePerGas && Number(chainId) !== 50) {
+                    // params[0].gasPrice = gasPriceSettings[chainId].maxFeePerGas
                     delete params[0].gasPrice
                     params[0] = { ...params[0], ...gasSettings }
                 } else {

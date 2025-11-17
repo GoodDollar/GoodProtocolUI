@@ -7,7 +7,7 @@ import { useConnectionInfo } from 'hooks/useConnectionInfo'
 import { Spinner, VStack } from 'native-base'
 import { useFeatureFlagWithPayload } from 'posthog-react-native'
 
-import { getNetworkEnv } from 'utils/env'
+import { getEnv, getNetworkEnv } from 'utils/env'
 
 import { feedConfig } from 'constants/config'
 
@@ -28,6 +28,7 @@ const ClaimPage = () => {
     const { open } = useAppKit()
     const history = useHistory()
     const networkEnv = getNetworkEnv()
+    const env = getEnv()
     const [, claimPayload] = useFeatureFlagWithPayload('claim-feature')
     const [, goodidPayload] = useFeatureFlagWithPayload('goodid')
     const { enabled: claimEnabled, disabledMessage = '' } = (claimPayload as any) || {}
@@ -78,11 +79,7 @@ const ClaimPage = () => {
                     explorerEndPoints={goodIdExplorerUrls}
                     onNews={onNews}
                     withNewsFeed
-                    newsProps={{
-                        ...(networkEnv !== 'development'
-                            ? { feedFilter: feedConfig.production.feedFilter }
-                            : { env: 'qa' }),
-                    }}
+                    newsProps={{ env, feedFilter: env === 'production' ? feedConfig.production.feedFilter : undefined }}
                     onConnect={handleConnect}
                     // onSuccess={onClaimSuccess}
                     onUpgrade={onUpgrade}
