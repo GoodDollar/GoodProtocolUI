@@ -3129,7 +3129,7 @@ msgstr "Số nhân"
 msgid "My Stake"
 msgstr "Cổ phần của tôi"
 
-#: src/components/NetworkModal/index.tsx:154
+#: src/components/NetworkModal/index.tsx:151
 msgid "network"
 msgstr "mạng"
 
@@ -3155,7 +3155,7 @@ msgstr "Tháng tiếp theo:"
 msgid "No data."
 msgstr "Không có dữ liệu."
 
-#: src/components/NetworkModal/index.tsx:153
+#: src/components/NetworkModal/index.tsx:150
 msgid "on the"
 msgstr "trên"
 
@@ -3579,7 +3579,7 @@ msgstr "Chờ đợi sự xác nhận"
 msgid "Wallet balance"
 msgstr "Ví thăng bằng"
 
-#: src/components/NetworkModal/index.tsx:133
+#: src/components/NetworkModal/index.tsx:130
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3642,7 +3642,7 @@ msgstr ""
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "Bạn đang tạo UBI cho hàng ngàn người trên khắp thế giới."
 
-#: src/components/NetworkModal/index.tsx:149
+#: src/components/NetworkModal/index.tsx:146
 msgid "You are currently browsing"
 msgstr "Bạn đang đang duyệt"
 

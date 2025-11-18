@@ -1,10 +1,13 @@
+import React from 'react'
 import { createAppKit } from '@reown/appkit/react'
+import type { AppKitNetwork } from '@reown/appkit-common'
 
 import { WagmiProvider } from 'wagmi'
-import { celo, fuse } from '@reown/appkit/networks'
+import { celo, fuse, mainnet } from '@reown/appkit/networks'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
-import { walletConnect, injected, coinbaseWallet } from 'wagmi/connectors'
+import { injected, coinbaseWallet } from 'wagmi/connectors'
+import { APPKIT_FEATURED_WALLET_IDS, APPKIT_SOCIAL_PROVIDER_IDS } from 'utils/walletConfig'
 
 // 0. Setup queryClient
 const queryClient = new QueryClient()
@@ -23,22 +26,13 @@ const metadata = {
     icons: [''],
 }
 
-// 3. Set the networks
-const networks = [celo, fuse]
+// 3. Set the networks - AppKit handles WalletConnect natively, so we don't need walletConnect connector
+// Networks from @reown/appkit/networks are already AppKitNetwork type, but we need to assert tuple type
+const networks = [celo, fuse, mainnet] as [AppKitNetwork, ...AppKitNetwork[]]
 
-// 4. Create custom connectors
+// 4. Create custom connectors - removed walletConnect as AppKit handles it natively
 const connectors = [
-    walletConnect({
-        projectId,
-        showQrModal: false, // AppKit handles the modal
-        metadata: {
-            name: 'GoodProtocolUI',
-            description: 'Good Protocol UI',
-            url: '',
-            icons: [''],
-        },
-    }),
-    injected(),
+    injected(), // For MetaMask and other injected wallets
     coinbaseWallet({
         appName: 'GoodProtocolUI',
         appLogoUrl: '',
@@ -55,16 +49,17 @@ const wagmiAdapter = new WagmiAdapter({
 
 createAppKit({
     adapters: [wagmiAdapter],
-    networks: [celo, fuse],
+    networks,
     projectId,
     metadata,
     features: {
         analytics: true, // Optional - defaults to your Cloud configuration
-        socials: ['google'],
+        socials: APPKIT_SOCIAL_PROVIDER_IDS as any, // Type assertion needed for social providers
     },
+    featuredWalletIds: [...APPKIT_FEATURED_WALLET_IDS],
 })
 
-export function AppKitProvider({ children }) {
+export function AppKitProvider({ children }: { children: React.ReactNode }) {
     return (
         <WagmiProvider config={wagmiAdapter.wagmiConfig}>
             <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>

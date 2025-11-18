@@ -68,3 +68,7 @@ export const isSupportedChain = (chainId: number): chainId is SupportedChainId =
 export const getChainConfig = (chainId: number) => {
     return WALLET_CONFIG.SUPPORTED_CHAINS[chainId as SupportedChainId]
 }
+
+export const APPKIT_FEATURED_WALLET_IDS = ['gooddollar', 'valora']
+
+export const APPKIT_SOCIAL_PROVIDER_IDS = ['google']

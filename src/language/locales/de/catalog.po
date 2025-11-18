@@ -3129,7 +3129,7 @@ msgstr "MULTIPLIKATOR"
 msgid "My Stake"
 msgstr "Mein Pfahl"
 
-#: src/components/NetworkModal/index.tsx:154
+#: src/components/NetworkModal/index.tsx:151
 msgid "network"
 msgstr "Netzwerk"
 
@@ -3155,7 +3155,7 @@ msgstr "Nächsten Monat:"
 msgid "No data."
 msgstr "Keine Daten."
 
-#: src/components/NetworkModal/index.tsx:153
+#: src/components/NetworkModal/index.tsx:150
 msgid "on the"
 msgstr "auf der"
 
@@ -3579,7 +3579,7 @@ msgstr "Auf Bestätigung warten"
 msgid "Wallet balance"
 msgstr "Geldbörsenbetrag"
 
-#: src/components/NetworkModal/index.tsx:133
+#: src/components/NetworkModal/index.tsx:130
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3642,7 +3642,7 @@ msgstr ""
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "Sie schaffen UBI Tausende von Menschen auf der ganzen Welt."
 
-#: src/components/NetworkModal/index.tsx:149
+#: src/components/NetworkModal/index.tsx:146
 msgid "You are currently browsing"
 msgstr "Du surfe derzeit"
 
