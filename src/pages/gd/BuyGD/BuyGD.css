@@ -1,0 +1,44 @@
+/* Ensure our custom progress bar is always visible and properly styled */
+[data-testid="custom-progress-bar"] {
+    display: block !important;
+    visibility: visible !important;
+    z-index: 1000;
+}
+
+/* Style the onramper widget container */
+.onramper-widget-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Hide the built-in Onramper progress bar/stepper */
+iframe[title="Onramper widget"] {
+    /* Target elements inside the Onramper iframe */
+}
+
+/* Alternative approach - hide progress elements by common selectors */
+.progress-bar,
+.stepper,
+.steps-container,
+[class*="progress"],
+[class*="stepper"],
+[class*="step"] {
+    display: none !important;
+}
+
+/* More specific targeting for Onramper built-in progress elements - using broader compatibility selectors */
+div[style*="justify-content: space-between"] div,
+div[style*="flex-direction: row"] div,
+div[style*="display: flex"] div {
+    /* Target potential progress elements - may need refinement based on actual Onramper structure */
+}
+
+/* Hide elements containing specific text using data attributes or classes if available */
+[data-step="1"],
+[data-step="2"], 
+[data-step="3"],
+.onramper-step,
+.onramper-progress {
+    display: none !important;
+}
