@@ -1,12 +1,13 @@
 import React from 'react'
 import { CheckCircle, Triangle } from 'react-feather'
 import styled from 'styled-components'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { useAllTransactions } from '../../state/transactions/hooks'
 import { ExternalLink } from '../../theme'
 import { getExplorerLink } from '../../utils'
+import { getSafeChainId } from 'utils/chain'
 import Loader from '../Loader'
 import { RowFixed } from '../Row'
+import { useAppKitNetwork } from '@reown/appkit/react'
 
 const TransactionWrapper = styled.div`
     a {
@@ -69,7 +70,7 @@ const IconWrapper = styled.div<{ pending: boolean; success?: boolean }>`
 `
 
 export default function Transaction({ hash }: { hash: string }): any {
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const allTransactions = useAllTransactions()
 
     const tx = allTransactions?.[hash]
@@ -81,7 +82,10 @@ export default function Transaction({ hash }: { hash: string }): any {
 
     return (
         <TransactionWrapper>
-            <TransactionState url={getExplorerLink(chainId, hash, 'transaction')} dataAttr="external_explorer">
+            <TransactionState
+                url={getExplorerLink(getSafeChainId(chainId), hash, 'transaction')}
+                dataAttr="external_explorer"
+            >
                 <RowFixed className="transition">
                     <TransactionStatusText>{summary} ↗</TransactionStatusText>
                 </RowFixed>

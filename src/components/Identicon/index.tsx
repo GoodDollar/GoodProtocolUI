@@ -1,7 +1,7 @@
+import { useAppKitAccount } from '@reown/appkit/react'
 import Jazzicon from 'jazzicon'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 
 const StyledIdenticonContainer = styled.div`
     height: 1rem;
@@ -13,14 +13,14 @@ const StyledIdenticonContainer = styled.div`
 export default function Identicon() {
     const ref = useRef<HTMLDivElement>()
 
-    const { account } = useActiveWeb3React()
+    const { address } = useAppKitAccount()
 
     useEffect(() => {
-        if (account && ref.current) {
+        if (address && ref.current) {
             ref.current.innerHTML = ''
-            ref.current.appendChild(Jazzicon(16, parseInt(account.slice(2, 10), 16)))
+            ref.current.appendChild(Jazzicon(16, parseInt(address.slice(2, 10), 16)))
         }
-    }, [account])
+    }, [address])
 
     // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451
     return <StyledIdenticonContainer ref={ref as any} />

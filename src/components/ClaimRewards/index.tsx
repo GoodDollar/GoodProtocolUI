@@ -8,13 +8,13 @@ import { ReactComponent as LinkSVG } from 'assets/images/link-blue.svg'
 import Button from 'components/Button'
 import { addTransaction } from '../../state/transactions/actions'
 import { useDispatch } from 'react-redux'
-import useActiveWeb3React from '../../hooks/useActiveWeb3React'
 import { getExplorerLink } from '../../utils'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import Loader from 'components/Loader'
 import { ChekboxItem, Reward } from './components'
 import { BottomSheet } from 'react-spring-bottom-sheet'
+import { useAppKitNetwork } from '@reown/appkit/react'
 
 import {
     claimG$Reward,
@@ -155,7 +155,7 @@ const ClaimRewards = memo(({ protocol, open, setOpen, onClaim, stake, ...rest }:
     const { i18n } = useLingui()
     const [status, setStatus] = useState<ClaimState>('none')
     const { web3 } = useGdContextProvider()
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const [error, setError] = useState<Error>()
     const [selectedReward, setSelectedReward] = useState<'claimAll' | 'claimGOOD'>('claimAll')
     const { width } = useWindowSize()
