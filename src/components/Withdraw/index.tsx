@@ -44,7 +44,7 @@ const Withdraw = memo(({ token, protocol, open, setOpen, onWithdraw, stake, ...r
     const [percentage, setPercentage] = useState<string>('50')
     const [withdrawAmount, setWithdrawAmount] = useState<number>(totalStake * (Number(percentage) / 100))
     const { chainId } = useAppKitNetwork()
-    const network = SupportedChainId[+(chainId ?? 1)]
+    const network = SupportedChainId[+(chainId ?? 42220)]
     const [error, setError] = useState<Error>()
     const sendData = useSendAnalyticsData()
 
@@ -84,7 +84,7 @@ const Withdraw = memo(({ token, protocol, open, setOpen, onWithdraw, stake, ...r
                     })
                     dispatch(
                         addTransaction({
-                            chainId: +(chainId ?? 1)!,
+                            chainId: +(chainId ?? 42220)!,
                             hash: transactionHash,
                             from: from,
                             summary: i18n._(t`Withdrew funds from ${stake.protocol} `),
@@ -194,7 +194,7 @@ const Withdraw = memo(({ token, protocol, open, setOpen, onWithdraw, stake, ...r
                                 href={
                                     transactionHash &&
                                     String(chainId) &&
-                                    getExplorerLink(+(chainId ?? 1), transactionHash, 'transaction')
+                                    getExplorerLink(+(chainId ?? 42220), transactionHash, 'transaction')
                                 }
                                 target="_blank"
                                 rel="noreferrer"

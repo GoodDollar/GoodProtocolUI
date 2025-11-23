@@ -197,7 +197,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
     const [walletBalanceOpen, setWalletBalanceOpen] = walletBalance
     const { isMobileView, isSmallTabletView, isTabletView, isDesktopView } = useScreenSize()
 
-    const { G$ } = useG$Balance(5, Number(chainId))
+    const { G$ } = useG$Balance(5, chainId ? Number(chainId) : undefined)
 
     const G$Price = useG$Price(10)
     const g$Price = new Fraction(G$Price?.toString() || 0, 1e18)

@@ -145,7 +145,7 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
                 borderBottomLeftRadius={12}
                 borderBottomRightRadius={12}
             >
-                <WalletBalance balances={balances} chainId={+(chainId ?? 1)} />
+                <WalletBalance balances={balances} chainId={+(chainId ?? 42220)} />
                 {/* todo: retest this flow */}
                 {!loading && !imported && !isMinipay && (
                     <Box flexDir="row" mt={4}>

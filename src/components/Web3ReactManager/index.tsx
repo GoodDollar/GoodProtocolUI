@@ -41,17 +41,7 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
         if (initialized && address) {
             identify(address)
         }
-    }, [initialized, address])
-
-    // TODO
-    // on page load, do nothing until we've tried to connect a previously connected wallet
-    // if (!tried) {
-    //     return showLoader ? (
-    //         <MessageWrapper>
-    //             <Loader />
-    //         </MessageWrapper>
-    //     ) : null
-    // }
+    }, [initialized, address, identify])
 
     // if the account context isn't active, and there's an error on the network context, it's an irrecoverable error
     if (!initialized && networkError) {

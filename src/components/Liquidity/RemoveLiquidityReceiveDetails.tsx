@@ -31,8 +31,10 @@ export default function RemoveLiquidityReceiveDetails({
     id,
 }: RemoveLiquidityReceiveDetailsProps) {
     const { i18n } = useLingui()
-    const { chainId } = useAppKitNetwork()
-    if (!chainId || !currencyA || !currencyB) throw new Error('missing dependencies')
+    const { chainId: rawChainId } = useAppKitNetwork()
+    if (!rawChainId || !currencyA || !currencyB) throw new Error('missing dependencies')
+    const chainId = Number(rawChainId)
+    const safeChainId = getSafeChainId(rawChainId)
     return (
         <div id={id} className="p-5 rounded">
             <div className="flex flex-col justify-between space-y-3 sm:space-y-0 sm:flex-row">
@@ -46,7 +48,7 @@ export default function RemoveLiquidityReceiveDetails({
                                         currencyA === ETHER ? WETH[chainId].address : currencyId(currencyA)
                                     }/${currencyB === ETHER ? WETH[chainId].address : currencyId(currencyB)}`}
                                 >
-                                    Receive W{Currency.getNativeCurrencySymbol(getSafeChainId(chainId))}
+                                    Receive W{Currency.getNativeCurrencySymbol(safeChainId)}
                                 </StyledInternalLink>
                             ) : hasETH ? (
                                 <StyledInternalLink
@@ -60,7 +62,7 @@ export default function RemoveLiquidityReceiveDetails({
                                             : currencyId(currencyB)
                                     }`}
                                 >
-                                    Receive {Currency.getNativeCurrencySymbol(getSafeChainId(chainId))}
+                                    Receive {Currency.getNativeCurrencySymbol(safeChainId)}
                                 </StyledInternalLink>
                             ) : null}
                         </RowBetween>
@@ -72,14 +74,14 @@ export default function RemoveLiquidityReceiveDetails({
                         <CurrencyLogo currency={currencyA} size="46px" style={{ marginRight: '12px' }} />
                         <AutoColumn>
                             <div className="white">{amountA}</div>
-                            <div className="">{currencyA?.getSymbol(getSafeChainId(chainId))}</div>
+                            <div className="">{currencyA?.getSymbol(safeChainId)}</div>
                         </AutoColumn>
                     </div>
                     <div className="flex flex-row items-center w-full p-3 rounded">
                         <CurrencyLogo currency={currencyB} size="46px" style={{ marginRight: '12px' }} />
                         <AutoColumn>
                             <div className="white">{amountB}</div>
-                            <div className="">{currencyB?.getSymbol(getSafeChainId(chainId))}</div>
+                            <div className="">{currencyB?.getSymbol(safeChainId)}</div>
                         </AutoColumn>
                     </div>
                 </div>

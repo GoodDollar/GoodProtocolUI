@@ -77,12 +77,15 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
     if (webprovider) {
         webprovider.send = async (method: string, params: any) => {
             if (method === 'eth_sendTransaction' && !isMiniPay && chainId && chainId in gasSettings) {
-                if (!params[0].maxFeePerGas && Number(chainId) !== 50) {
-                    // params[0].gasPrice = gasPriceSettings[chainId].maxFeePerGas
-                    delete params[0].gasPrice
-                    params[0] = { ...params[0], ...gasSettings }
-                } else {
-                    params[0] = { ...params[0], ...gasSettings }
+                const gasSettingsForChain = gasSettings[Number(chainId)]
+                if (gasSettingsForChain) {
+                    if (!params[0].maxFeePerGas && Number(chainId) !== 50) {
+                        // params[0].gasPrice = gasPriceSettings[chainId].maxFeePerGas
+                        delete params[0].gasPrice
+                        params[0] = { ...params[0], ...gasSettingsForChain }
+                    } else {
+                        params[0] = { ...params[0], ...gasSettingsForChain }
+                    }
                 }
             }
             return webprovider.jsonRpcFetchFunc(method, params)

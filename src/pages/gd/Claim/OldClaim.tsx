@@ -20,6 +20,7 @@ import {
     submitReferral,
     AsyncStorage,
 } from '@gooddollar/web3sdk-v2'
+import { useAppKit } from '@reown/appkit/react'
 import { QueryParams } from '@usedapp/core'
 import { noop } from 'lodash'
 // import { useFeatureFlagWithPayload } from 'posthog-react-native'
@@ -51,8 +52,8 @@ const OldClaim = memo(() => {
     })
 
     const [claimed, setClaimed] = useState<boolean | undefined>(undefined)
-    // const [, connect] = useConnectWallet()
     const { address, chainId } = useConnectionInfo()
+    const { open } = useAppKit()
     const network = SupportedV2Networks[chainId]
     const sendData = useSendAnalyticsData()
     // todo: fix UI for displaying claiming disabled modal
@@ -170,20 +171,13 @@ const OldClaim = memo(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [send, network, sendData, activeChainFeatures, isSimpleApp])
 
-    // const handleConnect = useCallback(async () => {
-    //     if (claimEnabled) {
-    //         const state = await connect()
-
-    //         return !!state.length
-    //     } else {
-    //         showModal()
-    //     }
-    //     return false
-    // }, [connect, claimEnabled])
-    const handleConnect = async () => {
-        console.log('asd')
+    const handleConnect = useCallback(async () => {
+        if (!address) {
+            await open({ view: 'Connect' })
+            return true
+        }
         return true
-    }
+    }, [address, open])
 
     const mainView = useBreakpointValue({
         base: {
@@ -408,7 +402,7 @@ Learn how here`,
                                         claimed={claimed}
                                         claiming={state}
                                         handleConnect={handleConnect}
-                                        chainId={+(chainId ?? 1)}
+                                        chainId={+(chainId ?? 42220)}
                                         onEvent={handleEvents}
                                     />
                                     {isHoliday ? (

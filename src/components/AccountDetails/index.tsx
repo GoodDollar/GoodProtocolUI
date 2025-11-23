@@ -8,7 +8,6 @@ import { useRedirectNotice } from '@gooddollar/good-design'
 import { isMiniPay } from 'utils/minipay'
 
 import { ReactComponent as Close } from '../../assets/images/x.svg'
-import { WalletLabels } from '../../constants/wallets'
 import { AppDispatch } from '../../state'
 import { clearAllTransactions } from '../../state/transactions/actions'
 import { ExternalLink } from 'theme'
@@ -226,7 +225,7 @@ export default function AccountDetails({
 
     // walletInfo provided by useConnectionInfo
 
-    const miniPay = React.useMemo(() => isMiniPay(), [])
+    const miniPay = isMiniPay()
 
     function formatConnectorName() {
         const name = miniPay ? 'MiniPay' : walletInfo?.name ?? ''
@@ -268,17 +267,16 @@ export default function AccountDetails({
                             <AccountGroupingRow>
                                 {formatConnectorName()}
                                 <div className="mt-3.5 mb-3.5">
-                                    {(walletInfo?.name || isMiniPay()) &&
-                                        WalletLabels.includes(isMiniPay() ? 'MiniPay' : walletInfo?.name ?? '') && (
-                                            <WalletAction
-                                                width={'85px'}
-                                                size="sm"
-                                                style={{ marginRight: '5px' }}
-                                                onClick={disconnectWallet}
-                                            >
-                                                {i18n._(t`Disconnect`)}
-                                            </WalletAction>
-                                        )}
+                                    {address && (
+                                        <WalletAction
+                                            width={'85px'}
+                                            size="sm"
+                                            style={{ marginRight: '5px' }}
+                                            onClick={disconnectWallet}
+                                        >
+                                            {i18n._(t`Disconnect`)}
+                                        </WalletAction>
+                                    )}
                                     <WalletAction
                                         width={'75px'}
                                         size="sm"

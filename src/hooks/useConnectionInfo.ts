@@ -1,6 +1,7 @@
 import { useAppKitAccount, useAppKitNetwork, useWalletInfo } from '@reown/appkit/react'
 import { useMemo } from 'react'
 import { getSafeChainId } from '../utils/chain'
+import { SupportedChains } from '@gooddollar/web3sdk-v2'
 
 export interface ConnectionInfo {
     address?: string
@@ -11,8 +12,9 @@ export interface ConnectionInfo {
     connectionStatus: 'disconnected' | 'connecting' | 'connected' | 'error'
 }
 
-// Supported chain IDs for validation
-const SUPPORTED_CHAINS = [1, 122, 42220] // MAINNET, FUSE, CELO
+// Supported chain IDs for validation - aligned with AppKit networks
+// SupportedChains enum values: MAINNET=1, FUSE=122, CELO=42220
+const SUPPORTED_CHAINS = [Number(SupportedChains.MAINNET), Number(SupportedChains.FUSE), Number(SupportedChains.CELO)]
 
 export const useConnectionInfo = (): ConnectionInfo => {
     const { address } = useAppKitAccount()

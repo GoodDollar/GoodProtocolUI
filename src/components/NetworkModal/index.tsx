@@ -73,7 +73,7 @@ export default function NetworkModal(): JSX.Element | null {
     const toggleNetworkModal = useNetworkModalToggle()
     const [toAddNetwork, setToAddNetwork] = useState<SupportedChains | undefined>()
 
-    const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[+(chainId ?? 1)]
+    const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[+(chainId ?? 42220)]
     const network = getEnv()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const prodNetworks = activeNetworksByFeature['networkEnabled']
