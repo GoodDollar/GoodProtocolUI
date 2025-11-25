@@ -71,7 +71,7 @@ msgstr ""
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:403
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:402
 msgid "Approve"
 msgstr ""
 
@@ -83,11 +83,11 @@ msgstr ""
 msgid "Approve transaction failed, please try again."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:402
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:401
 msgid "Approved"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:400
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:399
 msgid "Approving"
 msgstr ""
 
@@ -608,7 +608,7 @@ msgstr ""
 msgid "Share with friends"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:366
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:365
 #: src/pages/gd/Swap/SwapSettings/index.tsx:80
 msgid "Slippage Tolerance"
 msgstr ""
@@ -658,7 +658,7 @@ msgstr ""
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:412
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:411
 msgid "Swap"
 msgstr ""
 
@@ -666,11 +666,11 @@ msgstr ""
 msgid "Swap Completed"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:339
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:338
 msgid "Swap from"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:353
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:352
 msgid "Swap to"
 msgstr ""
 
@@ -730,7 +730,7 @@ msgstr ""
 #~ "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
 #~ msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:255
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:254
 msgid ""
 "The GoodReserve is an Automated Market Maker (AMM) that operates on Celo and XDC.\n"
 "This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
@@ -835,7 +835,7 @@ msgstr ""
 msgid "Transaction deadline"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:149
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:148
 msgid "Transaction failed, please try again"
 msgstr ""
 
