@@ -1,4 +1,4 @@
-# GoodProtocol Interface
+# GoodProtocolUI (gooddapp.org) Interface
 
 [![Styled With Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 
@@ -41,8 +41,8 @@ Usages -->
     1. ```yalc link @gooddollarorg/<packageName>```
 
 ## Contributions
+Everyone is welcome: Developers, designers, and entrepreneurs with a passion for decentralised technologies and a vision to build a new world that has equality, security, inclusivity, and innovation as its cornerstones.
 
-**Please open all pull requests against the `master` branch.**
-CI checks will run against all PRs.
+To learn how to contribute, and the various open-source contributors opportunities, see our [contribution guidelines](https://github.com/GoodDollar/.github/blob/master/CONTRIBUTING.md)
 
-For more information please go to https://docs.gooddollar.org/
+For more information about the GoodDollar Protocol, please go to https://docs.gooddollar.org/

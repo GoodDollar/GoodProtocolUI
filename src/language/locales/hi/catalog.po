@@ -1605,12 +1605,20 @@ msgstr ""
 msgid "Click here to learn more about GoodDollar liquidity, including how to provide liquidity."
 msgstr ""
 
+#: src/pages/gd/Claim/OldClaim.tsx:372
+msgid "Click on the Claim button below and you will be switched over the first available network to collect your G$'s."
+msgstr ""
+
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:314
 msgid "Close"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:334
-msgid "Collect G$"
+#: src/pages/gd/Claim/OldClaim.tsx:385
+#~ msgid "Collect G$"
+#~ msgstr ""
+
+#: src/pages/gd/Claim/OldClaim.tsx:385
+msgid "Collect G$ on {network}"
 msgstr ""
 
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:185
@@ -1754,7 +1762,7 @@ msgstr ""
 msgid "GoodDAO"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:507
+#: src/pages/gd/Stake/index.tsx:508
 msgid "GoodDAO Staking"
 msgstr ""
 
@@ -1766,7 +1774,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:345
+#: src/pages/gd/Claim/OldClaim.tsx:395
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -1774,8 +1782,8 @@ msgstr ""
 msgid "GoodDollar Main Bridge"
 msgstr ""
 
-#: src/pages/gd/Stake/index.tsx:481
-#: src/pages/gd/Stake/index.tsx:485
+#: src/pages/gd/Stake/index.tsx:482
+#: src/pages/gd/Stake/index.tsx:486
 msgid "GoodStakes"
 msgstr ""
 
@@ -1876,8 +1884,8 @@ msgstr ""
 msgid "My Stake"
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:143
-#: src/components/NetworkModal/index.tsx:192
+#: src/components/NetworkModal/index.tsx:152
+#: src/components/NetworkModal/index.tsx:201
 msgid "network"
 msgstr ""
 
@@ -1903,8 +1911,8 @@ msgstr ""
 msgid "No data."
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:142
-#: src/components/NetworkModal/index.tsx:191
+#: src/components/NetworkModal/index.tsx:151
+#: src/components/NetworkModal/index.tsx:200
 msgid "on the"
 msgstr ""
 
@@ -1918,7 +1926,7 @@ msgstr ""
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "उफ़! एक अज्ञात ग़लती हुई। कृपया पृष्ठ को रीफ़्रेश करें, या किसी अन्य ब्राउज़र या डिवाइस से जाएँ"
 
-#: src/components/AppBar.tsx:337
+#: src/components/AppBar.tsx:340
 msgid "Open main menu"
 msgstr "मुख्य मेनू खोलें"
 
@@ -1939,7 +1947,7 @@ msgstr ""
 #~ msgid "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
 #~ msgstr ""
 
-#: src/pages/gd/Swap/index.tsx:111
+#: src/pages/gd/Swap/index.tsx:112
 msgid "Please switch your network to {0} to Swap."
 msgstr ""
 
@@ -2039,7 +2047,7 @@ msgstr ""
 #: src/pages/gd/Stake/index.tsx:218
 #: src/pages/gd/Stake/index.tsx:325
 #: src/pages/gd/Stake/index.tsx:404
-#: src/pages/gd/Stake/index.tsx:481
+#: src/pages/gd/Stake/index.tsx:482
 msgid "Stake"
 msgstr "दाँव"
 
@@ -2335,8 +2343,8 @@ msgstr ""
 msgid "Wallet balance"
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:122
-#: src/components/NetworkModal/index.tsx:171
+#: src/components/NetworkModal/index.tsx:131
+#: src/components/NetworkModal/index.tsx:180
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -2399,10 +2407,18 @@ msgstr ""
 msgid "You are creating UBI to thousands of people around the world."
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:138
-#: src/components/NetworkModal/index.tsx:187
+#: src/components/NetworkModal/index.tsx:147
+#: src/components/NetworkModal/index.tsx:196
 msgid "You are currently browsing"
 msgstr ""
+
+#: src/pages/gd/Claim/OldClaim.tsx:361
+msgid "You can collect G$ on {supportedChainsDisplay} networks."
+msgstr ""
+
+#: src/pages/gd/Claim/OldClaim.tsx:361
+#~ msgid "You can collect G$ on {supportedChainsDisplay}."
+#~ msgstr ""
 
 #: src/pages/gd/Stake/StakeDeposit/index.tsx:380
 msgid ""

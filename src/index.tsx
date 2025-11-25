@@ -28,6 +28,7 @@ import { registerServiceWorker } from './serviceWorker'
 import { OnboardProviderWrapper } from 'components/BlockNativeOnboard'
 import { SimpleAppProvider } from 'state/simpleapp/simpleapp'
 import { nbTheme } from './theme/nbtheme'
+import { GoodDappFeatureProvider } from 'hooks/useFeaturesEnabled'
 
 if (window.ethereum) {
     window.ethereum.autoRefreshOnNetworkChange = false
@@ -88,7 +89,9 @@ const ProviderWrapper = ({ children }) => (
                     nativeBaseProps={{ config: { suppressColorAccessibilityWarning: true }, theme: nbTheme }}
                 >
                     <Web3ContextProvider>
-                        <LanguageProvider>{children}</LanguageProvider>
+                        <GoodDappFeatureProvider>
+                            <LanguageProvider>{children}</LanguageProvider>
+                        </GoodDappFeatureProvider>
                     </Web3ContextProvider>
                 </GoodXProvider>
             </OnboardProviderWrapper>

@@ -9,6 +9,7 @@ import { useFeatureFlagWithPayload } from 'posthog-react-native'
 import { BasePressable, CentreBox, useScreenSize } from '@gooddollar/good-design'
 import { useG$Balance } from '@gooddollar/web3sdk-v2'
 
+import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 import { useActiveWeb3React } from '../hooks/useActiveWeb3React'
 import Web3Network from './Web3Network'
 import Web3Status from './Web3Status'
@@ -182,7 +183,7 @@ const Web3Bar = () => {
 function AppBar({ sideBar, walletBalance }): JSX.Element {
     const [theme] = useApplicationTheme()
     const { i18n } = useLingui()
-    const { account } = useActiveWeb3React()
+    const { account, chainId } = useActiveWeb3React()
     const isSimpleApp = useIsSimpleApp()
     const showPrice = true // useFeatureFlag('show-gd-price')
 
@@ -194,10 +195,12 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
     const [sidebarOpen, setSidebarOpen] = sideBar
     const [walletBalanceOpen, setWalletBalanceOpen] = walletBalance
     const { isMobileView, isSmallTabletView, isTabletView, isDesktopView } = useScreenSize()
+    const { isFeatureActive } = useGoodDappFeatures()
 
-    const { G$ } = useG$Balance(5)
+    const { G$ } = useG$Balance(5, chainId)
+    const reserveEnabled = isFeatureActive('reserveEnabled', Number(chainId))
 
-    const G$Price = useG$Price()
+    const G$Price = useG$Price(10, reserveEnabled ? Number(chainId) : 42220)
     const g$Price = new Fraction(G$Price?.toString() || 0, 1e18)
     const gdBalance = useMemo(
         () =>
