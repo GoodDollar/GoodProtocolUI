@@ -20,7 +20,6 @@ export const useConnectionInfo = (): ConnectionInfo => {
     return useMemo(() => {
         const chainId = getSafeChainId(rawChainId)
         const isConnected = Boolean(address)
-        // Check if chainId is in SupportedChains enum (automatically includes new chains)
         const isSupportedChain = Object.values(SupportedChains).includes(chainId as SupportedChains)
 
         let connectionStatus: ConnectionInfo['connectionStatus'] = 'disconnected'
