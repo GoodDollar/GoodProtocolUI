@@ -12,10 +12,6 @@ export interface ConnectionInfo {
     connectionStatus: 'disconnected' | 'connecting' | 'connected' | 'error'
 }
 
-// Supported chain IDs for validation - aligned with AppKit networks
-// SupportedChains enum values: MAINNET=1, FUSE=122, CELO=42220
-const SUPPORTED_CHAINS = [Number(SupportedChains.MAINNET), Number(SupportedChains.FUSE), Number(SupportedChains.CELO)]
-
 export const useConnectionInfo = (): ConnectionInfo => {
     const { address } = useAppKitAccount()
     const { chainId: rawChainId } = useAppKitNetwork()
@@ -24,7 +20,8 @@ export const useConnectionInfo = (): ConnectionInfo => {
     return useMemo(() => {
         const chainId = getSafeChainId(rawChainId)
         const isConnected = Boolean(address)
-        const isSupportedChain = SUPPORTED_CHAINS.includes(chainId)
+        // Check if chainId is in SupportedChains enum (automatically includes new chains)
+        const isSupportedChain = Object.values(SupportedChains).includes(chainId as SupportedChains)
 
         let connectionStatus: ConnectionInfo['connectionStatus'] = 'disconnected'
         if (address && isSupportedChain) {
