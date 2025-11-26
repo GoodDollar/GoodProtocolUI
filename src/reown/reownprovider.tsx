@@ -154,7 +154,8 @@ createAppKit({
         analytics: true, // Optional - defaults to your Cloud configuration
         socials: APPKIT_SOCIAL_PROVIDER_IDS as any, // Type assertion needed for social providers
     },
-    featuredWalletIds: [...APPKIT_FEATURED_WALLET_IDS],
+    // Featured wallets to promote in WalletConnect modal (order matters: GoodWallet first, then Valora)
+    featuredWalletIds: APPKIT_FEATURED_WALLET_IDS,
 })
 
 export function AppKitProvider({ children }: { children: React.ReactNode }) {

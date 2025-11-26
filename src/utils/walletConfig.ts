@@ -69,6 +69,11 @@ export const getChainConfig = (chainId: number) => {
     return WALLET_CONFIG.SUPPORTED_CHAINS[chainId as SupportedChainId]
 }
 
-export const APPKIT_FEATURED_WALLET_IDS = ['gooddollar', 'valora']
+// Featured wallet IDs for Reown AppKit (using wallet ID hashes, not names)
+// These wallets will be promoted/featured in the wallet selection modal
+export const APPKIT_FEATURED_WALLET_IDS = [
+    '132fe7fba900c4772d39c15f02ec134461fa5d680be76b1767c2d0a15055b7a1', // New GoodWallet
+    'd01c7758d741b363e637a817a09bcf579feae4db9f5bb16f599fdd1f66e2f974', // Valora
+]
 
 export const APPKIT_SOCIAL_PROVIDER_IDS = ['google']
