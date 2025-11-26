@@ -1,7 +1,7 @@
 {
     "name": "@gooddollar/protocol-ui",
     "description": "GoodProtocol Interface",
-    "version": "1.115.0",
+    "version": "1.117.0",
     "homepage": ".",
     "private": true,
     "scripts": {
@@ -209,7 +209,7 @@
         "@gooddollar/good-design": "^0.4.32",
         "@gooddollar/goodprotocol": "2.1.1",
         "@gooddollar/web3sdk": "^0.1.53",
-        "@gooddollar/web3sdk-v2": "^0.4.26",
+        "@gooddollar/web3sdk-v2": "^0.4.27",
         "@headlessui/react": "1.5.0",
         "@lingui/format-json": "^4.0.0",
         "@lingui/macro": "^4.0.0",
