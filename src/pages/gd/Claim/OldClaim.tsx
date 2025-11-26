@@ -174,7 +174,7 @@ const OldClaim = memo(() => {
     const handleConnect = useCallback(async () => {
         if (!address) {
             await open({ view: 'Connect' })
-            return true
+            return false // Return false so button resets when modal is dismissed
         }
         return true
     }, [address, open])

@@ -26,6 +26,7 @@ import { useApplicationTheme } from '../state/application/hooks'
 import { ReactComponent as Burger } from '../assets/images/burger.svg'
 import { ReactComponent as X } from '../assets/images/x.svg'
 import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
+import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 
 const AppBarWrapper = styled.header`
     background: ${({ theme }) => theme.color.secondaryBg};
@@ -198,8 +199,10 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
     const { isMobileView, isSmallTabletView, isTabletView, isDesktopView } = useScreenSize()
 
     const { G$ } = useG$Balance(5, chainId ? Number(chainId) : undefined)
+    const { isFeatureActive } = useGoodDappFeatures()
+    const reserveEnabled = isFeatureActive('reserveEnabled', chainId ? Number(chainId) : undefined)
 
-    const G$Price = useG$Price(10)
+    const G$Price = useG$Price(10, reserveEnabled ? Number(chainId) : 42220)
     const g$Price = new Fraction(G$Price?.toString() || 0, 1e18)
     const gdBalance = useMemo(
         () =>
