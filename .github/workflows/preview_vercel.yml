@@ -27,46 +27,46 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: true
-        release:
-            needs: authorize
-            name: Release
-            if: "github.event_name == 'workflow_dispatch' && github.event.inputs.release == 'qa'"
-            runs-on: ubuntu-latest
-            steps:
-                - uses: actions/setup-node@v3
-                  with:
-                      node-version: 20
-                - uses: actions/checkout@v3
-                  with:
-                      persist-credentials: false
-                      fetch-depth: 0
-                - name: setup git
-                  run: |
-                      git config --local user.email "techadmin@gooddollar.org"
-                      git config --local user.name "Techadmin"
-                      npm install -g auto-changelog
+    release:
+        needs: authorize
+        name: Release
+        if: "github.event_name == 'workflow_dispatch' && github.event.inputs.release == 'qa'"
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 20
+            - uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
+                  fetch-depth: 0
+            - name: setup git
+              run: |
+                  git config --local user.email "techadmin@gooddollar.org"
+                  git config --local user.name "Techadmin"
+                  npm install -g auto-changelog
 
-                - name: update version qa
-                  run: |
-                      npm version minor -m "chore: release qa version %s [skip build]"
-                      git push https://${{ secrets.GIT_AUTH }}@github.com/GoodDollar/GoodProtocolUI master:${{ github.event.inputs.targetbranch }} --force --follow-tags
-                      git push https://${{ secrets.GIT_AUTH }}@github.com/GoodDollar/GoodProtocolUI master --follow-tags
-        preview:
-            needs: authorize
-            runs-on: ubuntu-latest
-            environment:
-                name: preview
-                url: ${{ steps.deploy.outputs.url }}
-            steps:
-                - uses: actions/checkout@v3
-                - uses: actions/setup-node@v3
-                  with:
-                      node-version: 20
-                      cache: yarn
-                - run: yarn install --immutable
-                - id: check_branch
-                  run: echo "::set-output name=branch::$(if [[ "${{ github.ref }}" == *"/staging" ]]; then echo 'staging'; else echo 'master'; fi)"
-                - run: yarn vercel pull --yes --environment="preview" --git-branch=${{ steps.check_branch.outputs.branch }} --token=${{ secrets.VERCEL_TOKEN }}
-                - run: yarn vercel build --token=${{ secrets.VERCEL_TOKEN }}
-                - id: deploy
-                  run: echo "::set-output name=url::$(yarn vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})"
+            - name: update version qa
+              run: |
+                  npm version minor -m "chore: release qa version %s [skip build]"
+                  git push https://${{ secrets.GIT_AUTH }}@github.com/GoodDollar/GoodProtocolUI master:${{ github.event.inputs.targetbranch }} --force --follow-tags
+                  git push https://${{ secrets.GIT_AUTH }}@github.com/GoodDollar/GoodProtocolUI master --follow-tags
+    preview:
+        needs: authorize
+        runs-on: ubuntu-latest
+        environment:
+            name: preview
+            url: ${{ steps.deploy.outputs.url }}
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 20
+                  cache: yarn
+            - run: yarn install --immutable
+            - id: check_branch
+              run: echo "::set-output name=branch::$(if [[ "${{ github.ref }}" == *"/staging" ]]; then echo 'staging'; else echo 'master'; fi)"
+            - run: yarn vercel pull --yes --environment="preview" --git-branch=${{ steps.check_branch.outputs.branch }} --token=${{ secrets.VERCEL_TOKEN }}
+            - run: yarn vercel build --token=${{ secrets.VERCEL_TOKEN }}
+            - id: deploy
+              run: echo "::set-output name=url::$(yarn vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})"
