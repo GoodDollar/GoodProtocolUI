@@ -32,12 +32,13 @@ const metadata = {
 
 // 3. Calculate allowed networks based on feature flags and environment (same logic as NetworkModal)
 // Using localFeatureConfig directly since we're at module level (matches useFeaturesEnabled.tsx)
+// For now, set networkEnabled to true for all networks (feature flag complexity to be handled in separate PR)
 const localFeatureConfig = {
     networks: {
         [SupportedChains.CELO]: { networkEnabled: true },
         [SupportedChains.MAINNET]: { networkEnabled: true },
         [SupportedChains.FUSE]: { networkEnabled: true },
-        [SupportedChains.XDC]: { networkEnabled: false },
+        [SupportedChains.XDC]: { networkEnabled: true },
     },
     globalDefaults: {
         defaultEnabled: true,
@@ -117,7 +118,8 @@ const mapSupportedChainToReownNetwork = (chain: SupportedChains): AppKitNetwork 
 }
 
 // 5. Get allowed networks and map to Reown networks
-const allowedChains = getAllowedNetworks()
+// Force CELO to be first in the list (default network)
+const allowedChains = [SupportedChains.CELO, ...getAllowedNetworks().filter((chain) => chain !== SupportedChains.CELO)]
 
 // Ensure at least one network is available (Reown requires non-empty array)
 if (allowedChains.length === 0) {
