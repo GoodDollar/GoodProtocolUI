@@ -4,7 +4,7 @@ on:
     push:
         branches: [master, staging]
     pull_request:
-        types: [opened, synchronize, edited, ready_for_review]
+        # types: [opened, synchronize, edited, ready_for_review]
         branches:
             - master
     workflow_dispatch:
@@ -33,10 +33,10 @@ jobs:
         if: "github.event_name == 'workflow_dispatch' && github.event.inputs.release == 'qa'"
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/setup-node@v3
+            - uses: actions/setup-node@v4
               with:
                   node-version: 20
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
               with:
                   persist-credentials: false
                   fetch-depth: 0
@@ -58,8 +58,10 @@ jobs:
             name: preview
             url: ${{ steps.deploy.outputs.url }}
         steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
+            - uses: actions/checkout@v4
+              with:
+                  ref: ${{ github.event.pull_request.head.sha || github.ref }}
+            - uses: actions/setup-node@v4
               with:
                   node-version: 20
                   cache: yarn
