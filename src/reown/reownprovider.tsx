@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
 import { injected, coinbaseWallet } from 'wagmi/connectors'
 import { APPKIT_FEATURED_WALLET_IDS, APPKIT_SOCIAL_PROVIDER_IDS } from 'utils/walletConfig'
+import { miniPayConnector } from './minipayConnector'
 import { SupportedChains } from '@gooddollar/web3sdk-v2'
 import { getEnv } from 'utils/env'
 import { sample } from 'lodash'
@@ -129,10 +130,10 @@ if (allowedChains.length === 0) {
 const networks = allowedChains.map(mapSupportedChainToReownNetwork) as [AppKitNetwork, ...AppKitNetwork[]]
 
 // 6. Create custom connectors - removed walletConnect as AppKit handles it natively
-// Note: injected() connector automatically detects MiniPay (via window.ethereum.isMiniPay)
-// and other injected wallets (MetaMask, Brave, Opera, etc.)
+// MiniPay connector is prioritized first to ensure proper detection and auto-connect
 const connectors = [
-    injected(), // For MetaMask, MiniPay, and other injected wallets (EIP-1193 compatible)
+    miniPayConnector(), // Custom MiniPay connector (only active when MiniPay is detected)
+    injected(), // For MetaMask and other injected wallets (EIP-1193 compatible)
     coinbaseWallet({
         appName: 'GoodProtocolUI',
         appLogoUrl: '',
