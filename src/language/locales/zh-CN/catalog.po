@@ -2697,7 +2697,7 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:264
+#: src/components/AccountDetails/index.tsx:263
 msgid "Account"
 msgstr "帐户"
 
@@ -2768,7 +2768,7 @@ msgid ""
 "Take note of indicators in the widget below for exit contribtution, price slippage and liquidity."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:288
+#: src/components/AccountDetails/index.tsx:286
 msgid "Change"
 msgstr "改变"
 
@@ -2838,7 +2838,7 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:327
+#: src/components/AccountDetails/index.tsx:325
 msgid "Clear all"
 msgstr "清除所有"
 
@@ -2850,7 +2850,7 @@ msgstr "清除所有"
 msgid "Click here to learn more about GoodDollar liquidity, including how to provide liquidity."
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:375
+#: src/pages/gd/Claim/OldClaim.tsx:369
 msgid "Click on the Claim button below and you will be switched over the first available network to collect your G$'s."
 msgstr ""
 
@@ -2862,7 +2862,7 @@ msgstr "关闭"
 #~ msgid "Collect G$"
 #~ msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:388
+#: src/pages/gd/Claim/OldClaim.tsx:382
 msgid "Collect G$ on {network}"
 msgstr ""
 
@@ -2896,7 +2896,7 @@ msgstr "连接钱包"
 msgid "Connect wallet"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:233
+#: src/components/AccountDetails/index.tsx:232
 msgid "Connected with"
 msgstr "与"
 
@@ -2911,7 +2911,7 @@ msgstr ""
 msgid "Copied"
 msgstr "已复制"
 
-#: src/components/AccountDetails/index.tsx:304
+#: src/components/AccountDetails/index.tsx:302
 msgid "Copy address"
 msgstr "复制地址"
 
@@ -2942,7 +2942,7 @@ msgstr ""
 msgid "Deposit overview"
 msgstr "存款概述"
 
-#: src/components/AccountDetails/index.tsx:279
+#: src/components/AccountDetails/index.tsx:277
 msgid "Disconnect"
 msgstr ""
 
@@ -3019,7 +3019,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:398
+#: src/pages/gd/Claim/OldClaim.tsx:392
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -3129,7 +3129,7 @@ msgstr "乘数"
 msgid "My Stake"
 msgstr "我的股份"
 
-#: src/components/NetworkModal/index.tsx:151
+#: src/components/NetworkModal/index.tsx:154
 msgid "network"
 msgstr "网络"
 
@@ -3155,7 +3155,7 @@ msgstr "下个月："
 msgid "No data."
 msgstr "没有数据。"
 
-#: src/components/NetworkModal/index.tsx:150
+#: src/components/NetworkModal/index.tsx:153
 msgid "on the"
 msgstr "在这一点"
 
@@ -3165,11 +3165,11 @@ msgstr "在这一点"
 #~ "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
 #~ msgstr ""
 
-#: src/components/Web3ReactManager/index.tsx:62
+#: src/components/Web3ReactManager/index.tsx:52
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "糟糕！出现未知错误。请刷新页面，或从其他浏览器或设备访问"
 
-#: src/components/AppBar.tsx:339
+#: src/components/AppBar.tsx:342
 msgid "Open main menu"
 msgstr "打开主菜单"
 
@@ -3219,7 +3219,7 @@ msgstr "协议"
 msgid "PROTOCOL"
 msgstr "协议"
 
-#: src/components/AccountDetails/index.tsx:325
+#: src/components/AccountDetails/index.tsx:323
 msgid "Recent Transactions"
 msgstr "最近的交易"
 
@@ -3541,7 +3541,7 @@ msgstr ""
 msgid "Unsupported network"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:310
+#: src/components/AccountDetails/index.tsx:308
 #: src/components/Popups/TransactionPopup.tsx:48
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:308
 msgid "View on explorer"
@@ -3579,7 +3579,7 @@ msgstr "等待确认中"
 msgid "Wallet balance"
 msgstr "钱包平衡"
 
-#: src/components/NetworkModal/index.tsx:130
+#: src/components/NetworkModal/index.tsx:133
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3642,11 +3642,11 @@ msgstr ""
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "您正在为世界各地的数千人创建UBI。"
 
-#: src/components/NetworkModal/index.tsx:146
+#: src/components/NetworkModal/index.tsx:149
 msgid "You are currently browsing"
 msgstr "您目前正在浏览"
 
-#: src/pages/gd/Claim/OldClaim.tsx:364
+#: src/pages/gd/Claim/OldClaim.tsx:358
 msgid "You can collect G$ on {supportedChainsDisplay} networks."
 msgstr ""
 
@@ -3676,7 +3676,7 @@ msgstr ""
 msgid "You need to sign the transaction in your wallet"
 msgstr "您需要在钱包中签署交易"
 
-#: src/components/Liquidity/RemoveLiquidityReceiveDetails.tsx:41
+#: src/components/Liquidity/RemoveLiquidityReceiveDetails.tsx:43
 msgid "You Will Receive:"
 msgstr "您将收到："
 
@@ -3732,6 +3732,6 @@ msgstr "如果价格的不利变化超过这个百分比，您的交易将被退
 #~ msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 #~ msgstr "如果交易在确认之前出现大的不利价格变动，则交易将恢复。"
 
-#: src/components/AccountDetails/index.tsx:334
+#: src/components/AccountDetails/index.tsx:332
 msgid "Your transactions will appear here..."
 msgstr "您的交易将出现在这里......"

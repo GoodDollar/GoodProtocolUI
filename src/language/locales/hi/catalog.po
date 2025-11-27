@@ -1452,7 +1452,7 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:264
+#: src/components/AccountDetails/index.tsx:263
 msgid "Account"
 msgstr ""
 
@@ -1523,7 +1523,7 @@ msgid ""
 "Take note of indicators in the widget below for exit contribtution, price slippage and liquidity."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:288
+#: src/components/AccountDetails/index.tsx:286
 msgid "Change"
 msgstr ""
 
@@ -1593,7 +1593,7 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:327
+#: src/components/AccountDetails/index.tsx:325
 msgid "Clear all"
 msgstr ""
 
@@ -1605,7 +1605,7 @@ msgstr ""
 msgid "Click here to learn more about GoodDollar liquidity, including how to provide liquidity."
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:375
+#: src/pages/gd/Claim/OldClaim.tsx:369
 msgid "Click on the Claim button below and you will be switched over the first available network to collect your G$'s."
 msgstr ""
 
@@ -1617,7 +1617,7 @@ msgstr ""
 #~ msgid "Collect G$"
 #~ msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:388
+#: src/pages/gd/Claim/OldClaim.tsx:382
 msgid "Collect G$ on {network}"
 msgstr ""
 
@@ -1651,7 +1651,7 @@ msgstr "एक वॉलेट से कनेक्ट करें"
 msgid "Connect wallet"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:233
+#: src/components/AccountDetails/index.tsx:232
 msgid "Connected with"
 msgstr ""
 
@@ -1666,7 +1666,7 @@ msgstr ""
 msgid "Copied"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:304
+#: src/components/AccountDetails/index.tsx:302
 msgid "Copy address"
 msgstr ""
 
@@ -1697,7 +1697,7 @@ msgstr ""
 msgid "Deposit overview"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:279
+#: src/components/AccountDetails/index.tsx:277
 msgid "Disconnect"
 msgstr ""
 
@@ -1774,7 +1774,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:398
+#: src/pages/gd/Claim/OldClaim.tsx:392
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -1884,7 +1884,7 @@ msgstr ""
 msgid "My Stake"
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:151
+#: src/components/NetworkModal/index.tsx:154
 msgid "network"
 msgstr ""
 
@@ -1910,7 +1910,7 @@ msgstr ""
 msgid "No data."
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:150
+#: src/components/NetworkModal/index.tsx:153
 msgid "on the"
 msgstr ""
 
@@ -1920,11 +1920,11 @@ msgstr ""
 #~ "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
 #~ msgstr ""
 
-#: src/components/Web3ReactManager/index.tsx:62
+#: src/components/Web3ReactManager/index.tsx:52
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "उफ़! एक अज्ञात ग़लती हुई। कृपया पृष्ठ को रीफ़्रेश करें, या किसी अन्य ब्राउज़र या डिवाइस से जाएँ"
 
-#: src/components/AppBar.tsx:339
+#: src/components/AppBar.tsx:342
 msgid "Open main menu"
 msgstr "मुख्य मेनू खोलें"
 
@@ -1974,7 +1974,7 @@ msgstr ""
 msgid "PROTOCOL"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:325
+#: src/components/AccountDetails/index.tsx:323
 msgid "Recent Transactions"
 msgstr ""
 
@@ -2296,7 +2296,7 @@ msgstr ""
 msgid "Unsupported network"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:310
+#: src/components/AccountDetails/index.tsx:308
 #: src/components/Popups/TransactionPopup.tsx:48
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:308
 msgid "View on explorer"
@@ -2334,7 +2334,7 @@ msgstr ""
 msgid "Wallet balance"
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:130
+#: src/components/NetworkModal/index.tsx:133
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -2397,11 +2397,11 @@ msgstr ""
 msgid "You are creating UBI to thousands of people around the world."
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:146
+#: src/components/NetworkModal/index.tsx:149
 msgid "You are currently browsing"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:364
+#: src/pages/gd/Claim/OldClaim.tsx:358
 msgid "You can collect G$ on {supportedChainsDisplay} networks."
 msgstr ""
 
@@ -2431,7 +2431,7 @@ msgstr ""
 msgid "You need to sign the transaction in your wallet"
 msgstr ""
 
-#: src/components/Liquidity/RemoveLiquidityReceiveDetails.tsx:41
+#: src/components/Liquidity/RemoveLiquidityReceiveDetails.tsx:43
 msgid "You Will Receive:"
 msgstr ""
 
@@ -2487,6 +2487,6 @@ msgstr "यदि इस प्रतिशत से अधिक मूल्�
 #~ msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 #~ msgstr "पुष्टि होने से पहले एक बड़ा, प्रतिकूल मूल्य आंदोलन होने पर आपका लेनदेन वापस हो जाएगा।"
 
-#: src/components/AccountDetails/index.tsx:334
+#: src/components/AccountDetails/index.tsx:332
 msgid "Your transactions will appear here..."
 msgstr ""

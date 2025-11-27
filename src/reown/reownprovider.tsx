@@ -129,8 +129,10 @@ if (allowedChains.length === 0) {
 const networks = allowedChains.map(mapSupportedChainToReownNetwork) as [AppKitNetwork, ...AppKitNetwork[]]
 
 // 6. Create custom connectors - removed walletConnect as AppKit handles it natively
+// Note: injected() connector automatically detects MiniPay (via window.ethereum.isMiniPay)
+// and other injected wallets (MetaMask, Brave, Opera, etc.)
 const connectors = [
-    injected(), // For MetaMask and other injected wallets
+    injected(), // For MetaMask, MiniPay, and other injected wallets (EIP-1193 compatible)
     coinbaseWallet({
         appName: 'GoodProtocolUI',
         appLogoUrl: '',
@@ -154,8 +156,7 @@ createAppKit({
         analytics: true, // Optional - defaults to your Cloud configuration
         socials: APPKIT_SOCIAL_PROVIDER_IDS as any, // Type assertion needed for social providers
     },
-    // Featured wallets to promote in WalletConnect modal (order matters: GoodWallet first, then Valora)
-    featuredWalletIds: APPKIT_FEATURED_WALLET_IDS,
+    featuredWalletIds: [...APPKIT_FEATURED_WALLET_IDS],
 })
 
 export function AppKitProvider({ children }: { children: React.ReactNode }) {
