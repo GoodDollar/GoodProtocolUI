@@ -2,8 +2,8 @@ import { useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
 import { ClaimProvider, ClaimWizard } from '@gooddollar/good-design'
 import { noop } from 'lodash'
-import { useEthers } from '@usedapp/core'
-import { useConnectWallet } from '@web3-onboard/react'
+import { useAppKit } from '@reown/appkit/react'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
 import { Spinner, VStack } from 'native-base'
 import { useFeatureFlagWithPayload } from 'posthog-react-native'
 
@@ -20,14 +20,14 @@ const goodIdExplorerUrls = {
         `https://api.etherscan.io/v2/api?chainid=42220&apikey=${process.env.REACT_APP_ETHERSCAN_KEY}&`,
     FUSE: process.env.REACT_APP_GOODID_FUSE_EXPLORER ?? 'https://explorer.fuse.org/api?&',
     MAINNET: process.env.REACT_APP_GOODID_MAINNET_EXPLORER ?? '',
-    XDC:
-        process.env.REACT_APP_GOODID_XDC_EXPLORER ??
-        `https://api.etherscan.io/v2/api?chainid=50&apikey=${process.env.REACT_APP_ETHERSCAN_KEY}&`,
+    // Using XDC BlocksScan API as it's the official XDC network explorer
+    // Previously used etherscan.io API which doesn't support XDC network properly
+    XDC: process.env.REACT_APP_GOODID_XDC_EXPLORER ?? 'https://xdc.blocksscan.io/api?&',
 }
 
 const ClaimPage = () => {
-    const { account, chainId } = useEthers()
-    const [, connect] = useConnectWallet()
+    const { address: account, chainId } = useConnectionInfo()
+    const { open } = useAppKit()
     const history = useHistory()
     const networkEnv = getNetworkEnv()
     const env = getEnv()
@@ -54,14 +54,13 @@ const ClaimPage = () => {
 
     const handleConnect = useCallback(async () => {
         if (claimEnabled) {
-            const state = await connect()
-
-            return !!state.length
+            await open({ view: 'Connect' })
+            return true
         } else {
             showModal()
         }
         return false
-    }, [connect, claimEnabled])
+    }, [open, claimEnabled])
 
     const onUpgrade = () => history.push('/goodid')
 
@@ -90,7 +89,7 @@ const ClaimPage = () => {
                 >
                     <ClaimWizard
                         account={account ?? ''}
-                        chainId={chainId}
+                        chainId={+(chainId ?? 1)}
                         onExit={noop}
                         isDev={networkEnv === 'development' || whitelist?.includes(account)}
                         withNavBar={false}

@@ -8,13 +8,13 @@ import {
 import { Text, VStack } from 'native-base'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
+import { useAppKitAccount } from '@reown/appkit/react'
 
 import { PageLayout } from 'components/Layout/PageLayout'
-import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import Placeholder from 'components/gd/Placeholder'
 
 const MicroBridge = memo(() => {
-    const { account } = useActiveWeb3React()
+    const { address } = useAppKitAccount()
     return (
         <PageLayout title="Micro Bridge" faqType="bridge">
             <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={2}>
@@ -29,7 +29,7 @@ ecosystems`
             <div className="rounded max-w-3xl min-w-96 w-full mx-auto">
                 <VStack maxWidth="800" minWidth="344" width="100%" alignItems="center" justifyContent="center">
                     <SwitchChainModal>
-                        {account ? (
+                        {address ? (
                             <MicroBridgeController withRelay={false} />
                         ) : (
                             <Placeholder className="mx-4">

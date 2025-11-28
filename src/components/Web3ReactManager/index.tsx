@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useAnalytics } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
-
-import Loader from '../Loader'
-import { useOnboardConnect } from 'hooks/useActiveOnboard'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { useAppKitState } from '@reown/appkit/react'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
+import { useConnect } from 'wagmi'
+import { isMiniPay } from 'utils/minipay'
 
 const MessageWrapper = styled.div`
     display: flex;
@@ -21,10 +21,15 @@ const Message = styled.h2`
 
 export default function Web3ReactManager({ children }: { children: JSX.Element }) {
     const { i18n } = useLingui()
-    const { tried } = useOnboardConnect()
-    const [showLoader, setShowLoader] = useState(false) // handle delayed loader state
-    const { active: networkActive, error: networkError, account } = useActiveWeb3React()
+    // const { tried } = useOnboardConnect()
+    const [, setShowLoader] = useState(false) // handle delayed loader state
+    const { initialized } = useAppKitState()
+    const { address } = useConnectionInfo()
+    const networkError = false
     const { identify } = useAnalytics()
+    const { connect, connectors } = useConnect()
+    const miniPayDetected = isMiniPay()
+    const autoConnectAttempted = useRef(false)
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -36,24 +41,39 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
         }
     }, [])
 
+    // Auto-connect when MiniPay is detected (per MiniPay documentation recommendations)
+    useEffect(() => {
+        if (miniPayDetected && initialized && !address && !autoConnectAttempted.current) {
+            // Find MiniPay connector
+            const miniPayConn = connectors.find((conn) => conn.id === 'minipay')
+
+            if (miniPayConn) {
+                autoConnectAttempted.current = true
+                // Auto-connect to MiniPay when detected
+                // Using a small delay to ensure AppKit is fully initialized
+                const timer = setTimeout(() => {
+                    try {
+                        connect({ connector: miniPayConn })
+                    } catch (error) {
+                        console.warn('Auto-connect to MiniPay failed:', error)
+                        autoConnectAttempted.current = false // Allow retry on error
+                    }
+                }, 1000) // Increased delay to ensure connectors are fully registered
+
+                return () => clearTimeout(timer)
+            }
+        }
+    }, [miniPayDetected, initialized, address, connect, connectors])
+
     useEffect(() => {
         // re-identify analytics when connected wallet changes
-        if (networkActive && account) {
-            identify(account)
+        if (initialized && address) {
+            identify(address)
         }
-    }, [networkActive, account])
-
-    // on page load, do nothing until we've tried to connect a previously connected wallet
-    if (!tried) {
-        return showLoader ? (
-            <MessageWrapper>
-                <Loader />
-            </MessageWrapper>
-        ) : null
-    }
+    }, [initialized, address, identify])
 
     // if the account context isn't active, and there's an error on the network context, it's an irrecoverable error
-    if (!networkActive && networkError) {
+    if (!initialized && networkError) {
         return (
             <MessageWrapper>
                 <Message>

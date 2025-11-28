@@ -4,7 +4,7 @@ import { usePostHog } from 'posthog-react-native'
 import { Spinner } from 'native-base'
 
 import { RedirectHashRoutes } from 'pages/routes/redirects'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { useAppKitNetwork } from '@reown/appkit/react'
 import { CustomLightSpinner } from 'theme'
 import Circle from 'assets/images/blue-loader.svg'
 
@@ -18,6 +18,22 @@ const GoodId = lazy(() => import('./pages/gd/GoodId'))
 const BuyGd = lazy(() => import('./pages/gd/BuyGD'))
 const NewsFeedPage = lazy(() => import('./pages/gd/News'))
 
+// const RoutesWrapper = () => {
+//     const posthog = usePostHog()
+//     const [posthogInitialized, setPosthogInitialized] = useState(false)
+
+//     useEffect(() => {
+//         if (posthog) {
+//             posthog.onFeatureFlags(() => {
+//                 setPosthogInitialized(true)
+//                 return
+//             })
+//         }
+//     }, [posthog])
+
+//     return posthogInitialized ? <Routes /> : <Spinner variant="page-loader" size="lg" />
+// }
+
 const RoutesWrapper = () => {
     const posthog = usePostHog()
     const [posthogInitialized, setPosthogInitialized] = useState(false)
@@ -29,13 +45,20 @@ const RoutesWrapper = () => {
                 return
             })
         }
+
+        // Fallback: if PostHog doesn't initialize within 3 seconds, proceed anyway
+        const timeout = setTimeout(() => {
+            setPosthogInitialized(true)
+        }, 3000)
+
+        return () => clearTimeout(timeout)
     }, [posthog])
 
     return posthogInitialized ? <Routes /> : <Spinner variant="page-loader" size="lg" />
 }
 
 function Routes(): JSX.Element {
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
 
     return (
         <Suspense fallback={<CustomLightSpinner src={Circle} alt="loader" size={'48px'} />}>

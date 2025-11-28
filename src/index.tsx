@@ -24,8 +24,8 @@ import { createGlobalStyle } from 'styled-components'
 import { Web3ContextProvider } from './hooks/useWeb3'
 import { analyticsConfig, appInfo } from 'hooks/useSendAnalyticsData'
 import { HttpsProvider } from 'utils/HttpsProvider'
+import { AppKitProvider } from './reown/reownprovider'
 import { registerServiceWorker } from './serviceWorker'
-import { OnboardProviderWrapper } from 'components/BlockNativeOnboard'
 import { SimpleAppProvider } from 'state/simpleapp/simpleapp'
 import { nbTheme } from './theme/nbtheme'
 import { GoodDappFeatureProvider } from 'hooks/useFeaturesEnabled'
@@ -84,7 +84,7 @@ const ProviderWrapper = ({ children }) => (
             }}
             autocapture={false}
         >
-            <OnboardProviderWrapper>
+            <AppKitProvider>
                 <GoodXProvider
                     nativeBaseProps={{ config: { suppressColorAccessibilityWarning: true }, theme: nbTheme }}
                 >
@@ -94,7 +94,7 @@ const ProviderWrapper = ({ children }) => (
                         </GoodDappFeatureProvider>
                     </Web3ContextProvider>
                 </GoodXProvider>
-            </OnboardProviderWrapper>
+            </AppKitProvider>
         </PostHogProvider>
     </Provider>
 )

@@ -13,12 +13,12 @@ import PercentInputControls from 'components/Withdraw/PercentInputControls'
 import { WithdrawStyled } from 'components/Withdraw/styled'
 import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import useActiveWeb3React from '../../hooks/useActiveWeb3React'
 import { addTransaction } from '../../state/transactions/actions'
 import { getExplorerLink } from '../../utils'
 
 import { LIQUIDITY_PROTOCOL, MyStake, SupportedChainId, useGdContextProvider, withdraw } from '@gooddollar/web3sdk'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
+import { useAppKitNetwork } from '@reown/appkit/react'
 
 function formatNumber(value: number) {
     return Intl.NumberFormat('en-US', { style: 'decimal', maximumFractionDigits: 4 }).format(value)
@@ -43,8 +43,8 @@ const Withdraw = memo(({ token, protocol, open, setOpen, onWithdraw, stake, ...r
     const { web3 } = useGdContextProvider()
     const [percentage, setPercentage] = useState<string>('50')
     const [withdrawAmount, setWithdrawAmount] = useState<number>(totalStake * (Number(percentage) / 100))
-    const { chainId } = useActiveWeb3React()
-    const network = SupportedChainId[chainId]
+    const { chainId } = useAppKitNetwork()
+    const network = SupportedChainId[+(chainId ?? 42220)]
     const [error, setError] = useState<Error>()
     const sendData = useSendAnalyticsData()
 
@@ -84,7 +84,7 @@ const Withdraw = memo(({ token, protocol, open, setOpen, onWithdraw, stake, ...r
                     })
                     dispatch(
                         addTransaction({
-                            chainId: chainId!,
+                            chainId: +(chainId ?? 42220)!,
                             hash: transactionHash,
                             from: from,
                             summary: i18n._(t`Withdrew funds from ${stake.protocol} `),
@@ -193,8 +193,8 @@ const Withdraw = memo(({ token, protocol, open, setOpen, onWithdraw, stake, ...r
                             <a
                                 href={
                                     transactionHash &&
-                                    chainId &&
-                                    getExplorerLink(chainId, transactionHash, 'transaction')
+                                    String(chainId) &&
+                                    getExplorerLink(+(chainId ?? 42220), transactionHash, 'transaction')
                                 }
                                 target="_blank"
                                 rel="noreferrer"
