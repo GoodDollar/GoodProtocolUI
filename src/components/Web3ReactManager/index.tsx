@@ -58,7 +58,7 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
                         console.warn('Auto-connect to MiniPay failed:', error)
                         autoConnectAttempted.current = false // Allow retry on error
                     }
-                }, 500)
+                }, 1000) // Increased delay to ensure connectors are fully registered
 
                 return () => clearTimeout(timer)
             }
