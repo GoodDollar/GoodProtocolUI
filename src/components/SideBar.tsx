@@ -185,8 +185,8 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 subMenuTitle: 'Swap',
                 items: [
                     {
-                        route: '/swap/celoReserve',
-                        text: 'GoodReserve (Celo)',
+                        route: '/swap/goodReserve',
+                        text: 'GoodReserve',
                         show: true,
                     },
                     {

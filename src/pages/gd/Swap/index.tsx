@@ -28,7 +28,7 @@ const SwapExplanationFooter = () => (
 )
 
 const SwapExplanation = ({ swapWidget }) => {
-    if (swapWidget === 'celoReserve') {
+    if (swapWidget === 'goodReserve') {
         return (
             <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={8}>
                 <Text fontFamily="subheading" fontSize="sm" color="goodGrey.600" pt={4} pb={8} textAlign="center">
@@ -80,27 +80,26 @@ const Swap = memo((props: any) => {
     })
 
     const swapComponentMapping = {
-        celoReserve: {
+        goodReserve: {
             component: <SwapMento />,
             enabled: !isProd || reserveEnabled,
-            chainId: SupportedChains.CELO,
+            chainId: [SupportedChains.CELO, SupportedChains.XDC],
         },
         celoUniswap: {
             component: <UniSwap />,
             enabled: !isProd || dexSwapEnabled,
-            chainId: SupportedChains.CELO,
+            chainId: [SupportedChains.CELO],
         },
     }
 
     const chainConfig = swapComponentMapping[swapWidget]
-
     if (!chainConfig) {
         return <></>
     }
 
     return (
         <PageLayout title="Swap" faqType={faqType}>
-            {(chainId as Number) !== chainConfig.chainId ? (
+            {chainConfig.chainId.includes(chainId) === false ? (
                 <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={8}>
                     <Link
                         fontFamily="subheading"
@@ -109,7 +108,11 @@ const Swap = memo((props: any) => {
                         onPress={toggleNetworkModal}
                         _text={{ color: 'gdPrimary' }}
                     >
-                        {i18n._(t`Please switch your network to ${NETWORK_LABEL[chainConfig.chainId]} to Swap.`)}
+                        {i18n._(
+                            t`Please switch your network to ${chainConfig.chainId
+                                .map((_) => NETWORK_LABEL[_])
+                                .join(' or ')} to Swap.`
+                        )}
                     </Link>
                 </VStack>
             ) : (
