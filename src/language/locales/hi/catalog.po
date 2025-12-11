@@ -1452,7 +1452,7 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:263
+#: src/components/AccountDetails/index.tsx:262
 msgid "Account"
 msgstr ""
 
@@ -1523,7 +1523,7 @@ msgid ""
 "Take note of indicators in the widget below for exit contribtution, price slippage and liquidity."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:286
+#: src/components/AccountDetails/index.tsx:285
 msgid "Change"
 msgstr ""
 
@@ -1593,7 +1593,7 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:325
+#: src/components/AccountDetails/index.tsx:324
 msgid "Clear all"
 msgstr ""
 
@@ -1666,7 +1666,7 @@ msgstr ""
 msgid "Copied"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:302
+#: src/components/AccountDetails/index.tsx:301
 msgid "Copy address"
 msgstr ""
 
@@ -1697,7 +1697,7 @@ msgstr ""
 msgid "Deposit overview"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:277
+#: src/components/AccountDetails/index.tsx:276
 msgid "Disconnect"
 msgstr ""
 
@@ -1974,7 +1974,7 @@ msgstr ""
 msgid "PROTOCOL"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:323
+#: src/components/AccountDetails/index.tsx:322
 msgid "Recent Transactions"
 msgstr ""
 
@@ -2303,7 +2303,7 @@ msgstr ""
 msgid "Unsupported network"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:308
+#: src/components/AccountDetails/index.tsx:307
 #: src/components/Popups/TransactionPopup.tsx:48
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:308
 msgid "View on explorer"
@@ -2494,6 +2494,6 @@ msgstr "यदि इस प्रतिशत से अधिक मूल्�
 #~ msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 #~ msgstr "पुष्टि होने से पहले एक बड़ा, प्रतिकूल मूल्य आंदोलन होने पर आपका लेनदेन वापस हो जाएगा।"
 
-#: src/components/AccountDetails/index.tsx:332
+#: src/components/AccountDetails/index.tsx:331
 msgid "Your transactions will appear here..."
 msgstr ""

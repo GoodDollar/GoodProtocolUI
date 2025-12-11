@@ -241,8 +241,7 @@ export default function AccountDetails({
         toggleWalletModal()
         sendData({ event: 'account', action: 'address_disconnect_success', network: network })
         disconnect()
-        void open({ view: 'Connect' })
-    }, [toggleWalletModal, disconnect, open, network, sendData])
+    }, [toggleWalletModal, disconnect, network, sendData])
 
     const clearAllTransactionsCallback = useCallback(() => {
         if (chainId) dispatch(clearAllTransactions({ chainId: getSafeChainId(chainId) }))

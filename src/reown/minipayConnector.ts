@@ -85,9 +85,17 @@ export function miniPayConnector() {
             name: 'MiniPay',
             type: 'injected',
             async connect() {
+                if (typeof window === 'undefined' || !isMiniPay() || !window.ethereum) {
+                    throw new Error('MiniPay is not available in this browser')
+                }
+
                 provider = getMiniPayProvider()
                 if (!provider) {
                     throw new Error('MiniPay provider not found')
+                }
+
+                if (!provider.isMiniPay) {
+                    throw new Error('MiniPay provider not detected')
                 }
 
                 try {
@@ -177,6 +185,9 @@ export function miniPayConnector() {
             },
             onDisconnect() {
                 disconnectHandler()
+            },
+            onConnect(connectInfo: { chainId: string | number }) {
+                // Handler for provider connect events
             },
             async switchChain({ chainId }) {
                 provider = getMiniPayProvider()
