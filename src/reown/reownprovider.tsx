@@ -120,6 +120,7 @@ if (allowedChains.length === 0) {
 const networks = allowedChains.map(mapSupportedChainToReownNetwork) as [AppKitNetwork, ...AppKitNetwork[]]
 
 const baseConnectors = [
+    miniPayConnector(),
     injected(),
     coinbaseWallet({
         appName: 'GoodProtocolUI',

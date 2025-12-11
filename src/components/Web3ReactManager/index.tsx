@@ -30,8 +30,35 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
     const networkError = false
     const { identify } = useAnalytics()
     const { connect, connectors } = useConnect()
-    const miniPayDetected = isMiniPay()
+    const [miniPayDetected, setMiniPayDetected] = useState(() => isMiniPay())
     const autoConnectAttempted = useRef(false)
+
+    useEffect(() => {
+        if (miniPayDetected) {
+            return
+        }
+
+        const detectMiniPay = () => {
+            if (isMiniPay()) {
+                setMiniPayDetected(true)
+            }
+        }
+
+        detectMiniPay()
+
+        if (typeof window === 'undefined') {
+            return
+        }
+
+        const initListener = detectMiniPay as EventListener
+        window.addEventListener('ethereum#initialized', initListener, { once: true })
+        const intervalId = window.setInterval(detectMiniPay, 500)
+
+        return () => {
+            window.removeEventListener('ethereum#initialized', initListener)
+            window.clearInterval(intervalId)
+        }
+    }, [miniPayDetected])
 
     useEffect(() => {
         const timeout = setTimeout(() => {

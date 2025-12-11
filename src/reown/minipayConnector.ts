@@ -1,5 +1,5 @@
 import { createConnector } from 'wagmi'
-import { isMiniPay } from '../utils/minipay'
+import { getMiniPayProvider, waitForMiniPayProvider } from '../utils/minipay'
 
 interface MiniPayProvider {
     isMiniPay: boolean
@@ -7,13 +7,6 @@ interface MiniPayProvider {
     disconnect?: () => Promise<void>
     on?(...args: unknown[]): void
     removeListener?(...args: unknown[]): void
-}
-
-function getMiniPayProvider(): MiniPayProvider | undefined {
-    if (typeof window === 'undefined') return undefined
-    if (!isMiniPay()) return undefined
-    if (!window.ethereum) return undefined
-    return window.ethereum as MiniPayProvider
 }
 
 function handleProviderError(error: unknown): never {
@@ -38,6 +31,14 @@ function parseChainId(chainId: string | number): number {
 }
 
 export function miniPayConnector() {
+    const resolveMiniPayProvider = async (): Promise<MiniPayProvider | undefined> => {
+        const provider = (await waitForMiniPayProvider()) as MiniPayProvider | undefined
+        if (provider?.isMiniPay) {
+            return provider
+        }
+        return undefined
+    }
+
     return createConnector((config) => {
         let provider: MiniPayProvider | undefined
         let cleanup: (() => void) | undefined
@@ -78,11 +79,11 @@ export function miniPayConnector() {
             name: 'MiniPay',
             type: 'injected',
             async connect() {
-                if (typeof window === 'undefined' || !isMiniPay() || !window.ethereum) {
+                if (typeof window === 'undefined') {
                     throw new Error('MiniPay is not available in this browser')
                 }
 
-                provider = getMiniPayProvider()
+                provider = await resolveMiniPayProvider()
                 if (!provider) {
                     throw new Error('MiniPay provider not found')
                 }
@@ -130,7 +131,7 @@ export function miniPayConnector() {
                 provider = undefined
             },
             async getAccounts() {
-                provider = getMiniPayProvider()
+                provider = getMiniPayProvider() as MiniPayProvider | undefined
                 if (!provider) return []
 
                 try {
@@ -143,7 +144,7 @@ export function miniPayConnector() {
                 }
             },
             async getChainId() {
-                provider = getMiniPayProvider()
+                provider = getMiniPayProvider() as MiniPayProvider | undefined
                 if (!provider) {
                     throw new Error('MiniPay provider not available')
                 }
@@ -158,7 +159,7 @@ export function miniPayConnector() {
                 }
             },
             async isAuthorized() {
-                provider = getMiniPayProvider()
+                provider = getMiniPayProvider() as MiniPayProvider | undefined
                 if (!provider) return false
 
                 try {
@@ -181,9 +182,10 @@ export function miniPayConnector() {
             },
             onConnect() {
                 // Handler for provider connect events
+                // console.log('MiniPay connected to chain:', connectInfo.chainId)
             },
             async switchChain({ chainId }) {
-                provider = getMiniPayProvider()
+                provider = getMiniPayProvider() as MiniPayProvider | undefined
                 if (!provider) {
                     throw new Error('MiniPay provider not found')
                 }
