@@ -25,8 +25,7 @@ const metadata = {
     name: 'GoodProtocolUI',
     description: 'Good Protocol UI',
     url: typeof window !== 'undefined' ? window.location.origin : '',
-    icons:
-        typeof window !== 'undefined' ? [`${window.location.origin}/favicon.ico`] : [],
+    icons: typeof window !== 'undefined' ? [`${window.location.origin}/favicon.ico`] : [],
 }
 
 const localFeatureConfig = {
@@ -128,15 +127,7 @@ const baseConnectors = [
     }),
 ]
 
-const getConnectors = () => {
-    const connectors = [...baseConnectors]
-    if (typeof window !== 'undefined' && window.ethereum?.isMiniPay) {
-        connectors.unshift(miniPayConnector())
-    }
-    return connectors
-}
-
-const connectors = getConnectors()
+const connectors = [miniPayConnector(), ...baseConnectors]
 
 const wagmiAdapter = new WagmiAdapter({
     networks,

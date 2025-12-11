@@ -1,19 +1,12 @@
 import { createConnector } from 'wagmi'
 import { isMiniPay } from '../utils/minipay'
 
-interface MiniPayProvider extends EIP1193Provider {
+interface MiniPayProvider {
     isMiniPay: boolean
-    disconnect?: () => Promise<void>
-    on?(event: 'accountsChanged', handler: (accounts: string[]) => void): void
-    on?(event: 'chainChanged', handler: (chainId: string) => void): void
-    on?(event: 'disconnect', handler: () => void): void
-    removeListener?(event: 'accountsChanged', handler: (accounts: string[]) => void): void
-    removeListener?(event: 'chainChanged', handler: (chainId: string) => void): void
-    removeListener?(event: 'disconnect', handler: () => void): void
-}
-
-interface EIP1193Provider {
     request(args: { method: string; params?: unknown[] }): Promise<unknown>
+    disconnect?: () => Promise<void>
+    on?(...args: unknown[]): void
+    removeListener?(...args: unknown[]): void
 }
 
 function getMiniPayProvider(): MiniPayProvider | undefined {
@@ -186,7 +179,7 @@ export function miniPayConnector() {
             onDisconnect() {
                 disconnectHandler()
             },
-            onConnect(connectInfo: { chainId: string | number }) {
+            onConnect() {
                 // Handler for provider connect events
             },
             async switchChain({ chainId }) {
@@ -234,7 +227,9 @@ export function miniPayConnector() {
                 }
             },
             async getProvider() {
-                return Promise.resolve(getMiniPayProvider())
+                const provider = getMiniPayProvider()
+                if (!provider) return undefined
+                return provider as any
             },
         }
     })

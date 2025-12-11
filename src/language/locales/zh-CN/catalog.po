@@ -2888,7 +2888,7 @@ msgstr "祝贺！"
 msgid "Connect a wallet to see your portfolio"
 msgstr ""
 
-#: src/components/BlockNativeOnboard/index.tsx:23
+#: src/components/BlockNativeOnboard/index.tsx:26
 msgid "Connect to a wallet"
 msgstr "连接钱包"
 
