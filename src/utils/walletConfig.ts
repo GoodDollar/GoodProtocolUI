@@ -40,17 +40,8 @@ export const WALLET_CONFIG = {
         },
     },
 
-    // Wallet prioritization as per requirements
-    WALLET_PRIORITY: {
-        walletConnect: ['GoodWallet', 'Valora'],
-        social: ['Google'],
-        injected: ['MetaMask', 'MiniPay'],
-    },
+    CONNECTION_TIMEOUT: 30000,
 
-    // Connection timeout settings
-    CONNECTION_TIMEOUT: 30000, // 30 seconds
-
-    // Error messages
     ERROR_MESSAGES: {
         UNSUPPORTED_CHAIN: 'Unsupported network. Please switch to Celo, Fuse, or Ethereum.',
         CONNECTION_FAILED: 'Failed to connect wallet. Please try again.',

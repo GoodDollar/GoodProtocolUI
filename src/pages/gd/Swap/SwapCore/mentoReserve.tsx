@@ -42,8 +42,9 @@ const MentoSwap = memo(() => {
     })
     // console.log('slippageTollerance -->', {slippageTolerance})
     const { address } = useAppKitAccount()
-    const { chainId } = useAppKitNetwork()
-    const network = SupportedChainId[+(chainId ?? 1)]
+    const { chainId: rawChainId } = useAppKitNetwork()
+    const chainId = typeof rawChainId === 'number' ? rawChainId : Number(rawChainId) || 42220
+    const network = SupportedChainId[chainId]
     const [inputAmount, setInputAmount] = useState('')
     const [outputAmount, setOutputAmount] = useState('')
 
@@ -434,7 +435,7 @@ const MentoSwap = memo(() => {
                     priceImpact: priceImpact ? new Percent((priceImpact * 100).toFixed(), 100) : new Percent(0, 1),
                     inputAmount: CurrencyAmount.fromRawAmount(
                         new Token(
-                            chainId ?? 42220,
+                            chainId,
                             swapPair.input.address,
                             swapPair.input.decimals,
                             swapPair.input.symbol,
@@ -444,7 +445,7 @@ const MentoSwap = memo(() => {
                     ),
                     outputAmount: CurrencyAmount.fromRawAmount(
                         new Token(
-                            chainId ?? 42220,
+                            chainId,
                             swapPair.output.address,
                             swapPair.output.decimals,
                             swapPair.output.symbol,
@@ -454,7 +455,7 @@ const MentoSwap = memo(() => {
                     ),
                     minimumOutputAmount: CurrencyAmount.fromRawAmount(
                         new Token(
-                            chainId ?? 42220,
+                            chainId,
                             swapPair.output.address,
                             swapPair.output.decimals,
                             swapPair.output.symbol,

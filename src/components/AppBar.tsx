@@ -27,6 +27,7 @@ import { ReactComponent as Burger } from '../assets/images/burger.svg'
 import { ReactComponent as X } from '../assets/images/x.svg'
 import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
 import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
+import { isMiniPay } from 'utils/minipay'
 
 const AppBarWrapper = styled.header`
     background: ${({ theme }) => theme.color.secondaryBg};
@@ -189,8 +190,7 @@ function AppBar({ sideBar, walletBalance }): JSX.Element {
     const showPrice = true // useFeatureFlag('show-gd-price')
     const { isConnected } = useAppKitAccount()
 
-    const { ethereum } = window
-    const isMinipay = ethereum?.isMiniPay
+    const isMinipay = isMiniPay()
 
     const [, payload] = useFeatureFlagWithPayload('app-notice')
     const { enabled: appNoticeEnabled, message, color, link } = (payload as any) || {}

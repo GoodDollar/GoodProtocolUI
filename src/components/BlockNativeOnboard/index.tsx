@@ -8,15 +8,8 @@ import { noop } from 'lodash'
 
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 
-/**
- * Just a button to trigger the onboard connect modal.
- * any state updates after succesfully connecting are handled by useOnboardConnect (src/hooks/useActiveOnboard)
- * @returns Connect Button or Empty
- */
-
 export const clearDeeplink = () => {
     const osName = getDevice().os.name
-    // temp solution for where it tries and open a deeplink for desktop app
     if (['Linux', 'Windows', 'macOS', 'iOS'].includes(osName)) {
         AsyncStorage.safeRemove('WALLETCONNECT_DEEPLINK_CHOICE')
     }
@@ -28,7 +21,6 @@ export const OnboardConnectButton: FC = () => {
     const sendData = useSendAnalyticsData()
     const { i18n } = useLingui()
     const buttonText = i18n._(t`Connect to a wallet`)
-    // flag to detect for wallet connected only after we pressed a button
     const connectionStartedRef = useRef(false)
 
     const onWalletConnect = async () => {
@@ -71,5 +63,3 @@ export const OnboardConnectButton: FC = () => {
         />
     )
 }
-
-//

@@ -15,6 +15,7 @@ import usePromise from 'hooks/usePromise'
 import { getScreenWidth } from 'utils/screenSizes'
 import { AdditionalChainId } from '../../constants'
 import useMetaMask from 'hooks/useMetaMask'
+import { isMiniPay } from 'utils/minipay'
 
 //assets
 import { ReactComponent as WalletBalanceIcon } from '../../assets/images/walletBalanceIcon.svg'
@@ -39,7 +40,7 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
     const [imported, setImported] = useState<boolean>(false)
     const { i18n } = useLingui()
     const scrWidth = getScreenWidth()
-    const isMinipay = ethereum?.isMiniPay
+    const isMinipay = isMiniPay()
 
     const importToMetamask = async () => {
         const allTokens: any[] = [

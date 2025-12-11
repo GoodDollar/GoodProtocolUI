@@ -28,6 +28,7 @@ import moment from 'moment'
 
 import { getEnv } from 'utils/env'
 import ClaimFooterCelebration from 'assets/images/claim/claim-footer-celebration.png'
+import { isMiniPay } from 'utils/minipay'
 import { ClaimBalance } from './ClaimBalance'
 
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
@@ -70,8 +71,7 @@ const OldClaim = memo(() => {
     const isSimpleApp = useIsSimpleApp()
     // const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
 
-    const { ethereum } = window
-    const isMinipay = ethereum?.isMiniPay
+    const isMinipay = isMiniPay()
 
     const supportedChainsDisplay = useMemo(() => {
         const chainNames = {

@@ -19,10 +19,12 @@ const Message = styled.h2`
     color: ${({ theme }) => theme.secondary1};
 `
 
+const LOADER_DELAY_MS = 600
+const AUTO_CONNECT_DELAY_MS = 1000
+
 export default function Web3ReactManager({ children }: { children: JSX.Element }) {
     const { i18n } = useLingui()
-    // const { tried } = useOnboardConnect()
-    const [, setShowLoader] = useState(false) // handle delayed loader state
+    const [, setShowLoader] = useState(false)
     const { initialized } = useAppKitState()
     const { address } = useConnectionInfo()
     const networkError = false
@@ -34,34 +36,35 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
     useEffect(() => {
         const timeout = setTimeout(() => {
             setShowLoader(true)
-        }, 600)
+        }, LOADER_DELAY_MS)
 
         return () => {
             clearTimeout(timeout)
         }
     }, [])
 
-    // Auto-connect when MiniPay is detected (per MiniPay documentation recommendations)
     useEffect(() => {
-        if (miniPayDetected && initialized && !address && !autoConnectAttempted.current) {
-            // Find MiniPay connector
-            const miniPayConn = connectors.find((conn) => conn.id === 'minipay')
+        if (!miniPayDetected || !initialized || address || autoConnectAttempted.current) {
+            return
+        }
 
-            if (miniPayConn) {
-                autoConnectAttempted.current = true
-                // Auto-connect to MiniPay when detected
-                // Using a small delay to ensure AppKit is fully initialized
-                const timer = setTimeout(() => {
-                    try {
-                        connect({ connector: miniPayConn })
-                    } catch (error) {
-                        console.warn('Auto-connect to MiniPay failed:', error)
-                        autoConnectAttempted.current = false // Allow retry on error
-                    }
-                }, 1000) // Increased delay to ensure connectors are fully registered
+        const miniPayConnector = connectors.find((conn) => conn.id === 'minipay')
+        if (!miniPayConnector) {
+            return
+        }
 
-                return () => clearTimeout(timer)
+        autoConnectAttempted.current = true
+        const timer = setTimeout(() => {
+            try {
+                connect({ connector: miniPayConnector })
+            } catch (error) {
+                console.warn('Auto-connect to MiniPay failed:', error)
+                autoConnectAttempted.current = false
             }
+        }, AUTO_CONNECT_DELAY_MS)
+
+        return () => {
+            clearTimeout(timer)
         }
     }, [miniPayDetected, initialized, address, connect, connectors])
 

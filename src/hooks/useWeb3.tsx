@@ -10,6 +10,7 @@ import { useAppKitNetwork, useAppKitProvider } from '@reown/appkit/react'
 import type { Provider } from '@reown/appkit/react'
 
 import { getEnv } from 'utils/env'
+import { isMiniPay } from 'utils/minipay'
 
 type NetworkSettings = {
     currentNetwork: string
@@ -52,7 +53,7 @@ export function useNetwork(): NetworkSettings {
     )
 
     useEffect(() => {
-        AsyncStorage.safeSet('GD_RPCS', rpcs) //this is required for sdk v1
+        AsyncStorage.safeSet('GD_RPCS', rpcs)
     }, [])
 
     return { currentNetwork, rpcs }
@@ -62,7 +63,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
     const { rpcs } = useNetwork()
     const { chainId } = useAppKitNetwork()
     const { walletProvider } = useAppKitProvider<Provider>('eip155')
-    const isMiniPay = window?.ethereum?.isMiniPay
+    const isMiniPayWallet = isMiniPay()
     const [mainnetWeb3] = useEnvWeb3(DAO_NETWORK.MAINNET)
 
     const web3 = useMemo(
@@ -76,7 +77,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
 
     if (webprovider) {
         webprovider.send = async (method: string, params: any) => {
-            if (method === 'eth_sendTransaction' && !isMiniPay && chainId && chainId in gasSettings) {
+            if (method === 'eth_sendTransaction' && !isMiniPayWallet && chainId && chainId in gasSettings) {
                 const gasSettingsForChain = gasSettings[Number(chainId)]
                 if (gasSettingsForChain) {
                     if (!params[0].maxFeePerGas && Number(chainId) !== 50) {

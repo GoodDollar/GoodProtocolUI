@@ -23,6 +23,7 @@ import { getSafeChainId } from 'utils/chain'
 import { useApplicationTheme } from 'state/application/hooks'
 import useSendAnalytics from 'hooks/useSendAnalyticsData'
 import { tokens } from './celo-tokenlist.json'
+import { isMiniPay } from 'utils/minipay'
 
 const jsonRpcUrlMap = {
     122: ['https://rpc.fuse.io', 'https://fuse-pokt.nodies.app', 'https://fuse.liquify.com'],
@@ -172,9 +173,7 @@ export const UniSwap = (): JSX.Element => {
         [network]
     )
 
-    const { ethereum } = window
-
-    const isMinipay = ethereum?.isMiniPay
+    const isMinipay = isMiniPay()
 
     return (
         <Center w={'auto'} maxW="550" alignSelf="center">

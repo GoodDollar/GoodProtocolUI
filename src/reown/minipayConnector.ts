@@ -1,98 +1,230 @@
 import { createConnector } from 'wagmi'
 import { isMiniPay } from '../utils/minipay'
 
-/**
- * Custom MiniPay connector for Wagmi
- * Explicitly detects and connects to MiniPay wallet
- * Based on MiniPay documentation: https://docs.minipay.xyz
- */
+interface MiniPayProvider extends EIP1193Provider {
+    isMiniPay: boolean
+    disconnect?: () => Promise<void>
+    on?(event: 'accountsChanged', handler: (accounts: string[]) => void): void
+    on?(event: 'chainChanged', handler: (chainId: string) => void): void
+    on?(event: 'disconnect', handler: () => void): void
+    removeListener?(event: 'accountsChanged', handler: (accounts: string[]) => void): void
+    removeListener?(event: 'chainChanged', handler: (chainId: string) => void): void
+    removeListener?(event: 'disconnect', handler: () => void): void
+}
+
+interface EIP1193Provider {
+    request(args: { method: string; params?: unknown[] }): Promise<unknown>
+}
+
+function getMiniPayProvider(): MiniPayProvider | undefined {
+    if (typeof window === 'undefined') return undefined
+    if (!isMiniPay()) return undefined
+    if (!window.ethereum) return undefined
+    return window.ethereum as MiniPayProvider
+}
+
+function handleProviderError(error: unknown): never {
+    if (error && typeof error === 'object' && 'code' in error) {
+        const errorCode = error.code
+        if (errorCode === 4001) {
+            throw new Error('User rejected the request')
+        }
+        if (errorCode === 4902) {
+            throw new Error('Chain not added to wallet')
+        }
+    }
+    throw error instanceof Error ? error : new Error('Unknown error occurred')
+}
+
+function parseChainId(chainId: string | number): number {
+    if (typeof chainId === 'number') return chainId
+    if (typeof chainId === 'string') {
+        return Number.parseInt(chainId, chainId.startsWith('0x') ? 16 : 10)
+    }
+    throw new Error('Invalid chain ID format')
+}
+
 export function miniPayConnector() {
-    return createConnector((config) => ({
-        id: 'minipay',
-        name: 'MiniPay',
-        type: 'injected',
-        async connect() {
-            const provider = this.getProvider()
-            if (!provider) {
-                throw new Error('MiniPay provider not found')
-            }
+    return createConnector((config) => {
+        let provider: MiniPayProvider | undefined
+        let cleanup: (() => void) | undefined
 
-            // Request account access
-            const accounts = await (provider as any).request({
-                method: 'eth_requestAccounts',
-            })
-
-            const account = accounts[0]
-            if (!account) {
-                throw new Error('No account found')
-            }
-
-            // Get chain ID
-            const chainId = await (provider as any).request({ method: 'eth_chainId' })
-
-            return {
-                accounts: [account as `0x${string}`],
-                chainId: Number(chainId),
-            }
-        },
-        async disconnect() {
-            const provider = this.getProvider()
-            if (provider && typeof provider.disconnect === 'function') {
-                await provider.disconnect()
-            }
-        },
-        async getAccounts() {
-            const provider = this.getProvider()
-            if (!provider) return []
-            const accounts = await (provider as any).request({ method: 'eth_accounts' })
-            return accounts.map((account: string) => account as `0x${string}`)
-        },
-        async getChainId() {
-            const provider = this.getProvider()
-            if (!provider) return config.chains[0].id
-            const chainId = await (provider as any).request({ method: 'eth_chainId' })
-            return Number(chainId)
-        },
-        async isAuthorized() {
-            const provider = this.getProvider()
-            if (!provider) return false
-            const accounts = await (provider as any).request({ method: 'eth_accounts' })
-            return accounts.length > 0
-        },
-        onAccountsChanged(accounts) {
+        const accountsChangedHandler = (accounts: string[]) => {
             if (accounts.length === 0) {
                 config.emitter.emit('disconnect')
             } else {
-                config.emitter.emit('change', { accounts: accounts.map((account: string) => account as `0x${string}`) })
+                config.emitter.emit('change', {
+                    accounts: accounts.map((account) => account as `0x${string}`),
+                })
             }
-        },
-        onChainChanged(chainId) {
-            const id = Number(chainId)
+        }
+
+        const chainChangedHandler = (chainId: string | number) => {
+            const id = parseChainId(chainId)
             config.emitter.emit('change', { chainId: id })
-        },
-        onDisconnect() {
+        }
+
+        const disconnectHandler = () => {
             config.emitter.emit('disconnect')
-        },
-        async switchChain({ chainId }) {
-            const provider = this.getProvider()
-            if (!provider) {
-                throw new Error('MiniPay provider not found')
+        }
+
+        const setupEventListeners = (targetProvider: MiniPayProvider) => {
+            cleanup = () => {
+                targetProvider.removeListener?.('accountsChanged', accountsChangedHandler)
+                targetProvider.removeListener?.('chainChanged', chainChangedHandler)
+                targetProvider.removeListener?.('disconnect', disconnectHandler)
             }
 
-            const id = `0x${chainId.toString(16)}`
-            await (provider as any).request({
-                method: 'wallet_switchEthereumChain',
-                params: [{ chainId: id }],
-            })
+            targetProvider.on?.('accountsChanged', accountsChangedHandler)
+            targetProvider.on?.('chainChanged', chainChangedHandler)
+            targetProvider.on?.('disconnect', disconnectHandler)
+        }
 
-            return config.chains.find((chain) => chain.id === chainId) || config.chains[0]
-        },
-        getProvider() {
-            // Only return provider if MiniPay is detected
-            if (typeof window !== 'undefined' && isMiniPay() && (window as any).ethereum) {
-                return (window as any).ethereum
-            }
-            return undefined
-        },
-    }))
+        return {
+            id: 'minipay',
+            name: 'MiniPay',
+            type: 'injected',
+            async connect() {
+                provider = getMiniPayProvider()
+                if (!provider) {
+                    throw new Error('MiniPay provider not found')
+                }
+
+                try {
+                    const accounts = (await provider.request({
+                        method: 'eth_requestAccounts',
+                    })) as string[]
+
+                    const account = accounts[0]
+                    if (!account) {
+                        throw new Error('No account found')
+                    }
+
+                    const chainId = (await provider.request({
+                        method: 'eth_chainId',
+                    })) as string
+
+                    setupEventListeners(provider)
+
+                    return {
+                        accounts: [account as `0x${string}`],
+                        chainId: parseChainId(chainId),
+                    }
+                } catch (error) {
+                    handleProviderError(error)
+                }
+            },
+            async disconnect() {
+                cleanup?.()
+                cleanup = undefined
+
+                if (provider && typeof provider.disconnect === 'function') {
+                    try {
+                        await provider.disconnect()
+                    } catch (error) {
+                        console.warn('Error disconnecting MiniPay:', error)
+                    }
+                }
+
+                provider = undefined
+            },
+            async getAccounts() {
+                provider = getMiniPayProvider()
+                if (!provider) return []
+
+                try {
+                    const accounts = (await provider.request({
+                        method: 'eth_accounts',
+                    })) as string[]
+                    return accounts.map((account) => account as `0x${string}`)
+                } catch {
+                    return []
+                }
+            },
+            async getChainId() {
+                provider = getMiniPayProvider()
+                if (!provider) {
+                    throw new Error('MiniPay provider not available')
+                }
+
+                try {
+                    const chainId = (await provider.request({
+                        method: 'eth_chainId',
+                    })) as string
+                    return parseChainId(chainId)
+                } catch {
+                    throw new Error('Failed to get chain ID from MiniPay provider')
+                }
+            },
+            async isAuthorized() {
+                provider = getMiniPayProvider()
+                if (!provider) return false
+
+                try {
+                    const accounts = (await provider.request({
+                        method: 'eth_accounts',
+                    })) as string[]
+                    return accounts.length > 0
+                } catch {
+                    return false
+                }
+            },
+            onAccountsChanged(accounts) {
+                accountsChangedHandler(accounts)
+            },
+            onChainChanged(chainId) {
+                chainChangedHandler(chainId)
+            },
+            onDisconnect() {
+                disconnectHandler()
+            },
+            async switchChain({ chainId }) {
+                provider = getMiniPayProvider()
+                if (!provider) {
+                    throw new Error('MiniPay provider not found')
+                }
+
+                const targetChain = config.chains.find((chain) => chain.id === chainId)
+                if (!targetChain) {
+                    throw new Error(`Chain ${chainId} not configured`)
+                }
+
+                const hexChainId = `0x${chainId.toString(16)}`
+
+                try {
+                    await provider.request({
+                        method: 'wallet_switchEthereumChain',
+                        params: [{ chainId: hexChainId }],
+                    })
+                    return targetChain
+                } catch (error) {
+                    if (error && typeof error === 'object' && 'code' in error && error.code === 4902) {
+                        try {
+                            await provider.request({
+                                method: 'wallet_addEthereumChain',
+                                params: [
+                                    {
+                                        chainId: hexChainId,
+                                        chainName: targetChain.name,
+                                        nativeCurrency: targetChain.nativeCurrency,
+                                        rpcUrls: targetChain.rpcUrls.default.http,
+                                        blockExplorerUrls: targetChain.blockExplorers?.default
+                                            ? [targetChain.blockExplorers.default.url]
+                                            : undefined,
+                                    },
+                                ],
+                            })
+                            return targetChain
+                        } catch (addError) {
+                            handleProviderError(addError)
+                        }
+                    }
+                    handleProviderError(error)
+                }
+            },
+            async getProvider() {
+                return Promise.resolve(getMiniPayProvider())
+            },
+        }
+    })
 }

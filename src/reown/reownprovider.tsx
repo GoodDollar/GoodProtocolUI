@@ -10,31 +10,25 @@ import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
 import { injected, coinbaseWallet } from 'wagmi/connectors'
 import { APPKIT_FEATURED_WALLET_IDS, APPKIT_SOCIAL_PROVIDER_IDS } from 'utils/walletConfig'
 import { miniPayConnector } from './minipayConnector'
-import { isMiniPay } from 'utils/minipay'
 import { SupportedChains } from '@gooddollar/web3sdk-v2'
 import { getEnv } from 'utils/env'
 import { sample } from 'lodash'
 
-// 0. Setup queryClient
 const queryClient = new QueryClient()
 
-// 1. Get projectId from https://cloud.reown.com
 const projectId = process.env.REOWN_PROJECT_ID
 if (!projectId) {
     throw new Error('REOWN_PROJECT_ID environment variable is required')
 }
 
-// 2. Create a metadata object - optional
 const metadata = {
     name: 'GoodProtocolUI',
     description: 'Good Protocol UI',
-    url: '', // origin must match your domain & subdomain
-    icons: [''],
+    url: typeof window !== 'undefined' ? window.location.origin : '',
+    icons:
+        typeof window !== 'undefined' ? [`${window.location.origin}/favicon.ico`] : [],
 }
 
-// 3. Calculate allowed networks based on feature flags and environment (same logic as NetworkModal)
-// Using localFeatureConfig directly since we're at module level (matches useFeaturesEnabled.tsx)
-// For now, set networkEnabled to true for all networks (feature flag complexity to be handled in separate PR)
 const localFeatureConfig = {
     networks: {
         [SupportedChains.CELO]: { networkEnabled: true },
@@ -79,7 +73,6 @@ const getAllowedNetworks = (): SupportedChains[] => {
     }
 }
 
-// 4. Map SupportedChains to Reown AppKit networks
 const createXdcNetwork = (): AppKitNetwork => {
     const xdcRpc = sample(process.env.REACT_APP_XDC_RPC?.split(',')) ?? 'https://rpc.xdc.network'
     return defineChain({
@@ -119,33 +112,24 @@ const mapSupportedChainToReownNetwork = (chain: SupportedChains): AppKitNetwork 
     }
 }
 
-// 5. Get allowed networks and map to Reown networks
-// Force CELO to be first in the list (default network)
 const allowedChains = [SupportedChains.CELO, ...getAllowedNetworks().filter((chain) => chain !== SupportedChains.CELO)]
 
-// Ensure at least one network is available (Reown requires non-empty array)
 if (allowedChains.length === 0) {
     throw new Error('No networks enabled. At least one network must be enabled.')
 }
 
 const networks = allowedChains.map(mapSupportedChainToReownNetwork) as [AppKitNetwork, ...AppKitNetwork[]]
 
-// 6. Create custom connectors - removed walletConnect as AppKit handles it natively
-// Conditionally include MiniPay connector only when MiniPay is detected to avoid "connector not found" errors
 const baseConnectors = [
-    injected(), // For MetaMask and other injected wallets (EIP-1193 compatible)
+    injected(),
     coinbaseWallet({
         appName: 'GoodProtocolUI',
         appLogoUrl: '',
     }),
 ]
 
-// Only include MiniPay connector if MiniPay is actually detected
-// This prevents AppKit from trying to use a connector that doesn't have a provider
-const connectors =
-    typeof window !== 'undefined' && isMiniPay() ? [miniPayConnector(), ...baseConnectors] : baseConnectors
+const connectors = [miniPayConnector(), ...baseConnectors]
 
-// 7. Create Wagmi Adapter with connectors
 const wagmiAdapter = new WagmiAdapter({
     networks,
     projectId,
@@ -159,8 +143,8 @@ createAppKit({
     projectId,
     metadata,
     features: {
-        analytics: true, // Optional - defaults to your Cloud configuration
-        socials: APPKIT_SOCIAL_PROVIDER_IDS as any, // Type assertion needed for social providers
+        analytics: true,
+        socials: APPKIT_SOCIAL_PROVIDER_IDS as any,
     },
     featuredWalletIds: [...APPKIT_FEATURED_WALLET_IDS],
 })
