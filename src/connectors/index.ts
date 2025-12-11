@@ -51,7 +51,7 @@ export const connectOptions = {
             id: '0x32',
             token: 'XDC',
             label: 'XDC',
-            rpcUrl: sample(process.env.REACT_APP_XDC_RPC?.split(',')) ?? 'https://rpc.xdc.network',
+            rpcUrl: sample(process.env.REACT_APP_XDC_RPC?.split(',')) ?? 'https://rpc.xinfin.network',
         },
     ],
     appMetadata: {

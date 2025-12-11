@@ -23,12 +23,12 @@ msgid ""
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/pages/gd/Portfolio/index.tsx:398
+#: src/pages/gd/Portfolio/index.tsx:397
 msgid "Stake Positions"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/pages/gd/Portfolio/index.tsx:445
+#: src/pages/gd/Portfolio/index.tsx:444
 msgid "Savings"
 msgstr ""
 
@@ -2665,13 +2665,13 @@ msgstr ""
 #~ msgid "• Added by user"
 #~ msgstr "• Added by user"
 
-#: src/components/Savings/SavingsModal/index.tsx:281
+#: src/components/Savings/SavingsModal/index.tsx:280
+#: src/components/Savings/SavingsModal/index.tsx:282
 #: src/components/Savings/SavingsModal/index.tsx:283
-#: src/components/Savings/SavingsModal/index.tsx:284
 msgid "{0}"
 msgstr ""
 
-#: src/components/Savings/SavingsModal/index.tsx:129
+#: src/components/Savings/SavingsModal/index.tsx:128
 msgid "{amount} {0}"
 msgstr ""
 
@@ -2697,11 +2697,11 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:263
+#: src/components/AccountDetails/index.tsx:253
 msgid "Account"
 msgstr "帐户"
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:312
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:311
 msgid "amount"
 msgstr "数量"
 
@@ -2709,27 +2709,27 @@ msgstr "数量"
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:394
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:402
 msgid "Approve"
 msgstr "批准"
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:306
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:305
 msgid "APPROVE"
 msgstr "批准"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:112
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:121
 msgid "Approve transaction failed, please try again."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:393
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:401
 msgid "Approved"
 msgstr "已批准"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:391
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:399
 msgid "Approving"
 msgstr "批准中"
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:303
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:302
 msgid "APPROVING"
 msgstr "批准"
 
@@ -2737,7 +2737,7 @@ msgstr "批准"
 msgid "APY"
 msgstr ""
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:225
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:224
 msgid "Awesome!"
 msgstr ""
 
@@ -2751,7 +2751,7 @@ msgstr "回到投资组合"
 msgid "Balance"
 msgstr "余额"
 
-#: src/components/Blocklist/index.tsx:15
+#: src/components/Blocklist/index.tsx:12
 msgid "Blocked address"
 msgstr "被封锁的地址"
 
@@ -2768,7 +2768,7 @@ msgid ""
 "Take note of indicators in the widget below for exit contribtution, price slippage and liquidity."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:286
+#: src/components/AccountDetails/index.tsx:276
 msgid "Change"
 msgstr "改变"
 
@@ -2780,7 +2780,7 @@ msgstr ""
 msgid "Claim All"
 msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:379
+#: src/pages/gd/Portfolio/index.tsx:378
 msgid "Claim G$ rewards"
 msgstr "索赔g $奖励"
 
@@ -2788,7 +2788,7 @@ msgstr "索赔g $奖励"
 msgid "Claim GOOD"
 msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:390
+#: src/pages/gd/Portfolio/index.tsx:389
 msgid "Claim GOOD rewards"
 msgstr ""
 
@@ -2803,7 +2803,7 @@ msgstr ""
 msgid "Claim Rewards"
 msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:344
+#: src/pages/gd/Portfolio/index.tsx:343
 msgid "Claimable"
 msgstr "4."
 
@@ -2838,7 +2838,7 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:325
+#: src/components/AccountDetails/index.tsx:315
 msgid "Clear all"
 msgstr "清除所有"
 
@@ -2850,7 +2850,7 @@ msgstr "清除所有"
 msgid "Click here to learn more about GoodDollar liquidity, including how to provide liquidity."
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:369
+#: src/pages/gd/Claim/OldClaim.tsx:372
 msgid "Click on the Claim button below and you will be switched over the first available network to collect your G$'s."
 msgstr ""
 
@@ -2862,7 +2862,7 @@ msgstr "关闭"
 #~ msgid "Collect G$"
 #~ msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:382
+#: src/pages/gd/Claim/OldClaim.tsx:385
 msgid "Collect G$ on {network}"
 msgstr ""
 
@@ -2879,24 +2879,24 @@ msgid "Confirm this transaction in your wallet"
 msgstr "在钱包中确认此事务"
 
 #: src/components/WithdrawRewards/index.tsx:123
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:227
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:226
 msgid "Congratulations!"
 msgstr "祝贺！"
 
 #: src/pages/gd/MicroBridge/index.tsx:36
-#: src/pages/gd/Portfolio/index.tsx:459
+#: src/pages/gd/Portfolio/index.tsx:458
 msgid "Connect a wallet to see your portfolio"
 msgstr ""
 
-#: src/components/BlockNativeOnboard/index.tsx:30
+#: src/components/BlockNativeOnboard/index.tsx:32
 msgid "Connect to a wallet"
 msgstr "连接钱包"
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:305
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:304
 msgid "Connect wallet"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:232
+#: src/components/AccountDetails/index.tsx:221
 msgid "Connected with"
 msgstr "与"
 
@@ -2911,7 +2911,7 @@ msgstr ""
 msgid "Copied"
 msgstr "已复制"
 
-#: src/components/AccountDetails/index.tsx:302
+#: src/components/AccountDetails/index.tsx:292
 msgid "Copy address"
 msgstr "复制地址"
 
@@ -2928,7 +2928,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/Savings/SavingsCard/index.tsx:67
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:372
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:371
 msgid "DEPOSIT"
 msgstr "订金"
 
@@ -2938,11 +2938,11 @@ msgstr "订金"
 msgid "Deposit G$"
 msgstr ""
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:223
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:222
 msgid "Deposit overview"
 msgstr "存款概述"
 
-#: src/components/AccountDetails/index.tsx:277
+#: src/components/AccountDetails/index.tsx:267
 msgid "Disconnect"
 msgstr ""
 
@@ -2958,7 +2958,7 @@ msgstr ""
 msgid "failed to load"
 msgstr "加载失败"
 
-#: src/pages/gd/Stake/Savings/index.tsx:120
+#: src/pages/gd/Stake/Savings/index.tsx:119
 msgid "Fixed Apy"
 msgstr ""
 
@@ -2987,7 +2987,7 @@ msgstr ""
 #~ msgid "GDX is a token earned by directly buying G$ from the Reserve. Members with GDX do not pay the contribution exit."
 #~ msgstr ""
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:412
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:411
 msgid "Go to Portfolio"
 msgstr "去投资组合"
 
@@ -3019,7 +3019,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:392
+#: src/pages/gd/Claim/OldClaim.tsx:395
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -3040,7 +3040,7 @@ msgstr ""
 msgid "Help & Documentation"
 msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:334
+#: src/pages/gd/Portfolio/index.tsx:333
 msgid "Holding"
 msgstr "保持"
 
@@ -3048,7 +3048,7 @@ msgstr "保持"
 #~ msgid "How does it work?"
 #~ msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:237
+#: src/pages/gd/Portfolio/index.tsx:236
 msgid "How many GOOD tokens you are accumulating by this stake position."
 msgstr ""
 
@@ -3060,11 +3060,11 @@ msgstr ""
 msgid "How much tokens your deposits have accumulated so far."
 msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:227
+#: src/pages/gd/Portfolio/index.tsx:226
 msgid "How much value your stake has accumulated so far."
 msgstr "到目前为止，您的股权累计有多大价值。"
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:234
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:233
 msgid "How much would you like to deposit?"
 msgstr "你想存入多少钱？"
 
@@ -3121,19 +3121,20 @@ msgstr "分钟"
 #~ msgid "Multichain Bridge"
 #~ msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:230
+#: src/pages/gd/Portfolio/index.tsx:229
 msgid "MULTIPLIER"
 msgstr "乘数"
 
-#: src/pages/gd/Portfolio/index.tsx:300
+#: src/pages/gd/Portfolio/index.tsx:299
 msgid "My Stake"
 msgstr "我的股份"
 
-#: src/components/NetworkModal/index.tsx:154
+#: src/components/NetworkModal/index.tsx:152
+#: src/components/NetworkModal/index.tsx:201
 msgid "network"
 msgstr "网络"
 
-#: src/pages/gd/Stake/Savings/index.tsx:115
+#: src/pages/gd/Stake/Savings/index.tsx:114
 msgid "Network"
 msgstr ""
 
@@ -3155,7 +3156,8 @@ msgstr "下个月："
 msgid "No data."
 msgstr "没有数据。"
 
-#: src/components/NetworkModal/index.tsx:153
+#: src/components/NetworkModal/index.tsx:151
+#: src/components/NetworkModal/index.tsx:200
 msgid "on the"
 msgstr "在这一点"
 
@@ -3165,11 +3167,11 @@ msgstr "在这一点"
 #~ "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
 #~ msgstr ""
 
-#: src/components/Web3ReactManager/index.tsx:81
+#: src/components/Web3ReactManager/index.tsx:61
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "糟糕！出现未知错误。请刷新页面，或从其他浏览器或设备访问"
 
-#: src/components/AppBar.tsx:342
+#: src/components/AppBar.tsx:340
 msgid "Open main menu"
 msgstr "打开主菜单"
 
@@ -3177,7 +3179,7 @@ msgstr "打开主菜单"
 msgid "Output is estimated. You will receive at least {minimumReceived} or the transaction will revert"
 msgstr ""
 
-#: src/components/Web3Status/index.tsx:57
+#: src/components/Web3Status/index.tsx:56
 msgid "Pending"
 msgstr "处理中"
 
@@ -3210,32 +3212,32 @@ msgstr "价格影响"
 
 #: src/components/Withdraw/index.tsx:146
 #: src/pages/gd/Stake/index.tsx:73
-#: src/pages/gd/Stake/Savings/index.tsx:110
+#: src/pages/gd/Stake/Savings/index.tsx:109
 msgid "Protocol"
 msgstr "协议"
 
 #: src/components/Savings/SavingsCard/index.tsx:57
-#: src/pages/gd/Portfolio/index.tsx:218
+#: src/pages/gd/Portfolio/index.tsx:217
 msgid "PROTOCOL"
 msgstr "协议"
 
-#: src/components/AccountDetails/index.tsx:323
+#: src/components/AccountDetails/index.tsx:313
 msgid "Recent Transactions"
 msgstr "最近的交易"
 
-#: src/pages/gd/Portfolio/index.tsx:344
+#: src/pages/gd/Portfolio/index.tsx:343
 msgid "rewards"
 msgstr "奖励"
 
-#: src/pages/gd/Portfolio/index.tsx:306
-#: src/pages/gd/Portfolio/index.tsx:317
-#: src/pages/gd/Portfolio/index.tsx:348
-#: src/pages/gd/Portfolio/index.tsx:359
+#: src/pages/gd/Portfolio/index.tsx:305
+#: src/pages/gd/Portfolio/index.tsx:316
+#: src/pages/gd/Portfolio/index.tsx:347
+#: src/pages/gd/Portfolio/index.tsx:358
 msgid "Rewards"
 msgstr "奖励"
 
-#: src/pages/gd/Portfolio/index.tsx:226
-#: src/pages/gd/Portfolio/index.tsx:236
+#: src/pages/gd/Portfolio/index.tsx:225
+#: src/pages/gd/Portfolio/index.tsx:235
 msgid "REWARDS"
 msgstr "奖励"
 
@@ -3254,7 +3256,7 @@ msgstr "路由经过这些代币将给您的交易带来最好的价格。"
 #~ msgstr ""
 
 #: src/components/Savings/SavingsCard/SavingsCardRow/index.tsx:36
-#: src/pages/gd/Stake/Savings/index.tsx:152
+#: src/pages/gd/Stake/Savings/index.tsx:151
 msgid "Savings"
 msgstr ""
 
@@ -3269,12 +3271,12 @@ msgstr ""
 msgid "Search name or paste the address"
 msgstr "搜索名称或粘贴地址"
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:415
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:414
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:328
 msgid "Share with friends"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:357
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:365
 #: src/pages/gd/Swap/SwapSettings/index.tsx:80
 msgid "Slippage Tolerance"
 msgstr "可容忍滑点"
@@ -3294,23 +3296,23 @@ msgstr ""
 msgid "Stake"
 msgstr "质押"
 
-#: src/pages/gd/Portfolio/index.tsx:222
+#: src/pages/gd/Portfolio/index.tsx:221
 msgid "STAKE"
 msgstr "赌注"
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:362
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:361
 msgid "Staked {0} at {1}"
 msgstr "Staked {0}在{1}"
 
-#: src/pages/gd/Portfolio/index.tsx:330
+#: src/pages/gd/Portfolio/index.tsx:329
 msgid "Staking"
 msgstr "st"
 
-#: src/pages/gd/Portfolio/index.tsx:210
+#: src/pages/gd/Portfolio/index.tsx:209
 msgid "Staking could be of two types: UBI for funds staked on the GoodDollar trust for the generation of new G$ for universal income distribution, or Governance (to be enabled) for staking G$s for GOOD Rewards."
 msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:232
+#: src/pages/gd/Portfolio/index.tsx:231
 msgid "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can be rewarded with more G$ every day!"
 msgstr "从1.0开始，您的乘数将增加到2.0，在一个月的绑定到信任后，您可以每天更多G $奖励！"
 
@@ -3324,7 +3326,7 @@ msgstr "成功！"
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:403
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:411
 msgid "Swap"
 msgstr "兑换"
 
@@ -3332,15 +3334,15 @@ msgstr "兑换"
 msgid "Swap Completed"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:330
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:338
 msgid "Swap from"
 msgstr "换从"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:344
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:352
 msgid "Swap to"
 msgstr "交换到"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:106
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:115
 msgid "Swap transaction failed, please try again."
 msgstr ""
 
@@ -3371,7 +3373,7 @@ msgstr ""
 msgid "The change from the market price to the actual price you are paying."
 msgstr ""
 
-#: src/pages/gd/Stake/Savings/index.tsx:121
+#: src/pages/gd/Stake/Savings/index.tsx:120
 msgid "The fixed annual interest."
 msgstr ""
 
@@ -3382,12 +3384,12 @@ msgstr ""
 #~ "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
 #~ msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:246
-msgid ""
-"The GoodReserve is a Bancor-V1 Automated Market Maker (AMM) that operates on Celo.\n"
-"This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
-"Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
-msgstr ""
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:245
+#~ msgid ""
+#~ "The GoodReserve is a Bancor-V1 Automated Market Maker (AMM) that operates on Celo.\n"
+#~ "This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
+#~ "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
+#~ msgstr ""
 
 #: src/pages/gd/Swap/SwapCore/index.tsx:255
 #~ msgid ""
@@ -3395,6 +3397,13 @@ msgstr ""
 #~ "This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
 #~ "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
 #~ msgstr ""
+
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:254
+msgid ""
+"The GoodReserve is an Automated Market Maker (AMM) that operates on Celo and XDC.\n"
+"This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
+"Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
+msgstr ""
 
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:240
 #: src/pages/gd/Swap/SwapDetails/index.tsx:51
@@ -3431,7 +3440,7 @@ msgid "This is the annual percentage of UBI your stake will create."
 msgstr ""
 
 #: src/components/Savings/SavingsCard/index.tsx:58
-#: src/pages/gd/Portfolio/index.tsx:219
+#: src/pages/gd/Portfolio/index.tsx:218
 msgid "This is the protocol that the token is staked to."
 msgstr "这是令牌赌注的协议。"
 
@@ -3444,11 +3453,11 @@ msgid "This is the token that is currently available to stake to the Fund."
 msgstr ""
 
 #: src/components/Savings/SavingsCard/index.tsx:53
-#: src/pages/gd/Portfolio/index.tsx:215
+#: src/pages/gd/Portfolio/index.tsx:214
 msgid "This is the token that is currently being staked."
 msgstr "这是目前正在赌注的令牌。"
 
-#: src/pages/gd/Stake/Savings/index.tsx:106
+#: src/pages/gd/Stake/Savings/index.tsx:105
 msgid "This is the token that you can deposit into the savings contract."
 msgstr ""
 
@@ -3465,20 +3474,20 @@ msgstr "这个月"
 
 #: src/components/Withdraw/index.tsx:142
 #: src/pages/gd/Stake/index.tsx:69
-#: src/pages/gd/Stake/Savings/index.tsx:105
+#: src/pages/gd/Stake/Savings/index.tsx:104
 msgid "Token"
 msgstr "代币"
 
 #: src/components/Savings/SavingsCard/index.tsx:52
-#: src/pages/gd/Portfolio/index.tsx:214
+#: src/pages/gd/Portfolio/index.tsx:213
 msgid "TOKEN"
 msgstr "令牌"
 
-#: src/pages/gd/Portfolio/index.tsx:223
+#: src/pages/gd/Portfolio/index.tsx:222
 msgid "Total amount on value staked."
 msgstr "价值总额托出来。"
 
-#: src/pages/gd/Stake/Savings/index.tsx:126
+#: src/pages/gd/Stake/Savings/index.tsx:125
 msgid "Total currently saved."
 msgstr ""
 
@@ -3486,11 +3495,11 @@ msgstr ""
 msgid "Total Rewards"
 msgstr ""
 
-#: src/pages/gd/Stake/Savings/index.tsx:131
+#: src/pages/gd/Stake/Savings/index.tsx:130
 msgid "Total rewards claimed."
 msgstr ""
 
-#: src/pages/gd/Stake/Savings/index.tsx:130
+#: src/pages/gd/Stake/Savings/index.tsx:129
 msgid "Total Rewards Paid"
 msgstr ""
 
@@ -3498,7 +3507,7 @@ msgstr ""
 msgid "Total stake"
 msgstr "总股份"
 
-#: src/pages/gd/Stake/Savings/index.tsx:125
+#: src/pages/gd/Stake/Savings/index.tsx:124
 msgid "Total Staked"
 msgstr ""
 
@@ -3506,7 +3515,7 @@ msgstr ""
 msgid "Transaction deadline"
 msgstr "交易期限"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:140
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:148
 msgid "Transaction failed, please try again"
 msgstr ""
 
@@ -3525,7 +3534,7 @@ msgid "Transaction was sent to the blockchain"
 msgstr "交易被发送到区块链"
 
 #: src/components/Savings/SavingsCard/index.tsx:47
-#: src/pages/gd/Portfolio/index.tsx:208
+#: src/pages/gd/Portfolio/index.tsx:207
 msgid "TYPE"
 msgstr ""
 
@@ -3537,12 +3546,12 @@ msgstr ""
 msgid "Uniswap (widget)"
 msgstr ""
 
-#: src/components/Web3Network/index.tsx:73
+#: src/components/Web3Network/index.tsx:69
 msgid "Unsupported network"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:308
-#: src/components/Popups/TransactionPopup.tsx:48
+#: src/components/AccountDetails/index.tsx:298
+#: src/components/Popups/TransactionPopup.tsx:46
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:308
 msgid "View on explorer"
 msgstr "在浏览器查看"
@@ -3579,7 +3588,8 @@ msgstr "等待确认中"
 msgid "Wallet balance"
 msgstr "钱包平衡"
 
-#: src/components/NetworkModal/index.tsx:133
+#: src/components/NetworkModal/index.tsx:131
+#: src/components/NetworkModal/index.tsx:180
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3638,15 +3648,16 @@ msgstr "退出{0}的资金"
 msgid "Xswap (XDC)"
 msgstr ""
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:390
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:389
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "您正在为世界各地的数千人创建UBI。"
 
-#: src/components/NetworkModal/index.tsx:149
+#: src/components/NetworkModal/index.tsx:147
+#: src/components/NetworkModal/index.tsx:196
 msgid "You are currently browsing"
 msgstr "您目前正在浏览"
 
-#: src/pages/gd/Claim/OldClaim.tsx:358
+#: src/pages/gd/Claim/OldClaim.tsx:361
 msgid "You can collect G$ on {supportedChainsDisplay} networks."
 msgstr ""
 
@@ -3654,7 +3665,7 @@ msgstr ""
 #~ msgid "You can collect G$ on {supportedChainsDisplay}."
 #~ msgstr ""
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:381
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:380
 msgid ""
 "You have just staked your G$s towards our GoodDAO,\n"
 "this action is gonna reward you with GOOD governance tokens,\n"
@@ -3672,23 +3683,23 @@ msgid "You just used your crypto for good to help fund crypto UBI for all with G
 msgstr ""
 
 #: src/components/WithdrawRewards/index.tsx:115
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:422
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:421
 msgid "You need to sign the transaction in your wallet"
 msgstr "您需要在钱包中签署交易"
 
-#: src/components/Liquidity/RemoveLiquidityReceiveDetails.tsx:43
+#: src/components/Liquidity/RemoveLiquidityReceiveDetails.tsx:39
 msgid "You Will Receive:"
 msgstr "您将收到："
 
-#: src/components/Savings/SavingsModal/index.tsx:295
+#: src/components/Savings/SavingsModal/index.tsx:294
 msgid "Your {type} transaction has been confirmed!"
 msgstr ""
 
-#: src/pages/gd/Stake/Savings/index.tsx:116
+#: src/pages/gd/Stake/Savings/index.tsx:115
 msgid "Your current network."
 msgstr ""
 
-#: src/pages/gd/Stake/Savings/index.tsx:111
+#: src/pages/gd/Stake/Savings/index.tsx:110
 msgid "Your current savings balance."
 msgstr ""
 
@@ -3700,11 +3711,11 @@ msgstr "您在流动性池的占比"
 msgid "Your Pool Tokens"
 msgstr "您池子里的代币"
 
-#: src/pages/gd/Portfolio/index.tsx:325
+#: src/pages/gd/Portfolio/index.tsx:324
 msgid "Your social contribution from:"
 msgstr "您的社会贡献："
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:388
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:387
 msgid ""
 "Your staking transaction which will generate UBI for thousands of people around\n"
 "the world has just been broadcasted to the network."
@@ -3732,6 +3743,6 @@ msgstr "如果价格的不利变化超过这个百分比，您的交易将被退
 #~ msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 #~ msgstr "如果交易在确认之前出现大的不利价格变动，则交易将恢复。"
 
-#: src/components/AccountDetails/index.tsx:332
+#: src/components/AccountDetails/index.tsx:322
 msgid "Your transactions will appear here..."
 msgstr "您的交易将出现在这里......"

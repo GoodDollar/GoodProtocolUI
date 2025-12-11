@@ -3,8 +3,7 @@ name: DeployQA
 on:
     push:
         branches: [master, staging]
-    pull_request:
-        # types: [opened, synchronize, edited, ready_for_review]
+    pull_request_target:
         branches:
             - master
     workflow_dispatch:
