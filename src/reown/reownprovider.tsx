@@ -128,7 +128,7 @@ const baseConnectors = [
     }),
 ]
 
-const connectors = [miniPayConnector(), ...baseConnectors]
+const connectors = [...baseConnectors]
 
 const wagmiAdapter = new WagmiAdapter({
     networks,
