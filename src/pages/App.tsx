@@ -21,6 +21,7 @@ import WalletChat from '../components/WalletChat'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 import MainPageContainer from 'components/Layout/MainPageContainer'
 import { useFeatureFlag } from 'posthog-react-native'
+import { isMiniPay } from 'utils/minipay'
 
 export const Beta = styled.div`
     font-style: normal;
@@ -97,7 +98,7 @@ function App(): JSX.Element {
     const [preservedSource, setPreservedSource] = useState('')
     const sendData = useSendAnalyticsData()
 
-    const isMinipay = window?.ethereum?.isMiniPay
+    const isMinipay = isMiniPay()
     const { open, url, onClose } = useRedirectNotice()
     const { isDesktopView } = useScreenSize()
     const walletChatEnabled = useFeatureFlag('wallet-chat')

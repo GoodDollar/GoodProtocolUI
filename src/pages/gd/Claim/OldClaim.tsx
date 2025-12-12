@@ -12,7 +12,7 @@ import {
     ClaimSuccessModal,
 } from '@gooddollar/good-design'
 import { Box, Center, Text, useBreakpointValue } from 'native-base'
-import { useConnectWallet } from '@web3-onboard/react'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
 import {
     useClaim,
     SupportedV2Networks,
@@ -20,6 +20,7 @@ import {
     submitReferral,
     AsyncStorage,
 } from '@gooddollar/web3sdk-v2'
+import { useAppKit } from '@reown/appkit/react'
 import { QueryParams } from '@usedapp/core'
 import { noop } from 'lodash'
 // import { useFeatureFlagWithPayload } from 'posthog-react-native'
@@ -27,8 +28,8 @@ import moment from 'moment'
 
 import { getEnv } from 'utils/env'
 import ClaimFooterCelebration from 'assets/images/claim/claim-footer-celebration.png'
+import { isMiniPay } from 'utils/minipay'
 import { ClaimBalance } from './ClaimBalance'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { NewsFeedWidget, NewsFeedWrapper } from '../../../components/NewsFeed'
@@ -52,8 +53,8 @@ const OldClaim = memo(() => {
     })
 
     const [claimed, setClaimed] = useState<boolean | undefined>(undefined)
-    const [, connect] = useConnectWallet()
-    const { account, chainId } = useActiveWeb3React()
+    const { address, chainId } = useConnectionInfo()
+    const { open } = useAppKit()
     const network = SupportedV2Networks[chainId]
     const sendData = useSendAnalyticsData()
     // todo: fix UI for displaying claiming disabled modal
@@ -70,8 +71,7 @@ const OldClaim = memo(() => {
     const isSimpleApp = useIsSimpleApp()
     // const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
 
-    const { ethereum } = window
-    const isMinipay = ethereum?.isMiniPay
+    const isMinipay = isMiniPay()
 
     const supportedChainsDisplay = useMemo(() => {
         const chainNames = {
@@ -156,7 +156,7 @@ const OldClaim = memo(() => {
             if (!isDivviDone && chainId === 42220) {
                 void submitReferral({ txHash: claim.transactionHash, chainId })
                     .then(async () => {
-                        await AsyncStorage.setItem(`GD_divvi_${account}`, 'true')
+                        await AsyncStorage.setItem(`GD_divvi_${address}`, 'true')
                     })
                     .catch((e) => console.error('divvi failed', { e }))
             }
@@ -172,15 +172,12 @@ const OldClaim = memo(() => {
     }, [send, network, sendData, activeChainFeatures, isSimpleApp])
 
     const handleConnect = useCallback(async () => {
-        if (activeChainFeatures['claimEnabled'] || !isProd) {
-            const state = await connect()
-
-            return !!state.length
-        } else {
-            // showModal()
+        if (!address) {
+            await open({ view: 'Connect' })
+            return false // Return false so button resets when modal is dismissed
         }
-        return false
-    }, [connect, activeChainFeatures])
+        return true
+    }, [address, open])
 
     const mainView = useBreakpointValue({
         base: {
@@ -405,9 +402,8 @@ Learn how here`,
                                         claimed={claimed}
                                         claiming={state}
                                         handleConnect={handleConnect}
-                                        chainId={chainId}
+                                        chainId={+(chainId ?? 42220)}
                                         onEvent={handleEvents}
-                                        supportedChains={supportedChains}
                                     />
                                     {isHoliday ? (
                                         <Center maxW="390" width="100%" mb={8}>

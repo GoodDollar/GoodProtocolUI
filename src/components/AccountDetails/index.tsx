@@ -3,16 +3,17 @@ import { useLingui } from '@lingui/react'
 import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { useConnectWallet } from '@web3-onboard/react'
+import { useAppKit } from '@reown/appkit/react'
 import { useRedirectNotice } from '@gooddollar/good-design'
+import { isMiniPay } from 'utils/minipay'
 
 import { ReactComponent as Close } from '../../assets/images/x.svg'
-import { WalletLabels } from '../../hooks/useActiveOnboard'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { AppDispatch } from '../../state'
 import { clearAllTransactions } from '../../state/transactions/actions'
 import { ExternalLink } from 'theme'
 import { getExplorerLink, shortenAddress } from '../../utils'
+import { getSafeChainId } from 'utils/chain'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
 import { ButtonOutlined } from '../gd/Button'
 import Title from '../gd/Title'
 import { AutoRow } from '../Row'
@@ -21,6 +22,7 @@ import Transaction from './Transaction'
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 
 import { getEnv } from 'utils/env'
+import { useDisconnect } from 'wagmi'
 
 const UpperSection = styled.div`
     position: relative;
@@ -209,34 +211,40 @@ export default function AccountDetails({
     ENSName,
 }: AccountDetailsProps): any {
     const { i18n } = useLingui()
-    const { chainId, account } = useActiveWeb3React()
     const dispatch = useDispatch<AppDispatch>()
     const network = getEnv()
-    //eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
+
+    const { address, chainId, walletInfo } = useConnectionInfo()
+
+    const { open } = useAppKit()
+    const { disconnect } = useDisconnect()
+
+    // Connection management handled by AppKit modal and wagmi disconnect
     const sendData = useSendAnalyticsData()
     const { goToExternal } = useRedirectNotice()
 
+    // walletInfo provided by useConnectionInfo
+
+    const miniPay = isMiniPay()
+
     function formatConnectorName() {
-        return `${i18n._(t`Connected with`)} ${wallet?.label}`
+        const name = miniPay ? 'MiniPay' : walletInfo?.name ?? ''
+        return `${i18n._(t`Connected with`)} ${name}`
     }
 
     const changeWallet = useCallback(async () => {
         toggleWalletModal()
-        await connect()
-    }, [toggleWalletModal, connect])
+        await open({ view: 'Connect' })
+    }, [toggleWalletModal, open])
 
-    const disconnectWallet = useCallback(async () => {
-        if (wallet) {
-            toggleWalletModal()
-            sendData({ event: 'account', action: 'address_disconnect_success', network: network })
-            await disconnect({ label: wallet.label })
-            await connect()
-        }
-    }, [toggleWalletModal, connect, disconnect, wallet])
+    const disconnectWallet = useCallback(() => {
+        toggleWalletModal()
+        sendData({ event: 'account', action: 'address_disconnect_success', network: network })
+        disconnect()
+    }, [toggleWalletModal, disconnect, network, sendData])
 
     const clearAllTransactionsCallback = useCallback(() => {
-        if (chainId) dispatch(clearAllTransactions({ chainId }))
+        if (chainId) dispatch(clearAllTransactions({ chainId: getSafeChainId(chainId) }))
     }, [dispatch, chainId])
 
     const goToExplorer = (e: any, url: string) => {
@@ -250,6 +258,7 @@ export default function AccountDetails({
                 <CloseIcon onClick={toggleWalletModal}>
                     <CloseColor />
                 </CloseIcon>
+
                 <Title className="mb-8 text-center">{i18n._(t`Account`)}</Title>
                 <AccountSection>
                     <YourAccount>
@@ -257,7 +266,7 @@ export default function AccountDetails({
                             <AccountGroupingRow>
                                 {formatConnectorName()}
                                 <div className="mt-3.5 mb-3.5">
-                                    {wallet?.label && WalletLabels.includes(wallet.label) && (
+                                    {address && (
                                         <WalletAction
                                             width={'85px'}
                                             size="sm"
@@ -271,7 +280,7 @@ export default function AccountDetails({
                                         width={'75px'}
                                         size="sm"
                                         style={{ marginRight: '-5px' }}
-                                        onClick={wallet?.label === 'MetaMask' ? disconnectWallet : changeWallet}
+                                        onClick={walletInfo?.label === 'MetaMask' ? disconnectWallet : changeWallet}
                                     >
                                         {i18n._(t`Change`)}
                                     </WalletAction>
@@ -280,21 +289,21 @@ export default function AccountDetails({
                             <AccountGroupingRow id="web3-account-identifier-row">
                                 <AccountControl>
                                     <div className="justify-center text-center">
-                                        <p> {ENSName ?? shortenAddress(account ?? '')}</p>
+                                        <p> {ENSName ?? shortenAddress(address ?? '')}</p>
                                     </div>
                                 </AccountControl>
                             </AccountGroupingRow>
                             <AccountGroupingRow className="mt-4">
                                 <AccountControl>
                                     <div>
-                                        {account && (
-                                            <Copy toCopy={account}>
+                                        {address && (
+                                            <Copy toCopy={address}>
                                                 <span style={{ marginLeft: '4px' }}>{i18n._(t`Copy address`)}</span>
                                             </Copy>
                                         )}
-                                        {chainId && account && (
+                                        {chainId && address && (
                                             <ExternalLink
-                                                url={getExplorerLink(chainId, account, 'address')}
+                                                url={getExplorerLink(getSafeChainId(chainId), address, 'address')}
                                                 label={i18n._(t`View on explorer`)}
                                                 dataAttr="external_explorer"
                                                 onPress={goToExplorer}

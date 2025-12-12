@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { getTokenList } from '@gooddollar/web3sdk'
 import { ETHER, Currency, Token } from '@sushiswap/sdk'
 import { AdditionalChainId, FUSE } from 'constants/index'
+import { useAppKitNetwork } from '@reown/appkit/react'
 
 export interface SwapVariant {
     token: Currency
@@ -22,7 +22,7 @@ export interface ISwapContext {
 export const SwapContext = createContext<ISwapContext>(null as any)
 
 export function useTokens() {
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const [tokens, setTokens] = useState<Currency[] | null>(null)
     useEffect(() => {
         setTokens(!chainId ? [] : null)
@@ -38,7 +38,7 @@ export function useTokens() {
                                     ? FUSE
                                     : ETHER
                                 : new Token(
-                                      chainId,
+                                      +(chainId ?? 1),
                                       currency.address,
                                       currency.decimals,
                                       currency.symbol,

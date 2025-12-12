@@ -14,7 +14,7 @@ import { useWindowSize } from 'hooks/useWindowSize'
 import { SavingsDepositMobile } from './SavingsDepositMobile'
 import { SavingsMobileStat } from '../../../../components/Savings/SavingsStat/SavingsMobileStat'
 import { HeadingCopy } from 'components/Savings/SavingsCard'
-import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
+import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
 import { ModalButton } from 'components/Savings/SavingsModal/SavingsModalButtons'
 import { ChainId } from '@sushiswap/sdk'
 import Web3SupportedNetworks, { IWeb3SupportedNetworksProps } from 'components/Web3SupportedNetworks'
@@ -81,7 +81,8 @@ const SavingRow: FC<SavingRowProps> = ({ chainId, headings, showModal }) => {
 
 export const Savings: FC = () => {
     const [modalData, setModalData] = useState<ChainId>()
-    const { account, chainId } = useActiveWeb3React()
+    const { address } = useAppKitAccount()
+    const { chainId } = useAppKitNetwork()
     const { i18n } = useLingui()
     const { width } = useWindowSize()
     const isMobile = width ? width <= 768 : undefined
@@ -145,7 +146,7 @@ export const Savings: FC = () => {
     return (
         <SavingsDeposit>
             <div className="mt-12"></div>
-            {Object.values(SupportedV2Networks).includes(chainId as number) && account && !!modalData && (
+            {Object.values(SupportedV2Networks).includes(chainId ?? 1) && address && !!modalData && (
                 <SavingsModal type="deposit" onDismiss={hideModal} isOpen={!!modalData} requiredChain={modalData} />
             )}
             <Title className={`md:pl-4`}>{i18n._(t`Savings`)}</Title>

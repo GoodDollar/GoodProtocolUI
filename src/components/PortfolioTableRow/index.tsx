@@ -3,13 +3,13 @@ import Withdraw from 'components/Withdraw'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { ActionOrSwitchButton } from 'components/gd/Button/ActionOrSwitchButton'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { ButtonAction } from 'components/gd/Button'
 import ClaimRewards from 'components/ClaimRewards'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 
 import { MyStake, LIQUIDITY_PROTOCOL, SupportedChainId } from '@gooddollar/web3sdk'
 import { SupportedChains } from '@gooddollar/web3sdk-v2'
+import { useAppKitNetwork } from '@reown/appkit/react'
 
 interface PortfolioTableRowProps {
     stake: MyStake
@@ -22,7 +22,7 @@ const PortfolioTableRow = memo(({ stake, onUpdate, isMobile }: PortfolioTableRow
     const [isWithdrawOpen, setWithdrawOpen] = useState(false)
     const [isClaimRewardsOpen, setClaimRewardsOpen] = useState(false)
     const handleClaimRewardsOpen = useCallback(() => setClaimRewardsOpen(true), [])
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
 
     const requireChain = stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ? 'FUSE' : 'MAINNET'
     const claimableStake =
@@ -30,7 +30,7 @@ const PortfolioTableRow = memo(({ stake, onUpdate, isMobile }: PortfolioTableRow
         (chainId !== (SupportedChains.FUSE as number) && requireChain === 'MAINNET')
     const sendData = useSendAnalyticsData()
 
-    const network = stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ? SupportedChainId[chainId] : 'mainnet'
+    const network = stake.protocol === LIQUIDITY_PROTOCOL.GOODDAO ? SupportedChainId[+(chainId ?? 1)] : 'mainnet'
     const handleWithdrawOpen = useCallback(() => {
         sendData({ event: 'stake', action: 'savings_withdraw_rewards_claim_start', network })
         setWithdrawOpen(true)
