@@ -9,7 +9,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
 import { injected, coinbaseWallet } from 'wagmi/connectors'
 import { APPKIT_FEATURED_WALLET_IDS, APPKIT_SOCIAL_PROVIDER_IDS } from 'utils/walletConfig'
-import { miniPayConnector } from './minipayConnector'
 import { SupportedChains } from '@gooddollar/web3sdk-v2'
 import { getEnv } from 'utils/env'
 import { sample } from 'lodash'
@@ -119,16 +118,13 @@ if (allowedChains.length === 0) {
 
 const networks = allowedChains.map(mapSupportedChainToReownNetwork) as [AppKitNetwork, ...AppKitNetwork[]]
 
-const baseConnectors = [
-    miniPayConnector(),
+const connectors = [
     injected(),
     coinbaseWallet({
         appName: 'GoodProtocolUI',
         appLogoUrl: '',
     }),
 ]
-
-const connectors = [...baseConnectors]
 
 const wagmiAdapter = new WagmiAdapter({
     networks,

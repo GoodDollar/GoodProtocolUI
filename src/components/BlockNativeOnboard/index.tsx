@@ -5,8 +5,6 @@ import { useLingui } from '@lingui/react'
 import { AsyncStorage, getDevice, SupportedChains } from '@gooddollar/web3sdk-v2'
 import { Web3ActionButton } from '@gooddollar/good-design'
 import { noop } from 'lodash'
-import { useConnect } from 'wagmi'
-import { isMiniPay } from '../../utils/minipay'
 
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 
@@ -20,29 +18,12 @@ export const clearDeeplink = () => {
 export const OnboardConnectButton: FC = () => {
     const { address } = useAppKitAccount()
     const { open } = useAppKit()
-    const { connect, connectors } = useConnect()
     const sendData = useSendAnalyticsData()
     const { i18n } = useLingui()
     const buttonText = i18n._(t`Connect to a wallet`)
     const connectionStartedRef = useRef(false)
-    const isMiniPayDetected = isMiniPay()
 
     const onWalletConnect = async () => {
-        if (isMiniPayDetected && !address) {
-            const miniPayConn = connectors.find((conn) => conn.id === 'minipay')
-            if (miniPayConn) {
-                try {
-                    connectionStartedRef.current = true
-                    sendData({ event: 'wallet_connect', action: 'wallet_connect_start' })
-                    connect({ connector: miniPayConn })
-                    return false
-                } catch (error) {
-                    connectionStartedRef.current = false
-                    console.warn('MiniPay connect failed:', error)
-                }
-            }
-        }
-
         connectionStartedRef.current = true
         sendData({ event: 'wallet_connect', action: 'wallet_connect_start' })
 

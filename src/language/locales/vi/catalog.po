@@ -2888,7 +2888,7 @@ msgstr "Xin chúc mừng!"
 msgid "Connect a wallet to see your portfolio"
 msgstr ""
 
-#: src/components/BlockNativeOnboard/index.tsx:26
+#: src/components/BlockNativeOnboard/index.tsx:23
 msgid "Connect to a wallet"
 msgstr "Kết nối với ví"
 
