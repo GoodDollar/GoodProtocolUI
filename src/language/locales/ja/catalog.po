@@ -2888,7 +2888,7 @@ msgstr "おめでとう！"
 msgid "Connect a wallet to see your portfolio"
 msgstr ""
 
-#: src/components/BlockNativeOnboard/index.tsx:26
+#: src/components/BlockNativeOnboard/index.tsx:23
 msgid "Connect to a wallet"
 msgstr "ウォレットに接続する"
 
@@ -3165,7 +3165,7 @@ msgstr ""
 #~ "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
 #~ msgstr ""
 
-#: src/components/Web3ReactManager/index.tsx:84
+#: src/components/Web3ReactManager/index.tsx:110
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "おっとっと！不明なエラーが発生しました。ページを更新するか、別のブラウザまたはデバイスからアクセスしてください"
 
