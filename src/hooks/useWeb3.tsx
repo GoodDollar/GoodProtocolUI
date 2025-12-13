@@ -8,9 +8,10 @@ import { AsyncStorage, Celo, Fuse, Xdc, Web3Provider } from '@gooddollar/web3sdk
 import { sample } from 'lodash'
 import { useAppKitNetwork, useAppKitProvider } from '@reown/appkit/react'
 import type { Provider } from '@reown/appkit/react'
+import { useAccount } from 'wagmi'
 
 import { getEnv } from 'utils/env'
-import { isMiniPay } from 'utils/minipay'
+import { isMiniPay, getMiniPayProvider } from 'utils/minipay'
 
 type NetworkSettings = {
     currentNetwork: string
@@ -63,16 +64,30 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
     const { rpcs } = useNetwork()
     const { chainId } = useAppKitNetwork()
     const { walletProvider } = useAppKitProvider<Provider>('eip155')
+    const { connector, address } = useAccount()
     const isMiniPayWallet = isMiniPay()
     const [mainnetWeb3] = useEnvWeb3(DAO_NETWORK.MAINNET)
 
+    const resolvedProvider = useMemo(() => {
+        if (walletProvider) {
+            return walletProvider
+        }
+
+        const isMiniPayConnector = connector?.id === 'minipay'
+        if (isMiniPayConnector && address) {
+            return getMiniPayProvider() as Provider | undefined
+        }
+
+        return undefined
+    }, [walletProvider, connector?.id, address])
+
     const web3 = useMemo(
-        () => (walletProvider ? new Web3(walletProvider as any) : mainnetWeb3),
-        [walletProvider, mainnetWeb3]
+        () => (resolvedProvider ? new Web3(resolvedProvider as any) : mainnetWeb3),
+        [resolvedProvider, mainnetWeb3]
     )
     const webprovider = useMemo(
-        () => walletProvider && new ethers.providers.Web3Provider(walletProvider as ExternalProvider, 'any'),
-        [walletProvider]
+        () => resolvedProvider && new ethers.providers.Web3Provider(resolvedProvider as ExternalProvider, 'any'),
+        [resolvedProvider]
     )
 
     if (webprovider) {

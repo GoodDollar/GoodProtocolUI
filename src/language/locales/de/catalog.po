@@ -3165,7 +3165,7 @@ msgstr "auf der"
 #~ "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
 #~ msgstr ""
 
-#: src/components/Web3ReactManager/index.tsx:110
+#: src/components/Web3ReactManager/index.tsx:85
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Hoppla! Ein unbekannter Fehler ist aufgetreten. Bitte aktualisieren Sie die Seite oder besuchen Sie sie von einem anderen Browser oder Gerät aus"
 
