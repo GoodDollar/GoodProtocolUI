@@ -29,7 +29,6 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
     const { identify } = useAnalytics()
     const { connect, connectors } = useConnect()
     const hasConnected = useRef(false)
-    const [connectionStatus, setConnectionStatus] = useState<string>('')
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -47,24 +46,17 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
         }
 
         const attemptConnect = async () => {
-            setConnectionStatus('Detecting MiniPay...')
             const provider = await waitForMiniPayProvider(2000)
             if (!provider) {
-                setConnectionStatus('MiniPay not detected')
                 return
             }
 
             try {
-                setConnectionStatus('Connecting to MiniPay...')
                 hasConnected.current = true
                 connect({ connector: connectors[0] })
-                setConnectionStatus('MiniPay connected successfully!')
             } catch (error) {
                 console.error('MiniPay connection failed:', error)
                 hasConnected.current = false
-                setConnectionStatus(
-                    `MiniPay connection failed: ${error instanceof Error ? error.message : 'Unknown error'}`
-                )
             }
         }
 
@@ -91,37 +83,5 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
         )
     }
 
-    return (
-        <>
-            {connectionStatus && (
-                <div
-                    style={{
-                        position: 'fixed',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        padding: '16px 20px',
-                        backgroundColor: '#000',
-                        color: '#fff',
-                        borderRadius: '12px',
-                        fontSize: '14px',
-                        zIndex: 10000,
-                        maxWidth: '90%',
-                        width: '320px',
-                        boxShadow: '0 8px 16px rgba(0, 0, 0, 0.3)',
-                        textAlign: 'center',
-                    }}
-                >
-                    <div style={{ fontWeight: 'bold', marginBottom: '8px', fontSize: '16px' }}>MiniPay Status</div>
-                    <div style={{ marginBottom: address ? '8px' : '0' }}>{connectionStatus}</div>
-                    {address && (
-                        <div style={{ marginTop: '8px', fontSize: '12px', opacity: 0.8, wordBreak: 'break-all' }}>
-                            {address.slice(0, 8)}...{address.slice(-6)}
-                        </div>
-                    )}
-                </div>
-            )}
-            {children}
-        </>
-    )
+    return <>{children}</>
 }
