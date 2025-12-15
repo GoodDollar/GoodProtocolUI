@@ -16,7 +16,7 @@ export default function Updater(): null {
     const windowVisible = useIsWindowVisible()
 
     const [state, setState] = useState<{ chainId: number | undefined; blockNumber: number | null }>({
-        chainId: +(chainId ?? 1),
+        chainId: +(chainId ?? 42220),
         blockNumber: null,
     })
 
@@ -37,7 +37,7 @@ export default function Updater(): null {
     useEffect(() => {
         if (!address || !library || !chainId || !windowVisible) return undefined
 
-        setState({ chainId: +(chainId ?? 1), blockNumber: null })
+        setState({ chainId: +(chainId ?? 42220), blockNumber: null })
         library
             .getBlockNumber()
             .then(blockNumberCallback)

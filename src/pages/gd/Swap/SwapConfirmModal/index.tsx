@@ -301,7 +301,7 @@ const SwapConfirmModal = memo(
                             <div className="text-center">
                                 <a
                                     className="text-cyan-blue hover:underline"
-                                    href={getExplorerLink(+(chainId ?? 1), hash, 'transaction')}
+                                    href={getExplorerLink(+(chainId ?? 42220), hash, 'transaction')}
                                     target="_blank"
                                     rel="noreferrer"
                                 >

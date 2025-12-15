@@ -146,7 +146,7 @@ export const Savings: FC = () => {
     return (
         <SavingsDeposit>
             <div className="mt-12"></div>
-            {Object.values(SupportedV2Networks).includes(chainId ?? 1) && address && !!modalData && (
+            {Object.values(SupportedV2Networks).includes(chainId ?? 42220) && address && !!modalData && (
                 <SavingsModal type="deposit" onDismiss={hideModal} isOpen={!!modalData} requiredChain={modalData} />
             )}
             <Title className={`md:pl-4`}>{i18n._(t`Savings`)}</Title>

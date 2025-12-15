@@ -123,11 +123,11 @@ export default function Updater(): null {
     const cancellations = useRef<{ blockNumber: number; cancellations: (() => void)[] }>()
 
     const listeningKeys: { [callKey: string]: number } = useMemo(() => {
-        return activeListeningKeys(debouncedListeners, +(chainId ?? 1))
+        return activeListeningKeys(debouncedListeners, +(chainId ?? 42220))
     }, [debouncedListeners, chainId])
 
     const unserializedOutdatedCallKeys = useMemo(() => {
-        return outdatedListeningKeys(state.callResults, listeningKeys, +(chainId ?? 1), latestBlockNumber)
+        return outdatedListeningKeys(state.callResults, listeningKeys, +(chainId ?? 42220), latestBlockNumber)
     }, [chainId, state.callResults, listeningKeys, latestBlockNumber])
 
     const serializedOutdatedCallKeys = useMemo(
@@ -151,7 +151,7 @@ export default function Updater(): null {
         dispatch(
             fetchingMulticallResults({
                 calls,
-                chainId: +(chainId ?? 1),
+                chainId: +(chainId ?? 42220),
                 fetchingBlockNumber: latestBlockNumber,
             })
         )
@@ -177,7 +177,7 @@ export default function Updater(): null {
 
                         dispatch(
                             updateMulticallResults({
-                                chainId: +(chainId ?? 1),
+                                chainId: +(chainId ?? 42220),
                                 results: outdatedCallKeys
                                     .slice(firstCallKeyIndex, lastCallKeyIndex)
                                     .reduce<{ [callKey: string]: string | null }>((memo, callKey, i) => {
@@ -198,7 +198,7 @@ export default function Updater(): null {
                         dispatch(
                             errorFetchingMulticallResults({
                                 calls: chunk,
-                                chainId: +(chainId ?? 1),
+                                chainId: +(chainId ?? 42220),
                                 fetchingBlockNumber: latestBlockNumber,
                             })
                         )

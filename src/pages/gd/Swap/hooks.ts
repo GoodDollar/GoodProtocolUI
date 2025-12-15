@@ -38,7 +38,7 @@ export function useTokens() {
                                     ? FUSE
                                     : ETHER
                                 : new Token(
-                                      +(chainId ?? 1),
+                                      +(chainId ?? 42220),
                                       currency.address,
                                       currency.decimals,
                                       currency.symbol,
