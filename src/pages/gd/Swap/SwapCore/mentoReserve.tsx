@@ -20,7 +20,7 @@ import SwapInfo from '../SwapInfo'
 import SwapDetails from '../SwapDetails'
 import SwapSettings from '../SwapSettings'
 import { SwapContext } from '../hooks'
-import { useCurrencyBalance } from 'state/wallet/hooks'
+import { useTokenBalance } from 'state/wallet/hooks'
 import useG$ from 'hooks/useG$'
 
 import SwapConfirmModal from '../SwapConfirmModal'
@@ -52,8 +52,8 @@ const MentoSwap = memo(() => {
     const setOutputAmountDebounced = useCallback(debounce(setOutputAmount, 500), [])
 
     const G$ = useG$()
-    const cusdBalance = useCurrencyBalance(address ?? undefined, CUSD)
-    const g$Balance = useCurrencyBalance(address ?? undefined, G$)
+    const cusdBalance = useTokenBalance(address ?? undefined, CUSD)
+    const g$Balance = useTokenBalance(address ?? undefined, G$)
 
     const [swapPair, setSwapPair] = useState({
         input: CUSD,

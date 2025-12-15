@@ -18,22 +18,6 @@ const GoodId = lazy(() => import('./pages/gd/GoodId'))
 const BuyGd = lazy(() => import('./pages/gd/BuyGD'))
 const NewsFeedPage = lazy(() => import('./pages/gd/News'))
 
-// const RoutesWrapper = () => {
-//     const posthog = usePostHog()
-//     const [posthogInitialized, setPosthogInitialized] = useState(false)
-
-//     useEffect(() => {
-//         if (posthog) {
-//             posthog.onFeatureFlags(() => {
-//                 setPosthogInitialized(true)
-//                 return
-//             })
-//         }
-//     }, [posthog])
-
-//     return posthogInitialized ? <Routes /> : <Spinner variant="page-loader" size="lg" />
-// }
-
 const RoutesWrapper = () => {
     const posthog = usePostHog()
     const [posthogInitialized, setPosthogInitialized] = useState(false)

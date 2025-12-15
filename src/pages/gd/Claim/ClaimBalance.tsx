@@ -10,7 +10,6 @@ import { QueryParams } from '@usedapp/core'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 import { Fraction } from '@uniswap/sdk-core'
 import { useAppKitNetwork } from '@reown/appkit/react'
-import { isMiniPay } from 'utils/minipay'
 
 const NextClaim = ({ time }: { time: string }) => (
     <Text fontFamily="subheading" fontWeight="normal" fontSize="xs" color="main">
@@ -21,11 +20,13 @@ const NextClaim = ({ time }: { time: string }) => (
 export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) => {
     const { chainId } = useAppKitNetwork()
     const { isFeatureActive } = useGoodDappFeatures()
-    const rawPrice = useG$Price(5)
+    const reserveEnabled = isFeatureActive('reserveEnabled', Number(chainId))
+    const rawPrice = useG$Price(5, reserveEnabled ? Number(chainId) : 42220)
 
     const G$Price = +new Fraction(rawPrice?.toString() || 0, 1e18).toSignificant(6)
 
-    const isMinipay = isMiniPay()
+    const { ethereum } = window
+    const isMinipay = ethereum?.isMiniPay
 
     const { tillClaim } = useClaiming()
     const showUsdPrice = true // (useFeatureFlag('show-gd-price') as boolean | undefined)
@@ -101,7 +102,12 @@ export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) =
                 <NextClaim time={tillClaim || ''} />
             </Box>
             <Box alignItems="center" textAlign="center">
-                <BalanceGD gdPrice={G$Price} refresh={refresh} showUsd={showUsdPrice} />
+                <BalanceGD
+                    gdPrice={G$Price}
+                    refresh={refresh}
+                    showUsd={showUsdPrice}
+                    requiredChainId={Number(chainId)}
+                />
             </Box>
             <Box alignItems="center">
                 {!isSimpleApp && !isMinipay && claimNext && (

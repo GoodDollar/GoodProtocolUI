@@ -2889,8 +2889,8 @@ msgid "Connect a wallet to see your portfolio"
 msgstr ""
 
 #: src/components/BlockNativeOnboard/index.tsx:23
-msgid "Connect to a wallet"
-msgstr "Conectarse a una billetera"
+#~ msgid "Connect to a wallet"
+#~ msgstr "Conectarse a una billetera"
 
 #: src/pages/gd/Stake/StakeDeposit/index.tsx:305
 msgid "Connect wallet"
@@ -3165,7 +3165,7 @@ msgstr "sobre el"
 #~ "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
 #~ msgstr ""
 
-#: src/components/Web3ReactManager/index.tsx:87
+#: src/components/Web3ReactManager/index.tsx:79
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "¡UPS! Un error desconocido ocurrió. Actualiza la página o visita desde otro navegador o dispositivo."
 
