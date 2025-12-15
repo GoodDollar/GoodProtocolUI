@@ -180,10 +180,6 @@ export function miniPayConnector() {
             onDisconnect() {
                 disconnectHandler()
             },
-            onConnect() {
-                // Handler for provider connect events
-                // console.log('MiniPay connected to chain:', connectInfo.chainId)
-            },
             async switchChain({ chainId }) {
                 provider = getMiniPayProvider() as MiniPayProvider | undefined
                 if (!provider) {
