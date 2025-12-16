@@ -209,7 +209,7 @@
         "@gooddollar/good-design": "0.4.32",
         "@gooddollar/goodprotocol": "2.1.1",
         "@gooddollar/web3sdk": "0.1.54",
-        "@gooddollar/web3sdk-v2": "0.4.29",
+        "@gooddollar/web3sdk-v2": "0.4.30",
         "@headlessui/react": "1.5.0",
         "@lingui/format-json": "^4.0.0",
         "@lingui/macro": "^4.0.0",
