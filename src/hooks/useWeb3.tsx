@@ -6,9 +6,12 @@ import { Mainnet } from '@usedapp/core'
 import { DAO_NETWORK, GdSdkContext, useEnvWeb3 } from '@gooddollar/web3sdk'
 import { AsyncStorage, Celo, Fuse, Xdc, Web3Provider } from '@gooddollar/web3sdk-v2'
 import { sample } from 'lodash'
+import { useAppKitNetwork, useAppKitProvider } from '@reown/appkit/react'
+import type { Provider } from '@reown/appkit/react'
+import { useAccount } from 'wagmi'
 
-import useActiveWeb3React from './useActiveWeb3React'
 import { getEnv } from 'utils/env'
+import { isMiniPay, getMiniPayProvider } from 'utils/minipay'
 
 type NetworkSettings = {
     currentNetwork: string
@@ -20,7 +23,7 @@ type NetworkSettings = {
     }
 }
 
-const gasPriceSettings = {
+const gasSettings = {
     42220: {
         maxFeePerGas: BigNumber.from(25.001e9).toHexString(),
         maxPriorityFeePerGas: BigNumber.from(2.5e9).toHexString(),
@@ -51,7 +54,7 @@ export function useNetwork(): NetworkSettings {
     )
 
     useEffect(() => {
-        AsyncStorage.safeSet('GD_RPCS', rpcs) //this is required for sdk v1
+        AsyncStorage.safeSet('GD_RPCS', rpcs)
     }, [])
 
     return { currentNetwork, rpcs }
@@ -59,25 +62,46 @@ export function useNetwork(): NetworkSettings {
 
 export function Web3ContextProvider({ children }: { children: ReactNode | ReactNodeArray }): JSX.Element {
     const { rpcs } = useNetwork()
-    const { eipProvider, chainId } = useActiveWeb3React()
-    const isMiniPay = window?.ethereum?.isMiniPay
+    const { chainId } = useAppKitNetwork()
+    const { walletProvider } = useAppKitProvider<Provider>('eip155')
+    const { connector, address } = useAccount()
+    const isMiniPayWallet = isMiniPay()
     const [mainnetWeb3] = useEnvWeb3(DAO_NETWORK.MAINNET)
 
-    const web3 = useMemo(() => (eipProvider ? new Web3(eipProvider as any) : mainnetWeb3), [eipProvider, mainnetWeb3])
+    const resolvedProvider = useMemo(() => {
+        if (walletProvider) {
+            return walletProvider
+        }
+
+        const isMiniPayConnector = connector?.id === 'minipay'
+        if (isMiniPayConnector && address) {
+            return getMiniPayProvider() as Provider | undefined
+        }
+
+        return undefined
+    }, [walletProvider, connector?.id, address])
+
+    const web3 = useMemo(
+        () => (resolvedProvider ? new Web3(resolvedProvider as any) : mainnetWeb3),
+        [resolvedProvider, mainnetWeb3]
+    )
     const webprovider = useMemo(
-        () => eipProvider && new ethers.providers.Web3Provider(eipProvider as ExternalProvider, 'any'),
-        [eipProvider]
+        () => resolvedProvider && new ethers.providers.Web3Provider(resolvedProvider as ExternalProvider, 'any'),
+        [resolvedProvider]
     )
 
     if (webprovider) {
         webprovider.send = async (method: string, params: any) => {
-            if (method === 'eth_sendTransaction' && !isMiniPay && chainId in gasPriceSettings) {
-                if (!params[0].maxFeePerGas && Number(chainId) !== 50) {
-                    // params[0].gasPrice = gasPriceSettings[chainId].maxFeePerGas
-                    delete params[0].gasPrice
-                    params[0] = { ...params[0], ...gasPriceSettings[chainId] }
-                } else {
-                    params[0] = { ...params[0], ...gasPriceSettings[chainId] }
+            if (method === 'eth_sendTransaction' && !isMiniPayWallet && chainId && chainId in gasSettings) {
+                const gasSettingsForChain = gasSettings[Number(chainId)]
+                if (gasSettingsForChain) {
+                    if (!params[0].maxFeePerGas && Number(chainId) !== 50) {
+                        // params[0].gasPrice = gasPriceSettings[chainId].maxFeePerGas
+                        delete params[0].gasPrice
+                        params[0] = { ...params[0], ...gasSettingsForChain }
+                    } else {
+                        params[0] = { ...params[0], ...gasSettingsForChain }
+                    }
                 }
             }
             return webprovider.jsonRpcFetchFunc(method, params)

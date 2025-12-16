@@ -10,27 +10,20 @@ import {
     SwapWidget,
 } from '@uniswap/widgets'
 import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
-import { useConnectWallet } from '@web3-onboard/react'
-import {
-    AsyncStorage,
-    getDevice,
-    G$ContractAddresses,
-    useGetEnvChainId,
-    useWeb3Context,
-    SupportedChains,
-} from '@gooddollar/web3sdk-v2'
+import { useAppKit } from '@reown/appkit/react'
+import { G$ContractAddresses, useGetEnvChainId, useWeb3Context, SupportedChains } from '@gooddollar/web3sdk-v2'
 import { useDispatch } from 'react-redux'
 import { addTransaction } from 'state/transactions/actions'
 import { ChainId } from '@sushiswap/sdk'
 import { isMobile } from 'react-device-detect'
 import { Center } from 'native-base'
+import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
+import { getSafeChainId } from 'utils/chain'
 
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useApplicationTheme } from 'state/application/hooks'
 import useSendAnalytics from 'hooks/useSendAnalyticsData'
 import { tokens } from './celo-tokenlist.json'
-import { SwapWidgetErrorBoundary } from 'components/SwapErrorBoundary'
-import { classifySwapError } from 'utils/swapErrors'
+import { isMiniPay } from 'utils/minipay'
 
 const jsonRpcUrlMap = {
     122: ['https://rpc.fuse.io', 'https://fuse-pokt.nodies.app', 'https://fuse.liquify.com'],
@@ -44,9 +37,10 @@ export const UniSwap = (): JSX.Element => {
     const [theme] = useApplicationTheme()
     const uniTheme = theme === 'dark' ? darkTheme : lightTheme
     const { web3Provider } = useWeb3Context()
-    const { account, chainId } = useActiveWeb3React()
-    const network = SupportedChains[chainId]
-    const [, connect] = useConnectWallet()
+    const { address } = useAppKitAccount()
+    const { chainId } = useAppKitNetwork()
+    const network = SupportedChains[getSafeChainId(chainId)]
+    const { open } = useAppKit()
     const globalDispatch = useDispatch()
     const sendData = useSendAnalytics()
     const { connectedEnv } = useGetEnvChainId(42220)
@@ -82,39 +76,16 @@ export const UniSwap = (): JSX.Element => {
     tokens.push(gdToken)
 
     const connectOnboard = useCallback(async () => {
-        if (!account) {
-            // todo: make connect onboard a generic function/merge with: useOnboardConnect
-            const osName = getDevice().os.name
-            // temp solution for where it tries and open a deeplink for desktop app
-            if (['Linux', 'Windows', 'macOS'].includes(osName)) {
-                AsyncStorage.safeRemove('WALLETCONNECT_DEEPLINK_CHOICE')
-            }
-
-            const connected = await connect()
-            if (!connected) {
-                return false
-            }
+        if (!address) {
+            await open({ view: 'Connect' })
         }
         return true
-    }, [connect])
+    }, [address, open])
 
+    // Propagates swap errors to analytics; UI errors are already handled by the Uniswap widget
     const handleError = useCallback(
         async (e) => {
-            console.error('Uniswap widget error:', e)
-            const raw = e.message || String(e)
-            const { type, message } = classifySwapError(raw)
-            const errorContext: Record<string, any> = {
-                error: message,
-                errorType: type,
-                originalErrorType: e?.name || typeof e,
-            }
-            if (e?.stack) {
-                errorContext.stack = e.stack
-            }
-            sendData({ event: 'swap', action: 'swap_failed', ...errorContext })
-            if (type === 'price_impact_error') {
-                console.warn('Extreme price impact detected:', message)
-            }
+            sendData({ event: 'swap', action: 'swap_failed', error: e?.message ?? String(e) })
         },
         [sendData]
     )
@@ -138,7 +109,7 @@ export const UniSwap = (): JSX.Element => {
                         addTransaction({
                             chainId: 42220 as ChainId,
                             hash: txHash,
-                            from: account!,
+                            from: address!,
                             summary,
                         })
                     )
@@ -181,7 +152,7 @@ export const UniSwap = (): JSX.Element => {
                         addTransaction({
                             chainId: 42220 as ChainId,
                             hash: txHash,
-                            from: account!,
+                            from: address!,
                             summary: summary,
                             tradeInfo: tradeInfo,
                         })
@@ -190,7 +161,7 @@ export const UniSwap = (): JSX.Element => {
                 }
             }
         },
-        [account, network]
+        [address, network]
     )
 
     const handleTxSuccess: OnTxSuccess = useCallback(
@@ -202,37 +173,33 @@ export const UniSwap = (): JSX.Element => {
         [network]
     )
 
-    const { ethereum } = window
-
-    const isMinipay = ethereum?.isMiniPay
+    const isMinipay = isMiniPay()
 
     return (
         <Center w={'auto'} maxW="550" alignSelf="center">
-            <SwapWidgetErrorBoundary>
-                <SwapWidget
-                    width={'auto'}
-                    tokenList={tokens}
-                    defaultInputTokenAddress={cusdTokenAddress}
-                    defaultOutputTokenAddress={gdTokenAddress}
-                    settings={{
-                        slippage: { auto: false, max: '0.3' },
-                        routerPreference: RouterPreference.API,
-                        transactionTtl: 30,
-                    }}
-                    permit2={!isMinipay} // disable for minipay?
-                    jsonRpcUrlMap={jsonRpcUrlMap}
-                    routerUrl={'https://api.uniswap.org/v1/'}
-                    provider={web3Provider}
-                    theme={customTheme}
-                    hideConnectionUI
-                    onConnectWalletClick={connectOnboard}
-                    onError={handleError}
-                    onTxFail={handleTxFailed}
-                    onTxSubmit={handleTxSubmit}
-                    onTxSuccess={handleTxSuccess}
-                    dialogOptions={{ pageCentered: !!isMobile }}
-                />
-            </SwapWidgetErrorBoundary>
+            <SwapWidget
+                width={'auto'}
+                tokenList={tokens}
+                defaultInputTokenAddress={cusdTokenAddress}
+                defaultOutputTokenAddress={gdTokenAddress}
+                settings={{
+                    slippage: { auto: false, max: '0.3' },
+                    routerPreference: RouterPreference.API,
+                    transactionTtl: 30,
+                }}
+                permit2={!isMinipay} // disable for minipay?
+                jsonRpcUrlMap={jsonRpcUrlMap}
+                routerUrl={'https://api.uniswap.org/v1/'}
+                provider={web3Provider}
+                theme={customTheme}
+                hideConnectionUI
+                onConnectWalletClick={connectOnboard}
+                onError={handleError}
+                onTxFail={handleTxFailed}
+                onTxSubmit={handleTxSubmit}
+                onTxSuccess={handleTxSuccess}
+                dialogOptions={{ pageCentered: !!isMobile }}
+            />
         </Center>
     )
 }

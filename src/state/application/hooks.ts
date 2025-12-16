@@ -1,15 +1,14 @@
 import { useCallback, useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AsyncStorage } from '@gooddollar/web3sdk-v2'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
+import { useAppKitNetwork } from '@reown/appkit/react'
 import { AppDispatch, AppState } from '../index'
 import { addPopup, removePopup, setChain, setOpenModal, setTheme as setThemeAction } from './actions'
 import { ApplicationModal, PopupContent, ApplicationState } from './types'
 import { useColorMode } from 'native-base'
 
 export function useBlockNumber(): number | undefined {
-    const { chainId } = useActiveWeb3React()
-
+    const { chainId } = useAppKitNetwork()
     return useSelector((state: AppState) => state.application.blockNumber[chainId ?? -1])
 }
 

@@ -194,7 +194,3 @@ export const connectOptions = {
     },
 }
 
-export const Fortmatic = {}
-export const fortmatic = {}
-export const Portis = {}
-export const portis = {}

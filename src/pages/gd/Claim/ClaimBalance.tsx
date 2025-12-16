@@ -3,13 +3,13 @@ import { View, Box, Text } from 'native-base'
 import { ArrowButton, BalanceGD } from '@gooddollar/good-design'
 import { SupportedChains, useHasClaimed, useSwitchNetwork } from '@gooddollar/web3sdk-v2'
 import { useG$Price } from '@gooddollar/web3sdk-v2'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useClaiming } from 'hooks/useClaiming'
 import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 import { useNetworkModalToggle } from 'state/application/hooks'
 import { QueryParams } from '@usedapp/core'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 import { Fraction } from '@uniswap/sdk-core'
+import { useAppKitNetwork } from '@reown/appkit/react'
 
 const NextClaim = ({ time }: { time: string }) => (
     <Text fontFamily="subheading" fontWeight="normal" fontSize="xs" color="main">
@@ -18,7 +18,7 @@ const NextClaim = ({ time }: { time: string }) => (
 )
 
 export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) => {
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const { isFeatureActive } = useGoodDappFeatures()
     const reserveEnabled = isFeatureActive('reserveEnabled', Number(chainId))
     const rawPrice = useG$Price(5, reserveEnabled ? Number(chainId) : 42220)
@@ -102,7 +102,12 @@ export const ClaimBalance = ({ refresh }: { refresh: QueryParams['refresh'] }) =
                 <NextClaim time={tillClaim || ''} />
             </Box>
             <Box alignItems="center" textAlign="center">
-                <BalanceGD gdPrice={G$Price} refresh={refresh} showUsd={showUsdPrice} requiredChainId={chainId} />
+                <BalanceGD
+                    gdPrice={G$Price}
+                    refresh={refresh}
+                    showUsd={showUsdPrice}
+                    requiredChainId={Number(chainId)}
+                />
             </Box>
             <Box alignItems="center">
                 {!isSimpleApp && !isMinipay && claimNext && (

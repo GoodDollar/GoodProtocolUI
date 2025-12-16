@@ -24,8 +24,8 @@ import { createGlobalStyle } from 'styled-components'
 import { Web3ContextProvider } from './hooks/useWeb3'
 import { analyticsConfig, appInfo } from 'hooks/useSendAnalyticsData'
 import { HttpsProvider } from 'utils/HttpsProvider'
+import { AppKitProvider } from './reown/reownprovider'
 import { registerServiceWorker } from './serviceWorker'
-import { OnboardProviderWrapper } from 'components/BlockNativeOnboard'
 import { SimpleAppProvider } from 'state/simpleapp/simpleapp'
 import { nbTheme } from './theme/nbtheme'
 import { GoodDappFeatureProvider } from 'hooks/useFeaturesEnabled'
@@ -69,6 +69,13 @@ const GlobalStyle = createGlobalStyle`
     width: 120px;
     height: auto;
   }
+
+  appkit-wallet-button[data-wallet-id="minipay"],
+  appkit-wallet-button:has([data-wallet-name*="MiniPay" i]),
+  button[data-wallet-id="minipay"],
+  button:has([data-wallet-name*="MiniPay" i]) {
+    display: none !important;
+  }
 `
 
 const enableHttpsRedirect = String(process.env.REACT_APP_ENABLE_HTTPS_REDIRECT) === '1'
@@ -84,7 +91,7 @@ const ProviderWrapper = ({ children }) => (
             }}
             autocapture={false}
         >
-            <OnboardProviderWrapper>
+            <AppKitProvider>
                 <GoodXProvider
                     nativeBaseProps={{ config: { suppressColorAccessibilityWarning: true }, theme: nbTheme }}
                 >
@@ -94,7 +101,7 @@ const ProviderWrapper = ({ children }) => (
                         </GoodDappFeatureProvider>
                     </Web3ContextProvider>
                 </GoodXProvider>
-            </OnboardProviderWrapper>
+            </AppKitProvider>
         </PostHogProvider>
     </Provider>
 )

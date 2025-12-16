@@ -1,9 +1,9 @@
 import { check, claim, isWhitelisted, SupportedChainId, useGdContextProvider } from '@gooddollar/web3sdk'
 import { useCallback, useEffect, useState } from 'react'
 import usePromise from './usePromise'
-import useActiveWeb3React from './useActiveWeb3React'
 import useSendAnalyticsData from './useSendAnalyticsData'
 import { useClaim, useTimer } from '@gooddollar/web3sdk-v2'
+import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
 
 interface UseClaimReturn {
     claimable?: boolean | Error
@@ -15,8 +15,9 @@ interface UseClaimReturn {
 }
 
 export const useClaiming = (): UseClaimReturn => {
-    const { chainId, account } = useActiveWeb3React()
-    const network = SupportedChainId[chainId]
+    const { address } = useAppKitAccount()
+    const { chainId } = useAppKitNetwork()
+    const network = SupportedChainId[+(chainId ?? 1)]
     const { web3 } = useGdContextProvider()
     const sendData = useSendAnalyticsData()
     const { nextClaimTime } = useClaim()
@@ -27,15 +28,15 @@ export const useClaiming = (): UseClaimReturn => {
     useEffect(() => setClaimTime(nextClaimTime), [nextClaimTime.toString()])
 
     const [claimable, , , refetch] = usePromise(async () => {
-        if (!account || !web3 || (chainId as any) !== SupportedChainId.FUSE) return false
-        const whitelisted = await isWhitelisted(web3, account).catch((e) => {
+        if (!address || !web3 || (chainId as any) !== SupportedChainId.FUSE) return false
+        const whitelisted = await isWhitelisted(web3, address).catch((e) => {
             console.error(e)
             return false
         })
 
         if (!whitelisted) return new Error('Only verified wallets can claim')
 
-        const amount = await check(web3, account).catch((e) => {
+        const amount = await check(web3, address).catch((e) => {
             console.error(e)
             return new Error('Something went wrong.. try again later.')
         })
@@ -46,16 +47,16 @@ export const useClaiming = (): UseClaimReturn => {
         }
 
         return /[^0.]/.test(amount)
-    }, [chainId, web3, account])
+    }, [chainId, web3, address])
 
     const handleClaim = useCallback(async () => {
-        if (!account || !web3) {
+        if (!address || !web3) {
             return false
         }
 
         sendData({ event: 'claim', action: 'claim_start', network })
 
-        const startClaim = await claim(web3, account).catch(() => {
+        const startClaim = await claim(web3, address).catch(() => {
             refetch()
             return false
         })
@@ -67,7 +68,7 @@ export const useClaiming = (): UseClaimReturn => {
         sendData({ event: 'claim', action: 'claim_success', network })
         refetch()
         return true
-    }, [account, web3, sendData, network, refetch])
+    }, [address, web3, sendData, network, refetch])
 
     const isFuse = (chainId as any) === SupportedChainId.FUSE
 

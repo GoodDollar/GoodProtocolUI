@@ -9,12 +9,13 @@ import { AsyncStorage, G$Balances, useG$Balance, useG$Tokens } from '@gooddollar
 import { Box, Text, useColorModeValue } from 'native-base'
 import { BasePressable, CentreBox } from '@gooddollar/good-design'
 import { isMobile } from 'react-device-detect'
+import { useAppKitNetwork } from '@reown/appkit/react'
 
 import usePromise from 'hooks/usePromise'
 import { getScreenWidth } from 'utils/screenSizes'
-import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { AdditionalChainId } from '../../constants'
 import useMetaMask from 'hooks/useMetaMask'
+import { isMiniPay } from 'utils/minipay'
 
 //assets
 import { ReactComponent as WalletBalanceIcon } from '../../assets/images/walletBalanceIcon.svg'
@@ -30,16 +31,16 @@ const chains = Object.values(AdditionalChainId)
 
 export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }) => {
     const { ethereum } = window
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const metaMaskInfo = useMetaMask()
-    const balances = useG$Balance(5, chainId)
+    const balances = useG$Balance(5, Number(chainId))
     const [G$, GOOD] = useG$Tokens()
     const bgWalletBalance = useColorModeValue('goodWhite.100', '#1a1f38')
     const textColor = useColorModeValue('goodGrey.700', 'goodGrey.300')
     const [imported, setImported] = useState<boolean>(false)
     const { i18n } = useLingui()
     const scrWidth = getScreenWidth()
-    const isMinipay = ethereum?.isMiniPay
+    const isMinipay = isMiniPay()
 
     const importToMetamask = async () => {
         const allTokens: any[] = [
@@ -145,7 +146,7 @@ export const WalletBalanceWrapper = ({ toggleView }: { toggleView: typeof noop }
                 borderBottomLeftRadius={12}
                 borderBottomRightRadius={12}
             >
-                <WalletBalance balances={balances} chainId={chainId} />
+                <WalletBalance balances={balances} chainId={+(chainId ?? 42220)} />
                 {/* todo: retest this flow */}
                 {!loading && !imported && !isMinipay && (
                     <Box flexDir="row" mt={4}>
