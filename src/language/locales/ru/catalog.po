@@ -7,7 +7,7 @@ msgstr ""
 "X-Generator: @lingui/cli\n"
 "Project-Id-Version: goodprotocolui\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-12-09 10:12\n"
+"PO-Revision-Date: 2025-12-16 18:15\n"
 "Last-Translator: \n"
 "Language: ru_RU\n"
 "Language-Team: Russian\n"
@@ -23,12 +23,12 @@ msgid ""
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/pages/gd/Portfolio/index.tsx:397
+#: src/pages/gd/Portfolio/index.tsx:398
 msgid "Stake Positions"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/pages/gd/Portfolio/index.tsx:444
+#: src/pages/gd/Portfolio/index.tsx:445
 msgid "Savings"
 msgstr ""
 
@@ -2665,13 +2665,13 @@ msgstr ""
 #~ msgid "• Added by user"
 #~ msgstr "• Added by user"
 
-#: src/components/Savings/SavingsModal/index.tsx:280
-#: src/components/Savings/SavingsModal/index.tsx:282
+#: src/components/Savings/SavingsModal/index.tsx:281
 #: src/components/Savings/SavingsModal/index.tsx:283
+#: src/components/Savings/SavingsModal/index.tsx:284
 msgid "{0}"
 msgstr ""
 
-#: src/components/Savings/SavingsModal/index.tsx:128
+#: src/components/Savings/SavingsModal/index.tsx:129
 msgid "{amount} {0}"
 msgstr ""
 
@@ -2697,11 +2697,11 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:253
+#: src/components/AccountDetails/index.tsx:262
 msgid "Account"
 msgstr "Счет"
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:311
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:312
 msgid "amount"
 msgstr "количество"
 
@@ -2709,27 +2709,27 @@ msgstr "количество"
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:402
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:404
 msgid "Approve"
 msgstr "Утвердить"
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:305
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:306
 msgid "APPROVE"
 msgstr "УТВЕРДИТЬ"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:121
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:123
 msgid "Approve transaction failed, please try again."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:401
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:403
 msgid "Approved"
 msgstr "Одобренный"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:399
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:401
 msgid "Approving"
 msgstr "Утверждаю"
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:302
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:303
 msgid "APPROVING"
 msgstr "Одобрение"
 
@@ -2737,7 +2737,7 @@ msgstr "Одобрение"
 msgid "APY"
 msgstr ""
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:224
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:225
 msgid "Awesome!"
 msgstr ""
 
@@ -2751,7 +2751,7 @@ msgstr "Вернуться к портфолио"
 msgid "Balance"
 msgstr "Остаток средств"
 
-#: src/components/Blocklist/index.tsx:12
+#: src/components/Blocklist/index.tsx:15
 msgid "Blocked address"
 msgstr "Заблокированный адрес"
 
@@ -2767,7 +2767,7 @@ msgid "Buy or sell GoodDollars using the GoodReserve directly!\n"
 "Take note of indicators in the widget below for exit contribtution, price slippage and liquidity."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:276
+#: src/components/AccountDetails/index.tsx:285
 msgid "Change"
 msgstr "Изменять"
 
@@ -2779,7 +2779,7 @@ msgstr ""
 msgid "Claim All"
 msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:378
+#: src/pages/gd/Portfolio/index.tsx:379
 msgid "Claim G$ rewards"
 msgstr "Претензия G $ Награды"
 
@@ -2787,7 +2787,7 @@ msgstr "Претензия G $ Награды"
 msgid "Claim GOOD"
 msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:389
+#: src/pages/gd/Portfolio/index.tsx:390
 msgid "Claim GOOD rewards"
 msgstr ""
 
@@ -2802,7 +2802,7 @@ msgstr ""
 msgid "Claim Rewards"
 msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:343
+#: src/pages/gd/Portfolio/index.tsx:344
 msgid "Claimable"
 msgstr "Заявление"
 
@@ -2837,7 +2837,7 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:315
+#: src/components/AccountDetails/index.tsx:324
 msgid "Clear all"
 msgstr "Очистить все"
 
@@ -2849,7 +2849,7 @@ msgstr "Очистить все"
 msgid "Click here to learn more about GoodDollar liquidity, including how to provide liquidity."
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:372
+#: src/pages/gd/Claim/OldClaim.tsx:369
 msgid "Click on the Claim button below and you will be switched over the first available network to collect your G$'s."
 msgstr ""
 
@@ -2861,7 +2861,7 @@ msgstr "Закрывать"
 #~ msgid "Collect G$"
 #~ msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:385
+#: src/pages/gd/Claim/OldClaim.tsx:382
 msgid "Collect G$ on {network}"
 msgstr ""
 
@@ -2878,24 +2878,24 @@ msgid "Confirm this transaction in your wallet"
 msgstr "Подтвердите эту транзакцию в вашем кошельке"
 
 #: src/components/WithdrawRewards/index.tsx:123
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:226
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:227
 msgid "Congratulations!"
 msgstr "Поздравляю!"
 
 #: src/pages/gd/MicroBridge/index.tsx:36
-#: src/pages/gd/Portfolio/index.tsx:458
+#: src/pages/gd/Portfolio/index.tsx:459
 msgid "Connect a wallet to see your portfolio"
 msgstr ""
 
-#: src/components/BlockNativeOnboard/index.tsx:32
-msgid "Connect to a wallet"
-msgstr "Подключиться к кошельку"
+#: src/components/BlockNativeOnboard/index.tsx:23
+#~ msgid "Connect to a wallet"
+#~ msgstr ""
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:304
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:305
 msgid "Connect wallet"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:221
+#: src/components/AccountDetails/index.tsx:232
 msgid "Connected with"
 msgstr "Связаны с"
 
@@ -2909,7 +2909,7 @@ msgstr ""
 msgid "Copied"
 msgstr "Скопировано"
 
-#: src/components/AccountDetails/index.tsx:292
+#: src/components/AccountDetails/index.tsx:301
 msgid "Copy address"
 msgstr "Копировать адрес"
 
@@ -2926,7 +2926,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/Savings/SavingsCard/index.tsx:67
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:371
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:372
 msgid "DEPOSIT"
 msgstr "Депозит"
 
@@ -2936,11 +2936,11 @@ msgstr "Депозит"
 msgid "Deposit G$"
 msgstr ""
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:222
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:223
 msgid "Deposit overview"
 msgstr "Обзор депозита"
 
-#: src/components/AccountDetails/index.tsx:267
+#: src/components/AccountDetails/index.tsx:276
 msgid "Disconnect"
 msgstr ""
 
@@ -2956,7 +2956,7 @@ msgstr ""
 msgid "failed to load"
 msgstr "ошибка загрузки"
 
-#: src/pages/gd/Stake/Savings/index.tsx:119
+#: src/pages/gd/Stake/Savings/index.tsx:120
 msgid "Fixed Apy"
 msgstr ""
 
@@ -2984,7 +2984,7 @@ msgstr ""
 #~ msgid "GDX is a token earned by directly buying G$ from the Reserve. Members with GDX do not pay the contribution exit."
 #~ msgstr ""
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:411
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:412
 msgid "Go to Portfolio"
 msgstr "Перейти к портфолио"
 
@@ -3016,7 +3016,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:395
+#: src/pages/gd/Claim/OldClaim.tsx:392
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -3037,7 +3037,7 @@ msgstr ""
 msgid "Help & Documentation"
 msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:333
+#: src/pages/gd/Portfolio/index.tsx:334
 msgid "Holding"
 msgstr "Держа"
 
@@ -3045,7 +3045,7 @@ msgstr "Держа"
 #~ msgid "How does it work?"
 #~ msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:236
+#: src/pages/gd/Portfolio/index.tsx:237
 msgid "How many GOOD tokens you are accumulating by this stake position."
 msgstr "Сколько хороших токенов вы накапливаете на эту позицию поставок."
 
@@ -3057,11 +3057,11 @@ msgstr ""
 msgid "How much tokens your deposits have accumulated so far."
 msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:226
+#: src/pages/gd/Portfolio/index.tsx:227
 msgid "How much value your stake has accumulated so far."
 msgstr "Сколько ценностей накоплено ваша доля."
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:233
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:234
 msgid "How much would you like to deposit?"
 msgstr "Сколько вы хотели бы внести депозит?"
 
@@ -3118,20 +3118,19 @@ msgstr "минут"
 #~ msgid "Multichain Bridge"
 #~ msgstr ""
 
-#: src/pages/gd/Portfolio/index.tsx:229
+#: src/pages/gd/Portfolio/index.tsx:230
 msgid "MULTIPLIER"
 msgstr "Мультипликатор"
 
-#: src/pages/gd/Portfolio/index.tsx:299
+#: src/pages/gd/Portfolio/index.tsx:300
 msgid "My Stake"
 msgstr "Мою долю"
 
-#: src/components/NetworkModal/index.tsx:152
-#: src/components/NetworkModal/index.tsx:201
+#: src/components/NetworkModal/index.tsx:154
 msgid "network"
 msgstr "сеть"
 
-#: src/pages/gd/Stake/Savings/index.tsx:114
+#: src/pages/gd/Stake/Savings/index.tsx:115
 msgid "Network"
 msgstr ""
 
@@ -3153,8 +3152,7 @@ msgstr "В следующем месяце:"
 msgid "No data."
 msgstr "Нет данных."
 
-#: src/components/NetworkModal/index.tsx:151
-#: src/components/NetworkModal/index.tsx:200
+#: src/components/NetworkModal/index.tsx:153
 msgid "on the"
 msgstr "на"
 
@@ -3164,11 +3162,11 @@ msgstr "на"
 #~ "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
 #~ msgstr ""
 
-#: src/components/Web3ReactManager/index.tsx:61
+#: src/components/Web3ReactManager/index.tsx:86
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr "Ой! Произошла неизвестная ошибка. Обновите страницу или перейдите в другой браузер или другое устройство."
 
-#: src/components/AppBar.tsx:340
+#: src/components/AppBar.tsx:342
 msgid "Open main menu"
 msgstr "Открыть главное меню"
 
@@ -3176,7 +3174,7 @@ msgstr "Открыть главное меню"
 msgid "Output is estimated. You will receive at least {minimumReceived} or the transaction will revert"
 msgstr ""
 
-#: src/components/Web3Status/index.tsx:56
+#: src/components/Web3Status/index.tsx:57
 msgid "Pending"
 msgstr "В ожидании"
 
@@ -3209,32 +3207,32 @@ msgstr "Влияние на цену"
 
 #: src/components/Withdraw/index.tsx:146
 #: src/pages/gd/Stake/index.tsx:73
-#: src/pages/gd/Stake/Savings/index.tsx:109
+#: src/pages/gd/Stake/Savings/index.tsx:110
 msgid "Protocol"
 msgstr "Протокол"
 
 #: src/components/Savings/SavingsCard/index.tsx:57
-#: src/pages/gd/Portfolio/index.tsx:217
+#: src/pages/gd/Portfolio/index.tsx:218
 msgid "PROTOCOL"
 msgstr "Протокол"
 
-#: src/components/AccountDetails/index.tsx:313
+#: src/components/AccountDetails/index.tsx:322
 msgid "Recent Transactions"
 msgstr "Последние транзакции"
 
-#: src/pages/gd/Portfolio/index.tsx:343
+#: src/pages/gd/Portfolio/index.tsx:344
 msgid "rewards"
 msgstr "вознаграждение"
 
-#: src/pages/gd/Portfolio/index.tsx:305
-#: src/pages/gd/Portfolio/index.tsx:316
-#: src/pages/gd/Portfolio/index.tsx:347
-#: src/pages/gd/Portfolio/index.tsx:358
+#: src/pages/gd/Portfolio/index.tsx:306
+#: src/pages/gd/Portfolio/index.tsx:317
+#: src/pages/gd/Portfolio/index.tsx:348
+#: src/pages/gd/Portfolio/index.tsx:359
 msgid "Rewards"
 msgstr "Вознаграждение"
 
-#: src/pages/gd/Portfolio/index.tsx:225
-#: src/pages/gd/Portfolio/index.tsx:235
+#: src/pages/gd/Portfolio/index.tsx:226
+#: src/pages/gd/Portfolio/index.tsx:236
 msgid "REWARDS"
 msgstr "Вознаграждение"
 
@@ -3253,7 +3251,7 @@ msgstr "Маршрутизация через эти токены привела
 #~ msgstr ""
 
 #: src/components/Savings/SavingsCard/SavingsCardRow/index.tsx:36
-#: src/pages/gd/Stake/Savings/index.tsx:151
+#: src/pages/gd/Stake/Savings/index.tsx:152
 msgid "Savings"
 msgstr ""
 
@@ -3267,12 +3265,12 @@ msgstr ""
 msgid "Search name or paste the address"
 msgstr "Имя поиска или вставьте адрес"
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:414
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:415
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:328
 msgid "Share with friends"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:365
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:367
 #: src/pages/gd/Swap/SwapSettings/index.tsx:80
 msgid "Slippage Tolerance"
 msgstr "Допуск по проскальзыванию"
@@ -3292,23 +3290,23 @@ msgstr ""
 msgid "Stake"
 msgstr "Ставка"
 
-#: src/pages/gd/Portfolio/index.tsx:221
+#: src/pages/gd/Portfolio/index.tsx:222
 msgid "STAKE"
 msgstr "Доли"
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:361
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:362
 msgid "Staked {0} at {1}"
 msgstr "Поставил {0} в {1}"
 
-#: src/pages/gd/Portfolio/index.tsx:329
+#: src/pages/gd/Portfolio/index.tsx:330
 msgid "Staking"
 msgstr "Упоминание"
 
-#: src/pages/gd/Portfolio/index.tsx:209
+#: src/pages/gd/Portfolio/index.tsx:210
 msgid "Staking could be of two types: UBI for funds staked on the GoodDollar trust for the generation of new G$ for universal income distribution, or Governance (to be enabled) for staking G$s for GOOD Rewards."
 msgstr "Упоминание может быть из двух типов: UBI для средств, поставленных на доверие GoodDollar для поколения новых G $ для универсального распределения доходов или управление (для включения) для ставки G $ S для хороших наград."
 
-#: src/pages/gd/Portfolio/index.tsx:231
+#: src/pages/gd/Portfolio/index.tsx:232
 msgid "Starting at 1.0, your multiplier will increase to 2.0 after one month of staking to the Trust, at which point you can be rewarded with more G$ every day!"
 msgstr "Начиная с 1.0, ваш множитель увеличится до 2,0 после одного месяца по ухудшению доверия, в какой момент вы можете быть вознаграждены более G $ каждый день!"
 
@@ -3322,7 +3320,7 @@ msgstr "Успех!"
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:411
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:413
 msgid "Swap"
 msgstr "Менять"
 
@@ -3330,15 +3328,15 @@ msgstr "Менять"
 msgid "Swap Completed"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:338
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:340
 msgid "Swap from"
 msgstr "Откуда"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:352
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:354
 msgid "Swap to"
 msgstr "Охватить"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:115
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:117
 msgid "Swap transaction failed, please try again."
 msgstr ""
 
@@ -3368,7 +3366,7 @@ msgstr ""
 msgid "The change from the market price to the actual price you are paying."
 msgstr ""
 
-#: src/pages/gd/Stake/Savings/index.tsx:120
+#: src/pages/gd/Stake/Savings/index.tsx:121
 msgid "The fixed annual interest."
 msgstr ""
 
@@ -3393,7 +3391,7 @@ msgstr ""
 #~ "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
 #~ msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:254
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:256
 msgid "The GoodReserve is an Automated Market Maker (AMM) that operates on Celo and XDC.\n"
 "This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
 "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
@@ -3434,7 +3432,7 @@ msgid "This is the annual percentage of UBI your stake will create."
 msgstr ""
 
 #: src/components/Savings/SavingsCard/index.tsx:58
-#: src/pages/gd/Portfolio/index.tsx:218
+#: src/pages/gd/Portfolio/index.tsx:219
 msgid "This is the protocol that the token is staked to."
 msgstr "Это протокол о том, что токен поставлен."
 
@@ -3447,11 +3445,11 @@ msgid "This is the token that is currently available to stake to the Fund."
 msgstr ""
 
 #: src/components/Savings/SavingsCard/index.tsx:53
-#: src/pages/gd/Portfolio/index.tsx:214
+#: src/pages/gd/Portfolio/index.tsx:215
 msgid "This is the token that is currently being staked."
 msgstr "Это токен, который в настоящее время поставлен."
 
-#: src/pages/gd/Stake/Savings/index.tsx:105
+#: src/pages/gd/Stake/Savings/index.tsx:106
 msgid "This is the token that you can deposit into the savings contract."
 msgstr ""
 
@@ -3468,20 +3466,20 @@ msgstr "Этот месяц"
 
 #: src/components/Withdraw/index.tsx:142
 #: src/pages/gd/Stake/index.tsx:69
-#: src/pages/gd/Stake/Savings/index.tsx:104
+#: src/pages/gd/Stake/Savings/index.tsx:105
 msgid "Token"
 msgstr "Токен"
 
 #: src/components/Savings/SavingsCard/index.tsx:52
-#: src/pages/gd/Portfolio/index.tsx:213
+#: src/pages/gd/Portfolio/index.tsx:214
 msgid "TOKEN"
 msgstr "Токен"
 
-#: src/pages/gd/Portfolio/index.tsx:222
+#: src/pages/gd/Portfolio/index.tsx:223
 msgid "Total amount on value staked."
 msgstr "Общая сумма по стоимости поставлена."
 
-#: src/pages/gd/Stake/Savings/index.tsx:125
+#: src/pages/gd/Stake/Savings/index.tsx:126
 msgid "Total currently saved."
 msgstr ""
 
@@ -3489,11 +3487,11 @@ msgstr ""
 msgid "Total Rewards"
 msgstr ""
 
-#: src/pages/gd/Stake/Savings/index.tsx:130
+#: src/pages/gd/Stake/Savings/index.tsx:131
 msgid "Total rewards claimed."
 msgstr ""
 
-#: src/pages/gd/Stake/Savings/index.tsx:129
+#: src/pages/gd/Stake/Savings/index.tsx:130
 msgid "Total Rewards Paid"
 msgstr ""
 
@@ -3501,7 +3499,7 @@ msgstr ""
 msgid "Total stake"
 msgstr "Общая доля"
 
-#: src/pages/gd/Stake/Savings/index.tsx:124
+#: src/pages/gd/Stake/Savings/index.tsx:125
 msgid "Total Staked"
 msgstr ""
 
@@ -3509,7 +3507,7 @@ msgstr ""
 msgid "Transaction deadline"
 msgstr "Крайний срок транзакции"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:148
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:150
 msgid "Transaction failed, please try again"
 msgstr ""
 
@@ -3528,7 +3526,7 @@ msgid "Transaction was sent to the blockchain"
 msgstr "Транзакция была отправлена в блокчане"
 
 #: src/components/Savings/SavingsCard/index.tsx:47
-#: src/pages/gd/Portfolio/index.tsx:207
+#: src/pages/gd/Portfolio/index.tsx:208
 msgid "TYPE"
 msgstr ""
 
@@ -3540,12 +3538,12 @@ msgstr ""
 msgid "Uniswap (widget)"
 msgstr ""
 
-#: src/components/Web3Network/index.tsx:69
+#: src/components/Web3Network/index.tsx:73
 msgid "Unsupported network"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:298
-#: src/components/Popups/TransactionPopup.tsx:46
+#: src/components/AccountDetails/index.tsx:307
+#: src/components/Popups/TransactionPopup.tsx:48
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:308
 msgid "View on explorer"
 msgstr "Посмотреть в проводнике"
@@ -3578,12 +3576,11 @@ msgstr "Ожидание подтверждения"
 #~ msgid "Wallet"
 #~ msgstr ""
 
-#: src/components/WalletBalance/index.tsx:136
+#: src/components/WalletBalance/index.tsx:137
 msgid "Wallet balance"
 msgstr "Баланс кошелька"
 
-#: src/components/NetworkModal/index.tsx:131
-#: src/components/NetworkModal/index.tsx:180
+#: src/components/NetworkModal/index.tsx:133
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3642,16 +3639,15 @@ msgstr "Вышли средства из {0}"
 msgid "Xswap (XDC)"
 msgstr ""
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:389
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:390
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "Вы создаете UBI до тысяч людей по всему миру."
 
-#: src/components/NetworkModal/index.tsx:147
-#: src/components/NetworkModal/index.tsx:196
+#: src/components/NetworkModal/index.tsx:149
 msgid "You are currently browsing"
 msgstr "Вы просматриваете в настоящее время"
 
-#: src/pages/gd/Claim/OldClaim.tsx:361
+#: src/pages/gd/Claim/OldClaim.tsx:358
 msgid "You can collect G$ on {supportedChainsDisplay} networks."
 msgstr ""
 
@@ -3659,7 +3655,7 @@ msgstr ""
 #~ msgid "You can collect G$ on {supportedChainsDisplay}."
 #~ msgstr ""
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:380
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:381
 msgid "You have just staked your G$s towards our GoodDAO,\n"
 "this action is gonna reward you with GOOD governance tokens,\n"
 "which are non-transferable so can't be traded."
@@ -3676,23 +3672,23 @@ msgid "You just used your crypto for good to help fund crypto UBI for all with G
 msgstr ""
 
 #: src/components/WithdrawRewards/index.tsx:115
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:421
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:422
 msgid "You need to sign the transaction in your wallet"
 msgstr "Вам нужно подписать транзакцию в вашем кошельке"
 
-#: src/components/Liquidity/RemoveLiquidityReceiveDetails.tsx:39
+#: src/components/Liquidity/RemoveLiquidityReceiveDetails.tsx:43
 msgid "You Will Receive:"
 msgstr "Вы получите:"
 
-#: src/components/Savings/SavingsModal/index.tsx:294
+#: src/components/Savings/SavingsModal/index.tsx:295
 msgid "Your {type} transaction has been confirmed!"
 msgstr ""
 
-#: src/pages/gd/Stake/Savings/index.tsx:115
+#: src/pages/gd/Stake/Savings/index.tsx:116
 msgid "Your current network."
 msgstr ""
 
-#: src/pages/gd/Stake/Savings/index.tsx:110
+#: src/pages/gd/Stake/Savings/index.tsx:111
 msgid "Your current savings balance."
 msgstr ""
 
@@ -3704,11 +3700,11 @@ msgstr "Ваша доля в пуле"
 msgid "Your Pool Tokens"
 msgstr "Жетоны вашего пула"
 
-#: src/pages/gd/Portfolio/index.tsx:324
+#: src/pages/gd/Portfolio/index.tsx:325
 msgid "Your social contribution from:"
 msgstr "Ваш социальный вклад от:"
 
-#: src/pages/gd/Stake/StakeDeposit/index.tsx:387
+#: src/pages/gd/Stake/StakeDeposit/index.tsx:388
 msgid "Your staking transaction which will generate UBI for thousands of people around\n"
 "the world has just been broadcasted to the network."
 msgstr ""
@@ -3735,7 +3731,7 @@ msgstr "Ваша транзакция будет отменена, если це
 #~ msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 #~ msgstr ""
 
-#: src/components/AccountDetails/index.tsx:322
+#: src/components/AccountDetails/index.tsx:331
 msgid "Your transactions will appear here..."
 msgstr "Ваши транзакции появятся здесь ..."
 
