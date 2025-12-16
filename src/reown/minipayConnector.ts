@@ -84,12 +84,8 @@ export function miniPayConnector() {
                 }
 
                 provider = await resolveMiniPayProvider()
-                if (!provider) {
+                if (!provider || !provider.isMiniPay) {
                     throw new Error('MiniPay provider not found')
-                }
-
-                if (!provider.isMiniPay) {
-                    throw new Error('MiniPay provider not detected')
                 }
 
                 try {
