@@ -69,6 +69,13 @@ const GlobalStyle = createGlobalStyle`
     width: 120px;
     height: auto;
   }
+
+  appkit-wallet-button[data-wallet-id="minipay"],
+  appkit-wallet-button:has([data-wallet-name*="MiniPay" i]),
+  button[data-wallet-id="minipay"],
+  button:has([data-wallet-name*="MiniPay" i]) {
+    display: none !important;
+  }
 `
 
 const enableHttpsRedirect = String(process.env.REACT_APP_ENABLE_HTTPS_REDIRECT) === '1'

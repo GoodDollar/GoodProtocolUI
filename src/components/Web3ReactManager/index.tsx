@@ -5,7 +5,7 @@ import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
 import { useAppKitState } from '@reown/appkit/react'
 import { useAccount, useConnect } from 'wagmi'
-import { waitForMiniPayProvider } from 'utils/minipay'
+import { waitForMiniPayProvider, isMiniPay } from 'utils/minipay'
 
 const MessageWrapper = styled.div`
     display: flex;
@@ -41,11 +41,15 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
     }, [])
 
     useEffect(() => {
-        if (hasConnected.current || connectors.length === 0) {
+        if (hasConnected.current || address) {
             return
         }
 
         const attemptConnect = async () => {
+            if (!isMiniPay()) {
+                return
+            }
+
             const provider = await waitForMiniPayProvider(2000)
             if (!provider) {
                 return
@@ -53,24 +57,25 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
 
             try {
                 hasConnected.current = true
-                connect({ connector: connectors[0] })
+                const miniPayConnectorInstance = connectors.find((c) => c.id === 'minipay')
+                if (miniPayConnectorInstance) {
+                    connect({ connector: miniPayConnectorInstance })
+                }
             } catch (error) {
-                console.error('MiniPay connection failed:', error)
+                console.error('MiniPay auto-connect failed:', error)
                 hasConnected.current = false
             }
         }
 
         void attemptConnect()
-    }, [connect, connectors])
+    }, [address, connect, connectors])
 
     useEffect(() => {
-        // re-identify analytics when connected wallet changes
         if (initialized && address) {
             identify(address)
         }
     }, [initialized, address, identify])
 
-    // if the account context isn't active, and there's an error on the network context, it's an irrecoverable error
     if (!initialized && networkError) {
         return (
             <MessageWrapper>

@@ -9,10 +9,11 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
 import { injected, coinbaseWallet } from 'wagmi/connectors'
 import { APPKIT_FEATURED_WALLET_IDS, APPKIT_SOCIAL_PROVIDER_IDS } from 'utils/walletConfig'
-import { miniPayConnector } from './minipayConnector'
 import { SupportedChains } from '@gooddollar/web3sdk-v2'
 import { getEnv } from 'utils/env'
 import { sample } from 'lodash'
+import { getMiniPayProvider } from 'utils/minipay'
+import { miniPayConnector } from './minipayConnector'
 
 const queryClient = new QueryClient()
 
@@ -120,15 +121,30 @@ if (allowedChains.length === 0) {
 const networks = allowedChains.map(mapSupportedChainToReownNetwork) as [AppKitNetwork, ...AppKitNetwork[]]
 
 const baseConnectors = [
-    miniPayConnector(),
-    injected(),
+    injected({
+        target() {
+            if (typeof window === 'undefined') return undefined
+            const ethereum = (window as any).ethereum
+            if (!ethereum) return undefined
+
+            const miniPayProvider = getMiniPayProvider()
+
+            if (Array.isArray(ethereum.providers)) {
+                const nonMiniPayProvider = ethereum.providers.find((provider: any) => provider !== miniPayProvider)
+                return nonMiniPayProvider || (miniPayProvider ? undefined : ethereum.providers[0])
+            }
+
+            return ethereum === miniPayProvider ? undefined : ethereum
+        },
+    }),
     coinbaseWallet({
         appName: 'GoodProtocolUI',
         appLogoUrl: '',
     }),
 ]
 
-const connectors = [...baseConnectors]
+const connectors =
+    typeof window !== 'undefined' && getMiniPayProvider() ? [miniPayConnector(), ...baseConnectors] : baseConnectors
 
 const wagmiAdapter = new WagmiAdapter({
     networks,
