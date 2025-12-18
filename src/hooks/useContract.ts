@@ -15,27 +15,32 @@ import ENS_ABI from '../constants/abis/ens-registrar.json'
 import { ERC20_BYTES32_ABI } from '../constants/abis/erc20'
 import PENDING_ABI from '../constants/abis/pending.json'
 import { getContract } from '../utils'
-import { useActiveWeb3React } from './useActiveWeb3React'
 import { useWeb3Context } from '@gooddollar/web3sdk-v2'
+import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
 
 // returns null on errors
 export function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
-    const { account } = useActiveWeb3React()
+    const { address: accountAddress } = useAppKitAccount()
     const { web3Provider: library } = useWeb3Context() as { web3Provider: Web3Provider }
 
     return useMemo(() => {
         if (!address || !ABI || !library) return null
         try {
-            return getContract(address, ABI, library, withSignerIfPossible && account ? account : undefined)
+            return getContract(
+                address,
+                ABI,
+                library,
+                withSignerIfPossible && accountAddress ? accountAddress : undefined
+            )
         } catch (error) {
             console.error('Failed to get contract', error)
             return null
         }
-    }, [address, ABI, library, withSignerIfPossible, account])
+    }, [address, ABI, library, withSignerIfPossible, accountAddress])
 }
 
 export function useENSRegistrarContract(withSignerIfPossible?: boolean): Contract | null {
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     let address: string | undefined
     if (chainId) {
         switch (chainId) {
@@ -63,7 +68,7 @@ export function usePairContract(pairAddress?: string, withSignerIfPossible?: boo
 }
 
 export function useMerkleDistributorContract(): Contract | null {
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     return useContract(chainId ? MERKLE_DISTRIBUTOR_ADDRESS[chainId] : undefined, MERKLE_DISTRIBUTOR_ABI, true)
 }
 
@@ -76,7 +81,7 @@ export function usePendingContract(): Contract | null {
 }
 
 export function useMulticallContract(): Contract | null {
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     return useContract(chainId && MULTICALL_NETWORKS[chainId], MULTICALL_ABI, false)
 }
 

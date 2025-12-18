@@ -16,7 +16,7 @@ import { t } from '@lingui/macro'
 import Loader from 'components/Loader'
 import { ButtonAction } from 'components/gd/Button'
 
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
 import { useSavingsBalance, useSavingsFunctions, SupportedV2Networks } from '@gooddollar/web3sdk-v2'
 import { TransactionReceipt } from '@ethersproject/providers'
 import { TransactionStatus } from '@usedapp/core'
@@ -88,8 +88,9 @@ const SavingsModal = memo(
         requiredChain: number
     }): JSX.Element => {
         const { i18n } = useLingui()
-        const { account, chainId } = useActiveWeb3React()
-        const network = SupportedV2Networks[chainId]
+        const { address } = useAppKitAccount()
+        const { chainId } = useAppKitNetwork()
+        const network = SupportedV2Networks[+(chainId ?? 1)]
         const [txStatus, setTxStatus] = useState<TransactionStatus>({ status: 'None' })
         const reduxDispatch = useDispatch()
         const sendData = useSendAnalyticsData()
@@ -122,7 +123,7 @@ const SavingsModal = memo(
             dispatch({ type: 'DONE', payload: tx.transactionHash })
             reduxDispatch(
                 addTransaction({
-                    chainId: chainId,
+                    chainId: +(chainId ?? 1),
                     hash: tx.transactionHash,
                     from: tx.from,
                     summary: i18n._(t`${amount} ${TransactionCopy[type].transaction.summary}`),
@@ -131,7 +132,7 @@ const SavingsModal = memo(
         }
 
         const depositOrWithdraw = async (amount: string) => {
-            if (account) {
+            if (address) {
                 sendData({ event: 'savings', action: 'savings_' + type + '_confirm', amount: amount, network })
                 const parsedAmount = (parseFloat(withdrawAmount.toFixed(0)) * 1e2).toString()
                 const tx =
@@ -148,7 +149,7 @@ const SavingsModal = memo(
         }
 
         const claimRewards = async () => {
-            if (account) {
+            if (address) {
                 sendData({ event: 'savings', action: 'savings_claim_rewards_confirm', network })
                 await claim().then((tx) => {
                     if (tx) {
@@ -160,9 +161,9 @@ const SavingsModal = memo(
         }
 
         const withdrawAll = async () => {
-            if (account && balance) {
+            if (address && balance) {
                 sendData({ event: 'savings', action: 'savings_withdraw_all_send', network })
-                const tx = await withdraw(balance, account)
+                const tx = await withdraw(balance, address)
                 if (tx) {
                     sendData({
                         event: 'savings',

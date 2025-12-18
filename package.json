@@ -1,7 +1,7 @@
 {
     "name": "@gooddollar/protocol-ui",
     "description": "GoodProtocol Interface",
-    "version": "1.104.0",
+    "version": "1.117.0",
     "homepage": ".",
     "private": true,
     "scripts": {
@@ -206,10 +206,10 @@
     },
     "dependencies": {
         "@babel/runtime": "^7.18.9",
-        "@gooddollar/good-design": "^0.4.24",
-        "@gooddollar/goodprotocol": "2.0.34-beta.1",
-        "@gooddollar/web3sdk": "^0.1.50",
-        "@gooddollar/web3sdk-v2": "^0.4.18",
+        "@gooddollar/good-design": "0.4.32",
+        "@gooddollar/goodprotocol": "2.1.1",
+        "@gooddollar/web3sdk": "0.1.54",
+        "@gooddollar/web3sdk-v2": "0.4.30",
         "@headlessui/react": "1.5.0",
         "@lingui/format-json": "^4.0.0",
         "@lingui/macro": "^4.0.0",
@@ -222,7 +222,7 @@
         "@types/text-mask-addons": "^3.8.1",
         "@uniswap/sdk-core": "^4.0.9",
         "@uniswap/widgets": "^2.59.0",
-        "@usedapp/core": "^1.2.6",
+        "@usedapp/core": "^1.2.16",
         "@web3-onboard/core": "^2.23.0",
         "@web3-onboard/react": "^2.10.0",
         "amplitude-js": "^8.21.2",

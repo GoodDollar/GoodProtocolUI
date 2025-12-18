@@ -9,7 +9,7 @@ import CurrencyLogo from 'components/CurrencyLogo'
 import { Currency } from '@sushiswap/sdk'
 import { addTransaction } from 'state/transactions/actions'
 import { useDispatch } from 'react-redux'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { useAppKitNetwork } from '@reown/appkit/react'
 import { getExplorerLink } from 'utils'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
@@ -69,8 +69,8 @@ const SwapConfirmModal = memo(
         const { i18n } = useLingui()
         const [from, to] = pair ?? []
         const globalDispatch = useDispatch()
-        const { chainId } = useActiveWeb3React()
-        const network = SupportedChainId[chainId]
+        const { chainId } = useAppKitNetwork()
+        const network = SupportedChainId[+(chainId ?? 42220)]
         const { web3 } = useGdContextProvider()
         const [status, setStatus] = useState<'PREVIEW' | 'CONFIRM' | 'SENT' | 'SUCCESS' | 'REJECTED'>('SENT')
         const [hash, setHash] = useState('')
@@ -97,7 +97,7 @@ const SwapConfirmModal = memo(
 
             globalDispatch(
                 addTransaction({
-                    chainId: chainId!,
+                    chainId: +chainId!,
                     hash: hash,
                     from: from,
                     summary: summary,
@@ -301,7 +301,7 @@ const SwapConfirmModal = memo(
                             <div className="text-center">
                                 <a
                                     className="text-cyan-blue hover:underline"
-                                    href={getExplorerLink(chainId, hash, 'transaction')}
+                                    href={getExplorerLink(+(chainId ?? 42220), hash, 'transaction')}
                                     target="_blank"
                                     rel="noreferrer"
                                 >

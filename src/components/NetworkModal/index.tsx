@@ -1,18 +1,19 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { useSwitchNetwork } from '@gooddollar/web3sdk-v2'
+import { SupportedChains, useSwitchNetwork } from '@gooddollar/web3sdk-v2'
 import { Text, Link } from 'native-base'
 import { SwitchChainModal } from '@gooddollar/good-design'
 import { ChainId } from '@sushiswap/sdk'
 import { UnsupportedChainId } from '@gooddollar/web3sdk'
+import styled from 'styled-components'
+
 import Modal from '../Modal'
 import ModalHeader from '../ModalHeader'
 import Option from '../WalletModal/Option'
-import styled from 'styled-components'
-import { AdditionalChainId } from '../../constants'
+import { useAppKitNetwork, useAppKitState } from '@reown/appkit/react'
+import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { NETWORK_ICON, NETWORK_LABEL } from '../../constants/networks'
 import { useModalOpen, useNetworkModalToggle, useSelectedChain } from '../../state/application/hooks'
 import { ApplicationModal } from '../../state/application/types'
@@ -62,23 +63,33 @@ const ChainOption = ({ chainId, chain, toggleNetworkModal, switchChain, labels, 
 export default function NetworkModal(): JSX.Element | null {
     const { i18n } = useLingui()
     const { setSelectedChain } = useSelectedChain()
-    const { chainId, error, active } = useActiveWeb3React()
+    const { initialized } = useAppKitState()
+    const { chainId } = useAppKitNetwork()
+    const error = false
+    const { activeNetworksByFeature } = useGoodDappFeatures()
     const sendData = useSendAnalyticsData()
     const { switchNetwork } = useSwitchNetwork()
     const networkModalOpen = useModalOpen(ApplicationModal.NETWORK)
     const toggleNetworkModal = useNetworkModalToggle()
-    const [toAddNetwork, setToAddNetwork] = useState<ChainId | AdditionalChainId | undefined>()
+    const [toAddNetwork, setToAddNetwork] = useState<SupportedChains | undefined>()
 
-    const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[chainId]
+    const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[+(chainId ?? 42220)]
     const network = getEnv()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    const prodNetworks = [AdditionalChainId.CELO, ChainId.MAINNET, AdditionalChainId.FUSE, AdditionalChainId.XDC]
+    const prodNetworks = activeNetworksByFeature['networkEnabled']
 
     const allowedNetworks = useMemo(() => {
         switch (true) {
             case network === 'staging':
-            case network === 'fuse':
-                return [AdditionalChainId.CELO, AdditionalChainId.FUSE, AdditionalChainId.XDC]
+            case network === 'development': {
+                const devNetworks = [...prodNetworks]
+                if (devNetworks.indexOf(SupportedChains.XDC) === -1) {
+                    devNetworks.push(SupportedChains.XDC)
+                }
+
+                return devNetworks.filter((chain) => chain !== SupportedChains.MAINNET)
+            }
+
             default:
                 return prodNetworks
         }
@@ -90,9 +101,9 @@ export default function NetworkModal(): JSX.Element | null {
     }, [toggleNetworkModal])
 
     const switchChain = useCallback(
-        async (chain: ChainId | AdditionalChainId) => {
+        async (chain: SupportedChains) => {
             try {
-                if (active) await switchNetwork(chain)
+                if (initialized) await switchNetwork(chain)
                 else setSelectedChain(chain) // only change chain to trigger onboard re-init if not already connected
             } catch (e: any) {
                 if (e.code === 4902) {
@@ -146,56 +157,7 @@ export default function NetworkModal(): JSX.Element | null {
                         </TextWrapper>
 
                         <div className="flex flex-col mt-3 space-y-5 overflow-y-auto">
-                            {allowedNetworks.map((chain: ChainId | AdditionalChainId) => (
-                                <ChainOption
-                                    key={chain}
-                                    chainId={chainId}
-                                    chain={chain}
-                                    labels={NETWORK_LABEL}
-                                    icons={NETWORK_ICON}
-                                    toggleNetworkModal={toggleNetworkModal}
-                                    switchChain={switchChain}
-                                    error={error}
-                                />
-                            ))}
-                        </div>
-                    </>
-                )}
-            </Modal>
-            <Modal isOpen={networkModalOpen} onDismiss={toggleNetworkModal}>
-                {toAddNetwork ? (
-                    <>
-                        <ModalHeader className="mb-1" onClose={closeNetworkModal} title="Add network" />
-                        <Text display="flex" flexDir="column">
-                            {i18n._(
-                                t`We see you don't have ${
-                                    (NETWORK_LABEL as any)[toAddNetwork]
-                                } added to your wallet. Kindly add the network, and try again.`
-                            )}
-                            <Link
-                                color="main"
-                                href="https://www.notion.so/gooddollar/How-to-Manually-Add-Networks-to-Your-Web3-Wallet-02cf2088a64240c3a7286616fb3e3113"
-                            >
-                                Learn more here.
-                            </Link>
-                        </Text>
-                    </>
-                ) : (
-                    <>
-                        <ModalHeader className="mb-1" onClose={toggleNetworkModal} title="Select network" />
-                        <TextWrapper>
-                            {i18n._(t`You are currently browsing`)} <span className="site">GOOD DOLLAR</span>
-                            {networkLabel && (
-                                <>
-                                    {` `}
-                                    {i18n._(t`on the`)} <span className="network">{networkLabel}</span>{' '}
-                                    {i18n._(t`network`)}
-                                </>
-                            )}
-                        </TextWrapper>
-
-                        <div className="flex flex-col mt-3 space-y-5 overflow-y-auto">
-                            {allowedNetworks.map((chain: ChainId | AdditionalChainId) => (
+                            {allowedNetworks.map((chain: SupportedChains) => (
                                 <ChainOption
                                     key={chain}
                                     chainId={chainId}

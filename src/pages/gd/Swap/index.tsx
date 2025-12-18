@@ -1,17 +1,17 @@
 import React, { memo } from 'react'
 import { SupportedChains } from '@gooddollar/web3sdk-v2'
-import { useFeatureFlagWithPayload } from 'posthog-react-native'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { Link, Text, useBreakpointValue, VStack } from 'native-base'
+import { useAppKitNetwork } from '@reown/appkit/react'
 
 import { useNetworkModalToggle } from 'state/application/hooks'
 import { UniSwap } from './SwapCelo/UniSwap'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import SwapMento from './SwapCore/mentoReserve'
 import { PageLayout } from 'components/Layout/PageLayout'
 import { getEnv } from 'utils/env'
 import { NETWORK_LABEL } from '../../../constants/networks'
+import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 
 const SwapExplanationFooter = () => (
     <VStack space={1} textAlign="center">
@@ -28,7 +28,7 @@ const SwapExplanationFooter = () => (
 )
 
 const SwapExplanation = ({ swapWidget }) => {
-    if (swapWidget === 'celoReserve') {
+    if (swapWidget === 'goodReserve') {
         return (
             <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={8}>
                 <Text fontFamily="subheading" fontSize="sm" color="goodGrey.600" pt={4} pb={8} textAlign="center">
@@ -61,11 +61,12 @@ Take note of indicators in the widget below for price slippage and liquidity.`
 }
 const Swap = memo((props: any) => {
     const swapWidget = props.match.params.widget
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const isProd = getEnv() === 'production'
-    const [, payload] = useFeatureFlagWithPayload('swap-feature')
-    const { celoEnabled, reserveEnabled } = (payload as any) || {}
     const toggleNetworkModal = useNetworkModalToggle()
+    const { activeChainFeatures } = useGoodDappFeatures()
+    const reserveEnabled = activeChainFeatures['reserveEnabled']
+    const dexSwapEnabled = activeChainFeatures['dexSwapEnabled']
 
     const faqType = swapWidget === 'celoUniswap' ? 'swap' : 'reserve'
 
@@ -79,27 +80,26 @@ const Swap = memo((props: any) => {
     })
 
     const swapComponentMapping = {
-        celoReserve: {
+        goodReserve: {
             component: <SwapMento />,
-            enabled: !isProd || reserveEnabled !== false,
-            chainId: SupportedChains.CELO,
+            enabled: !isProd || reserveEnabled,
+            chainId: [SupportedChains.CELO, SupportedChains.XDC],
         },
         celoUniswap: {
             component: <UniSwap />,
-            enabled: !isProd || celoEnabled !== false,
-            chainId: SupportedChains.CELO,
+            enabled: !isProd || dexSwapEnabled,
+            chainId: [SupportedChains.CELO],
         },
     }
 
     const chainConfig = swapComponentMapping[swapWidget]
-    console.log({ props, chainConfig })
     if (!chainConfig) {
         return <></>
     }
 
     return (
         <PageLayout title="Swap" faqType={faqType}>
-            {(chainId as Number) !== chainConfig.chainId ? (
+            {chainConfig.chainId.includes(chainId) === false ? (
                 <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={8}>
                     <Link
                         fontFamily="subheading"
@@ -108,7 +108,11 @@ const Swap = memo((props: any) => {
                         onPress={toggleNetworkModal}
                         _text={{ color: 'gdPrimary' }}
                     >
-                        {i18n._(t`Please switch your network to ${NETWORK_LABEL[chainConfig.chainId]} to Swap.`)}
+                        {i18n._(
+                            t`Please switch your network to ${chainConfig.chainId
+                                .map((_) => NETWORK_LABEL[_])
+                                .join(' or ')} to Swap.`
+                        )}
                     </Link>
                 </VStack>
             ) : (

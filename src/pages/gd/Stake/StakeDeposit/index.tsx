@@ -8,7 +8,7 @@ import AsyncTokenIcon from 'components/gd/sushi/AsyncTokenIcon'
 import Title from 'components/gd/Title'
 import Loader from 'components/Loader'
 import Switch from 'components/Switch'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import SwapInput from 'pages/gd/Swap/SwapInput'
 import { useDispatch } from 'react-redux'
@@ -60,7 +60,8 @@ const StakeDeposit = memo(({ stake, onDeposit, onClose, activeTableName }: Stake
     const { i18n } = useLingui()
     //note:
     // (bug-minor) chainId is cached here at default 1 when using an action button. Only seems to break loading icons on dev..
-    const { chainId, account } = useActiveWeb3React()
+
+    const { address, chainId } = useConnectionInfo()
     const { web3 } = useGdContextProvider()
     const [state, dispatch] = useReducer(
         (
@@ -122,12 +123,12 @@ const StakeDeposit = memo(({ stake, onDeposit, onClose, activeTableName }: Stake
     const tokenToDeposit = stake.tokens[state.token]
 
     const tokenToDepositBalance = useTokenBalance(
-        account,
+        address,
         useMemo(
             () =>
-                chainId &&
+                (chainId as unknown as Token) &&
                 new Token(
-                    chainId,
+                    +(chainId ?? 1),
                     tokenToDeposit.address,
                     tokenToDeposit.decimals,
                     tokenToDeposit.symbol,
@@ -213,7 +214,7 @@ const StakeDeposit = memo(({ stake, onDeposit, onClose, activeTableName }: Stake
                         <span>STAKE</span>
                         <AsyncTokenIcon
                             address={stake.tokens.A.address}
-                            chainId={chainId}
+                            chainId={+(chainId ?? 1)}
                             className="block w-5 h-5 rounded-full"
                         />
                         <span>{stake.tokens.A.symbol}</span>
@@ -268,7 +269,7 @@ const StakeDeposit = memo(({ stake, onDeposit, onClose, activeTableName }: Stake
                     />
                     <ButtonAction
                         className="mt-4"
-                        disabled={!/[^0.]/.exec(state.value) || !web3 || !account || state.loading}
+                        disabled={!/[^0.]/.exec(state.value) || !web3 || !address || state.loading}
                         onClick={() =>
                             withLoading(async () => {
                                 sendData({
@@ -300,7 +301,7 @@ const StakeDeposit = memo(({ stake, onDeposit, onClose, activeTableName }: Stake
                     >
                         {state.loading
                             ? i18n._(t`APPROVING`)
-                            : !account
+                            : !address
                             ? i18n._(t`Connect wallet`)
                             : i18n._(t`APPROVE`)}
                     </ButtonAction>
@@ -313,7 +314,7 @@ const StakeDeposit = memo(({ stake, onDeposit, onClose, activeTableName }: Stake
                             <div className="flex items-center space-x-2 token">
                                 <AsyncTokenIcon
                                     address={stake.tokens.A.address}
-                                    chainId={chainId}
+                                    chainId={+(chainId ?? 1)}
                                     className="block w-5 h-5 rounded-full"
                                 />
                                 <span>{state.value}</span>
@@ -354,7 +355,7 @@ const StakeDeposit = memo(({ stake, onDeposit, onClose, activeTableName }: Stake
                                             dispatch({ type: 'DONE', payload: transactionHash })
                                             reduxDispatch(
                                                 addTransaction({
-                                                    chainId: chainId!,
+                                                    chainId: +chainId!,
                                                     hash: transactionHash,
                                                     from: from,
                                                     summary: i18n._(
@@ -390,8 +391,8 @@ const StakeDeposit = memo(({ stake, onDeposit, onClose, activeTableName }: Stake
                                 <a
                                     href={
                                         state.transactionHash &&
-                                        chainId &&
-                                        getExplorerLink(chainId, state.transactionHash, 'transaction')
+                                        String(chainId) &&
+                                        getExplorerLink(+(chainId ?? 1), state.transactionHash, 'transaction')
                                     }
                                     target="_blank"
                                     rel="noreferrer"

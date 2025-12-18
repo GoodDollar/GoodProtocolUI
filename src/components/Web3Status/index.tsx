@@ -7,11 +7,11 @@ import Loader from '../Loader'
 import WalletModal from '../WalletModal'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 import { Text, HStack } from 'native-base'
 import { useNativeBalance } from '@gooddollar/web3sdk-v2'
 import { Currency } from '@sushiswap/sdk'
+import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
 
 // we want the latest one to come first, so return negative if a is after b
 function newTransactionsFirst(a: TransactionDetails, b: TransactionDetails) {
@@ -21,9 +21,10 @@ function newTransactionsFirst(a: TransactionDetails, b: TransactionDetails) {
 function Web3StatusInner() {
     const { i18n } = useLingui()
     const sendData = useSendAnalyticsData()
-    const { account, chainId } = useActiveWeb3React()
+    const { address } = useAppKitAccount()
+    const { chainId } = useAppKitNetwork()
 
-    const { ENSName } = useENSName(account ?? undefined)
+    const { ENSName } = useENSName(address ?? undefined)
 
     const allTransactions = useAllTransactions()
     const nativeBalance = useNativeBalance()
@@ -43,11 +44,11 @@ function Web3StatusInner() {
 
     return (
         <HStack space={8} flexDirection="row">
-            {account && (
+            {address && (
                 <div className="flex flex-row gap-4">
                     {nativeBalance && (
                         <Text fontSize="sm" fontFamily="subheading" fontWeight="normal" color="gdPrimary">
-                            {parseFloat(nativeBalance).toFixed(4)} {Currency.getNativeCurrencySymbol(chainId)}
+                            {parseFloat(nativeBalance).toFixed(4)} {Currency.getNativeCurrencySymbol(+(chainId ?? 1))}
                         </Text>
                     )}
                     {hasPendingTransactions ? (
@@ -59,7 +60,7 @@ function Web3StatusInner() {
                         </div>
                     ) : (
                         <div className="mr-2" onClick={onAccountClick}>
-                            {ENSName || shortenAddress(account)}
+                            {ENSName || shortenAddress(address)}
                         </div>
                     )}
                 </div>
@@ -69,16 +70,16 @@ function Web3StatusInner() {
 }
 
 export default function Web3Status(): JSX.Element {
-    const { account } = useActiveWeb3React()
+    const { address } = useAppKitAccount()
 
-    const { ENSName } = useENSName(account ?? undefined)
+    const { ENSName } = useENSName(address ?? undefined)
 
     const allTransactions = useAllTransactions()
 
     const sortedRecentTransactions = useMemo(() => {
         const txs = Object.values(allTransactions)
         return txs.filter(isTransactionRecent).sort(newTransactionsFirst)
-    }, [allTransactions, account])
+    }, [allTransactions, address])
 
     const pending = sortedRecentTransactions.filter((tx) => !tx.receipt).map((tx) => tx.hash)
     const confirmed = sortedRecentTransactions.filter((tx) => tx.receipt).map((tx) => tx.hash)

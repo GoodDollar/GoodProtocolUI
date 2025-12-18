@@ -2,10 +2,12 @@ import React from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { Currency, currencyEquals, ETHER, WETH } from '@sushiswap/sdk'
+import { getSafeChainId } from 'utils/chain'
+import { useAppKitNetwork } from '@reown/appkit/react'
+
 import { AutoColumn } from '../../components/Column'
 import CurrencyLogo from '../../components/CurrencyLogo'
 import { RowBetween } from '../../components/Row'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { StyledInternalLink } from '../../theme'
 import { currencyId } from '../../utils/currencyId'
 
@@ -29,8 +31,10 @@ export default function RemoveLiquidityReceiveDetails({
     id,
 }: RemoveLiquidityReceiveDetailsProps) {
     const { i18n } = useLingui()
-    const { chainId } = useActiveWeb3React()
-    if (!chainId || !currencyA || !currencyB) throw new Error('missing dependencies')
+    const { chainId: rawChainId } = useAppKitNetwork()
+    if (!rawChainId || !currencyA || !currencyB) throw new Error('missing dependencies')
+    const chainId = Number(rawChainId)
+    const safeChainId = getSafeChainId(rawChainId)
     return (
         <div id={id} className="p-5 rounded">
             <div className="flex flex-col justify-between space-y-3 sm:space-y-0 sm:flex-row">
@@ -44,7 +48,7 @@ export default function RemoveLiquidityReceiveDetails({
                                         currencyA === ETHER ? WETH[chainId].address : currencyId(currencyA)
                                     }/${currencyB === ETHER ? WETH[chainId].address : currencyId(currencyB)}`}
                                 >
-                                    Receive W{Currency.getNativeCurrencySymbol(chainId)}
+                                    Receive W{Currency.getNativeCurrencySymbol(safeChainId)}
                                 </StyledInternalLink>
                             ) : hasETH ? (
                                 <StyledInternalLink
@@ -58,7 +62,7 @@ export default function RemoveLiquidityReceiveDetails({
                                             : currencyId(currencyB)
                                     }`}
                                 >
-                                    Receive {Currency.getNativeCurrencySymbol(chainId)}
+                                    Receive {Currency.getNativeCurrencySymbol(safeChainId)}
                                 </StyledInternalLink>
                             ) : null}
                         </RowBetween>
@@ -70,14 +74,14 @@ export default function RemoveLiquidityReceiveDetails({
                         <CurrencyLogo currency={currencyA} size="46px" style={{ marginRight: '12px' }} />
                         <AutoColumn>
                             <div className="white">{amountA}</div>
-                            <div className="">{currencyA?.getSymbol(chainId)}</div>
+                            <div className="">{currencyA?.getSymbol(safeChainId)}</div>
                         </AutoColumn>
                     </div>
                     <div className="flex flex-row items-center w-full p-3 rounded">
                         <CurrencyLogo currency={currencyB} size="46px" style={{ marginRight: '12px' }} />
                         <AutoColumn>
                             <div className="white">{amountB}</div>
-                            <div className="">{currencyB?.getSymbol(chainId)}</div>
+                            <div className="">{currencyB?.getSymbol(safeChainId)}</div>
                         </AutoColumn>
                     </div>
                 </div>
