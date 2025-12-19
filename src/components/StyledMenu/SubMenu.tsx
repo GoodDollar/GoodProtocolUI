@@ -20,7 +20,7 @@ export const SubMenuItems = ({
             if (url) {
                 return (
                     <ExternalLink
-                        key={label}
+                        key={url}
                         label={label}
                         url={url}
                         dataAttr={dataAttr}

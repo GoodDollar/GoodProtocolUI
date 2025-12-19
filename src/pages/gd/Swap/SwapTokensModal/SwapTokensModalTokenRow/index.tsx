@@ -2,9 +2,9 @@ import React, { CSSProperties, memo } from 'react'
 import { SwapTokensModalTokenRowSC } from './styled'
 import CurrencyLogo from 'components/CurrencyLogo'
 import { Currency } from '@sushiswap/sdk'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useCurrencyBalance } from 'state/wallet/hooks'
 import Loader from 'components/Loader'
+import { useAppKitAccount } from '@reown/appkit/react'
 
 export interface SwapTokensModalTokenRowProps extends Omit<JSX.IntrinsicElements['div'], 'ref'> {
     className?: string
@@ -15,8 +15,8 @@ export interface SwapTokensModalTokenRowProps extends Omit<JSX.IntrinsicElements
 
 const SwapTokensModalTokenRow = memo(
     ({ className, style, token, active, ...divProps }: SwapTokensModalTokenRowProps) => {
-        const { account } = useActiveWeb3React()
-        const balance = useCurrencyBalance(account ?? undefined, token)
+        const { address } = useAppKitAccount()
+        const balance = useCurrencyBalance(address ?? undefined, token)
 
         return (
             <SwapTokensModalTokenRowSC className={className} style={style} $active={active} {...divProps}>
@@ -25,7 +25,7 @@ const SwapTokensModalTokenRow = memo(
                 </div>
                 <div className="title">{token.getSymbol()}</div>
                 <div className="subtitle">{token.getName()}</div>
-                <div className="balance">{balance ? balance.toSignificant(4) : account ? <Loader /> : null}</div>
+                <div className="balance">{balance ? balance.toSignificant(4) : address ? <Loader /> : null}</div>
             </SwapTokensModalTokenRowSC>
         )
     }

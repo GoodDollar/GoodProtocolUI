@@ -1,7 +1,7 @@
 import { Contract } from '@ethersproject/contracts'
 import { useEffect, useMemo, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
+import { useAppKitNetwork } from '@reown/appkit/react'
 import { useMulticallContract } from '../../hooks/useContract'
 import useDebounce from '../../hooks/useDebounce'
 import chunkArray from '../../utils/chunkArray'
@@ -118,16 +118,16 @@ export default function Updater(): null {
     // wait for listeners to settle before triggering updates
     const debouncedListeners = useDebounce(state.callListeners, 100)
     const latestBlockNumber = useBlockNumber()
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const multicallContract = useMulticallContract()
     const cancellations = useRef<{ blockNumber: number; cancellations: (() => void)[] }>()
 
     const listeningKeys: { [callKey: string]: number } = useMemo(() => {
-        return activeListeningKeys(debouncedListeners, chainId)
+        return activeListeningKeys(debouncedListeners, +(chainId ?? 42220))
     }, [debouncedListeners, chainId])
 
     const unserializedOutdatedCallKeys = useMemo(() => {
-        return outdatedListeningKeys(state.callResults, listeningKeys, chainId, latestBlockNumber)
+        return outdatedListeningKeys(state.callResults, listeningKeys, +(chainId ?? 42220), latestBlockNumber)
     }, [chainId, state.callResults, listeningKeys, latestBlockNumber])
 
     const serializedOutdatedCallKeys = useMemo(
@@ -151,7 +151,7 @@ export default function Updater(): null {
         dispatch(
             fetchingMulticallResults({
                 calls,
-                chainId,
+                chainId: +(chainId ?? 42220),
                 fetchingBlockNumber: latestBlockNumber,
             })
         )
@@ -177,7 +177,7 @@ export default function Updater(): null {
 
                         dispatch(
                             updateMulticallResults({
-                                chainId,
+                                chainId: +(chainId ?? 42220),
                                 results: outdatedCallKeys
                                     .slice(firstCallKeyIndex, lastCallKeyIndex)
                                     .reduce<{ [callKey: string]: string | null }>((memo, callKey, i) => {
@@ -198,7 +198,7 @@ export default function Updater(): null {
                         dispatch(
                             errorFetchingMulticallResults({
                                 calls: chunk,
-                                chainId,
+                                chainId: +(chainId ?? 42220),
                                 fetchingBlockNumber: latestBlockNumber,
                             })
                         )

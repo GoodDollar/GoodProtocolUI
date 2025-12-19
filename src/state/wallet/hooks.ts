@@ -1,7 +1,7 @@
 import { ChainId, Currency, CurrencyAmount, ETHER, JSBI, Token, TokenAmount } from '@sushiswap/sdk'
 import { useMemo } from 'react'
 import ERC20_INTERFACE from '../../constants/abis/erc20'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
+import { useAppKitNetwork } from '@reown/appkit/react'
 import { useMulticallContract } from '../../hooks/useContract'
 import { isAddress } from '../../utils'
 import { useMultipleContractSingleData, useSingleContractMultipleData } from '../multicall/hooks'
@@ -110,7 +110,7 @@ export function useCurrencyBalances(
         [currencies]
     )
     const ethBalance = useETHBalances(containsETH ? [account] : [])
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     return useMemo(
         () =>
             currencies?.map((currency) => {

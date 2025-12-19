@@ -1,7 +1,6 @@
 import React from 'react'
 import { darken } from 'polished'
 import { Activity } from 'react-feather'
-import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { useNetworkModalToggle, useSelectedChain } from '../../state/application/hooks'
 import { NETWORK_ICON, NETWORK_LABEL } from '../../constants/networks'
 import NetworkModal from '../NetworkModal'
@@ -12,6 +11,8 @@ import { useLingui } from '@lingui/react'
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 import { ChainId } from '@sushiswap/sdk'
 import { Pressable, Text } from 'native-base'
+import { useAppKitState } from '@reown/appkit/react'
+import { useConnectionInfo } from 'hooks/useConnectionInfo'
 
 const Web3StatusGeneric = styled(ButtonSecondary)`
     ${({ theme }) => theme.flexRowNoWrap}
@@ -47,9 +48,12 @@ const NetworkIcon = styled(Activity)`
 `
 
 function Web3Network(): JSX.Element | null {
-    const { chainId = 42220, active, error } = useActiveWeb3React()
+    // TODO active(initliazed)
+    const { initialized } = useAppKitState()
+    const { chainId } = useConnectionInfo()
+    const error = false
     const { selectedChain = 42220 } = useSelectedChain()
-    const displayChain = active ? chainId : selectedChain
+    const displayChain = initialized ? +(chainId ?? 42220) : selectedChain
     const { i18n } = useLingui()
     const sendData = useSendAnalyticsData()
 
@@ -57,7 +61,7 @@ function Web3Network(): JSX.Element | null {
 
     const onNetworkChange = () => {
         toggleNetworkModal()
-        sendData({ event: 'network_switch', action: 'network_switch_start', network: ChainId[chainId] })
+        sendData({ event: 'network_switch', action: 'network_switch_start', network: ChainId[+(chainId ?? 42220)] })
     }
 
     return (

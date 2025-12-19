@@ -132,9 +132,9 @@ export const CustomOnramper = ({
 
     if (!targetWallet) {
         return (
-            <div style={{ padding: '1rem', textAlign: 'center', color: 'red' }}>
+            <Box p="4" textAlign="center" color="red.500">
                 Wallet not found. Please select a valid wallet to continue.
-            </div>
+            </Box>
         )
     }
 

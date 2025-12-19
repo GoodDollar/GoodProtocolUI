@@ -3,11 +3,10 @@ import { t } from '@lingui/macro'
 import AsyncTokenIcon from 'components/gd/sushi/AsyncTokenIcon'
 import ListHeaderWithSort from 'components/gd/sushi/ListHeaderWithSort'
 import React, { Fragment, useState } from 'react'
-import { useFeatureFlagWithPayload } from 'posthog-react-native'
-
-import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
-import useSearchAndSort from 'hooks/useSearchAndSort'
 import { useLingui } from '@lingui/react'
+
+import { useAppKitNetwork } from '@reown/appkit/react'
+import useSearchAndSort from 'hooks/useSearchAndSort'
 import Modal from 'components/Modal'
 import { ActionOrSwitchButton } from 'components/gd/Button/ActionOrSwitchButton'
 import Table from 'components/gd/Table'
@@ -34,6 +33,7 @@ import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { useWindowSize } from 'hooks/useWindowSize'
 import styled from 'styled-components'
 import { SupportedChains } from '@gooddollar/web3sdk-v2'
+import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 
 const StakeTable = ({
     list,
@@ -432,19 +432,20 @@ const StakesSC = styled.div`
 export default function Stakes(): JSX.Element | null {
     const { i18n } = useLingui()
     const { web3 } = useGdContextProvider()
-    const { chainId } = useActiveWeb3React()
+    const { chainId } = useAppKitNetwork()
     const governanceStaking = useGovernanceStaking(web3, 122)
-    const [mainnetWeb3] = useEnvWeb3(DAO_NETWORK.MAINNET, web3, chainId)
+    const [mainnetWeb3] = useEnvWeb3(DAO_NETWORK.MAINNET, web3, +(chainId ?? 1))
     const [stakes = [], loading, error, refetch] = usePromise(async () => {
-        const stakes = await (web3 && mainnetWeb3 && !disableTestnetMain.includes(chainId)
+        const stakes = await (web3 && mainnetWeb3 && !disableTestnetMain.includes(+(chainId ?? 1))
             ? getStakes(mainnetWeb3)
             : Promise.resolve([]))
 
         return stakes
     }, [web3, mainnetWeb3])
 
-    const [, mainnetStakesEnabled] = useFeatureFlagWithPayload('mainnet-stakes')
-    const [, governanceStakesEnabled] = useFeatureFlagWithPayload('governance-stakes')
+    const { isFeatureActive } = useGoodDappFeatures()
+    const mainnetStakesEnabled = isFeatureActive('stakingEnabled', SupportedChains.MAINNET)
+    const governanceStakesEnabled = isFeatureActive('governanceEnabled', SupportedChains.FUSE)
 
     const sorted = useSearchAndSort(
         stakes,

@@ -13,6 +13,7 @@ import { ExternalLink } from 'theme'
 import { SubMenuItems } from './StyledMenu/SubMenu'
 import { socials } from 'constants/socials'
 import classNames from 'classnames'
+import { isMiniPay } from 'utils/minipay'
 
 const SocialsLink: React.FC<{ network: string; logo: string; url: string; onPress: (e: any, url: string) => void }> = ({
     network,
@@ -98,8 +99,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
         'w-full': !isTabletView,
     })
 
-    const { ethereum } = window
-    const isMinipay = ethereum?.isMiniPay
+    const isMinipay = isMiniPay()
     const { bridgeEnabled = false, swapEnabled = false } = payload || {}
 
     const externalLinks = useMemo(
@@ -185,8 +185,8 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 subMenuTitle: 'Swap',
                 items: [
                     {
-                        route: '/swap/celoReserve',
-                        text: 'GoodReserve (Celo)',
+                        route: '/swap/goodReserve',
+                        text: 'GoodReserve',
                         show: true,
                     },
                     {
