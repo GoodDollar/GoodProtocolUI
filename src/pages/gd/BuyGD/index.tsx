@@ -1,12 +1,12 @@
 import { memo, useCallback, useState } from 'react'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
+import { useAppKitAccount } from '@reown/appkit/react'
 import { Converter, SlideDownTab } from '@gooddollar/good-design'
 import { Box, Text, useBreakpointValue } from 'native-base'
 import { useG$Price } from '@gooddollar/web3sdk-v2'
 
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { PageLayout } from 'components/Layout/PageLayout'
 import { CustomGdOnramperWidget } from 'components/CustomGdOnramperWidget'
 import { BuyProgressBar } from 'components/BuyProgressBar'
@@ -33,7 +33,7 @@ const CalculatorTab = () => {
 
 const BuyGd = memo(() => {
     const sendData = useSendAnalyticsData()
-    const { account } = useActiveWeb3React()
+    const { address } = useAppKitAccount()
 
     // Batch state updates for better performance
     const [buyState, setBuyState] = useState({ currentStep: 1 as 1 | 2 | 3, isLoading: false })
@@ -90,7 +90,7 @@ const BuyGd = memo(() => {
 
     return (
         <PageLayout title="Buy G$" faqType="buy" customTabs={[<CalculatorTab key="calculator" />]}>
-            {account ? (
+            {address ? (
                 <>
                     <Text
                         style={containerCopy}
