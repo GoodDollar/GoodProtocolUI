@@ -6,9 +6,11 @@ import { Box, Text, useBreakpointValue } from 'native-base'
 import { useG$Price } from '@gooddollar/web3sdk-v2'
 
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { PageLayout } from 'components/Layout/PageLayout'
 import { CustomGdOnramperWidget } from 'components/CustomGdOnramperWidget'
 import { BuyProgressBar } from 'components/BuyProgressBar'
+import Placeholder from 'components/gd/Placeholder'
 import './BuyGD.css'
 
 const CalculatorTab = () => {
@@ -31,6 +33,7 @@ const CalculatorTab = () => {
 
 const BuyGd = memo(() => {
     const sendData = useSendAnalyticsData()
+    const { account } = useActiveWeb3React()
 
     // Batch state updates for better performance
     const [buyState, setBuyState] = useState({ currentStep: 1 as 1 | 2 | 3, isLoading: false })
@@ -87,37 +90,43 @@ const BuyGd = memo(() => {
 
     return (
         <PageLayout title="Buy G$" faqType="buy" customTabs={[<CalculatorTab key="calculator" />]}>
-            <Text
-                style={containerCopy}
-                alignSelf="center"
-                color="goodGrey.500"
-                fontFamily="subheading"
-                fontWeight="normal"
-                textAlign="center"
-                mb={6}
-            >
-                {i18n._(
-                    t`Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$).`
-                )}
-            </Text>
-            <Text
-                style={containerCopy}
-                alignSelf="center"
-                color="goodGrey.500"
-                fontFamily="subheading"
-                fontWeight="bold"
-                textAlign="center"
-                mb={6}
-            >
-                {i18n._(
-                    t`Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$.`
-                )}
-            </Text>
+            {account ? (
+                <>
+                    <Text
+                        style={containerCopy}
+                        alignSelf="center"
+                        color="goodGrey.500"
+                        fontFamily="subheading"
+                        fontWeight="normal"
+                        textAlign="center"
+                        mb={6}
+                    >
+                        {i18n._(
+                            t`Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$).`
+                        )}
+                    </Text>
+                    <Text
+                        style={containerCopy}
+                        alignSelf="center"
+                        color="goodGrey.500"
+                        fontFamily="subheading"
+                        fontWeight="bold"
+                        textAlign="center"
+                        mb={6}
+                    >
+                        {i18n._(
+                            t`Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$.`
+                        )}
+                    </Text>
 
-            <BuyProgressBar currentStep={currentStep} isLoading={isLoading} />
+                    <BuyProgressBar currentStep={currentStep} isLoading={isLoading} />
 
-            {/* todo: width on mobile should be more responsive */}
-            <CustomGdOnramperWidget onEvents={handleEvents} apiKey={process.env.REACT_APP_ONRAMPER_KEY} />
+                    {/* todo: width on mobile should be more responsive */}
+                    <CustomGdOnramperWidget onEvents={handleEvents} apiKey={process.env.REACT_APP_ONRAMPER_KEY} />
+                </>
+            ) : (
+                <Placeholder className="mx-4">{i18n._(t`Connect a wallet to buy G$`)}</Placeholder>
+            )}
         </PageLayout>
     )
 })
