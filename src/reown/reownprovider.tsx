@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { createAppKit } from '@reown/appkit/react'
 import type { AppKitNetwork } from '@reown/appkit-common'
-import { defineChain } from 'viem'
+import { defineChain, http } from 'viem'
 
-import { WagmiProvider } from 'wagmi'
+import { fallback, WagmiProvider } from 'wagmi'
 import { celo, fuse, mainnet } from '@reown/appkit/networks'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
@@ -154,11 +154,13 @@ export function AppKitProvider({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         if (testedRpcs === null) return
         console.log("initializing Reown's AppKitProvider with tested RPCs:", testedRpcs)
-        networks.forEach((network) => {
+        const transports = {}
+        networks.map((network) => {
             const rpcUrls = testedRpcs[network.id]
             if (rpcUrls) {
                 set(network, 'rpcUrls.default.http', rpcUrls)
                 console.log(`Reown: Updated RPC for ${network.name} to ${rpcUrls}`)
+                transports[network.id] = fallback(rpcUrls.map((_) => http(_)))
                 // network.rpcUrls = updatedNetwork.rpcUrls
             }
         })
@@ -168,8 +170,10 @@ export function AppKitProvider({ children }: { children: React.ReactNode }) {
             projectId,
             ssr: true,
             connectors,
+            transports,
         })
 
+        console.log(`wagmiAdapter.wagmiConfig:`, wagmiAdapter.wagmiConfig)
         createAppKit({
             adapters: [wagmiAdapter],
             networks,
