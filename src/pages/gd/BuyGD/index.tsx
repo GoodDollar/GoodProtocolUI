@@ -1,15 +1,13 @@
-import { memo, useCallback, useState } from 'react'
+import { memo, useCallback } from 'react'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { useAppKitAccount } from '@reown/appkit/react'
-import { Converter, SlideDownTab } from '@gooddollar/good-design'
+import { Converter, SlideDownTab, GdOnramperWidget } from '@gooddollar/good-design'
 import { Box, Text, useBreakpointValue } from 'native-base'
 import { useG$Price } from '@gooddollar/web3sdk-v2'
 
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { PageLayout } from 'components/Layout/PageLayout'
-import { CustomGdOnramperWidget } from 'components/CustomGdOnramperWidget'
-import { BuyProgressBar } from 'components/BuyProgressBar'
 import Placeholder from 'components/gd/Placeholder'
 import './BuyGD.css'
 
@@ -35,45 +33,12 @@ const BuyGd = memo(() => {
     const sendData = useSendAnalyticsData()
     const { address } = useAppKitAccount()
 
-    // Batch state updates for better performance
-    const [buyState, setBuyState] = useState({ currentStep: 1 as 1 | 2 | 3, isLoading: false })
-    const { currentStep, isLoading } = buyState
-
     const handleEvents = useCallback(
         (event: string, data?: any, error?: string) => {
             const eventData: any = { event: 'buy', action: event }
             if (data) eventData.data = data
             if (error) eventData.error = error
             sendData(eventData)
-
-            switch (event) {
-                case 'widget_clicked':
-                case 'widget_opened':
-                    setBuyState({ currentStep: 1, isLoading: true })
-                    break
-                case 'transaction_started':
-                    setBuyState({ currentStep: 1, isLoading: true })
-                    break
-                case 'funds_received':
-                    setBuyState({ currentStep: 2, isLoading: false })
-                    break
-                case 'transaction_sent':
-                case 'swap_started':
-                    setBuyState({ currentStep: 2, isLoading: true })
-                    break
-                case 'swap_completed':
-                case 'transaction_completed':
-                    setBuyState({ currentStep: 3, isLoading: false })
-                    break
-                case 'error':
-                    setBuyState((prev) => ({ ...prev, isLoading: false }))
-                    break
-                case 'reset':
-                    setBuyState({ currentStep: 1, isLoading: false })
-                    break
-                default:
-                    break
-            }
         },
         [sendData]
     )
@@ -119,10 +84,7 @@ const BuyGd = memo(() => {
                         )}
                     </Text>
 
-                    <BuyProgressBar currentStep={currentStep} isLoading={isLoading} />
-
-                    {/* todo: width on mobile should be more responsive */}
-                    <CustomGdOnramperWidget onEvents={handleEvents} apiKey={process.env.REACT_APP_ONRAMPER_KEY} />
+                    <GdOnramperWidget onEvents={handleEvents} apiKey={process.env.REACT_APP_ONRAMPER_KEY} />
                 </>
             ) : (
                 <Placeholder className="mx-4">{i18n._(t`Connect a wallet to buy G$`)}</Placeholder>
