@@ -166,22 +166,17 @@ async function fetchAndTestRpcs(): Promise<Record<string, string[]>> {
     return rpcsByChain
 }
 
-async function getRpcCache(): Promise<Record<string, string[]> | null> {
+async function getRpcCache(): Promise<{ rpcs: Record<string, string[]> | null; expired: boolean }> {
     try {
         const cached = await AsyncStorage.getItem(RPC_CACHE_KEY)
-        if (!cached) return null
+        if (!cached) return { rpcs: null, expired: false }
 
         const cacheEntry: RpcCacheEntry = JSON.parse(cached)
         const isExpired = Date.now() - cacheEntry.timestamp > CACHE_DURATION_MS
 
-        if (isExpired) {
-            await AsyncStorage.removeItem(RPC_CACHE_KEY)
-            return null
-        }
-
-        return cacheEntry.rpcs
+        return { rpcs: cacheEntry.rpcs, expired: isExpired }
     } catch {
-        return null
+        return { rpcs: null, expired: false }
     }
 }
 
@@ -203,16 +198,26 @@ export const initializeRpcs = async () => {
         return rpcInitializationPromise
     }
 
+    const dofetch = async () => {
+        const cachedRpcs = await fetchAndTestRpcs()
+        if (Object.values(cachedRpcs).some((arr) => arr.length > 0)) {
+            await setRpcCache(cachedRpcs)
+        }
+        return cachedRpcs
+    }
     // Create initialization promise
     rpcInitializationPromise = (async () => {
         // Try to get cached RPCs first
-        let cachedRpcs = await getRpcCache()
+        const { rpcs: cachedRpcs, expired } = await getRpcCache()
 
-        if (!cachedRpcs) {
+        if (!cachedRpcs || expired) {
             // Fetch and test RPCs if cache miss or expired
-            cachedRpcs = await fetchAndTestRpcs()
-            if (Object.values(cachedRpcs).some((arr) => arr.length > 0)) {
-                await setRpcCache(cachedRpcs)
+            const cachedRpcsResult = dofetch()
+            if (!cachedRpcs) {
+                return await cachedRpcsResult
+            } else {
+                // let the fetch happen in background but return the old cached rpcs immediately
+                void cachedRpcsResult
             }
         }
         return cachedRpcs
