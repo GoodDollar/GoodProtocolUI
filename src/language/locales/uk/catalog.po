@@ -2850,7 +2850,7 @@ msgstr ""
 msgid "Click here to learn more about GoodDollar liquidity, including how to provide liquidity."
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:369
+#: src/pages/gd/Claim/OldClaim.tsx:373
 msgid "Click on the Claim button below and you will be switched over the first available network to collect your G$'s."
 msgstr ""
 
@@ -2862,7 +2862,7 @@ msgstr ""
 #~ msgid "Collect G$"
 #~ msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:382
+#: src/pages/gd/Claim/OldClaim.tsx:386
 msgid "Collect G$ on {network}"
 msgstr ""
 
@@ -3019,7 +3019,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:392
+#: src/pages/gd/Claim/OldClaim.tsx:396
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -3653,7 +3653,7 @@ msgstr ""
 msgid "You are currently browsing"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:358
+#: src/pages/gd/Claim/OldClaim.tsx:362
 msgid "You can collect G$ on {supportedChainsDisplay} networks."
 msgstr ""
 

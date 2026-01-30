@@ -1,7 +1,6 @@
-import React, { useCallback } from 'react'
-import { Image, Title, useModal } from '@gooddollar/good-design'
+import React, { useCallback, useMemo, useState } from 'react'
+import { Image, Title } from '@gooddollar/good-design'
 import { Box, Text, View } from 'native-base'
-import { noop } from 'lodash'
 
 import Maintance from 'assets/images/claim/maintance.png'
 
@@ -23,22 +22,41 @@ const DialogBody = ({ message }: { message: string }) => (
 )
 
 export const useDisabledClaimingModal = (message: string) => {
-    const { Modal, showModal } = useModal()
+    const [open, setOpen] = useState(false)
 
-    const Dialog = useCallback(
-        () => (
-            <React.Fragment>
-                <Modal
-                    _modalContainer={{ paddingLeft: 18, paddingRight: 18, paddingBottom: 18 }}
-                    header={<DialogHeader />}
-                    body={<DialogBody message={message} />}
-                    onClose={noop}
-                    closeText="x"
-                />
-            </React.Fragment>
-        ),
-        [Modal]
-    )
+    const showModal = useCallback(() => setOpen(true), [])
+
+    const Dialog = useMemo(() => {
+        const DisabledClaimOverlay = () => {
+            if (!open) return null
+
+            return (
+                <Box
+                    position="absolute"
+                    top={0}
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    zIndex={50}
+                    pointerEvents="auto"
+                    bg="black:alpha.40"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    padding={4}
+                >
+                    <Box bg="white" borderRadius={16} padding={5} maxW={'343px'} width="100%" shadow={9}>
+                        <DialogHeader />
+                        <Box mt={4}>
+                            <DialogBody message={message} />
+                        </Box>
+                    </Box>
+                </Box>
+            )
+        }
+
+        return DisabledClaimOverlay
+    }, [open, message])
 
     return { Dialog, showModal }
 }

@@ -23,7 +23,7 @@ import {
 import { useAppKit } from '@reown/appkit/react'
 import { QueryParams } from '@usedapp/core'
 import { noop } from 'lodash'
-// import { useFeatureFlagWithPayload } from 'posthog-react-native'
+import { useFeatureFlagWithPayload } from 'posthog-react-native'
 import moment from 'moment'
 
 import { getEnv } from 'utils/env'
@@ -40,7 +40,7 @@ import BillyConfused from 'assets/images/claim/billyconfused.png'
 
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 
-// import { useDisabledClaimingModal } from './useDisabledClaimModal'
+import { useDisabledClaimingModal } from './useDisabledClaimModal'
 import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 
 const OldClaim = memo(() => {
@@ -58,8 +58,8 @@ const OldClaim = memo(() => {
     const network = SupportedV2Networks[chainId]
     const sendData = useSendAnalyticsData()
     // todo: fix UI for displaying claiming disabled modal
-    // const [, payload] = useFeatureFlagWithPayload('claim-feature')
-    // const { enabled: claimEnabled = true, disabledMessage = '' } = (payload as any) || {}
+    const [, payload] = useFeatureFlagWithPayload('claim-feature')
+    const { /*enabled: claimEnabled = true,*/ disabledMessage = '' } = (payload as any) || {}
     const { activeNetworksByFeature, activeChainFeatures } = useGoodDappFeatures()
     const supportedChains = activeNetworksByFeature['claimEnabled'] || []
     const isProd = getEnv() === 'production'
@@ -69,7 +69,7 @@ const OldClaim = memo(() => {
     const isHoliday = holiday >= '12-24' || holiday <= '01-01'
 
     const isSimpleApp = useIsSimpleApp()
-    // const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
+    const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
 
     const isMinipay = isMiniPay()
 
@@ -82,6 +82,10 @@ const OldClaim = memo(() => {
 
         return supportedChains.map((chainId) => chainNames[chainId] || `Chain ID: ${chainId}`).join(', ')
     }, [supportedChains])
+
+    useEffect(() => {
+        showModal()
+    }, [])
 
     // there are three possible scenarios
     // 1. claim amount is 0, meaning user has claimed that day
@@ -332,8 +336,8 @@ Learn how here`,
 
     return (
         <>
-            <Box w="100%" mb="8" style={mainView}>
-                {/* <Dialog /> */}
+            <Box w="100%" mb="8" style={mainView} position="relative">
+                <Dialog />
                 <CentreBox style={claimView}>
                     <div className="flex flex-col items-center text-center lg:w-1/2">
                         <Box style={balanceContainer}>
