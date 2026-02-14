@@ -250,6 +250,11 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                         show: !isMinipay,
                     },
                     {
+                        route: '/savings',
+                        text: 'Savings',
+                        show: true,
+                    },
+                    {
                         route: '/portfolio',
                         text: 'Portfolio',
                         show: !isMinipay,

@@ -1,4 +1,5 @@
 /// <reference types="react-scripts" />
+import type React from 'react'
 
 declare module 'react-tradingview-widget'
 
@@ -52,3 +53,11 @@ declare module 'multihashes' {
 }
 
 type ArrayType<T> = T extends ArrayLike<infer I> ? I : never
+
+declare namespace JSX {
+    interface IntrinsicElements {
+        'gooddollar-savings-widget': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+            ref?: React.MutableRefObject<any>
+        }
+    }
+}

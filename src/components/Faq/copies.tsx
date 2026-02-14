@@ -342,6 +342,19 @@ const faqReserveCopy: FaqItemCopy[] = [
     },
 ]
 
+const faqSavingsCopy: FaqItemCopy[] = [
+    {
+        id: 'howdoesitwork',
+        question: `How does the savings work?`,
+        answer: `You can stake your G$ tokens in the savings contract to earn rewards. The rewards are distributed from the GoodDollar community fund.`,
+    },
+    {
+        id: 'canunstake',
+        question: `Can I unstake at any time?`,
+        answer: `Yes, there is no lock-up period. You can unstake your G$ tokens whenever you want.`,
+    },
+]
+
 export const faqs = {
     swap: faqSwapCopy,
     buy: faqBuyCopy,
@@ -349,4 +362,5 @@ export const faqs = {
     goodid: faqGoodIDCopy,
     claim: faqClaimCopy,
     reserve: faqReserveCopy,
+    savings: faqSavingsCopy,
 }

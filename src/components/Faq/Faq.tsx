@@ -7,7 +7,7 @@ import MarkDown from '@ronradtke/react-native-markdown-display'
 
 import { faqs } from './copies'
 
-export type FaqType = 'swap' | 'buy' | 'bridge' | 'goodid' | 'claim' | 'reserve'
+export type FaqType = 'swap' | 'buy' | 'bridge' | 'goodid' | 'claim' | 'reserve' | 'savings'
 
 const FaqItem = ({ id, question, answer, links, AltLink }) => {
     const { isDesktopView } = useScreenSize()
