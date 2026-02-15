@@ -473,31 +473,38 @@ export class SavingsWidget extends LitElement {
     }
 
     private async refreshData() {
-        if (!this.publicClient) {
-            this.publicClient = createPublicClient({
-                chain: celo,
-                transport: http(),
-            }) as unknown as PublicClient
-        }
-
-        if (this.web3Provider && this.web3Provider.isConnected) {
-            this.walletClient = createWalletClient({
-                chain: celo,
-                transport: custom(this.web3Provider),
-            })
-            this.sdk = new GooddollarSavingsSDK(this.publicClient!, this.walletClient)
-            await this.loadStats()
-
-            const accounts = await this.web3Provider.request({ method: 'eth_accounts' })
-            if (accounts.length > 0) {
-                this.userAddress = accounts[0]
-                await this.loadUserStats()
-            } else {
-                this.resetUserStats()
+        this.isLoading = true
+        try {
+            if (!this.publicClient) {
+                this.publicClient = createPublicClient({
+                    chain: celo,
+                    transport: http(),
+                }) as unknown as PublicClient
             }
-        } else {
-            this.sdk = new GooddollarSavingsSDK(this.publicClient)
-            await this.loadStats()
+
+            if (this.web3Provider && this.web3Provider.isConnected) {
+                this.walletClient = createWalletClient({
+                    chain: celo,
+                    transport: custom(this.web3Provider),
+                })
+                this.sdk = new GooddollarSavingsSDK(this.publicClient!, this.walletClient)
+                await this.loadStats()
+
+                const accounts = await this.web3Provider.request({ method: 'eth_accounts' })
+                if (accounts.length > 0) {
+                    this.userAddress = accounts[0]
+                    await this.loadUserStats()
+                } else {
+                    this.resetUserStats()
+                }
+            } else {
+                this.sdk = new GooddollarSavingsSDK(this.publicClient)
+                await this.loadStats()
+            }
+        } catch (error) {
+            console.error('Error refreshing data:', error)
+        } finally {
+            this.isLoading = false
         }
     }
 
@@ -587,7 +594,13 @@ export class SavingsWidget extends LitElement {
         }
 
         if (this.activeTab === 'stake') {
-            const inputAmountWei = parseEther(this.inputAmount)
+            let inputAmountWei: bigint
+            try {
+                inputAmountWei = parseEther(this.inputAmount)
+            } catch {
+                this.inputError = 'Invalid value'
+                return
+            }
             if (inputAmountWei > this.walletBalance) {
                 this.inputError = 'Insufficient balance'
                 return
@@ -595,7 +608,13 @@ export class SavingsWidget extends LitElement {
         }
 
         if (this.activeTab === 'unstake') {
-            const inputAmountWei = parseEther(this.inputAmount)
+            let inputAmountWei: bigint
+            try {
+                inputAmountWei = parseEther(this.inputAmount)
+            } catch {
+                this.inputError = 'Invalid value'
+                return
+            }
             if (inputAmountWei > this.currentStake) {
                 this.inputError = 'Max amount exceeded'
                 return
