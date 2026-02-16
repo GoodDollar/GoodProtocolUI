@@ -67,19 +67,14 @@ async function testRpc(rpcUrl: string): Promise<boolean> {
         if (!response.ok) return false
 
         const data = await response.json()
-        return !data.error && (data.result !== undefined || data.result !== null)
+        return !data.error && !!data.result
     } catch {
         return false
     }
 }
 
 async function fetchAndTestRpcs(): Promise<Record<string, string[]>> {
-    const rpcsByChain: Record<string, string[]> = {
-        MAINNET_RPC: [],
-        FUSE_RPC: [],
-        CELO_RPC: [],
-        XDC_RPC: [],
-    }
+    const rpcsByChain: Record<string, string[]> = {}
 
     try {
         console.log('[fetchAndTestRpcs] Starting RPC fetch and test...')

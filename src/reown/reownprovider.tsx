@@ -160,7 +160,10 @@ export function AppKitProvider({ children }: { children: React.ReactNode }) {
             if (rpcUrls) {
                 set(network, 'rpcUrls.default.http', rpcUrls)
                 console.log(`Reown: Updated RPC for ${network.name} to ${rpcUrls}`)
-                transports[network.id] = fallback(rpcUrls.map((_) => http(_)))
+                transports[network.id] = fallback(
+                    rpcUrls.map((_) => http(_)),
+                    { rank: true, retryCount: 3, retryDelay: 1000 }
+                )
                 // network.rpcUrls = updatedNetwork.rpcUrls
             }
         })
