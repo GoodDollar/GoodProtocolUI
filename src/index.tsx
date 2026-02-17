@@ -86,9 +86,7 @@ const ProviderWrapper = ({ children }) => (
     <Provider store={store}>
         <PostHogProvider
             apiKey={import.meta.env.REACT_APP_POSTHOG_KEY}
-            options={{
-                host: import.meta.env.REACT_APP_POSTHOG_PROXY ?? 'https://app.posthog.com',
-            }}
+            options={{ host: import.meta.env.REACT_APP_POSTHOG_PROXY ?? 'https://app.posthog.com' }}
             autocapture={false}
         >
             <AppKitProvider>

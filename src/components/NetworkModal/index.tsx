@@ -103,25 +103,43 @@ export default function NetworkModal(): JSX.Element | null {
     const switchChain = useCallback(
         async (chain: SupportedChains) => {
             try {
-                if (initialized) await switchNetwork(chain)
-                else setSelectedChain(chain) // only change chain to trigger onboard re-init if not already connected
+                await switchNetwork(chain)
+                sendData({
+                    event: 'network_switch',
+                    action: 'network_switch_success',
+                    network: ChainId[chain],
+                })
             } catch (e: any) {
-                if (e.code === 4902) {
+                if (e?.code === 4902) {
                     setToAddNetwork(chain)
                     toggleNetworkModal()
                     return
                 }
-            }
-            sendData({
-                event: 'network_switch',
-                action: 'network_switch_success',
-                network: ChainId[chain],
-            })
-        },
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        [switchNetwork, sendData]
-    )
 
+                if (!initialized || !chainId) {
+                    setSelectedChain(chain)
+                    sendData({
+                        event: 'network_switch',
+                        action: 'network_switch_deferred',
+                        network: ChainId[chain],
+                    })
+                    console.warn('Wallet not initialized. Network preference saved.')
+                    return
+                }
+
+                console.error('Network switch failed:', e)
+                sendData({
+                    event: 'network_switch',
+                    action: 'network_switch_error',
+                    network: ChainId[chain],
+
+                    error: e?.message || 'Unknown error',
+                })
+            }
+        },
+
+        [switchNetwork, sendData, initialized, chainId, toggleNetworkModal, setToAddNetwork, setSelectedChain]
+    )
     return (
         <SwitchChainModal>
             <Modal isOpen={networkModalOpen} onDismiss={toggleNetworkModal}>
