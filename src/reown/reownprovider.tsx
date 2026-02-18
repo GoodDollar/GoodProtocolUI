@@ -162,7 +162,7 @@ export function AppKitProvider({ children }: { children: React.ReactNode }) {
                 console.log(`Reown: Updated RPC for ${network.name} to ${rpcUrls}`)
                 transports[network.id] = fallback(
                     rpcUrls.map((_) => http(_)),
-                    { rank: true, retryCount: 3, retryDelay: 1000 }
+                    { rank: true }
                 )
                 // network.rpcUrls = updatedNetwork.rpcUrls
             }
