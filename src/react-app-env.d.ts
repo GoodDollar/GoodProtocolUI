@@ -9,27 +9,19 @@ declare module 'jazzicon' {
 
 declare module 'fortmatic'
 
-interface RequestArguments {
-    method: string
-    params?: unknown[] | object
-}
+declare global {
+    interface RequestArguments {
+        method: string
+        params?: unknown[] | object
+    }
 
-interface Window {
-    walletLinkExtension?: any
-    BinanceChain?: any
-    eth?: object
-    ethereum?: {
-        isMiniPay?: boolean
-        isOpera?: boolean
-        isMetaMask?: boolean
-        on?: (...args: any[]) => void
-        off?: (...args: any[]) => void
-        removeListener?: (...args: any[]) => void
-        removeAllListeners?: (...args: any[]) => void
-        autoRefreshOnNetworkChange?: boolean
-        request?: (args: RequestArguments) => Promise<unknown>
-        providers?: Array
-        selectedProvider: {
+    interface Window {
+        walletLinkExtension?: any
+        BinanceChain?: any
+        eth?: object
+        ethereum?: {
+            isMiniPay?: boolean
+            isOpera?: boolean
             isMetaMask?: boolean
             on?: (...args: any[]) => void
             off?: (...args: any[]) => void
@@ -37,27 +29,36 @@ interface Window {
             removeAllListeners?: (...args: any[]) => void
             autoRefreshOnNetworkChange?: boolean
             request?: (args: RequestArguments) => Promise<unknown>
-        } | null
+            providers?: Array<any>
+            selectedProvider: {
+                isMetaMask?: boolean
+                on?: (...args: any[]) => void
+                off?: (...args: any[]) => void
+                removeListener?: (...args: any[]) => void
+                removeAllListeners?: (...args: any[]) => void
+                autoRefreshOnNetworkChange?: boolean
+                request?: (args: RequestArguments) => Promise<unknown>
+            } | null
+        }
+        web3?: object
     }
-    web3?: object
-}
 
+    type ArrayType<T> = T extends ArrayLike<infer I> ? I : never
+
+    namespace JSX {
+        interface IntrinsicElements {
+            'gooddollar-savings-widget': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+                ref?: React.MutableRefObject<any>
+            }
+        }
+    }
+}
 declare module 'content-hash' {
-    declare function decode(x: string): string
-    declare function getCodec(x: string): string
+    export function decode(x: string): string
+    export function getCodec(x: string): string
 }
 
 declare module 'multihashes' {
-    declare function decode(buff: Uint8Array): { code: number; name: string; length: number; digest: Uint8Array }
-    declare function toB58String(hash: Uint8Array): string
-}
-
-type ArrayType<T> = T extends ArrayLike<infer I> ? I : never
-
-declare namespace JSX {
-    interface IntrinsicElements {
-        'gooddollar-savings-widget': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-            ref?: React.MutableRefObject<any>
-        }
-    }
+    export function decode(buff: Uint8Array): { code: number; name: string; length: number; digest: Uint8Array }
+    export function toB58String(hash: Uint8Array): string
 }

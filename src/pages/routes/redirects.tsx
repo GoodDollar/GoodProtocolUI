@@ -1,5 +1,8 @@
 import React from 'react'
-import { Redirect, RouteComponentProps } from 'react-router-dom'
+import { Redirect, Route, RouteComponentProps } from 'react-router-dom'
+import SavingsPage from 'pages/Savings'
+
+<Route path="/savings" component={SavingsPage} />
 
 // Redirects Legacy Hash Routes to Browser Routes
 export function RedirectHashRoutes({ location }: RouteComponentProps) {
@@ -13,3 +16,4 @@ export function RedirectHashRoutes({ location }: RouteComponentProps) {
 export function RedirectPathToSwapOnly({ location }: RouteComponentProps) {
     return <Redirect to={{ ...location, pathname: '/claim' }} />
 }
+

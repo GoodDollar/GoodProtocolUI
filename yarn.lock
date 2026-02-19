@@ -4393,6 +4393,7 @@ __metadata:
     "@gooddollar/goodprotocol": 2.1.1
     "@gooddollar/web3sdk": 0.1.57
     "@gooddollar/web3sdk-v2": 0.4.33
+    "@goodsdks/savings-widget": "GoodDollar/GoodSDKs#workspace=@goodsdks/savings-widget"
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
     "@lingui/cli": ^4.0.0
@@ -4495,7 +4496,6 @@ __metadata:
     jotai-immer: ^0.2.0
     jsbi: ^3.1.5
     lint-staged: ^13.1.0
-    lit: ^3.3.2
     lodash: 4.17.21
     lodash.flatmap: ^4.5.0
     luxon: ^1.25.0
@@ -4659,6 +4659,16 @@ __metadata:
   peerDependencies:
     react: ">=17"
   checksum: 383ea32a0f241a41795bdb6574cf0f6fb46dc32620643b52fab0bfce55c23ff28e336180e8b90b0a5d30766c932f090efa57da75aa6e24528dc1e7cfe52055b9
+  languageName: node
+  linkType: hard
+
+"@goodsdks/savings-widget@GoodDollar/GoodSDKs#workspace=@goodsdks/savings-widget":
+  version: 1.0.0
+  resolution: "@goodsdks/savings-widget@https://github.com/GoodDollar/GoodSDKs.git#workspace=%40goodsdks%2Fsavings-widget&commit=fbf4ab3915702dfe640933cd894861792545e0b1"
+  dependencies:
+    lit: ^3.1.0
+    viem: latest
+  checksum: 77cbc93e38b977a10ed52fb18be3cc6c484ed6126d2a4f1e90df16c9637ec8b64f6ac35a1d906b42e7124b191baf54e42504f3fe5556e9612fb860545d0d4c68
   languageName: node
   linkType: hard
 
@@ -24347,7 +24357,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lit@npm:^3, lit@npm:^3.3.2":
+"lit@npm:^3, lit@npm:^3.1.0":
   version: 3.3.2
   resolution: "lit@npm:3.3.2"
   dependencies:
@@ -34786,6 +34796,27 @@ __metadata:
     typescript:
       optional: true
   checksum: c8fa7c1763a095e906a6afdce823c6a556871862279980dd328b95f02e07a01caf72ad25512e1fcbf49310c89086e22f9c7ad4dc88995661bdfd6f4953155926
+  languageName: node
+  linkType: hard
+
+"viem@npm:latest":
+  version: 2.46.1
+  resolution: "viem@npm:2.46.1"
+  dependencies:
+    "@noble/curves": 1.9.1
+    "@noble/hashes": 1.8.0
+    "@scure/bip32": 1.7.0
+    "@scure/bip39": 1.6.0
+    abitype: 1.2.3
+    isows: 1.0.7
+    ox: 0.12.1
+    ws: 8.18.3
+  peerDependencies:
+    typescript: ">=5.0.4"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: d25b8b8588c7ff073ad2fd7f2e200b25b549359330719c7f19071dd6acee5ef217d6e0f1fda517797e943a20882ae2285ac837d55e59018d085f392e4b39515c
   languageName: node
   linkType: hard
 
