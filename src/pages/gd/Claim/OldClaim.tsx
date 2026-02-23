@@ -11,7 +11,7 @@ import {
     useScreenSize,
     ClaimSuccessModal,
 } from '@gooddollar/good-design'
-import { Box, Center, Text, useBreakpointValue } from 'native-base'
+import { Box, Center, Spinner, Text, useBreakpointValue } from 'native-base'
 import { useConnectionInfo } from 'hooks/useConnectionInfo'
 import {
     useClaim,
@@ -337,7 +337,11 @@ Learn how here`,
                 <CentreBox style={claimView}>
                     <div className="flex flex-col items-center text-center lg:w-1/2">
                         <Box style={balanceContainer}>
-                            {claimed ? (
+                            {claimed === undefined ? (
+                                <Box justifyContent="center" display="flex" alignItems="center" py="8">
+                                    <Spinner variant="page-loader" size="lg" />
+                                </Box>
+                            ) : claimed ? (
                                 <Box justifyContent="center" display="flex" alignItems="center" textAlign="center">
                                     <ClaimBalance refresh={refreshRate} />
                                     <ClaimSuccessModal open={state?.status === 'Success'} />
