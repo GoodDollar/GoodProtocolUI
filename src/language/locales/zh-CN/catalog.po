@@ -3129,7 +3129,7 @@ msgstr "乘数"
 msgid "My Stake"
 msgstr "我的股份"
 
-#: src/components/NetworkModal/index.tsx:154
+#: src/components/NetworkModal/index.tsx:172
 msgid "network"
 msgstr "网络"
 
@@ -3155,7 +3155,7 @@ msgstr "下个月："
 msgid "No data."
 msgstr "没有数据。"
 
-#: src/components/NetworkModal/index.tsx:153
+#: src/components/NetworkModal/index.tsx:171
 msgid "on the"
 msgstr "在这一点"
 
@@ -3586,7 +3586,7 @@ msgstr "等待确认中"
 msgid "Wallet balance"
 msgstr "钱包平衡"
 
-#: src/components/NetworkModal/index.tsx:133
+#: src/components/NetworkModal/index.tsx:151
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3649,7 +3649,7 @@ msgstr ""
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "您正在为世界各地的数千人创建UBI。"
 
-#: src/components/NetworkModal/index.tsx:149
+#: src/components/NetworkModal/index.tsx:167
 msgid "You are currently browsing"
 msgstr "您目前正在浏览"
 

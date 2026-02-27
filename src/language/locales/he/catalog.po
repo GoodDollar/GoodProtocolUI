@@ -3129,7 +3129,7 @@ msgstr "מַכפִּיל"
 msgid "My Stake"
 msgstr "החלק שלי"
 
-#: src/components/NetworkModal/index.tsx:154
+#: src/components/NetworkModal/index.tsx:172
 msgid "network"
 msgstr "רֶשֶׁת"
 
@@ -3155,7 +3155,7 @@ msgstr "חודש הבא:"
 msgid "No data."
 msgstr "אין מידע."
 
-#: src/components/NetworkModal/index.tsx:153
+#: src/components/NetworkModal/index.tsx:171
 msgid "on the"
 msgstr "על ה"
 
@@ -3586,7 +3586,7 @@ msgstr "מחכה לאישור"
 msgid "Wallet balance"
 msgstr "מאזן ארנק"
 
-#: src/components/NetworkModal/index.tsx:133
+#: src/components/NetworkModal/index.tsx:151
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3649,7 +3649,7 @@ msgstr ""
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "אתה יוצר UBI לאלפי אנשים ברחבי העולם."
 
-#: src/components/NetworkModal/index.tsx:149
+#: src/components/NetworkModal/index.tsx:167
 msgid "You are currently browsing"
 msgstr "אתה כרגע גלישה"
 

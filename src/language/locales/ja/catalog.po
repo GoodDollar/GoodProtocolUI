@@ -3129,7 +3129,7 @@ msgstr ""
 msgid "My Stake"
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:154
+#: src/components/NetworkModal/index.tsx:172
 msgid "network"
 msgstr ""
 
@@ -3155,7 +3155,7 @@ msgstr ""
 msgid "No data."
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:153
+#: src/components/NetworkModal/index.tsx:171
 msgid "on the"
 msgstr ""
 
@@ -3586,7 +3586,7 @@ msgstr ""
 msgid "Wallet balance"
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:133
+#: src/components/NetworkModal/index.tsx:151
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3649,7 +3649,7 @@ msgstr ""
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "あなたは世界中の何千人もの人々にUBIを作成しています。"
 
-#: src/components/NetworkModal/index.tsx:149
+#: src/components/NetworkModal/index.tsx:167
 msgid "You are currently browsing"
 msgstr ""
 
