@@ -106,12 +106,12 @@
             "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png"
         },
         {
-            "name": "Celo Dollar",
+            "name": "Mento Dollar",
             "address": "0x765DE816845861e75A25fCA122bb6898B8B1282a",
-            "symbol": "cUSD",
+            "symbol": "USDm",
             "decimals": 18,
             "chainId": 42220,
-            "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cUSD.png"
+            "logoURI": "https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/usdm-logo.png"
         },
         {
             "name": "Duniapay West African CFA franc",

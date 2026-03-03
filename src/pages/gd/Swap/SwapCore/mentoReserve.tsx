@@ -40,7 +40,6 @@ const MentoSwap = memo(() => {
         custom: false,
         value: '0.1',
     })
-    // console.log('slippageTollerance -->', {slippageTolerance})
     const { address } = useAppKitAccount()
     const { chainId: rawChainId } = useAppKitNetwork()
     const chainId = typeof rawChainId === 'number' ? rawChainId : Number(rawChainId) || 42220
@@ -370,6 +369,7 @@ const MentoSwap = memo(() => {
                                 }`}
                             />
                             {swapMeta && <SwapInfo title="Price" value={swapFields.price} />}
+                            <SwapDetails open={Boolean(swapMeta)} buying={buying} {...swapFields} />
                         </div>
 
                         {Number.isNaN(priceImpact) ? (
@@ -416,7 +416,6 @@ const MentoSwap = memo(() => {
                         )}
                     </SwapContentWrapperSC>
                 </SwapWrapperSC>
-                <SwapDetails open={Boolean(swapMeta)} buying={buying} {...swapFields} />
             </SwapCardSC>
             <ErrorModal
                 error={error?.message || ''}
