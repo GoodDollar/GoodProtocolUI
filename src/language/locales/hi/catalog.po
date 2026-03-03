@@ -1709,6 +1709,14 @@ msgstr ""
 #~ msgid "Donate"
 #~ msgstr ""
 
+#: src/pages/gd/Savings/index.tsx:14
+msgid ""
+"Earn rewards by saving your GoodDollars with Ubeswap savings products!\n"
+"Savings provides a simple way to generate yield on your digital assets.\n"
+"Securely lock your assets and watch them grow over time.\n"
+"Please be patient, loading information may take some time."
+msgstr ""
+
 #: src/components/Gas/index.tsx:12
 msgid "failed to load"
 msgstr "लोड करने में विफल"
@@ -1778,7 +1786,7 @@ msgstr ""
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
-#: src/components/SideBar.tsx:230
+#: src/components/SideBar.tsx:235
 msgid "GoodDollar Main Bridge"
 msgstr ""
 
@@ -2038,7 +2046,7 @@ msgstr "स्लिपेज टॉलरेंस"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:237
+#: src/components/SideBar.tsx:242
 msgid "Squid Router"
 msgstr ""
 
@@ -2291,11 +2299,11 @@ msgstr ""
 msgid "TYPE"
 msgstr ""
 
-#: src/components/SideBar.tsx:206
+#: src/components/SideBar.tsx:211
 msgid "Uniswap (Celo)"
 msgstr ""
 
-#: src/components/SideBar.tsx:193
+#: src/components/SideBar.tsx:198
 msgid "Uniswap (widget)"
 msgstr ""
 
@@ -2313,7 +2321,7 @@ msgstr "एक्सप्लोरर पर देखें"
 #~ msgid "View transaction on explorer"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:199
+#: src/components/SideBar.tsx:204
 msgid "Voltage Finance (Fuse)"
 msgstr ""
 
@@ -2396,7 +2404,7 @@ msgstr ""
 msgid "Withdrew funds from {0}"
 msgstr ""
 
-#: src/components/SideBar.tsx:213
+#: src/components/SideBar.tsx:218
 msgid "Xswap (XDC)"
 msgstr ""
 

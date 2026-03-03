@@ -175,6 +175,11 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                         show: true,
                     },
                     {
+                        route: '/savings',
+                        text: 'Savings',
+                        show: true,
+                    },
+                    {
                         route: '/news',
                         text: 'News',
                         show: true,

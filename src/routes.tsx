@@ -16,6 +16,7 @@ const MicroBridge = lazy(() => import('./pages/gd/MicroBridge'))
 const Claim = lazy(() => import('./pages/gd/Claim/'))
 const GoodId = lazy(() => import('./pages/gd/GoodId'))
 const BuyGd = lazy(() => import('./pages/gd/BuyGD'))
+const Savings = lazy(() => import('./pages/gd/Savings'))
 const NewsFeedPage = lazy(() => import('./pages/gd/News'))
 
 const RoutesWrapper = () => {
@@ -54,6 +55,7 @@ function Routes(): JSX.Element {
                 <Route exact strict path="/goodid" component={GoodId} />
                 <Route exact strict path="/buy" component={BuyGd} />
                 <Route exact strict path="/claim" component={Claim} />
+                <Route exact strict path="/savings" component={Savings} />
                 <Route exact strict path="/microbridge" component={MicroBridge} />
                 <Route exact strict path="/news" component={NewsFeedPage} />
                 <Route component={RedirectHashRoutes} />

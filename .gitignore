@@ -56,4 +56,5 @@ deploy.sh
 yalc.lock
 .continueignore
 analice.html
-e2e.log
+e2e.logTEST_SAVINGS_INTEGRATION.html
+TEST_SAVINGS_INTEGRATION.html

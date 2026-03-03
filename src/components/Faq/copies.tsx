@@ -342,6 +342,46 @@ const faqReserveCopy: FaqItemCopy[] = [
     },
 ]
 
+const faqSavingsCopy: FaqItemCopy[] = [
+    {
+        id: 'whatissavings',
+        question: `What is Savings?`,
+        answer: `Savings is a way to earn rewards by lending or staking your GoodDollars. You can lock your digital assets and generate passive income over time through yield-bearing products.`,
+    },
+    {
+        id: 'howsavingswork',
+        question: `How does Savings work?`,
+        answer: `When you use the Savings product, your assets are deposited into a yield-generating protocol. Your funds work for you by earning rewards, which are added to your balance periodically. The exact mechanism depends on the underlying savings product.`,
+    },
+    {
+        id: 'savingrisk',
+        question: `What are the risks of using Savings?`,
+        answer: `Savings products carry smart contract risk and market risk. Please review the terms and risks of the specific savings protocol before depositing. Your funds are subject to the security of the underlying smart contracts.`,
+    },
+    {
+        id: 'withdrawsavings',
+        question: `Can I withdraw my funds anytime?`,
+        answer: `Withdrawal terms depend on the specific savings product. Some products may have lock-up periods or redemption schedules. Check the product details for specific terms before depositing.`,
+    },
+    {
+        id: 'savingyield',
+        question: `How is my yield calculated?`,
+        answer: `Yield is calculated based on the APY (Annual Percentage Yield) advertised by the savings product. Your actual returns depend on the amount deposited, duration, and any applicable fees or terms.`,
+    },
+    {
+        id: 'savingsfees',
+        question: `Are there fees for using Savings?`,
+        answer: `Fees may apply depending on the specific savings product. You can review the fee structure and APY details of each product before making a deposit. GoodDapp may not charge additional fees on top of protocol fees.`,
+        links: [
+            {
+                href: 'https://docs.gooddollar.org/savings',
+                text: 'To learn more about Savings products, visit the',
+                linkText: 'GoodDollar Documentation',
+            },
+        ],
+    },
+]
+
 export const faqs = {
     swap: faqSwapCopy,
     buy: faqBuyCopy,
@@ -349,4 +389,5 @@ export const faqs = {
     goodid: faqGoodIDCopy,
     claim: faqClaimCopy,
     reserve: faqReserveCopy,
+    savings: faqSavingsCopy,
 }
