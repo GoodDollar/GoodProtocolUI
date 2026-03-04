@@ -23,7 +23,7 @@ import {
 import { useAppKit } from '@reown/appkit/react'
 import { QueryParams } from '@usedapp/core'
 import { noop } from 'lodash'
-// import { useFeatureFlagWithPayload } from 'posthog-react-native'
+import { useFeatureFlagWithPayload } from 'posthog-react-native'
 import moment from 'moment'
 
 import { getEnv } from 'utils/env'
@@ -39,8 +39,7 @@ import BillyGrin from 'assets/images/claim/billygrin.png'
 import BillyConfused from 'assets/images/claim/billyconfused.png'
 
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
-
-// import { useDisabledClaimingModal } from './useDisabledClaimModal'
+import { useDisabledClaimingModal } from './useDisabledClaimModal'
 import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 
 const OldClaim = memo(() => {
@@ -57,9 +56,11 @@ const OldClaim = memo(() => {
     const { open } = useAppKit()
     const network = SupportedV2Networks[chainId]
     const sendData = useSendAnalyticsData()
-    // todo: fix UI for displaying claiming disabled modal
-    // const [, payload] = useFeatureFlagWithPayload('claim-feature')
-    // const { enabled: claimEnabled = true, disabledMessage = '' } = (payload as any) || {}
+
+    // Uncommented per maintainer's instructions
+    const [, payload] = useFeatureFlagWithPayload('claim-feature')
+    const { enabled: claimEnabled = true, disabledMessage = '' } = (payload as any) || {}
+
     const { activeNetworksByFeature, activeChainFeatures } = useGoodDappFeatures()
     const supportedChains = activeNetworksByFeature['claimEnabled'] || []
     const isProd = getEnv() === 'production'
@@ -69,7 +70,14 @@ const OldClaim = memo(() => {
     const isHoliday = holiday >= '12-24' || holiday <= '01-01'
 
     const isSimpleApp = useIsSimpleApp()
-    // const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
+
+    // Uncommented per maintainer's instructions
+    const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
+
+    // Temporary useEffect per maintainer's instructions to trigger the modal
+    useEffect(() => {
+        showModal()
+    }, [showModal])
 
     const isMinipay = isMiniPay()
 
@@ -83,14 +91,9 @@ const OldClaim = memo(() => {
         return supportedChains.map((chainId) => chainNames[chainId] || `Chain ID: ${chainId}`).join(', ')
     }, [supportedChains])
 
-    // there are three possible scenarios
-    // 1. claim amount is 0, meaning user has claimed that day
-    // 2. status === success, meaning user has just claimed. Could happen that claimAmount has not been updated right after tx confirmation
-    // 3. If neither is true, there is a claim ready for user or its a new user and FV will be triggered instead
     useEffect(() => {
         const hasClaimed = async () => {
             if (state.status === 'Mining') {
-                // don't do anything until transaction is mined
                 return
             }
 
@@ -108,14 +111,12 @@ const OldClaim = memo(() => {
             setRefreshRate('everyBlock')
         }
         if (claimAmount) hasClaimed().catch(noop)
-        // eslint-disable-next-line react-hooks-addons/no-unused-deps, react-hooks/exhaustive-deps
     }, [claimAmount, chainId, refreshRate])
 
-    // upon switching chain we want temporarily to poll everyBlock up untill we have the latest data
     useEffect(() => {
         setClaimed(undefined)
         setRefreshRate('everyBlock')
-    }, [/* used */ chainId])
+    }, [chainId])
 
     const handleEvents = useCallback(
         (event: string) => {
@@ -130,8 +131,6 @@ const OldClaim = memo(() => {
                     sendData({ event: 'claim', action: 'claim_start', network })
                     break
                 case 'finish':
-                    // finish event does not handle rejected case
-                    // sendData({ event: 'claim', action: 'claim_success', network })
                     break
                 default:
                     sendData({ event: 'claim', action: event, network })
@@ -143,8 +142,14 @@ const OldClaim = memo(() => {
 
     const handleClaim = useCallback(async () => {
         setRefreshRate('everyBlock')
+
+        // Added check to block claim and show modal if feature flag is disabled
+        if (!claimEnabled) {
+            showModal()
+            return false
+        }
+
         if (activeChainFeatures['claimEnabled'] || !isProd || isMinipay) {
-            // minipay doesnt handle gasPrice correctly, so we let it decide
             const claim = await send(isMinipay ? { gasPrice: undefined } : {})
 
             if (!claim) {
@@ -164,17 +169,16 @@ const OldClaim = memo(() => {
             sendData({ event: 'claim', action: 'claim_success', network })
             return true
         } else {
-            // showModal()
+            showModal()
         }
 
         return false
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [send, network, sendData, activeChainFeatures, isSimpleApp])
+    }, [send, network, sendData, activeChainFeatures, isSimpleApp, claimEnabled, showModal])
 
     const handleConnect = useCallback(async () => {
         if (!address) {
             await open({ view: 'Connect' })
-            return false // Return false so button resets when modal is dismissed
+            return false
         }
         return true
     }, [address, open])
@@ -192,7 +196,7 @@ const OldClaim = memo(() => {
         },
         lg: {
             flexDirection: 'row',
-            justifyContent: 'justify-evenly',
+            justifyContent: 'space-evenly',
         },
     })
 
@@ -294,9 +298,7 @@ const OldClaim = memo(() => {
             content: [
                 {
                     description: {
-                        text: `After claiming your G$, use it to support your community, buy products and services, support causes you care about, vote in the GoodDAO, and more. 
-                      
-Learn how here`,
+                        text: `After claiming your G$, use it to support your community, buy products and services, support causes you care about, vote in the GoodDAO, and more. \n\nLearn how here`,
                         color: 'white',
                     },
                     ...(isSmallTabletView && { imgSrc: BillyHappy }),
@@ -333,10 +335,13 @@ Learn how here`,
     return (
         <>
             <Box w="100%" mb="8" style={mainView}>
-                {/* <Dialog /> */}
                 <CentreBox style={claimView}>
                     <div className="flex flex-col items-center text-center lg:w-1/2">
-                        <Box style={balanceContainer}>
+                        {/* CRITICAL LAYOUT FIX: position relative so the overlay covers just this area */}
+                        <Box style={balanceContainer} position="relative" borderRadius="2xl" overflow="hidden">
+                            {/* This is the overlay we built */}
+                            <Dialog />
+
                             {claimed ? (
                                 <Box justifyContent="center" display="flex" alignItems="center" textAlign="center">
                                     <ClaimBalance refresh={refreshRate} />

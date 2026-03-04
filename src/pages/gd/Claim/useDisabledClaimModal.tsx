@@ -1,44 +1,43 @@
-import React, { useCallback } from 'react'
-import { Image, Title, useModal } from '@gooddollar/good-design'
-import { Box, Text, View } from 'native-base'
-import { noop } from 'lodash'
+import React, { useCallback, useState } from 'react'
+import { Image, Title } from '@gooddollar/good-design'
+import { Box, Text } from 'native-base'
 
 import Maintance from 'assets/images/claim/maintance.png'
 
-const DialogHeader = () => (
-    <Box>
-        <Title color="main" fontSize="l" lineHeight={36}>
-            Claiming Unavailable
-        </Title>
-    </Box>
-)
-
-const DialogBody = ({ message }: { message: string }) => (
-    <View>
-        <Image resizeMode="contain" source={{ uri: Maintance }} w="auto" h={120} mb={4} />
-        <Text fontFamily="subheading" lineHeight="20px">
-            {message}
-        </Text>
-    </View>
-)
-
 export const useDisabledClaimingModal = (message: string) => {
-    const { Modal, showModal } = useModal()
+    const [isVisible, setIsVisible] = useState(false)
 
-    const Dialog = useCallback(
-        () => (
-            <React.Fragment>
-                <Modal
-                    _modalContainer={{ paddingLeft: 18, paddingRight: 18, paddingBottom: 18 }}
-                    header={<DialogHeader />}
-                    body={<DialogBody message={message} />}
-                    onClose={noop}
-                    closeText="x"
-                />
-            </React.Fragment>
-        ),
-        [Modal]
-    )
+    const showModal = useCallback(() => setIsVisible(true), [])
+
+    const Dialog = useCallback(() => {
+        if (!isVisible) return null
+
+        return (
+            <Box
+                position="absolute"
+                top={0}
+                bottom={0}
+                left={0}
+                right={0}
+                zIndex={50}
+                bg="rgba(0, 0, 0, 0.6)"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                borderRadius="2xl"
+            >
+                <Box bg="white" p={6} borderRadius="xl" alignItems="center" shadow={3} w="90%" maxW="320px">
+                    <Title color="main" fontSize="l" lineHeight={36} mb={2}>
+                        Claiming Unavailable
+                    </Title>
+                    <Image resizeMode="contain" source={{ uri: Maintance }} w="auto" h={120} mb={4} />
+                    <Text fontFamily="subheading" lineHeight="20px" textAlign="center" color="gray.600">
+                        {message || 'Claiming is temporarily disabled.'}
+                    </Text>
+                </Box>
+            </Box>
+        )
+    }, [isVisible, message])
 
     return { Dialog, showModal }
 }
