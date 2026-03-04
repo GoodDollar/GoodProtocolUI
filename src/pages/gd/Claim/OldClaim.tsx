@@ -71,14 +71,13 @@ const OldClaim = memo(() => {
 
     const isSimpleApp = useIsSimpleApp()
 
-    // Uncommented per maintainer's instructions
     const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
 
-    // Temporary useEffect per maintainer's instructions to trigger the modal
     useEffect(() => {
-        showModal()
-    }, [showModal])
-
+        if (!claimEnabled) {
+            showModal()
+        }
+    }, [claimEnabled, showModal])
     const isMinipay = isMiniPay()
 
     const supportedChainsDisplay = useMemo(() => {
