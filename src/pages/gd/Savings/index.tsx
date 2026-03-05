@@ -35,93 +35,91 @@ const SavingsWidgetContainer: React.FC = () => {
         },
     })
 
-    useEffect(() => {
-        const loadWidget = async () => {
-            if (scriptLoadedRef.current) return
+    const initializeWidget = () => {
+        try {
+            if (!containerRef.current) return
             
-            try {
-                setIsLoading(true)
-                setHasError(false)
+            const widget = document.createElement('gooddollar-savings-widget')
+            if (account) {
+                widget.setAttribute('account', account)
+            }
+            widget.style.width = '100%'
+            widget.style.minHeight = '500px'
+            
+            containerRef.current.innerHTML = ''
+            containerRef.current.appendChild(widget)
+            setIsLoading(false)
+        } catch (error) {
+            console.error('Error initializing widget:', error)
+            setHasError(true)
+            setIsLoading(false)
+        }
+    }
 
-                // Load the widget script from public folder
-                const script = document.createElement('script')
-                script.src = '/index.global.js'
-                script.type = 'text/javascript'
-                script.async = true
+    const handleScriptLoad = () => {
+        scriptLoadedRef.current = true
+        
+        // Try immediately first
+        if (customElements.get('gooddollar-savings-widget')) {
+            initializeWidget()
+            return
+        }
+        
+        // Wait for the element to be defined
+        customElements.whenDefined('gooddollar-savings-widget').then(() => {
+            initializeWidget()
+        }).catch((error) => {
+            console.error('Custom element error:', error)
+            setHasError(true)
+            setIsLoading(false)
+        })
+        
+        // Timeout fallback after 3 seconds
+        setTimeout(() => {
+            if (customElements.get('gooddollar-savings-widget')) {
+                initializeWidget()
+            }
+        }, 3000)
+    }
 
-                script.onload = () => {
-                    scriptLoadedRef.current = true
-                    
-                    // Use a timeout to ensure the custom element is registered
-                    const initWidget = () => {
-                        try {
-                            if (!containerRef.current) return
-                            
-                            const widget = document.createElement('gooddollar-savings-widget')
-                            if (account) {
-                                widget.setAttribute('account', account)
-                            }
-                            widget.style.width = '100%'
-                            widget.style.minHeight = '500px'
-                            
-                            containerRef.current.innerHTML = ''
-                            containerRef.current.appendChild(widget)
-                            setIsLoading(false)
-                        } catch (error) {
-                            console.error('Error initializing widget:', error)
-                            setHasError(true)
-                            setIsLoading(false)
-                        }
-                    }
-                    
-                    // Try immediately first
-                    if (customElements.get('gooddollar-savings-widget')) {
-                        initWidget()
-                    } else {
-                        // Wait for the element to be defined
-                        customElements.whenDefined('gooddollar-savings-widget').then(() => {
-                            initWidget()
-                        }).catch((error) => {
-                            console.error('Custom element error:', error)
-                            setHasError(true)
-                            setIsLoading(false)
-                        })
-                        
-                        // Timeout fallback after 3 seconds
-                        setTimeout(() => {
-                            if (customElements.get('gooddollar-savings-widget')) {
-                                initWidget()
-                            }
-                        }, 3000)
-                    }
-                }
+    const handleScriptError = (event: string | Event) => {
+        console.error('Failed to load savings widget script', event)
+        setHasError(true)
+        setIsLoading(false)
+    }
 
-                script.onerror = (event) => {
-                    console.error('Failed to load savings widget script', event)
+    useEffect(() => {
+        if (scriptLoadedRef.current) return
+        
+        try {
+            setIsLoading(true)
+            setHasError(false)
+
+            // Load the widget script from public folder
+            const script = document.createElement('script')
+            script.src = '/index.global.js'
+            script.type = 'text/javascript'
+            script.async = true
+            script.onload = handleScriptLoad
+            script.onerror = handleScriptError
+
+            document.head.appendChild(script)
+
+            // Overall timeout fallback
+            const timeout = setTimeout(() => {
+                if (!scriptLoadedRef.current) {
+                    console.error('Widget script did not load within timeout')
                     setHasError(true)
                     setIsLoading(false)
                 }
+            }, 5000)
 
-                document.head.appendChild(script)
-
-                // Overall timeout fallback
-                const timeout = setTimeout(() => {
-                    if (!scriptLoadedRef.current) {
-                        console.error('Widget script did not load within timeout')
-                        setHasError(true)
-                        setIsLoading(false)
-                    }
-                }, 5000)
-
-                return () => clearTimeout(timeout)
-            } catch (error) {
-                console.error('Error loading savings widget:', error)
-                setHasError(true)
-                setIsLoading(false)
-            }
+            return () => clearTimeout(timeout)
+        } catch (error) {
+            console.error('Error loading savings widget:', error)
+            setHasError(true)
+            setIsLoading(false)
         }
-
-        void loadWidget()
     }, [account])
 
     return (
@@ -142,7 +140,7 @@ const SavingsWidgetContainer: React.FC = () => {
                     <Text fontSize="xs" color="goodGrey.500" textAlign="center" mb={3}>
                         The widget script is not available. To enable this feature:
                     </Text>
-                    <VStack fontSize="xs" color="goodGrey.400" textAlign="left" alignItems="flex-start" spacing={1}>
+                    <VStack fontSize="xs" color="goodGrey.400" textAlign="left" alignItems="flex-start" space={1}>
                         <Text>1. Clone GoodSDKs/packages/savings-widget</Text>
                         <Text>2. Run: yarn install && yarn build</Text>
                         <Text>3. Copy dist/index.global.js to public/</Text>
