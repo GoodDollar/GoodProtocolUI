@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { VStack, Text, useBreakpointValue, Spinner } from 'native-base'
+import { VStack, Text, useBreakpointValue, Spinner, Button } from 'native-base'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { useEthers } from '@usedapp/core'
@@ -24,6 +24,7 @@ const SavingsWidgetContainer: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [hasError, setHasError] = useState(false)
     const { account } = useEthers()
+    const scriptLoadedRef = useRef(false)
 
     const containerStyles = useBreakpointValue({
         base: {
@@ -36,30 +37,83 @@ const SavingsWidgetContainer: React.FC = () => {
 
     useEffect(() => {
         const loadWidget = async () => {
+            if (scriptLoadedRef.current) return
+            
             try {
                 setIsLoading(true)
                 setHasError(false)
 
-                // Try to load the savings widget script from CDN
-                // The widget is available as a web component from GoodSDKs/savings-widget
+                // Load the widget script from public folder
                 const script = document.createElement('script')
-                script.src = 'https://unpkg.com/@gooddollar/savings-widget@latest/dist/index.js'
+                script.src = '/index.global.js'
+                script.type = 'text/javascript'
                 script.async = true
-                script.defer = true
 
                 script.onload = () => {
-                    setIsLoading(false)
+                    scriptLoadedRef.current = true
+                    
+                    // Use a timeout to ensure the custom element is registered
+                    const initWidget = () => {
+                        try {
+                            if (!containerRef.current) return
+                            
+                            const widget = document.createElement('gooddollar-savings-widget')
+                            if (account) {
+                                widget.setAttribute('account', account)
+                            }
+                            widget.style.width = '100%'
+                            widget.style.minHeight = '500px'
+                            
+                            containerRef.current.innerHTML = ''
+                            containerRef.current.appendChild(widget)
+                            setIsLoading(false)
+                        } catch (error) {
+                            console.error('Error initializing widget:', error)
+                            setHasError(true)
+                            setIsLoading(false)
+                        }
+                    }
+                    
+                    // Try immediately first
+                    if (customElements.get('gooddollar-savings-widget')) {
+                        initWidget()
+                    } else {
+                        // Wait for the element to be defined
+                        customElements.whenDefined('gooddollar-savings-widget').then(() => {
+                            initWidget()
+                        }).catch((error) => {
+                            console.error('Custom element error:', error)
+                            setHasError(true)
+                            setIsLoading(false)
+                        })
+                        
+                        // Timeout fallback after 3 seconds
+                        setTimeout(() => {
+                            if (customElements.get('gooddollar-savings-widget')) {
+                                initWidget()
+                            }
+                        }, 3000)
+                    }
                 }
 
-                script.onerror = () => {
-                    console.error('Failed to load savings widget from CDN')
+                script.onerror = (event) => {
+                    console.error('Failed to load savings widget script', event)
                     setHasError(true)
                     setIsLoading(false)
                 }
 
-                if (containerRef.current) {
-                    containerRef.current.appendChild(script)
-                }
+                document.head.appendChild(script)
+
+                // Overall timeout fallback
+                const timeout = setTimeout(() => {
+                    if (!scriptLoadedRef.current) {
+                        console.error('Widget script did not load within timeout')
+                        setHasError(true)
+                        setIsLoading(false)
+                    }
+                }, 5000)
+
+                return () => clearTimeout(timeout)
             } catch (error) {
                 console.error('Error loading savings widget:', error)
                 setHasError(true)
@@ -67,15 +121,7 @@ const SavingsWidgetContainer: React.FC = () => {
             }
         }
 
-        loadWidget()
-
-        return () => {
-            // Cleanup
-            if (containerRef.current) {
-                const scripts = containerRef.current.querySelectorAll('script')
-                scripts.forEach((script) => script.remove())
-            }
-        }
+        void loadWidget()
     }, [account])
 
     return (
@@ -90,9 +136,27 @@ const SavingsWidgetContainer: React.FC = () => {
             )}
             {hasError && (
                 <VStack alignItems="center" justifyContent="center" minH="300px" w="100%">
-                    <Text fontSize="sm" color="red.500" textAlign="center">
-                        Unable to load the savings widget. Please try again later.
+                    <Text fontSize="sm" color="red.500" textAlign="center" mb={4} fontWeight="bold">
+                        Unable to Load Savings Widget
                     </Text>
+                    <Text fontSize="xs" color="goodGrey.500" textAlign="center" mb={3}>
+                        The widget script is not available. To enable this feature:
+                    </Text>
+                    <VStack fontSize="xs" color="goodGrey.400" textAlign="left" alignItems="flex-start" spacing={1}>
+                        <Text>1. Clone GoodSDKs/packages/savings-widget</Text>
+                        <Text>2. Run: yarn install && yarn build</Text>
+                        <Text>3. Copy dist/index.global.js to public/</Text>
+                        <Text>4. Restart the development server</Text>
+                    </VStack>
+                    <Button 
+                        size="sm"
+                        colorScheme="blue"
+                        variant="ghost"
+                        mt={3}
+                        onPress={() => window.open('https://github.com/GoodDollar/GoodSDKs/tree/main/packages/savings-widget', '_blank')}
+                    >
+                        View Build Instructions →
+                    </Button>
                 </VStack>
             )}
             <div
@@ -101,7 +165,8 @@ const SavingsWidgetContainer: React.FC = () => {
                 style={{
                     width: '100%',
                     minHeight: '500px',
-                    display: isLoading || hasError ? 'none' : 'flex',
+                    display: isLoading || hasError ? 'none' : 'block',
+                    position: 'relative',
                 }}
             />
         </VStack>
