@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from 'react'
-import { Image, Title } from '@gooddollar/good-design'
+import { useCallback, useState } from 'react'
+import { Title } from '@gooddollar/good-design'
 import { Box, Text } from 'native-base'
 
 import Maintance from 'assets/images/claim/maintance.png'
@@ -20,7 +20,6 @@ export const useDisabledClaimingModal = (message: string) => {
                 left={0}
                 right={0}
                 zIndex={50}
-                bg="rgba(0, 0, 0, 0.6)"
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
@@ -30,7 +29,11 @@ export const useDisabledClaimingModal = (message: string) => {
                     <Title color="main" fontSize="l" lineHeight={36} mb={2}>
                         Claiming Unavailable
                     </Title>
-                    <Image resizeMode="contain" source={{ uri: Maintance }} w="auto" h={120} mb={4} />
+                    <img
+                        src={Maintance}
+                        alt="Maintenance"
+                        style={{ height: '120px', objectFit: 'contain', marginBottom: '16px' }}
+                    />
                     <Text fontFamily="subheading" lineHeight="20px" textAlign="center" color="gray.600">
                         {message || 'Claiming is temporarily disabled.'}
                     </Text>
