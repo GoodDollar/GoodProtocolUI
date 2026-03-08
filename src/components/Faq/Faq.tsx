@@ -4,8 +4,10 @@ import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { SlideDownTab, useScreenSize } from '@gooddollar/good-design'
 import MarkDown from '@ronradtke/react-native-markdown-display'
+import { useAppKitNetwork } from '@reown/appkit/react'
+import { AdditionalChainId } from 'constants/index'
 
-import { faqs } from './copies'
+import { faqs, faqReserveCeloCopy, faqReserveXdcCopy } from './copies'
 
 export type FaqType = 'swap' | 'buy' | 'bridge' | 'goodid' | 'claim' | 'reserve'
 
@@ -75,7 +77,13 @@ const FaqItem = ({ id, question, answer, links, AltLink }) => {
 }
 
 export const Faq = ({ type }: { type: FaqType }) => {
-    const copies = faqs[type]
+    const { chainId } = useAppKitNetwork()
+    const copies =
+        type === 'reserve'
+            ? Number(chainId) === AdditionalChainId.XDC
+                ? faqReserveXdcCopy
+                : faqReserveCeloCopy
+            : faqs[type]
 
     return (
         <SlideDownTab

@@ -27,19 +27,46 @@ const SwapExplanationFooter = () => (
     </VStack>
 )
 
-const SwapExplanation = ({ swapWidget }) => {
+const ExplanationText = ({ children }) => (
+    <Text fontFamily="subheading" fontSize="sm" color="goodGrey.600" textAlign="center">
+        {children}
+    </Text>
+)
+
+const Emphasis = ({ children }) => (
+    <Text fontFamily="subheading" fontSize="sm" color="goodGrey.700" fontWeight="600">
+        {children}
+    </Text>
+)
+
+const SwapExplanation = ({ swapWidget, chainId }) => {
     if (swapWidget === 'goodReserve') {
         return (
             <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={8}>
-                <Text fontFamily="subheading" fontSize="sm" color="goodGrey.600" pt={4} pb={8} textAlign="center">
-                    {i18n._(
-                        t`Buy or sell GoodDollars using the GoodReserve directly!
-The reserve creates new GoodDollars when you buy them and destroys GoodDollars when you sell them back.
-You will usually get the best price to buy GoodDollars from the reserve.
-Please be patient, loading information may take some time. 
-Take note of indicators in the widget below for exit contribtution, price slippage and liquidity.`
-                    )}
-                </Text>
+                <VStack pt={4} pb={8}>
+                    <ExplanationText>
+                        {i18n._(t`Buy or sell `)}
+
+                        {` `}
+                        <Emphasis>{i18n._(t`GoodDollars on ${SupportedChains[chainId as number]}`)} </Emphasis>
+                        {i18n._(t`using the GoodDollar Reserve.`)}
+                    </ExplanationText>
+
+                    <ExplanationText>
+                        {i18n._(
+                            t`The reserve creates new GoodDollars when you buy them and destroys GoodDollars when you sell them back.`
+                        )}
+                    </ExplanationText>
+                    <ExplanationText>
+                        {i18n._(t`You will usually get the best buy price from the reserve.`)}
+                    </ExplanationText>
+                    <ExplanationText>
+                        {i18n._(t`Please be patient. Loading information may take some time.`)}
+                    </ExplanationText>
+                    <ExplanationText>
+                        {i18n._(t`Take note of indicators in the widget below for price, slippage, and liquidity.`)}
+                    </ExplanationText>
+                </VStack>
                 <SwapExplanationFooter />
             </VStack>
         )
@@ -47,13 +74,23 @@ Take note of indicators in the widget below for exit contribtution, price slippa
     if (swapWidget === 'celoUniswap') {
         return (
             <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={8}>
-                <Text fontFamily="subheading" fontSize="sm" color="goodGrey.600" pt={4} pb={8} textAlign="center">
-                    {i18n._(
-                        t`Convert your digital assets using the Uniswap protocol! 
-Please be patient, loading information may take some time. 
-Take note of indicators in the widget below for price slippage and liquidity.`
-                    )}
-                </Text>
+                <VStack space={1} pt={4} pb={8}>
+                    <ExplanationText>
+                        {i18n._(t`Convert your digital assets using the Uniswap protocol.`)}
+                    </ExplanationText>
+                    <ExplanationText>
+                        {i18n._(t`Please be patient. Loading information may take some time.`)}
+                    </ExplanationText>
+                    <ExplanationText>{i18n._(t`Watch these indicators in the widget below:`)}</ExplanationText>
+                    <ExplanationText>
+                        <Emphasis>{i18n._(t`Price slippage`)}</Emphasis>
+                        {i18n._(t`: how much your execution price can move.`)}
+                    </ExplanationText>
+                    <ExplanationText>
+                        <Emphasis>{i18n._(t`Liquidity`)}</Emphasis>
+                        {i18n._(t`: available depth for your trade size.`)}
+                    </ExplanationText>
+                </VStack>
                 <SwapExplanationFooter />
             </VStack>
         )
@@ -98,7 +135,7 @@ const Swap = memo((props: any) => {
     }
 
     return (
-        <PageLayout title="Swap" faqType={faqType}>
+        <PageLayout title={`Swap on ${SupportedChains[chainId as number]}`} faqType={faqType}>
             {chainConfig.chainId.includes(chainId) === false ? (
                 <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={8}>
                     <Link
@@ -117,7 +154,7 @@ const Swap = memo((props: any) => {
                 </VStack>
             ) : (
                 <VStack style={containerStyles}>
-                    <SwapExplanation swapWidget={swapWidget} />
+                    <SwapExplanation swapWidget={swapWidget} chainId={chainId} />
                     {chainConfig.enabled ? chainConfig.component : null}
                 </VStack>
             )}

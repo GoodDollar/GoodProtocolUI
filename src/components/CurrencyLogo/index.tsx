@@ -50,6 +50,17 @@ const logo: { readonly [chainId in ChainId | AdditionalChainId]?: string } = {
     [AdditionalChainId.CELO]: CeloLogo,
 }
 
+const TOKEN_LOGO_OVERRIDES: { [key: string]: string } = {
+    '42220:0x765de816845861e75a25fca122bb6898b8b1282a':
+        'https://raw.githubusercontent.com/GoodDollar/GoodProtocolUI/master/src/assets/images/tokens/usdm-logo.png',
+}
+
+const getTokenOverrideLogoURL = (token: Token, chainId?: number | string | undefined) => {
+    if (!chainId) return undefined
+    const key = `${chainId}:${token.address.toLowerCase()}`
+    return TOKEN_LOGO_OVERRIDES[key]
+}
+
 export default function CurrencyLogo({
     currency,
     size = '24px',
@@ -65,6 +76,11 @@ export default function CurrencyLogo({
 
     const srcs: string[] = useMemo(() => {
         if (currency === ETHER) return []
+
+        if (currency instanceof Token) {
+            const overrideLogo = getTokenOverrideLogoURL(currency, chainId)
+            if (overrideLogo) return [overrideLogo]
+        }
 
         if (tokenList?.[1] && tokenList?.[1].has(currency?.symbol || '')) {
             return [tokenList[1].get(currency?.symbol || '')]
