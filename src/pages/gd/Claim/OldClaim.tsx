@@ -57,7 +57,6 @@ const OldClaim = memo(() => {
     const network = SupportedV2Networks[chainId]
     const sendData = useSendAnalyticsData()
 
-    // Uncommented per maintainer's instructions
     const [, payload] = useFeatureFlagWithPayload('claim-feature')
     const { enabled: claimEnabled = true, disabledMessage = '' } = (payload as any) || {}
 
@@ -78,6 +77,7 @@ const OldClaim = memo(() => {
             showModal()
         }
     }, [claimEnabled, showModal])
+
     const isMinipay = isMiniPay()
 
     const supportedChainsDisplay = useMemo(() => {
@@ -90,9 +90,14 @@ const OldClaim = memo(() => {
         return supportedChains.map((chainId) => chainNames[chainId] || `Chain ID: ${chainId}`).join(', ')
     }, [supportedChains])
 
+    // there are three possible scenarios
+    // 1. claim amount is 0, meaning user has claimed that day
+    // 2. status === success, meaning user has just claimed. Could happen that claimAmount has not been updated right after tx confirmation
+    // 3. If neither is true, there is a claim ready for user or its a new user and FV will be triggered instead
     useEffect(() => {
         const hasClaimed = async () => {
             if (state.status === 'Mining') {
+                // don't do anything until transaction is mined
                 return
             }
 
@@ -110,12 +115,14 @@ const OldClaim = memo(() => {
             setRefreshRate('everyBlock')
         }
         if (claimAmount) hasClaimed().catch(noop)
+        // eslint-disable-next-line react-hooks-addons/no-unused-deps, react-hooks/exhaustive-deps
     }, [claimAmount, chainId, refreshRate])
 
+    // upon switching chain we want temporarily to poll everyBlock up untill we have the latest data
     useEffect(() => {
         setClaimed(undefined)
         setRefreshRate('everyBlock')
-    }, [chainId])
+    }, [/* used */ chainId])
 
     const handleEvents = useCallback(
         (event: string) => {
@@ -130,6 +137,8 @@ const OldClaim = memo(() => {
                     sendData({ event: 'claim', action: 'claim_start', network })
                     break
                 case 'finish':
+                    // finish event does not handle rejected case
+                    // sendData({ event: 'claim', action: 'claim_success', network })
                     break
                 default:
                     sendData({ event: 'claim', action: event, network })
@@ -142,13 +151,13 @@ const OldClaim = memo(() => {
     const handleClaim = useCallback(async () => {
         setRefreshRate('everyBlock')
 
-        // Added check to block claim and show modal if feature flag is disabled
         if (!claimEnabled) {
             showModal()
             return false
         }
 
         if (activeChainFeatures['claimEnabled'] || !isProd || isMinipay) {
+            // minipay doesnt handle gasPrice correctly, so we let it decide
             const claim = await send(isMinipay ? { gasPrice: undefined } : {})
 
             if (!claim) {
@@ -172,12 +181,13 @@ const OldClaim = memo(() => {
         }
 
         return false
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [send, network, sendData, activeChainFeatures, isSimpleApp, claimEnabled, showModal])
 
     const handleConnect = useCallback(async () => {
         if (!address) {
             await open({ view: 'Connect' })
-            return false
+            return false // Return false so button resets when modal is dismissed
         }
         return true
     }, [address, open])
@@ -336,9 +346,7 @@ const OldClaim = memo(() => {
             <Box w="100%" mb="8" style={mainView}>
                 <CentreBox style={claimView}>
                     <div className="flex flex-col items-center text-center lg:w-1/2">
-                        {/* CRITICAL LAYOUT FIX: position relative so the overlay covers just this area */}
                         <Box style={balanceContainer} position="relative" borderRadius="2xl" overflow="hidden">
-                            {/* This is the overlay we built */}
                             <Dialog />
 
                             {claimed ? (
