@@ -150,7 +150,7 @@ function App(): JSX.Element {
         }
     }, [dispatch, search])
 
-    // dont show chat and remove padding for network info if simple app
+    // don't show chat and remove padding for network info if simple app
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const isSimpleApp = useIsSimpleApp()
 

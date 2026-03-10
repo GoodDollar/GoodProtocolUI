@@ -3,6 +3,8 @@ import { VStack, Text, useBreakpointValue, Spinner, Button } from 'native-base'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { useEthers } from '@usedapp/core'
+import { useAppKitProvider, useAppKit } from '@reown/appkit/react'
+import type { Provider } from '@reown/appkit/react'
 
 import { PageLayout } from 'components/Layout/PageLayout'
 
@@ -24,6 +26,8 @@ const SavingsWidgetContainer: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [hasError, setHasError] = useState(false)
     const { account } = useEthers()
+    const { walletProvider } = useAppKitProvider<Provider>('eip155')
+    const { open: openAppKit } = useAppKit()
     const scriptLoadedRef = useRef(false)
 
     const containerStyles = useBreakpointValue({
@@ -42,6 +46,14 @@ const SavingsWidgetContainer: React.FC = () => {
             const widget = document.createElement('gooddollar-savings-widget')
             if (account) {
                 widget.setAttribute('account', account)
+            }
+            // Pass the wallet provider to the widget as a property
+            if (walletProvider) {
+                (widget as any).web3Provider = walletProvider
+            }
+            // Pass the connect wallet callback for the widget to use
+            (widget as any).connectWallet = async () => {
+                await openAppKit({ view: 'Connect' })
             }
             widget.style.width = '100%'
             widget.style.minHeight = '500px'
@@ -120,7 +132,15 @@ const SavingsWidgetContainer: React.FC = () => {
             setHasError(true)
             setIsLoading(false)
         }
-    }, [account])
+    }, [])
+
+    // Reinitialize widget when wallet provider changes
+    // eslint-disable-next-line react-hooks-addons/no-unused-deps
+    useEffect(() => {
+        if (scriptLoadedRef.current && containerRef.current) {
+            initializeWidget()
+        }
+    }, [walletProvider, account, initializeWidget])
 
     return (
         <VStack style={containerStyles} space={4} w="100%">
