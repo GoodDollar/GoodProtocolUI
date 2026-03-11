@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { VStack, Text, useBreakpointValue, Spinner, Button } from 'native-base'
+import React, { useEffect, useRef } from 'react'
+import { VStack, Text, useBreakpointValue, Spinner, Button, Box } from 'native-base'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { useEthers } from '@usedapp/core'
@@ -7,6 +7,7 @@ import { useAppKitProvider, useAppKit } from '@reown/appkit/react'
 import type { Provider } from '@reown/appkit/react'
 
 import { PageLayout } from 'components/Layout/PageLayout'
+import { useExternalScript } from 'hooks/useExternalScript'
 
 const SavingsExplanation = () => (
     <VStack space={2} textAlign="center" justifyContent="center" alignItems="center" pb={8}>
@@ -23,12 +24,12 @@ Please be patient, loading information may take some time.`
 
 const SavingsWidgetContainer: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null)
-    const [isLoading, setIsLoading] = useState(true)
-    const [hasError, setHasError] = useState(false)
     const { account } = useEthers()
     const { walletProvider } = useAppKitProvider<Provider>('eip155')
     const { open: openAppKit } = useAppKit()
-    const scriptLoadedRef = useRef(false)
+
+    // Load the widget script once and track its status
+    const scriptStatus = useExternalScript('/index.global.js')
 
     const containerStyles = useBreakpointValue({
         base: {
@@ -39,112 +40,39 @@ const SavingsWidgetContainer: React.FC = () => {
         },
     })
 
-    const initializeWidget = () => {
+    // Initialize the widget when script is ready and wallet provider changes
+    useEffect(() => {
+        if (scriptStatus !== 'ready' || !containerRef.current) return
+
         try {
-            if (!containerRef.current) return
-            
             const widget = document.createElement('gooddollar-savings-widget')
+            
+            // Pass account as an attribute
             if (account) {
                 widget.setAttribute('account', account)
             }
-            // Pass the wallet provider to the widget as a property
+            
+            // Pass the wallet provider to the widget
             if (walletProvider) {
                 (widget as any).web3Provider = walletProvider
             }
-            // Pass the connect wallet callback for the widget to use
+            
+            // Pass the connect wallet callback
             (widget as any).connectWallet = async () => {
                 await openAppKit({ view: 'Connect' })
             }
-            widget.style.width = '100%'
-            widget.style.minHeight = '500px'
             
+            // Clear container and mount widget
             containerRef.current.innerHTML = ''
             containerRef.current.appendChild(widget)
-            setIsLoading(false)
         } catch (error) {
             console.error('Error initializing widget:', error)
-            setHasError(true)
-            setIsLoading(false)
         }
-    }
-
-    const handleScriptLoad = () => {
-        scriptLoadedRef.current = true
-        
-        // Try immediately first
-        if (customElements.get('gooddollar-savings-widget')) {
-            initializeWidget()
-            return
-        }
-        
-        // Wait for the element to be defined
-        customElements.whenDefined('gooddollar-savings-widget').then(() => {
-            initializeWidget()
-        }).catch((error) => {
-            console.error('Custom element error:', error)
-            setHasError(true)
-            setIsLoading(false)
-        })
-        
-        // Timeout fallback after 3 seconds
-        setTimeout(() => {
-            if (customElements.get('gooddollar-savings-widget')) {
-                initializeWidget()
-            }
-        }, 3000)
-    }
-
-    const handleScriptError = (event: string | Event) => {
-        console.error('Failed to load savings widget script', event)
-        setHasError(true)
-        setIsLoading(false)
-    }
-
-    useEffect(() => {
-        if (scriptLoadedRef.current) return
-        
-        try {
-            setIsLoading(true)
-            setHasError(false)
-
-            // Load the widget script from public folder
-            const script = document.createElement('script')
-            script.src = '/index.global.js'
-            script.type = 'text/javascript'
-            script.async = true
-            script.onload = handleScriptLoad
-            script.onerror = handleScriptError
-
-            document.head.appendChild(script)
-
-            // Overall timeout fallback
-            const timeout = setTimeout(() => {
-                if (!scriptLoadedRef.current) {
-                    console.error('Widget script did not load within timeout')
-                    setHasError(true)
-                    setIsLoading(false)
-                }
-            }, 5000)
-
-            return () => clearTimeout(timeout)
-        } catch (error) {
-            console.error('Error loading savings widget:', error)
-            setHasError(true)
-            setIsLoading(false)
-        }
-    }, [])
-
-    // Reinitialize widget when wallet provider changes
-    // eslint-disable-next-line react-hooks-addons/no-unused-deps
-    useEffect(() => {
-        if (scriptLoadedRef.current && containerRef.current) {
-            initializeWidget()
-        }
-    }, [walletProvider, account, initializeWidget])
+    }, [scriptStatus, account, walletProvider, openAppKit])
 
     return (
         <VStack style={containerStyles} space={4} w="100%">
-            {isLoading && (
+            {scriptStatus === 'loading' && (
                 <VStack alignItems="center" justifyContent="center" minH="300px" w="100%">
                     <Spinner color="gdPrimary" size="lg" />
                     <Text fontSize="sm" color="goodGrey.400" mt={4}>
@@ -152,7 +80,7 @@ const SavingsWidgetContainer: React.FC = () => {
                     </Text>
                 </VStack>
             )}
-            {hasError && (
+            {scriptStatus === 'error' && (
                 <VStack alignItems="center" justifyContent="center" minH="300px" w="100%">
                     <Text fontSize="sm" color="red.500" textAlign="center" mb={4} fontWeight="bold">
                         Unable to Load Savings Widget
@@ -177,15 +105,14 @@ const SavingsWidgetContainer: React.FC = () => {
                     </Button>
                 </VStack>
             )}
-            <div
+            <Box
+                as="div"
                 ref={containerRef}
                 id="savings-widget-container"
-                style={{
-                    width: '100%',
-                    minHeight: '500px',
-                    display: isLoading || hasError ? 'none' : 'block',
-                    position: 'relative',
-                }}
+                w="100%"
+                minH="500px"
+                position="relative"
+                display={scriptStatus === 'ready' ? 'block' : 'none'}
             />
         </VStack>
     )

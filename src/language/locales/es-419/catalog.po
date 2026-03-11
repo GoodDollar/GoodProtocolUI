@@ -312,7 +312,7 @@ msgstr ""
 #~ "Please be patient, loading information may take some time."
 #~ msgstr ""
 
-#: src/pages/gd/Savings/index.tsx:15
+#: src/pages/gd/Savings/index.tsx:16
 msgid ""
 "Earn rewards by saving your GoodDollars with Ubeswap savings products! \n"
 "Savings provides a simple way to generate yield on your digital assets.\n"
