@@ -23,7 +23,7 @@ import {
 import { useAppKit } from '@reown/appkit/react'
 import { QueryParams } from '@usedapp/core'
 import { noop } from 'lodash'
-// import { useFeatureFlagWithPayload } from 'posthog-react-native'
+import { useFeatureFlagWithPayload } from 'posthog-react-native'
 import moment from 'moment'
 
 import { getEnv } from 'utils/env'
@@ -39,8 +39,7 @@ import BillyGrin from 'assets/images/claim/billygrin.png'
 import BillyConfused from 'assets/images/claim/billyconfused.png'
 
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
-
-// import { useDisabledClaimingModal } from './useDisabledClaimModal'
+import { useDisabledClaimingModal } from './useDisabledClaimModal'
 import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 
 const OldClaim = memo(() => {
@@ -57,9 +56,10 @@ const OldClaim = memo(() => {
     const { open } = useAppKit()
     const network = SupportedV2Networks[chainId]
     const sendData = useSendAnalyticsData()
-    // todo: fix UI for displaying claiming disabled modal
-    // const [, payload] = useFeatureFlagWithPayload('claim-feature')
-    // const { enabled: claimEnabled = true, disabledMessage = '' } = (payload as any) || {}
+
+    const [, payload] = useFeatureFlagWithPayload('claim-feature')
+    const { enabled: claimEnabled = true, disabledMessage = '' } = (payload as any) || {}
+
     const { activeNetworksByFeature, activeChainFeatures } = useGoodDappFeatures()
     const supportedChains = activeNetworksByFeature['claimEnabled'] || []
     const isProd = getEnv() === 'production'
@@ -69,7 +69,14 @@ const OldClaim = memo(() => {
     const isHoliday = holiday >= '12-24' || holiday <= '01-01'
 
     const isSimpleApp = useIsSimpleApp()
-    // const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
+
+    const { Dialog, showModal } = useDisabledClaimingModal(disabledMessage)
+
+    useEffect(() => {
+        if (!claimEnabled) {
+            showModal()
+        }
+    }, [claimEnabled, showModal])
 
     const isMinipay = isMiniPay()
 
@@ -143,6 +150,12 @@ const OldClaim = memo(() => {
 
     const handleClaim = useCallback(async () => {
         setRefreshRate('everyBlock')
+
+        if (!claimEnabled) {
+            showModal()
+            return false
+        }
+
         if (activeChainFeatures['claimEnabled'] || !isProd || isMinipay) {
             // minipay doesnt handle gasPrice correctly, so we let it decide
             const claim = await send(isMinipay ? { gasPrice: undefined } : {})
@@ -164,12 +177,12 @@ const OldClaim = memo(() => {
             sendData({ event: 'claim', action: 'claim_success', network })
             return true
         } else {
-            // showModal()
+            showModal()
         }
 
         return false
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [send, network, sendData, activeChainFeatures, isSimpleApp])
+    }, [send, network, sendData, activeChainFeatures, isSimpleApp, claimEnabled, showModal])
 
     const handleConnect = useCallback(async () => {
         if (!address) {
@@ -192,7 +205,7 @@ const OldClaim = memo(() => {
         },
         lg: {
             flexDirection: 'row',
-            justifyContent: 'justify-evenly',
+            justifyContent: 'space-evenly',
         },
     })
 
@@ -294,9 +307,7 @@ const OldClaim = memo(() => {
             content: [
                 {
                     description: {
-                        text: `After claiming your G$, use it to support your community, buy products and services, support causes you care about, vote in the GoodDAO, and more. 
-                      
-Learn how here`,
+                        text: `After claiming your G$, use it to support your community, buy products and services, support causes you care about, vote in the GoodDAO, and more. \n\nLearn how here`,
                         color: 'white',
                     },
                     ...(isSmallTabletView && { imgSrc: BillyHappy }),
@@ -333,10 +344,11 @@ Learn how here`,
     return (
         <>
             <Box w="100%" mb="8" style={mainView}>
-                {/* <Dialog /> */}
                 <CentreBox style={claimView}>
                     <div className="flex flex-col items-center text-center lg:w-1/2">
-                        <Box style={balanceContainer}>
+                        <Box style={balanceContainer} position="relative" borderRadius="2xl" overflow="hidden">
+                            <Dialog />
+
                             {claimed ? (
                                 <Box justifyContent="center" display="flex" alignItems="center" textAlign="center">
                                     <ClaimBalance refresh={refreshRate} />

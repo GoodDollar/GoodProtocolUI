@@ -191,7 +191,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 items: [
                     {
                         route: '/swap/goodReserve',
-                        text: 'GoodReserve',
+                        text: 'GoodDollar Reserve',
                         show: true,
                     },
                     {
