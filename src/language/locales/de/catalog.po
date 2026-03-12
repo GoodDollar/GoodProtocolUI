@@ -2705,7 +2705,7 @@ msgstr ""
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:262
+#: src/components/AccountDetails/index.tsx:261
 msgid "Account"
 msgstr "Konto"
 
@@ -2717,7 +2717,7 @@ msgstr "betragen"
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:404
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:408
 msgid "Approve"
 msgstr "Genehmigen"
 
@@ -2725,15 +2725,15 @@ msgstr "Genehmigen"
 msgid "APPROVE"
 msgstr "GENEHMIGEN"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:122
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:123
 msgid "Approve transaction failed, please try again."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:403
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:407
 msgid "Approved"
 msgstr "Genehmigt"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:401
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:405
 msgid "Approving"
 msgstr "Genehmigen"
 
@@ -2780,7 +2780,7 @@ msgstr ""
 #~ "Take note of indicators in the widget below for exit contribtution, price slippage and liquidity."
 #~ msgstr ""
 
-#: src/components/AccountDetails/index.tsx:285
+#: src/components/AccountDetails/index.tsx:284
 msgid "Change"
 msgstr "Ändern"
 
@@ -2850,7 +2850,7 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:324
+#: src/components/AccountDetails/index.tsx:323
 msgid "Clear all"
 msgstr "Alles löschen"
 
@@ -2862,7 +2862,7 @@ msgstr "Alles löschen"
 msgid "Click here to learn more about GoodDollar liquidity, including how to provide liquidity."
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:369
+#: src/pages/gd/Claim/OldClaim.tsx:381
 msgid "Click on the Claim button below and you will be switched over the first available network to collect your G$'s."
 msgstr ""
 
@@ -2874,7 +2874,7 @@ msgstr "Nah dran"
 #~ msgid "Collect G$"
 #~ msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:382
+#: src/pages/gd/Claim/OldClaim.tsx:394
 msgid "Collect G$ on {network}"
 msgstr ""
 
@@ -2908,7 +2908,7 @@ msgstr ""
 msgid "Connect wallet"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:232
+#: src/components/AccountDetails/index.tsx:231
 msgid "Connected with"
 msgstr "Verbunden mit"
 
@@ -2927,7 +2927,7 @@ msgstr ""
 msgid "Copied"
 msgstr "Kopiert"
 
-#: src/components/AccountDetails/index.tsx:301
+#: src/components/AccountDetails/index.tsx:300
 msgid "Copy address"
 msgstr "Adresse kopieren."
 
@@ -2958,7 +2958,7 @@ msgstr ""
 msgid "Deposit overview"
 msgstr "Übersicht einleiten."
 
-#: src/components/AccountDetails/index.tsx:276
+#: src/components/AccountDetails/index.tsx:275
 msgid "Disconnect"
 msgstr ""
 
@@ -3035,7 +3035,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:392
+#: src/pages/gd/Claim/OldClaim.tsx:404
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -3253,7 +3253,7 @@ msgstr "Protokoll"
 msgid "PROTOCOL"
 msgstr "PROTOKOLL"
 
-#: src/components/AccountDetails/index.tsx:322
+#: src/components/AccountDetails/index.tsx:321
 msgid "Recent Transactions"
 msgstr "kürzliche Transaktionen"
 
@@ -3308,7 +3308,7 @@ msgstr "Suchname oder Fügen Sie die Adresse ein"
 msgid "Share with friends"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:366
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:370
 #: src/pages/gd/Swap/SwapSettings/index.tsx:80
 msgid "Slippage Tolerance"
 msgstr "Schlupftoleranz"
@@ -3358,7 +3358,7 @@ msgstr "Erfolg!"
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:413
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:417
 msgid "Swap"
 msgstr "Tauschen"
 
@@ -3366,15 +3366,15 @@ msgstr "Tauschen"
 msgid "Swap Completed"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:339
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:343
 msgid "Swap from"
 msgstr "Swap von"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:353
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:357
 msgid "Swap to"
 msgstr "Tauschen"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:116
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:117
 msgid "Swap transaction failed, please try again."
 msgstr ""
 
@@ -3437,7 +3437,7 @@ msgstr ""
 #~ "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
 #~ msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:255
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:259
 msgid ""
 "The GoodReserve is an Automated Market Maker (AMM) that operates on Celo and XDC.\n"
 "This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
@@ -3558,7 +3558,7 @@ msgstr ""
 msgid "Transaction deadline"
 msgstr "Transaktionsfrist"
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:149
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:151
 msgid "Transaction failed, please try again"
 msgstr ""
 
@@ -3597,7 +3597,7 @@ msgstr ""
 msgid "using the GoodDollar Reserve."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:307
+#: src/components/AccountDetails/index.tsx:306
 #: src/components/Popups/TransactionPopup.tsx:48
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:311
 msgid "View on explorer"
@@ -3706,7 +3706,7 @@ msgstr "Sie schaffen UBI Tausende von Menschen auf der ganzen Welt."
 msgid "You are currently browsing"
 msgstr "Du surfe derzeit"
 
-#: src/pages/gd/Claim/OldClaim.tsx:358
+#: src/pages/gd/Claim/OldClaim.tsx:370
 msgid "You can collect G$ on {supportedChainsDisplay} networks."
 msgstr ""
 
@@ -3796,6 +3796,6 @@ msgstr "Ihre Transaktion wird zurückgesetzt, wenn sich der Preis um mehr als di
 #~ msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 #~ msgstr "Ihre Transaktion wird zurückgesetzt, wenn eine große, ungünstige Preisbewegung vorliegt, bevor sie bestätigt wird."
 
-#: src/components/AccountDetails/index.tsx:331
+#: src/components/AccountDetails/index.tsx:330
 msgid "Your transactions will appear here..."
 msgstr "Ihre Transaktionen werden hier angezeigt ..."
