@@ -30,6 +30,7 @@ import QuestionHelper from 'components/QuestionHelper'
 import GoodReserveLogo from 'assets/images/goodreserve-logo.png'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { useReserveToken } from 'hooks/useReserveToken'
+import { decodeTransactionErrorReason } from 'utils/transactionErrors'
 
 const MentoSwap = memo(() => {
     const CUSD = useReserveToken()
@@ -114,13 +115,13 @@ const MentoSwap = memo(() => {
         if (swap?.state?.status === 'Exception') {
             setError({
                 message: i18n._(t`Swap transaction failed, please try again.`),
-                reason: swap.state.errorMessage,
+                reason: decodeTransactionErrorReason(swap.state.errorMessage),
             })
         }
         if (approve?.state?.status === 'Exception') {
             setError({
                 message: i18n._(t`Approve transaction failed, please try again.`),
-                reason: approve.state.errorMessage,
+                reason: decodeTransactionErrorReason(approve.state.errorMessage),
             })
         }
     }, [swap?.state?.status, approve?.state?.status])
@@ -146,11 +147,14 @@ const MentoSwap = memo(() => {
             setApproving(true)
             await approve.send()
         } catch (e: any) {
-            setError({ message: i18n._(t`Transaction failed, please try again`), reason: e.message })
+            setError({
+                message: i18n._(t`Transaction failed, please try again`),
+                reason: decodeTransactionErrorReason(e),
+            })
         } finally {
             setApproving(false)
         }
-    }, [approved, buying, network])
+    }, [approved, buying, network, approve])
 
     useEffect(() => {
         approve.resetState()
