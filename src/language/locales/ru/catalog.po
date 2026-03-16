@@ -2784,7 +2784,7 @@ msgstr ""
 msgid "Change"
 msgstr "Изменять"
 
-#: src/pages/gd/BuyGD/index.tsx:84
+#: src/pages/gd/BuyGD/index.tsx:83
 msgid "Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$."
 msgstr ""
 
@@ -2894,6 +2894,10 @@ msgstr "Подтвердите эту транзакцию в вашем кош�
 #: src/pages/gd/Stake/StakeDeposit/index.tsx:227
 msgid "Congratulations!"
 msgstr "Поздравляю!"
+
+#: src/pages/gd/BuyGD/index.tsx:90
+msgid "Connect a wallet to buy G$"
+msgstr ""
 
 #: src/pages/gd/MicroBridge/index.tsx:36
 #: src/pages/gd/Portfolio/index.tsx:459
@@ -3354,7 +3358,7 @@ msgstr "Начиная с 1.0, ваш множитель увеличится д
 msgid "Success!"
 msgstr "Успех!"
 
-#: src/pages/gd/BuyGD/index.tsx:71
+#: src/pages/gd/BuyGD/index.tsx:70
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
