@@ -4486,7 +4486,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/goodprotocol@npm:2.1.1, @gooddollar/goodprotocol@npm:^2.1.1":
+"@gooddollar/goodprotocol@npm:2.2.0":
+  version: 2.2.0
+  resolution: "@gooddollar/goodprotocol@npm:2.2.0"
+  checksum: 8292976327c56b97fb572484e9cd2edb3b5e6bf3861805f69026952f8dc8d6c8aa9949116d29648a1a4c1465606dadcbf6f5586906cf7bcdc6037a7b635625ab
+  languageName: node
+  linkType: hard
+
+"@gooddollar/goodprotocol@npm:^2.1.1":
   version: 2.1.1
   resolution: "@gooddollar/goodprotocol@npm:2.1.1"
   checksum: 063e2e4d042a0113d4d85dc8fba1449c1cdddfcf3de540309e62efd52a6827af2e6abf4f2350e3e5d0f73abdf89bf3faa363aa05373c0cf71ab3a692e4d5dc5f
@@ -4510,7 +4517,7 @@ __metadata:
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
     "@gooddollar/good-design": 0.4.38
-    "@gooddollar/goodprotocol": 2.1.1
+    "@gooddollar/goodprotocol": 2.2.0
     "@gooddollar/web3sdk": 0.1.57
     "@gooddollar/web3sdk-v2": 0.4.34
     "@headlessui/react": 1.5.0
