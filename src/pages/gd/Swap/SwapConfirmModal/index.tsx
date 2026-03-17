@@ -40,7 +40,6 @@ export interface SwapConfirmModalProps extends SwapDetailsFields {
     ]
     open: boolean
     onClose: () => void
-    setOpen: (value: boolean) => void
     swap?: { send: () => Promise<any>; state: TransactionStatus }
     meta: BuyInfo | undefined
     buying: boolean
@@ -56,7 +55,6 @@ const SwapConfirmModal = memo(
         open,
         buying,
         onClose,
-        setOpen,
         onConfirm,
         swap,
         className,
@@ -153,10 +151,6 @@ const SwapConfirmModal = memo(
                 else {
                     buying ? await buy(web3!, meta!, onSent) : await sell(web3!, meta!, onSent)
                     setStatus('SUCCESS') // for mento success is via swap.state effect
-                }
-
-                if (meta?.outputAmount.currency.name === 'GoodDollar') {
-                    setOpen(true)
                 }
 
                 // let transactionDetails = buying ? await buy(web3!, meta!, prepareTx, onSent) : await sell(web3!, meta!, prepareTx, onSent)
