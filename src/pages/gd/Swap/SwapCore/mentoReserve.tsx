@@ -431,7 +431,6 @@ const MentoSwap = memo(() => {
                 {...swapFields}
                 open={showConfirm}
                 onClose={onModalClosed}
-                setOpen={setShowConfirm}
                 swap={swap}
                 pair={pair}
                 meta={{
