@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { useAnalytics } from '@gooddollar/web3sdk-v2'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
 import { useAppKitState } from '@reown/appkit/react'
 import { useAccount, useConnect } from 'wagmi'
 import { waitForMiniPayProvider, isMiniPay } from 'utils/minipay'
+import { WALLET_RECONNECT_FLAG_KEY } from 'constants/reown'
 
 const MessageWrapper = styled.div`
     display: flex;
@@ -26,7 +26,6 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
     const { initialized } = useAppKitState()
     const { address } = useAccount()
     const networkError = false
-    const { identify } = useAnalytics()
     const { connect, connectors } = useConnect()
     const hasConnected = useRef(false)
 
@@ -72,9 +71,11 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
 
     useEffect(() => {
         if (initialized && address) {
-            identify(address)
+            if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
+                window.localStorage.setItem(WALLET_RECONNECT_FLAG_KEY, '1')
+            }
         }
-    }, [initialized, address, identify])
+    }, [initialized, address])
 
     if (!initialized && networkError) {
         return (

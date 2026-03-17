@@ -15,6 +15,7 @@ import { set } from 'lodash'
 import { getMiniPayProvider } from 'utils/minipay'
 import { miniPayConnector } from './minipayConnector'
 import { useNetwork } from 'hooks/useWeb3'
+import { WALLET_RECONNECT_FLAG_KEY } from 'constants/reown'
 
 const queryClient = new QueryClient()
 
@@ -147,9 +148,23 @@ const baseConnectors = [
 const connectors =
     typeof window !== 'undefined' && getMiniPayProvider() ? [miniPayConnector(), ...baseConnectors] : baseConnectors
 
+// Runtime reconnect policy:
+// localStorage['GD_WALLET_RECONNECT'] === '0' -> disable reconnectOnMount
+// localStorage['GD_WALLET_RECONNECT'] === '1' -> allow reconnect
+// missing/other value -> allow reconnect (default)
+
+const canReconnectOnMount = () => {
+    if (typeof window === 'undefined' || typeof window.localStorage === 'undefined') {
+        return true
+    }
+    return window.localStorage.getItem(WALLET_RECONNECT_FLAG_KEY) === '1'
+}
+
 let wagmiAdapter: WagmiAdapter = null as any
 export function AppKitProvider({ children }: { children: React.ReactNode }) {
     const [initialized, setInitialized] = React.useState(false)
+    const canReconnect = canReconnectOnMount()
+
     const { testedRpcs } = useNetwork()
     useEffect(() => {
         if (testedRpcs === null) return
@@ -188,14 +203,16 @@ export function AppKitProvider({ children }: { children: React.ReactNode }) {
             },
             featuredWalletIds: [...APPKIT_FEATURED_WALLET_IDS],
         })
+
         setInitialized(true)
     }, [testedRpcs === null])
 
     if (initialized === false) {
         return null
     }
+
     return (
-        <WagmiProvider config={wagmiAdapter.wagmiConfig}>
+        <WagmiProvider config={wagmiAdapter.wagmiConfig} reconnectOnMount={canReconnect}>
             <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
         </WagmiProvider>
     )
