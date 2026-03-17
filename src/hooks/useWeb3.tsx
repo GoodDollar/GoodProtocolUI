@@ -223,6 +223,22 @@ export const initializeRpcs = async () => {
 
 export function useNetwork(): NetworkSettings {
     const [testifiedRpcs, setTestifiedRpcs] = React.useState<Record<string, string[]> | null>(null)
+    const excludedRpcs = useMemo(
+        () =>
+            (process.env.REACT_APP_EXCLUDED_RPCS ?? '')
+                .split(',')
+                .map((value) => value.trim().toLowerCase())
+                .filter(Boolean),
+        []
+    )
+
+    const filterBlockedRpcs = (rpcs: Record<string, string[]>) =>
+        Object.fromEntries(
+            Object.entries(rpcs).map(([chainId, urls]) => [
+                chainId,
+                urls.filter((url) => !excludedRpcs.some((blocked) => url.toLowerCase().includes(blocked))),
+            ])
+        )
 
     const celoRpcList = sample(process.env.REACT_APP_CELO_RPC?.split(',')) ?? 'https://forno.celo.org'
     const fuseRpcList = sample(process.env.REACT_APP_FUSE_RPC?.split(',')) ?? 'https://rpc.fuse.io'
@@ -242,7 +258,7 @@ export function useNetwork(): NetworkSettings {
 
     useEffect(() => {
         void initializeRpcs().then((rpcs) => {
-            setTestifiedRpcs(rpcs)
+            setTestifiedRpcs(filterBlockedRpcs(rpcs))
         })
     }, [])
 
