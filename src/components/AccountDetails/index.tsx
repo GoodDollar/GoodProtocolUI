@@ -22,6 +22,7 @@ import Transaction from './Transaction'
 import useSendAnalyticsData from '../../hooks/useSendAnalyticsData'
 
 import { getEnv } from 'utils/env'
+import { WALLET_RECONNECT_FLAG_KEY } from 'constants/reown'
 
 const UpperSection = styled.div`
     position: relative;
@@ -240,6 +241,9 @@ export default function AccountDetails({
         toggleWalletModal()
         sendData({ event: 'account', action: 'address_disconnect_success', network: network })
         await disconnect()
+        if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
+            window.localStorage.setItem(WALLET_RECONNECT_FLAG_KEY, '0')
+        }
     }, [toggleWalletModal, disconnect, network, sendData])
 
     const clearAllTransactionsCallback = useCallback(() => {
