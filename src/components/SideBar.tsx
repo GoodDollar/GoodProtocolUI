@@ -100,7 +100,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     })
 
     const isMinipay = isMiniPay()
-    const { bridgeEnabled = false, swapEnabled = false } = payload || {}
+    const { bridgeEnabled = false, swapEnabled = false, goodBridgeEnabled = false } = payload || {}
 
     const externalLinks = useMemo(
         () => [
@@ -223,8 +223,13 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                 items: [
                     {
                         route: '/microbridge',
-                        text: 'Micro Bridge',
+                        text: 'Fuse/Celo Bridge',
                         show: !isMinipay || bridgeEnabled,
+                    },
+                    {
+                        route: '/goodbridge',
+                        text: 'GoodBridge',
+                        show: !isMinipay || goodBridgeEnabled,
                     },
                     {
                         label: i18n._(t`GoodDollar Main Bridge`),

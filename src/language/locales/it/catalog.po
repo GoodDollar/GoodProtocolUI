@@ -2895,6 +2895,7 @@ msgstr "Conferma questa transazione nel tuo portafoglio"
 msgid "Congratulations!"
 msgstr "Congratulazioni!"
 
+#: src/pages/gd/GoodBridge/index.tsx:36
 #: src/pages/gd/MicroBridge/index.tsx:36
 #: src/pages/gd/Portfolio/index.tsx:459
 msgid "Connect a wallet to see your portfolio"
@@ -3039,7 +3040,7 @@ msgstr ""
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
-#: src/components/SideBar.tsx:230
+#: src/components/SideBar.tsx:235
 msgid "GoodDollar Main Bridge"
 msgstr ""
 
@@ -3292,6 +3293,7 @@ msgstr "Il routing attraverso questi token è risultato nel prezzo migliore per 
 msgid "Savings"
 msgstr ""
 
+#: src/pages/gd/GoodBridge/index.tsx:23
 #: src/pages/gd/MicroBridge/index.tsx:23
 msgid ""
 "Seamlessly convert between Fuse G$ tokens to Celo and vice versa, \n"
@@ -3317,7 +3319,7 @@ msgstr "Tolleranza slippage"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:237
+#: src/components/SideBar.tsx:242
 msgid "Squid Router"
 msgstr ""
 
