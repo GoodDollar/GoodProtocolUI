@@ -7,7 +7,7 @@ msgstr ""
 "X-Generator: @lingui/cli\n"
 "Project-Id-Version: goodprotocolui\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-03-03 10:46\n"
+"PO-Revision-Date: 2026-04-27 07:41\n"
 "Last-Translator: \n"
 "Language: uk_UA\n"
 "Language-Team: Ukrainian\n"
@@ -2699,13 +2699,13 @@ msgstr ""
 msgid "{title}"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:272
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:266
 #: src/pages/gd/Swap/SwapDescriptions/index.tsx:31
 #: src/pages/gd/Swap/SwapDetails/index.tsx:77
 msgid "A contribution to the reserve paid by members for directly selling G$ tokens."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:262
+#: src/components/AccountDetails/index.tsx:265
 msgid "Account"
 msgstr ""
 
@@ -2717,7 +2717,7 @@ msgstr ""
 msgid "Annual Percentage Yield (APY) is the percentage yield being earned."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:404
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:408
 msgid "Approve"
 msgstr ""
 
@@ -2725,15 +2725,15 @@ msgstr ""
 msgid "APPROVE"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:122
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:123
 msgid "Approve transaction failed, please try again."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:403
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:407
 msgid "Approved"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:401
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:405
 msgid "Approving"
 msgstr ""
 
@@ -2763,7 +2763,7 @@ msgstr ""
 msgid "Blocked address"
 msgstr ""
 
-#: src/components/SideBar.tsx:118
+#: src/components/SideBar.tsx:120
 msgid "Buy G$"
 msgstr ""
 
@@ -2780,7 +2780,7 @@ msgstr ""
 #~ "Take note of indicators in the widget below for exit contribtution, price slippage and liquidity."
 #~ msgstr ""
 
-#: src/components/AccountDetails/index.tsx:285
+#: src/components/AccountDetails/index.tsx:288
 msgid "Change"
 msgstr ""
 
@@ -2850,7 +2850,7 @@ msgstr ""
 msgid "Claiming your rewards will reset your multiplier."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:324
+#: src/components/AccountDetails/index.tsx:327
 msgid "Clear all"
 msgstr ""
 
@@ -2862,11 +2862,11 @@ msgstr ""
 msgid "Click here to learn more about GoodDollar liquidity, including how to provide liquidity."
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:369
+#: src/pages/gd/Claim/OldClaim.tsx:385
 msgid "Click on the Claim button below and you will be switched over the first available network to collect your G$'s."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:317
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:311
 msgid "Close"
 msgstr ""
 
@@ -2874,19 +2874,19 @@ msgstr ""
 #~ msgid "Collect G$"
 #~ msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:382
+#: src/pages/gd/Claim/OldClaim.tsx:398
 msgid "Collect G$ on {network}"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:188
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:182
 msgid "Confirm swap"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:280
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:274
 msgid "CONFIRM SWAP"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:294
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:288
 msgid "Confirm this transaction in your wallet"
 msgstr ""
 
@@ -2898,6 +2898,10 @@ msgstr ""
 #: src/pages/gd/MicroBridge/index.tsx:36
 #: src/pages/gd/Portfolio/index.tsx:459
 msgid "Connect a wallet to see your portfolio"
+msgstr ""
+
+#: src/pages/gd/GoodBridge/index.tsx:20
+msgid "Connect a wallet to start bridging assets"
 msgstr ""
 
 #: src/components/BlockNativeOnboard/index.tsx:23
@@ -2927,7 +2931,7 @@ msgstr ""
 msgid "Copied"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:301
+#: src/components/AccountDetails/index.tsx:304
 msgid "Copy address"
 msgstr ""
 
@@ -2935,7 +2939,7 @@ msgstr ""
 #~ msgid "Current Rate"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:125
+#: src/components/SideBar.tsx:127
 msgid "Dapps"
 msgstr ""
 
@@ -2958,7 +2962,7 @@ msgstr ""
 msgid "Deposit overview"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:276
+#: src/components/AccountDetails/index.tsx:279
 msgid "Disconnect"
 msgstr ""
 
@@ -3010,11 +3014,11 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:151
+#: src/components/SideBar.tsx:153
 msgid "Good Airdrop"
 msgstr ""
 
-#: src/components/SideBar.tsx:111
+#: src/components/SideBar.tsx:113
 msgid "GoodCollective"
 msgstr ""
 
@@ -3034,11 +3038,11 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:392
+#: src/pages/gd/Claim/OldClaim.tsx:408
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
-#: src/components/SideBar.tsx:230
+#: src/components/SideBar.tsx:237
 msgid "GoodDollar Main Bridge"
 msgstr ""
 
@@ -3051,11 +3055,11 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:137
+#: src/components/SideBar.tsx:139
 msgid "GoodWallet"
 msgstr ""
 
-#: src/components/SideBar.tsx:144
+#: src/components/SideBar.tsx:146
 msgid "Help & Documentation"
 msgstr ""
 
@@ -3105,7 +3109,7 @@ msgid "Liquidity is the total value staked in the GoodDollar Trust staking contr
 msgstr ""
 
 #: src/components/Liquidity/AdvancedLiquidityDetails.tsx:37
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:253
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:247
 #: src/pages/gd/Swap/SwapDetails/index.tsx:61
 msgid "Liquidity Provider Fee"
 msgstr ""
@@ -3123,12 +3127,12 @@ msgstr ""
 msgid "max"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:241
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:235
 #: src/pages/gd/Swap/SwapDetails/index.tsx:49
 msgid "Maximum sold"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:234
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:228
 #: src/pages/gd/Swap/SwapDetails/index.tsx:42
 msgid "Minimum received"
 msgstr ""
@@ -3185,7 +3189,7 @@ msgstr ""
 #~ "Please be patient, loading information in the Swap widget may take some time. Thanks for waiting!"
 #~ msgstr ""
 
-#: src/components/Web3ReactManager/index.tsx:84
+#: src/components/Web3ReactManager/index.tsx:85
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device"
 msgstr ""
 
@@ -3193,7 +3197,7 @@ msgstr ""
 msgid "Open main menu"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:227
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:221
 msgid "Output is estimated. You will receive at least {metaMinimunOutput} or the transaction will revert"
 msgstr ""
 
@@ -3232,7 +3236,7 @@ msgstr ""
 msgid "Please wait"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:247
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:241
 #: src/pages/gd/Swap/SwapDetails/index.tsx:55
 msgid "Price Impact"
 msgstr ""
@@ -3252,7 +3256,7 @@ msgstr ""
 msgid "PROTOCOL"
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:322
+#: src/components/AccountDetails/index.tsx:325
 msgid "Recent Transactions"
 msgstr ""
 
@@ -3272,12 +3276,12 @@ msgstr ""
 msgid "REWARDS"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:262
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:256
 #: src/pages/gd/Swap/SwapDetails/index.tsx:70
 msgid "Route"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:265
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:259
 #: src/pages/gd/Swap/SwapDetails/index.tsx:72
 msgid "Routing through these tokens resulted in the best price for your trade."
 msgstr ""
@@ -3302,11 +3306,11 @@ msgid "Search name or paste the address"
 msgstr ""
 
 #: src/pages/gd/Stake/StakeDeposit/index.tsx:415
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:331
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:325
 msgid "Share with friends"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:366
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:370
 #: src/pages/gd/Swap/SwapSettings/index.tsx:80
 msgid "Slippage Tolerance"
 msgstr ""
@@ -3315,7 +3319,7 @@ msgstr ""
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:237
+#: src/components/SideBar.tsx:244
 msgid "Squid Router"
 msgstr ""
 
@@ -3356,32 +3360,32 @@ msgstr ""
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:413
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:417
 msgid "Swap"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:326
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:320
 msgid "Swap Completed"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:339
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:343
 msgid "Swap from"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:353
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:357
 msgid "Swap to"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:116
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:117
 msgid "Swap transaction failed, please try again."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:98
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:96
 msgid "Swapped {inputSig} {0}\n"
 "to a minimum of {minimumOutputSig} {1}"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:290
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:284
 msgid "Swapping"
 msgstr ""
 
@@ -3389,7 +3393,7 @@ msgstr ""
 msgid "Swapping G$ against GoodReserve has no third party fees if you swap from/to cDAI as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:256
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:250
 msgid "Swapping G$ against GoodReserve has no third party fees if you swap from/to USDm as it's our reserve token. Swapping G$s from/to other assets implies a 0.3% of fee going to 3rd party AMM liquidity providers."
 msgstr ""
 
@@ -3405,7 +3409,7 @@ msgstr ""
 msgid "The change from the market price to the actual price you are paying"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:249
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:243
 msgid "The change from the market price to the actual price you are paying."
 msgstr ""
 
@@ -3434,18 +3438,18 @@ msgstr ""
 #~ "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
 #~ msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:255
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:259
 msgid "The GoodReserve is an Automated Market Maker (AMM) that operates on Celo and XDC.\n"
 "This contract is able to mint and burn G$s according to the increase or decrease of it's demand.\n"
 "Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:243
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:237
 #: src/pages/gd/Swap/SwapDetails/index.tsx:51
 msgid "The maximum amount of tokens to sell."
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:236
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:230
 #: src/pages/gd/Swap/SwapDetails/index.tsx:44
 msgid "The minimum amount of tokens to receive."
 msgstr ""
@@ -3554,7 +3558,7 @@ msgstr ""
 msgid "Transaction deadline"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:149
+#: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:151
 msgid "Transaction failed, please try again"
 msgstr ""
 
@@ -3562,7 +3566,7 @@ msgstr ""
 msgid "Transaction settings"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:302
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:296
 msgid "Transaction Submitted"
 msgstr ""
 
@@ -3577,11 +3581,11 @@ msgstr ""
 msgid "TYPE"
 msgstr ""
 
-#: src/components/SideBar.tsx:206
+#: src/components/SideBar.tsx:208
 msgid "Uniswap (Celo)"
 msgstr ""
 
-#: src/components/SideBar.tsx:193
+#: src/components/SideBar.tsx:195
 msgid "Uniswap (widget)"
 msgstr ""
 
@@ -3593,9 +3597,9 @@ msgstr ""
 msgid "using the GoodDollar Reserve."
 msgstr ""
 
-#: src/components/AccountDetails/index.tsx:307
+#: src/components/AccountDetails/index.tsx:310
 #: src/components/Popups/TransactionPopup.tsx:48
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:311
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:305
 msgid "View on explorer"
 msgstr ""
 
@@ -3603,7 +3607,7 @@ msgstr ""
 #~ msgid "View transaction on explorer"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:199
+#: src/components/SideBar.tsx:201
 msgid "Voltage Finance (Fuse)"
 msgstr ""
 
@@ -3615,7 +3619,7 @@ msgstr ""
 #~ "Price impact might be too high when the swapping volume of one transaction is relatively high to the total liquidity in the pool."
 #~ msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:288
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:282
 msgid "Waiting for Confirmation"
 msgstr ""
 
@@ -3690,7 +3694,7 @@ msgstr ""
 msgid "Withdrew funds from {0}"
 msgstr ""
 
-#: src/components/SideBar.tsx:213
+#: src/components/SideBar.tsx:215
 msgid "Xswap (XDC)"
 msgstr ""
 
@@ -3702,7 +3706,7 @@ msgstr ""
 msgid "You are currently browsing"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:358
+#: src/pages/gd/Claim/OldClaim.tsx:374
 msgid "You can collect G$ on {supportedChainsDisplay} networks."
 msgstr ""
 
@@ -3722,7 +3726,7 @@ msgstr ""
 msgid "You have successfully claimed your rewards"
 msgstr ""
 
-#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:328
+#: src/pages/gd/Swap/SwapConfirmModal/index.tsx:322
 msgid "You just used your crypto for good to help fund crypto UBI for all with GoodDollar!"
 msgstr ""
 
@@ -3790,7 +3794,7 @@ msgstr ""
 #~ msgid "Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
 #~ msgstr ""
 
-#: src/components/AccountDetails/index.tsx:331
+#: src/components/AccountDetails/index.tsx:334
 msgid "Your transactions will appear here..."
 msgstr ""
 
