@@ -14,6 +14,7 @@ import { SubMenuItems } from './StyledMenu/SubMenu'
 import { socials } from 'constants/socials'
 import classNames from 'classnames'
 import { isMiniPay } from 'utils/minipay'
+import { getNetworkEnv } from 'utils/env'
 
 const SocialsLink: React.FC<{ network: string; logo: string; url: string; onPress: (e: any, url: string) => void }> = ({
     network,
@@ -50,6 +51,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const isBuyGd = pathname.startsWith('/buy')
 
     const bgContainer = useColorModeValue('goodWhite.100', '#151A30')
+    const networkEnv = getNetworkEnv()
 
     const { browser, os } = getDevice()
     const { isTabletView } = useScreenSize()
@@ -229,7 +231,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                     {
                         route: '/goodbridge',
                         text: 'GoodBridge',
-                        show: !isMinipay || lzBridgeEnabled,
+                        show: networkEnv !== 'production' ? true : !isMinipay || lzBridgeEnabled,
                     },
                     {
                         label: i18n._(t`GoodDollar Main Bridge`),
