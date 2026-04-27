@@ -2862,7 +2862,7 @@ msgstr "Alles löschen"
 msgid "Click here to learn more about GoodDollar liquidity, including how to provide liquidity."
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:381
+#: src/pages/gd/Claim/OldClaim.tsx:385
 msgid "Click on the Claim button below and you will be switched over the first available network to collect your G$'s."
 msgstr ""
 
@@ -2874,7 +2874,7 @@ msgstr "Nah dran"
 #~ msgid "Collect G$"
 #~ msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:394
+#: src/pages/gd/Claim/OldClaim.tsx:398
 msgid "Collect G$ on {network}"
 msgstr ""
 
@@ -2895,10 +2895,13 @@ msgstr "Bestätigen Sie diese Transaktion in Ihrer Brieftasche"
 msgid "Congratulations!"
 msgstr "Herzliche Glückwünsche!"
 
-#: src/pages/gd/GoodBridge/index.tsx:36
 #: src/pages/gd/MicroBridge/index.tsx:36
 #: src/pages/gd/Portfolio/index.tsx:459
 msgid "Connect a wallet to see your portfolio"
+msgstr ""
+
+#: src/pages/gd/GoodBridge/index.tsx:20
+msgid "Connect a wallet to start bridging assets"
 msgstr ""
 
 #: src/components/BlockNativeOnboard/index.tsx:23
@@ -3036,7 +3039,7 @@ msgstr ""
 msgid "GoodDollar"
 msgstr ""
 
-#: src/pages/gd/Claim/OldClaim.tsx:404
+#: src/pages/gd/Claim/OldClaim.tsx:408
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
@@ -3293,7 +3296,6 @@ msgstr "Das Weiterleiten durch diese Token ergab den besten Preis für Ihren Han
 msgid "Savings"
 msgstr ""
 
-#: src/pages/gd/GoodBridge/index.tsx:23
 #: src/pages/gd/MicroBridge/index.tsx:23
 msgid ""
 "Seamlessly convert between Fuse G$ tokens to Celo and vice versa, \n"
@@ -3708,7 +3710,7 @@ msgstr "Sie schaffen UBI Tausende von Menschen auf der ganzen Welt."
 msgid "You are currently browsing"
 msgstr "Du surfe derzeit"
 
-#: src/pages/gd/Claim/OldClaim.tsx:370
+#: src/pages/gd/Claim/OldClaim.tsx:374
 msgid "You can collect G$ on {supportedChainsDisplay} networks."
 msgstr ""
 
