@@ -21,7 +21,6 @@ interface FeatureContextValue {
 const supportedFeatureKeys = [
     'networkEnabled',
     'microBridgeEnabled',
-    'goodBridgeEnabled',
     'lzBridgeEnabled',
     'reserveEnabled',
     'claimEnabled',
@@ -35,7 +34,6 @@ const localFeatureConfig: FeatureConfigPayload = {
         [SupportedChains.CELO]: {
             networkEnabled: true,
             microBridgeEnabled: true,
-            goodBridgeEnabled: true,
             lzBridgeEnabled: false,
             reserveEnabled: true,
             claimEnabled: true,
@@ -44,7 +42,6 @@ const localFeatureConfig: FeatureConfigPayload = {
         [SupportedChains.MAINNET]: {
             networkEnabled: true,
             microBridgeEnabled: false,
-            goodBridgeEnabled: false,
             lzBridgeEnabled: false,
             reserveEnabled: false,
             claimEnabled: false,
@@ -53,7 +50,6 @@ const localFeatureConfig: FeatureConfigPayload = {
         [SupportedChains.FUSE]: {
             networkEnabled: true,
             microBridgeEnabled: true,
-            goodBridgeEnabled: true,
             lzBridgeEnabled: false,
             reserveEnabled: false,
             claimEnabled: true,
@@ -62,7 +58,6 @@ const localFeatureConfig: FeatureConfigPayload = {
         [SupportedChains.XDC]: {
             networkEnabled: false,
             microBridgeEnabled: false,
-            goodBridgeEnabled: false,
             lzBridgeEnabled: false,
             reserveEnabled: false,
             claimEnabled: false,
