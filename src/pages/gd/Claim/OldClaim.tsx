@@ -47,9 +47,15 @@ const OldClaim = memo(() => {
     const [refreshRate, setRefreshRate] = useState<QueryParams['refresh']>(12)
     const claimDetails = useClaim(refreshRate)
     const { claimAmount } = claimDetails
-    const { resetState, state, send } = useContractFunctionWithDefaultGasFees(claimDetails.contract, 'claim', {
-        transactionName: 'Claimed UBI',
-    })
+    const isMinipay = isMiniPay()
+    const { resetState, state, send } = useContractFunctionWithDefaultGasFees(
+        claimDetails.contract,
+        'claim',
+        {
+            transactionName: 'Claimed UBI',
+        },
+        isMinipay ? false : true
+    )
 
     const [claimed, setClaimed] = useState<boolean | undefined>(undefined)
     const { address, chainId } = useConnectionInfo()
@@ -77,8 +83,6 @@ const OldClaim = memo(() => {
             showModal()
         }
     }, [claimEnabled, showModal])
-
-    const isMinipay = isMiniPay()
 
     const supportedChainsDisplay = useMemo(() => {
         const chainNames = {
