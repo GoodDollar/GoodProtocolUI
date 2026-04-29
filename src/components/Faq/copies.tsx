@@ -290,6 +290,33 @@ const faqClaimCopy: FaqItemCopy[] = [
     },
 ]
 
+const faqSavingsCopy: FaqItemCopy[] = [
+    {
+        id: 'whatissavings',
+        question: `What is the Savings Widget?`,
+        answer: `The Savings Widget allows you to grow your G$ holdings through yield-generating opportunities. Connect your wallet and earn rewards on your GoodDollar holdings securely and transparently.`,
+        links: [],
+    },
+    {
+        id: 'howdoesitsavings',
+        question: `How does it work?`,
+        answer: `Once connected, your G$ can be staked or used in various yield-generating strategies. The widget displays your balance, potential earnings, and available actions. All transactions are transparent and happen on-chain.`,
+        links: [],
+    },
+    {
+        id: 'issavingssafe',
+        question: `Is it safe?`,
+        answer: `Your funds remain in your control. The smart contracts powering the savings strategies have been audited and follow security best practices. Always verify contract addresses before interacting.`,
+        links: [],
+    },
+    {
+        id: 'whataresavingsrewards',
+        question: `What are the rewards?`,
+        answer: `Rewards vary based on the yield-generating strategy and current market conditions. Check the widget for current rates and estimated earnings. Rewards are typically paid in G$ or other supported tokens.`,
+        links: [],
+    },
+]
+
 export const faqReserveCeloCopy: FaqItemCopy[] = [
     {
         id: 'whatsswapreserve',
@@ -401,4 +428,5 @@ export const faqs = {
     goodid: faqGoodIDCopy,
     claim: faqClaimCopy,
     reserve: faqReserveCeloCopy,
+    savings: faqSavingsCopy,
 }

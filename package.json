@@ -210,6 +210,7 @@
         "@gooddollar/goodprotocol": "2.2.1",
         "@gooddollar/web3sdk": "0.1.58",
         "@gooddollar/web3sdk-v2": "^0.4.37",
+        "@goodsdks/savings-widget": "^1.0.0",
         "@headlessui/react": "1.5.0",
         "@lingui/format-json": "^4.0.0",
         "@lingui/macro": "^4.0.0",
