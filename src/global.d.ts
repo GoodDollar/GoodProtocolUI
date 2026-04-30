@@ -7,9 +7,4 @@ declare global {
     interface Window {
         dataLayer: any
     }
-    namespace JSX {
-        interface IntrinsicElements {
-            'gooddollar-savings-widget': any
-        }
-    }
 }

@@ -18,10 +18,8 @@ export default function Savings() {
         const widget = widgetRef.current
         if (!widget) return
 
-        // Assign connect wallet handler
-        if (widget.connectWallet) {
-            widget.connectWallet = handleConnectWallet
-        }
+        // Assign connect wallet handler unconditionally
+        widget.connectWallet = handleConnectWallet
 
         // Update web3 provider when connected
         if (address && walletProvider) {
