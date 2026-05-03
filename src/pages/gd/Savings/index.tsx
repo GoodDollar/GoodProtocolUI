@@ -5,7 +5,12 @@ import type { Provider } from '@reown/appkit/react'
 import { PageLayout } from 'components/Layout/PageLayout'
 
 export default function Savings() {
-    const widgetRef = useRef<any>(null)
+    const widgetRef = useRef<
+        HTMLElement & {
+            connectWallet?: () => void
+            web3Provider?: unknown | null
+        }
+    >(null)
     const { open: openAppKit } = useAppKit()
     const { address } = useAppKitAccount()
     const { walletProvider } = useAppKitProvider<Provider>('eip155')
@@ -14,28 +19,19 @@ export default function Savings() {
         await openAppKit({ view: 'Connect' })
     }, [openAppKit])
 
+    // Assign connect wallet handler
     useEffect(() => {
         const widget = widgetRef.current
         if (!widget) return
-
-        // Assign connect wallet handler unconditionally
         widget.connectWallet = handleConnectWallet
+    }, [handleConnectWallet])
 
-        // Update web3 provider when connected
-        if (address && walletProvider) {
-            widget.web3Provider = walletProvider
-        }
-    }, [walletProvider, handleConnectWallet, address])
-
-    // Clear provider on disconnect
+    // Update web3 provider based on wallet connection state
     useEffect(() => {
         const widget = widgetRef.current
         if (!widget) return
-
-        if (!address) {
-            widget.web3Provider = null
-        }
-    }, [address])
+        widget.web3Provider = address && walletProvider ? walletProvider : null
+    }, [address, walletProvider])
 
     return (
         <PageLayout title="Savings" faqType="savings">
