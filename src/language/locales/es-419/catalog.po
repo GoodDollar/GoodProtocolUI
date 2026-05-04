@@ -125,7 +125,7 @@ msgstr ""
 msgid "Blocked address"
 msgstr ""
 
-#: src/components/SideBar.tsx:120
+#: src/components/SideBar.tsx:124
 msgid "Buy G$"
 msgstr ""
 
@@ -293,7 +293,7 @@ msgstr ""
 msgid "Copy address"
 msgstr ""
 
-#: src/components/SideBar.tsx:127
+#: src/components/SideBar.tsx:131
 msgid "Dapps"
 msgstr ""
 
@@ -365,11 +365,11 @@ msgstr ""
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:153
+#: src/components/SideBar.tsx:157
 msgid "Good Airdrop"
 msgstr ""
 
-#: src/components/SideBar.tsx:113
+#: src/components/SideBar.tsx:117
 msgid "GoodCollective"
 msgstr ""
 
@@ -393,7 +393,7 @@ msgstr ""
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
-#: src/components/SideBar.tsx:237
+#: src/components/SideBar.tsx:244
 msgid "GoodDollar Main Bridge"
 msgstr ""
 
@@ -406,11 +406,11 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:139
+#: src/components/SideBar.tsx:143
 msgid "GoodWallet"
 msgstr ""
 
-#: src/components/SideBar.tsx:146
+#: src/components/SideBar.tsx:150
 msgid "Help & Documentation"
 msgstr ""
 
@@ -653,7 +653,7 @@ msgstr ""
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:244
+#: src/components/SideBar.tsx:251
 msgid "Squid Router"
 msgstr ""
 
@@ -905,11 +905,11 @@ msgstr ""
 msgid "TYPE"
 msgstr ""
 
-#: src/components/SideBar.tsx:208
+#: src/components/SideBar.tsx:212
 msgid "Uniswap (Celo)"
 msgstr ""
 
-#: src/components/SideBar.tsx:195
+#: src/components/SideBar.tsx:199
 msgid "Uniswap (widget)"
 msgstr ""
 
@@ -927,7 +927,7 @@ msgstr ""
 msgid "View on explorer"
 msgstr ""
 
-#: src/components/SideBar.tsx:201
+#: src/components/SideBar.tsx:205
 msgid "Voltage Finance (Fuse)"
 msgstr ""
 
@@ -990,7 +990,7 @@ msgstr ""
 msgid "Withdrew funds from {0}"
 msgstr ""
 
-#: src/components/SideBar.tsx:215
+#: src/components/SideBar.tsx:219
 msgid "Xswap (XDC)"
 msgstr ""
 
