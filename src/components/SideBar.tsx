@@ -70,7 +70,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const [, payload] = useFeatureFlagWithPayload('advanced-minipay-enabled')
     const { isFeatureActive } = useGoodDappFeatures()
     const lzBridgeEnabled = isFeatureActive('lzBridgeEnabled')
-    const showGoodBridgeOnQA = window.location.hostname === 'qa.gooddollar.org'
+    const showGoodBridgeOnQA = window.location.hostname === 'qa.gooddapp.org'
 
     const containerStyles = useBreakpointValue({
         base: {
