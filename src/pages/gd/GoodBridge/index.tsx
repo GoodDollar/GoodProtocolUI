@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { SwitchChainModal } from '@gooddollar/good-design'
-import { MPBBridgeController } from '@gooddollar/good-design/dist/apps/bridge/mpbridge'
+import { MPBBridgeController } from '@gooddollar/good-design/'
 import { useAppKitAccount } from '@reown/appkit/react'
 import { PageLayout } from 'components/Layout/PageLayout'
 import Placeholder from 'components/gd/Placeholder'

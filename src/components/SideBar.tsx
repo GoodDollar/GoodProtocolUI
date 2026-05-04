@@ -15,6 +15,7 @@ import { socials } from 'constants/socials'
 import classNames from 'classnames'
 import { isMiniPay } from 'utils/minipay'
 import { getNetworkEnv } from 'utils/env'
+import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 
 const SocialsLink: React.FC<{ network: string; logo: string; url: string; onPress: (e: any, url: string) => void }> = ({
     network,
@@ -67,6 +68,9 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     const secondRowItems = socialItems.slice(4)
 
     const [, payload] = useFeatureFlagWithPayload('advanced-minipay-enabled')
+    const { isFeatureActive } = useGoodDappFeatures()
+    const lzBridgeEnabled = isFeatureActive('lzBridgeEnabled')
+    const showGoodBridgeOnQA = window.location.hostname === 'qa.gooddollar.org'
 
     const containerStyles = useBreakpointValue({
         base: {
@@ -102,7 +106,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
     })
 
     const isMinipay = isMiniPay()
-    const { bridgeEnabled = false, swapEnabled = false, lzBridgeEnabled = false } = payload || {}
+    const { bridgeEnabled = false, swapEnabled = false } = payload || {}
 
     const externalLinks = useMemo(
         () => [
@@ -231,7 +235,10 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                     {
                         route: '/goodbridge',
                         text: 'GoodBridge',
-                        show: networkEnv !== 'production' ? true : !isMinipay || lzBridgeEnabled,
+                        show:
+                            !networkEnv.includes('production') || showGoodBridgeOnQA
+                                ? true
+                                : !isMinipay && lzBridgeEnabled,
                     },
                     {
                         label: i18n._(t`GoodDollar Main Bridge`),
