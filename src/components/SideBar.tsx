@@ -266,7 +266,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                     {
                         route: '/savings',
                         text: 'Savings',
-                        show: !networkEnv.includes('production') ?? !isMinipay,
+                        show: !networkEnv.includes('production'),
                     },
                     {
                         route: '/portfolio',
