@@ -15,6 +15,7 @@ const Portfolio = lazy(() => import('./pages/gd/Portfolio'))
 const MicroBridge = lazy(() => import('./pages/gd/MicroBridge'))
 const GoodBridge = lazy(() => import('./pages/gd/GoodBridge'))
 const Claim = lazy(() => import('./pages/gd/Claim/'))
+const Savings = lazy(() => import('./pages/gd/Savings'))
 const GoodId = lazy(() => import('./pages/gd/GoodId'))
 const BuyGd = lazy(() => import('./pages/gd/BuyGD'))
 const NewsFeedPage = lazy(() => import('./pages/gd/News'))
@@ -55,6 +56,7 @@ function Routes(): JSX.Element {
                 <Route exact strict path="/goodid" component={GoodId} />
                 <Route exact strict path="/buy" component={BuyGd} />
                 <Route exact strict path="/claim" component={Claim} />
+                <Route exact strict path="/savings" component={Savings} />
                 <Route exact strict path="/microbridge" component={MicroBridge} />
                 <Route exact strict path="/goodbridge" component={GoodBridge} />
                 <Route exact strict path="/news" component={NewsFeedPage} />

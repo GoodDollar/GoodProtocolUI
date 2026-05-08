@@ -17,10 +17,8 @@ import { updateUserDarkMode } from '../state/user/actions'
 import SideBar from '../components/SideBar'
 import TransactionUpdater from '../state/transactions/updater'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
-import WalletChat from '../components/WalletChat'
 import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 import MainPageContainer from 'components/Layout/MainPageContainer'
-import { useFeatureFlag } from 'posthog-react-native'
 import { isMiniPay } from 'utils/minipay'
 
 export const Beta = styled.div`
@@ -101,7 +99,7 @@ function App(): JSX.Element {
     const isMinipay = isMiniPay()
     const { open, url, onClose } = useRedirectNotice()
     const { isDesktopView } = useScreenSize()
-    const walletChatEnabled = useFeatureFlag('wallet-chat')
+    // const walletChatEnabled = useFeatureFlag('wallet-chat')
 
     void useFaucet()
 
@@ -190,7 +188,7 @@ function App(): JSX.Element {
                         </Web3ReactManager>
                     </MainPageContainer>
                 </Wrapper>
-                {!isSimpleApp && !sidebarOpen && walletChatEnabled && <WalletChat />}
+                {/* {!isSimpleApp && !sidebarOpen && walletChatEnabled && <WalletChat />} */}
             </AppWrap>
         </Suspense>
     )
