@@ -259,7 +259,7 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                     {
                         route: '/savings',
                         text: 'Savings',
-                        show: !isMinipay,
+                        show: !networkEnv.includes('production') ?? !isMinipay,
                     },
                     {
                         route: '/portfolio',
