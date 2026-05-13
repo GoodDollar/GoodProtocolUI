@@ -32,8 +32,8 @@ import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { useReserveToken } from 'hooks/useReserveToken'
 import { decodeTransactionErrorReason } from 'utils/transactionErrors'
 
-const isNonceCallException = (errorMessage?: string) =>
-    Boolean(errorMessage && /call_exception/i.test(errorMessage) && /method="?nonce\(\)"?/i.test(errorMessage))
+const NONCE_METHOD_REGEX = /method\s*=\s*"nonce\(\)"/i
+const CALL_EXCEPTION_REGEX = /call_exception/i
 
 const MentoSwap = memo(() => {
     const CUSD = useReserveToken()
@@ -115,13 +115,24 @@ const MentoSwap = memo(() => {
     const sendData = useSendAnalyticsData()
 
     useEffect(() => {
-        if (swap?.state?.status === 'Exception' && !isNonceCallException(swap?.state?.errorMessage)) {
+        const isSwapPreflightNonceException = Boolean(
+            swap?.state?.errorMessage &&
+                CALL_EXCEPTION_REGEX.test(swap.state.errorMessage) &&
+                NONCE_METHOD_REGEX.test(swap.state.errorMessage)
+        )
+        const isApprovePreflightNonceException = Boolean(
+            approve?.state?.errorMessage &&
+                CALL_EXCEPTION_REGEX.test(approve.state.errorMessage) &&
+                NONCE_METHOD_REGEX.test(approve.state.errorMessage)
+        )
+
+        if (swap?.state?.status === 'Exception' && !isSwapPreflightNonceException) {
             setError({
                 message: i18n._(t`Swap transaction failed, please try again.`),
                 reason: decodeTransactionErrorReason(swap.state.errorMessage),
             })
         }
-        if (approve?.state?.status === 'Exception' && !isNonceCallException(approve?.state?.errorMessage)) {
+        if (approve?.state?.status === 'Exception' && !isApprovePreflightNonceException) {
             setError({
                 message: i18n._(t`Approve transaction failed, please try again.`),
                 reason: decodeTransactionErrorReason(approve.state.errorMessage),
