@@ -10,7 +10,7 @@ import { t } from '@lingui/macro'
 const GoodBridge = memo(() => {
     const { address } = useAppKitAccount()
     return (
-        <PageLayout faqType="bridge">
+        <PageLayout faqType="mpbbridge">
             <div className="rounded max-w-3xl min-w-96 w-full mx-auto">
                 <SwitchChainModal>
                     {address ? (

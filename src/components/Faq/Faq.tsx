@@ -9,7 +9,7 @@ import { AdditionalChainId } from 'constants/index'
 
 import { faqs, faqReserveCeloCopy, faqReserveXdcCopy } from './copies'
 
-export type FaqType = 'swap' | 'buy' | 'bridge' | 'goodid' | 'claim' | 'reserve' | 'savings'
+export type FaqType = 'swap' | 'buy' | 'bridge' | 'mpbbridge' | 'goodid' | 'claim' | 'reserve' | 'savings'
 
 const FaqItem = ({ id, question, answer, links, AltLink }) => {
     const { isDesktopView } = useScreenSize()

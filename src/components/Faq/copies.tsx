@@ -122,6 +122,71 @@ const faqBridgeCopy: FaqItemCopy[] = [
     },
 ]
 
+const faqMpbBridgeCopy: FaqItemCopy[] = [
+    {
+        id: 'whatismainbridge',
+        question: `What is the Main Bridge?`,
+        answer: `A bridge is a tool built to transfer assets from one network to another. It’s also a verb, used to describe that action: “I bridged my G$ from Fuse to Celo.”\n\nGoodDollar operates across Fuse, Celo, Ethereum and XDC networks, and G$ tokens can be bridged across those networks.\n\nThanks to the Main Bridge you can easily move G$ between supported GoodDollar networks directly from GoodDapp.\n\nDepending on the selected source and destination networks, different bridge providers and routes may be available.`,
+    },
+    {
+        id: 'supportednetworksroutes',
+        question: `Which networks and routes are supported?`,
+        answer: `GoodDollar currently supports bridging across:\n\n- Fuse\n- Celo\n- Ethereum\n- XDC\n\nAvailable bridge providers and routes depend on the selected source and destination networks.\n\nCurrently:\n\n- Axelar supports Ethereum ↔ Celo\n- LayerZero supports all chains and routes.\n\nThe available routes will update automatically depending on the selected route.`,
+    },
+    {
+        id: 'whocanusemainbridge',
+        question: `Who can use it?`,
+        answer: `Anyone can use the Main Bridge, but there are a few requirements to ensure a smooth transfer of your G$ tokens:\n\n1. **Wallet Compatibility**\n\nVerify that your wallet is compatible with both the source and destination networks. Sending G$ to incompatible wallets may result in loss of funds.\n\n2. **Gas Fees**\n\nUsing the Main Bridge requires native tokens to cover gas fees on the selected network. Make sure you have sufficient balances before bridging.\n\nExamples:\n\n- CELO on Celo\n- ETH on Ethereum\n- FUSE on Fuse\n- XDC on XDC\n\nSee below “What are the fees for using the Main Bridge?” for more details.`,
+    },
+    {
+        id: 'howdoesmainbridgework',
+        question: `How does it work?`,
+        answer: `The Main Bridge uses bridge smart contracts and cross-chain messaging infrastructure to transfer G$ between supported networks.\n\nDepending on the selected route, different bridge providers may be used, including Axelar and LayerZero.\n\nWhen you bridge G$:\n\n- your G$ is sent through bridge contracts on the source network\n- the selected bridge provider verifies and relays the transaction across networks\n- G$ is then released or minted on the destination network\n\nDifferent routes may use different bridge mechanisms depending on network support and provider infrastructure.`,
+        links: [
+            {
+                href: 'https://docs.gooddollar.org/user-guides/bridge-gooddollars',
+                text: 'More technical information:',
+                linkText: 'GoodDollar Documentation',
+            },
+        ],
+    },
+    {
+        id: 'whichprovider',
+        question: `Which bridge provider should I use?`,
+        answer: `In most cases, simply:\n\n- select the source network\n- select the destination network\n- enter the amount you want to transfer\n\nCurrently:\n\n- Axelar supports Ethereum ↔ Celo\n- LayerZero supports all chains that G$ is active on. (Celo/Fuse/XDC/Ethereum)\n\nFor Ethereum ↔ Celo transfers, Axelar may provide lower fees depending on network conditions.`,
+    },
+    {
+        id: 'whatfeesmainbridge',
+        question: `What are the fees for using the Main Bridge?`,
+        answer: `The fees for using the Main Bridge depend on the selected route and bridge provider.\n\nBridge transactions may include:\n\n- Protocol fees\n- native network gas fees\n- bridge fees charged in native tokens\n\nAll bridge transactions require native gas tokens on the source network:\n\n- CELO on Celo\n- ETH on Ethereum\n- FUSE on Fuse\n- XDC on XDC\n\nFees vary depending on:\n\n- source and destination networks\n- selected bridge provider\n- network congestion\n- current gas costs\n\nEstimated fees are shown below the bridge button.\n\nPlease note that Ethereum-related transactions may incur higher gas fees depending on network activity.`,
+    },
+    {
+        id: 'whatlimitsmainbridge',
+        question: `What are the limits?`,
+        answer: `You may bridge up to 300M G$ per transaction depending on route and provider availability.`,
+    },
+    {
+        id: 'howlongbridging',
+        question: `How long does bridging take?`,
+        answer: `Transfer times vary depending on:\n\n- source network\n- destination network\n- selected provider\n- network congestion\n\nEthereum-related transfers may take longer due to confirmation times.\n\nThe Main Bridge interface provides transaction status updates during the bridging process.`,
+    },
+    {
+        id: 'trackmainbridge',
+        question: `Can I track the status of my bridge transaction?`,
+        answer: `The Main Bridge interface provides information about your bridge transaction in “Recent Transactions.”\n\nSome providers may also provide additional transaction tracking through their own explorers.`,
+    },
+    {
+        id: 'whybridgefailed',
+        question: `Why did my bridge transaction fail?`,
+        answer: `Common reasons include:\n\n- insufficient native gas tokens\n- unsupported route\n- bridge limits exceeded\n- wallet/network mismatch\n- temporary provider or relay delays\n\nIf a transaction appears delayed, funds may still be processing through the bridge infrastructure.`,
+    },
+    {
+        id: 'arefundssafe',
+        question: `Are my funds safe during bridging?`,
+        answer: `Bridge transactions go through multiple verification and relay steps before completion.\n\nBefore bridging:\n\n- verify the selected source and destination networks\n- ensure your wallet supports the destination network\n- make sure you have enough native gas tokens\n- review the estimated fees before confirming the transaction\n\nAlways double-check the selected route and destination network before submitting a transaction.`,
+    },
+]
+
 const faqBuyCopy: FaqItemCopy[] = [
     {
         id: 'whatthis',
@@ -425,6 +490,7 @@ export const faqs = {
     swap: faqSwapCopy,
     buy: faqBuyCopy,
     bridge: faqBridgeCopy,
+    mpbbridge: faqMpbBridgeCopy,
     goodid: faqGoodIDCopy,
     claim: faqClaimCopy,
     reserve: faqReserveCeloCopy,
