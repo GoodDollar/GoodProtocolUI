@@ -4767,9 +4767,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.4.42":
-  version: 0.4.42
-  resolution: "@gooddollar/good-design@npm:0.4.42"
+"@gooddollar/good-design@npm:^0.4.45":
+  version: 0.4.45
+  resolution: "@gooddollar/good-design@npm:0.4.45"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -4820,7 +4820,7 @@ __metadata:
     react: ^18.*
     react-native-paper: "*"
     uuid: "*"
-  checksum: e472b99398e5d469fcef871b3dd5b1c40e788e6b6145a764d256f9ef14b4795b2b5f104b5f0c0050ab7c6260a474e2cbef1eb2f25cdb0cb0893255f991b7fe04
+  checksum: 1841ee35a4de71f54b81b1bf6ef01277e681e67c06919fa448277ff821143768bb606e895898a409bc75e522618416fe5947d3beb38db00b0a41ff97e6c04589
   languageName: node
   linkType: hard
 
@@ -4869,10 +4869,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.4.42
+    "@gooddollar/good-design": ^0.4.45
     "@gooddollar/goodprotocol": 2.2.1
     "@gooddollar/web3sdk": 0.1.58
-    "@gooddollar/web3sdk-v2": ^0.4.37
+    "@gooddollar/web3sdk-v2": ^0.4.40
     "@goodsdks/savings-widget": ^1.0.0
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
@@ -5055,9 +5055,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.4.37":
-  version: 0.4.37
-  resolution: "@gooddollar/web3sdk-v2@npm:0.4.37"
+"@gooddollar/web3sdk-v2@npm:^0.4.40":
+  version: 0.4.40
+  resolution: "@gooddollar/web3sdk-v2@npm:0.4.40"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -5105,7 +5105,7 @@ __metadata:
     react-native-web: "*"
     viem: 2.*
     wagmi: 2.*
-  checksum: 83f6e5e3e967450d8ed166734a570b036a0273a9a6a394852d2bfdb231b4198205003f1eb71bfe351f840323b99f5dc693d1d0e220a625a4ae3418abffe9173c
+  checksum: a38cecadf65b4a3f200edb9689ae35b4210a0c9cadae99b026d1874f111bfd4cbf0a4fd7373e4be31dfded22818418d56900d936d5f11062e955a17549f6672b
   languageName: node
   linkType: hard
 
