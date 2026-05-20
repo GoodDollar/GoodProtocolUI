@@ -5,17 +5,9 @@ export const FALLBACK_RPCS_BY_CHAIN: Record<string, string[]> = {
     '50': ['https://rpc.xinfin.network'],
 }
 
-export function parseExtraRpcsFromChainlist(chainlistContent: string): Record<string, any> {
-    const declarationIndex = chainlistContent.indexOf('export const extraRpcs')
-    if (declarationIndex < 0) {
-        throw new Error('Could not find extraRpcs export in chainlist')
-    }
+const TARGET_CHAIN_IDS = ['1', '122', '42220', '50'] as const
 
-    const objectStart = chainlistContent.indexOf('{', declarationIndex)
-    if (objectStart < 0) {
-        throw new Error('Could not parse extraRpcs from chainlist')
-    }
-
+function findBalancedSegment(source: string, startIndex: number, openChar: string, closeChar: string): string | null {
     let depth = 0
     let inSingleQuote = false
     let inDoubleQuote = false
@@ -23,11 +15,10 @@ export function parseExtraRpcsFromChainlist(chainlistContent: string): Record<st
     let inLineComment = false
     let inBlockComment = false
     let isEscaped = false
-    let objectEnd = -1
 
-    for (let i = objectStart; i < chainlistContent.length; i++) {
-        const char = chainlistContent[i]
-        const next = chainlistContent[i + 1]
+    for (let i = startIndex; i < source.length; i++) {
+        const char = source[i]
+        const next = source[i + 1]
 
         if (inLineComment) {
             if (char === '\n') inLineComment = false
@@ -90,27 +81,99 @@ export function parseExtraRpcsFromChainlist(chainlistContent: string): Record<st
             continue
         }
 
-        if (char === '{') {
+        if (char === openChar) {
             depth++
-        } else if (char === '}') {
+        } else if (char === closeChar) {
             depth--
             if (depth === 0) {
-                objectEnd = i
-                break
+                return source.slice(startIndex, i + 1)
             }
         }
     }
 
-    if (objectEnd < 0) {
+    return null
+}
+
+function extractUrlsFromArrayLiteral(arrayLiteral: string): string[] {
+    const urls = new Set<string>()
+    const urlRegex = /(['"`])(https?:\/\/[\s\S]*?)\1/g
+
+    for (const match of arrayLiteral.matchAll(urlRegex)) {
+        const candidate = match[2].trim()
+        try {
+            const parsed = new URL(candidate)
+            if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+                urls.add(candidate)
+            }
+        } catch {
+            // ignore malformed URL literals
+        }
+    }
+
+    return [...urls]
+}
+
+function extractExtraRpcsObjectLiteral(chainlistContent: string): string {
+    const declarationIndex = chainlistContent.indexOf('export const extraRpcs')
+    if (declarationIndex < 0) {
+        throw new Error('Could not find extraRpcs export in chainlist')
+    }
+
+    const objectStart = chainlistContent.indexOf('{', declarationIndex)
+    if (objectStart < 0) {
+        throw new Error('Could not parse extraRpcs from chainlist')
+    }
+
+    const objectLiteral = findBalancedSegment(chainlistContent, objectStart, '{', '}')
+    if (!objectLiteral) {
         throw new Error('Could not parse extraRpcs object boundaries from chainlist')
     }
 
-    const extraRpcsObjectLiteral = chainlistContent.slice(objectStart, objectEnd + 1)
-    const privacyStatement = {}
+    return objectLiteral
+}
 
-    return eval(
-        `(function() { const privacyStatement = ${JSON.stringify(
-            privacyStatement
-        )}; return ${extraRpcsObjectLiteral}; })()`
-    ) as Record<string, any>
+function extractChainRpcArrayLiteral(extraRpcsObjectLiteral: string, chainId: string): string | null {
+    const escapedChainId = chainId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const chainPattern = new RegExp(`(?:^|[,{\\n])\\s*["']?${escapedChainId}["']?\\s*:`, 'm')
+    const chainMatch = chainPattern.exec(extraRpcsObjectLiteral)
+    if (!chainMatch) return null
+
+    let valueStart = chainMatch.index + chainMatch[0].length
+    while (/\s/.test(extraRpcsObjectLiteral[valueStart] ?? '')) {
+        valueStart++
+    }
+
+    if (extraRpcsObjectLiteral[valueStart] === '[') {
+        return findBalancedSegment(extraRpcsObjectLiteral, valueStart, '[', ']')
+    }
+
+    if (extraRpcsObjectLiteral[valueStart] === '{') {
+        const chainObjectLiteral = findBalancedSegment(extraRpcsObjectLiteral, valueStart, '{', '}')
+        if (!chainObjectLiteral) return null
+
+        const rpcsMatch = /\brpcs\s*:\s*/.exec(chainObjectLiteral)
+        if (!rpcsMatch) return null
+
+        let rpcsStart = rpcsMatch.index + rpcsMatch[0].length
+        while (/\s/.test(chainObjectLiteral[rpcsStart] ?? '')) {
+            rpcsStart++
+        }
+
+        if (chainObjectLiteral[rpcsStart] !== '[') return null
+        return findBalancedSegment(chainObjectLiteral, rpcsStart, '[', ']')
+    }
+
+    return null
+}
+
+export function parseExtraRpcsFromChainlist(chainlistContent: string): Record<string, string[]> {
+    const extraRpcsObjectLiteral = extractExtraRpcsObjectLiteral(chainlistContent)
+
+    return TARGET_CHAIN_IDS.reduce<Record<string, string[]>>((acc, chainId) => {
+        const rpcArrayLiteral = extractChainRpcArrayLiteral(extraRpcsObjectLiteral, chainId)
+        if (!rpcArrayLiteral) return acc
+
+        acc[chainId] = extractUrlsFromArrayLiteral(rpcArrayLiteral)
+        return acc
+    }, {})
 }

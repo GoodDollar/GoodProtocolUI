@@ -96,25 +96,12 @@ async function fetchAndTestRpcs(): Promise<Record<string, string[]>> {
             const chainIdNum = Number(chainId)
             console.log(`[fetchAndTestRpcs] Processing chain ${chainIdNum}...`)
 
-            const chainRpcsData = extraRpcs[chainIdNum] || { rpcs: [] }
-
-            // Handle both old format (array) and new format (object with rpcs property)
-            const chainRpcs = Array.isArray(chainRpcsData) ? chainRpcsData : chainRpcsData.rpcs || []
+            const chainRpcs = extraRpcs[chainIdNum] || []
             console.log(`[fetchAndTestRpcs] Found ${chainRpcs.length} RPC entries for ${chainId}`)
 
             if (Array.isArray(chainRpcs)) {
                 // Extract URLs and filter out WebSocket protocols
-                const rpcUrlsToTest = chainRpcs
-                    .map((rpcEntry) => {
-                        if (typeof rpcEntry === 'string') {
-                            return rpcEntry
-                        }
-                        if (typeof rpcEntry === 'object' && rpcEntry !== null && 'url' in rpcEntry) {
-                            return rpcEntry.url
-                        }
-                        return null
-                    })
-                    .filter((url): url is string => url !== null && !url.startsWith('wss://'))
+                const rpcUrlsToTest = chainRpcs.filter((url): url is string => !url.startsWith('wss://'))
 
                 console.log(
                     `[fetchAndTestRpcs] Testing ${rpcUrlsToTest.length} HTTP(S) RPCs for ${chainId}:`,

@@ -12,9 +12,10 @@ describe('rpcParsing', () => {
         const extraRpcs = parseExtraRpcsFromChainlist(content)
 
         expect(extraRpcs).toBeDefined()
-        expect(extraRpcs[1]).toBeDefined()
-        expect(extraRpcs[122]).toBeDefined()
-        expect(extraRpcs[42220]).toBeDefined()
-        expect(extraRpcs[50]).toBeDefined()
-    }, 30000)
+        ;[1, 122, 42220, 50].forEach((chainId) => {
+            expect(extraRpcs[chainId]).toBeDefined()
+            expect(extraRpcs[chainId].length).toBeGreaterThan(0)
+            expect(extraRpcs[chainId].every((url) => /^https?:\/\//.test(url))).toBe(true)
+        })
+    }, 10000)
 })
