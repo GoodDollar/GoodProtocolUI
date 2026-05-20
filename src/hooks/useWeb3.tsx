@@ -10,6 +10,7 @@ import { useAppKitNetwork, useAppKitProvider } from '@reown/appkit/react'
 import type { Provider } from '@reown/appkit/react'
 import { useAccount } from 'wagmi'
 
+import { FALLBACK_RPCS_BY_CHAIN, parseExtraRpcsFromChainlist } from './rpcParsing'
 import { getEnv } from 'utils/env'
 import { isMiniPay, getMiniPayProvider } from 'utils/minipay'
 
@@ -79,17 +80,7 @@ async function fetchAndTestRpcs(): Promise<Record<string, string[]>> {
 
         const text = await response.text()
         console.log('[fetchAndTestRpcs] Chainlist fetched, parsing extraRpcs...')
-        // Parse "export const extraRpcs" from the JS file
-        const match = text.match(/export\s+const\s+extraRpcs\s*=\s*(\{[\s\S]*?\n\})/m)
-        if (!match) throw new Error('Could not parse extraRpcs from chainlist')
-
-        // Create a mock privacyStatement object for eval context
-        const privacyStatement = {}
-
-        // Safe evaluation of the RPC object with privacyStatement in scope
-        const extraRpcs = eval(
-            `(function() { const privacyStatement = ${JSON.stringify(privacyStatement)}; return ${match[1]}; })()`
-        )
+        const extraRpcs = parseExtraRpcsFromChainlist(text)
         console.log('[fetchAndTestRpcs] Successfully parsed extraRpcs', extraRpcs)
 
         // Map chainlist chain IDs to our RPC keys
@@ -149,9 +140,16 @@ async function fetchAndTestRpcs(): Promise<Record<string, string[]>> {
                 console.log(`[fetchAndTestRpcs] ${chainId} has ${validRpcs.length} valid RPCs`)
             }
         }
+
+        for (const [chainId, fallbackRpcs] of Object.entries(FALLBACK_RPCS_BY_CHAIN)) {
+            if (!rpcsByChain[chainId]?.length) {
+                rpcsByChain[chainId] = fallbackRpcs
+            }
+        }
         console.log('[fetchAndTestRpcs] RPC testing complete:', rpcsByChain)
     } catch (error) {
         console.warn('[fetchAndTestRpcs] Error during RPC fetch/test:', error)
+        return FALLBACK_RPCS_BY_CHAIN
     }
 
     return rpcsByChain
@@ -236,10 +234,10 @@ export function useNetwork(): NetworkSettings {
             ])
         )
 
-    const celoRpcList = sample(process.env.REACT_APP_CELO_RPC?.split(',')) ?? 'https://forno.celo.org'
-    const fuseRpcList = sample(process.env.REACT_APP_FUSE_RPC?.split(',')) ?? 'https://rpc.fuse.io'
-    const xdcRpcList = sample(process.env.REACT_APP_XDC_RPC?.split(',')) ?? 'https://rpc.xinfin.network'
-    const mainnetList = sample(['https://eth.llamarpc.com', 'https://1rpc.io/eth']) ?? 'https://eth.llamarpc.com'
+    const celoRpcList = sample(process.env.REACT_APP_CELO_RPC?.split(',')) ?? FALLBACK_RPCS_BY_CHAIN['42220'][0]
+    const fuseRpcList = sample(process.env.REACT_APP_FUSE_RPC?.split(',')) ?? FALLBACK_RPCS_BY_CHAIN['122'][0]
+    const xdcRpcList = sample(process.env.REACT_APP_XDC_RPC?.split(',')) ?? FALLBACK_RPCS_BY_CHAIN['50'][0]
+    const mainnetList = sample(FALLBACK_RPCS_BY_CHAIN['1']) ?? FALLBACK_RPCS_BY_CHAIN['1'][0]
 
     const [currentNetwork, rpcs] = useMemo(() => {
         const selectedRpcs = {
