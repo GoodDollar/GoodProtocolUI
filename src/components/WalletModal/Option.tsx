@@ -72,6 +72,7 @@ export default function Option({
     icon,
     active = false,
     id,
+    disabled = false,
 }: {
     clickable?: boolean
     size?: number | null
@@ -81,15 +82,17 @@ export default function Option({
     icon: string
     active?: boolean
     id: string
+    disabled?: boolean
     /** @deprecated */
     color?: string
 }) {
     const content = (
         <OptionCardClickable
             id={id}
-            onClick={clickable ? onClick : undefined}
-            clickable={clickable && !active}
+            onClick={clickable && !disabled ? onClick : undefined}
+            clickable={clickable && !active && !disabled}
             active={active}
+            disabled={disabled}
         >
             <div className="flex items-center">
                 <IconWrapper size={size}>
