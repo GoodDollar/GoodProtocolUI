@@ -27,7 +27,7 @@ jobs:
           sed -i '/"@uniswap\/widgets\/@uniswap\/sdk-core"/d' package.json
           sed -i 's/"prebuild": "yarn install --immutable && lingui compile"/"prebuild": "lingui compile"/' package.json
           sed -i 's/"packageManager": "yarn@[^"]*"/"packageManager": "pnpm@9.15.4"/' package.json
-          pnpm install --no-frozen-lockfile
+          pnpm install --no-frozen-lockfile --prod=false
 
       - name: Run Jest tests
-        run: pnpm exec jest --testPathPattern="rpcParsing" --testTimeout=30000
+        run: pnpm -w exec jest --testPathPattern="rpcParsing" --testTimeout=30000
