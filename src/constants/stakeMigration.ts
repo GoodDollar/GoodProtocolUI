@@ -1,8 +1,35 @@
 import deployment from '@gooddollar/goodprotocol/releases/deployment.json'
-
-export const FUSE_GOVERNANCE_STAKING_V2 = deployment.production.GovernanceStakingV2 as string
+import { getEnv } from 'utils/env'
 
 export const FUSE_CHAIN_ID = 122
+
+type FuseDeploymentRow = Record<string, string | undefined>
+
+function fuseGovernanceDeploymentRow(): FuseDeploymentRow {
+    const env = getEnv()
+    if (env === 'production' || env === 'staging') {
+        return deployment.production as FuseDeploymentRow
+    }
+    if (deployment.fuse) {
+        return deployment.fuse as FuseDeploymentRow
+    }
+    return deployment.production as FuseDeploymentRow
+}
+
+export function getFuseOldGovernanceStakingAddress(): string {
+    const fromEnv = process.env.REACT_APP_FUSE_GOVERNANCE_STAKING_V2?.trim()
+    if (fromEnv) {
+        return fromEnv
+    }
+
+    const row = fuseGovernanceDeploymentRow()
+    const address = row.GovernanceStakingV2 ?? row.GovernanceStaking
+    if (!address) {
+        throw new Error('No Fuse governance staking address in deployment.json for current env')
+    }
+
+    return address
+}
 
 export function getStakeMigrationOperator(): string | undefined {
     const value = process.env.REACT_APP_STAKE_MIGRATION_OPERATOR?.trim()

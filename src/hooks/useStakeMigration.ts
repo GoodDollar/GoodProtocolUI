@@ -5,7 +5,7 @@ import { Web3Provider } from '@ethersproject/providers'
 import { ERC20_ABI } from 'constants/abis/erc20'
 import {
     FUSE_CHAIN_ID,
-    FUSE_GOVERNANCE_STAKING_V2,
+    getFuseOldGovernanceStakingAddress,
     getStakeMigrationApiToken,
     getStakeMigrationApiUrl,
     getStakeMigrationOperator,
@@ -89,9 +89,11 @@ export default function useStakeMigration() {
 
         setMigrating(true)
 
+        const stakingAddress = getFuseOldGovernanceStakingAddress()
+
         try {
-            const readContract = getContract(FUSE_GOVERNANCE_STAKING_V2, ERC20_ABI, library)
-            const writeContract = getContract(FUSE_GOVERNANCE_STAKING_V2, ERC20_ABI, library, address)
+            const readContract = getContract(stakingAddress, ERC20_ABI, library)
+            const writeContract = getContract(stakingAddress, ERC20_ABI, library, address)
             const stakeBalance: { toString: () => string } = await readContract.balanceOf(address)
 
             if (stakeBalance.toString() === '0') {
@@ -115,6 +117,8 @@ export default function useStakeMigration() {
         }
     }, [address, library, chainId, operator, refetch])
 
+    const stakingAddress = getFuseOldGovernanceStakingAddress()
+
     return useMemo(
         () => ({
             stakeAmount,
@@ -128,8 +132,20 @@ export default function useStakeMigration() {
             operator,
             apiConfigured,
             onFuse,
-            stakingAddress: FUSE_GOVERNANCE_STAKING_V2,
+            stakingAddress,
         }),
-        [stakeAmount, hasStake, stakeLoading, migrating, error, migrate, refetch, operator, apiConfigured, onFuse]
+        [
+            stakeAmount,
+            hasStake,
+            stakeLoading,
+            migrating,
+            error,
+            migrate,
+            refetch,
+            operator,
+            apiConfigured,
+            onFuse,
+            stakingAddress,
+        ]
     )
 }
