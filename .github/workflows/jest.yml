@@ -19,15 +19,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install pnpm
-        run: npm install -g pnpm@9.15.4
-
       - name: Install dependencies
-        run: |
-          sed -i '/"@uniswap\/widgets\/@uniswap\/sdk-core"/d' package.json
-          sed -i 's/"prebuild": "yarn install --immutable && lingui compile"/"prebuild": "lingui compile"/' package.json
-          sed -i 's/"packageManager": "yarn@[^"]*"/"packageManager": "pnpm@9.15.4"/' package.json
-          pnpm install --no-frozen-lockfile --prod=false
+        run: yarn install --frozen-lockfile
 
       - name: Run Jest tests
-        run: pnpm run test -- --testPathPatterns="rpcParsing" --testTimeout=30000
+        run: yarn test --testPathPattern="rpcParsing" --testTimeout=30000
