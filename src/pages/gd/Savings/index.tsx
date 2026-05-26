@@ -3,6 +3,7 @@ import { useEffect, useRef, useCallback } from 'react'
 import { useAppKit, useAppKitAccount, useAppKitProvider } from '@reown/appkit/react'
 import type { Provider } from '@reown/appkit/react'
 import { PageLayout } from 'components/Layout/PageLayout'
+import FuseGovernanceMigrationPrompt from 'components/FuseGovernanceMigrationPrompt'
 
 export default function Savings() {
     const widgetRef = useRef<
@@ -35,6 +36,7 @@ export default function Savings() {
 
     return (
         <PageLayout title="Savings" faqType="savings">
+            <FuseGovernanceMigrationPrompt />
             <gooddollar-savings-widget ref={widgetRef} />
         </PageLayout>
     )
