@@ -1,0 +1,32 @@
+name: Jest Tests
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  jest:
+    name: Run Jest tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        run: npm install -g pnpm@9.15.4
+
+      - name: Install dependencies
+        run: |
+          sed -i '/"@uniswap\/widgets\/@uniswap\/sdk-core"/d' package.json
+          sed -i 's/"prebuild": "yarn install --immutable && lingui compile"/"prebuild": "lingui compile"/' package.json
+          pnpm install --no-frozen-lockfile
+
+      - name: Run Jest tests
+        run: pnpm exec jest --testPathPattern="rpcParsing" --testTimeout=30000
