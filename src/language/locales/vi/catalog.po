@@ -2725,11 +2725,11 @@ msgstr "Phê duyệt"
 msgid "APPROVE"
 msgstr "CHẤP THUẬN"
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:228
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:218
 msgid "Approve and migrate"
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:240
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:230
 msgid "Approve sG$ on Fuse, then completing bridge and Celo Savings stake. This can take several minutes."
 msgstr ""
 
@@ -2994,7 +2994,7 @@ msgstr ""
 #~ msgid "Donate"
 #~ msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:279
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:269
 msgid "Done"
 msgstr ""
 
@@ -3143,7 +3143,7 @@ msgstr ""
 msgid "Liquidity Provider Fee"
 msgstr "Phí nhà cung cấp thanh khoản"
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:207
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:197
 msgid "Loading your Fuse stake..."
 msgstr ""
 
@@ -3165,35 +3165,35 @@ msgstr "tối đa"
 msgid "Maximum sold"
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:186
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:176
 msgid "Migrate"
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:200
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:190
 msgid "Migrate Fuse stake"
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:197
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:187
 msgid "Migrating your stake"
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:195
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:185
 msgid "Migration complete"
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:164
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:154
 msgid "Migration failed. Please try again."
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:160
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:151
 msgid "Migration is already running. Wait about {0} seconds and try again."
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:216
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:206
 msgid "Migration is not configured for this environment."
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:199
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:189
 msgid "Migration issue"
 msgstr ""
 
@@ -3476,7 +3476,7 @@ msgstr ""
 msgid "Switch to {requireChain}"
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:242
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:232
 msgid "Switch to Fuse and submit your approval..."
 msgstr ""
 
@@ -3656,7 +3656,7 @@ msgstr "Giao dịch được gửi"
 msgid "Transaction was sent to the blockchain"
 msgstr "Giao dịch đã được gửi đến Blockchain"
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:264
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:254
 msgid "Try again"
 msgstr ""
 
@@ -3727,7 +3727,7 @@ msgstr "Ví thăng bằng"
 msgid "Watch these indicators in the widget below:"
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:251
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:241
 msgid "We could not finish migrating your Fuse stake. If you already approved, wait a minute and try again."
 msgstr ""
 
@@ -3810,7 +3810,7 @@ msgstr ""
 #~ msgid "You currently have {0} G$ staked on Fuse Governance. This wizard helps you migrate to Celo Savings."
 #~ msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:209
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:199
 msgid "You have {0} G$ staked on Fuse Governance (sG$). Approve the migration operator to move your stake to Celo Savings. The rest is handled automatically after you sign."
 msgstr ""
 
@@ -3836,7 +3836,7 @@ msgstr ""
 msgid "You need to sign the transaction in your wallet"
 msgstr "Bạn cần ký giao dịch trong ví của bạn"
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:182
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:172
 msgid "You still have Governance stake on Fuse. Migrate it to Celo Savings to keep earning."
 msgstr ""
 
@@ -3860,7 +3860,7 @@ msgstr ""
 msgid "Your current savings balance."
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:274
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:264
 msgid "Your Fuse governance stake was migrated to Celo Savings. It may take a moment for balances to update."
 msgstr ""
 
