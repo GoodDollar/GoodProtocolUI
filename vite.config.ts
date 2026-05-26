@@ -43,6 +43,9 @@ export default defineConfig(({ command, mode }) => {
         envPrefix: 'REACT_APP_',
         server: {
             https,
+            watch: {
+                ignored: ['**/.yalc/**', '**/node_modules/**', '**/.git/**'],
+            },
         },
         plugins: [
             visualizer({

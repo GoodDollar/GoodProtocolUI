@@ -2725,6 +2725,14 @@ msgstr "Aprovar"
 msgid "APPROVE"
 msgstr ""
 
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:228
+msgid "Approve and migrate"
+msgstr ""
+
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:240
+msgid "Approve sG$ on Fuse, then completing bridge and Celo Savings stake. This can take several minutes."
+msgstr ""
+
 #: src/pages/gd/Swap/SwapCore/mentoReserve.tsx:123
 msgid "Approve transaction failed, please try again."
 msgstr ""
@@ -2764,8 +2772,8 @@ msgid "Blocked address"
 msgstr ""
 
 #: src/components/FuseGovernanceMigrationPrompt/index.tsx:130
-msgid "Bridge and verify"
-msgstr ""
+#~ msgid "Bridge and verify"
+#~ msgstr ""
 
 #: src/components/SideBar.tsx:124
 msgid "Buy G$"
@@ -2789,8 +2797,8 @@ msgid "Change"
 msgstr ""
 
 #: src/components/FuseGovernanceMigrationPrompt/index.tsx:163
-msgid "Checking..."
-msgstr ""
+#~ msgid "Checking..."
+#~ msgstr ""
 
 #: src/pages/gd/BuyGD/index.tsx:84
 msgid "Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$."
@@ -2925,8 +2933,8 @@ msgid "Connected with"
 msgstr ""
 
 #: src/components/FuseGovernanceMigrationPrompt/index.tsx:145
-msgid "Continue"
-msgstr ""
+#~ msgid "Continue"
+#~ msgstr ""
 
 #: src/pages/gd/Swap/index.tsx:52
 #~ msgid ""
@@ -2985,6 +2993,10 @@ msgstr ""
 #: src/components/SideBar.tsx:126
 #~ msgid "Donate"
 #~ msgstr ""
+
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:279
+msgid "Done"
+msgstr ""
 
 #: src/components/Gas/index.tsx:12
 msgid "failed to load"
@@ -3109,8 +3121,8 @@ msgid "How much would you like to withdraw?"
 msgstr ""
 
 #: src/components/FuseGovernanceMigrationPrompt/index.tsx:163
-msgid "I migrated, check status"
-msgstr ""
+#~ msgid "I migrated, check status"
+#~ msgstr ""
 
 #: src/pages/gd/Swap/index.tsx:24
 msgid "Learn more"
@@ -3131,6 +3143,10 @@ msgstr ""
 msgid "Liquidity Provider Fee"
 msgstr ""
 
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:207
+msgid "Loading your Fuse stake..."
+msgstr ""
+
 #: src/components/Gas/index.tsx:13
 msgid "loading..."
 msgstr ""
@@ -3149,16 +3165,36 @@ msgstr ""
 msgid "Maximum sold"
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:119
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:186
 msgid "Migrate"
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:128
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:200
 msgid "Migrate Fuse stake"
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:131
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:197
+msgid "Migrating your stake"
+msgstr ""
+
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:195
 msgid "Migration complete"
+msgstr ""
+
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:164
+msgid "Migration failed. Please try again."
+msgstr ""
+
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:160
+msgid "Migration is already running. Wait about {0} seconds and try again."
+msgstr ""
+
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:216
+msgid "Migration is not configured for this environment."
+msgstr ""
+
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:199
+msgid "Migration issue"
 msgstr ""
 
 #: src/pages/gd/Swap/SwapConfirmModal/index.tsx:228
@@ -3223,8 +3259,8 @@ msgid "Oops! An unknown error occurred. Please refresh the page, or visit from a
 msgstr ""
 
 #: src/components/FuseGovernanceMigrationPrompt/index.tsx:160
-msgid "Open Bridge"
-msgstr ""
+#~ msgid "Open Bridge"
+#~ msgstr ""
 
 #: src/components/AppBar.tsx:342
 msgid "Open main menu"
@@ -3391,8 +3427,8 @@ msgid "Success!"
 msgstr ""
 
 #: src/components/FuseGovernanceMigrationPrompt/index.tsx:169
-msgid "Success! Your Fuse governance stake is now zero."
-msgstr ""
+#~ msgid "Success! Your Fuse governance stake is now zero."
+#~ msgstr ""
 
 #: src/pages/gd/BuyGD/index.tsx:71
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
@@ -3438,6 +3474,10 @@ msgstr ""
 
 #: src/components/gd/Button/ActionOrSwitchButton.tsx:53
 msgid "Switch to {requireChain}"
+msgstr ""
+
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:242
+msgid "Switch to Fuse and submit your approval..."
 msgstr ""
 
 #: src/pages/gd/Swap/index.tsx:67
@@ -3616,6 +3656,10 @@ msgstr ""
 msgid "Transaction was sent to the blockchain"
 msgstr ""
 
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:264
+msgid "Try again"
+msgstr ""
+
 #: src/components/Savings/SavingsCard/index.tsx:47
 #: src/pages/gd/Portfolio/index.tsx:208
 msgid "TYPE"
@@ -3634,8 +3678,8 @@ msgid "Unsupported network"
 msgstr ""
 
 #: src/components/FuseGovernanceMigrationPrompt/index.tsx:155
-msgid "Use the bridge flow to move your funds from Fuse to Celo, then return here and verify your Fuse stake is zero."
-msgstr ""
+#~ msgid "Use the bridge flow to move your funds from Fuse to Celo, then return here and verify your Fuse stake is zero."
+#~ msgstr ""
 
 #: src/pages/gd/Swap/index.tsx:52
 msgid "using the GoodDollar Reserve."
@@ -3681,6 +3725,10 @@ msgstr ""
 
 #: src/pages/gd/Swap/index.tsx:84
 msgid "Watch these indicators in the widget below:"
+msgstr ""
+
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:251
+msgid "We could not finish migrating your Fuse stake. If you already approved, wait a minute and try again."
 msgstr ""
 
 #: src/components/NetworkModal/index.tsx:151
@@ -3759,7 +3807,11 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/FuseGovernanceMigrationPrompt/index.tsx:138
-msgid "You currently have {0} G$ staked on Fuse Governance. This wizard helps you migrate to Celo Savings."
+#~ msgid "You currently have {0} G$ staked on Fuse Governance. This wizard helps you migrate to Celo Savings."
+#~ msgstr ""
+
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:209
+msgid "You have {0} G$ staked on Fuse Governance (sG$). Approve the migration operator to move your stake to Celo Savings. The rest is handled automatically after you sign."
 msgstr ""
 
 #: src/pages/gd/Stake/StakeDeposit/index.tsx:381
@@ -3784,7 +3836,7 @@ msgstr ""
 msgid "You need to sign the transaction in your wallet"
 msgstr ""
 
-#: src/components/FuseGovernanceMigrationPrompt/index.tsx:115
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:182
 msgid "You still have Governance stake on Fuse. Migrate it to Celo Savings to keep earning."
 msgstr ""
 
@@ -3806,6 +3858,10 @@ msgstr ""
 
 #: src/pages/gd/Stake/Savings/index.tsx:111
 msgid "Your current savings balance."
+msgstr ""
+
+#: src/components/FuseGovernanceMigrationPrompt/index.tsx:274
+msgid "Your Fuse governance stake was migrated to Celo Savings. It may take a moment for balances to update."
 msgstr ""
 
 #: src/components/Liquidity/AdvancedLiquidityDetails.tsx:26
