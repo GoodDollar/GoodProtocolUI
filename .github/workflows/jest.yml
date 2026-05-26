@@ -30,4 +30,4 @@ jobs:
           pnpm install --no-frozen-lockfile --prod=false
 
       - name: Run Jest tests
-        run: ./node_modules/.bin/jest --testPathPatterns="rpcParsing" --testTimeout=30000
+        run: pnpm run test -- --testPathPatterns="rpcParsing" --testTimeout=30000
