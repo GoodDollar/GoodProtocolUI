@@ -3154,7 +3154,7 @@ msgstr "乘數"
 msgid "My Stake"
 msgstr "我的股份"
 
-#: src/components/NetworkModal/index.tsx:172
+#: src/components/NetworkModal/index.tsx:179
 msgid "network"
 msgstr "網絡"
 
@@ -3180,7 +3180,7 @@ msgstr "下個月："
 msgid "No data."
 msgstr "沒有數據。"
 
-#: src/components/NetworkModal/index.tsx:171
+#: src/components/NetworkModal/index.tsx:178
 msgid "on the"
 msgstr "在這一點"
 
@@ -3206,7 +3206,7 @@ msgstr ""
 #~ msgid "Output is estimated. You will receive at least {minimumReceived} or the transaction will revert"
 #~ msgstr ""
 
-#: src/components/Web3Status/index.tsx:57
+#: src/components/Web3Status/index.tsx:105
 msgid "Pending"
 msgstr "處理中"
 
@@ -3402,6 +3402,10 @@ msgstr ""
 
 #: src/components/gd/Button/ActionOrSwitchButton.tsx:53
 msgid "Switch to {requireChain}"
+msgstr ""
+
+#: src/components/NetworkModal/index.tsx:187
+msgid "Switching network..."
 msgstr ""
 
 #: src/pages/gd/Swap/index.tsx:67
@@ -3643,7 +3647,7 @@ msgstr "錢包平衡"
 msgid "Watch these indicators in the widget below:"
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:151
+#: src/components/NetworkModal/index.tsx:158
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3706,7 +3710,7 @@ msgstr ""
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "您正在為世界各地的數千人創建UBI。"
 
-#: src/components/NetworkModal/index.tsx:167
+#: src/components/NetworkModal/index.tsx:174
 msgid "You are currently browsing"
 msgstr "您目前正在瀏覽"
 
