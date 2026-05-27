@@ -1,26 +1,26 @@
 name: Jest Tests
 
 on:
-  pull_request:
-    branches:
-      - master
+    pull_request:
+        branches:
+            - master
 
 jobs:
-  jest:
-    name: Run Jest tests
-    runs-on: ubuntu-latest
+    jest:
+        name: Run Jest tests
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v3
+        steps:
+            - name: Check out Git repository
+              uses: actions/checkout@v3
 
-      - name: Set up Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
+            - name: Set up Node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+            - name: Install dependencies
+              run: yarn install --immutable
 
-      - name: Run Jest tests
-        run: yarn test --testPathPattern="rpcParsing" --testTimeout=30000
+            - name: Run Jest tests
+              run: yarn test --testPathPattern="rpcParsing" --testTimeout=30000

@@ -24,3 +24,11 @@ export async function fetchRpcsFromChainlist(): Promise<Record<string, string[]>
     }
     return result
 }
+
+export async function fetchRpcsFromChainlistOrFallback(): Promise<Record<string, string[]>> {
+    try {
+        return await fetchRpcsFromChainlist()
+    } catch {
+        return FALLBACK_RPCS_BY_CHAIN
+    }
+}

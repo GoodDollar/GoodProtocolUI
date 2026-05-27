@@ -10,7 +10,7 @@ import { useAppKitNetwork, useAppKitProvider } from '@reown/appkit/react'
 import type { Provider } from '@reown/appkit/react'
 import { useAccount } from 'wagmi'
 
-import { FALLBACK_RPCS_BY_CHAIN, fetchRpcsFromChainlist } from './rpcParsing'
+import { FALLBACK_RPCS_BY_CHAIN, fetchRpcsFromChainlistOrFallback } from 'functions/rpcParsing'
 import { getEnv } from 'utils/env'
 import { isMiniPay, getMiniPayProvider } from 'utils/minipay'
 
@@ -25,14 +25,14 @@ type NetworkSettings = {
     testedRpcs: Record<string, string[]> | null
 }
 
-type RpcCacheEntry = {
-    rpcs: Record<string, string[]>
-    timestamp: number
-}
-
 const gasSettings = {
     122: { maxFeePerGas: BigNumber.from(11e9).toHexString() },
     // 50: { maxFeePerGas: BigNumber.from(12.5e9).toHexString() }, // eip-1559 is only supported on XDC testnet. Last checked 15 november 2025.
+}
+
+type RpcCacheEntry = {
+    rpcs: Record<string, string[]>
+    timestamp: number
 }
 
 const RPC_CACHE_KEY = 'GD_RPC_CACHE'
@@ -73,7 +73,7 @@ async function fetchAndTestRpcs(): Promise<Record<string, string[]>> {
     const rpcsByChain: Record<string, string[]> = {}
 
     try {
-        const extraRpcs = await fetchRpcsFromChainlist()
+        const extraRpcs = await fetchRpcsFromChainlistOrFallback()
 
         for (const [chainId] of Object.entries(FALLBACK_RPCS_BY_CHAIN)) {
             const chainRpcs = extraRpcs[chainId] || []
@@ -122,7 +122,6 @@ async function setRpcCache(rpcs: Record<string, string[]>): Promise<void> {
 }
 
 export const initializeRpcs = async () => {
-    // Return existing promise if already in progress
     if (rpcInitializationPromise) {
         return rpcInitializationPromise
     }
@@ -134,18 +133,15 @@ export const initializeRpcs = async () => {
         }
         return cachedRpcs
     }
-    // Create initialization promise
+
     rpcInitializationPromise = (async () => {
-        // Try to get cached RPCs first
         const { rpcs: cachedRpcs, expired } = await getRpcCache()
 
         if (!cachedRpcs || expired) {
-            // Fetch and test RPCs if cache miss or expired
             const cachedRpcsResult = dofetch()
             if (!cachedRpcs) {
                 return await cachedRpcsResult
             } else {
-                // let the fetch happen in background but return the old cached rpcs immediately
                 void cachedRpcsResult
             }
         }
