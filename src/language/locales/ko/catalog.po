@@ -3206,7 +3206,7 @@ msgstr ""
 #~ msgid "Output is estimated. You will receive at least {minimumReceived} or the transaction will revert"
 #~ msgstr ""
 
-#: src/components/Web3Status/index.tsx:105
+#: src/components/Web3Status/index.tsx:106
 msgid "Pending"
 msgstr "보류 중"
 

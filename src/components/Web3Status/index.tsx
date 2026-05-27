@@ -14,6 +14,7 @@ import { Currency } from '@sushiswap/sdk'
 import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
 import { useEthers } from '@usedapp/core'
 import { Spinner } from 'native-base'
+import { formatUnits } from 'viem'
 
 // we want the latest one to come first, so return negative if a is after b
 function newTransactionsFirst(a: TransactionDetails, b: TransactionDetails) {
@@ -54,7 +55,7 @@ function Web3StatusInner() {
             try {
                 const balance = await library.getBalance(address)
                 if (!cancelled) {
-                    setDirectNativeBalance(balance.toString())
+                    setDirectNativeBalance(formatUnits(balance.toString(), 18))
                 }
             } catch {
                 if (!cancelled) {
