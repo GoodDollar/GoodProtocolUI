@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { SupportedChains, useSwitchNetwork } from '@gooddollar/web3sdk-v2'
-import { Text, Link } from 'native-base'
+import { Text, Link, Spinner, HStack } from 'native-base'
 import { SwitchChainModal } from '@gooddollar/good-design'
 import { ChainId } from '@sushiswap/sdk'
 import { UnsupportedChainId } from '@gooddollar/web3sdk'
@@ -39,11 +39,11 @@ const TextWrapper = styled.div`
     }
 `
 
-const ChainOption = ({ chainId, chain, toggleNetworkModal, switchChain, labels, icons, error }: any) => {
+const ChainOption = ({ chainId, chain, switchChain, labels, icons, error, disabled }: any) => {
     const onOptionClick = useCallback(() => {
-        toggleNetworkModal()
+        if (disabled) return
         switchChain(chain)
-    }, [switchChain, toggleNetworkModal, chain])
+    }, [disabled, switchChain, chain])
 
     const isUnsupported = error instanceof UnsupportedChainId
 
@@ -56,6 +56,7 @@ const ChainOption = ({ chainId, chain, toggleNetworkModal, switchChain, labels, 
             icon={icons[chain]}
             id={String(chain)}
             onClick={onOptionClick}
+            disabled={disabled}
         />
     )
 }
@@ -72,6 +73,7 @@ export default function NetworkModal(): JSX.Element | null {
     const networkModalOpen = useModalOpen(ApplicationModal.NETWORK)
     const toggleNetworkModal = useNetworkModalToggle()
     const [toAddNetwork, setToAddNetwork] = useState<SupportedChains | undefined>()
+    const [switchingChain, setSwitchingChain] = useState(false)
 
     const networkLabel: string | null = error ? null : (NETWORK_LABEL as any)[+(chainId ?? 42220)]
     const network = getEnv()
@@ -102,17 +104,19 @@ export default function NetworkModal(): JSX.Element | null {
 
     const switchChain = useCallback(
         async (chain: SupportedChains) => {
+            setSwitchingChain(true)
             try {
+                await new Promise((resolve) => setTimeout(resolve, 250))
                 await switchNetwork(chain)
                 sendData({
                     event: 'network_switch',
                     action: 'network_switch_success',
                     network: ChainId[chain],
                 })
+                toggleNetworkModal()
             } catch (e: any) {
                 if (e?.code === 4902) {
                     setToAddNetwork(chain)
-                    toggleNetworkModal()
                     return
                 }
 
@@ -124,6 +128,7 @@ export default function NetworkModal(): JSX.Element | null {
                         network: ChainId[chain],
                     })
                     console.warn('Wallet not initialized. Network preference saved.')
+                    toggleNetworkModal()
                     return
                 }
 
@@ -135,6 +140,8 @@ export default function NetworkModal(): JSX.Element | null {
 
                     error: e?.message || 'Unknown error',
                 })
+            } finally {
+                setSwitchingChain(false)
             }
         },
 
@@ -174,6 +181,13 @@ export default function NetworkModal(): JSX.Element | null {
                             )}
                         </TextWrapper>
 
+                        {switchingChain && (
+                            <HStack mt={3} space={2} alignItems="center">
+                                <Spinner size="sm" />
+                                <Text fontSize="sm">{i18n._(t`Switching network...`)}</Text>
+                            </HStack>
+                        )}
+
                         <div className="flex flex-col mt-3 space-y-5 overflow-y-auto">
                             {allowedNetworks.map((chain: SupportedChains) => (
                                 <ChainOption
@@ -182,9 +196,9 @@ export default function NetworkModal(): JSX.Element | null {
                                     chain={chain}
                                     labels={NETWORK_LABEL}
                                     icons={NETWORK_ICON}
-                                    toggleNetworkModal={toggleNetworkModal}
                                     switchChain={switchChain}
                                     error={error}
+                                    disabled={switchingChain}
                                 />
                             ))}
                         </div>
