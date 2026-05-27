@@ -7,7 +7,7 @@ msgstr ""
 "X-Generator: @lingui/cli\n"
 "Project-Id-Version: goodprotocolui\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-27 07:41\n"
+"PO-Revision-Date: 2026-05-27 15:39\n"
 "Last-Translator: \n"
 "Language: vi_VN\n"
 "Language-Team: Vietnamese\n"
@@ -2763,7 +2763,7 @@ msgstr "Thăng bằng"
 msgid "Blocked address"
 msgstr "Địa chỉ bị chặn"
 
-#: src/components/SideBar.tsx:120
+#: src/components/SideBar.tsx:124
 msgid "Buy G$"
 msgstr ""
 
@@ -2939,7 +2939,7 @@ msgstr "Sao chép địa chỉ"
 #~ msgid "Current Rate"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:127
+#: src/components/SideBar.tsx:131
 msgid "Dapps"
 msgstr ""
 
@@ -3014,11 +3014,11 @@ msgstr "Đi đến danh mục đầu tư"
 msgid "GOOD"
 msgstr ""
 
-#: src/components/SideBar.tsx:153
+#: src/components/SideBar.tsx:157
 msgid "Good Airdrop"
 msgstr ""
 
-#: src/components/SideBar.tsx:113
+#: src/components/SideBar.tsx:117
 msgid "GoodCollective"
 msgstr ""
 
@@ -3042,7 +3042,7 @@ msgstr ""
 msgid "GoodDollar creates free money as a public good, G$ tokens, which you can collect daily."
 msgstr ""
 
-#: src/components/SideBar.tsx:237
+#: src/components/SideBar.tsx:244
 msgid "GoodDollar Main Bridge"
 msgstr ""
 
@@ -3055,11 +3055,11 @@ msgstr ""
 msgid "GoodStakes"
 msgstr ""
 
-#: src/components/SideBar.tsx:139
+#: src/components/SideBar.tsx:143
 msgid "GoodWallet"
 msgstr ""
 
-#: src/components/SideBar.tsx:146
+#: src/components/SideBar.tsx:150
 msgid "Help & Documentation"
 msgstr ""
 
@@ -3153,7 +3153,7 @@ msgstr "Số nhân"
 msgid "My Stake"
 msgstr "Cổ phần của tôi"
 
-#: src/components/NetworkModal/index.tsx:172
+#: src/components/NetworkModal/index.tsx:179
 msgid "network"
 msgstr "mạng"
 
@@ -3179,7 +3179,7 @@ msgstr "Tháng tiếp theo:"
 msgid "No data."
 msgstr "Không có dữ liệu."
 
-#: src/components/NetworkModal/index.tsx:171
+#: src/components/NetworkModal/index.tsx:178
 msgid "on the"
 msgstr "trên"
 
@@ -3205,7 +3205,7 @@ msgstr ""
 #~ msgid "Output is estimated. You will receive at least {minimumReceived} or the transaction will revert"
 #~ msgstr ""
 
-#: src/components/Web3Status/index.tsx:57
+#: src/components/Web3Status/index.tsx:106
 msgid "Pending"
 msgstr "Đang chờ xử lý"
 
@@ -3319,7 +3319,7 @@ msgstr "Khả năng chịu trượt"
 msgid "Social APY"
 msgstr ""
 
-#: src/components/SideBar.tsx:244
+#: src/components/SideBar.tsx:251
 msgid "Squid Router"
 msgstr ""
 
@@ -3399,6 +3399,10 @@ msgstr ""
 
 #: src/components/gd/Button/ActionOrSwitchButton.tsx:53
 msgid "Switch to {requireChain}"
+msgstr ""
+
+#: src/components/NetworkModal/index.tsx:187
+msgid "Switching network..."
 msgstr ""
 
 #: src/pages/gd/Swap/index.tsx:67
@@ -3581,11 +3585,11 @@ msgstr "Giao dịch đã được gửi đến Blockchain"
 msgid "TYPE"
 msgstr ""
 
-#: src/components/SideBar.tsx:208
+#: src/components/SideBar.tsx:212
 msgid "Uniswap (Celo)"
 msgstr ""
 
-#: src/components/SideBar.tsx:195
+#: src/components/SideBar.tsx:199
 msgid "Uniswap (widget)"
 msgstr ""
 
@@ -3607,7 +3611,7 @@ msgstr "Xem trên explorer"
 #~ msgid "View transaction on explorer"
 #~ msgstr ""
 
-#: src/components/SideBar.tsx:201
+#: src/components/SideBar.tsx:205
 msgid "Voltage Finance (Fuse)"
 msgstr ""
 
@@ -3639,7 +3643,7 @@ msgstr "Ví thăng bằng"
 msgid "Watch these indicators in the widget below:"
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:151
+#: src/components/NetworkModal/index.tsx:158
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3694,7 +3698,7 @@ msgstr ""
 msgid "Withdrew funds from {0}"
 msgstr "Đã rút tiền từ {0}"
 
-#: src/components/SideBar.tsx:215
+#: src/components/SideBar.tsx:219
 msgid "Xswap (XDC)"
 msgstr ""
 
@@ -3702,7 +3706,7 @@ msgstr ""
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "Bạn đang tạo UBI cho hàng ngàn người trên khắp thế giới."
 
-#: src/components/NetworkModal/index.tsx:167
+#: src/components/NetworkModal/index.tsx:174
 msgid "You are currently browsing"
 msgstr "Bạn đang đang duyệt"
 
