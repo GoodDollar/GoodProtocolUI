@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import useENSName from '../../hooks/useENSName'
 import { isTransactionRecent, useAllTransactions } from '../../state/transactions/hooks'
 import { TransactionDetails } from '../../state/transactions/reducer'
@@ -12,6 +12,9 @@ import { Text, HStack } from 'native-base'
 import { useNativeBalance } from '@gooddollar/web3sdk-v2'
 import { Currency } from '@sushiswap/sdk'
 import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
+import { useEthers } from '@usedapp/core'
+import { Spinner } from 'native-base'
+import { formatUnits } from 'viem'
 
 // we want the latest one to come first, so return negative if a is after b
 function newTransactionsFirst(a: TransactionDetails, b: TransactionDetails) {
@@ -23,11 +26,54 @@ function Web3StatusInner() {
     const sendData = useSendAnalyticsData()
     const { address } = useAppKitAccount()
     const { chainId } = useAppKitNetwork()
+    const { library } = useEthers() as any
 
     const { ENSName } = useENSName(address ?? undefined)
 
     const allTransactions = useAllTransactions()
     const nativeBalance = useNativeBalance()
+    const [directNativeBalance, setDirectNativeBalance] = useState<string | undefined>()
+    const [showBalance, setShowBalance] = useState(false)
+
+    // added a timed-out fallback for when native-balance does not seem to complete (happening on mainnet)
+    // it uses a timeout to avoid mis-formatted amounts based on old-chain decimals.
+    useEffect(() => {
+        let cancelled = false
+        setShowBalance(false)
+        setDirectNativeBalance(undefined)
+        const timeoutId = window.setTimeout(() => {
+            if (!cancelled) {
+                setShowBalance(true)
+            }
+        }, 500)
+
+        async function readBalance() {
+            if (!address || !library?.getBalance) {
+                return
+            }
+
+            try {
+                const balance = await library.getBalance(address)
+                if (!cancelled) {
+                    setDirectNativeBalance(formatUnits(balance.toString(), 18))
+                }
+            } catch {
+                if (!cancelled) {
+                    setDirectNativeBalance(undefined)
+                }
+            }
+        }
+
+        void readBalance()
+
+        return () => {
+            cancelled = true
+            window.clearTimeout(timeoutId)
+        }
+    }, [address, library, /*used*/ chainId])
+
+    const displayNativeBalance = nativeBalance ?? directNativeBalance
+    const shouldShowBalance = showBalance && !!displayNativeBalance
 
     const sortedRecentTransactions = useMemo(() => {
         const txs = Object.values(allTransactions)
@@ -46,10 +92,13 @@ function Web3StatusInner() {
         <HStack space={8} flexDirection="row">
             {address && (
                 <div className="flex flex-row gap-4">
-                    {nativeBalance && (
+                    {shouldShowBalance ? (
                         <Text fontSize="sm" fontFamily="subheading" fontWeight="normal" color="gdPrimary">
-                            {parseFloat(nativeBalance).toFixed(4)} {Currency.getNativeCurrencySymbol(+(chainId ?? 1))}
+                            {parseFloat(displayNativeBalance!).toFixed(4)}{' '}
+                            {Currency.getNativeCurrencySymbol(+(chainId ?? 1))}
                         </Text>
+                    ) : (
+                        <Spinner size="sm" color="gdPrimary" />
                     )}
                     {hasPendingTransactions ? (
                         <div className="flex items-center justify-between">
