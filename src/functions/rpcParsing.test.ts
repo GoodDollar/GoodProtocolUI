@@ -1,30 +1,31 @@
 /* eslint-env jest */
 
-const EXTRA_RPCS_SOURCE = `
-const privacyStatement = {
-  onerpc: 'ignored',
-}
-
-export const extraRpcs = {
-  1: {
-    rpcs: [
-      "https://eth.llamarpc.com",
-      { url: "https://1rpc.io/eth", trackingDetails: privacyStatement.onerpc },
-      { url: "wss://ethereum-rpc.publicnode.com" },
-    ],
-  },
-  122: { rpcs: [{ url: "https://rpc.fuse.io" }, { url: "https://fuse.drpc.org" }] },
-  1220: { rpcs: [{ url: "https://should-not-match-1220.example" }] },
-  42220: { rpcs: ["https://forno.celo.org", { url: "wss://forno.celo.org/ws" }] },
-  422201: { rpcs: [{ url: "https://should-not-match-422201.example" }] },
-  11142220: { rpcs: [{ url: "https://should-not-match-11142220.example" }] },
-  50: { rpcs: ["https://rpc.xinfin.network", { url: "https://erpc.xinfin.network" }] },
-  500: { rpcs: [{ url: "https://should-not-match-500.example" }] },
-  5050: { rpcs: [{ url: "https://should-not-match-5050.example" }] },
-  1750: { rpcs: [{ url: "https://should-not-match-1750.example" }] },
-  250: { rpcs: [{ url: "https://should-not-match-250.example" }] },
-}
-`
+const CHAINLIST_RPCS_SOURCE = [
+    {
+        chainId: 1,
+        name: 'Ethereum Mainnet',
+        rpc: [
+            { url: 'https://eth.llamarpc.com' },
+            { url: 'https://1rpc.io/eth' },
+            { url: 'wss://ethereum-rpc.publicnode.com' },
+        ],
+    },
+    {
+        chainId: 122,
+        name: 'Fuse Mainnet',
+        rpc: [{ url: 'https://rpc.fuse.io' }, { url: 'https://fuse.drpc.org' }],
+    },
+    {
+        chainId: 42220,
+        name: 'Celo Mainnet',
+        rpc: [{ url: 'https://forno.celo.org' }, { url: 'wss://forno.celo.org/ws' }],
+    },
+    {
+        chainId: 50,
+        name: 'XDC Network',
+        rpc: [{ url: 'https://rpc.xinfin.network' }, { url: 'https://erpc.xinfin.network' }],
+    },
+]
 
 describe('rpcParsing', () => {
     const originalEnv = process.env
@@ -38,10 +39,10 @@ describe('rpcParsing', () => {
         jest.restoreAllMocks()
     })
 
-    it('parses HTTP(S) RPCs from extraRpcs.js', async () => {
+    it('parses HTTP(S) RPCs from chainlist json', async () => {
         jest.spyOn(global, 'fetch').mockResolvedValue({
             ok: true,
-            text: async () => EXTRA_RPCS_SOURCE,
+            json: async () => CHAINLIST_RPCS_SOURCE,
         } as Response)
 
         const { fetchRpcsFromChainlist } = await import('./rpcParsing')

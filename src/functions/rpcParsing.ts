@@ -2,9 +2,10 @@ export const SUPPORTED_CHAIN_IDS = ['1', '122', '42220', '50'] as const
 
 type SupportedChainId = (typeof SUPPORTED_CHAIN_IDS)[number]
 type Env = Record<string, string | undefined>
+type ChainlistRpc = { url?: string }
+type ChainlistChain = { chainId: number; rpc?: ChainlistRpc[] }
 
-const CHAINLIST_EXTRA_RPCS_URL =
-    'https://raw.githubusercontent.com/DefiLlama/chainlist/refs/heads/main/constants/extraRpcs.js'
+const CHAINLIST_RPCS_URL = 'https://chainlist.org/rpcs.json'
 const FALLBACK_CHAIN_IDS_ENV = 'REACT_APP_RPC_FALLBACK_CHAIN_IDS'
 
 const DEFAULT_FALLBACK_RPCS_BY_CHAIN: Record<SupportedChainId, string[]> = {
@@ -19,6 +20,12 @@ const ENV_RPC_KEYS_BY_CHAIN: Record<SupportedChainId, string> = {
     '122': 'REACT_APP_FUSE_RPC',
     '42220': 'REACT_APP_CELO_RPC',
     '50': 'REACT_APP_XDC_RPC',
+}
+
+function normalizeRpcUrls(rpcs: ChainlistRpc[] = []): string[] {
+    return rpcs
+        .map((rpc) => rpc.url?.trim())
+        .filter((url): url is string => !!url && (url.startsWith('http://') || url.startsWith('https://')))
 }
 
 export function getFallbackRpcsByChain(env: Env = process.env): Record<SupportedChainId, string[]> {
@@ -48,20 +55,17 @@ export function getFallbackRpcsByChain(env: Env = process.env): Record<Supported
     }, {} as Record<SupportedChainId, string[]>)
 }
 
+export const FALLBACK_RPCS_BY_CHAIN = getFallbackRpcsByChain()
+
 export async function fetchRpcsFromChainlist(): Promise<Record<string, string[]>> {
-    const response = await fetch(CHAINLIST_EXTRA_RPCS_URL)
+    const response = await fetch(CHAINLIST_RPCS_URL)
     if (!response.ok) throw new Error('Failed to fetch chainlist')
 
-    const source = await response.text()
+    const chains: ChainlistChain[] = await response.json()
+    const chainsById = new Map(chains.map((chain) => [String(chain.chainId), chain]))
 
     return SUPPORTED_CHAIN_IDS.reduce<Record<string, string[]>>((result, chainId) => {
-        const chainMatch = source.match(
-            new RegExp(String.raw`(?:^|\n)\s*${chainId}:\s*\{[\s\S]*?rpcs:\s*\[([\s\S]*?)\]`, 'm')
-        )
-
-        result[chainId] = (chainMatch?.[1].match(/https?:\/\/[^"'`\s,]+/g) ?? []).filter(
-            (url) => url.startsWith('http://') || url.startsWith('https://')
-        )
+        result[chainId] = normalizeRpcUrls(chainsById.get(chainId)?.rpc)
         return result
     }, {})
 }
