@@ -18,6 +18,7 @@ import { Savings } from './Savings'
 import { disableTestnetMain } from 'constants/index'
 import AppNotice from 'components/AppNotice'
 import { ButtonOutlined } from 'components/ButtonLegacy'
+import FuseGovernanceMigrationPrompt from 'components/FuseGovernanceMigrationPrompt'
 
 import {
     LIQUIDITY_PROTOCOL,
@@ -469,6 +470,7 @@ export default function Stakes(): JSX.Element | null {
         <Layout>
             {' '}
             <StakesSC>
+                <FuseGovernanceMigrationPrompt />
                 {!mainnetStakesEnabled && (
                     <>
                         <AppNotice
