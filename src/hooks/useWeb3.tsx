@@ -10,7 +10,6 @@ import { useAppKitNetwork, useAppKitProvider } from '@reown/appkit/react'
 import type { Provider } from '@reown/appkit/react'
 import { useAccount } from 'wagmi'
 
-import { FALLBACK_RPCS_BY_CHAIN, fetchRpcsFromChainlistOrFallback } from 'functions/rpcParsing'
 import { getEnv } from 'utils/env'
 import { isMiniPay, getMiniPayProvider } from 'utils/minipay'
 
@@ -25,16 +24,17 @@ type NetworkSettings = {
     testedRpcs: Record<string, string[]> | null
 }
 
-const gasSettings = {
-    122: { maxFeePerGas: BigNumber.from(11e9).toHexString() },
-    // 50: { maxFeePerGas: BigNumber.from(12.5e9).toHexString() }, // eip-1559 is only supported on XDC testnet. Last checked 15 november 2025.
-}
-
 type RpcCacheEntry = {
     rpcs: Record<string, string[]>
     timestamp: number
 }
 
+const gasSettings = {
+    122: { maxFeePerGas: BigNumber.from(11e9).toHexString() },
+    // 50: { maxFeePerGas: BigNumber.from(12.5e9).toHexString() }, // eip-1559 is only supported on XDC testnet. Last checked 15 november 2025.
+}
+
+const CHAINLIST_URL = 'https://raw.githubusercontent.com/DefiLlama/chainlist/refs/heads/main/constants/extraRpcs.js'
 const RPC_CACHE_KEY = 'GD_RPC_CACHE'
 const CACHE_DURATION_MS = 24 * 60 * 60 * 1000 // 24 hours
 const RPC_TEST_TIMEOUT_MS = 5000
@@ -73,23 +73,85 @@ async function fetchAndTestRpcs(): Promise<Record<string, string[]>> {
     const rpcsByChain: Record<string, string[]> = {}
 
     try {
-        const extraRpcs = await fetchRpcsFromChainlistOrFallback()
+        console.log('[fetchAndTestRpcs] Starting RPC fetch and test...')
+        const response = await fetch(CHAINLIST_URL)
+        if (!response.ok) throw new Error('Failed to fetch chainlist')
 
-        for (const [chainId] of Object.entries(FALLBACK_RPCS_BY_CHAIN)) {
-            const chainRpcs = extraRpcs[chainId] || []
-            const testResults = await Promise.all(
-                chainRpcs.slice(0, 10).map(async (rpcUrl) => ({
-                    rpcUrl,
-                    isValid: await testRpc(rpcUrl),
-                }))
-            )
-            const validRpcs = testResults.filter((r) => r.isValid).map((r) => r.rpcUrl)
-            rpcsByChain[chainId] = validRpcs.length ? validRpcs : FALLBACK_RPCS_BY_CHAIN[chainId]
+        const text = await response.text()
+        console.log('[fetchAndTestRpcs] Chainlist fetched, parsing extraRpcs...')
+        // Parse "export const extraRpcs" from the JS file
+        const match = text.match(/export\s+const\s+extraRpcs\s*=\s*(\{[\s\S]*?\n\})/m)
+        if (!match) throw new Error('Could not parse extraRpcs from chainlist')
+
+        // Create a mock privacyStatement object for eval context
+        const privacyStatement = {}
+
+        // Safe evaluation of the RPC object with privacyStatement in scope
+        const extraRpcs = eval(
+            `(function() { const privacyStatement = ${JSON.stringify(privacyStatement)}; return ${match[1]}; })()`
+        )
+        console.log('[fetchAndTestRpcs] Successfully parsed extraRpcs', extraRpcs)
+
+        // Map chainlist chain IDs to our RPC keys
+        const chainMapping: Record<number, string> = {
+            1: 'MAINNET_RPC',
+            122: 'FUSE_RPC',
+            42220: 'CELO_RPC',
+            50: 'XDC_RPC',
         }
+
+        // Test RPCs for each chain
+        for (const [chainId] of Object.entries(chainMapping)) {
+            const chainIdNum = Number(chainId)
+            console.log(`[fetchAndTestRpcs] Processing chain ${chainIdNum}...`)
+
+            const chainRpcsData = extraRpcs[chainIdNum] || { rpcs: [] }
+
+            // Handle both old format (array) and new format (object with rpcs property)
+            const chainRpcs = Array.isArray(chainRpcsData) ? chainRpcsData : chainRpcsData.rpcs || []
+            console.log(`[fetchAndTestRpcs] Found ${chainRpcs.length} RPC entries for ${chainId}`)
+
+            if (Array.isArray(chainRpcs)) {
+                // Extract URLs and filter out WebSocket protocols
+                const rpcUrlsToTest = chainRpcs
+                    .map((rpcEntry) => {
+                        if (typeof rpcEntry === 'string') {
+                            return rpcEntry
+                        }
+                        if (typeof rpcEntry === 'object' && rpcEntry !== null && 'url' in rpcEntry) {
+                            return rpcEntry.url
+                        }
+                        return null
+                    })
+                    .filter((url): url is string => url !== null && !url.startsWith('wss://'))
+
+                console.log(
+                    `[fetchAndTestRpcs] Testing ${rpcUrlsToTest.length} HTTP(S) RPCs for ${chainId}:`,
+                    rpcUrlsToTest
+                )
+
+                // Test all RPCs in parallel
+                const testResults = await Promise.all(
+                    rpcUrlsToTest.slice(0, 10).map(async (rpcUrl) => ({
+                        rpcUrl,
+                        isValid: await testRpc(rpcUrl),
+                    }))
+                )
+
+                // Log individual test results
+                testResults.forEach((result) => {
+                    console.log(`[fetchAndTestRpcs] ${result.rpcUrl}: ${result.isValid ? '✓ VALID' : '✗ INVALID'}`)
+                })
+
+                // Collect valid RPCs
+                const validRpcs = testResults.filter((result) => result.isValid).map((result) => result.rpcUrl)
+                rpcsByChain[chainId] = validRpcs
+                console.log(`[fetchAndTestRpcs] ${chainId} has ${validRpcs.length} valid RPCs`)
+            }
+        }
+        console.log('[fetchAndTestRpcs] RPC testing complete:', rpcsByChain)
     } catch (error) {
         console.warn('[fetchAndTestRpcs] Error during RPC fetch/test:', error)
-        rpcInitializationPromise = null
-        return FALLBACK_RPCS_BY_CHAIN
     }
 
     return rpcsByChain
@@ -122,6 +184,7 @@ async function setRpcCache(rpcs: Record<string, string[]>): Promise<void> {
 }
 
 export const initializeRpcs = async () => {
+    // Return existing promise if already in progress
     if (rpcInitializationPromise) {
         return rpcInitializationPromise
     }
@@ -133,15 +196,18 @@ export const initializeRpcs = async () => {
         }
         return cachedRpcs
     }
-
+    // Create initialization promise
     rpcInitializationPromise = (async () => {
+        // Try to get cached RPCs first
         const { rpcs: cachedRpcs, expired } = await getRpcCache()
 
         if (!cachedRpcs || expired) {
+            // Fetch and test RPCs if cache miss or expired
             const cachedRpcsResult = dofetch()
             if (!cachedRpcs) {
                 return await cachedRpcsResult
             } else {
+                // let the fetch happen in background but return the old cached rpcs immediately
                 void cachedRpcsResult
             }
         }
@@ -170,10 +236,10 @@ export function useNetwork(): NetworkSettings {
             ])
         )
 
-    const celoRpcList = sample(process.env.REACT_APP_CELO_RPC?.split(',')) ?? FALLBACK_RPCS_BY_CHAIN['42220'][0]
-    const fuseRpcList = sample(process.env.REACT_APP_FUSE_RPC?.split(',')) ?? FALLBACK_RPCS_BY_CHAIN['122'][0]
-    const xdcRpcList = sample(process.env.REACT_APP_XDC_RPC?.split(',')) ?? FALLBACK_RPCS_BY_CHAIN['50'][0]
-    const mainnetList = sample(FALLBACK_RPCS_BY_CHAIN['1']) ?? FALLBACK_RPCS_BY_CHAIN['1'][0]
+    const celoRpcList = sample(process.env.REACT_APP_CELO_RPC?.split(',')) ?? 'https://forno.celo.org'
+    const fuseRpcList = sample(process.env.REACT_APP_FUSE_RPC?.split(',')) ?? 'https://rpc.fuse.io'
+    const xdcRpcList = sample(process.env.REACT_APP_XDC_RPC?.split(',')) ?? 'https://rpc.xinfin.network'
+    const mainnetList = sample(['https://eth.llamarpc.com', 'https://1rpc.io/eth']) ?? 'https://eth.llamarpc.com'
 
     const [currentNetwork, rpcs] = useMemo(() => {
         const selectedRpcs = {
