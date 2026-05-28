@@ -21,18 +21,6 @@ const ENV_RPC_KEYS_BY_CHAIN: Record<SupportedChainId, string> = {
     '50': 'REACT_APP_XDC_RPC',
 }
 
-// We match exactly against the chains we need.
-// its also assumed object key identifiers by chain is the least likely to change regardless of other changes in the source file.
-function extractChainRpcs(source: string, chainId: SupportedChainId): string[] {
-    const chainMatch = source.match(
-        new RegExp(String.raw`(?:^|\n)\s*${chainId}:\s*\{[\s\S]*?rpcs:\s*\[([\s\S]*?)\]`, 'm')
-    )
-
-    return (chainMatch?.[1].match(/https?:\/\/[^"'`\s,]+/g) ?? []).filter(
-        (url) => url.startsWith('http://') || url.startsWith('https://')
-    )
-}
-
 export function getFallbackRpcsByChain(env: Env = process.env): Record<SupportedChainId, string[]> {
     const enabledFallbackChains = new Set(
         (env[FALLBACK_CHAIN_IDS_ENV] ?? SUPPORTED_CHAIN_IDS.join(','))
@@ -60,8 +48,6 @@ export function getFallbackRpcsByChain(env: Env = process.env): Record<Supported
     }, {} as Record<SupportedChainId, string[]>)
 }
 
-export const FALLBACK_RPCS_BY_CHAIN = getFallbackRpcsByChain()
-
 export async function fetchRpcsFromChainlist(): Promise<Record<string, string[]>> {
     const response = await fetch(CHAINLIST_EXTRA_RPCS_URL)
     if (!response.ok) throw new Error('Failed to fetch chainlist')
@@ -69,7 +55,13 @@ export async function fetchRpcsFromChainlist(): Promise<Record<string, string[]>
     const source = await response.text()
 
     return SUPPORTED_CHAIN_IDS.reduce<Record<string, string[]>>((result, chainId) => {
-        result[chainId] = extractChainRpcs(source, chainId)
+        const chainMatch = source.match(
+            new RegExp(String.raw`(?:^|\n)\s*${chainId}:\s*\{[\s\S]*?rpcs:\s*\[([\s\S]*?)\]`, 'm')
+        )
+
+        result[chainId] = (chainMatch?.[1].match(/https?:\/\/[^"'`\s,]+/g) ?? []).filter(
+            (url) => url.startsWith('http://') || url.startsWith('https://')
+        )
         return result
     }, {})
 }
