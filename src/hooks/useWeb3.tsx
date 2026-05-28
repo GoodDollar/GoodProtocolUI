@@ -10,7 +10,7 @@ import { useAppKitNetwork, useAppKitProvider } from '@reown/appkit/react'
 import type { Provider } from '@reown/appkit/react'
 import { useAccount } from 'wagmi'
 
-import { FALLBACK_RPCS_BY_CHAIN, fetchRpcsFromChainlistOrFallback } from 'functions/rpcParsing'
+import { SUPPORTED_CHAIN_IDS, fetchRpcsFromChainlist, getFallbackRpcsByChain } from 'functions/rpcParsing'
 import { getEnv } from 'utils/env'
 import { isMiniPay, getMiniPayProvider } from 'utils/minipay'
 
@@ -71,11 +71,12 @@ async function testRpc(rpcUrl: string): Promise<boolean> {
 
 async function fetchAndTestRpcs(): Promise<Record<string, string[]>> {
     const rpcsByChain: Record<string, string[]> = {}
+    const fallbackRpcsByChain = getFallbackRpcsByChain()
 
     try {
-        const extraRpcs = await fetchRpcsFromChainlistOrFallback()
+        const extraRpcs = await fetchRpcsFromChainlist().catch(() => fallbackRpcsByChain)
 
-        for (const [chainId] of Object.entries(FALLBACK_RPCS_BY_CHAIN)) {
+        for (const chainId of SUPPORTED_CHAIN_IDS) {
             const chainRpcs = extraRpcs[chainId] || []
             const testResults = await Promise.all(
                 chainRpcs.slice(0, 10).map(async (rpcUrl) => ({
@@ -84,12 +85,12 @@ async function fetchAndTestRpcs(): Promise<Record<string, string[]>> {
                 }))
             )
             const validRpcs = testResults.filter((r) => r.isValid).map((r) => r.rpcUrl)
-            rpcsByChain[chainId] = validRpcs.length ? validRpcs : FALLBACK_RPCS_BY_CHAIN[chainId]
+            rpcsByChain[chainId] = validRpcs.length ? validRpcs : fallbackRpcsByChain[chainId]
         }
     } catch (error) {
         console.warn('[fetchAndTestRpcs] Error during RPC fetch/test:', error)
         rpcInitializationPromise = null
-        return FALLBACK_RPCS_BY_CHAIN
+        return fallbackRpcsByChain
     }
 
     return rpcsByChain
@@ -170,21 +171,18 @@ export function useNetwork(): NetworkSettings {
             ])
         )
 
-    const celoRpcList = sample(process.env.REACT_APP_CELO_RPC?.split(',')) ?? FALLBACK_RPCS_BY_CHAIN['42220'][0]
-    const fuseRpcList = sample(process.env.REACT_APP_FUSE_RPC?.split(',')) ?? FALLBACK_RPCS_BY_CHAIN['122'][0]
-    const xdcRpcList = sample(process.env.REACT_APP_XDC_RPC?.split(',')) ?? FALLBACK_RPCS_BY_CHAIN['50'][0]
-    const mainnetList = sample(FALLBACK_RPCS_BY_CHAIN['1']) ?? FALLBACK_RPCS_BY_CHAIN['1'][0]
+    const fallbackRpcsByChain = useMemo(() => getFallbackRpcsByChain(), [])
 
     const [currentNetwork, rpcs] = useMemo(() => {
         const selectedRpcs = {
-            1: sample(testifiedRpcs?.['1'] || []) || mainnetList,
-            122: sample(testifiedRpcs?.['122'] || []) || fuseRpcList,
-            42220: sample(testifiedRpcs?.['42220'] || []) || celoRpcList,
-            50: sample(testifiedRpcs?.['50'] || []) || xdcRpcList,
+            1: sample(testifiedRpcs?.['1'] || []) || sample(fallbackRpcsByChain['1']) || '',
+            122: sample(testifiedRpcs?.['122'] || []) || sample(fallbackRpcsByChain['122']) || '',
+            42220: sample(testifiedRpcs?.['42220'] || []) || sample(fallbackRpcsByChain['42220']) || '',
+            50: sample(testifiedRpcs?.['50'] || []) || sample(fallbackRpcsByChain['50']) || '',
         }
 
         return [process.env.REACT_APP_NETWORK || 'fuse', selectedRpcs]
-    }, [testifiedRpcs, mainnetList, fuseRpcList, celoRpcList, xdcRpcList])
+    }, [testifiedRpcs, fallbackRpcsByChain])
 
     useEffect(() => {
         void initializeRpcs().then((rpcs) => {
