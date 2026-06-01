@@ -7,7 +7,7 @@ msgstr ""
 "X-Generator: @lingui/cli\n"
 "Project-Id-Version: goodprotocolui\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-05-28 10:53\n"
+"PO-Revision-Date: 2026-06-01 10:12\n"
 "Last-Translator: \n"
 "Language: zh_CN\n"
 "Language-Team: Chinese Simplified\n"
@@ -3153,7 +3153,7 @@ msgstr "乘数"
 msgid "My Stake"
 msgstr "我的股份"
 
-#: src/components/NetworkModal/index.tsx:172
+#: src/components/NetworkModal/index.tsx:179
 msgid "network"
 msgstr "网络"
 
@@ -3179,7 +3179,7 @@ msgstr "下个月："
 msgid "No data."
 msgstr "没有数据。"
 
-#: src/components/NetworkModal/index.tsx:171
+#: src/components/NetworkModal/index.tsx:178
 msgid "on the"
 msgstr "在这一点"
 
@@ -3205,7 +3205,7 @@ msgstr ""
 #~ msgid "Output is estimated. You will receive at least {minimumReceived} or the transaction will revert"
 #~ msgstr ""
 
-#: src/components/Web3Status/index.tsx:57
+#: src/components/Web3Status/index.tsx:106
 msgid "Pending"
 msgstr "处理中"
 
@@ -3399,6 +3399,10 @@ msgstr ""
 
 #: src/components/gd/Button/ActionOrSwitchButton.tsx:53
 msgid "Switch to {requireChain}"
+msgstr ""
+
+#: src/components/NetworkModal/index.tsx:187
+msgid "Switching network..."
 msgstr ""
 
 #: src/pages/gd/Swap/index.tsx:67
@@ -3639,7 +3643,7 @@ msgstr "钱包平衡"
 msgid "Watch these indicators in the widget below:"
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:151
+#: src/components/NetworkModal/index.tsx:158
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3702,7 +3706,7 @@ msgstr ""
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "您正在为世界各地的数千人创建UBI。"
 
-#: src/components/NetworkModal/index.tsx:167
+#: src/components/NetworkModal/index.tsx:174
 msgid "You are currently browsing"
 msgstr "您目前正在浏览"
 
