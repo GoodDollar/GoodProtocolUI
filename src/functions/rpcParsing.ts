@@ -55,8 +55,6 @@ export function getFallbackRpcsByChain(env: Env = process.env): Record<Supported
     }, {} as Record<SupportedChainId, string[]>)
 }
 
-export const FALLBACK_RPCS_BY_CHAIN = getFallbackRpcsByChain()
-
 export async function fetchRpcsFromChainlist(): Promise<Record<string, string[]>> {
     const response = await fetch(CHAINLIST_RPCS_URL)
     if (!response.ok) throw new Error('Failed to fetch chainlist')
