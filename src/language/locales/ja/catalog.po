@@ -7,7 +7,7 @@ msgstr ""
 "X-Generator: @lingui/cli\n"
 "Project-Id-Version: goodprotocolui\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-05-28 10:52\n"
+"PO-Revision-Date: 2026-06-01 10:12\n"
 "Last-Translator: \n"
 "Language: ja_JP\n"
 "Language-Team: Japanese\n"
@@ -3153,7 +3153,7 @@ msgstr ""
 msgid "My Stake"
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:172
+#: src/components/NetworkModal/index.tsx:179
 msgid "network"
 msgstr ""
 
@@ -3179,7 +3179,7 @@ msgstr ""
 msgid "No data."
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:171
+#: src/components/NetworkModal/index.tsx:178
 msgid "on the"
 msgstr ""
 
@@ -3205,7 +3205,7 @@ msgstr ""
 #~ msgid "Output is estimated. You will receive at least {minimumReceived} or the transaction will revert"
 #~ msgstr ""
 
-#: src/components/Web3Status/index.tsx:57
+#: src/components/Web3Status/index.tsx:106
 msgid "Pending"
 msgstr "保留中"
 
@@ -3399,6 +3399,10 @@ msgstr ""
 
 #: src/components/gd/Button/ActionOrSwitchButton.tsx:53
 msgid "Switch to {requireChain}"
+msgstr ""
+
+#: src/components/NetworkModal/index.tsx:187
+msgid "Switching network..."
 msgstr ""
 
 #: src/pages/gd/Swap/index.tsx:67
@@ -3639,7 +3643,7 @@ msgstr ""
 msgid "Watch these indicators in the widget below:"
 msgstr ""
 
-#: src/components/NetworkModal/index.tsx:151
+#: src/components/NetworkModal/index.tsx:158
 msgid "We see you don't have {0} added to your wallet. Kindly add the network, and try again."
 msgstr ""
 
@@ -3702,7 +3706,7 @@ msgstr ""
 msgid "You are creating UBI to thousands of people around the world."
 msgstr "あなたは世界中の何千人もの人々にUBIを作成しています。"
 
-#: src/components/NetworkModal/index.tsx:167
+#: src/components/NetworkModal/index.tsx:174
 msgid "You are currently browsing"
 msgstr ""
 
