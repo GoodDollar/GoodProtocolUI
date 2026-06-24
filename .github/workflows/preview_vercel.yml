@@ -41,8 +41,8 @@ jobs:
                   fetch-depth: 0
             - name: setup git
               run: |
-                  git config --local user.email "techadmin@gooddollar.org"
-                  git config --local user.name "Techadmin"
+                  git config --local user.email "laurence@gooddollar.org"
+                  git config --local user.name "LewisB"
                   npm install -g auto-changelog
 
             - name: update version qa
