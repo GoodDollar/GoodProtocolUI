@@ -14,7 +14,14 @@ const GoodBridge = memo(() => {
             <div className="rounded max-w-3xl min-w-96 w-full mx-auto">
                 <SwitchChainModal>
                     {address ? (
-                        <MPBBridgeController />
+                        <MPBBridgeController
+                            bridgeReadOnlyUrls={{
+                                122: 'https://rpc.fuse.io',
+                                42220: 'https://forno.celo.org',
+                                50: 'https://rpc.ankr.com/xdc',
+                                1: 'https://0xrpc.io/eth',
+                            }}
+                        />
                     ) : (
                         <Placeholder className="mx-4">
                             {i18n._(t`Connect a wallet to start bridging assets`)}
