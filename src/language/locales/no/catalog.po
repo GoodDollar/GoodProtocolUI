@@ -2900,7 +2900,7 @@ msgstr ""
 msgid "Connect a wallet to see your portfolio"
 msgstr ""
 
-#: src/pages/gd/GoodBridge/index.tsx:20
+#: src/pages/gd/GoodBridge/index.tsx:27
 msgid "Connect a wallet to start bridging assets"
 msgstr ""
 
