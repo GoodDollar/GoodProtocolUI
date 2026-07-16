@@ -6093,7 +6093,7 @@ __metadata:
     "@gooddollar/good-design": ^0.4.49
     "@gooddollar/goodprotocol": 2.2.1
     "@gooddollar/web3sdk": 0.1.59
-    "@gooddollar/web3sdk-v2": ^0.4.44
+    "@gooddollar/web3sdk-v2": ^0.4.45
     "@goodsdks/savings-widget": ^1.0.0
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
@@ -6281,9 +6281,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@npm:^0.4.44":
-  version: 0.4.44
-  resolution: "@gooddollar/web3sdk-v2@npm:0.4.44"
+"@gooddollar/web3sdk-v2@npm:^0.4.45":
+  version: 0.4.45
+  resolution: "@gooddollar/web3sdk-v2@npm:0.4.45"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -6331,7 +6331,7 @@ __metadata:
     react-native-web: "*"
     viem: 2.*
     wagmi: 2.*
-  checksum: aca2ca89dbab264a23158156fe228f1a7b0e194581438c2c644cc09593e9d88fe0791b2a92a570cb7d232e63f63646c09fc1899af1e016be2b5b87f213a53477
+  checksum: d445656f48a2122401176ecb2c737186ca7a38d7a096e342fed8971d75c4c86a792c74d7d50002d3ead1fc7746821d5e310d883fa04e0226ee2c7891505eb548
   languageName: node
   linkType: hard
 
