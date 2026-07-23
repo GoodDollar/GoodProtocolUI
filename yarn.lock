@@ -5986,9 +5986,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@npm:^0.4.50":
-  version: 0.4.50
-  resolution: "@gooddollar/good-design@npm:0.4.50"
+"@gooddollar/good-design@npm:^0.4.51":
+  version: 0.4.51
+  resolution: "@gooddollar/good-design@npm:0.4.51"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -6039,7 +6039,7 @@ __metadata:
     react: ^18.*
     react-native-paper: "*"
     uuid: "*"
-  checksum: 7575cdf7794d6a4f22e7247a31ac427252676965e377a8d359212e380584edf183ae8e1e55a67289d5a495da538b1e7c0f90def509b5b70bab286adb627f6eb8
+  checksum: 5a3ea3cd3b580534e9d6aa1f60a135a1cc0a130224a1b4937313b9a948d7d5c062b24a6b05a43bd804ad2a209421cc1e754b44cc728f7e43b38e8fdb0b0fab82
   languageName: node
   linkType: hard
 
@@ -6090,7 +6090,7 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": ^0.4.50
+    "@gooddollar/good-design": ^0.4.51
     "@gooddollar/goodprotocol": 2.2.1
     "@gooddollar/web3sdk": 0.1.59
     "@gooddollar/web3sdk-v2": ^0.4.46
