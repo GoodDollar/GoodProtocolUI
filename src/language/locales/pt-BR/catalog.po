@@ -7,7 +7,7 @@ msgstr ""
 "X-Generator: @lingui/cli\n"
 "Project-Id-Version: goodprotocolui\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-01 10:12\n"
+"PO-Revision-Date: 2026-08-06 13:34\n"
 "Last-Translator: \n"
 "Language: pt_BR\n"
 "Language-Team: Portuguese, Brazilian\n"
@@ -2784,7 +2784,7 @@ msgstr ""
 msgid "Change"
 msgstr ""
 
-#: src/pages/gd/BuyGD/index.tsx:84
+#: src/pages/gd/BuyGD/index.tsx:83
 msgid "Choose the currency you want to use and buy cUSD. Your cUSD is then automatically converted into G$."
 msgstr ""
 
@@ -2895,12 +2895,16 @@ msgstr ""
 msgid "Congratulations!"
 msgstr ""
 
+#: src/pages/gd/BuyGD/index.tsx:90
+msgid "Connect a wallet to buy G$"
+msgstr ""
+
 #: src/pages/gd/MicroBridge/index.tsx:36
 #: src/pages/gd/Portfolio/index.tsx:459
 msgid "Connect a wallet to see your portfolio"
 msgstr ""
 
-#: src/pages/gd/GoodBridge/index.tsx:20
+#: src/pages/gd/GoodBridge/index.tsx:27
 msgid "Connect a wallet to start bridging assets"
 msgstr ""
 
@@ -3356,7 +3360,7 @@ msgstr ""
 msgid "Success!"
 msgstr ""
 
-#: src/pages/gd/BuyGD/index.tsx:71
+#: src/pages/gd/BuyGD/index.tsx:70
 msgid "Support global financial inclusion and contribute to social impact by purchasing GoodDollars (G$)."
 msgstr ""
 
