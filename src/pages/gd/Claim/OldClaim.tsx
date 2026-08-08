@@ -11,7 +11,7 @@ import {
     useScreenSize,
     ClaimSuccessModal,
 } from '@gooddollar/good-design'
-import { Box, Center, Text, useBreakpointValue } from 'native-base'
+import { Box, Center, Spinner, Text, useBreakpointValue } from 'native-base'
 import { useConnectionInfo } from 'hooks/useConnectionInfo'
 import {
     useClaim,
@@ -58,6 +58,7 @@ const OldClaim = memo(() => {
     )
 
     const [claimed, setClaimed] = useState<boolean | undefined>(undefined)
+    const [isClaimLoading, setIsClaimLoading] = useState(true)
     const { address, chainId } = useConnectionInfo()
     const { open } = useAppKit()
     const network = SupportedV2Networks[chainId]
@@ -107,15 +108,18 @@ const OldClaim = memo(() => {
 
             if (claimAmount?.isZero()) {
                 setClaimed(true)
+                setIsClaimLoading(false)
                 setRefreshRate(12)
                 resetState()
                 return
             } else if (state.status === 'Success') {
                 setClaimed(true)
+                setIsClaimLoading(false)
                 return
             }
 
             setClaimed(false)
+            setIsClaimLoading(false)
             setRefreshRate('everyBlock')
         }
         if (claimAmount) hasClaimed().catch(noop)
@@ -125,6 +129,7 @@ const OldClaim = memo(() => {
     // upon switching chain we want temporarily to poll everyBlock up untill we have the latest data
     useEffect(() => {
         setClaimed(undefined)
+        setIsClaimLoading(true)
         setRefreshRate('everyBlock')
     }, [/* used */ chainId])
 
@@ -411,16 +416,22 @@ const OldClaim = memo(() => {
                                         </>
                                     )}
 
-                                    <ClaimButton
-                                        firstName="Test"
-                                        method="redirect"
-                                        claim={handleClaim}
-                                        claimed={claimed}
-                                        claiming={state}
-                                        handleConnect={handleConnect}
-                                        chainId={+(chainId ?? 42220)}
-                                        onEvent={handleEvents}
-                                    />
+                                    {isClaimLoading ? (
+                                        <Center pt="8" pb="8">
+                                            <Spinner size="lg" color="gdPrimary" />
+                                        </Center>
+                                    ) : (
+                                        <ClaimButton
+                                            firstName="Test"
+                                            method="redirect"
+                                            claim={handleClaim}
+                                            claimed={claimed}
+                                            claiming={state}
+                                            handleConnect={handleConnect}
+                                            chainId={+(chainId ?? 42220)}
+                                            onEvent={handleEvents}
+                                        />
+                                    )}
                                     {isHoliday ? (
                                         <Center maxW="390" width="100%" mb={8}>
                                             <Image
