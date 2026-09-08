@@ -73,6 +73,13 @@ const localFeatureConfig: FeatureConfigPayload = {
     },
 }
 
+const disabledFeatureConfig: FeatureConfigPayload = {
+    networks: {} as Record<SupportedChains, ChainFeatureConfig>,
+    globalDefaults: {
+        defaultEnabled: false,
+    },
+}
+
 const GoodDappFeatureContext = createContext<FeatureContextValue | undefined>(undefined)
 
 export const GoodDappFeatureProvider: React.FC<{
@@ -80,8 +87,11 @@ export const GoodDappFeatureProvider: React.FC<{
     children: React.ReactNode
 }> = ({ children }) => {
     const { chainId } = useEthers()
-    const [, payload] = useFeatureFlagWithPayload('gooddapp-feature-config')
-    const featureConfig = (payload as FeatureConfigPayload | undefined) ?? localFeatureConfig
+    const [featureConfigFlag, payload] = useFeatureFlagWithPayload('gooddapp-feature-config')
+    const featureConfig =
+        featureConfigFlag === false
+            ? disabledFeatureConfig
+            : (payload as FeatureConfigPayload | undefined) ?? localFeatureConfig
 
     const contextValue: FeatureContextValue = useMemo(() => {
         const isGlobalFeatureSystemDisabled = featureConfig.globalDefaults.defaultEnabled === false

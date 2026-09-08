@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import { usePostHog } from 'posthog-react-native'
 import { Spinner } from 'native-base'
 
@@ -7,6 +7,7 @@ import { RedirectHashRoutes } from 'pages/routes/redirects'
 import { useAppKitNetwork } from '@reown/appkit/react'
 import { CustomLightSpinner } from 'theme'
 import Circle from 'assets/images/blue-loader.svg'
+import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 
 const Dashboard = lazy(() => import('./pages/gd/DatastudioDashboard'))
 const Swap = lazy(() => import('./pages/gd/Swap'))
@@ -19,6 +20,18 @@ const Savings = lazy(() => import('./pages/gd/Savings'))
 const GoodId = lazy(() => import('./pages/gd/GoodId'))
 const BuyGd = lazy(() => import('./pages/gd/BuyGD'))
 const NewsFeedPage = lazy(() => import('./pages/gd/News'))
+
+const FeatureRoute = ({
+    featureName,
+    component: Component,
+}: {
+    featureName: string
+    component: React.ComponentType
+}) => {
+    const { isFeatureActive } = useGoodDappFeatures()
+
+    return isFeatureActive(featureName) ? <Component /> : <Redirect to="/dashboard" />
+}
 
 const RoutesWrapper = () => {
     const posthog = usePostHog()
@@ -57,8 +70,18 @@ function Routes(): JSX.Element {
                 <Route exact strict path="/buy" component={BuyGd} />
                 <Route exact strict path="/claim" component={Claim} />
                 <Route exact strict path="/savings" component={Savings} />
-                <Route exact strict path="/microbridge" component={MicroBridge} />
-                <Route exact strict path="/goodbridge" component={GoodBridge} />
+                <Route
+                    exact
+                    strict
+                    path="/microbridge"
+                    render={() => <FeatureRoute featureName="microBridgeEnabled" component={MicroBridge} />}
+                />
+                <Route
+                    exact
+                    strict
+                    path="/goodbridge"
+                    render={() => <FeatureRoute featureName="lzBridgeEnabled" component={GoodBridge} />}
+                />
                 <Route exact strict path="/news" component={NewsFeedPage} />
                 <Route component={RedirectHashRoutes} />
             </Switch>

@@ -69,8 +69,8 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
 
     const [, payload] = useFeatureFlagWithPayload('advanced-minipay-enabled')
     const { isFeatureActive } = useGoodDappFeatures()
+    const microBridgeEnabled = isFeatureActive('microBridgeEnabled')
     const lzBridgeEnabled = isFeatureActive('lzBridgeEnabled')
-    const showGoodBridgeOnQA = window.location.hostname === 'qa.gooddapp.org'
 
     const containerStyles = useBreakpointValue({
         base: {
@@ -230,15 +230,12 @@ export default function SideBar({ mobile, closeSidebar }: { mobile?: boolean; cl
                     {
                         route: '/microbridge',
                         text: 'Fuse/Celo Bridge',
-                        show: !isMinipay || bridgeEnabled,
+                        show: microBridgeEnabled && (!isMinipay || bridgeEnabled),
                     },
                     {
                         route: '/goodbridge',
                         text: 'GoodBridge',
-                        show:
-                            !networkEnv.includes('production') || showGoodBridgeOnQA
-                                ? true
-                                : !isMinipay && lzBridgeEnabled,
+                        show: !isMinipay && lzBridgeEnabled,
                     },
                     {
                         label: i18n._(t`GoodDollar Main Bridge`),
