@@ -257,6 +257,9 @@
         "wagmi": "^2.14.13",
         "web3": "1.8.2"
     },
+    "engines": {
+        "node": "24.x"
+    },
     "packageManager": "yarn@3.6.1",
     "jest": {
         "testEnvironment": "jsdom",
