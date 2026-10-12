@@ -1,5 +1,5 @@
 import React, { cloneElement, memo, useCallback, useEffect, useMemo, useState } from 'react'
-import { ErrorModal } from '@gooddollar/good-design'
+import * as goodDesign from '@gooddollar/good-design'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { Spinner } from 'native-base'
@@ -24,6 +24,8 @@ import { useTokenBalance } from 'state/wallet/hooks'
 import useG$ from 'hooks/useG$'
 
 import SwapConfirmModal from '../SwapConfirmModal'
+import { isReserveLimitFailure } from '../reserveLimitError'
+import { ReserveAlternativeCheck, useReserveAlternative } from '../useReserveAlternative'
 
 import QuestionHelper from 'components/QuestionHelper'
 
@@ -31,12 +33,25 @@ import GoodReserveLogo from 'assets/images/goodreserve-logo.png'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { useReserveToken } from 'hooks/useReserveToken'
 import { decodeTransactionErrorReason } from 'utils/transactionErrors'
+import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
+
+const { ErrorModal } = goodDesign
+// Keep the existing installed design package usable until the new component is released and upgraded.
+const { ReserveLimitModal } = goodDesign as {
+    ReserveLimitModal?: React.ComponentType<{
+        chainId?: number
+        otherChainId?: number
+        onClose: () => void
+    }>
+}
 
 const MentoSwap = memo(() => {
     const CUSD = useReserveToken()
     const { i18n } = useLingui()
     const [buying, setBuying] = useState(true)
     const [error, setError] = useState<{ message: string; reason?: string } | undefined>(undefined)
+    const [limitErrorChainId, setLimitErrorChainId] = useState<number | undefined>()
+    const { isFeatureActive } = useGoodDappFeatures()
     const [slippageTolerance, setSlippageTolerance] = useState({
         custom: false,
         value: '0.1',
@@ -104,7 +119,19 @@ const MentoSwap = memo(() => {
         ],
         [outputAmountBig.toString(), inputAmountBig.toString(), slippageTolerance.value, swapPair.input.address]
     )
-    const { swap, approve } = useSwap(swapInput[0], swapInput[1], swapInput[2], swapInput[3])
+    const reserveSwap = useSwap(swapInput[0], swapInput[1], swapInput[2], swapInput[3])
+    const { swap, approve } = reserveSwap
+    // Optional until the SDK release is published and consumed through the normal upgrade workflow.
+    const { checkAlternativeReserve } = reserveSwap as typeof reserveSwap & {
+        checkAlternativeReserve?: ReserveAlternativeCheck
+    }
+    const otherReserveChainId = limitErrorChainId === 42220 ? 50 : 42220
+    const verifiedOtherChainId = useReserveAlternative(
+        limitErrorChainId,
+        isFeatureActive('networkEnabled', otherReserveChainId) &&
+            isFeatureActive('reserveEnabled', otherReserveChainId),
+        checkAlternativeReserve
+    )
 
     const [approving, setApproving] = useState(false)
     const [showConfirm, setShowConfirm] = useState(false)
@@ -112,19 +139,26 @@ const MentoSwap = memo(() => {
     const sendData = useSendAnalyticsData()
 
     useEffect(() => {
-        if (swap?.state?.status === 'Exception') {
-            setError({
-                message: i18n._(t`Swap transaction failed, please try again.`),
-                reason: decodeTransactionErrorReason(swap.state.errorMessage),
-            })
+        if (swap?.state?.status === 'Exception' || swap?.state?.status === 'Fail') {
+            if (isReserveLimitFailure(swap.state) && ReserveLimitModal) {
+                setError(undefined)
+                setLimitErrorChainId(swap.state.chainId ?? chainId)
+            } else {
+                setLimitErrorChainId(undefined)
+                setError({
+                    message: i18n._(t`Swap transaction failed, please try again.`),
+                    reason: decodeTransactionErrorReason(swap.state.errorMessage),
+                })
+            }
         }
-        if (approve?.state?.status === 'Exception') {
+        if (approve?.state?.status === 'Exception' || approve?.state?.status === 'Fail') {
+            setLimitErrorChainId(undefined)
             setError({
                 message: i18n._(t`Approve transaction failed, please try again.`),
                 reason: decodeTransactionErrorReason(approve.state.errorMessage),
             })
         }
-    }, [swap?.state?.status, approve?.state?.status])
+    }, [swap.state, approve.state, chainId, i18n])
 
     useEffect(() => {
         if (!(swapPair.input && swapPair.output)) {
@@ -427,6 +461,13 @@ const MentoSwap = memo(() => {
                 overlay="blur"
                 onClose={() => setError(undefined)}
             />
+            {ReserveLimitModal && (
+                <ReserveLimitModal
+                    chainId={limitErrorChainId}
+                    otherChainId={verifiedOtherChainId}
+                    onClose={() => setLimitErrorChainId(undefined)}
+                />
+            )}
             <SwapConfirmModal
                 {...swapFields}
                 open={showConfirm}

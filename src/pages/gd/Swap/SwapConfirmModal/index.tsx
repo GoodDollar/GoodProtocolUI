@@ -114,7 +114,7 @@ const SwapConfirmModal = memo(
             if (swap?.state?.status === 'Mining') {
                 setStatus('SENT')
                 onSent(swap.state.transaction?.hash || '', swap.state.transaction?.from || '')
-            } else if (swap?.state?.status === 'Exception') {
+            } else if (swap?.state?.status === 'Exception' || swap?.state?.status === 'Fail') {
                 onClose()
                 setStatus('REJECTED')
             } else if (swap?.state?.status === 'Success') {
