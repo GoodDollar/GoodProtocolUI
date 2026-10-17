@@ -11,7 +11,7 @@ import {
     useScreenSize,
     ClaimSuccessModal,
 } from '@gooddollar/good-design'
-import { Box, Center, Spinner, Text, useBreakpointValue } from 'native-base'
+import { Box, Button, Center, Spinner, Text, useBreakpointValue } from 'native-base'
 import { useConnectionInfo } from 'hooks/useConnectionInfo'
 import {
     useClaim,
@@ -60,6 +60,8 @@ const OldClaim = memo(() => {
     )
 
     const [claimed, setClaimed] = useState<boolean | undefined>(undefined)
+    const [dataChainId, setDataChainId] = useState<number | undefined>(undefined)
+    const [claimLoadError, setClaimLoadError] = useState<boolean>(false)
     const { address, chainId } = useConnectionInfo()
     const { open } = useAppKit()
     const network = SupportedV2Networks[chainId]
@@ -109,24 +111,38 @@ const OldClaim = memo(() => {
 
             if (claimAmount?.isZero()) {
                 setClaimed(true)
+                setDataChainId(chainId)
                 setRefreshRate(12)
                 resetState()
                 return
             } else if (state.status === 'Success') {
                 setClaimed(true)
+                setDataChainId(chainId)
                 return
             }
 
             setClaimed(false)
+            setDataChainId(chainId)
             setRefreshRate('everyBlock')
         }
-        if (claimAmount) hasClaimed().catch(noop)
+        if (claimAmount && (!nextClaimTime || nextClaimTime.getTime() > INITIAL_PERIOD_EPOCH_MS)) {
+            hasClaimed().catch(noop)
+        }
         // eslint-disable-next-line react-hooks-addons/no-unused-deps, react-hooks/exhaustive-deps
-    }, [claimAmount, chainId, refreshRate])
+    }, [claimAmount, chainId, nextClaimTime, resetState, state.status])
 
-    // upon switching chain we want temporarily to poll everyBlock up untill we have the latest data
     useEffect(() => {
+        if (!isWhitelisted && nextClaimTime && nextClaimTime.getTime() > INITIAL_PERIOD_EPOCH_MS) {
+            setDataChainId(chainId)
+            setClaimed(false)
+        }
+    }, [isWhitelisted, nextClaimTime, chainId])
+
+    // upon switching chain we want temporarily to poll everyBlock up until we have the latest data
+    useEffect(() => {
+        setDataChainId(undefined)
         setClaimed(undefined)
+        setClaimLoadError(false)
         setRefreshRate('everyBlock')
     }, [/* used */ chainId])
 
@@ -157,10 +173,31 @@ const OldClaim = memo(() => {
     const isClaimDataLoading = Boolean(
         address &&
             (activeChainFeatures['claimEnabled'] || !isProd || isMinipay) &&
-            (!nextClaimTime ||
+            !claimLoadError &&
+            (dataChainId !== chainId ||
+                !nextClaimTime ||
                 nextClaimTime.getTime() <= INITIAL_PERIOD_EPOCH_MS ||
                 (isWhitelisted && (claimAmount === undefined || claimed === undefined)))
     )
+
+    useEffect(() => {
+        if (!isClaimDataLoading) {
+            return
+        }
+
+        const timeoutId = setTimeout(() => {
+            setClaimLoadError(true)
+        }, 15000)
+
+        return () => clearTimeout(timeoutId)
+    }, [isClaimDataLoading])
+
+    const handleRetry = useCallback(() => {
+        setClaimLoadError(false)
+        setDataChainId(undefined)
+        setClaimed(undefined)
+        setRefreshRate('everyBlock')
+    }, [])
 
     const handleClaim = useCallback(async () => {
         if (isClaimDataLoading) {
@@ -376,7 +413,30 @@ const OldClaim = memo(() => {
                         <Box style={balanceContainer} position="relative" borderRadius="2xl" overflow="hidden">
                             <Dialog />
 
-                            {claimed ? (
+                            {claimLoadError ? (
+                                <Center w="full" py="10">
+                                    <Text
+                                        fontFamily="subheading"
+                                        color="goodGrey.500"
+                                        fontSize="sm"
+                                        mb="4"
+                                        textAlign="center"
+                                    >
+                                        {i18n._(t`Unable to load claim data. Please check your connection and try again.`)}
+                                    </Text>
+                                    <Button
+                                        variant="outline"
+                                        borderRadius="xl"
+                                        onPress={handleRetry}
+                                    >
+                                        {i18n._(t`Retry`)}
+                                    </Button>
+                                </Center>
+                            ) : isClaimDataLoading ? (
+                                <Center w="full" py="12">
+                                    <Spinner variant="page-loader" size="lg" />
+                                </Center>
+                            ) : claimed ? (
                                 <Box justifyContent="center" display="flex" alignItems="center" textAlign="center">
                                     <ClaimBalance refresh={refreshRate} />
                                     <ClaimSuccessModal open={state?.status === 'Success'} />
@@ -434,23 +494,16 @@ const OldClaim = memo(() => {
                                         </>
                                     )}
 
-                                    {isClaimDataLoading ? (
-                                        <Center w="full" py="12">
-                                            <Spinner variant="page-loader" size="lg" />
-                                        </Center>
-                                    ) : (
-                                        <ClaimButton
-                                            firstName="Test"
-                                            method="redirect"
-                                            claim={handleClaim}
-                                            claimed={claimed}
-                                            claiming={state}
-                                            refresh={refreshRate}
-                                            handleConnect={handleConnect}
-                                            chainId={+(chainId ?? 42220)}
-                                            onEvent={handleEvents}
-                                        />
-                                    )}
+                                    <ClaimButton
+                                        firstName="Test"
+                                        method="redirect"
+                                        claim={handleClaim}
+                                        claimed={claimed}
+                                        claiming={state}
+                                        handleConnect={handleConnect}
+                                        chainId={+(chainId ?? 42220)}
+                                        onEvent={handleEvents}
+                                    />
                                     {isHoliday ? (
                                         <Center maxW="390" width="100%" mb={8}>
                                             <Image
