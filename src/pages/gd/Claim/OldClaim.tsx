@@ -11,7 +11,7 @@ import {
     useScreenSize,
     ClaimSuccessModal,
 } from '@gooddollar/good-design'
-import { Box, Center, Text, useBreakpointValue } from 'native-base'
+import { Box, Center, Spinner, Text, useBreakpointValue } from 'native-base'
 import { useConnectionInfo } from 'hooks/useConnectionInfo'
 import {
     useClaim,
@@ -42,11 +42,13 @@ import { useIsSimpleApp } from 'state/simpleapp/simpleapp'
 import { useDisabledClaimingModal } from './useDisabledClaimModal'
 import { useGoodDappFeatures } from 'hooks/useFeaturesEnabled'
 
+const INITIAL_PERIOD_EPOCH_MS = 86_400_000
+
 const OldClaim = memo(() => {
     const { i18n } = useLingui()
     const [refreshRate, setRefreshRate] = useState<QueryParams['refresh']>(12)
     const claimDetails = useClaim(refreshRate)
-    const { claimAmount } = claimDetails
+    const { claimAmount, isWhitelisted, nextClaimTime } = claimDetails
     const isMinipay = isMiniPay()
     const { resetState, state, send } = useContractFunctionWithDefaultGasFees(
         claimDetails.contract,
@@ -152,7 +154,19 @@ const OldClaim = memo(() => {
         [sendData, network]
     )
 
+    const isClaimDataLoading = Boolean(
+        address &&
+            (activeChainFeatures['claimEnabled'] || !isProd || isMinipay) &&
+            (!nextClaimTime ||
+                nextClaimTime.getTime() <= INITIAL_PERIOD_EPOCH_MS ||
+                (isWhitelisted && (claimAmount === undefined || claimed === undefined)))
+    )
+
     const handleClaim = useCallback(async () => {
+        if (isClaimDataLoading) {
+            return false
+        }
+
         setRefreshRate('everyBlock')
 
         if (!claimEnabled) {
@@ -186,7 +200,16 @@ const OldClaim = memo(() => {
 
         return false
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [send, network, sendData, activeChainFeatures, isSimpleApp, claimEnabled, showModal])
+    }, [
+        isClaimDataLoading,
+        send,
+        network,
+        sendData,
+        activeChainFeatures,
+        isSimpleApp,
+        claimEnabled,
+        showModal,
+    ])
 
     const handleConnect = useCallback(async () => {
         if (!address) {
@@ -411,16 +434,23 @@ const OldClaim = memo(() => {
                                         </>
                                     )}
 
-                                    <ClaimButton
-                                        firstName="Test"
-                                        method="redirect"
-                                        claim={handleClaim}
-                                        claimed={claimed}
-                                        claiming={state}
-                                        handleConnect={handleConnect}
-                                        chainId={+(chainId ?? 42220)}
-                                        onEvent={handleEvents}
-                                    />
+                                    {isClaimDataLoading ? (
+                                        <Center w="full" py="12">
+                                            <Spinner variant="page-loader" size="lg" />
+                                        </Center>
+                                    ) : (
+                                        <ClaimButton
+                                            firstName="Test"
+                                            method="redirect"
+                                            claim={handleClaim}
+                                            claimed={claimed}
+                                            claiming={state}
+                                            refresh={refreshRate}
+                                            handleConnect={handleConnect}
+                                            chainId={+(chainId ?? 42220)}
+                                            onEvent={handleEvents}
+                                        />
+                                    )}
                                     {isHoliday ? (
                                         <Center maxW="390" width="100%" mb={8}>
                                             <Image
