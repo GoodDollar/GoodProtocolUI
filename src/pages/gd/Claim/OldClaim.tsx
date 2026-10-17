@@ -118,12 +118,13 @@ const OldClaim = memo(() => {
             } else if (state.status === 'Success') {
                 setClaimed(true)
                 setDataChainId(chainId)
+                setRefreshRate(12)
                 return
             }
 
             setClaimed(false)
             setDataChainId(chainId)
-            setRefreshRate('everyBlock')
+            setRefreshRate(12)
         }
         if (claimAmount && (!nextClaimTime || nextClaimTime.getTime() > INITIAL_PERIOD_EPOCH_MS)) {
             hasClaimed().catch(noop)
@@ -135,6 +136,7 @@ const OldClaim = memo(() => {
         if (!isWhitelisted && nextClaimTime && nextClaimTime.getTime() > INITIAL_PERIOD_EPOCH_MS) {
             setDataChainId(chainId)
             setClaimed(false)
+            setRefreshRate(12)
         }
     }, [isWhitelisted, nextClaimTime, chainId])
 
@@ -187,6 +189,7 @@ const OldClaim = memo(() => {
 
         const timeoutId = setTimeout(() => {
             setClaimLoadError(true)
+            setRefreshRate(12)
         }, 15000)
 
         return () => clearTimeout(timeoutId)
