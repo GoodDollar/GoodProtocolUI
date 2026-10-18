@@ -243,94 +243,13 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                 params[0].toLowerCase() === address.toLowerCase()
             ) {
                 const code = await webprovider.jsonRpcFetchFunc(method, params)
-                if (typeof code === 'string' && code !== '0x' && code !== '0x0') {
-                    // @usedapp/core treats any address with non-empty bytecode as a Gnosis Safe and
-                    // calls Safe-specific methods (`nonce()`, `ExecutionSuccess`). EIP-7702 delegated
-                    // EOAs (0xef0100...) and non-Safe contract wallets must return '0x' here unless
-                    // the account actually implements the Gnosis Safe interface (`VERSION()`,
-                    // `getThreshold()`, and `nonce()`).
-                    if (code.toLowerCase().startsWith('0xef0100')) {
-                        return '0x'
-                    }
-                    const blockTag = params[1] || 'latest'
-                    const isDeterministicRevert = (err: unknown): boolean => {
-                        const errCode =
-                            (err as { code?: unknown; error?: { code?: unknown } } | null)?.error?.code ??
-                            (err as { code?: unknown } | null)?.code
-                        if (errCode === 3 || errCode === 'CALL_EXCEPTION') return true
-                        const text = [
-                            (err as { message?: string })?.message,
-                            (err as { reason?: string })?.reason,
-                            (err as { error?: { message?: string } })?.error?.message,
-                        ]
-                            .filter((v): v is string => typeof v === 'string')
-                            .join(' ')
-                        return /execution reverted|revert|VM Exception|invalid opcode|function selector was not recognized/i.test(
-                            text
-                        )
-                    }
-                    type ProbeResult =
-                        | { status: 'ok'; data: string }
-                        | { status: 'reverted' }
-                        | { status: 'error'; error: unknown }
-                    const probeSelector = async (selector: string): Promise<ProbeResult> => {
-                        try {
-                            const res = await webprovider.jsonRpcFetchFunc('eth_call', [
-                                { to: params[0], data: selector },
-                                blockTag,
-                            ])
-                            if (typeof res !== 'string') {
-                                return { status: 'error', error: new Error('Invalid eth_call response') }
-                            }
-                            if (res === '0x' || res === '0x0') return { status: 'reverted' }
-                            return { status: 'ok', data: res }
-                        } catch (err) {
-                            if (isDeterministicRevert(err)) {
-                                return { status: 'reverted' }
-                            }
-                            try {
-                                // If the provider responds to a lightweight liveness check, the eth_call
-                                // failure was an unrecognized contract revert rather than a transport failure.
-                                await webprovider.jsonRpcFetchFunc('eth_chainId', [])
-                                return { status: 'reverted' }
-                            } catch {
-                                return { status: 'error', error: err }
-                            }
-                        }
-                    }
-                    const [versionRes, thresholdRes, nonceRes] = await Promise.all([
-                        probeSelector('0xffa1ad74'),
-                        probeSelector('0xe75235b8'),
-                        probeSelector('0xaffed0e0'),
-                    ])
-                    if (
-                        versionRes.status === 'reverted' ||
-                        thresholdRes.status === 'reverted' ||
-                        nonceRes.status === 'reverted'
-                    ) {
-                        return '0x'
-                    }
-                    const failedProbe = [versionRes, thresholdRes, nonceRes].find(
-                        (r): r is { status: 'error'; error: unknown } => r.status === 'error'
-                    )
-                    if (failedProbe) {
-                        throw failedProbe.error
-                    }
-                    if (
-                        versionRes.status === 'ok' &&
-                        thresholdRes.status === 'ok' &&
-                        nonceRes.status === 'ok'
-                    ) {
-                        const isValidUint256 = (hex: string) => /^0x[0-9a-fA-F]{64}$/.test(hex)
-                        const isGnosisSafe =
-                            versionRes.data.length >= 130 &&
-                            isValidUint256(thresholdRes.data) &&
-                            BigInt(thresholdRes.data) > 0n &&
-                            isValidUint256(nonceRes.data)
-                        if (!isGnosisSafe) {
-                            return '0x'
-                        }
-                    }
+                // EIP-7702 delegated EOAs (e.g. MetaMask Smart Accounts on Celo) return a 23-byte
+                // delegation designator (`0xef0100` + 20-byte target address). Per EIP-3541, deployed
+                // smart contracts (such as Gnosis Safe) cannot have bytecode starting with `0xef`.
+                // Returning `'0x'` prevents `@usedapp/core` from misclassifying EIP-7702 EOAs as
+                // Gnosis Safe contracts and calling `nonce()` on them before transaction signing.
+                if (typeof code === 'string' && /^0xef0100[0-9a-fA-F]{40}$/.test(code)) {
+                    return '0x'
                 }
                 return code
             }
