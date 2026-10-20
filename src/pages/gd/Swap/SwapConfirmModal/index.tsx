@@ -16,6 +16,7 @@ import { useLingui } from '@lingui/react'
 import confirmPriceImpactWithoutFee from 'components/swap/confirmPriceImpactWithoutFee'
 import { Percent } from '@sushiswap/sdk'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
+import { canConfirmReserveLimitQa } from '../reserveLimitQa'
 
 import ShareTransaction from 'components/ShareTransaction'
 
@@ -43,6 +44,8 @@ export interface SwapConfirmModalProps extends SwapDetailsFields {
     swap?: { send: () => Promise<any>; state: TransactionStatus }
     meta: BuyInfo | undefined
     buying: boolean
+    qaSimulation?: boolean
+    qaCapabilityActive?: boolean
 }
 
 const SwapConfirmModal = memo(
@@ -58,6 +61,8 @@ const SwapConfirmModal = memo(
         onConfirm,
         swap,
         className,
+        qaSimulation,
+        qaCapabilityActive,
         priceImpact,
         liquidityFee,
         minimumReceived,
@@ -123,6 +128,7 @@ const SwapConfirmModal = memo(
         }, [swap?.state])
 
         const handleSwap = async () => {
+            if (!canConfirmReserveLimitQa(Boolean(qaSimulation), Boolean(qaCapabilityActive))) return
             if (meta && meta.priceImpact && !confirmPriceImpactWithoutFee(meta.priceImpact as unknown as Percent)) {
                 return
             }
@@ -135,14 +141,16 @@ const SwapConfirmModal = memo(
             const outputSymbol = meta?.outputAmount.currency.symbol
 
             try {
-                sendData({
-                    event: 'swap',
-                    action: 'swap_confirm',
-                    amount: buying ? minimumOutputSig : inputSig,
-                    tokens: [inputSymbol, outputSymbol],
-                    type: buying ? 'buy' : 'sell',
-                    network,
-                })
+                if (!qaSimulation) {
+                    sendData({
+                        event: 'swap',
+                        action: 'swap_confirm',
+                        amount: buying ? minimumOutputSig : inputSig,
+                        tokens: [inputSymbol, outputSymbol],
+                        type: buying ? 'buy' : 'sell',
+                        network,
+                    })
+                }
                 //mento reserve
                 if (swap) {
                     await swap.send()
@@ -221,6 +229,17 @@ const SwapConfirmModal = memo(
                                 t`Output is estimated. You will receive at least ${metaMinimunOutput} or the transaction will revert`
                             )}
                         </div>
+                        {qaSimulation && (
+                            <div className="mb-4 text-center" role="status">
+                                {qaCapabilityActive
+                                    ? i18n._(
+                                          t`QA simulation only: the active SDK will inject a Reserve-limit error before signer access. No transaction will be sent.`
+                                      )
+                                    : i18n._(
+                                          t`The Reserve-limit QA capability is unavailable. No transaction will be sent.`
+                                      )}
+                            </div>
+                        )}
                         <div className="mt-8 mb-8">
                             <SwapInfo title="Price" value={price} />
                             {metaMinimunOutput && (
@@ -270,8 +289,11 @@ const SwapConfirmModal = memo(
                                 />
                             )}
                         </div>
-                        <ButtonAction onClick={handleSwap} disabled={false}>
-                            {i18n._(t`CONFIRM SWAP`)}
+                        <ButtonAction
+                            onClick={handleSwap}
+                            disabled={!canConfirmReserveLimitQa(Boolean(qaSimulation), Boolean(qaCapabilityActive))}
+                        >
+                            {qaSimulation ? i18n._(t`SIMULATE RESERVE LIMIT`) : i18n._(t`CONFIRM SWAP`)}
                         </ButtonAction>
                     </>
                 )
@@ -279,13 +301,25 @@ const SwapConfirmModal = memo(
             case 'CONFIRM':
                 content = (
                     <>
-                        <Title className="mt-6 mb-6 text-center">{i18n._(t`Waiting for Confirmation`)}</Title>
+                        <Title className="mt-6 mb-6 text-center">
+                            {qaSimulation
+                                ? i18n._(t`Running QA simulation`)
+                                : i18n._(t`Waiting for Confirmation`)}
+                        </Title>
                         <div className="text-center">
-                            {i18n._(t`Swapping`)} {maxPaid || meta?.inputAmount.toSignificant(6)}{' '}
-                            {meta?.inputAmount.currency.symbol} At {price}
+                            {qaSimulation ? (
+                                i18n._(t`The active SDK will classify the simulated Reserve-limit error.`)
+                            ) : (
+                                <>
+                                    {i18n._(t`Swapping`)} {maxPaid || meta?.inputAmount.toSignificant(6)}{' '}
+                                    {meta?.inputAmount.currency.symbol} At {price}
+                                </>
+                            )}
                         </div>
                         <div className="text-center description">
-                            {i18n._(t`Confirm this transaction in your wallet`)}
+                            {qaSimulation
+                                ? i18n._(t`No wallet confirmation or transaction is involved.`)
+                                : i18n._(t`Confirm this transaction in your wallet`)}
                         </div>
                     </>
                 )

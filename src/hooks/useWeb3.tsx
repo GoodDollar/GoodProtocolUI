@@ -19,6 +19,7 @@ import {
 import { createSdkReadOnlyUrls } from 'functions/rpcProviders'
 import { getEnv } from 'utils/env'
 import { isMiniPay, getMiniPayProvider } from 'utils/minipay'
+import { isReserveLimitQaRequested } from 'pages/gd/Swap/reserveLimitQa'
 
 type NetworkSettings = {
     currentNetwork: string
@@ -44,6 +45,10 @@ type RpcCacheEntry = {
 const RPC_CACHE_KEY = 'GD_RPC_CACHE'
 const CACHE_DURATION_MS = 24 * 60 * 60 * 1000 // 24 hours
 const RPC_TEST_TIMEOUT_MS = 5000
+
+const QaAwareWeb3Provider = Web3Provider as React.ComponentType<
+    React.ComponentProps<typeof Web3Provider> & { qa?: { forceTradeLimits?: boolean } }
+>
 
 let rpcInitializationPromise: Promise<Record<string, string[]>> | null = null
 
@@ -239,6 +244,10 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
     const network = getEnv()
     const contractsEnv = network
     const contractsEnvV2 = network === 'development' ? 'fuse' : network
+    const forceTradeLimitsQa = isReserveLimitQaRequested(
+        import.meta.env.DEV,
+        process.env.REACT_APP_QA_FORCE_TRADE_LIMITS
+    )
 
     if (!rpcs) return <></>
     return (
@@ -252,9 +261,10 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                 },
             }}
         >
-            <Web3Provider
+            <QaAwareWeb3Provider
                 web3Provider={webprovider}
                 env={contractsEnvV2}
+                qa={{ forceTradeLimits: forceTradeLimitsQa }}
                 config={{
                     pollingInterval: 15000,
                     networks: [Mainnet, Fuse, Celo, Xdc],

@@ -3,7 +3,7 @@ import * as goodDesign from '@gooddollar/good-design'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { Spinner } from 'native-base'
-import { useSwapMeta, useSwap } from '@gooddollar/web3sdk-v2'
+import { useSwapMeta, useSwap, useWeb3Context } from '@gooddollar/web3sdk-v2'
 import { SupportedChainId } from '@gooddollar/web3sdk'
 import { debounce } from 'lodash'
 import { BigNumber, ethers } from 'ethers'
@@ -24,8 +24,15 @@ import { useTokenBalance } from 'state/wallet/hooks'
 import useG$ from 'hooks/useG$'
 
 import SwapConfirmModal from '../SwapConfirmModal'
-import { isReserveLimitFailure } from '../reserveLimitError'
+import { getReserveLimitFailureChainId } from '../reserveLimitError'
 import { ReserveAlternativeCheck, useReserveAlternative } from '../useReserveAlternative'
+import {
+    canOpenReserveLimitQa,
+    canUseRealReserveActions,
+    getReserveActionMode,
+    isReserveLimitQaActive,
+} from '../reserveLimitQa'
+import type { ReserveLimitQaCapability } from '../reserveLimitQa'
 
 import QuestionHelper from 'components/QuestionHelper'
 
@@ -59,6 +66,15 @@ const MentoSwap = memo(() => {
     const { address } = useAppKitAccount()
     const { chainId: rawChainId } = useAppKitNetwork()
     const chainId = typeof rawChainId === 'number' ? rawChainId : Number(rawChainId) || 42220
+    const { qa: sdkQa } = useWeb3Context() as { qa?: ReserveLimitQaCapability }
+    const qaSimulationActive = isReserveLimitQaActive(
+        import.meta.env.DEV,
+        process.env.REACT_APP_QA_FORCE_TRADE_LIMITS,
+        sdkQa,
+        Boolean(ReserveLimitModal)
+    )
+    const [qaConfirmation, setQaConfirmation] = useState(false)
+    const realReserveActionsAllowed = canUseRealReserveActions(qaSimulationActive || qaConfirmation)
     const network = SupportedChainId[chainId]
     const [inputAmount, setInputAmount] = useState('')
     const [outputAmount, setOutputAmount] = useState('')
@@ -140,9 +156,10 @@ const MentoSwap = memo(() => {
 
     useEffect(() => {
         if (swap?.state?.status === 'Exception' || swap?.state?.status === 'Fail') {
-            if (isReserveLimitFailure(swap.state) && ReserveLimitModal) {
+            const classifiedLimitChainId = getReserveLimitFailureChainId(swap.state, chainId)
+            if (classifiedLimitChainId !== undefined && ReserveLimitModal) {
                 setError(undefined)
-                setLimitErrorChainId(swap.state.chainId ?? chainId)
+                setLimitErrorChainId(classifiedLimitChainId)
             } else {
                 setLimitErrorChainId(undefined)
                 setError({
@@ -174,6 +191,7 @@ const MentoSwap = memo(() => {
     }, [swapMeta, lastEdited?.field, swapPair])
 
     const handleApprove = useCallback(async () => {
+        if (!realReserveActionsAllowed) return
         if (approved) return
         const type = buying ? 'buy' : 'sell'
         try {
@@ -188,7 +206,7 @@ const MentoSwap = memo(() => {
         } finally {
             setApproving(false)
         }
-    }, [approved, buying, network, approve])
+    }, [realReserveActionsAllowed, approved, buying, network, approve])
 
     useEffect(() => {
         approve.resetState()
@@ -224,6 +242,24 @@ const MentoSwap = memo(() => {
                 ? Number(cusdBalance?.toExact()) < Number(inputAmount)
                 : Number(g$Balance?.toExact()) < Number(inputAmount),
         [inputAmount, cusdBalance?.toExact(), g$Balance?.toExact(), buying]
+    )
+    const hasValidQaQuote = Boolean(
+        swapMeta &&
+            lastEdited &&
+            inputAmountBig.gt(0) &&
+            outputAmountBig.gt(0) &&
+            (lastEdited.field === 'input' ? swapMeta.amountOut?.gt(0) : swapMeta.amountIn?.gt(0))
+    )
+    const canStartQaSimulation = canOpenReserveLimitQa({
+        active: qaSimulationActive,
+        chainId: rawChainId == null ? undefined : chainId,
+        address,
+        hasValidQuote: hasValidQaQuote,
+    })
+    const reserveActionMode = getReserveActionMode(
+        qaSimulationActive || qaConfirmation,
+        canStartQaSimulation,
+        balanceNotEnough
     )
 
     const metaSymbols = { input: buying ? CUSD.symbol : G$?.symbol, output: buying ? G$?.symbol : CUSD.symbol }
@@ -295,7 +331,10 @@ const MentoSwap = memo(() => {
               Price impact is low as G$ liquidity is produced on demand depending by the reserve ratio.`
     )
 
-    const onModalClosed = useCallback(() => setShowConfirm(false), [setShowConfirm])
+    const onModalClosed = useCallback(() => {
+        setShowConfirm(false)
+        setQaConfirmation(false)
+    }, [setShowConfirm, setQaConfirmation])
 
     const onFromChange = useCallback(
         (value: any) => {
@@ -329,6 +368,7 @@ const MentoSwap = memo(() => {
     }, [setBuying])
 
     const onSwap = useCallback(() => {
+        if (!realReserveActionsAllowed) return
         sendData({
             event: 'swap',
             action: 'swap_start',
@@ -336,7 +376,16 @@ const MentoSwap = memo(() => {
             network,
         })
         setShowConfirm(true)
-    }, [sendData, setShowConfirm, buying, network])
+    }, [realReserveActionsAllowed, sendData, setShowConfirm, buying, network])
+
+    const openQaSimulation = useCallback(() => {
+        if (!canStartQaSimulation) return
+        setError(undefined)
+        setLimitErrorChainId(undefined)
+        swap.resetState()
+        setQaConfirmation(true)
+        setShowConfirm(true)
+    }, [canStartQaSimulation, setError, setLimitErrorChainId, setQaConfirmation, setShowConfirm, swap])
 
     const onSwapConfirmed = useCallback(async () => {
         setInputAmount('')
@@ -414,11 +463,19 @@ const MentoSwap = memo(() => {
                             <ButtonAction style={{ marginTop: 22, justifyContent: 'center' }} disabled>
                                 <Spinner variant="page-loader" size="sm" color="white" paddingBottom="0" />
                             </ButtonAction>
+                        ) : reserveActionMode === 'simulate-limit' ? (
+                            <ButtonAction style={{ marginTop: 22 }} onClick={openQaSimulation}>
+                                {i18n._(t`QA simulation: Reserve limit`)}
+                            </ButtonAction>
+                        ) : reserveActionMode === 'qa-unavailable' ? (
+                            <ButtonAction style={{ marginTop: 22 }} disabled>
+                                {i18n._(t`QA simulation requires a connected Celo/XDC wallet and valid quote`)}
+                            </ButtonAction>
                         ) : !address ? (
                             <ButtonAction style={{ marginTop: 22 }} disabled>
                                 Connect wallet
                             </ButtonAction>
-                        ) : !swapMeta || (swapMeta && balanceNotEnough) ? (
+                        ) : !swapMeta || reserveActionMode === 'insufficient-balance' ? (
                             <ButtonAction style={{ marginTop: 22 }} disabled>
                                 Insufficient Funds
                             </ButtonAction>
@@ -433,7 +490,13 @@ const MentoSwap = memo(() => {
                                     style={{ marginTop: 22 }}
                                     width={'auto'}
                                     onClick={handleApprove}
-                                    disabled={!swapMeta || approved || approving || balanceNotEnough}
+                                    disabled={
+                                        !realReserveActionsAllowed ||
+                                        !swapMeta ||
+                                        approved ||
+                                        approving ||
+                                        balanceNotEnough
+                                    }
                                 >
                                     {approving
                                         ? i18n._(t`Approving`)
@@ -445,7 +508,7 @@ const MentoSwap = memo(() => {
                                     className="flex-grow"
                                     style={{ marginTop: 22 }}
                                     width={'auto'}
-                                    disabled={!swapMeta || balanceNotEnough || !approved}
+                                    disabled={!realReserveActionsAllowed || !swapMeta || balanceNotEnough || !approved}
                                     onClick={onSwap}
                                 >
                                     {i18n._(t`Swap`)}
@@ -509,6 +572,8 @@ const MentoSwap = memo(() => {
                 }}
                 buying={buying}
                 onConfirm={onSwapConfirmed}
+                qaSimulation={qaConfirmation}
+                qaCapabilityActive={qaSimulationActive}
             />
         </SwapContext.Provider>
     )
