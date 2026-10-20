@@ -19,7 +19,7 @@ import {
 import { createSdkReadOnlyUrls } from 'functions/rpcProviders'
 import { getEnv } from 'utils/env'
 import { isMiniPay, getMiniPayProvider } from 'utils/minipay'
-import { isReserveLimitQaRequested } from 'pages/gd/Swap/reserveLimitQa'
+import { isReserveLimitQaRequested } from 'functions/reserveLimitQa'
 
 type NetworkSettings = {
     currentNetwork: string

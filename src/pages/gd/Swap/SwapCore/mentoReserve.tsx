@@ -31,8 +31,8 @@ import {
     canUseRealReserveActions,
     getReserveActionMode,
     isReserveLimitQaActive,
-} from '../reserveLimitQa'
-import type { ReserveLimitQaCapability } from '../reserveLimitQa'
+} from 'functions/reserveLimitQa'
+import type { ReserveLimitQaCapability } from 'functions/reserveLimitQa'
 
 import QuestionHelper from 'components/QuestionHelper'
 

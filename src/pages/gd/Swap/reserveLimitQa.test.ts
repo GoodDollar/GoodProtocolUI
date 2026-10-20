@@ -5,7 +5,7 @@ import {
     getReserveActionMode,
     isReserveLimitQaActive,
     isReserveLimitQaRequested,
-} from './reserveLimitQa'
+} from '../../../functions/reserveLimitQa'
 import { getReserveLimitFailureChainId } from './reserveLimitError'
 
 describe('Reserve-limit QA mode', () => {

@@ -16,7 +16,7 @@ import { useLingui } from '@lingui/react'
 import confirmPriceImpactWithoutFee from 'components/swap/confirmPriceImpactWithoutFee'
 import { Percent } from '@sushiswap/sdk'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
-import { canConfirmReserveLimitQa } from '../reserveLimitQa'
+import { canConfirmReserveLimitQa } from 'functions/reserveLimitQa'
 
 import ShareTransaction from 'components/ShareTransaction'
 
