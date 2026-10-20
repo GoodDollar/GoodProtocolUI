@@ -213,10 +213,10 @@
     },
     "dependencies": {
         "@babel/runtime": "^7.18.9",
-        "@gooddollar/good-design": "file:temp-packages/@gooddollar-good-design-0.4.52.tgz",
+        "@gooddollar/good-design": "file:.yalc/@gooddollar/good-design",
         "@gooddollar/goodprotocol": "2.2.1",
         "@gooddollar/web3sdk": "0.1.59",
-        "@gooddollar/web3sdk-v2": "file:temp-packages/@gooddollar-web3sdk-v2-0.4.48.tgz",
+        "@gooddollar/web3sdk-v2": "file:.yalc/@gooddollar/web3sdk-v2",
         "@goodsdks/savings-widget": "^1.0.0",
         "@headlessui/react": "1.5.0",
         "@lingui/format-json": "^4.0.0",
@@ -256,6 +256,9 @@
         "viem": "^2.23.11",
         "wagmi": "^2.14.13",
         "web3": "1.8.2"
+    },
+    "engines": {
+        "node": "24.x"
     },
     "packageManager": "yarn@3.6.1",
     "jest": {

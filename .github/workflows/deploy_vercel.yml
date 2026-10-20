@@ -24,10 +24,10 @@ jobs:
         if: "github.event_name == 'workflow_dispatch' && github.event.inputs.release == 'production'"
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/setup-node@v3
+            - uses: actions/setup-node@v6
               with:
-                  node-version: 20
-            - uses: actions/checkout@v3
+                  node-version: 24
+            - uses: actions/checkout@v6
               with:
                   persist-credentials: false
                   fetch-depth: 0
@@ -48,11 +48,15 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
+            - uses: actions/checkout@v6
+            - uses: actions/setup-node@v6
               with:
-                  node-version: 20
+                  node-version: 24
                   cache: yarn
+            - name: Enable Yarn
+              run: corepack enable
+            - name: Verify Node.js version
+              run: node --version
             - run: yarn install --immutable
             - run: yarn vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
             - run: yarn vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
