@@ -11,6 +11,8 @@ import { getReserveLimitFailureChainId } from './reserveLimitError'
 describe('Reserve-limit QA mode', () => {
     it('requires the exact opt-in in a development build and SDK activation', () => {
         expect(isReserveLimitQaRequested(true, 'true')).toBe(true)
+        expect(isReserveLimitQaRequested(true, undefined)).toBe(false)
+        expect(isReserveLimitQaRequested(true, 'false')).toBe(false)
         expect(isReserveLimitQaRequested(true, 'TRUE')).toBe(false)
         expect(isReserveLimitQaRequested(false, 'true')).toBe(false)
         expect(isReserveLimitQaActive(true, 'true', undefined, true)).toBe(false)

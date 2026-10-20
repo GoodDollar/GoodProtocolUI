@@ -69,7 +69,7 @@ const MentoSwap = memo(() => {
     const { qa: sdkQa } = useWeb3Context() as { qa?: ReserveLimitQaCapability }
     const qaSimulationActive = isReserveLimitQaActive(
         import.meta.env.DEV,
-        process.env.REACT_APP_QA_FORCE_TRADE_LIMITS,
+        import.meta.env.REACT_APP_QA_FORCE_TRADE_LIMITS,
         sdkQa,
         Boolean(ReserveLimitModal)
     )

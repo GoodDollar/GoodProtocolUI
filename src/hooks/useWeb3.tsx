@@ -246,7 +246,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
     const contractsEnvV2 = network === 'development' ? 'fuse' : network
     const forceTradeLimitsQa = isReserveLimitQaRequested(
         import.meta.env.DEV,
-        process.env.REACT_APP_QA_FORCE_TRADE_LIMITS
+        import.meta.env.REACT_APP_QA_FORCE_TRADE_LIMITS
     )
 
     if (!rpcs) return <></>
