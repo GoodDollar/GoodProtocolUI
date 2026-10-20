@@ -1,129 +1,124 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useWeb3Context } from '@gooddollar/web3sdk-v2'
-import { Web3Provider } from '@ethersproject/providers'
+import { Web3Provider, TransactionReceipt } from '@ethersproject/providers'
 import { useAppKitNetwork } from '@reown/appkit/react'
+import { i18n } from '@lingui/core'
 import { useAddPopup, useBlockNumber } from '../application/hooks'
 import { AppDispatch, AppState } from '../index'
-import { checkedTransaction, finalizeTransaction, removeTransaction } from './actions'
+import {
+    checkedTransaction,
+    finalizeTransaction,
+    removeTransaction,
+    replaceTransaction,
+    SerializableTransactionReceipt,
+} from './actions'
 import { removePopup } from '../application/actions'
-import { checkPendingTransaction, PENDING_TIMEOUT_MS } from './lifecycle'
+import { checkPendingTransaction, PENDING_TIMEOUT_MS, shouldCheck } from './lifecycle'
 import type { TransactionDetails } from './reducer'
 
-export function shouldCheck(
-    lastBlockNumber: number,
-    tx: { addedTime: number; receipt?: object; lastCheckedBlockNumber?: number }
-): boolean {
-    if (tx.receipt) return false
-    if (!tx.lastCheckedBlockNumber) return true
-    const blocksSinceCheck = lastBlockNumber - tx.lastCheckedBlockNumber
-    if (blocksSinceCheck < 1) return false
-    const minutesPending = (new Date().getTime() - tx.addedTime) / 1000 / 60
-    if (minutesPending > 60) {
-        // every 10 blocks if pending for longer than an hour
-        return blocksSinceCheck > 9
-    } else if (minutesPending > 5) {
-        // every 3 blocks if pending more than 5 minutes
-        return blocksSinceCheck > 2
-    } else {
-        // otherwise every block
-        return true
+export { shouldCheck } from './lifecycle'
+
+function serializable(receipt: TransactionReceipt): SerializableTransactionReceipt {
+    return {
+        blockHash: receipt.blockHash,
+        blockNumber: receipt.blockNumber,
+        contractAddress: receipt.contractAddress,
+        from: receipt.from,
+        status: receipt.status,
+        to: receipt.to,
+        transactionHash: receipt.transactionHash,
+        transactionIndex: receipt.transactionIndex,
     }
 }
 
 export default function Updater(): null {
     const { chainId } = useAppKitNetwork()
     const { web3Provider: library } = useWeb3Context() as { web3Provider: Web3Provider }
-
     const lastBlockNumber = useBlockNumber()
-
     const dispatch = useDispatch<AppDispatch>()
     const state = useSelector<AppState, AppState['transactions']>((state) => state.transactions)
-
     const transactions: Record<string, TransactionDetails> = chainId ? state[chainId] ?? {} : {}
-
-    // show popup on confirm
     const addPopup = useAddPopup()
 
-    // Expiration also runs when block production stops; never wait for another block.
     useEffect(() => {
         if (!chainId || !library) return
         let active = true
-        const timers = Object.entries(transactions).filter(([, tx]) => !tx.receipt).map(([hash, tx]) =>
-            setTimeout(() => {
-                void checkPendingTransaction(library, hash, tx.addedTime).then(result => {
-                    if (!active) return
-                    if ('dismissed' in result) {
-                        dispatch(removeTransaction({ chainId: +chainId, hash }))
-                        dispatch(removePopup({ key: hash }))
-                    }
-                }).catch(error => console.error(`failed to expire transaction hash: ${hash}`, error))
-            }, Math.max(0, tx.addedTime + PENDING_TIMEOUT_MS - Date.now()))
-        )
-        return () => { active = false; timers.forEach(clearTimeout) }
-    }, [chainId, library, transactions, dispatch])
-
-    useEffect(() => {
-        if (!chainId || !library || !lastBlockNumber) return
-        let active = true
-        Object.keys(transactions)
-            .filter((hash) => shouldCheck(lastBlockNumber, transactions[hash]))
-            .forEach((hash) => {
-                checkPendingTransaction(library, hash, transactions[hash].addedTime)
-                    .then((result) => {
-                        if (!active) return
-                        if ('dismissed' in result) {
-                            dispatch(removeTransaction({ chainId: +chainId, hash }))
-                            dispatch(removePopup({ key: hash }))
-                            return
-                        }
-                        const receipt = 'receipt' in result ? result.receipt : null
-                        const confirmedSummary = transactions[hash]?.summary
-                        if (receipt) {
-                            dispatch(
-                                finalizeTransaction({
-                                    chainId: +(chainId ?? 1),
-                                    hash,
-                                    receipt: {
-                                        blockHash: receipt.blockHash,
-                                        blockNumber: receipt.blockNumber,
-                                        contractAddress: receipt.contractAddress,
-                                        from: receipt.from,
-                                        status: receipt.status,
-                                        to: receipt.to,
-                                        transactionHash: receipt.transactionHash,
-                                        transactionIndex: receipt.transactionIndex,
-                                    },
-                                    summary: confirmedSummary,
-                                })
-                            )
-
-                            addPopup(
-                                {
-                                    txn: {
-                                        hash,
-                                        success: receipt.status === 1,
-                                        summary: confirmedSummary,
-                                    },
+        const checking = new Set<string>()
+        const timers: ReturnType<typeof setTimeout>[] = []
+        const check = async (hash: string, tx: TransactionDetails) => {
+            if (checking.has(hash)) return
+            checking.add(hash)
+            try {
+                const result = await checkPendingTransaction(library, hash, tx.addedTime)
+                if (!active) return
+                if ('replacement' in result) {
+                    const { hash: replacementHash, receipt, reason } = result.replacement
+                    const summary =
+                        reason === 'repriced'
+                            ? tx.summary
+                            : reason === 'cancelled'
+                            ? i18n._('Transaction cancelled')
+                            : i18n._('Replacement transaction')
+                    dispatch(
+                        replaceTransaction({
+                            chainId: +chainId,
+                            hash,
+                            replacementHash,
+                            receipt: serializable(receipt),
+                            reason,
+                            summary,
+                        })
+                    )
+                    dispatch(removePopup({ key: hash }))
+                    if (!transactions[replacementHash]?.receipt) {
+                        addPopup(
+                            {
+                                txn: {
+                                    hash: replacementHash,
+                                    success: reason !== 'cancelled' && receipt.status === 1,
+                                    summary,
                                 },
-                                hash
-                            )
-                        } else {
-                            dispatch(
-                                checkedTransaction({
-                                    chainId: +(chainId ?? 1),
-                                    hash,
-                                    blockNumber: lastBlockNumber,
-                                })
-                            )
-                        }
-                    })
-                    .catch((error) => {
-                        console.error(`failed to check transaction hash: ${hash}`, error)
-                    })
-            })
-        return () => { active = false }
+                            },
+                            replacementHash
+                        )
+                    }
+                } else if ('dismissed' in result) {
+                    dispatch(removeTransaction({ chainId: +chainId, hash }))
+                    dispatch(removePopup({ key: hash }))
+                } else if ('receipt' in result) {
+                    dispatch(
+                        finalizeTransaction({
+                            chainId: +chainId,
+                            hash,
+                            receipt: serializable(result.receipt),
+                            summary: tx.summary,
+                        })
+                    )
+                    addPopup({ txn: { hash, success: result.receipt.status === 1, summary: tx.summary } }, hash)
+                } else if (lastBlockNumber) {
+                    dispatch(checkedTransaction({ chainId: +chainId, hash, blockNumber: lastBlockNumber }))
+                }
+            } catch (error) {
+                if (active) console.error(`failed to check transaction hash: ${hash}`, error)
+            } finally {
+                checking.delete(hash)
+            }
+        }
+        for (const [hash, tx] of Object.entries(transactions)) {
+            if (tx.receipt) continue
+            if (lastBlockNumber && shouldCheck(lastBlockNumber, tx)) void check(hash, tx)
+            // The timer uses the same receipt handling as block polling, including confirmations.
+            timers.push(
+                setTimeout(() => {
+                    void check(hash, tx)
+                }, Math.max(0, tx.addedTime + PENDING_TIMEOUT_MS - Date.now()))
+            )
+        }
+        return () => {
+            active = false
+            timers.forEach(clearTimeout)
+        }
     }, [chainId, library, transactions, lastBlockNumber, dispatch, addPopup])
-
     return null
 }

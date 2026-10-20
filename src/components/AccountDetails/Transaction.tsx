@@ -75,7 +75,11 @@ export default function Transaction({ hash }: { hash: string }): any {
 
     const tx = allTransactions?.[hash]
     const pending = !tx?.receipt
-    const success = !pending && tx && (tx.receipt?.status === 1 || typeof tx.receipt?.status === 'undefined')
+    const success =
+        !pending &&
+        tx &&
+        tx.replacementReason !== 'cancelled' &&
+        (tx.receipt?.status === 1 || typeof tx.receipt?.status === 'undefined')
     const summary = tx?.summary
 
     if (!chainId) return null

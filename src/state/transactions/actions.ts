@@ -32,6 +32,14 @@ export const addTransaction = createAction<{
 }>('transactions/addTransaction')
 export const clearAllTransactions = createAction<{ chainId: ChainId }>('transactions/clearAllTransactions')
 export const removeTransaction = createAction<{ chainId: ChainId; hash: string }>('transactions/removeTransaction')
+export const replaceTransaction = createAction<{
+    chainId: ChainId
+    hash: string
+    replacementHash: string
+    receipt: SerializableTransactionReceipt
+    reason: 'repriced' | 'cancelled' | 'replaced'
+    summary?: string
+}>('transactions/replaceTransaction')
 export const finalizeTransaction = createAction<{
     chainId: ChainId
     hash: string

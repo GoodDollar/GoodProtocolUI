@@ -5,6 +5,7 @@ import {
     clearAllTransactions,
     finalizeTransaction,
     removeTransaction,
+    replaceTransaction,
     SerializableTransactionReceipt,
 } from './actions'
 
@@ -19,6 +20,7 @@ export interface TransactionDetails {
     lastCheckedBlockNumber?: number
     addedTime: number
     confirmedTime?: number
+    replacementReason?: 'repriced' | 'cancelled' | 'replaced'
     from: string
     tradeInfo?: {
         input: {
@@ -62,6 +64,27 @@ const transactions = createReducer(initialState, (builder) =>
                 delete transactions[chainId][hash]
             }
         })
+        .addCase(
+            replaceTransaction,
+            (transactions, { payload: { chainId, hash, replacementHash, receipt, reason, summary } }) => {
+                const tx = transactions[chainId]?.[hash]
+                if (!tx || tx.receipt || hash === replacementHash) return
+                const existing = transactions[chainId][replacementHash]
+                transactions[chainId][replacementHash] = {
+                    ...(reason === 'repriced' ? tx : { from: receipt.from, addedTime: tx.addedTime }),
+                    ...existing,
+                    hash: replacementHash,
+                    receipt,
+                    confirmedTime: now(),
+                    replacementReason: reason,
+                    claim: reason === 'repriced' ? existing?.claim ?? tx.claim : undefined,
+                    approval: reason === 'repriced' ? existing?.approval ?? tx.approval : undefined,
+                    tradeInfo: reason === 'repriced' ? existing?.tradeInfo ?? tx.tradeInfo : undefined,
+                    summary: existing?.summary ?? (reason === 'repriced' ? tx.summary : summary),
+                }
+                delete transactions[chainId][hash]
+            }
+        )
         .addCase(checkedTransaction, (transactions, { payload: { chainId, hash, blockNumber } }) => {
             const tx = transactions[chainId]?.[hash]
             if (!tx) {
@@ -80,7 +103,7 @@ const transactions = createReducer(initialState, (builder) =>
             }
             tx.receipt = receipt
             tx.confirmedTime = now()
-            tx.summary = summary
+            if (summary !== undefined) tx.summary = summary
         })
 )
 
