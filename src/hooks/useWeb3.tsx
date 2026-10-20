@@ -46,10 +46,6 @@ const RPC_CACHE_KEY = 'GD_RPC_CACHE'
 const CACHE_DURATION_MS = 24 * 60 * 60 * 1000 // 24 hours
 const RPC_TEST_TIMEOUT_MS = 5000
 
-const QaAwareWeb3Provider = Web3Provider as React.ComponentType<
-    React.ComponentProps<typeof Web3Provider> & { qa?: { forceTradeLimits?: boolean } }
->
-
 let rpcInitializationPromise: Promise<Record<string, string[]>> | null = null
 
 async function testRpc(rpcUrl: string): Promise<boolean> {
@@ -261,7 +257,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                 },
             }}
         >
-            <QaAwareWeb3Provider
+            <Web3Provider
                 web3Provider={webprovider}
                 env={contractsEnvV2}
                 qa={{ forceTradeLimits: forceTradeLimitsQa }}
@@ -273,7 +269,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                 }}
             >
                 {children}
-            </QaAwareWeb3Provider>
+            </Web3Provider>
         </GdSdkContext.Provider>
     )
 }

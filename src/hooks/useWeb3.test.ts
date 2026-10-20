@@ -3,7 +3,7 @@ import path from 'path'
 import * as ts from 'typescript'
 
 describe('Web3 provider wiring', () => {
-    it('transpiles the provider with the QA-aware opening and closing component tags', () => {
+    it('transpiles the provider with matching SDK tags and QA prop wiring', () => {
         const source = fs.readFileSync(path.join(__dirname, 'useWeb3.tsx'), 'utf8')
         const result = ts.transpileModule(source, {
             fileName: 'useWeb3.tsx',
@@ -19,8 +19,9 @@ describe('Web3 provider wiring', () => {
         )
 
         expect(errors.map((diagnostic) => ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n'))).toEqual([])
-        expect(source).toContain('<QaAwareWeb3Provider')
-        expect(source).toContain('</QaAwareWeb3Provider>')
+        expect(source).toContain('<Web3Provider')
+        expect(source).toContain('</Web3Provider>')
+        expect(source).not.toContain('QaAwareWeb3Provider')
         expect(source).toContain('qa={{ forceTradeLimits: forceTradeLimitsQa }}')
     })
 })
