@@ -5,7 +5,10 @@ import { Web3Provider } from '@ethersproject/providers'
 import { useAppKitNetwork } from '@reown/appkit/react'
 import { useAddPopup, useBlockNumber } from '../application/hooks'
 import { AppDispatch, AppState } from '../index'
-import { checkedTransaction, finalizeTransaction } from './actions'
+import { checkedTransaction, finalizeTransaction, removeTransaction } from './actions'
+import { removePopup } from '../application/actions'
+import { checkPendingTransaction, PENDING_TIMEOUT_MS } from './lifecycle'
+import type { TransactionDetails } from './reducer'
 
 export function shouldCheck(
     lastBlockNumber: number,
@@ -37,19 +40,44 @@ export default function Updater(): null {
     const dispatch = useDispatch<AppDispatch>()
     const state = useSelector<AppState, AppState['transactions']>((state) => state.transactions)
 
-    const transactions = chainId ? state[chainId] ?? {} : {}
+    const transactions: Record<string, TransactionDetails> = chainId ? state[chainId] ?? {} : {}
 
     // show popup on confirm
     const addPopup = useAddPopup()
 
+    // Expiration also runs when block production stops; never wait for another block.
+    useEffect(() => {
+        if (!chainId || !library) return
+        let active = true
+        const timers = Object.entries(transactions).filter(([, tx]) => !tx.receipt).map(([hash, tx]) =>
+            setTimeout(() => {
+                void checkPendingTransaction(library, hash, tx.addedTime).then(result => {
+                    if (!active) return
+                    if ('dismissed' in result) {
+                        dispatch(removeTransaction({ chainId: +chainId, hash }))
+                        dispatch(removePopup({ key: hash }))
+                    }
+                }).catch(error => console.error(`failed to expire transaction hash: ${hash}`, error))
+            }, Math.max(0, tx.addedTime + PENDING_TIMEOUT_MS - Date.now()))
+        )
+        return () => { active = false; timers.forEach(clearTimeout) }
+    }, [chainId, library, transactions, dispatch])
+
     useEffect(() => {
         if (!chainId || !library || !lastBlockNumber) return
+        let active = true
         Object.keys(transactions)
             .filter((hash) => shouldCheck(lastBlockNumber, transactions[hash]))
             .forEach((hash) => {
-                library
-                    .getTransactionReceipt(hash)
-                    .then((receipt) => {
+                checkPendingTransaction(library, hash, transactions[hash].addedTime)
+                    .then((result) => {
+                        if (!active) return
+                        if ('dismissed' in result) {
+                            dispatch(removeTransaction({ chainId: +chainId, hash }))
+                            dispatch(removePopup({ key: hash }))
+                            return
+                        }
+                        const receipt = 'receipt' in result ? result.receipt : null
                         const confirmedSummary = transactions[hash]?.summary
                         if (receipt) {
                             dispatch(
@@ -94,6 +122,7 @@ export default function Updater(): null {
                         console.error(`failed to check transaction hash: ${hash}`, error)
                     })
             })
+        return () => { active = false }
     }, [chainId, library, transactions, lastBlockNumber, dispatch, addPopup])
 
     return null
