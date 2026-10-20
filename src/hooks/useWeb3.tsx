@@ -273,7 +273,7 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
                 }}
             >
                 {children}
-            </Web3Provider>
+            </QaAwareWeb3Provider>
         </GdSdkContext.Provider>
     )
 }
