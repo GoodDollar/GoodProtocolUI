@@ -5,30 +5,15 @@ This development-only path exercises the SDK Reserve-limit error classifier and 
 ## Prerequisites
 
 - Node 24 and Yarn 3.6.1.
-- A `GoodWeb3-Mono` checkout on `reserve-and-bridge-fixes` that includes the paired QA API: `Web3Provider` accepts `qa.forceTradeLimits`, and `useWeb3Context()` reports `qa.forceTradeLimits === true` only when the SDK simulation is active and blocks Reserve approval/submission before signer access.
-- A connected test account, a valid Celo or XDC Reserve quote, and no token balance or allowance are required. Do not approve, sign, or send a transaction.
-- The SDK and design packages must be built and installed locally with yalc; package publication is not required.
+- Use the pinned published packages: `@gooddollar/web3sdk-v2@0.4.49` and `@gooddollar/good-design@0.4.54`. No local SDK checkout or yalc setup is required.
+- A connected test account and a valid Celo or XDC Reserve quote are required. No token balance or allowance is required. Do not approve, sign, or send a transaction.
 
-## Build and install the paired packages
+## Install dependencies
 
-From the `GoodWeb3-Mono` checkout, first update `reserve-and-bridge-fixes` to the commit that implements the QA API, then run:
-
-```sh
-yarn install --immutable
-cd packages/sdk-v2
-yarn build
-yalc publish --push
-cd ../good-design
-yalc add -D @gooddollar/web3sdk-v2
-yarn build
-```
-
-From the `GoodProtocolUI` checkout on `reserve-and-rpc-fixes`, run:
+From the GoodProtocolUI checkout, run:
 
 ```sh
 yarn install --immutable
-yalc add @gooddollar/web3sdk-v2 @gooddollar/good-design
-yarn install
 ```
 
 If setting up the checkout for the first time, enable Corepack with `corepack enable` before using Yarn.
