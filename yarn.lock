@@ -5988,9 +5988,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gooddollar/good-design@file:temp-packages/@gooddollar-good-design-0.4.52.tgz::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
-  version: 0.4.52
-  resolution: "@gooddollar/good-design@file:temp-packages/@gooddollar-good-design-0.4.52.tgz::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+"@gooddollar/good-design@npm:0.4.54":
+  version: 0.4.54
+  resolution: "@gooddollar/good-design@npm:0.4.54"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/runtime": ^7.18.9
@@ -6041,7 +6041,7 @@ __metadata:
     react: ^18.*
     react-native-paper: "*"
     uuid: "*"
-  checksum: e189ccf378678f8991210b2cd51e5b2f8a15d9e9277e118d74027c16180201fdf7690aa703be7e36e2f3d6c017174cae4dde1090cda358c77355a16eb825dbd6
+  checksum: 65a671dd337d629e59bbbc7f6bbaba932b0edf55d22b515749b50014e3453bf99c9bb859017442f8aa905c82539fad9740707f131fefb89103c60308f3fe3504
   languageName: node
   linkType: hard
 
@@ -6099,10 +6099,10 @@ __metadata:
     "@ethersproject/experimental": ^5.0.1
     "@fontsource/dm-sans": ^4.2.2
     "@fullhuman/postcss-purgecss": ^4.0.3
-    "@gooddollar/good-design": "file:temp-packages/@gooddollar-good-design-0.4.52.tgz"
+    "@gooddollar/good-design": 0.4.54
     "@gooddollar/goodprotocol": 2.2.1
     "@gooddollar/web3sdk": 0.1.59
-    "@gooddollar/web3sdk-v2": "file:temp-packages/@gooddollar-web3sdk-v2-0.4.48.tgz"
+    "@gooddollar/web3sdk-v2": 0.4.49
     "@goodsdks/savings-widget": ^1.0.0
     "@headlessui/react": 1.5.0
     "@hot-loader/react-dom": ^17.0.1
@@ -6290,9 +6290,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gooddollar/web3sdk-v2@file:temp-packages/@gooddollar-web3sdk-v2-0.4.48.tgz::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A.":
-  version: 0.4.48
-  resolution: "@gooddollar/web3sdk-v2@file:temp-packages/@gooddollar-web3sdk-v2-0.4.48.tgz::locator=%40gooddollar%2Fprotocol-ui%40workspace%3A."
+"@gooddollar/web3sdk-v2@npm:0.4.49":
+  version: 0.4.49
+  resolution: "@gooddollar/web3sdk-v2@npm:0.4.49"
   dependencies:
     "@amplitude/analytics-browser": ^1.6.4
     "@amplitude/analytics-react-native": ^0.7.0
@@ -6340,7 +6340,7 @@ __metadata:
     react-native-web: "*"
     viem: 2.*
     wagmi: 2.*
-  checksum: fdc03aedb4766e509ef38599306c4ee04bcaf3704f2377ffa51399ed95f59e5aaf88b9f4e2f4a08f7a104d146f14665e615ed06e3115d1a74c94de4dc507fca9
+  checksum: 9a71f9537d7bc774722f27886980c0cd23260daf6db12a1bdaed118d765e3cb827f07c1f5d3bbf577415d0f9091e43fde56d285b7d777e96660b788da1c9dc48
   languageName: node
   linkType: hard
 

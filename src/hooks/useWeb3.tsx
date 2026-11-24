@@ -10,9 +10,16 @@ import { useAppKitNetwork, useAppKitProvider } from '@reown/appkit/react'
 import type { Provider } from '@reown/appkit/react'
 import { useAccount } from 'wagmi'
 
-import { SUPPORTED_CHAIN_IDS, fetchRpcsFromChainlist, getFallbackRpcsByChain } from 'functions/rpcParsing'
+import {
+    SUPPORTED_CHAIN_IDS,
+    fetchRpcsFromChainlist,
+    filterExcludedRpcs,
+    getFallbackRpcsByChain,
+} from 'functions/rpcParsing'
+import { createSdkReadOnlyUrls } from 'functions/rpcProviders'
 import { getEnv } from 'utils/env'
 import { isMiniPay, getMiniPayProvider } from 'utils/minipay'
+import { isReserveLimitQaRequested } from 'functions/reserveLimitQa'
 
 type NetworkSettings = {
     currentNetwork: string
@@ -154,22 +161,8 @@ export const initializeRpcs = async () => {
 
 export function useNetwork(): NetworkSettings {
     const [testifiedRpcs, setTestifiedRpcs] = React.useState<Record<string, string[]> | null>(null)
-    const excludedRpcs = useMemo(
-        () =>
-            (process.env.REACT_APP_EXCLUDED_RPCS ?? '')
-                .split(',')
-                .map((value) => value.trim().toLowerCase())
-                .filter(Boolean),
-        []
-    )
-
     const filterBlockedRpcs = (rpcs: Record<string, string[]>) =>
-        Object.fromEntries(
-            Object.entries(rpcs).map(([chainId, urls]) => [
-                chainId,
-                urls.filter((url) => !excludedRpcs.some((blocked) => url.toLowerCase().includes(blocked))),
-            ])
-        )
+        Object.fromEntries(Object.entries(rpcs).map(([chainId, urls]) => [chainId, filterExcludedRpcs(urls)]))
 
     const fallbackRpcsByChain = useMemo(() => getFallbackRpcsByChain(), [])
 
@@ -198,7 +191,11 @@ export function useNetwork(): NetworkSettings {
 }
 
 export function Web3ContextProvider({ children }: { children: ReactNode | ReactNodeArray }): JSX.Element {
-    const { rpcs } = useNetwork()
+    const { rpcs, testedRpcs } = useNetwork()
+    const readOnlyUrls = useMemo(
+        () => createSdkReadOnlyUrls(rpcs, testedRpcs || getFallbackRpcsByChain()),
+        [rpcs, testedRpcs]
+    )
     const { chainId } = useAppKitNetwork()
     const { walletProvider } = useAppKitProvider<Provider>('eip155')
     const { connector, address } = useAccount()
@@ -243,6 +240,10 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
     const network = getEnv()
     const contractsEnv = network
     const contractsEnvV2 = network === 'development' ? 'fuse' : network
+    const forceTradeLimitsQa = isReserveLimitQaRequested(
+        import.meta.env.DEV,
+        import.meta.env.REACT_APP_QA_FORCE_TRADE_LIMITS
+    )
 
     if (!rpcs) return <></>
     return (
@@ -259,11 +260,12 @@ export function Web3ContextProvider({ children }: { children: ReactNode | ReactN
             <Web3Provider
                 web3Provider={webprovider}
                 env={contractsEnvV2}
+                qa={{ forceTradeLimits: forceTradeLimitsQa }}
                 config={{
                     pollingInterval: 15000,
                     networks: [Mainnet, Fuse, Celo, Xdc],
                     readOnlyChainId: undefined,
-                    readOnlyUrls: rpcs,
+                    readOnlyUrls,
                 }}
             >
                 {children}

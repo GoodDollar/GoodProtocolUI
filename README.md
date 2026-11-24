@@ -19,8 +19,13 @@ https://cocky-dubinsky-430a6c.netlify.app/
 
 ### Install Dependencies
 
+Use Node.js 24 and the repository-pinned Yarn 3.6.1.
+
 ```bash
-yarn
+nvm install
+nvm use
+corepack enable
+yarn install --immutable
 ```
 
 ### Run

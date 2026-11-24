@@ -3,8 +3,7 @@ import '@reach/dialog/styles.css'
 import { transparentize } from 'polished'
 import React from 'react'
 import { isMobile } from 'react-device-detect'
-import { animated, useSpring, useTransition } from 'react-spring'
-import { useGesture } from 'react-use-gesture'
+import { animated, useTransition } from 'react-spring'
 import styled, { css } from 'styled-components'
 
 const AnimatedDialogOverlay = animated(DialogOverlay)
@@ -115,18 +114,6 @@ export default function Modal({
         leave: { opacity: 0 },
     })
 
-    const [{ y }, set] = useSpring(() => ({ y: 0, config: { mass: 1, tension: 210, friction: 20 } }))
-    const bind = useGesture({
-        onDrag: (state) => {
-            set({
-                y: state.down ? state.movement[1] : 0,
-            })
-            if (state.movement[1] > 300 || (state.velocity > 3 && state.direction[1] > 0)) {
-                onDismiss()
-            }
-        },
-    })
-
     return (
         <>
             {fadeTransition.map(
@@ -139,16 +126,6 @@ export default function Modal({
                             initialFocusRef={initialFocusRef}
                         >
                             <StyledDialogContent
-                                {...(isMobile
-                                    ? {
-                                          ...bind(),
-                                          style: {
-                                              transform: y.interpolate(
-                                                  (y) => `translateY(${(y as number) > 0 ? y : 0}px)`
-                                              ),
-                                          },
-                                      }
-                                    : {})}
                                 aria-label="dialog content"
                                 minHeight={minHeight}
                                 maxHeight={maxHeight}
